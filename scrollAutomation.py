@@ -4,7 +4,7 @@ import time
 from pprint import pprint
 import csv
 
-def scrollToBottom(url):
+def scrollToBottom (url):
     start = time.perf_counter()
     driver.get(channelVideosUrl)
     SCROLL_PAUSE_TIME = 0.8
@@ -30,7 +30,7 @@ def scrollToBottom(url):
     print(f'It took {functionTime} to extract all {len(elements)} videos from {channelVideosUrl}\n')
     return elements
 
-def writeToTxt(listOfVideos):
+def writeToTxt (listOfVideos):
     with open('{}VideosList.txt'.format(userName.strip('/')), 'w+') as f:
         print (f'Opened {f.name}, writing video information to file....')
         for index, element in enumerate(listOfVideos, 1):
@@ -54,7 +54,6 @@ def writeToCsv (listOfVideos):
             writer.writerow({'Index': f'{index}', 'Watched?': '', 'Video Title': f'{element.get_attribute("title")}', 'Video URL': f'{element.get_attribute("href")}'})
             if index % 250 == 0:
                 print(f'{index} videos written to {csvfile.name}...')
-        
         print (f'Finished writing to {csvfile.name}')
         print (f'{index} videos written to {csvfile.name}')
         print (f'Closing {csvfile.name}\n')
