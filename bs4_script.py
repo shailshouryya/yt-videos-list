@@ -14,7 +14,7 @@ def writeToTxt():
     with open ('{}VideosList.txt'.format(userName.strip('/')), 'w+') as f:
         print('Opened       {}, writing to file...'.format(f.name))
         for url in soup.find_all('a', attrs = {'class': 'yt-uix-sessionlink', 'dir':'ltr'}):
-    #         f.write('{}\n'.format(url))
+        	# f.write('{}\n'.format(url))
             f.write('title:\n{}\n'.format(url.string))
             f.write('url.href:\n{}{}\n'.format(baseUrl, url.get('href')))
             f.write('*'*50 + '\n')
@@ -25,7 +25,7 @@ def writeToCsv():
         print('Opened       {}, writing to file...'.format(csvfile.name))
         fieldnames = ['Video Title', 'URL', 'Watched?']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-    #     writer = csv.writer(f)
+        # writer = csv.writer(f)
         writer.writeheader()
     
         for url in soup.find_all('a', attrs = {'class': 'yt-uix-sessionlink', 'dir':'ltr'}):
