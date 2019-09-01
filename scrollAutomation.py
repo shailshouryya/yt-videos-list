@@ -4,15 +4,16 @@ import time
 from pprint import pprint
 import csv
 
-def scrollToBottom (url):
+def scrollToBottom (url, seleniumInstance):
     start = time.perf_counter()
-    driver.get(channelVideosUrl)
+    driver = seleniumInstance
+    driver.get(url)
     SCROLL_PAUSE_TIME = 0.8
     
     elemsCount = driver.execute_script("return document.querySelectorAll('ytd-grid-video-renderer').length")
     while True:
         driver.execute_script("window.scrollBy(0, 50000);")
-        time.sleep(SCROLL_PAUSE_TIME)
+
         new_elemsCount = driver.execute_script("return document.querySelectorAll('ytd-grid-video-renderer').length")
         print (f'Found {new_elemsCount} videos...')
     
@@ -27,10 +28,10 @@ def scrollToBottom (url):
     elements = driver.find_elements_by_xpath('//*[@id="video-title"]')
     end = time.perf_counter()
     functionTime = end - start - 2 # subtract 2 to account for the extra waiting time to verify end of page
-    print(f'It took {functionTime} to extract all {len(elements)} videos from {channelVideosUrl}\n')
+    print(f'It took {functionTime} to extract all {len(elements)} videos from {url}\n')
     return elements
 
-def writeToTxt (listOfVideos):
+def writeToTxt (listOfVideos, userName):
     with open('{}VideosList.txt'.format(userName.strip('/')), 'w+') as f:
         print (f'Opened {f.name}, writing video information to file....')
         for index, element in enumerate(listOfVideos, 1):
@@ -43,7 +44,7 @@ def writeToTxt (listOfVideos):
         print (f'{index} videos written to {f.name}')
         print (f'Closing {f.name}\n')
 
-def writeToCsv (listOfVideos):
+def writeToCsv (listOfVideos, userName):
     with open('{}VideosList.csv'.format(userName.strip('/')), 'w+') as csvfile:
         print (f'Opened {csvfile.name}, writing video information to file....')
         fieldnames = ['Index', 'Watched?', 'Video Title', "Video URL"]
@@ -57,8 +58,10 @@ def writeToCsv (listOfVideos):
         print (f'Finished writing to {csvfile.name}')
         print (f'{index} videos written to {csvfile.name}')
         print (f'Closing {csvfile.name}\n')
-        
-if __name__ == '__main__':
+
+
+
+def main():
     programStart = time.perf_counter()
     
     baseUrl = 'https://www.youtube.com'
@@ -71,10 +74,13 @@ if __name__ == '__main__':
     options.headless = True
     driver = webdriver.Firefox(options=options)
     with driver:
-        videosList = scrollToBottom(channelVideosUrl)
-        writeToTxt(videosList)
-        writeToCsv(videosList)
+        videosList = scrollToBottom(channelVideosUrl, driver)
+        writeToTxt(videosList, userName)
+        writeToCsv(videosList, userName)
     
     programEnd = time.perf_counter()
     totalTime = programEnd - programStart
     print(f'This program took {totalTime} seconds to complete.')
+
+if __name__ == '__main__':
+    main()
