@@ -1,8 +1,11 @@
+from output import executeMessage
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 import time
 from pprint import pprint
 import csv
+
+eMessage = executeMessage()
 
 def cli():
     '''
@@ -26,7 +29,7 @@ def cli():
     '''
     pass
 
-def scrollToBottom (channelName, channelType, seleniumInstance, scroll_pause_time):
+def scrollToBottom (channelName, channelType, seleniumInstance, scrollPauseTime):
     start = time.perf_counter()
     driver = seleniumInstance
     
@@ -37,12 +40,12 @@ def scrollToBottom (channelName, channelType, seleniumInstance, scroll_pause_tim
     url = baseUrl + '/' + channelType + '/' + channelName + '/' + videos 
     
     driver.get(url)
-    SCROLL_PAUSE_TIME = scroll_pause_time
+#     SCROLL_PAUSE_TIME = scrollPauseTime
     
     elemsCount = driver.execute_script("return document.querySelectorAll('ytd-grid-video-renderer').length")
     while True:
         driver.execute_script("window.scrollBy(0, 50000);")
-        time.sleep(SCROLL_PAUSE_TIME)
+        time.sleep(scrollPauseTime)
         new_elemsCount = driver.execute_script("return document.querySelectorAll('ytd-grid-video-renderer').length")
         print (f'Found {new_elemsCount} videos...')
     
@@ -61,6 +64,7 @@ def scrollToBottom (channelName, channelType, seleniumInstance, scroll_pause_tim
     return elements
 
 def writeToTxt (listOfVideos, userName, writeFormat='w'):
+    start = time.perf_counter()
     with open('{}VideosList.txt'.format(userName.strip('/')), writeFormat) as f:
         print (f'Opened {f.name}, writing video information to file....')
         
@@ -79,6 +83,37 @@ def writeToTxt (listOfVideos, userName, writeFormat='w'):
         print (f'Finished writing to {f.name}')
         print (f'{index} videos written to {f.name}')
         print (f'Closing {f.name}\n')
+        
+        end = time.perf_counter()
+        functionTime = end - start
+        print(f'It took {functionTime} to write all {index} videos to {f.name}\n')
+        
+def saveToMemWriteToTxt (listOfVideos, userName, writeFormat='w'):
+    start = time.perf_counter()
+    with open('{}VideosList.txt'.format(userName.strip('/')), writeFormat) as fm:
+        print (f'Opened {fm.name}, writing video information to file....')
+        
+        text = ''
+        spacing = '\n    ' # newline followed by 4 spaces
+        for index, element in enumerate(listOfVideos, 1):
+            text += f'Index:{spacing}{index}' + '\n'
+            text += f'Watched?{spacing}' + '\n'
+            text += f'Video Title:{spacing}{element.get_attribute("title")}' + '\n'
+            text += f'Video URL:{spacing}{element.get_attribute("href")}' + '\n'
+            text += f'Watch again later?{spacing}' + '\n'
+            text += f'Notes:{spacing}' + '\n'
+            
+            text += '*'*75 + '\n'
+            if index % 250 == 0:
+                print (f'{index} videos saved to memory...')
+        
+        print (f'Finished saving video information to memory')
+        fm.write(text)
+        print (f'{index} videos written to {fm.name}')
+        print (f'Closing {fm.name}\n')
+        end = time.perf_counter()
+        functionTime = end - start
+        print(f'It took {functionTime} to write all {index} videos to {fm.name}\n')
 
 def writeToCsv (listOfVideos, userName, writeFormat='w'):
     with open('{}VideosList.csv'.format(userName.strip('/')), writeFormat) as csvfile:
@@ -97,7 +132,7 @@ def writeToCsv (listOfVideos, userName, writeFormat='w'):
 
 def main():
 
-    channelName = input("What is the name of the YouTube channel you want to generate the list for?" + "\n\n" + "If you're unsure, click on the channel and look at the URL." + "\n" + "It should be in the format:" + "\n" + "https://www.youtube.com/user/YourChannelName" + "\n" + "OR" + "\n" + "https://www.youtube.com/channel/YourChannelName" + "\n\n" + "Substitute what you see for YourChannelName and type it in below (NOTE: if your url looks like the second option, you need to run this script with the -c or --channel flag):\n")
+    channelName = input(eMessage.inputMessage)
     programStart = time.perf_counter()
     
 #     if -i --invisible: open selenium in headless mode
@@ -106,17 +141,17 @@ def main():
 #     driver = webdriver.Firefox(options=options)
 #     else open selenium instance
     driver = webdriver.Firefox()
-#     if -p --pause=# scroll_pause_time = #
-#     else scroll_pause_time = 0.8
-    scroll_pause_time = 0.8
+#     if -p --pause=# scrollPauseTime = #
+#     else scrollPauseTime = 0.8
+    scrollPauseTime = 0.8
 #     if -c --channelType is channel set channelType = 'channel'
 #     else channelType = 'user'
     channelType = 'user' # hardcoded until CLI added
     with driver:
-        videosList = scrollToBottom(channelName, channelType, driver, scroll_pause_time)
+        videosList = scrollToBottom(channelName, channelType, driver, scrollPauseTime)
         if len(videosList) == 0:
-            print ('No videos were found for the channel you provided. Are you sure you typed in the channel name correctly?\n')
-            print ('If you did type the name in correctly, perhaps the channelType is set incorrectly. Try using the -c or --channelType flag for this script if you didn\'t do it when running this script, or try running the script without the -c or --channelType flag if you DID include that flag when running this script.')
+            print (eMessage.noVideosFound)
+            print (eMessage.checkChannelType)
             return
 #         if cli -o --overwrite write_format = 'w'
 #         else write_format = 'x'
