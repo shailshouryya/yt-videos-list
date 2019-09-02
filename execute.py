@@ -97,7 +97,7 @@ def writeToCsv (listOfVideos, userName, writeFormat='w'):
 
 def main():
 
-    channelName = input("What is the name of the YouTube channel you want to generate the list for?\nIf you're unsure, click on the channel and look at the URL.\nIt should be in the format: https://www.youtube.com/user/YourChannelName\nSubstitute what you see for YourChannelName and type it in below:\n")
+    channelName = input("What is the name of the YouTube channel you want to generate the list for? + ""\n\n" + "If you're unsure, click on the channel and look at the URL." + "\n" + "It should be in the format:" + "\n" + "https://www.youtube.com/user/YourChannelName" + "\n" + "OR" + "\n" + "https://www.youtube.com/channel/YourChannelName" + "\n" + "Substitute what you see for YourChannelName and type it in below:\n")
     programStart = time.perf_counter()
     
 #     if -i --invisible: open selenium in headless mode
