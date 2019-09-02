@@ -5,12 +5,16 @@ import time
 import csv
 
 class ListGenerator:
-    def __init__(self, channelName):
+    def __init__(self, channelName, channelType='user'):
         '''
-        Creates a list generator object with one required positional argument: channelName. Example usage:
+        Creates a list generator object with one required positional argument (channelName) and one optional argument (channelType). The channelType is set to "user" by default, but if the YouTube channel you are looking at is a "channel" instead of "user" - you will need to change the default channelType parameter to "channel"
+        Example usage:
             LG = ListGenerator('theChannelYouWantToScrape')
+            OR
+            LG = ListGenerator('theChannelYouWantToScrape', 'channel')
         '''
         self.channelName = channelName
+        self.channelType = channelType
     
     def generate_list(self, csv=True, txt=True, docx=False, headless=False, scroll_pause_time=0.8, writeFormat='x'):
         '''
@@ -45,9 +49,10 @@ class ListGenerator:
             options.headless = True
             driver = webdriver.Firefox(options=options)
         with driver:
-            videosList = execute.scrollToBottom(self.channelName, driver, scroll_pause_time)
+            videosList = execute.scrollToBottom(self.channelName, self.channelType, driver, scroll_pause_time)
             if len(videosList) == 0:
-                print ('No videos were found for the channel you provided. Are you sure you typed in the channel name correctly?')
+                print ('No videos were found for the name you provided. Are you sure you typed in the channel name correctly?\n')
+                print ('If you did type the name in correctly, perhaps the channelType is set incorrectly. Try setting channelType="channel" in the object instantiation if you didn\'t do it for this object, or try running the method without the channelTpye="channel" if you DID include the channelType argument in the object instantiation.')
                 return
             if csv is True:
                 try:
