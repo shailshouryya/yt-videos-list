@@ -11,7 +11,7 @@ def cli():
     '''
     
     first argument should be channel/user name
-    -c --channelType choose between "user" and "channel"
+    -c --channelType sets channelType to "channel"
     -o --overwrite overwrite file if a file of the same name already exists in the output directory
     --version shows version number and exits
     --csv writes to csv file
@@ -97,7 +97,7 @@ def writeToCsv (listOfVideos, userName, writeFormat='w'):
 
 def main():
 
-    channelName = input("What is the name of the YouTube channel you want to generate the list for? + ""\n\n" + "If you're unsure, click on the channel and look at the URL." + "\n" + "It should be in the format:" + "\n" + "https://www.youtube.com/user/YourChannelName" + "\n" + "OR" + "\n" + "https://www.youtube.com/channel/YourChannelName" + "\n" + "Substitute what you see for YourChannelName and type it in below:\n")
+    channelName = input("What is the name of the YouTube channel you want to generate the list for?" + "\n\n" + "If you're unsure, click on the channel and look at the URL." + "\n" + "It should be in the format:" + "\n" + "https://www.youtube.com/user/YourChannelName" + "\n" + "OR" + "\n" + "https://www.youtube.com/channel/YourChannelName" + "\n\n" + "Substitute what you see for YourChannelName and type it in below (NOTE: if your url looks like the second option, you need to run this script with the -c or --channel flag):\n")
     programStart = time.perf_counter()
     
 #     if -i --invisible: open selenium in headless mode
