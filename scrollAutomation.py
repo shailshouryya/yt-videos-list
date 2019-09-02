@@ -4,13 +4,32 @@ import time
 from pprint import pprint
 import csv
 
-
+def cli():
+    '''
+    Provides optional arguments for user increased visibility. Note that using some of the arguments may slow down run time and program may take slightly longer to execute.
+    '''
+    '''
+    
+    -c --channelName required, specify channel name
+    -o --overwrite overwrite file if a file of the same name already exists in the output directory
+    --version shows version number and exits
+    --csv writes to csv file
+    --txt writes to txt file
+    --docx writes to word dox (not yet available)
+    -v --verbose print every 10 videos written to file
+    -s --see open the selenium browser to see what's happening during program execution. Useful if not all videos are being found, allows you to see where the scrolling gets stuck
+    -q --quiet suppresses program updates, only prints to stdout when scrolling is complete files are opened and closed, and any errors that may occur
+    -h --help display information on usage and functionality
+    -p --pause change pause time between scrolls, set to 0.8s by default
+    -r --reverse reverse the indexing so oldest video starts at 1 and most recent video has highest index
+    '''
+    pass
 
 def scrollToBottom (user_name, seleniumInstance, scroll_pause_time=0.8):
     start = time.perf_counter()
     driver = seleniumInstance
     
-    userName = user_name
+    userName = user_name.strip().strip('/') + '/'
     baseUrl = 'https://www.youtube.com'
     user = 'user/'
     videos = 'videos'
@@ -76,15 +95,17 @@ def writeToCsv (listOfVideos, userName, writeFormat='w'):
         print (f'Closing {csvfile.name}\n')
 
 def main():
-    programStart = time.perf_counter()
 
-    user_name = 'sentdex/'
-    
+    user_name = input("What is the name of the YouTube channel you want to generate the list for?\nIf you're unsure, click on the channel and look at the URL.\nIt should be in the format: https://www.youtube.com/user/YourChannelName\nSubstitute what you see for YourChannelName and type it in below:\n")
+    programStart = time.perf_counter()
     options = Options()
     options.headless = True
     driver = webdriver.Firefox(options=options)
     with driver:
         videosList = scrollToBottom(user_name, driver)
+        if len(videosList) == 0:
+            print ('No videos were found for the channel you provided. Are you sure you typed in the channel name correctly?')
+            return
         writeToTxt(videosList, user_name)
         writeToCsv(videosList, user_name)
     
