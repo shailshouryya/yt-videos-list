@@ -111,7 +111,7 @@ def main():
     scroll_pause_time = 0.8
 #     if -c --channelType is channel set channelType = 'channel'
 #     else channelType = 'user'
-    channelType = 'channel' # hardcoded until CLI added
+    channelType = 'user' # hardcoded until CLI added
     with driver:
         videosList = scrollToBottom(channelName, channelType, driver, scroll_pause_time)
         if len(videosList) == 0:
