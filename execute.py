@@ -25,15 +25,15 @@ def cli():
     '''
     pass
 
-def scrollToBottom (user_name, seleniumInstance, scroll_pause_time=0.8):
+def scrollToBottom (channelName, seleniumInstance, scroll_pause_time=0.8):
     start = time.perf_counter()
     driver = seleniumInstance
     
-    userName = user_name.strip().strip('/') + '/'
+    channelName = channelName.strip().strip('/') + '/'
     baseUrl = 'https://www.youtube.com'
     user = 'user/'
     videos = 'videos'
-    url = baseUrl + '/' + user + userName + videos 
+    url = baseUrl + '/' + user + channelName + videos 
     
     driver.get(url)
     SCROLL_PAUSE_TIME = scroll_pause_time
@@ -41,7 +41,7 @@ def scrollToBottom (user_name, seleniumInstance, scroll_pause_time=0.8):
     elemsCount = driver.execute_script("return document.querySelectorAll('ytd-grid-video-renderer').length")
     while True:
         driver.execute_script("window.scrollBy(0, 50000);")
-#         time.sleep(SCROLL_PAUSE_TIME)
+        time.sleep(SCROLL_PAUSE_TIME)
         new_elemsCount = driver.execute_script("return document.querySelectorAll('ytd-grid-video-renderer').length")
         print (f'Found {new_elemsCount} videos...')
     
@@ -96,18 +96,26 @@ def writeToCsv (listOfVideos, userName, writeFormat='w'):
 
 def main():
 
-    user_name = input("What is the name of the YouTube channel you want to generate the list for?\nIf you're unsure, click on the channel and look at the URL.\nIt should be in the format: https://www.youtube.com/user/YourChannelName\nSubstitute what you see for YourChannelName and type it in below:\n")
+    channelName = input("What is the name of the YouTube channel you want to generate the list for?\nIf you're unsure, click on the channel and look at the URL.\nIt should be in the format: https://www.youtube.com/user/YourChannelName\nSubstitute what you see for YourChannelName and type it in below:\n")
     programStart = time.perf_counter()
     options = Options()
     options.headless = True
     driver = webdriver.Firefox(options=options)
+    
+#     if -p --pause=# scroll_pause_time = #
+#     else scroll_pause_time = 0.8
+    scroll_pause_time = 0.8
+    
     with driver:
-        videosList = scrollToBottom(user_name, driver)
+        videosList = scrollToBottom(channelName, driver, scroll_pause_time)
         if len(videosList) == 0:
             print ('No videos were found for the channel you provided. Are you sure you typed in the channel name correctly?')
             return
-        writeToTxt(videosList, user_name)
-        writeToCsv(videosList, user_name)
+#         if cli -o --overwrite write_format = 'w'
+#         else write_format = 'x'
+        write_format = 'w'
+        writeToTxt(videosList, channelName, write_format)
+        writeToCsv(videosList, channelName, write_format)
     
     programEnd = time.perf_counter()
     totalTime = programEnd - programStart
