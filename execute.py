@@ -115,7 +115,7 @@ def main():
     with driver:
         videosList = scrollToBottom(channelName, channelType, driver, scroll_pause_time)
         if len(videosList) == 0:
-            print ('No videos were found for the channel you provided. Are you sure you typed in the channel name correctly?')
+            print ('No videos were found for the channel you provided. Are you sure you typed in the channel name correctly?\n')
             print ('If you did type the name in correctly, perhaps the channelType is set incorrectly. Try using the -c or --channelType flag for this script if you didn\'t do it when running this script, or try running the script without the -c or --channelType flag if you DID include that flag when running this script.')
             return
 #         if cli -o --overwrite write_format = 'w'
