@@ -26,7 +26,7 @@ def cli():
     '''
     pass
 
-def scrollToBottom (channelName, channelType, seleniumInstance, scroll_pause_time=0.8):
+def scrollToBottom (channelName, channelType, seleniumInstance, scroll_pause_time):
     start = time.perf_counter()
     driver = seleniumInstance
     
