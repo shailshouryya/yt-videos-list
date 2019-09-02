@@ -10,14 +10,15 @@ def cli():
     '''
     '''
     
-    -c --channelName required, specify channel name
+    first argument should be channel/user name
+    -c --channelType choose between "user" and "channel"
     -o --overwrite overwrite file if a file of the same name already exists in the output directory
     --version shows version number and exits
     --csv writes to csv file
     --txt writes to txt file
     --docx writes to word dox (not yet available)
     -v --verbose print every 10 videos written to file
-    -s --see open the selenium browser to see what's happening during program execution. Useful if not all videos are being found, allows you to see where the scrolling gets stuck
+    -i --invisible opens a headless instance of the selenium browser to run the program in the background
     -q --quiet suppresses program updates, only prints to stdout when scrolling is complete files are opened and closed, and any errors that may occur
     -h --help display information on usage and functionality
     -p --pause change pause time between scrolls, set to 0.8s by default
@@ -25,15 +26,15 @@ def cli():
     '''
     pass
 
-def scrollToBottom (channelName, seleniumInstance, scroll_pause_time=0.8):
+def scrollToBottom (channelName, channelType, seleniumInstance, scroll_pause_time=0.8):
     start = time.perf_counter()
     driver = seleniumInstance
     
-    channelName = channelName.strip().strip('/') + '/'
     baseUrl = 'https://www.youtube.com'
-    user = 'user/'
+    channelType = channelType.strip().strip('/')
+    channelName = channelName.strip().strip('/')
     videos = 'videos'
-    url = baseUrl + '/' + user + channelName + videos 
+    url = baseUrl + '/' + channelType + '/' + channelName + '/' + videos 
     
     driver.get(url)
     SCROLL_PAUSE_TIME = scroll_pause_time
@@ -98,16 +99,21 @@ def main():
 
     channelName = input("What is the name of the YouTube channel you want to generate the list for?\nIf you're unsure, click on the channel and look at the URL.\nIt should be in the format: https://www.youtube.com/user/YourChannelName\nSubstitute what you see for YourChannelName and type it in below:\n")
     programStart = time.perf_counter()
-    options = Options()
-    options.headless = True
-    driver = webdriver.Firefox(options=options)
     
+#     if -i --invisible: open selenium in headless mode
+#     options = Options()
+#     options.headless = True
+#     driver = webdriver.Firefox(options=options)
+#     else open selenium instance
+    driver = webdriver.Firefox()
 #     if -p --pause=# scroll_pause_time = #
 #     else scroll_pause_time = 0.8
     scroll_pause_time = 0.8
-    
+#     if -c --channelType is channel set channelType = 'channel'
+#     else channelType = 'user'
+    channelType = 'channel' # hardcoded until CLI added
     with driver:
-        videosList = scrollToBottom(channelName, driver, scroll_pause_time)
+        videosList = scrollToBottom(channelName, channelType, driver, scroll_pause_time)
         if len(videosList) == 0:
             print ('No videos were found for the channel you provided. Are you sure you typed in the channel name correctly?')
             return
