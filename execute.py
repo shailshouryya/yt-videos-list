@@ -1,4 +1,4 @@
-from output import executeMessage
+from output import ModuleMessage, ScriptMessage
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 import time
@@ -130,7 +130,45 @@ def writeToCsv (listOfVideos, userName, writeFormat='w'):
         print (f'{index} videos written to {csvfile.name}')
         print (f'Closing {csvfile.name}\n')
 
-def main():
+
+
+def run(channelName, channelType, csv, txt, docx, headless, scrollPauseTime, writeFormat):
+    mMessage = ModuleMessage()
+    programStart = time.perf_counter()
+    if headless is False: # opens Selenium browsing instance
+        driver = webdriver.Firefox()
+        print (mMessage.runInHeadless)
+        print (mMessage.runInHeadlessExample)
+    else:
+        options = Options()
+        options.headless = True
+        driver = webdriver.Firefox(options=options)
+    with driver:
+        videosList = execute.scrollToBottom(self.channelName, self.channelType, driver, scrollPauseTime)
+        if len(videosList) == 0:
+            print (mMessage.noVideosFound)
+            print (mMessage.checkChannelType)
+            return
+        if txt is True:
+            try:
+                execute.writeToTxt(videosList, self.channelName, writeFormat)
+                # execute.saveToMemWriteToTxt(videosList, self.channelName, writeFormat) # slightly slower than writing to disk directly
+            except FileExistsError as e:
+                print (e)
+                print (mMessage.fileAlreadyExists)
+                print (mMessage.fileAlreadyExistsRerunUsage)
+        if csv is True:
+            try:
+                execute.writeToCsv(videosList, self.channelName, writeFormat)
+            except FileExistsError as e:
+                print (e)
+                print (mMessage.fileAlreadyExists)
+                print (mMessage.fileAlreadyExistsRerunUsage)
+    programEnd = time.perf_counter()
+    totalTime = programEnd - programStart
+    print(f'This program took {totalTime} seconds to complete.\n')
+
+def script():
 
     channelName = input(eMessage.inputMessage)
     programStart = time.perf_counter()
@@ -162,6 +200,3 @@ def main():
     programEnd = time.perf_counter()
     totalTime = programEnd - programStart
     print(f'This program took {totalTime} seconds to complete.')
-
-if __name__ == '__main__':
-    main()
