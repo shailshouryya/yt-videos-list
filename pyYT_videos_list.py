@@ -14,9 +14,9 @@ class ListGenerator:
         self.channelName = channelName
         self.channelType = channelType
     
-    def generate_list(self, csv=True, txt=True, docx=False, headless=False, scrollPauseTime=0.8, writeFormat='x'):
+    def generate_list(self, csv=True, txt=True, docx=False, headless=False, scrollPauseTime=0.5, writeFormat='x'):
         '''
-        The generate_list method has been designed to make a CSV and text file by default, open an automated browsing instance, wait 0.8 seconds between scrolls when collecting video information from the provided channelName for the ListGenerator instance, and open the designated CSV/text/docx file in exclusive creation mode - meaning the write operation fails if the file already exists.
+        The generate_list method has been designed to make a CSV and text file by default, open an automated browsing instance, wait 0.5 seconds between scrolls when collecting video information from the provided channelName for the ListGenerator instance, and open the designated CSV/text/docx file in exclusive creation mode - meaning the write operation fails if the file already exists.
     
         If you do not want to write to specific file types, include the optional parameter in the method call and set it equal to false. For instance:
             LG.generate_list(csv=False)
