@@ -53,7 +53,7 @@ def scrollToBottom (channelName, channelType, seleniumInstance, scrollPauseTime)
         if new_elemsCount == elemsCount:
             # wait 2 seconds and check again to verify you really did reach the end of the page, and there wasn't a buffer loading period
             print (cMessage.noNoVideosFound)
-            time.sleep(0.5)
+            time.sleep(0.6)
             new_elemsCount = driver.execute_script("return document.querySelectorAll('ytd-grid-video-renderer').length")
             if new_elemsCount == elemsCount:
                 print('Reached end of page!')
@@ -133,8 +133,32 @@ def writeToCsv (listOfVideos, userName, writeFormat='w'):
         print (f'{index} videos written to {csvfile.name}')
         print (f'Closing {csvfile.name}\n')
 
-
-
+def script():
+    channelName = input(eMessage.inputMessage)    
+#     if -i --invisible: open selenium in headless mode
+#     options = Options()
+#     options.headless = True
+#     driver = webdriver.Firefox(options=options)
+#     else open selenium instance
+    driver = webdriver.Firefox()
+#     if -p --pause=# scrollPauseTime = #
+#     else scrollPauseTime = 0.8
+    scrollPauseTime = 0.8
+#     if -c --channelType is channel set channelType = 'channel'
+#     else channelType = 'user'
+    channelType = 'user' # hardcoded until CLI added
+    with driver:
+        videosList = scrollToBottom(channelName, channelType, driver, scrollPauseTime)
+        if len(videosList) == 0:
+            print (eMessage.noVideosFound)
+            print (eMessage.checkChannelType)
+            return
+#         if cli -o --overwrite write_format = 'w'
+#         else write_format = 'x'
+        write_format = 'w'
+        writeToTxt(videosList, channelName, write_format)
+        writeToCsv(videosList, channelName, write_format)
+        
 def run(channelName, channelType, csv, txt, docx, headless, scrollPauseTime, writeFormat):
     mMessage = ModuleMessage()
     programStart = time.perf_counter()
@@ -170,36 +194,3 @@ def run(channelName, channelType, csv, txt, docx, headless, scrollPauseTime, wri
     programEnd = time.perf_counter()
     totalTime = programEnd - programStart
     print(f'This program took {totalTime} seconds to complete.\n')
-
-def script():
-
-    channelName = input(eMessage.inputMessage)
-    programStart = time.perf_counter()
-    
-#     if -i --invisible: open selenium in headless mode
-#     options = Options()
-#     options.headless = True
-#     driver = webdriver.Firefox(options=options)
-#     else open selenium instance
-    driver = webdriver.Firefox()
-#     if -p --pause=# scrollPauseTime = #
-#     else scrollPauseTime = 0.8
-    scrollPauseTime = 0.8
-#     if -c --channelType is channel set channelType = 'channel'
-#     else channelType = 'user'
-    channelType = 'user' # hardcoded until CLI added
-    with driver:
-        videosList = scrollToBottom(channelName, channelType, driver, scrollPauseTime)
-        if len(videosList) == 0:
-            print (eMessage.noVideosFound)
-            print (eMessage.checkChannelType)
-            return
-#         if cli -o --overwrite write_format = 'w'
-#         else write_format = 'x'
-        write_format = 'w'
-        writeToTxt(videosList, channelName, write_format)
-        writeToCsv(videosList, channelName, write_format)
-    
-    programEnd = time.perf_counter()
-    totalTime = programEnd - programStart
-    print(f'This program took {totalTime} seconds to complete.')
