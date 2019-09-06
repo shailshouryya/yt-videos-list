@@ -1,10 +1,11 @@
-from output import ModuleMessage, ScriptMessage
+from output import Common, ModuleMessage, ScriptMessage
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 import time
 from pprint import pprint
 import csv
 
+cMessage = Common()
 sMessage = ScriptMessage()
 
 def cli():
@@ -51,7 +52,9 @@ def scrollToBottom (channelName, channelType, seleniumInstance, scrollPauseTime)
     
         if new_elemsCount == elemsCount:
             # wait 2 seconds and check again to verify you really did reach the end of the page, and there wasn't a buffer loading period
-            time.sleep(2)
+            print (cMessage.noNoVideosFound)
+            time.sleep(0.5)
+            new_elemsCount = driver.execute_script("return document.querySelectorAll('ytd-grid-video-renderer').length")
             if new_elemsCount == elemsCount:
                 print('Reached end of page!')
                 break
