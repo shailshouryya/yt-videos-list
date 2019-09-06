@@ -3,6 +3,8 @@ class Common:
     This class contains messages that are common to both the pyYT_videos_list and execute modules.
     '''
     noVideosFound = 'No videos were found for the name you provided. Are you sure you typed in the channel name correctly?\n'
+    
+    noNoVideosFound = 'No new videos were found since the last scroll. Waiting 1 second...'
 
 class ModuleMessage(Common):
 
