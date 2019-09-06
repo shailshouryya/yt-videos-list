@@ -14,7 +14,7 @@ class ListGenerator:
         self.channelName = channelName
         self.channelType = channelType
     
-    def generate_list(self, csv=True, txt=True, docx=False, headless=False, scrollPauseTime=0.6, writeFormat='x'):
+    def generate_list(self, csv=True, txt=True, docx=False, headless=False, scrollPauseTime=0.6, writeFormat='x', _executionType='module'):
         '''
         The generate_list method has been designed to make a CSV and text file by default, open an automated browsing instance, wait 0.5 seconds between scrolls when collecting video information from the provided channelName for the ListGenerator instance, and open the designated CSV/text/docx file in exclusive creation mode - meaning the write operation fails if the file already exists.
     
