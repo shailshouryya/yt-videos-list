@@ -4,7 +4,7 @@ class Common:
     '''
     noVideosFound = 'No videos were found for the name you provided. Are you sure you typed in the channel name correctly?\n'
     
-    noNoVideosFound = 'No new videos were found since the last scroll. Waiting 1 second...'
+    noNoVideosFound = 'No new videos were found since the last scroll. Waiting another half a second to see if more videos can be loaded....'
 
 class ModuleMessage(Common):
 
