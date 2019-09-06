@@ -158,14 +158,16 @@ def script():
         write_format = 'w'
         writeToTxt(videosList, channelName, write_format)
         writeToCsv(videosList, channelName, write_format)
+    run(channelName, channelType, csv, txt, docx, headless, scrollPauseTime, writeFormat, _executionType='script')
         
-def run(channelName, channelType, csv, txt, docx, headless, scrollPauseTime, writeFormat):
+def run(channelName, channelType, csv, txt, docx, headless, scrollPauseTime, writeFormat, executionType):
     mMessage = ModuleMessage()
     programStart = time.perf_counter()
     if headless is False: # opens Selenium browsing instance
         driver = webdriver.Firefox()
-        print (mMessage.runInHeadless)
-        print (mMessage.runInHeadlessExample)
+        if executionType == 'module':
+            print (mMessage.runInHeadless)
+            print (mMessage.runInHeadlessExample)
     else:
         options = Options()
         options.headless = True
@@ -173,8 +175,11 @@ def run(channelName, channelType, csv, txt, docx, headless, scrollPauseTime, wri
     with driver:
         videosList = scrollToBottom(channelName, channelType, driver, scrollPauseTime)
         if len(videosList) == 0:
-            print (mMessage.noVideosFound)
-            print (mMessage.checkChannelType)
+            print (cMessage.noVideosFound)
+            if executionType == 'module':
+                print (mMessage.checkChannelType)
+            if executionType == 'script':
+                print (sMessage.checkChannelType)
             return
         if txt is True:
             try:
