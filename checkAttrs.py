@@ -1,5 +1,7 @@
 # https://www.softwaretestingmaterial.com/how-to-locate-element-by-xpath-locator/
 # https://stackoverflow.com/questions/27307131/selenium-webdriver-how-do-i-find-all-of-an-elements-attributes
+# https://pythonbasics.org/selenium_scroll_down/ # does not work on YouTube since scrollHeight returns 0
+
 
 from selenium import webdriver
 from pprint import pprint
