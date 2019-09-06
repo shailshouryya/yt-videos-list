@@ -5,7 +5,7 @@ import time
 from pprint import pprint
 import csv
 
-eMessage = executeMessage()
+sMessage = ScriptMessage()
 
 def cli():
     '''
@@ -144,22 +144,22 @@ def run(channelName, channelType, csv, txt, docx, headless, scrollPauseTime, wri
         options.headless = True
         driver = webdriver.Firefox(options=options)
     with driver:
-        videosList = execute.scrollToBottom(self.channelName, self.channelType, driver, scrollPauseTime)
+        videosList = scrollToBottom(channelName, channelType, driver, scrollPauseTime)
         if len(videosList) == 0:
             print (mMessage.noVideosFound)
             print (mMessage.checkChannelType)
             return
         if txt is True:
             try:
-                execute.writeToTxt(videosList, self.channelName, writeFormat)
-                # execute.saveToMemWriteToTxt(videosList, self.channelName, writeFormat) # slightly slower than writing to disk directly
+                writeToTxt(videosList, channelName, writeFormat)
+                # saveToMemWriteToTxt(videosList, channelName, writeFormat) # slightly slower than writing to disk directly
             except FileExistsError as e:
                 print (e)
                 print (mMessage.fileAlreadyExists)
                 print (mMessage.fileAlreadyExistsRerunUsage)
         if csv is True:
             try:
-                execute.writeToCsv(videosList, self.channelName, writeFormat)
+                writeToCsv(videosList, channelName, writeFormat)
             except FileExistsError as e:
                 print (e)
                 print (mMessage.fileAlreadyExists)
