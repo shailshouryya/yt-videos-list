@@ -2,7 +2,7 @@ import execute
 import time
 
 class ListGenerator:
-    def __init__(self, csv=True, csvWriteFormat='x', txt=True, txtWriteFormat='x', docx=False, docxWriteFormat='x', headless=False, scrollPauseTime=0.6,):
+    def __init__(self, csv=True, csvWriteFormat='x', txt=True, txtWriteFormat='x', docx=False, docxWriteFormat='x', chronological=True, headless=False, scrollPauseTime=0.6,):
         '''
         Creates a list generator object with one required positional argument (channelName) and one optional argument (channelType). The channelType is set to "user" by default, but if the YouTube channel you are looking at is a "channel" instead of "user" - you will need to change the default channelType parameter to "channel"
         Example usage:
@@ -38,7 +38,7 @@ class ListGenerator:
             
         NOTE! You can use a combination of the optional parameters (or all the optional parameters at once) in the method call, you do not need to use them one at a time. The reason it is shown one at a time here in the documentation is to highlight what each parameter does.
         '''
-        execute.run(channelName, channelType, self.csv, self.csvWriteFormat, self.txt, self.txtWriteFormat, self.docx, self.docxWriteFormat, self.headless, self.scrollPauseTime, _executionType)
+        execute.run(channelName, channelType, self.csv, self.csvWriteFormat, self.txt, self.txtWriteFormat, self.docx, self.docxWriteFormat, self.chronological, self.headless, self.scrollPauseTime, _executionType)
 
 def main():
     execute.script()
