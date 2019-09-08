@@ -13,15 +13,12 @@ def scrollToBottom (channelName, channelType, seleniumInstance, scrollPauseTime)
     driver = seleniumInstance
     
     baseUrl = 'https://www.youtube.com'
-    channelType = channelType.strip().strip('/')
-    channelName = channelName.strip().strip('/')
     videos = 'videos'
     url = baseUrl + '/' + channelType + '/' + channelName + '/' + videos 
     
     driver.get(url)
-#     SCROLL_PAUSE_TIME = scrollPauseTime
-    
     elemsCount = driver.execute_script("return document.querySelectorAll('ytd-grid-video-renderer').length")
+    
     while True:
         driver.execute_script("window.scrollBy(0, 50000);")
         time.sleep(scrollPauseTime)
@@ -29,7 +26,7 @@ def scrollToBottom (channelName, channelType, seleniumInstance, scrollPauseTime)
         print (f'Found {new_elemsCount} videos...')
     
         if new_elemsCount == elemsCount:
-            # wait 2 seconds and check again to verify you really did reach the end of the page, and there wasn't a buffer loading period
+            # wait 0.6 seconds and check again to verify you really did reach the end of the page, and there wasn't a buffer loading period
             print (cMessage.noNoVideosFound)
             time.sleep(0.6)
             new_elemsCount = driver.execute_script("return document.querySelectorAll('ytd-grid-video-renderer').length")
@@ -111,8 +108,11 @@ def writeToCsv (listOfVideos, userName, writeFormat='w'):
         print (f'{index} videos written to {csvfile.name}')
         print (f'Closing {csvfile.name}\n')
         
-def run(channelName, channelType, csv, csvWriteFormat, txt, txtWriteFormat, docx, docxWriteFormat, headless, scrollPauseTime, executionType):
+def run(channelName, channelType, csv, csvWriteFormat, txt, txtWriteFormat, docx, docxWriteFormat, chronological, headless, scrollPauseTime, executionType):
     mMessage = ModuleMessage()
+    channelName = channelName.strip().strip('/')
+    channelType = channelType.strip().strip('/')
+        
     programStart = time.perf_counter()
     if headless is False: # opens Selenium browsing instance
         driver = webdriver.Firefox()
@@ -123,6 +123,7 @@ def run(channelName, channelType, csv, csvWriteFormat, txt, txtWriteFormat, docx
         options = Options()
         options.headless = True
         driver = webdriver.Firefox(options=options)
+        
     with driver:
         videosList = scrollToBottom(channelName, channelType, driver, scrollPauseTime)
         if len(videosList) == 0:
