@@ -2,7 +2,7 @@ import execute
 import time
 
 class ListGenerator:
-    def __init__(self, channelName, channelType='user'):
+    def __init__(self, csv=True, csvWriteFormat='x', txt=True, txtWriteFormat='x', docx=False, docxWriteFormat='x', headless=False, scrollPauseTime=0.6,):
         '''
         Creates a list generator object with one required positional argument (channelName) and one optional argument (channelType). The channelType is set to "user" by default, but if the YouTube channel you are looking at is a "channel" instead of "user" - you will need to change the default channelType parameter to "channel"
         Example usage:
@@ -10,10 +10,16 @@ class ListGenerator:
             OR
             LG = ListGenerator('theChannelYouWantToScrape', 'channel')
         '''
-        self.channelName = channelName
-        self.channelType = channelType
+        self.csv = csv
+        self.csvWriteFormat = csvWriteFormat
+        self.txt = txt
+        self.txtWriteFormat = txtWriteFormat
+        self.docx = docx
+        self.docxWriteFormat = docxWriteFormat
+        self.headless = headless
+        self.scrollPauseTime = scrollPauseTime
     
-    def generate_list(self, csv=True, csvWriteFormat='x', txt=True, txtWriteFormat='x', docx=False, docxWriteFormat='x', headless=False, scrollPauseTime=0.6, _executionType='module'):
+    def generate_list(self, channelName, channelType='user', _executionType='module'):
         '''
         The generate_list method has been designed to make a CSV and text file by default, open an automated browsing instance, wait 0.5 seconds between scrolls when collecting video information from the provided channelName for the ListGenerator instance, and open the designated CSV/text/docx file in exclusive creation mode - meaning the write operation fails if the file already exists.
     
@@ -32,7 +38,7 @@ class ListGenerator:
             
         NOTE! You can use a combination of the optional parameters (or all the optional parameters at once) in the method call, you do not need to use them one at a time. The reason it is shown one at a time here in the documentation is to highlight what each parameter does.
         '''
-        execute.run(self.channelName, self.channelType, csv, csvWriteFormat, txt, txtWriteFormat, docx, docxWriteFormat, headless, scrollPauseTime, _executionType)
+        execute.run(channelName, channelType, self.csv, self.csvWriteFormat, self.txt, self.txtWriteFormat, self.docx, self.docxWriteFormat, self.headless, self.scrollPauseTime, _executionType)
 
 def main():
     execute.script()
