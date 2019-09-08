@@ -129,17 +129,17 @@ def run(channelName, channelType, csv, csvWriteFormat, txt, txtWriteFormat, docx
             print (cMessage.noVideosFound)
             print (mMessage.checkChannelType) if executionType == 'module' else print (sMessage.checkChannelType)
             return
-        if txt is True:
+        if csv is True:
             try:
-                writeToTxt(videosList, channelName, txtWriteFormat)
-                # saveToMemWriteToTxt(videosList, channelName, writeFormat) # slightly slower than writing to disk directly
+                writeToCsv(videosList, channelName, csvWriteFormat)
             except FileExistsError as e:
                 print (e)
                 print (mMessage.fileAlreadyExists)
                 print (mMessage.fileAlreadyExistsRerunUsage)
-        if csv is True:
+        if txt is True:
             try:
-                writeToCsv(videosList, channelName, csvWriteFormat)
+                writeToTxt(videosList, channelName, txtWriteFormat)
+                # saveToMemWriteToTxt(videosList, channelName, writeFormat) # slightly slower than writing to disk directly
             except FileExistsError as e:
                 print (e)
                 print (mMessage.fileAlreadyExists)
