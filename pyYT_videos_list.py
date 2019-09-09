@@ -1,5 +1,5 @@
 import execute
-import time
+import script
 
 class ListGenerator:
     def __init__(self, csv=True, csvWriteFormat='x', txt=True, txtWriteFormat='x', docx=False, docxWriteFormat='x', chronological=True, headless=False, scrollPauseTime=0.6,):
@@ -42,7 +42,7 @@ class ListGenerator:
         execute.run(channelName, channelType, self.csv, self.csvWriteFormat, self.txt, self.txtWriteFormat, self.docx, self.docxWriteFormat, self.chronological, self.headless, self.scrollPauseTime, _executionType)
 
 def main():
-    execute.script()
+    script.run()
         
 if __name__ == '__main__':
     main()
