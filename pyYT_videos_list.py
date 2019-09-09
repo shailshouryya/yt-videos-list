@@ -16,6 +16,7 @@ class ListGenerator:
         self.txtWriteFormat = txtWriteFormat
         self.docx = docx
         self.docxWriteFormat = docxWriteFormat
+        self.chronological = chronological
         self.headless = headless
         self.scrollPauseTime = scrollPauseTime
     
