@@ -2,11 +2,49 @@ from output import Common, ModuleMessage, ScriptMessage
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 import time
-from pprint import pprint
 import csv
+import os
 
 cMessage = Common()
 sMessage = ScriptMessage()
+
+def checkFileExists(filename):
+    if os.path.isfile(f'./{filename}'):
+        return True
+    return False
+    
+def updateWriteFormat(channelName, fileType):
+    filename = f'{channelName}VideosList.{fileType}'
+    fileExists = checkFileExists(filename)
+    
+    def askUser(filename):
+        userResponse = input()
+        if 'proceed' in userResponse.strip().lower():
+            return 'w'
+        if 'skip' in userResponse.strip().lower():
+            return 0
+        else:
+            print ('\n' + cMessage.invalidResponse)
+            cMessage.fileAlreadyExistsPrompt(filename)
+            return askUser() 
+        
+    if fileExists is True:
+        cMessage.fileAlreadyExistsWarning(filename)
+        cMessage.fileAlreadyExistsPrompt(filename)
+        return askUser()
+    return 'x'
+        
+        
+        
+    
+            
+#             else:
+#                 print (f'You entered {userResponse}. You should have entered {userResponse.lower()}')
+#                 print ('\n' + cMessage.invalidResponse)
+#                 cMessage.fileAlreadyExistsPrompt(filename)
+#                 updatedUserResponse = input()
+#                 return determineWriteType(updatedUserResponse)
+        # if userResponse is None, the file does not exist so keep write format in default 'x' mode
 
 def scrollToBottom (channelName, channelType, seleniumInstance, scrollPauseTime):
     start = time.perf_counter()
@@ -17,19 +55,25 @@ def scrollToBottom (channelName, channelType, seleniumInstance, scrollPauseTime)
     url = baseUrl + '/' + channelType + '/' + channelName + '/' + videos 
     
     driver.get(url)
-    elemsCount = driver.execute_script("return document.querySelectorAll('ytd-grid-video-renderer').length")
+    elemsCount = driver.execute_script(
+    "return document.querySelectorAll('ytd-grid-video-renderer').length"
+    )
     
     while True:
         driver.execute_script("window.scrollBy(0, 50000);")
         time.sleep(scrollPauseTime)
-        new_elemsCount = driver.execute_script("return document.querySelectorAll('ytd-grid-video-renderer').length")
+        new_elemsCount = driver.execute_script(
+        "return document.querySelectorAll('ytd-grid-video-renderer').length"
+        )
         print (f'Found {new_elemsCount} videos...')
     
         if new_elemsCount == elemsCount:
             # wait 0.6 seconds and check again to verify you really did reach the end of the page, and there wasn't a buffer loading period
-            print (cMessage.noNoVideosFound)
+            print (cMessage.noNewVideosFound)
             time.sleep(0.6)
-            new_elemsCount = driver.execute_script("return document.querySelectorAll('ytd-grid-video-renderer').length")
+            new_elemsCount = driver.execute_script(
+            "return document.querySelectorAll('ytd-grid-video-renderer').length"
+            )
             if new_elemsCount == elemsCount:
                 print('Reached end of page!')
                 break
@@ -41,9 +85,11 @@ def scrollToBottom (channelName, channelType, seleniumInstance, scrollPauseTime)
     print(f'It took {functionTime} to find all {len(elements)} videos from {url}\n')
     return elements
 
-def writeToTxt (listOfVideos, userName, writeFormat='w'):
+def writeToTxt (listOfVideos, channelName, writeFormat):
+    if writeFormat == 0:
+        return
     start = time.perf_counter()
-    with open('{}VideosList.txt'.format(userName.strip('/')), writeFormat) as f:
+    with open('{}VideosList.txt'.format(channelName.strip('/')), writeFormat) as f:
         print (f'Opened {f.name}, writing video information to file....')
         
         spacing = '\n    ' # newline followed by 4 spaces
@@ -66,9 +112,11 @@ def writeToTxt (listOfVideos, userName, writeFormat='w'):
         functionTime = end - start
         print(f'It took {functionTime} to write all {index} videos to {f.name}\n')
         
-def saveToMemWriteToTxt (listOfVideos, userName, writeFormat='w'):
+def saveToMemWriteToTxt (listOfVideos, channelName, writeFormat):
+    if writeFormat == 0:
+        return
     start = time.perf_counter()
-    with open('{}VideosList.txt'.format(userName.strip('/')), writeFormat) as fm:
+    with open('{}VideosList.txt'.format(channelName.strip('/')), writeFormat) as fm:
         print (f'Opened {fm.name}, writing video information to file....')
         
         text = ''
@@ -93,15 +141,18 @@ def saveToMemWriteToTxt (listOfVideos, userName, writeFormat='w'):
         functionTime = end - start
         print(f'It took {functionTime} to write all {index} videos to {fm.name}\n')
 
-def writeToCsv (listOfVideos, userName, writeFormat='w'):
-    with open('{}VideosList.csv'.format(userName.strip('/')), writeFormat) as csvfile:
+def writeToCsv (listOfVideos, channelName, writeFormat):
+    if writeFormat == 0:
+        return
+    with open('{}VideosList.csv'.format(channelName.strip('/')), writeFormat) as csvfile:
         print (f'Opened {csvfile.name}, writing video information to file....')
         fieldnames = ['Index', 'Watched?', 'Video Title', 'Video URL', 'Watch again later?', 'Notes']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
         
         for index, element in enumerate(listOfVideos, 1):
-            writer.writerow({'Index': f'{index}', 'Watched?': '', 'Video Title': f'{element.get_attribute("title")}', 'Video URL': f'{element.get_attribute("href")}', 'Watch again later?': '', 'Notes': ''})
+            writer.writerow(
+            {'Index': f'{index}', 'Watched?': '', 'Video Title': f'{element.get_attribute("title")}', 'Video URL': f'{element.get_attribute("href")}', 'Watch again later?': '', 'Notes': ''})
             if index % 250 == 0:
                 print(f'{index} videos written to {csvfile.name}...')
         print (f'Finished writing to {csvfile.name}')
@@ -112,7 +163,17 @@ def run(channelName, channelType, csv, csvWriteFormat, txt, txtWriteFormat, docx
     mMessage = ModuleMessage()
     channelName = channelName.strip().strip('/')
     channelType = channelType.strip().strip('/')
+    
+    if csv is True and csvWriteFormat == 'x':
+        csvWriteFormat = updateWriteFormat(channelName, 'csv')
+
+    if txt is True and txtWriteFormat == 'x':
+        txtWriteFormat = updateWriteFormat(channelName, 'txt')
         
+    if docx is True and docxWriteFormat == 'x' is True:
+        docxWriteFormat = updateWriteFormat(channelName, 'docx')
+        
+    
     programStart = time.perf_counter()
     if headless is False: # opens Selenium browsing instance
         driver = webdriver.Firefox()
@@ -131,20 +192,18 @@ def run(channelName, channelType, csv, csvWriteFormat, txt, txtWriteFormat, docx
             print (mMessage.checkChannelType) if executionType == 'module' else print (sMessage.checkChannelType)
             return
         if csv is True:
-            try:
-                writeToCsv(videosList, channelName, csvWriteFormat)
-            except FileExistsError as e:
-                print (e)
-                print (mMessage.fileAlreadyExists)
-                print (mMessage.fileAlreadyExistsRerunUsage)
+            writeToCsv(videosList, channelName, csvWriteFormat)
+#             except FileExistsError as e:
+#                 print (e)
+#                 print (mMessage.fileAlreadyExists)
+#                 print (mMessage.fileAlreadyExistsRerunUsage)
         if txt is True:
-            try:
-                writeToTxt(videosList, channelName, txtWriteFormat)
+            writeToTxt(videosList, channelName, txtWriteFormat)
                 # saveToMemWriteToTxt(videosList, channelName, writeFormat) # slightly slower than writing to disk directly
-            except FileExistsError as e:
-                print (e)
-                print (mMessage.fileAlreadyExists)
-                print (mMessage.fileAlreadyExistsRerunUsage)
+#             except FileExistsError as e:
+#                 print (e)
+#                 print (mMessage.fileAlreadyExists)
+#                 print (mMessage.fileAlreadyExistsRerunUsage)
     programEnd = time.perf_counter()
     totalTime = programEnd - programStart
     print(f'This program took {totalTime} seconds to complete.\n')
