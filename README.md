@@ -33,7 +33,7 @@ To scrape the video titles along with the link to the video, you need to run the
 ```python
 LG.generate_list('sentdex', 'user')
 ```
-`channel` channelType (example uses Billie Eilish:
+`channel` channelType (example uses Billie Eilish):
 ```python
 LG.generate_list('UCiGm_E4ZwYSHV3bcW1pnSeQ', 'channel')
 ```
