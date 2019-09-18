@@ -21,7 +21,7 @@ def updateWriteFormat(channelName, fileType):
         userResponse = input()
         if 'proceed' in userResponse.strip().lower():
             return 'w'
-        if 'skip' in userResponse.strip().lower():
+        elif 'skip' in userResponse.strip().lower():
             return 0
         else:
             print ('\n' + cMessage.invalidResponse)
@@ -132,6 +132,7 @@ def saveToMemWriteToTxt (listOfVideos, channelName, writeFormat):
 def writeToCsv (listOfVideos, channelName, writeFormat):
     if writeFormat == 0:
         return
+    start = time.perf_counter()
     with open('{}VideosList.csv'.format(channelName.strip('/')), writeFormat) as csvfile:
         print (f'Opened {csvfile.name}, writing video information to file....')
         fieldnames = ['Index', 'Watched?', 'Video Title', 'Video URL', 'Watch again later?', 'Notes']
@@ -146,3 +147,6 @@ def writeToCsv (listOfVideos, channelName, writeFormat):
         print (f'Finished writing to {csvfile.name}')
         print (f'{index} videos written to {csvfile.name}')
         print (f'Closing {csvfile.name}\n')
+        end = time.perf_counter()
+        functionTime = end - start
+        print(f'It took {functionTime} to write all {index} videos to {csvfile.name}\n')
