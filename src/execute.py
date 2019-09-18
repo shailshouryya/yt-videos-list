@@ -6,6 +6,7 @@ import time
 
 def run(channelName, channelType, csv, csvWriteFormat, txt, txtWriteFormat, docx, docxWriteFormat, chronological, headless, scrollPauseTime, executionType):
     mMessage = ModuleMessage()
+    cMessage = Common()
     channelName = channelName.strip().strip('/')
     channelType = channelType.strip().strip('/')
     
