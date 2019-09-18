@@ -25,7 +25,8 @@ There are two types of YouTube channels: one type is a "user" channel and the ot
   * Marvel: https://www.youtube.com/user/MARVEL
   * Apple: https://www.youtube.com/user/Apple
 * The url for a "channel" channel consists of `youtube.com` followed by `channel` followed by a string of rather unpredictable characters. For example:
-  * Billie Eilish's channel url looks like: https://www.youtube.com/channel/UCiGm_E4ZwYSHV3bcW1pnSeQ).
+  * Billie Eilish's channel url looks like: https://www.youtube.com/channel/UCiGm_E4ZwYSHV3bcW1pnSeQ
+
 To scrape the video titles along with the link to the video, you need to run the `generate_list(channelName, channelType)` method on the ListGenerator object you just created, substituting the type of channel for `channelType` argument and the name of the channel for the `channelName` argument.
 
 `user` channelType (example uses sentdex):
