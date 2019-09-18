@@ -5,14 +5,42 @@ This repo is intended to provide a quick, simple way to create a list of all vid
 `https://www.youtube.com/channel/TheChannelYouWantToScrape/videos`,  
 with `TheChannelYouWantToScrape` replaced with the username of the channel.
 
-## Usage
+## Quick Start
+```
+git clone git@github.com:Shail-Shouryya/yt_videos_list.git
+cd yt_videos_list/src
+```
 ### Running as a module
+```
+python3
+```
+```python
+from yt_videos_list import ListGenerator
+LG = ListGenerator()
+```
+There are two types of YouTube channels: one type is a "user" channel and the other is a `channel` channel.
+* The url for a `user` channel consists of `youtube.com` followed by `user` followed by the name. For example:
+  * sentdex: https://www.youtube.com/user/sentdex
+  * Disney: https://www.youtube.com/user/disneysshows
+  * Marvel: https://www.youtube.com/user/MARVEL
+  * Apple: https://www.youtube.com/user/Apple
+* The url for a "channel" channel consists of `youtube.com` followed by `channel` followed by a string of rather unpredictable characters. For example:
+  * Billie Eilish's channel url looks like: https://www.youtube.com/channel/UCiGm_E4ZwYSHV3bcW1pnSeQ).
+To scrape the video titles along with the link to the video, you need to run the `generate_list(channelName, channelType)` method on the ListGenerator object you just created, substituting the type of channel for `channelType` argument and the name of the channel for the `channelName` argument.
 
+`user` channelType (example uses sentdex):
+```python
+LG.generate_list('sentdex', 'user')
+```
+`channel` channelType (example uses Billie Eilish:
+```python
+LG.generate_list('UCiGm_E4ZwYSHV3bcW1pnSeQ', 'channel')
+```
 
-### Running as a script
+### Running as a script (coming soon!)
 Enter the directory in which the pyYT_videos_list.py and execute.py exist (they should both be in the same directory to avoid refernce issues), and run the following command from your command line  
 ```
-python3 pyYT_videos_list
+python3 yt_videos_list
 ```  
 You should see the following:  
 ```
