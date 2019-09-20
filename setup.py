@@ -13,8 +13,6 @@ setup(
     author='Shail-Shouryya',
     author_email='',
     license='Apache License 2.0',
-    install_requires=['selenium>=3.141.0'
-                      ],
 
     classifiers=[
         'Development Status :: 4 - Beta',
