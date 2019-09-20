@@ -1,4 +1,4 @@
-from output import Common, ModuleMessage, ScriptMessage
+from yt_videos_list.output import Common, ModuleMessage, ScriptMessage
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 import time
