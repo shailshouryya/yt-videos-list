@@ -18,4 +18,4 @@ __ideal_python_version__ = 'Python 3.7'
 __source__ = 'https://github.com/Shail-Shouryya/yt_videos_list'
 
 import yt_videos_list
-from yt_videos_list.main import ListGenerator
+from yt_videos_list.__main__ import ListGenerator
