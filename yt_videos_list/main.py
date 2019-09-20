@@ -1,5 +1,5 @@
-import execute
-import script
+from yt_videos_list import execute
+from yt_videos_list import script
 
 class ListGenerator:
     def __init__(self, csv=True, csvWriteFormat='x', txt=True, txtWriteFormat='x', docx=False, docxWriteFormat='x', chronological=True, headless=False, scrollPauseTime=0.6,):
