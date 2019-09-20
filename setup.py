@@ -60,11 +60,11 @@ setup(
     #
     # For example, the following would provide a command called `yt_videos_list` which
     # executes the function `script` from this package when invoked:
-    entry_points={  # Optional
-        'console_scripts': [
-            'sample=yt_videos_list:script',
-        ],
-    },
+#    entry_points={  # Optional
+#        'console_scripts': [
+#            'sample=yt_videos_list:script',
+#        ],
+#    },
     
     project_urls={
         'Source': 'https://github.com/Shail-Shouryya/yt_videos_list',
