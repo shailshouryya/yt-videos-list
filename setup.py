@@ -1,3 +1,4 @@
+# https://test.pypi.org/pypi?%3Aaction=list_classifiers
 from setuptools import setup, find_packages
 
 with open("README.md", "r", encoding='utf-8') as f:
@@ -11,17 +12,28 @@ setup(
     long_description_content_type='text/markdown',
     url='https://github.com/Shail-Shouryya/yt_videos_list',
     author='Shail-Shouryya',
-    author_email='',
+    author_email='tbd@gmail.com',
     license='Apache License 2.0',
 
     classifiers=[
         'Development Status :: 4 - Beta',
-        'Intended Audience :: Developers, Hobbyists',
-        'License :: OSI Approved :: Apache License 2.0', # https://opensource.org/licenses
-        'Operating System :: MacOS :: Linux :: Windows 10',
+        'Intended Audience :: Developers',
+        'License :: Free for non-commercial use',
+        'License :: OSI Approved :: Apache Software License',
+        'Natural Language :: English',
+        'Operating System :: MacOS :: MacOS X',
+        'Operating System :: Microsoft :: Windows :: Windows 10',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
-        'Topic :: Scientific/Engineering',
+        'Programming Language :: Python :: 3 :: Only',
+        'Topic :: Database :: Front-Ends',
+        'Topic :: Home Automation',
+        'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
+        'Topic :: Internet :: WWW/HTTP :: Dynamic Content :: CGI Tools/Libraries',
+        'Topic :: Internet :: WWW/HTTP :: Indexing/Search',
+        'Topic :: Multimedia :: Video',
+        'Topic :: Scientific/Engineering :: Information Analysis',
+        'Topic :: Software Development :: Libraries :: Python Modules'
     ],
     
     keywords='YoutTube videos URL scraping automation',
