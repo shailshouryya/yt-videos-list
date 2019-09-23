@@ -13,8 +13,8 @@ def checkFileExists(filename):
         return True
     return False
     
-def updateWriteFormat(channelName, fileType):
-    filename = f'{channelName}VideosList.{fileType}'
+def updateWriteFormat(fileName, fileType):
+    filename = f'{fileName}VideosList.{fileType}'
     fileExists = checkFileExists(filename)
     
     def newWriteFormat():
@@ -76,8 +76,9 @@ def scrollToBottom (channelName, channelType, seleniumInstance, scrollPauseTime)
 def writeToTxt (listOfVideos, channelName, fileName, writeFormat):
     if writeFormat == 0:
         return
+    
     start = time.perf_counter()
-    with open('{}VideosList.txt'.format(channelName.strip('/')), writeFormat) as f:
+    with open(f'{fileName}VideosList.txt', writeFormat) as f:
         print (f'Opened {f.name}, writing video information to file....')
         
         spacing = '\n    ' # newline followed by 4 spaces
@@ -103,8 +104,9 @@ def writeToTxt (listOfVideos, channelName, fileName, writeFormat):
 def saveToMemWriteToTxt (listOfVideos, channelName, fileName, writeFormat):
     if writeFormat == 0:
         return
+    
     start = time.perf_counter()
-    with open('{}VideosList.txt'.format(channelName.strip('/')), writeFormat) as fm:
+    with open(f'{fileName}VideosList.txt', writeFormat) as fm:
         print (f'Opened {fm.name}, writing video information to file....')
         
         text = ''
@@ -132,8 +134,9 @@ def saveToMemWriteToTxt (listOfVideos, channelName, fileName, writeFormat):
 def writeToCsv (listOfVideos, channelName, fileName, writeFormat):
     if writeFormat == 0:
         return
+    
     start = time.perf_counter()
-    with open('{}VideosList.csv'.format(channelName.strip('/')), writeFormat) as csvfile:
+    with open(f'{fileName}VideosList.csv', writeFormat) as csvfile:
         print (f'Opened {csvfile.name}, writing video information to file....')
         fieldnames = ['Index', 'Watched?', 'Video Title', 'Video URL', 'Watch again later?', 'Notes']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
