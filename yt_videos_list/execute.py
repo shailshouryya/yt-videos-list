@@ -10,14 +10,23 @@ def run(channelName, channelType, fileName, csv, csvWriteFormat, txt, txtWriteFo
     channelName = channelName.strip().strip('/')
     channelType = channelType.strip().strip('/')
     
+    def determineFileName(fileName):
+        if fileName is not None:
+            fileName = fileName
+        else:
+            fileName = channelName.strip('/')
+        return fileName
+    
+    file_name = determineFileName(fileName)
+    
     if csv is True and csvWriteFormat == 'x':
-        csvWriteFormat = program.updateWriteFormat(channelName, 'csv')
+        csvWriteFormat = program.updateWriteFormat(file_name, 'csv')
 
     if txt is True and txtWriteFormat == 'x':
-        txtWriteFormat = program.updateWriteFormat(channelName, 'txt')
+        txtWriteFormat = program.updateWriteFormat(file_name, 'txt')
         
     if docx is True and docxWriteFormat == 'x' is True:
-        docxWriteFormat = program.updateWriteFormat(channelName, 'docx')
+        docxWriteFormat = program.updateWriteFormat(file_name, 'docx')
         
     programStart = time.perf_counter()
     if headless is False: # opens Selenium browsing instance
@@ -37,10 +46,10 @@ def run(channelName, channelType, fileName, csv, csvWriteFormat, txt, txtWriteFo
             print (mMessage.checkChannelType) if executionType == 'module' else print (sMessage.checkChannelType)
             return
         if csv is True:
-            program.writeToCsv(videosList, channelName, fileName, csvWriteFormat)
+            program.writeToCsv(videosList, channelName, file_name, csvWriteFormat)
         if txt is True:
-            program.writeToTxt(videosList, channelName, fileName, txtWriteFormat)
-                # saveToMemWriteToTxt(videosList, channelName, writeFormat) # slightly slower than writing to disk directly
+            program.writeToTxt(videosList, channelName, file_name, txtWriteFormat)
+                # saveToMemWriteToTxt(videosList, channelName, file_name, writeFormat) # slightly slower than writing to disk directly
                 
     programEnd = time.perf_counter()
     totalTime = programEnd - programStart
