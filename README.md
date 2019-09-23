@@ -8,7 +8,7 @@ with `TheChannelYouWantToScrape` replaced with the username of the channel.
 ## Quick Start
 ```
 git clone git@github.com:Shail-Shouryya/yt_videos_list.git
-cd yt_videos_list/src
+cd yt_videos_list
 ```
 ### Running as a module
 ```
