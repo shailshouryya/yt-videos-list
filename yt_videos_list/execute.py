@@ -4,7 +4,7 @@ from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 import time
 
-def run(channelName, channelType, csv, csvWriteFormat, txt, txtWriteFormat, docx, docxWriteFormat, chronological, headless, scrollPauseTime, executionType):
+def run(channelName, channelType, fileName, csv, csvWriteFormat, txt, txtWriteFormat, docx, docxWriteFormat, chronological, headless, scrollPauseTime, executionType):
     mMessage = ModuleMessage()
     cMessage = Common()
     channelName = channelName.strip().strip('/')
@@ -37,9 +37,9 @@ def run(channelName, channelType, csv, csvWriteFormat, txt, txtWriteFormat, docx
             print (mMessage.checkChannelType) if executionType == 'module' else print (sMessage.checkChannelType)
             return
         if csv is True:
-            program.writeToCsv(videosList, channelName, csvWriteFormat)
+            program.writeToCsv(videosList, channelName, fileName, csvWriteFormat)
         if txt is True:
-            program.writeToTxt(videosList, channelName, txtWriteFormat)
+            program.writeToTxt(videosList, channelName, fileName, txtWriteFormat)
                 # saveToMemWriteToTxt(videosList, channelName, writeFormat) # slightly slower than writing to disk directly
                 
     programEnd = time.perf_counter()

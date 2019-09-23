@@ -22,7 +22,7 @@ class ListGenerator:
         self.headless = headless
         self.scrollPauseTime = scrollPauseTime
     
-    def generate_list(self, channelName, channelType='user', _executionType='module'):
+    def generate_list(self, channelName, channelType='user', fileName=None _executionType='module'):
         '''
         The generate_list method has been designed to make a CSV and text file by default, open an automated browsing instance, wait 0.5 seconds between scrolls when collecting video information from the provided channelName for the ListGenerator instance, and open the designated CSV/text/docx file in exclusive creation mode - meaning the write operation fails if the file already exists.
     
@@ -41,7 +41,7 @@ class ListGenerator:
             
         NOTE! You can use a combination of the optional parameters (or all the optional parameters at once) in the method call, you do not need to use them one at a time. The reason it is shown one at a time here in the documentation is to highlight what each parameter does.
         '''
-        execute.run(channelName, channelType, self.csv, self.csvWriteFormat, self.txt, self.txtWriteFormat, self.docx, self.docxWriteFormat, self.chronological, self.headless, self.scrollPauseTime, _executionType)
+        execute.run(channelName, channelType, fileName, self.csv, self.csvWriteFormat, self.txt, self.txtWriteFormat, self.docx, self.docxWriteFormat, self.chronological, self.headless, self.scrollPauseTime, _executionType)
 
 def main():
     script.run()

@@ -73,7 +73,7 @@ def scrollToBottom (channelName, channelType, seleniumInstance, scrollPauseTime)
     print(f'It took {functionTime} to find all {len(elements)} videos from {url}\n')
     return elements
 
-def writeToTxt (listOfVideos, channelName, writeFormat):
+def writeToTxt (listOfVideos, channelName, fileName, writeFormat):
     if writeFormat == 0:
         return
     start = time.perf_counter()
@@ -100,7 +100,7 @@ def writeToTxt (listOfVideos, channelName, writeFormat):
         functionTime = end - start
         print(f'It took {functionTime} to write all {index} videos to {f.name}\n')
         
-def saveToMemWriteToTxt (listOfVideos, channelName, writeFormat):
+def saveToMemWriteToTxt (listOfVideos, channelName, fileName, writeFormat):
     if writeFormat == 0:
         return
     start = time.perf_counter()
@@ -129,7 +129,7 @@ def saveToMemWriteToTxt (listOfVideos, channelName, writeFormat):
         functionTime = end - start
         print(f'It took {functionTime} to write all {index} videos to {fm.name}\n')
 
-def writeToCsv (listOfVideos, channelName, writeFormat):
+def writeToCsv (listOfVideos, channelName, fileName, writeFormat):
     if writeFormat == 0:
         return
     start = time.perf_counter()
