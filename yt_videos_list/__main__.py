@@ -4,7 +4,7 @@ except:
     import script
 
 class ListGenerator:
-    def __init__(self, csv=True, csvWriteFormat='x', txt=True, txtWriteFormat='x', docx=False, docxWriteFormat='x', chronological=True, headless=False, scrollPauseTime=0.6,):
+    def __init__(self, csv=True, csvWriteFormat='x', txt=True, txtWriteFormat='x', docx=False, docxWriteFormat='x', chronological=True, headless=False, scrollPauseTime=0.7,):
         '''
         Creates a list generator object with one required positional argument (channelName) and one optional argument (channelType). The channelType is set to "user" by default, but if the YouTube channel you are looking at is a "channel" instead of "user" - you will need to change the default channelType parameter to "channel"
         Example usage:
@@ -33,7 +33,7 @@ class ListGenerator:
         This function opens an instance of Selenium to allow you to easily see if it is not including all the videos for the channelName you provided and allows you to see if the browsing instance is ending prematurely (could be due to long buffer period, low bandwidth, etc.), but if you DON'T want to open the automated browsing instance and prefer to run the program in headless mode, run the method with the optional argument "headless" set to True:
             LG.generate_list(headless=True)
             
-        If the browsing instance is actually ending prematurely because the browser does not find any new videos loaded in the default pause time of 0.8 seconds, try increasing the scrollPauseTime to a progressively larger number until the automated browsing instance captures all the videos for the channelName you provided (probably most helpful if used with headless disabled):
+        If the browsing instance is actually ending prematurely because the browser does not find any new videos loaded in the default pause time of 0.7 seconds, try increasing the scrollPauseTime to a progressively larger number until the automated browsing instance captures all the videos for the channelName you provided (probably most helpful if used with headless disabled):
             LG.generate_list(headless=False, scrollPauseTime=1.1)
             
         If you want to overwrite an existing file of the same name, run the method with writeFormat set to 'w':
