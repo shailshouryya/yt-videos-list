@@ -56,7 +56,8 @@ There are a number of optional arguments you can specify during the instantiatio
   * If you want to see the automated instance of the browser while it runs. Headless is set to `False` by default to give you an idea of what is going on and make it easier to debug in case something happens that you weren't expecting, but if you don't want to see it, set `headless=True`
   * How long you want to wait before scrolling down. The default setting of `scrollPauseTime=0.7` works well with an average internet connection, but if your internet connection is much slower you may want to increase `scrollPauseTime` to a value larger than 0.7, and if your internet connection is very fast you can decrease the scrollPauseTime to a value that is smaller than 0.7
 ```python
-ListGenerator(csv=True, csvWriteFormat='x', txt=True, txtWriteFormat='x', docx=False, docxWriteFormat='x', chronological=True, headless=False, scrollPauseTime=0.7,)
+ListGenerator(csv=True, csvWriteFormat='x', txt=True, txtWriteFormat='x', docx=False,
+docxWriteFormat='x', chronological=True, headless=False, scrollPauseTime=0.7,)
 ```
 
 ### Running as a script (coming soon!)
