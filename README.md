@@ -14,6 +14,7 @@ Installing from source:
 ```
 git clone git@github.com:Shail-Shouryya/yt_videos_list.git
 cd yt_videos_list
+pip install .
 ```
 ### Running as a module
 ```
