@@ -6,6 +6,11 @@ This repo is intended to provide a quick, simple way to create a list of all vid
 with `TheChannelYouWantToScrape` replaced with the username of the channel.
 
 ## Quick Start
+RECOMMENDED:
+```
+pip install yt-videos-list
+```
+Installing from source:
 ```
 git clone git@github.com:Shail-Shouryya/yt_videos_list.git
 cd yt_videos_list
@@ -17,8 +22,9 @@ python3
 ```python
 from yt_videos_list import ListGenerator
 LG = ListGenerator()
+LG.generate_list('channelName', 'channelType', 'optional_file_name_you_can_provide')
 ```
-There are two types of YouTube channels: one type is a "user" channel and the other is a `channel` channel.
+There are two types of YouTube channels: one type is a `user` channel and the other is a `channel` channel.
 * The url for a `user` channel consists of `youtube.com` followed by `user` followed by the name. For example:
   * sentdex: https://www.youtube.com/user/sentdex
   * Disney: https://www.youtube.com/user/disneysshows
