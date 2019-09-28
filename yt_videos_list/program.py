@@ -55,21 +55,21 @@ def scrollToBottom (channelName, channelType, seleniumInstance, scrollPauseTime)
         )
         print (f'Found {new_elemsCount} videos...')
     
-        if new_elemsCount == elemsCount:
+        if newElemsCount == elemsCount:
             # wait 0.6 seconds and check again to verify you really did reach the end of the page, and there wasn't a buffer loading period
             print (cMessage.noNewVideosFound)
             time.sleep(0.6)
-            new_elemsCount = driver.execute_script(
+            newElemsCount = driver.execute_script(
             "return document.querySelectorAll('ytd-grid-video-renderer').length"
             )
-            if new_elemsCount == elemsCount:
+            if newElemsCount == elemsCount:
                 print('Reached end of page!')
                 break
-        elemsCount = new_elemsCount
+        elemsCount = newElemsCount
         
     elements = driver.find_elements_by_xpath('//*[@id="video-title"]')
     end = time.perf_counter()
-    functionTime = end - start - 2 # subtract 2 to account for the extra waiting time to verify end of page
+    functionTime = end - start - 0.6 # subtract 0.6 to account for the extra waiting time to verify end of page
     print(f'It took {functionTime} to find all {len(elements)} videos from {url}\n')
     return elements
 
