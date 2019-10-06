@@ -50,10 +50,10 @@ def scrollToBottom (channelName, channelType, seleniumInstance, scrollPauseTime)
     while True:
         driver.execute_script("window.scrollBy(0, 50000);")
         time.sleep(scrollPauseTime)
-        new_elemsCount = driver.execute_script(
+        newElemsCount = driver.execute_script(
         "return document.querySelectorAll('ytd-grid-video-renderer').length"
         )
-        print (f'Found {new_elemsCount} videos...')
+        print (f'Found {newElemsCount} videos...')
     
         if newElemsCount == elemsCount:
             # wait 0.6 seconds and check again to verify you really did reach the end of the page, and there wasn't a buffer loading period
