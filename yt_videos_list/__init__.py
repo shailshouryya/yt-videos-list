@@ -1,6 +1,5 @@
+from yt_videos_list.__main__ import ListGenerator
 '''
-Add program overview
-
 version: 0.1.3
 author: Shail-Shouryya
 development_status: 4 - Beta
@@ -16,6 +15,3 @@ __intended_audience__ = 'Developers, Hobbyists'
 __license__ =  'OSI Approved :: Apache License 2.0'
 __ideal_python_version__ = 'Python 3.7'
 __source__ = 'https://github.com/Shail-Shouryya/yt_videos_list'
-
-import yt_videos_list
-from yt_videos_list.__main__ import ListGenerator
