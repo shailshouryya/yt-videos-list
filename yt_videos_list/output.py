@@ -21,9 +21,9 @@ class ModuleMessage(Common):
 
     runInHeadless = '\nAdvanced usage: you can run this program in headless mode with the optional "headless" parameter set to True to speed up execution slightly:'
     
-    runInHeadlessExample = '    LG.generate_list(headless=True)\n'
+    runInHeadlessExample = "    LG.generate_list(channelName='yourChannelName', channelType='yourChannelType', headless=True)\n\n\n"
     
-    checkChannelType = 'If you did type the name in correctly, perhaps the channelType is set incorrectly. Try setting channelType="channel" in the object instantiation if you didn\'t do it for this object, or try running the method without the channelTpye="channel" if you DID include the channelType argument in the object instantiation.'
+    checkChannelType = 'If you did type the name in correctly, perhaps the channelType is set incorrectly. Try setting channelType to "channel" in the generate_list() method call if you set channelType to "user" for this run, or try running the method with channelType set to "user" if you ran this method with channelType set to "channel" for this run\n'
     
     fileAlreadyExists = 'This error indicates that a file of this name already exists in the current directory. If you want to overwrite this file, run the generate_list method again with the optional parameter "writeFormat" set to "w"'
     
