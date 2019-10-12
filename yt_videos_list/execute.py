@@ -12,10 +12,9 @@ def run(channelName, channelType, fileName, csv, csvWriteFormat, txt, txtWriteFo
     
     def determineFileName(fileName):
         if fileName is not None:
-            fileName = fileName
+            return fileName
         else:
-            fileName = channelName.strip('/')
-        return fileName
+            return channelName.strip('/')
     
     file_name = determineFileName(fileName)
     
