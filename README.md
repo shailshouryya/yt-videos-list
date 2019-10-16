@@ -33,17 +33,17 @@ To scrape the video titles along with the link to the video, you need to run the
 #### Basic Use Case
 `user` channelType (example uses sentdex):
 ```python
-LG.generate_list('sentdex', 'user')
+LG.generate_list('sentdex', channelType='user')
 ```
 `channel` channelType (example uses Billie Eilish):
 ```python
-LG.generate_list('UCiGm_E4ZwYSHV3bcW1pnSeQ', 'channel')
+LG.generate_list('UCiGm_E4ZwYSHV3bcW1pnSeQ', channelType='channel')
 ```
 
 #### Naming the output file
 In order to get a more descriptive file name, add how you would like to describe the file for the (optional) third argument (`fileName`):
 ```python
-LG.generate_list('UCiGm_E4ZwYSHV3bcW1pnSeQ', 'channel', fileName='BillieEilish')
+LG.generate_list('UCiGm_E4ZwYSHV3bcW1pnSeQ', channelType='channel', fileName='BillieEilish')
 ```
 ### For more control:
 ```python
