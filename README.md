@@ -17,7 +17,7 @@ python3
 ```python
 from yt_videos_list import ListGenerator
 LG = ListGenerator()
-LG.generate_list('channelName', 'channelType', 'optional_file_name_you_can_provide')
+LG.generate_list('channel', 'channelType', 'optional_file_name_you_can_provide')
 ```
 There are two types of YouTube channels: one type is a `user` channel and the other is a `channel` channel.
 * The url for a `user` channel consists of `youtube.com` followed by `user` followed by the name. For example:
@@ -28,22 +28,22 @@ There are two types of YouTube channels: one type is a `user` channel and the ot
 * The url for a "channel" channel consists of `youtube.com` followed by `channel` followed by a string of rather unpredictable characters. For example:
   * Billie Eilish's channel url looks like: https://www.youtube.com/channel/UCiGm_E4ZwYSHV3bcW1pnSeQ
 
-To scrape the video titles along with the link to the video, you need to run the `generate_list(channelName, channelType)` method on the ListGenerator object you just created, substituting the type of channel for `channelType` argument and the name of the channel for the `channelName` argument. By default, the name of the file produced will be `channelName`VideosList.ext where the `.ext` will be `.csv` or `.txt ` depending on the type of file(s) that you specified. 
+To scrape the video titles along with the link to the video, you need to run the `generate_list(channel, channelType)` method on the ListGenerator object you just created, substituting the type of channel for `channelType` argument and the name of the channel for the `channel` argument. By default, the name of the file produced will be `channel`VideosList.ext where the `.ext` will be `.csv` or `.txt ` depending on the type of file(s) that you specified. 
 
 #### Basic Use Case
 `user` channelType (example uses sentdex):
 ```python
-LG.generate_list('sentdex', channelType='user')
+LG.generate_list(channel='sentdex', channelType='user')
 ```
 `channel` channelType (example uses Billie Eilish):
 ```python
-LG.generate_list('UCiGm_E4ZwYSHV3bcW1pnSeQ', channelType='channel')
+LG.generate_list(channel='UCiGm_E4ZwYSHV3bcW1pnSeQ', channelType='channel')
 ```
 
 #### Naming the output file
 In order to get a more descriptive file name, add how you would like to describe the file for the (optional) third argument (`fileName`):
 ```python
-LG.generate_list('UCiGm_E4ZwYSHV3bcW1pnSeQ', channelType='channel', fileName='BillieEilish')
+LG.generate_list(channel='UCiGm_E4ZwYSHV3bcW1pnSeQ', channelType='channel', fileName='BillieEilish')
 ```
 ### For more control:
 ```python
