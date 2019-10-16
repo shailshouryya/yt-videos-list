@@ -24,7 +24,7 @@ def cli():
     pass
 
 def script():
-    channelName = input(eMessage.inputMessage)    
+    channel = input(eMessage.inputMessage)    
 #     if -i --invisible: open selenium in headless mode
 #     options = Options()
 #     options.headless = True
@@ -38,7 +38,7 @@ def script():
 #     else channelType = 'user'
     channelType = 'user' # hardcoded until CLI added
     with driver:
-        videosList = scrollToBottom(channelName, channelType, driver, scrollPauseTime)
+        videosList = scrollToBottom(channel, channelType, driver, scrollPauseTime)
         if len(videosList) == 0:
             print (eMessage.noVideosFound)
             print (eMessage.checkChannelType)
@@ -46,6 +46,6 @@ def script():
 #         if cli -o --overwrite write_format = 'w'
 #         else write_format = 'x'
         write_format = 'w'
-        writeToTxt(videosList, channelName, write_format)
-        writeToCsv(videosList, channelName, write_format)
-    run(channelName, channelType, csv, csvWriteFormat, txt, txtWriteFormat, docx, docxWriteFormat, headless, scrollPauseTime, _executionType='script')
+        writeToTxt(videosList, channel, write_format)
+        writeToCsv(videosList, channel, write_format)
+    run(channel, channelType, csv, csvWriteFormat, txt, txtWriteFormat, docx, docxWriteFormat, headless, scrollPauseTime, _executionType='script')

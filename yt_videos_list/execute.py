@@ -4,17 +4,17 @@ from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 import time
 
-def run(channelName, channelType, fileName, csv, csvWriteFormat, txt, txtWriteFormat, docx, docxWriteFormat, chronological, headless, scrollPauseTime, executionType):
+def run(channel, channelType, fileName, csv, csvWriteFormat, txt, txtWriteFormat, docx, docxWriteFormat, chronological, headless, scrollPauseTime, executionType):
     mMessage = ModuleMessage()
     cMessage = Common()
-    channelName = channelName.strip().strip('/')
+    channel = channel.strip().strip('/')
     channelType = channelType.strip().strip('/')
     
     def determineFileName(fileName):
         if fileName is not None:
             return fileName
         else:
-            return channelName.strip('/')
+            return channel.strip('/')
     
     file_name = determineFileName(fileName)
     
@@ -39,16 +39,16 @@ def run(channelName, channelType, fileName, csv, csvWriteFormat, txt, txtWriteFo
         driver = webdriver.Firefox(options=options)
         
     with driver:
-        videosList = program.scrollToBottom(channelName, channelType, driver, scrollPauseTime)
+        videosList = program.scrollToBottom(channel, channelType, driver, scrollPauseTime)
         if len(videosList) == 0:
             print (cMessage.noVideosFound)
             print (mMessage.checkChannelType) if executionType == 'module' else print (sMessage.checkChannelType)
             return
         if csv is True:
-            program.writeToCsv(videosList, channelName, file_name, csvWriteFormat)
+            program.writeToCsv(videosList, channel, file_name, csvWriteFormat)
         if txt is True:
-            program.writeToTxt(videosList, channelName, file_name, txtWriteFormat)
-                # saveToMemWriteToTxt(videosList, channelName, file_name, writeFormat) # slightly slower than writing to disk directly
+            program.writeToTxt(videosList, channel, file_name, txtWriteFormat)
+                # saveToMemWriteToTxt(videosList, channel, file_name, writeFormat) # slightly slower than writing to disk directly
                 
     programEnd = time.perf_counter()
     totalTime = programEnd - programStart

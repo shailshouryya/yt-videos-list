@@ -34,13 +34,13 @@ def updateWriteFormat(fileName, fileType):
         return newWriteFormat()
     return 'x'
 
-def scrollToBottom (channelName, channelType, seleniumInstance, scrollPauseTime):
+def scrollToBottom (channel, channelType, seleniumInstance, scrollPauseTime):
     start = time.perf_counter()
     driver = seleniumInstance
     
     baseUrl = 'https://www.youtube.com'
     videos = 'videos'
-    url = baseUrl + '/' + channelType + '/' + channelName + '/' + videos 
+    url = baseUrl + '/' + channelType + '/' + channel + '/' + videos 
     
     driver.get(url)
     elemsCount = driver.execute_script(
@@ -73,7 +73,7 @@ def scrollToBottom (channelName, channelType, seleniumInstance, scrollPauseTime)
     print(f'It took {functionTime} to find all {len(elements)} videos from {url}\n')
     return elements
 
-def writeToTxt (listOfVideos, channelName, fileName, writeFormat):
+def writeToTxt (listOfVideos, channel, fileName, writeFormat):
     if writeFormat == 0:
         return
     
@@ -101,7 +101,7 @@ def writeToTxt (listOfVideos, channelName, fileName, writeFormat):
         functionTime = end - start
         print(f'It took {functionTime} to write all {index} videos to {f.name}\n')
         
-def saveToMemWriteToTxt (listOfVideos, channelName, fileName, writeFormat):
+def saveToMemWriteToTxt (listOfVideos, channel, fileName, writeFormat):
     if writeFormat == 0:
         return
     
@@ -131,7 +131,7 @@ def saveToMemWriteToTxt (listOfVideos, channelName, fileName, writeFormat):
         functionTime = end - start
         print(f'It took {functionTime} to write all {index} videos to {fm.name}\n')
 
-def writeToCsv (listOfVideos, channelName, fileName, writeFormat):
+def writeToCsv (listOfVideos, channel, fileName, writeFormat):
     if writeFormat == 0:
         return
     
