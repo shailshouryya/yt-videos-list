@@ -6,7 +6,6 @@ This repo is intended to provide a quick, simple way to create a list of all vid
 with `TheChannelYouWantToScrape` replaced with the username of the channel.
 
 ## Quick Start
-RECOMMENDED:
 ```
 pip install yt-videos-list
 ```
