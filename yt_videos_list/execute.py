@@ -19,13 +19,13 @@ def run(channel, channelType, fileName, csv, csvWriteFormat, txt, txtWriteFormat
     file_name = determineFileName(fileName)
     
     if csv is True and csvWriteFormat == 'x':
-        csvWriteFormat = program.updateWriteFormat(file_name, 'csv')
+        csvWriteFormat = program.verifyWriteFormat(file_name, 'csv')
 
     if txt is True and txtWriteFormat == 'x':
-        txtWriteFormat = program.updateWriteFormat(file_name, 'txt')
+        txtWriteFormat = program.verifyWriteFormat(file_name, 'txt')
         
     if docx is True and docxWriteFormat == 'x' is True:
-        docxWriteFormat = program.updateWriteFormat(file_name, 'docx')
+        docxWriteFormat = program.verifyWriteFormat(file_name, 'docx')
         
     programStart = time.perf_counter()
     if headless is False: # opens Selenium browsing instance

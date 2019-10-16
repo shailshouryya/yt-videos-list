@@ -13,7 +13,7 @@ def checkFileExists(filename):
         return True
     return False
     
-def updateWriteFormat(fileName, fileType):
+def verifyWriteFormat(fileName, fileType):
     filename = f'{fileName}VideosList.{fileType}'
     fileExists = checkFileExists(filename)
     
