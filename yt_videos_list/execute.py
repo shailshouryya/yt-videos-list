@@ -4,7 +4,7 @@ from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 import time
 
-def run(channel, channelType, fileName, csv, csvWriteFormat, txt, txtWriteFormat, docx, docxWriteFormat, chronological, headless, scrollPauseTime, executionType):
+def run(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat, docx, docxWriteFormat, chronological, headless, scrollPauseTime, executionType):
     mMessage = ModuleMessage()
     cMessage = Common()
     channel = channel.strip().strip('/')
@@ -18,12 +18,12 @@ def run(channel, channelType, fileName, csv, csvWriteFormat, txt, txtWriteFormat
     
     file_name = determineFileName(fileName)
     
-    if csv is True and csvWriteFormat == 'x':
-        csvWriteFormat = program.verifyWriteFormat(file_name, 'csv')
-
     if txt is True and txtWriteFormat == 'x':
         txtWriteFormat = program.verifyWriteFormat(file_name, 'txt')
-        
+    
+    if csv is True and csvWriteFormat == 'x':
+    csvWriteFormat = program.verifyWriteFormat(file_name, 'csv')
+    
     if docx is True and docxWriteFormat == 'x' is True:
         docxWriteFormat = program.verifyWriteFormat(file_name, 'docx')
         
@@ -44,12 +44,12 @@ def run(channel, channelType, fileName, csv, csvWriteFormat, txt, txtWriteFormat
             print (cMessage.noVideosFound)
             print (mMessage.checkChannelType) if executionType == 'module' else print (sMessage.checkChannelType)
             return
-        if csv is True:
-            program.writeToCsv(videosList, channel, file_name, csvWriteFormat)
         if txt is True:
             program.writeToTxt(videosList, channel, file_name, txtWriteFormat)
                 # saveToMemWriteToTxt(videosList, channel, file_name, writeFormat) # slightly slower than writing to disk directly
-                
+        if csv is True:
+        program.writeToCsv(videosList, channel, file_name, csvWriteFormat)
+        
     programEnd = time.perf_counter()
     totalTime = programEnd - programStart
     print(f'This program took {totalTime} seconds to complete.\n')

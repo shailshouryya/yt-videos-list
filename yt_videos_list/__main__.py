@@ -4,7 +4,7 @@ except:
     import script
 
 class ListGenerator:
-    def __init__(self, csv=True, csvWriteFormat='x', txt=True, txtWriteFormat='x', docx=False, docxWriteFormat='x', chronological=True, headless=False, scrollPauseTime=0.8,):
+    def __init__(self, txt=True, txtWriteFormat='x', csv=True, csvWriteFormat='x', docx=False, docxWriteFormat='x', chronological=True, headless=False, scrollPauseTime=0.8,):
         '''
         Creates a list generator object with one required positional argument (channel) and one optional argument (channelType). The channelType is set to "user" by default, but if the YouTube channel you are looking at is a "channel" instead of "user" - you will need to change the default channelType parameter to "channel"
         Example usage:
@@ -12,10 +12,10 @@ class ListGenerator:
             OR
             LG = ListGenerator('theChannelYouWantToScrape', 'channel')
         '''
-        self.csv = csv
-        self.csvWriteFormat = csvWriteFormat
         self.txt = txt
         self.txtWriteFormat = txtWriteFormat
+        self.csv = csv
+        self.csvWriteFormat = csvWriteFormat
         self.docx = docx
         self.docxWriteFormat = docxWriteFormat
         self.chronological = chronological
@@ -41,7 +41,7 @@ class ListGenerator:
             
         NOTE! You can use a combination of the optional parameters (or all the optional parameters at once) in the method call, you do not need to use them one at a time. The reason it is shown one at a time here in the documentation is to highlight what each parameter does.
         '''
-        execute.run(channel, channelType, fileName, self.csv, self.csvWriteFormat, self.txt, self.txtWriteFormat, self.docx, self.docxWriteFormat, self.chronological, self.headless, self.scrollPauseTime, _executionType)
+        execute.run(channel, channelType, fileName, self.txt, self.txtWriteFormat, self.csv, self.csvWriteFormat, self.docx, self.docxWriteFormat, self.chronological, self.headless, self.scrollPauseTime, _executionType)
 
 def main():
     script.run()
