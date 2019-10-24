@@ -22,7 +22,7 @@ def run(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat
         txtWriteFormat = program.verifyWriteFormat(file_name, 'txt')
     
     if csv is True and csvWriteFormat == 'x':
-    csvWriteFormat = program.verifyWriteFormat(file_name, 'csv')
+        csvWriteFormat = program.verifyWriteFormat(file_name, 'csv')
     
     if docx is True and docxWriteFormat == 'x' is True:
         docxWriteFormat = program.verifyWriteFormat(file_name, 'docx')
