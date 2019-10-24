@@ -7,7 +7,7 @@ with `TheChannelYouWantToScrape` replaced with the username of the channel.
 
 ## Quick Start
 ```
-pip install yt-videos-list
+pip install -U yt-videos-list
 ```
 
 ### Running as a module
