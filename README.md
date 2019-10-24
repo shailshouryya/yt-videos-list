@@ -17,7 +17,8 @@ python3
 ```python
 from yt_videos_list import ListGenerator
 LG = ListGenerator()
-LG.generate_list('channel', 'channelType', 'optional_file_name_you_can_provide')
+LG.generate_list(channel='schafer5', channelType='user', fileName='CoreySchafer_ProgrammingTutorials')
+LG.generate_list(channel='UC8butISFwT-Wl7EV0hUK0BQ', channelType='channel', fileName='freeCodeCamp.org')
 ```
 There are two types of YouTube channels: one type is a `user` channel and the other is a `channel` channel.
 * The url for a `user` channel consists of `youtube.com` followed by `user` followed by the name. For example:
