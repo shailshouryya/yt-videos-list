@@ -6,7 +6,8 @@ except:
 class ListGenerator:
     def __init__(self, txt=True, txtWriteFormat='x', csv=True, csvWriteFormat='x', docx=False, docxWriteFormat='x', chronological=True, headless=False, scrollPauseTime=0.8):
         '''
-        Creates a list generator object with no required arguments.
+        
+        The ListGenerator class creates a list generator instance with no required arguments.
         Example usage:
             LG = ListGenerator()
         
@@ -37,23 +38,30 @@ class ListGenerator:
         scrollPauseTime=0.8 (default)
         CAUTION: reducing this value too much will result in the programming not capturing all the videos, so be careful! Experiment :)
         
-        ###########################################################
+        
         WORKING EXAMPLES:
+        ###########################################################
         For a ListGenerator object that creates csv files but no txt or docx files in headless mode with a 1 second pause between scrolls:
         LG = ListGenerator(txt=True, txtWriteFormat='x', csv=False, csvWriteFormat=0, docx=False, docxWriteFormat=0, chronological=True, headless=True, scrollPauseTime=1.0)
+        ###########################################################
         
+        ###########################################################
         The same could also be done by specifying only the arguments that change from the default, but notice how this is less explicit and can become confusing if you forget what the default arguments are:
         LG = ListGenerator(txt=False, docx=False, headless=True, scrollPauseTime=1.0)
+        ###########################################################
         
+        -----------------------------------------------------------
         It is up to you as the user to decide how you want to instantiate the ListGenerator object.
         If you choose the shorthand version, make sure you remember the default arguments!
-        
-        
+        -----------------------------------------------------------
         PRO TIP: whichever way you decide to instantiate your object, if you use custom settings, name your ListGenerator instance to reflect what you changed.
         E.g. For the previous case instead of naming your instance "LG", name it "headlessCsvLG" or "headless_csv_LG" - or something along those lines.
+        -----------------------------------------------------------
         
+        ###########################################################
         For a ListGenerator object that creates a txt and csv file, but the program overwrites an existing txt file of the same name but does not overwrite an existing csv file of the same name, with all other arguments unmodified:
         LG = ListGenerator(txtWriteFormat='w')
+        ###########################################################
         '''
         self.txt = txt
         self.txtWriteFormat = txtWriteFormat
