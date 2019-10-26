@@ -1,4 +1,4 @@
-# Automate a YouTube Channel Videos List Creation
+# Automate a Videos List Creation for a YouTube Channel
 
 ## Overview
 This repo is intended to provide a quick, simple way to create a list of all videos posted to any YouTube channel by providing just the URL to that user's channel videos. The general format for this is `https://www.youtube.com/user/TheChannelYouWantToScrape/videos` OR  
