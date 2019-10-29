@@ -75,7 +75,7 @@ class ListGenerator:
     
     def generate_list(self, channel, channelType, fileName=None, _executionType='module'):
         '''
-        The generate_list method creates a list using the arguments specified during the instantiation of ListGenerator instance.
+        The generate_list method creates a list using the arguments specified during the instantiation of ListGenerator object.
         You need to specify the channel, and channelType.
         You can also provide an optional fileName argument, but the fileName argument is not required.
         '''
