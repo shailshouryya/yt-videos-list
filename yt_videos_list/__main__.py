@@ -82,7 +82,7 @@ class ListGenerator:
         execute.run(channel, channelType, fileName, self.txt, self.txtWriteFormat, self.csv, self.csvWriteFormat, self.docx, self.docxWriteFormat, self.chronological, self.headless, self.scrollPauseTime, _executionType)
 
 def main():
-    script.run()
+    script.generate_list()
         
 if __name__ == '__main__':
     main()
