@@ -22,30 +22,10 @@ def cli():
     -r --reverse reverse the indexing so oldest video starts at 1 and most recent video has highest index
     '''
     pass
+    return (channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat, docx, docxWriteFormat, chronological, headless, scrollPauseTime)
 
-def script():
-    channel = input(eMessage.inputMessage)    
-#     if -i --invisible: open selenium in headless mode
-#     options = Options()
-#     options.headless = True
-#     driver = webdriver.Firefox(options=options)
-#     else open selenium instance
-    driver = webdriver.Firefox()
-#     if -p --pause=# scrollPauseTime = #
-#     else scrollPauseTime = 0.8
-    scrollPauseTime = 0.8
-#     if -c --channelType is channel set channelType = 'channel'
-#     else channelType = 'user'
-    channelType = 'user' # hardcoded until CLI added
-    with driver:
-        videosList = scrollToBottom(channel, channelType, driver, scrollPauseTime)
-        if len(videosList) == 0:
-            print (eMessage.noVideosFound)
-            print (eMessage.checkChannelType)
-            return
-#         if cli -o --overwrite write_format = 'w'
-#         else write_format = 'x'
-        write_format = 'w'
-        writeToTxt(videosList, channel, write_format)
-        writeToCsv(videosList, channel, write_format)
-    run(channel, channelType, csv, csvWriteFormat, txt, txtWriteFormat, docx, docxWriteFormat, headless, scrollPauseTime, _executionType='script')
+def generate_list():
+    _executionType = 'script'
+    cliSpecifications = cli()
+    execute.run(*cliSpecifications, _executionType)
+    
