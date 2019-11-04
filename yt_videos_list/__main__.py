@@ -24,12 +24,12 @@ class ListGenerator:
         NOTE: if you specify the file type argument to be False, you don't need to touch this - the program will automatically skip this step.
         txtWriteFormat='x'  (default) OR txtWriteFormat='w'
         csvWriteFormat='x'  (default) OR csvWriteFormat='w'
-        docsWriteFormat='x' (unsupported) OR docxWriteFormat='w'
+        docxWriteFormat='x' (unsupported) OR docxWriteFormat='w'
         
         Options for the chronological argument are True (this is the only chronological option currently supported right now :D) - write the files in order from oldest videos to most recent - or False (currently UNSUPPORTED!) - write the files in order from most recent to oldest.
         chronological=True (default) OR chronological=False
         
-        Options for the headless option are False (default) - run the browser with an open Selenium instance for viewing - or False - run the browser in "invisible" mode.
+        Options for the headless option are False (default) - run the browser with an open Selenium instance for viewing - or True - run the browser in "invisible" mode.
         headless=False (default) OR headless=True
         
         Options for the scrollPauseTime argument are any float values greater than 0 (default 0.8).
