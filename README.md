@@ -53,13 +53,26 @@ ListGenerator(csv=True, csvWriteFormat='x', txt=True, txtWriteFormat='x', docx=F
               headless=False, scrollPauseTime=0.7,)
 ```
 There are a number of optional arguments you can specify during the instantiation of the ListGenerator object. The preceding arguments are run by default, but in case you want more flexibility, you can specify:
-  * The type of file you want: `csv` and `txt` currently available
-  * If you want to override an already existing file with the same name: the default setting of `'x'` shows you a warning and asks you if you want to overwrite the file or skip it. If you know you want to overwrite it, set the `WriteFormat` of the file type to `'w'`
-  * If you want the list of videos to be sorted by oldest to most recent (default setting set to `True`), otherwise set `chronological=False` to sort the videos by most recent to oldest
-  * If you want to see the automated instance of the browser while it runs. Headless is set to `False` by default to give you an idea of what is going on and make it easier to debug in case something happens that you weren't expecting, but if you don't want to see it, set `headless=True`
-  * How long you want to wait before scrolling down. The default setting of `scrollPauseTime=0.7` works well with an average internet connection, but if your internet connection is much slower you may want to increase `scrollPauseTime` to a value larger than 0.7, and if your internet connection is very fast you can decrease the scrollPauseTime to a value that is smaller than 0.7
 
-### Running as a script (coming soon!)
+* Options for the file type arguments are True (default) - create a file for the specified type - or False - do not create a file for the specified type.
+  * txt=True  (default) OR txt=False 
+  * csv=True  (default) OR csv=False
+  * docx=True (unsupported) OR docx=False
+  * Options for the write formats are: 'x' (default) - does not overwrite an existing file with the same name - or 'w' - if an existing file with the same name exists, it will be overwritten.
+  * NOTE: if you specify the file type argument to be False, you don't need to touch this - the program will automatically skip this step.
+  * txtWriteFormat='x'  (default) OR txtWriteFormat='w'
+  * csvWriteFormat='x'  (default) OR csvWriteFormat='w'
+  * docsWriteFormat='x' (unsupported) OR docxWriteFormat='w'
+* Options for the chronological argument are True (this is the only chronological option currently supported right now :D) - write the files in order from oldest videos to most recent - or False (currently UNSUPPORTED!) - write the files in order from most recent to oldest.
+  * chronological=True (default) OR chronological=False
+* Options for the headless option are False (default) - run the browser with an open Selenium instance for viewing - or False - run the browser in "invisible" mode.
+  * headless=False (default) OR headless=True
+* Options for the scrollPauseTime argument are any float values greater than 0 (default 0.8). The value you provide will be how long the program waits before trying to scroll the videos list page down for the channel you want to scrape. For fast internet connections, you may want to reduce the value, and for slow connections you may want to increase the value.
+  * scrollPauseTime=0.8 (default)
+  * CAUTION: reducing this value too much will result in the programming not capturing all the videos, so be careful! Experiment :)
+
+### Running as a script (coming in `0.2.x`!)
+Following is deprecated...
 Enter the directory in which the pyYT_videos_list.py and execute.py exist (they should both be in the same directory to avoid refernce issues), and run the following command from your command line  
 ```
 python3 yt_videos_list
@@ -75,3 +88,5 @@ https://www.youtube.com/channel/YourChannelName
 Substitute what you see for YourChannelName and type it in below:
 ```
 Enter the name of the channel or user that you wish to scrape, and the program will do the rest for you!
+
+### [Future Features](/extra/futureFeatures.md)
