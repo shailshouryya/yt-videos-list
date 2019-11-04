@@ -58,7 +58,7 @@ There are a number of optional arguments you can specify during the instantiatio
   * txt=True  (default) OR txt=False 
   * csv=True  (default) OR csv=False
   * docx=True (unsupported) OR docx=False
-  * Options for the write formats are: 'x' (default) - does not overwrite an existing file with the same name - or 'w' - if an existing file with the same name exists, it will be overwritten.
+* Options for the write formats are: 'x' (default) - does not overwrite an existing file with the same name - or 'w' - if an existing file with the same name exists, it will be overwritten.
   * NOTE: if you specify the file type argument to be False, you don't need to touch this - the program will automatically skip this step.
   * txtWriteFormat='x'  (default) OR txtWriteFormat='w'
   * csvWriteFormat='x'  (default) OR csvWriteFormat='w'
