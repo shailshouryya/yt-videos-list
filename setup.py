@@ -38,7 +38,7 @@ setup(
     
     keywords='YoutTube videos URL scraping automation',
     
-    packages=find_packages(where='yt_videos_list'),
+    packages=find_packages(),
 #    packages=find_packages(),
     
 #    package_dir={'':'src'},
