@@ -10,7 +10,6 @@ with `TheChannelYouWantToScrape` replaced with the username of the channel.
 pip install -U yt-videos-list
 
 # RUN THE RELEVANT curl COMMAND FOR YOUR SYSTEM:
-
 ########################
 # MacOS tar.gz file:
 curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-macos.tar.gz | tar -xf - -C /usr/local/bin/
