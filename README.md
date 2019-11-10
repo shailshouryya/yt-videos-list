@@ -73,19 +73,27 @@ ListGenerator(csv=True, csvWriteFormat='x', txt=True, txtWriteFormat='x', docx=F
 ```
 There are a number of optional arguments you can specify during the instantiation of the ListGenerator object. The preceding arguments are run by default, but in case you want more flexibility, you can specify:
 
-* Options for the file type arguments are `True` (default) - create a file for the specified type - or `False` - do not create a file for the specified type.
-  * `txt=True`  (default) OR `txt=False` 
-  * `csv=True`  (default) OR `csv=False`
-  * `docx=True` (unsupported) OR `docx=False`
-* Options for the write formats are: `'x'` (default) - does not overwrite an existing file with the same name - or `'w'` - if an existing file with the same name exists, it will be overwritten.
+* Options for the file type arguments are 
+  - `True` (default) - create a file for the specified type 
+  - `False` - do not create a file for the specified type.
+    * `txt=True`  (default) OR `txt=False` 
+    * `csv=True`  (default) OR `csv=False`
+    * `docx=True` (unsupported) OR `docx=False`
+* Options for the write formats are
+  - `'x'` (default) - does not overwrite an existing file with the same name 
+  - `'w'` - if an existing file with the same name exists, it will be overwritten
   * NOTE: if you specify the file type argument to be False, you don't need to touch this - the program will automatically skip this step.
-  * `txtWriteFormat='x'`  (default) OR `txtWriteFormat='w'`
-  * `csvWriteFormat='x'`  (default) OR `csvWriteFormat='w'`
-  * `docxWriteFormat='x'` (unsupported) OR `docxWriteFormat='w'`
-* Options for the chronological argument are `True` (this is the only chronological option currently supported right now :D) - write the files in order from oldest videos to most recent - or `False` (currently UNSUPPORTED!) - write the files in order from most recent to oldest.
-  * `chronological=True` (default) OR `chronological=False`
-* Options for the headless option are `False` (default) - run the browser with an open Selenium instance for viewing - or `True` - run the browser in "invisible" mode.
-  * `headless=False` (default) OR `headless=True`
+    * `txtWriteFormat='x'`  (default) OR `txtWriteFormat='w'`
+    * `csvWriteFormat='x'`  (default) OR `csvWriteFormat='w'`
+    * `docxWriteFormat='x'` (unsupported) OR `docxWriteFormat='w'`
+* Options for the chronological argument are
+  - `True` (this is the only chronological option currently supported right now :D) - write the files in order from oldest videos to most recent
+  - `False` (currently UNSUPPORTED!) - write the files in order from most recent to oldest.
+    * `chronological=True` (default) OR `chronological=False`
+* Options for the headless option are 
+  - `False` (default) - run the browser with an open Selenium instance for viewing
+  - `True` - run the browser in "invisible" mode.
+    * `headless=False` (default) OR `headless=True`
 * Options for the scrollPauseTime argument are any float values greater than `0` (default `0.8`). The value you provide will be how long the program waits before trying to scroll the videos list page down for the channel you want to scrape. For fast internet connections, you may want to reduce the value, and for slow connections you may want to increase the value.
   * `scrollPauseTime=0.8` (default)
   * CAUTION: reducing this value too much will result in the programming not capturing all the videos, so be careful! Experiment :)
