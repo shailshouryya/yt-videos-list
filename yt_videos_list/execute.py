@@ -33,15 +33,21 @@ def run(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat
     
     programStart = time.perf_counter()
     if headless is False: # opens Selenium browsing instance
-        driver = webdriver.Firefox(capabilities=cap)
+        try:
+            driver = webdriver.Firefox()
+        except selenium.common.exceptions.SessionNotCreatedException:
+            driver = webdriver.Firefox(capabilities=cap)
         if executionType == 'module':
             print (mMessage.runInHeadless)
             print (mMessage.runInHeadlessExample)
     else:
         options = Options()
         options.headless = True
-        driver = webdriver.Firefox(options=options, capabilities=cap)
-        
+        try:
+            driver = webdriver.Firefox(options=options)
+        except selenium.common.exceptions.SessionNotCreatedException:
+            driver = webdriver.Firefox(options=options, capabilities=cap)
+    
     with driver:
         videosList = program.scrollToBottom(channel, channelType, driver, scrollPauseTime)
         if len(videosList) == 0:
