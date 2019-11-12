@@ -2,6 +2,7 @@ from yt_videos_list import program
 from yt_videos_list.output import Common, ModuleMessage, ScriptMessage
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 import time
 
 def run(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat, docx, docxWriteFormat, chronological, headless, scrollPauseTime, executionType):
@@ -27,16 +28,19 @@ def run(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat
     if docx is True and docxWriteFormat == 'x' is True:
         docxWriteFormat = program.verifyWriteFormat(file_name, 'docx')
         
+    cap = DesiredCapabilities().FIREFOX
+    cap["marionette"] = True
+    
     programStart = time.perf_counter()
     if headless is False: # opens Selenium browsing instance
-        driver = webdriver.Firefox()
+        driver = webdriver.Firefox(capabilities=cap)
         if executionType == 'module':
             print (mMessage.runInHeadless)
             print (mMessage.runInHeadlessExample)
     else:
         options = Options()
         options.headless = True
-        driver = webdriver.Firefox(options=options)
+        driver = webdriver.Firefox(options=options, capabilities=cap)
         
     with driver:
         videosList = program.scrollToBottom(channel, channelType, driver, scrollPauseTime)
