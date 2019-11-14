@@ -4,7 +4,7 @@ except:
     import script
 
 class ListGenerator:
-    def __init__(self, txt=True, txtWriteFormat='x', csv=True, csvWriteFormat='x', docx=False, docxWriteFormat='x', chronological=True, headless=False, scrollPauseTime=0.8):
+    def __init__(self, txt=True, txtWriteFormat='x', csv=True, csvWriteFormat='x', docx=False, docxWriteFormat='x', chronological=True, headless=False, scrollPauseTime=0.8, browser='Firefox'):
         '''
         
         The ListGenerator class creates a list generator instance with no required arguments.
@@ -80,6 +80,7 @@ class ListGenerator:
         self.chronological = chronological
         self.headless = headless
         self.scrollPauseTime = scrollPauseTime
+        self.browser = browser
     
     def generate_list(self, channel, channelType, fileName=None, _executionType='module'):
         '''
@@ -87,7 +88,7 @@ class ListGenerator:
         You need to specify the channel, and channelType.
         You can also provide an optional fileName argument, but the fileName argument is not required.
         '''
-        execute.run(channel, channelType, fileName, self.txt, self.txtWriteFormat, self.csv, self.csvWriteFormat, self.docx, self.docxWriteFormat, self.chronological, self.headless, self.scrollPauseTime, _executionType)
+        execute.run(channel, channelType, fileName, self.txt, self.txtWriteFormat, self.csv, self.csvWriteFormat, self.docx, self.docxWriteFormat, self.chronological, self.headless, self.scrollPauseTime, self.browser, _executionType)
 
 def main():
     script.generate_list()

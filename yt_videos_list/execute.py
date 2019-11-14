@@ -4,7 +4,15 @@ from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 import time
 
-def run(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat, docx, docxWriteFormat, chronological, headless, scrollPauseTime, executionType):
+def setupBrowser(userBrowser):
+    if userBrowser.lower == 'chrome':
+        return webdriver.Chrome
+    elif userBrowser.lower == 'opera':
+        return webdriver.Opera
+    else:
+        return webdriver.Firefox
+
+def run(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat, docx, docxWriteFormat, chronological, headless, scrollPauseTime, userBrowser, executionType):
     mMessage = ModuleMessage()
     cMessage = Common()
     channel = channel.strip().strip('/')
@@ -27,16 +35,18 @@ def run(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat
     if docx is True and docxWriteFormat == 'x' is True:
         docxWriteFormat = program.verifyWriteFormat(file_name, 'docx')
         
+    driver = setupBrowser(userBrowser)
+
     programStart = time.perf_counter()
     if headless is False: # opens Selenium browsing instance
-        driver = webdriver.Firefox()
+        driver = driver()
         if executionType == 'module':
             print (mMessage.runInHeadless)
             print (mMessage.runInHeadlessExample)
     else:
         options = Options()
         options.headless = True
-        driver = webdriver.Firefox(options=options)
+        driver = driver(options=options)
         
     with driver:
         videosList = program.scrollToBottom(channel, channelType, driver, scrollPauseTime)
