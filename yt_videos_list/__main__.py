@@ -14,6 +14,11 @@ class ListGenerator:
         ###########################################################
         OPTIONAL: specify the settings you want to use by substituing the desired values for the default arguments.
         An overview is given directly below this, but for a full working example scroll to the bottom.
+
+        Options for the browser arguments are
+          * Firefox (default)
+          * Chrome
+          * Opera
         
         Options for the file type arguments are
           * True (default) - create a file for the specified type

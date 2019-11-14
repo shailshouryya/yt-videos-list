@@ -111,10 +111,14 @@ To scrape the video titles along with the link to the video, you need to run the
 ```python
 ListGenerator(csv=True, csvWriteFormat='x', txt=True, txtWriteFormat='x', docx=False,
               docxWriteFormat='x', chronological=True,
-              headless=False, scrollPauseTime=0.7,)
+              headless=False, scrollPauseTime=0.7, browser='Firefox')
 ```
 There are a number of optional arguments you can specify during the instantiation of the ListGenerator object. The preceding arguments are run by default, but in case you want more flexibility, you can specify:
 
+* Options for the browser arguments are
+  - `Firefox` (default)
+  - `Chrome`
+  - `Opera`
 * Options for the file type arguments are 
   - `True` (default) - create a file for the specified type 
   - `False` - do not create a file for the specified type.
