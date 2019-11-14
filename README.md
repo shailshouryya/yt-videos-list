@@ -100,7 +100,10 @@ There are two types of YouTube channels: one type is a `user` channel and the ot
   * Marvel: https://www.youtube.com/user/MARVEL
   * Apple: https://www.youtube.com/user/Apple
 * The url for a `channel` channel consists of `youtube.com` followed by `channel` followed by a string of rather unpredictable characters. For example:
-  * Billie Eilish's channel url looks like: https://www.youtube.com/channel/UCiGm_E4ZwYSHV3bcW1pnSeQ
+  * Tasty: https://www.youtube.com/channel/UCJFp8uSYCjXOMnkUyb3CQ3Q
+  * Billie Eilish: https://www.youtube.com/channel/UCiGm_E4ZwYSHV3bcW1pnSeQ
+  * Gordon Ramsay: https://www.youtube.com/channel/UCIEv3lZ_tNXHzL3ox-_uUGQ
+  * PBS Space Time: https://www.youtube.com/channel/UC7_gcs09iThXybpVgjHZ_7g
 
 To scrape the video titles along with the link to the video, you need to run the `generate_list(channel, channelType)` method on the ListGenerator object you just created, substituting the type of channel for `channelType` argument and the name of the channel for the `channel` argument. By default, the name of the file produced will be `channel`VideosList.ext where the `.ext` will be `.csv` or `.txt ` depending on the type of file(s) that you specified. 
 
