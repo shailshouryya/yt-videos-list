@@ -14,7 +14,7 @@ class Common:
 
     @staticmethod
     def fileAlreadyExistsPrompt(filename):
-        print (f'If you wish to proceed and overwrite {filename}, type "proceed", otherwise move the file to a different directory on your computer before typing "continue"\n')
+        print (f'If you wish to proceed and overwrite {filename}, type "proceed", otherwise move the file to a different directory on your computer before typing "proceed"\n')
         print (f'If you wish to skip the creation of {filename}, type "skip"')
 
 class ModuleMessage(Common):
