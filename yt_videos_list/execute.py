@@ -5,9 +5,9 @@ from selenium.webdriver.firefox.options import Options
 import time
 
 def setupBrowser(userBrowser):
-    if userBrowser.lower == 'chrome':
+    if userBrowser.lower() == 'chrome':
         return webdriver.Chrome
-    elif userBrowser.lower == 'opera':
+    elif userBrowser.lower() == 'opera':
         return webdriver.Opera
     else:
         return webdriver.Firefox
