@@ -119,6 +119,7 @@ There are a number of optional arguments you can specify during the instantiatio
   - `Firefox` (default)
   - `Chrome`
   - `Opera`
+  - `Safari`
 * Options for the file type arguments are 
   - `True` (default) - create a file for the specified type 
   - `False` - do not create a file for the specified type.

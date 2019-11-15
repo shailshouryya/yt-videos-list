@@ -19,6 +19,7 @@ class ListGenerator:
           * Firefox (default)
           * Chrome
           * Opera
+          * Safari
         
         Options for the file type arguments are
           * True (default) - create a file for the specified type

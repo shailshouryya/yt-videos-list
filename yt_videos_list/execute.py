@@ -9,6 +9,8 @@ def setupBrowser(userBrowser):
         return webdriver.Chrome
     elif userBrowser.lower() == 'opera':
         return webdriver.Opera
+    elif userBrowser.lower() == 'safari':
+        return webdriver.Safari
     else:
         return webdriver.Firefox
 
