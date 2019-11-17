@@ -5,11 +5,11 @@ from selenium.webdriver.firefox.options import Options
 import time
 
 def setupBrowser(userBrowser):
-    if userBrowser.lower() == 'chrome':
+    if 'chrome' in userBrowser.lower():
         return webdriver.Chrome
-    elif userBrowser.lower() == 'opera':
+    elif 'opera' in userBrowser.lower():
         return webdriver.Opera
-    elif userBrowser.lower() == 'safari':
+    elif 'safari' in userBrowser.lower():
         return webdriver.Safari
     else:
         return webdriver.Firefox
@@ -19,24 +19,24 @@ def run(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat
     cMessage = Common()
     channel = channel.strip().strip('/')
     channelType = channelType.strip().strip('/')
-    
+
     def determineFileName(fileName):
         if fileName is not None:
             return fileName
         else:
             return channel.strip('/')
-    
+
     file_name = determineFileName(fileName)
-    
+
     if txt is True and txtWriteFormat == 'x':
         txtWriteFormat = program.verifyWriteFormat(file_name, 'txt')
-    
+
     if csv is True and csvWriteFormat == 'x':
         csvWriteFormat = program.verifyWriteFormat(file_name, 'csv')
-    
+
     if docx is True and docxWriteFormat == 'x' is True:
         docxWriteFormat = program.verifyWriteFormat(file_name, 'docx')
-        
+
     driver = setupBrowser(userBrowser)
 
     programStart = time.perf_counter()
@@ -49,7 +49,7 @@ def run(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat
         options = Options()
         options.headless = True
         driver = driver(options=options)
-        
+
     with driver:
         videosList = program.scrollToBottom(channel, channelType, driver, scrollPauseTime)
         if len(videosList) == 0:
@@ -61,7 +61,7 @@ def run(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat
                 # saveToMemWriteToTxt(videosList, channel, file_name, writeFormat) # slightly slower than writing to disk directly
         if csv is True:
             program.writeToCsv(videosList, channel, file_name, csvWriteFormat)
-        
+
     programEnd = time.perf_counter()
     totalTime = programEnd - programStart
     print(f'This program took {totalTime} seconds to complete.\n')
