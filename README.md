@@ -46,7 +46,7 @@ curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckod
 ########################
 ```
 
-### Setting up Selenium dependencies for Windows64
+### Setting up Selenium dependencies for Windows64 (in progress)
 ```
 # Windows64 geckodriver (Mozilla Firefox) zip folder
 curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win64.zip | tar -xzvf - -C /usr/local/bin
@@ -55,7 +55,7 @@ curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckod
 curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.76.0.3809.132/operadriver_win64.zip | tar -xzvf 
 ```
 
-### Setting up Selenium dependencies for Windows32
+### Setting up Selenium dependencies for Windows32 (in progress)
 ```
 # Windows32 geckodriver (Mozilla Firefox) zip folder
 curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win32.zip | tar -xzvf - -C /usr/local/bin
