@@ -67,7 +67,7 @@ curl -SL https://chromedriver.storage.googleapis.com/78.0.3904.70/chromedriver_w
 curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.76.0.3809.132/operadriver_win32.zip
 ```
 
-### Running the module
+## Running the module
 ```
 python3
 ```
@@ -92,7 +92,7 @@ In order to get a more descriptive file name, add how you would like to describe
 LG.generate_list(channel='UCiGm_E4ZwYSHV3bcW1pnSeQ', channelType='channel', fileName='BillieEilish')
 ```
 
-#### Understanding the API
+### Understanding the API
 There are two types of YouTube channels: one type is a `user` channel and the other is a `channel` channel.
 * The url for a `user` channel consists of `youtube.com` followed by `user` followed by the name. For example:
   * sentdex: https://www.youtube.com/user/sentdex
@@ -145,7 +145,7 @@ There are a number of optional arguments you can specify during the instantiatio
   * `scrollPauseTime=0.8` (default)
   * CAUTION: reducing this value too much will result in the programming not capturing all the videos, so be careful! Experiment :)
 
-### Running as a script (coming in `0.2.x`!)
+### Running as a script (coming in `0.3.x`!)
 Following is deprecated...
 Enter the directory in which the pyYT_videos_list.py and execute.py exist (they should both be in the same directory to avoid refernce issues), and run the following command from your command line  
 ```
