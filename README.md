@@ -76,13 +76,11 @@ from yt_videos_list import ListGenerator
 LG = ListGenerator()
 LG.generate_list(channel='schafer5', channelType='user', fileName='CoreySchafer_ProgrammingTutorials')
 LG.generate_list(channel='UC8butISFwT-Wl7EV0hUK0BQ', channelType='channel', fileName='freeCodeCamp.org')
-```
-`user` channelType (example uses sentdex):
-```python
+
+# "user" channelType (example uses sentdex):
 LG.generate_list(channel='sentdex', channelType='user')
-```
-`channel` channelType (example uses Billie Eilish):
-```python
+
+# "channel" channelType (example uses Billie Eilish):
 LG.generate_list(channel='UCiGm_E4ZwYSHV3bcW1pnSeQ', channelType='channel')
 ```
 
