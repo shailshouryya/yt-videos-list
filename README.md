@@ -73,7 +73,7 @@ python3
 ```
 ```python
 from yt_videos_list import ListGenerator
-LG = ListGenerator()
+LG = ListGenerator(browser='firefox')
 LG.generate_list(channel='schafer5', channelType='user', fileName='CoreySchafer_ProgrammingTutorials')
 LG.generate_list(channel='UC8butISFwT-Wl7EV0hUK0BQ', channelType='channel', fileName='freeCodeCamp.org')
 
@@ -87,6 +87,9 @@ LG.generate_list(channel='UCiGm_E4ZwYSHV3bcW1pnSeQ', channelType='channel')
 # In order to get a more descriptive file name, add how you would like to
 # describe the file for the (optional) third argument ("fileName"):
 LG.generate_list(channel='UCiGm_E4ZwYSHV3bcW1pnSeQ', channelType='channel', fileName='BillieEilish')
+
+# for more information:
+help(LG)
 ```
 
 ### Understanding the API
