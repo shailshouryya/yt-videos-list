@@ -1,8 +1,8 @@
 # Automate a Videos List Creation for a YouTube Channel
 
 ## Overview
-This repo is intended to provide a quick, simple way to create a list of all videos posted to any YouTube channel by providing just the URL to that user's channel videos. The general format for this is `https://www.youtube.com/user/TheChannelYouWantToScrape/videos` OR  
-`https://www.youtube.com/channel/TheChannelYouWantToScrape/videos`,  
+This repo is intended to provide a quick, simple way to create a list of all videos posted to any YouTube channel by providing just the URL to that user's channel videos. The general format for this is `https://www.youtube.com/user/TheChannelYouWantToScrape/videos` OR
+`https://www.youtube.com/channel/TheChannelYouWantToScrape/videos`,
 with `TheChannelYouWantToScrape` replaced with the username of the channel.
 
 ## Quick Start
@@ -20,7 +20,7 @@ curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckod
 curl -SL https://chromedriver.storage.googleapis.com/78.0.3904.70/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin
 
 # Mac64 operadriver (Opera Browser 76.0.3809.132, 77.0.3865.120 had compatibility issues) tar.gz file:
-curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.77.0.3865.120/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin --strip-components=1 && rm /usr/local/bin/sha512_sum 
+curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.77.0.3865.120/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin --strip-components=1 && rm /usr/local/bin/sha512_sum
 ########################
 ```
 
@@ -52,7 +52,7 @@ curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckod
 curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win64.zip | tar -xzvf - -C /usr/local/bin
 
 # Windows32 operadriver (Opera Browser 76.0.3809.132, 77.0.3865.120 had compatibility issues) tar.gz file:
-curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.76.0.3809.132/operadriver_win64.zip | tar -xzvf 
+curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.76.0.3809.132/operadriver_win64.zip | tar -xzvf
 ```
 
 ### Setting up Selenium dependencies for Windows32 (in progress)
@@ -102,7 +102,7 @@ There are two types of YouTube channels: one type is a `user` channel and the ot
   * Gordon Ramsay: https://www.youtube.com/channel/UCIEv3lZ_tNXHzL3ox-_uUGQ
   * PBS Space Time: https://www.youtube.com/channel/UC7_gcs09iThXybpVgjHZ_7g
 
-To scrape the video titles along with the link to the video, you need to run the `generate_list(channel, channelType)` method on the ListGenerator object you just created, substituting the type of channel for `channelType` argument and the name of the channel for the `channel` argument. By default, the name of the file produced will be `channel`VideosList.ext where the `.ext` will be `.csv` or `.txt ` depending on the type of file(s) that you specified. 
+To scrape the video titles along with the link to the video, you need to run the `generate_list(channel, channelType)` method on the ListGenerator object you just created, substituting the type of channel for `channelType` argument and the name of the channel for the `channel` argument. By default, the name of the file produced will be `channel`VideosList.ext where the `.ext` will be `.csv` or `.txt ` depending on the type of file(s) that you specified.
 
 ### For more control:
 ```python
@@ -117,14 +117,14 @@ There are a number of optional arguments you can specify during the instantiatio
   - `Chrome`
   - `Opera`
   - `Safari`
-* Options for the file type arguments are 
-  - `True` (default) - create a file for the specified type 
+* Options for the file type arguments are
+  - `True` (default) - create a file for the specified type
   - `False` - do not create a file for the specified type.
-    * `txt=True`  (default) OR `txt=False` 
+    * `txt=True`  (default) OR `txt=False`
     * `csv=True`  (default) OR `csv=False`
     * `docx=True` (unsupported) OR `docx=False`
 * Options for the write formats are
-  - `'x'` (default) - does not overwrite an existing file with the same name 
+  - `'x'` (default) - does not overwrite an existing file with the same name
   - `'w'` - if an existing file with the same name exists, it will be overwritten
   * NOTE: if you specify the file type argument to be False, you don't need to touch this - the program will automatically skip this step.
     * `txtWriteFormat='x'`  (default) OR `txtWriteFormat='w'`
@@ -134,7 +134,7 @@ There are a number of optional arguments you can specify during the instantiatio
   - `True` (this is the only chronological option currently supported right now :D) - write the files in order from oldest videos to most recent
   - `False` (currently UNSUPPORTED!) - write the files in order from most recent to oldest.
     * `chronological=True` (default) OR `chronological=False`
-* Options for the headless option are 
+* Options for the headless option are
   - `False` (default) - run the browser with an open Selenium instance for viewing
   - `True` - run the browser in "invisible" mode.
     * `headless=False` (default) OR `headless=True`
@@ -144,11 +144,11 @@ There are a number of optional arguments you can specify during the instantiatio
 
 ### Running as a script (coming in `0.3.x`!)
 Following is deprecated...
-Enter the directory in which the pyYT_videos_list.py and execute.py exist (they should both be in the same directory to avoid refernce issues), and run the following command from your command line  
+Enter the directory in which the pyYT_videos_list.py and execute.py exist (they should both be in the same directory to avoid refernce issues), and run the following command from your command line
 ```
 python3 yt_videos_list
-```  
-You should see the following:  
+```
+You should see the following:
 ```
 What is the name of the YouTube channel you want to generate the list for?
 If you're unsure, click on the channel and look at the URL.

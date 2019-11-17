@@ -35,19 +35,19 @@ setup(
         'Topic :: Scientific/Engineering :: Information Analysis',
         'Topic :: Software Development :: Libraries :: Python Modules'
     ],
-    
+
     keywords='YoutTube videos URL scraping automation',
-    
+
     packages=find_packages(),
 #    packages=find_packages(),
-    
+
 #    package_dir={'':'src'},
-    
+
     python_requires='>=3.6.*, <4',
-    
+
     install_requires=['selenium>=3.141.0'],  # Optional
     # https://packaging.python.org/discussions/install-requires-vs-requirements/
-    
+
     # If there are data files included in your packages that need to be
     # installed, specify them here.
     #
@@ -56,7 +56,7 @@ setup(
     package_data={  # Optional
         # 'sample': ['package_data.dat'],
     },
-    
+
     # Although 'package_data' is the preferred approach, in some case you may
     # need to place data files outside of your packages. See:
     # http://docs.python.org/3.4/distutils/setupscript.html#installing-additional-files
@@ -64,7 +64,7 @@ setup(
     # In this case, 'data_file' will be installed into '<sys.prefix>/my_data'
     # data_files=[('my_data', ['data/data_file'])],  # Optional
 
-    
+
     # To provide executable scripts, use entry points in preference to the
     # "scripts" keyword. Entry points provide cross-platform support and allow
     # `pip` to create the appropriate form of executable for the target
@@ -77,7 +77,7 @@ setup(
 #            'sample=yt_videos_list:script',
 #        ],
 #    },
-    
+
     project_urls={
         'Source': 'https://github.com/Shail-Shouryya/yt_videos_list',
     },

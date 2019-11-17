@@ -6,7 +6,7 @@ def cli():
     Provides optional arguments for user increased visibility. Note that using some of the arguments may slow down run time and program may take slightly longer to execute.
     '''
     '''
-    
+
     first argument should be channel/user name
     -c --channelType sets channelType to "channel"
     -o --overwrite overwrite file if a file of the same name already exists in the output directory
@@ -28,4 +28,3 @@ def generate_list():
     _executionType = 'script'
     cliSpecifications = cli()
     execute.run(*cliSpecifications, _executionType)
-    
