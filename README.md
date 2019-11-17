@@ -7,7 +7,7 @@ with `TheChannelYouWantToScrape` replaced with the username of the channel.
 
 ## Quick Start
 ```
-pip install -U yt-videos-list
+pip3 install -U yt-videos-list
 ```
 
 ### Setting up Selenium dependencies for Mac
