@@ -70,7 +70,7 @@ def scrollToBottom (channel, channelType, seleniumInstance, scrollPauseTime):
     elements = driver.find_elements_by_xpath('//*[@id="video-title"]')
     end = time.perf_counter()
     functionTime = end - start - 0.6 # subtract 0.6 to account for the extra waiting time to verify end of page
-    print(f'It took {functionTime} to find all {len(elements)} videos from {url}\n')
+    print(f'It took {functionTime} seconds to find all {len(elements)} videos from {url}\n')
     return elements
 
 def writeToTxt (listOfVideos, channel, fileName, writeFormat):
@@ -99,7 +99,7 @@ def writeToTxt (listOfVideos, channel, fileName, writeFormat):
         
         end = time.perf_counter()
         functionTime = end - start
-        print(f'It took {functionTime} to write all {index} videos to {f.name}\n')
+        print(f'It took {functionTime} seconds to write all {index} videos to {f.name}\n')
         
 def saveToMemWriteToTxt (listOfVideos, channel, fileName, writeFormat):
     if writeFormat == 0:
@@ -129,7 +129,7 @@ def saveToMemWriteToTxt (listOfVideos, channel, fileName, writeFormat):
         print (f'Closing {fm.name}\n')
         end = time.perf_counter()
         functionTime = end - start
-        print(f'It took {functionTime} to write all {index} videos to {fm.name}\n')
+        print(f'It took {functionTime} seconds to write all {index} videos to {fm.name}\n')
 
 def writeToCsv (listOfVideos, channel, fileName, writeFormat):
     if writeFormat == 0:
