@@ -82,11 +82,9 @@ LG.generate_list(channel='sentdex', channelType='user')
 
 # "channel" channelType (example uses Billie Eilish):
 LG.generate_list(channel='UCiGm_E4ZwYSHV3bcW1pnSeQ', channelType='channel')
-```
 
-#### Naming the output file
-In order to get a more descriptive file name, add how you would like to describe the file for the (optional) third argument (`fileName`):
-```python
+### Naming the output file ###
+# In order to get a more descriptive file name, add how you would like to describe the file for the (optional) third argument ("fileName"):
 LG.generate_list(channel='UCiGm_E4ZwYSHV3bcW1pnSeQ', channelType='channel', fileName='BillieEilish')
 ```
 
