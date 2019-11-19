@@ -35,11 +35,11 @@ def verifyWriteFormat(fileName, fileType):
     return 'x'
 
 def setupBrowser(userBrowser):
-    if 'chrome' in userBrowser.lower():
+    if 'chrome' in userBrowser:
         return webdriver.Chrome
-    elif 'opera' in userBrowser.lower():
+    elif 'opera' in userBrowser:
         return webdriver.Opera
-    elif 'safari' in userBrowser.lower():
+    elif 'safari' in userBrowser:
         return webdriver.Safari
     else:
         return webdriver.Firefox

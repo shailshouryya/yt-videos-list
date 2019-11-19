@@ -86,7 +86,7 @@ class ListGenerator:
         self.chronological = chronological
         self.headless = headless
         self.scrollPauseTime = scrollPauseTime
-        self.browser = browser
+        self.browser = browser.lower()
 
     def generate_list(self, channel, channelType, fileName=None, _executionType='module'):
         '''
