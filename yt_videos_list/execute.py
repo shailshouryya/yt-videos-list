@@ -3,6 +3,36 @@ from yt_videos_list.output import Common, ModuleMessage, ScriptMessage
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 import time
+import os
+
+cMessage = Common()
+sMessage = ScriptMessage()
+
+def checkFileExists(filename):
+    if os.path.isfile(f'./{filename}'):
+        return True
+    return False
+
+def verifyWriteFormat(fileName, fileType):
+    filename = f'{fileName}VideosList.{fileType}'
+    fileExists = checkFileExists(filename)
+
+    def newWriteFormat():
+        userResponse = input()
+        if 'proceed' in userResponse.strip().lower():
+            return 'w'
+        elif 'skip' in userResponse.strip().lower():
+            return 0
+        else:
+            print ('\n' + cMessage.invalidResponse)
+            cMessage.fileAlreadyExistsPrompt(filename)
+            return newWriteFormat()
+
+    if fileExists is True:
+        cMessage.fileAlreadyExistsWarning(filename)
+        cMessage.fileAlreadyExistsPrompt(filename)
+        return newWriteFormat()
+    return 'x'
 
 def setupBrowser(userBrowser):
     if 'chrome' in userBrowser.lower():
@@ -29,13 +59,13 @@ def run(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat
     file_name = determineFileName(fileName)
 
     if txt is True and txtWriteFormat == 'x':
-        txtWriteFormat = program.verifyWriteFormat(file_name, 'txt')
+        txtWriteFormat = verifyWriteFormat(file_name, 'txt')
 
     if csv is True and csvWriteFormat == 'x':
-        csvWriteFormat = program.verifyWriteFormat(file_name, 'csv')
+        csvWriteFormat = verifyWriteFormat(file_name, 'csv')
 
     if docx is True and docxWriteFormat == 'x' is True:
-        docxWriteFormat = program.verifyWriteFormat(file_name, 'docx')
+        docxWriteFormat = verifyWriteFormat(file_name, 'docx')
 
     driver = setupBrowser(userBrowser)
 

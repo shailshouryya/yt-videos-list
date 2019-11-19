@@ -3,36 +3,9 @@ from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 import time
 import csv
-import os
 
 cMessage = Common()
 sMessage = ScriptMessage()
-
-def checkFileExists(filename):
-    if os.path.isfile(f'./{filename}'):
-        return True
-    return False
-
-def verifyWriteFormat(fileName, fileType):
-    filename = f'{fileName}VideosList.{fileType}'
-    fileExists = checkFileExists(filename)
-
-    def newWriteFormat():
-        userResponse = input()
-        if 'proceed' in userResponse.strip().lower():
-            return 'w'
-        elif 'skip' in userResponse.strip().lower():
-            return 0
-        else:
-            print ('\n' + cMessage.invalidResponse)
-            cMessage.fileAlreadyExistsPrompt(filename)
-            return newWriteFormat()
-
-    if fileExists is True:
-        cMessage.fileAlreadyExistsWarning(filename)
-        cMessage.fileAlreadyExistsPrompt(filename)
-        return newWriteFormat()
-    return 'x'
 
 def scrollToBottom (channel, channelType, seleniumInstance, scrollPauseTime):
     start = time.perf_counter()
