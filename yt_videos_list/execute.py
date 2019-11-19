@@ -1,5 +1,6 @@
 from yt_videos_list import program
 from yt_videos_list.output import Common, ModuleMessage, ScriptMessage
+import selenium
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 import time
@@ -75,10 +76,27 @@ def run(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat
         if executionType == 'module':
             print (mMessage.runInHeadless)
             print (mMessage.runInHeadlessExample)
-    else:
-        options = Options()
-        options.headless = True
-        driver = driver(options=options)
+    else: # headless is True
+        if userBrowser == 'firefox':
+            options = selenium.webdriver.firefox.options.Options()
+            options.headless = True
+            driver = driver(options=options)
+        if userBrowser == 'chrome':
+            # options = selenium.webdriver.chrome.options.Options()
+            options = webdriver.ChromeOptions()
+            options.add_argument('headless')
+            driver = driver(chrome_options=options)
+        if userBrowser == 'opera':
+            # Opera driver MRO: WebDriver -> OperaDriver -> selenium.webdriver.chrome.webdriver.WebDriver -> selenium.webdriver.remote.webdriver.WebDriver -> builtins.object
+            # options = selenium.webdriver.chrome.options.Options()
+            # options.headless = True
+            options = webdriver.ChromeOptions()
+            options.add_argument('headless')
+            driver = driver(options=options)
+            print ('\nHeadless mode is unsupported in OperaDriver. We are waiting on the Opera dev team to start offering support for headless mode to allow remote automation without opening a browser. We will update this when support is added...\n:)\n\n\n')
+        if userBrowser == 'safari':
+            driver = driver()
+            print ('\nHeadless mode is unsupported in SafariDriver. We are waiting on Apple to start offering support for headless mode to allow remote automation without opening a browser. We will update this when support is added...\n:)\n\n\n')
 
     with driver:
         videosList = program.scrollToBottom(channel, channelType, driver, scrollPauseTime)
