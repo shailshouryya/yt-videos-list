@@ -74,19 +74,12 @@ python3
 ```python
 from yt_videos_list import ListGenerator
 LG = ListGenerator(browser='firefox')
-LG.generate_list(channel='schafer5', channelType='user', fileName='CoreySchafer_ProgrammingTutorials')
+
+# "user" channelType (example uses Corey Schafer):
+LG.generate_list(channel='schafer5', channelType='user')
+
+# "channel" channelType (example uses freeCodeCamp) along with the optional fileName argument:
 LG.generate_list(channel='UC8butISFwT-Wl7EV0hUK0BQ', channelType='channel', fileName='freeCodeCamp.org')
-
-# "user" channelType (example uses sentdex):
-LG.generate_list(channel='sentdex', channelType='user')
-
-# "channel" channelType (example uses Billie Eilish):
-LG.generate_list(channel='UCiGm_E4ZwYSHV3bcW1pnSeQ', channelType='channel')
-
-### Naming the output file ###
-# In order to get a more descriptive file name, add how you would like to
-# describe the file for the (optional) third argument ("fileName"):
-LG.generate_list(channel='UCiGm_E4ZwYSHV3bcW1pnSeQ', channelType='channel', fileName='BillieEilish')
 
 # for more information:
 help(LG)
