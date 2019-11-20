@@ -81,7 +81,11 @@ LG.generate_list(channel='schafer5', channelType='user')
 # "channel" channelType (example uses freeCodeCamp) along with the optional fileName argument:
 LG.generate_list(channel='UC8butISFwT-Wl7EV0hUK0BQ', channelType='channel', fileName='freeCodeCamp.org')
 
-# for more information:
+# see the new files that were just created:
+import os
+os.system('ls -lt | head')
+
+# for more information on using the module:
 help(LG)
 ```
 
