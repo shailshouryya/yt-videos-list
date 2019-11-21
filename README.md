@@ -73,7 +73,7 @@ python3
 ```
 ```python
 from yt_videos_list import ListGenerator
-LG = ListGenerator(browser='firefox')
+LG = ListGenerator()
 
 # "user" channelType (example uses Corey Schafer):
 LG.generate_list(channel='schafer5', channelType='user')
