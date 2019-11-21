@@ -37,9 +37,9 @@ class ListGenerator:
              -> docxWriteFormat='x' (unsupported) OR docxWriteFormat='w'
 
         Options for the chronological argument ar
-          * True (this is the only chronological option currently supported right now :D) - write the files in order from oldest videos to most recent
-          * False (currently UNSUPPORTED!) - write the files in order from most recent to oldest.
-             -> chronological=True (default) OR chronological=False
+          * False (this is the only chronological option currently supported right now :D) - write the files in order from most recent to oldest.
+          * True (currently UNSUPPORTED!) - write the files in order from oldest videos to most recent
+             -> chronological=False (default) OR chronological=True
 
         Options for the headless option are
           * False (default) - run the browser with an open Selenium instance for viewing
