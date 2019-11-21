@@ -6,13 +6,20 @@ class Common:
     noNewVideosFound = 'No new videos were found since the last scroll. Waiting another 0.6 seconds to see if more videos can be loaded....'
     invalidResponse = 'The response you entered was invalid.'
 
+    runningDefaultBrowser = '\nNo browser specified during ListGenerator instantiation, running program using the Firefox browser.'
+    showBrowserOptions = "To use a different browser, specify the browser in the browser argument during the ListGenerator instantiation. For example:" + \
+        "\n    LG = ListGenerator(browser='opera')" + \
+        "\n    LG = ListGenerator(browser='safari')" + \
+        "\n    LG = ListGenerator(browser='chrome')" + \
+        "\n    LG = ListGenerator(browser='firefox')"
+
     @staticmethod
     def fileAlreadyExistsWarning(filename):
         print (f'\nWARNING! A file with the name {filename} already exists in the current directory.')
 
     @staticmethod
     def fileAlreadyExistsPrompt(filename):
-        print (f'If you wish to proceed and overwrite {filename}, type "proceed", otherwise move the file to a different directory on your computer before typing "proceed"\n')
+        print (f'If you wish to proceed and overwrite {filename}, type "proceed", otherwise move the file to a different directory on your computer before typing "proceed"')
         print (f'If you wish to skip the creation of {filename}, type "skip"')
 
 class ModuleMessage(Common):

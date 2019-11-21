@@ -36,14 +36,17 @@ def verifyWriteFormat(fileName, fileType):
     return 'x'
 
 def setupBrowser(userBrowser):
+    if userBrowser is None or 'firefox' in userBrowser:
+        if userBrowser is None:
+            print (cMessage.runningDefaultBrowser)
+            print (cMessage.showBrowserOptions)
+        return webdriver.Firefox
     if 'chrome' in userBrowser:
         return webdriver.Chrome
     elif 'opera' in userBrowser:
         return webdriver.Opera
     elif 'safari' in userBrowser:
         return webdriver.Safari
-    else:
-        return webdriver.Firefox
 
 def run(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat, docx, docxWriteFormat, chronological, headless, scrollPauseTime, userBrowser, executionType):
     mMessage = ModuleMessage()
