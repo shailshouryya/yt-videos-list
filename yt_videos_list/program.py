@@ -8,6 +8,7 @@ cMessage = Common()
 sMessage = ScriptMessage()
 
 def scrollToBottom (channel, channelType, seleniumInstance, scrollPauseTime):
+    seleniumInstance.set_window_size(780, 880)
     start = time.perf_counter()
     driver = seleniumInstance
 
