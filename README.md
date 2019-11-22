@@ -2,8 +2,7 @@
 
 ## Overview
 This repo is intended to provide a quick, simple way to create a list of all videos posted to any YouTube channel by providing just the URL to that user's channel videos. The general format for this is `https://www.youtube.com/user/TheChannelYouWantToScrape/videos` OR
-`https://www.youtube.com/channel/TheChannelYouWantToScrape/videos`,
-with `TheChannelYouWantToScrape` replaced with the username of the channel.
+`https://www.youtube.com/channel/TheChannelYouWantToScrape/videos`.
 
 ## Quick Start
 ```
