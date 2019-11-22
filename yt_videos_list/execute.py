@@ -3,6 +3,7 @@ from yt_videos_list.output import Common, ModuleMessage, ScriptMessage
 import selenium
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
+import platform
 import time
 import os
 
@@ -41,7 +42,7 @@ def setupBrowser(userBrowser):
             print (cMessage.runningDefaultBrowser)
             print (cMessage.showBrowserOptions)
         return webdriver.Firefox
-    if 'chrome' in userBrowser:
+    elif 'chrome' in userBrowser:
         return webdriver.Chrome
     elif 'opera' in userBrowser:
         return webdriver.Opera
@@ -74,32 +75,47 @@ def run(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat
     driver = setupBrowser(userBrowser)
 
     programStart = time.perf_counter()
-    if headless is False: # opens Selenium browsing instance
-        driver = driver()
-        if executionType == 'module':
-            print (mMessage.runInHeadless)
-            print (mMessage.runInHeadlessExample)
-    else: # headless is True
-        if userBrowser == 'firefox':
-            options = selenium.webdriver.firefox.options.Options()
-            options.headless = True
-            driver = driver(options=options)
-        if userBrowser == 'chrome':
-            # options = selenium.webdriver.chrome.options.Options()
-            options = webdriver.ChromeOptions()
-            options.add_argument('headless')
-            driver = driver(chrome_options=options)
-        if userBrowser == 'opera':
-            # Opera driver MRO: WebDriver -> OperaDriver -> selenium.webdriver.chrome.webdriver.WebDriver -> selenium.webdriver.remote.webdriver.WebDriver -> builtins.object
-            # options = selenium.webdriver.chrome.options.Options()
-            # options.headless = True
-            options = webdriver.ChromeOptions()
-            options.add_argument('headless')
-            driver = driver(options=options)
-            print ('\nHeadless mode is unsupported in OperaDriver. We are waiting on the Opera dev team to start offering support for headless mode to allow remote automation without opening a browser. We will update this when support is added...\n:)\n\n\n')
-        if userBrowser == 'safari':
+    try:
+        if headless is False: # opens Selenium browsing instance
             driver = driver()
-            print ('\nHeadless mode is unsupported in SafariDriver. We are waiting on Apple to start offering support for headless mode to allow remote automation without opening a browser. We will update this when support is added...\n:)\n\n\n')
+            if executionType == 'module':
+                print (mMessage.runInHeadless)
+                print (mMessage.runInHeadlessExample)
+        else: # headless is True
+            if userBrowser == 'firefox':
+                options = selenium.webdriver.firefox.options.Options()
+                options.headless = True
+                driver = driver(options=options)
+            if userBrowser == 'chrome':
+                # options = selenium.webdriver.chrome.options.Options()
+                options = webdriver.ChromeOptions()
+                options.add_argument('headless')
+                driver = driver(chrome_options=options)
+            if userBrowser == 'opera':
+                # Opera driver MRO: WebDriver -> OperaDriver -> selenium.webdriver.chrome.webdriver.WebDriver -> selenium.webdriver.remote.webdriver.WebDriver -> builtins.object
+                # options = selenium.webdriver.chrome.options.Options()
+                # options.headless = True
+                options = webdriver.ChromeOptions()
+                options.add_argument('headless')
+                driver = driver(options=options)
+                print ('\nHeadless mode is unsupported in OperaDriver. We are waiting on the Opera dev team to start offering support for headless mode to allow remote automation without opening a browser. We will update this when support is added...\n:)\n\n\n')
+            if userBrowser == 'safari':
+                driver = driver()
+                print ('\nHeadless mode is unsupported in SafariDriver. We are waiting on Apple to start offering support for headless mode to allow remote automation without opening a browser. We will update this when support is added...\n:)\n\n\n')
+    except selenium.common.exceptions.WebDriverException:
+        if platform.system().lower().startswith('darwin'):
+            os = 'macos'
+        elif platform.system().lower().startswith('windows'):
+            os = 'windows'
+        elif platform.system().lower().startswith('linux'):
+            os = 'linux'
+        else:
+            print ('The system you are using is not yet supported. Please create an issue at https://github.com/Shail-Shouryya/yt_videos_list/issues\nThanks!')
+
+        print (cMessage.tellUserToDownloadBrowser(userBrowser))
+        for browserVersionDownload in cMessage.browsersForOS[userBrowser][os]:
+            print (browserVersionDownload)
+        return
 
     with driver:
         videosList = program.scrollToBottom(channel, channelType, driver, scrollPauseTime)
