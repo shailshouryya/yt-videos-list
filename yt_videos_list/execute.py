@@ -114,6 +114,8 @@ def run(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat
         else:
             print ('The system you are using is not yet supported. Please create an issue at https://github.com/Shail-Shouryya/yt_videos_list/issues\nThanks!')
 
+        if userBrowser is None:
+            userBrowser = 'firefox' # to avoid AttributeError: 'NoneType' object has no attribute 'title' (in output.py)
         cMessage.tellUserToDownloadBrowser(userBrowser)
         for browserVersionDownload in cMessage.browsersForOS[userBrowser][os]:
             print (browserVersionDownload)
