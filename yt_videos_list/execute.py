@@ -112,7 +112,7 @@ def run(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat
         else:
             print ('The system you are using is not yet supported. Please create an issue at https://github.com/Shail-Shouryya/yt_videos_list/issues\nThanks!')
 
-        print (cMessage.tellUserToDownloadBrowser(userBrowser))
+        cMessage.tellUserToDownloadBrowser(userBrowser)
         for browserVersionDownload in cMessage.browsersForOS[userBrowser][os]:
             print (browserVersionDownload)
         return
