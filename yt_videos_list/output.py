@@ -113,7 +113,7 @@ class Common:
 
     @staticmethod
     def tellUserToDownloadBrowser(userBrowser):
-        print (f"It looks like you don't have the selenium dependencies set up to run this program using the remote {userBrowser}driver.\nThe version of your {userBrowser} browser - usually found by going to {userBrowser.title()} -> \"About browser\" within a {userBrowser} window - should match the first numbers before the decimal place of the {userBrowser}driver.\nPlease download it using the relevant command:\n")
+        print (f"It looks like you don't have the selenium dependency set up to run this program using the remote {userBrowser}driver.\nThe version of your {userBrowser} browser - usually found by going to {userBrowser.title()} -> \"About browser\" within a {userBrowser} window - should match the first numbers before the decimal place of the {userBrowser}driver.\nPlease download it using the relevant command:\n")
 
     @staticmethod
     def fileAlreadyExistsWarning(filename):
