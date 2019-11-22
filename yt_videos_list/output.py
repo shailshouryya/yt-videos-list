@@ -57,54 +57,54 @@ class Common:
                 '# mac64 Chromedriver 78.0.3904.105',
                 'curl -SL https://chromedriver.storage.googleapis.com/78.0.3904.105/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin \n',
                 '# mac64 Chromedriver 77.0.3865.40',
-                'curl -SL https://chromedriver.storage.googleapis.com/77.0.3865.40/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin',
+                'curl -SL https://chromedriver.storage.googleapis.com/77.0.3865.40/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin \n',
                 '# mac64 Chromedriver 76.0.3809.126',
-                'curl -SL https://chromedriver.storage.googleapis.com/76.0.3809.126/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin',
+                'curl -SL https://chromedriver.storage.googleapis.com/76.0.3809.126/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin \n',
                 '# mac64 Chromedriver 75.0.3770.140',
-                'curl -SL https://chromedriver.storage.googleapis.com/75.0.3770.140/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin',
+                'curl -SL https://chromedriver.storage.googleapis.com/75.0.3770.140/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin \n',
                 '# mac64 Chromedriver 74.0.3729.6',
-                'curl -SL https://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin',
+                'curl -SL https://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin \n',
                 '# mac64 Chromedriver 73.0.3683.68',
-                'curl -SL https://chromedriver.storage.googleapis.com/73.0.3683.68/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin',
+                'curl -SL https://chromedriver.storage.googleapis.com/73.0.3683.68/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin \n',
                 '# mac64 Chromedriver 2.46 (Supports Chrome v71-73)',
-                'curl -SL https://chromedriver.storage.googleapis.com/2.46/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin'
+                'curl -SL https://chromedriver.storage.googleapis.com/2.46/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin \n'
             ],
             'linux': [
                 '# linux64 Chromedriver 79.0.3945.36:',
-                'curl -SL https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin',
+                'curl -SL https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin \n',
                 '# linux64 Chromedriver 78.0.3904.105:',
-                'curl -SL https://chromedriver.storage.googleapis.com/78.0.3904.105/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin',
+                'curl -SL https://chromedriver.storage.googleapis.com/78.0.3904.105/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin \n',
                 '# linux64 Chromedriver 77.0.3865.40',
-                'curl -SL https://chromedriver.storage.googleapis.com/77.0.3865.40/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin',
+                'curl -SL https://chromedriver.storage.googleapis.com/77.0.3865.40/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin \n',
                 '# linux64 Chromedriver 76.0.3809.126',
-                'curl -SL https://chromedriver.storage.googleapis.com/76.0.3809.126/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin',
+                'curl -SL https://chromedriver.storage.googleapis.com/76.0.3809.126/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin \n',
                 '# linux64 Chromedriver 75.0.3770.140',
-                'curl -SL https://chromedriver.storage.googleapis.com/75.0.3770.140/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin',
+                'curl -SL https://chromedriver.storage.googleapis.com/75.0.3770.140/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin \n',
                 '# linux64 Chromedriver 74.0.3729.6',
-                'curl -SL https://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin',
+                'curl -SL https://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin \n',
                 '# linux64 Chromedriver 73.0.3683.68',
-                'curl -SL https://chromedriver.storage.googleapis.com/73.0.3683.68/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin',
+                'curl -SL https://chromedriver.storage.googleapis.com/73.0.3683.68/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin \n',
                 '# linux64 Chromedriver 2.46 (Supports Chrome v71-73)',
-                'curl -SL https://chromedriver.storage.googleapis.com/2.46/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin',
+                'curl -SL https://chromedriver.storage.googleapis.com/2.46/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin \n',
             ],
             'windows': [
                 'In progress!',
                 '# win32 Chromedriver 79.0.3945.36:',
-                'https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_win32.zip',
+                'https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_win32.zip \n',
                 '# win32 Chromedriver 78.0.3904.105:',
-                'https://chromedriver.storage.googleapis.com/78.0.3904.105/chromedriver_win32.zip',
+                'https://chromedriver.storage.googleapis.com/78.0.3904.105/chromedriver_win32.zip \n',
                 '# win32 Chromedriver 77.0.3865.40',
-                'https://chromedriver.storage.googleapis.com/77.0.3865.40/chromedriver_win32.zip',
+                'https://chromedriver.storage.googleapis.com/77.0.3865.40/chromedriver_win32.zip \n',
                 '# win32 Chromedriver 76.0.3809.126',
-                'https://chromedriver.storage.googleapis.com/76.0.3809.126/chromedriver_win32.zip'
+                'https://chromedriver.storage.googleapis.com/76.0.3809.126/chromedriver_win32.zip \n'
                 '# win32 Chromedriver 75.0.3770.140',
-                'https://chromedriver.storage.googleapis.com/75.0.3770.140/chromedriver_win32.zip'
+                'https://chromedriver.storage.googleapis.com/75.0.3770.140/chromedriver_win32.zip \n'
                 '# win32 Chromedriver 74.0.3729.6',
-                'https://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_win32.zip'
+                'https://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_win32.zip \n'
                 '# win32 Chromedriver 73.0.3683.68',
-                'https://chromedriver.storage.googleapis.com/73.0.3683.68/chromedriver_win32.zip'
+                'https://chromedriver.storage.googleapis.com/73.0.3683.68/chromedriver_win32.zip \n'
                 '# win32 Chromedriver 2.46 (Supports Chrome v71-73)',
-                'https://chromedriver.storage.googleapis.com/2.46/chromedriver_win32.zip'
+                'https://chromedriver.storage.googleapis.com/2.46/chromedriver_win32.zip \n'
 
 
             ]
@@ -113,7 +113,7 @@ class Common:
 
     @staticmethod
     def tellUserToDownloadBrowser(userBrowser):
-        print (f"It looks like you don't have the dependencies set up to run this program using the remote {userBrowser} browser. The browser version of your {userBrowser} should match the first numbers (before the decimal place) of the {userBrowser}. Please download it using the relevant command:\n")
+        print (f"It looks like you don't have the selenium dependencies set up to run this program using the remote {userBrowser}driver.\nThe version of your {userBrowser} browser - usually found by going to {userBrowser.title()} -> \"About browser\" within a {userBrowser} window - should match the first numbers before the decimal place of the {userBrowser}driver.\nPlease download it using the relevant command:\n")
 
     @staticmethod
     def fileAlreadyExistsWarning(filename):
