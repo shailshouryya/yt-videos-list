@@ -52,6 +52,7 @@ class Common:
         },
         'chrome': {
             'macos' : [
+                'Your Chrome browser version should match the first numbers before the decimal place of the chromedriver\n',
                 '# mac64 Chromedriver 79.0.3945.36:',
                 'curl -SL https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin \n',
                 '# mac64 Chromedriver 78.0.3904.105',
@@ -70,6 +71,7 @@ class Common:
                 'curl -SL https://chromedriver.storage.googleapis.com/2.46/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin \n'
             ],
             'linux': [
+                'Your Chrome browser version should match the first numbers before the decimal place of the chromedriver\n',
                 '# linux64 Chromedriver 79.0.3945.36:',
                 'curl -SL https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin \n',
                 '# linux64 Chromedriver 78.0.3904.105:',
@@ -89,6 +91,7 @@ class Common:
             ],
             'windows': [
                 'In progress!',
+                'Your Chrome browser version should match the first numbers before the decimal place of the chromedriver\n',
                 '# win32 Chromedriver 79.0.3945.36:',
                 'https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_win32.zip \n',
                 '# win32 Chromedriver 78.0.3904.105:',
@@ -113,7 +116,7 @@ class Common:
 
     @staticmethod
     def tellUserToDownloadBrowser(userBrowser):
-        print (f"It looks like you don't have the selenium dependency set up to run this program using the remote {userBrowser}driver.\nThe version of your {userBrowser.title()} browser - usually found by going to {userBrowser.title()} -> \"About browser\" within a {userBrowser.title()} window - should match the first numbers before the decimal place of the {userBrowser}driver.\nPlease download it using the relevant command:\n")
+        print (f"It looks like you don't have the correct selenium dependency set up to run this program using the remote {userBrowser}driver.\nThe version of your {userBrowser.title()} browser - usually found by going to {userBrowser.title()} -> \"About browser\" within a {userBrowser.title()} window - should match the comment for the corresponding command.\nPlease download it using the relevant command:\n")
 
     @staticmethod
     def fileAlreadyExistsWarning(filename):
