@@ -6,7 +6,7 @@ with open("README.md", "r", encoding='utf-8') as f:
 
 setup(
     name='yt_videos_list',
-    version='0.2.7',
+    version='0.2.8',
     description='Python package to extract YouTube video titles and corresponding URLs for a specific channel',
     long_description=long_description,
     long_description_content_type='text/markdown',
