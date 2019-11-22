@@ -37,10 +37,7 @@ def verifyWriteFormat(fileName, fileType):
     return 'x'
 
 def setupBrowser(userBrowser):
-    if userBrowser is None or 'firefox' in userBrowser:
-        if userBrowser is None:
-            print (cMessage.runningDefaultBrowser)
-            print (cMessage.showBrowserOptions)
+    if 'firefox' in userBrowser:
         return webdriver.Firefox
     elif 'chrome' in userBrowser:
         return webdriver.Chrome
@@ -71,6 +68,11 @@ def run(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat
 
     if docx is True and docxWriteFormat == 'x' is True:
         docxWriteFormat = verifyWriteFormat(file_name, 'docx')
+
+    if userBrowser is None:
+        print (cMessage.runningDefaultBrowser)
+        print (cMessage.showBrowserOptions)
+        userBrowser = 'firefox'
 
     driver = setupBrowser(userBrowser)
 
@@ -114,8 +116,6 @@ def run(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat
         else:
             print ('The system you are using is not yet supported. Please create an issue at https://github.com/Shail-Shouryya/yt_videos_list/issues\nThanks!')
 
-        if userBrowser is None:
-            userBrowser = 'firefox' # to avoid AttributeError: 'NoneType' object has no attribute 'title' (in output.py)
         cMessage.tellUserToDownloadBrowser(userBrowser)
         for browserVersionDownload in cMessage.browsersForOS[userBrowser][os]:
             print (browserVersionDownload)
