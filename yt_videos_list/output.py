@@ -13,6 +13,14 @@ class Common:
         "\n    LG = ListGenerator(browser='chrome')" + \
         "\n    LG = ListGenerator(browser='firefox')"
 
+    geckodriverInfo  = 'For more information about the geckodriver, please visit https://github.com/mozilla/geckodriver'
+    operadriverInfo  = 'For more information about the operadriver, please visit https://github.com/operasoftware/operachromiumdriver'
+    chromedriverInfo = 'For more information about the chromedriver, please visit https://sites.google.com/a/chromium.org/chromedriver/home'
+
+    geckodriverDownloadInstructions = '(The given command downloads a geckodriver version that is compatible with Firefox versions ≥ 60. To see more information about the differences compared to older versions, please visit https://github.com/mozilla/geckodriver/releases)\n'
+    operadriverDownloadInstructions = '(Your Opera browser version should match the "supports Opera ## release" below)\n'
+    chromedriverDownloadInstructions = '(Your Chrome browser version should match the first numbers before the decimal place of the chromedriver version below)\n'
+
     browsersForOS = {
         'firefox': {
             'macos': [
@@ -52,7 +60,7 @@ class Common:
         },
         'chrome': {
             'macos' : [
-                'Your Chrome browser version should match the first numbers before the decimal place of the chromedriver\n',
+                f'{chromedriverDownloadInstructions}',
                 '# mac64 Chromedriver 79.0.3945.36:',
                 'curl -SL https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin \n',
                 '# mac64 Chromedriver 78.0.3904.105',
@@ -71,7 +79,7 @@ class Common:
                 'curl -SL https://chromedriver.storage.googleapis.com/2.46/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin \n'
             ],
             'linux': [
-                'Your Chrome browser version should match the first numbers before the decimal place of the chromedriver\n',
+                f'{chromedriverDownloadInstructions}',
                 '# linux64 Chromedriver 79.0.3945.36:',
                 'curl -SL https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin \n',
                 '# linux64 Chromedriver 78.0.3904.105:',
@@ -91,7 +99,7 @@ class Common:
             ],
             'windows': [
                 'In progress!',
-                'Your Chrome browser version should match the first numbers before the decimal place of the chromedriver\n',
+                f'{chromedriverDownloadInstructions}',
                 '# win32 Chromedriver 79.0.3945.36:',
                 'https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_win32.zip \n',
                 '# win32 Chromedriver 78.0.3904.105:',
@@ -108,15 +116,13 @@ class Common:
                 'https://chromedriver.storage.googleapis.com/73.0.3683.68/chromedriver_win32.zip \n'
                 '# win32 Chromedriver 2.46 (Supports Chrome v71-73)',
                 'https://chromedriver.storage.googleapis.com/2.46/chromedriver_win32.zip \n'
-
-
             ]
         }
     }
 
     @staticmethod
     def tellUserToDownloadBrowser(userBrowser):
-        print (f"It looks like you don't have the correct selenium dependency set up to run this program using the remote {userBrowser}driver.\nThe version of your {userBrowser.title()} browser - usually found by going to {userBrowser.title()} -> \"About browser\" within a {userBrowser.title()} window - should match the comment for the corresponding command.\nPlease download it using the relevant command:\n")
+        print (f"\nIt looks like you don't have the correct selenium dependency set up to run this program using the remote {userBrowser}driver.\nThe version of your {userBrowser.title()} browser - usually found by going to {userBrowser.title()} -> \"About browser\" within a {userBrowser.title()} window - should match the comment for the corresponding command.\nPlease download it using the relevant command:")
 
     @staticmethod
     def fileAlreadyExistsWarning(filename):
