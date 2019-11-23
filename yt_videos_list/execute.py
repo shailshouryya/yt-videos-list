@@ -104,9 +104,10 @@ def run(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat
             if userBrowser == 'safari':
                 driver = driver()
                 print ('\nHeadless mode is unsupported in SafariDriver. We are waiting on Apple to start offering support for headless mode to allow remote automation without opening a browser. We will update this when support is added...\n:)\n\n\n')
-    except selenium.common.exceptions.WebDriverException:
+    except selenium.common.exceptions.WebDriverException as e:
         # selenium.common.exceptions.WebDriverException: Message: 'BROWSERdriver' executable needs to be in PATH. Please see https://................
         # for some reason this also catches selenium.common.exceptions.SessionNotCreatedException: Message: session not created: This version of BROWSERDriver only supports BROWSER version ##
+        print (f'There was an error while trying to open up the remote selenium instance. The exact error was:\n{e}\nDon\'t worry though, this is an easy fix!')
         if platform.system().lower().startswith('darwin'):
             os = 'macos'
         elif platform.system().lower().startswith('windows'):
