@@ -10,14 +10,9 @@ import os
 cMessage = Common()
 sMessage = ScriptMessage()
 
-def checkFileExists(filename):
-    if os.path.isfile(f'./{filename}'):
-        return True
-    return False
-
 def verifyWriteFormat(fileName, fileType):
     filename = f'{fileName}VideosList.{fileType}'
-    fileExists = checkFileExists(filename)
+    fileExists = True if os.path.isfile(f'./{filename}') else False
 
     def newWriteFormat():
         userResponse = input()
@@ -107,7 +102,7 @@ def run(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat
     except selenium.common.exceptions.WebDriverException as e:
         # selenium.common.exceptions.WebDriverException: Message: 'BROWSERdriver' executable needs to be in PATH. Please see https://................
         # for some reason this also catches selenium.common.exceptions.SessionNotCreatedException: Message: session not created: This version of BROWSERDriver only supports BROWSER version ##
-        print (f'There was an error while trying to open up the remote selenium instance. The exact error was:\n{e}\nDon\'t worry though, this is an easy fix!')
+        print (f'\nThere was an error while trying to open up the remote selenium instance. The exact error was:\n{e}\nDon\'t worry though, this is an easy fix!')
         if platform.system().lower().startswith('darwin'):
             os = 'macos'
         elif platform.system().lower().startswith('windows'):
