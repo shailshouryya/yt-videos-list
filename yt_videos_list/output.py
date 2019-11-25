@@ -17,7 +17,7 @@ class Common:
     operadriverInfo  = '# For more information about the operadriver, please visit https://github.com/operasoftware/operachromiumdriver\n'
     chromedriverInfo = '# For more information about the chromedriver, please visit https://sites.google.com/a/chromium.org/chromedriver/home\n'
 
-    geckodriverDownloadInstructions = '(The given command downloads a geckodriver version that is compatible with Firefox versions ≥ 60. To see more information about the differences compared to older versions, please visit https://github.com/mozilla/geckodriver/releases)\n'
+    geckodriverDownloadInstructions = '(The given command downloads a geckodriver ("Firefoxdriver") version that is compatible with Firefox versions ≥ 60. To see more information about the differences compared to older versions, please visit https://github.com/mozilla/geckodriver/releases)\n'
     operadriverDownloadInstructions = '(Your Opera browser version should match the "supports Opera ## release" below)\n'
     chromedriverDownloadInstructions = '(Your Chrome browser version should match the first numbers before the decimal place of the chromedriver version below)\n'
 
@@ -26,71 +26,83 @@ class Common:
     browsersForOS = {
         'firefox': {
             'macos': [
-                'curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-macos.tar.gz | tar -xzvf - -C /usr/local/bin',
-                'curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-macos.tar.gz | tar -xzvf - -C /usr/local/bin',
-                'curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-macos.tar.gz | tar -xzvf - -C /usr/local/bin',
+                f'{geckodriverDownloadInstructions}',
+                '# macos geckodriver (Firefoxdriver) v0.26.0',
+                'curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-macos.tar.gz | tar -xzvf - -C /usr/local/bin \n',
                 f'{terminalCopyPasteDirections}'
             ],
             'linux': [
-
+                f'{geckodriverDownloadInstructions}',
+                '# linux64 geckodriver (Firefoxdriver) v0.26.0',
+                'curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux64.tar.gz | tar -xzvf - -C /usr/local/bin \n',
+                '# linux32 geckodriver (Firefoxdriver) v0.26.0',
+                'curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux32.tar.gz | tar -xzvf - -C /usr/local/bin \n',
                 f'{terminalCopyPasteDirections}'
             ],
             'windows': [
-                'In progress!'
+                'In progress!',
+                f'{geckodriverDownloadInstructions}',
+                '# windows64 geckodriver (Firefoxdriver) v0.26.0',
+                'https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win64.zip \n',
+                '# windows32 geckodriver (Firefoxdriver) v0.26.0',
+                'https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win32.zip \n'
             ]
         },
         'opera': {
             'macos' : [
-                '# mac64 Operadriver 78.0.3904.87 (supports Opera Stable 65 release)'
-                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.78.0.3904.87/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin && rm /usr/local/bin/sha512_sum \n',
-                '# mac64 Operadriver 77.0.3865.120 (supports Opera 64 release)'
+                f'{operadriverDownloadInstructions}',
+                '# mac64 Operadriver 78.0.3904.87 (supports Opera Stable 65 release)',
+                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.78.0.3904.87/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin --strip-components=1 && rm /usr/local/bin/sha512_sum \n',
+                '# mac64 Operadriver 77.0.3865.120 (supports Opera 64 release)',
                 'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.77.0.3865.120/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin --strip-components=1 && rm /usr/local/bin/sha512_sum \n',
                 '# mac64 Operadriver 76.0.3809.132 (supports Opera 63 release)',
-                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.76.0.3809.132/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin && rm /usr/local/bin/sha512_sum \n',
+                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.76.0.3809.132/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin --strip-components=1 && rm /usr/local/bin/sha512_sum \n',
                 '# mac64 Operadriver 75.0.3770.100 (supports Opera 62 release)',
-                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.75.0.3770.100/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin && rm /usr/local/bin/sha512_sum \n',
+                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.75.0.3770.100/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin --strip-components=1 && rm /usr/local/bin/sha512_sum \n',
                 '# mac64 Operadriver 2.45 (supports Opera 60 release)',
-                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.45/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin && rm /usr/local/bin/sha512_sum \n',
+                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.45/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin --strip-components=1 && rm /usr/local/bin/sha512_sum \n',
                 '# mac64 Operadriver 2.42 (supports Opera 58 release)',
-                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.42/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin && rm /usr/local/bin/sha512_sum \n',
+                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.42/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin --strip-components=1 && rm /usr/local/bin/sha512_sum \n',
                 '# mac64 Operadriver 2.41 (supports Opera 57 release)',
-                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.41/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin && rm /usr/local/bin/sha512_sum \n',
+                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.41/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin --strip-components=1 && rm /usr/local/bin/sha512_sum \n',
                 '# mac64 Operadriver 2.40 (supports Opera 56 release)',
-                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.40/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin && rm /usr/local/bin/sha512_sum \n',
+                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.40/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin --strip-components=1 && rm /usr/local/bin/sha512_sum \n',
                 '# mac64 Operadriver 2.38 (supports Opera 55 release)',
-                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.38/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin && rm /usr/local/bin/sha512_sum \n',
+                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.38/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin --strip-components=1 && rm /usr/local/bin/sha512_sum \n',
                 '# mac64 Operadriver 2.37 (supports Opera 54 release)',
-                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.37/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin && rm /usr/local/bin/sha512_sum \n',
+                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.37/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin --strip-components=1 && rm /usr/local/bin/sha512_sum \n',
                 f'{operadriverInfo}',
                 f'{terminalCopyPasteDirections}'
 
             ],
             'linux': [
+                f'{operadriverDownloadInstructions}',
                 '# linux64 Operadriver 78.0.3904.87 (supports Opera Stable 65 release)',
-                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.78.0.3904.87/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin && rm /usr/local/bin/sha512_sum \n',
+                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.78.0.3904.87/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin --strip-components=1 && rm /usr/local/bin/sha512_sum \n',
                 '# linux64 Operadriver 77.0.3865.120 (supports Opera 64 release)',
-                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.77.0.3865.120/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin && rm /usr/local/bin/sha512_sum \n',
+                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.77.0.3865.120/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin --strip-components=1 && rm /usr/local/bin/sha512_sum \n',
                 '# linux64 Operadriver 76.0.3809.132 (supports Opera 63 release)',
-                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.76.0.3809.132/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin && rm /usr/local/bin/sha512_sum \n',
+                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.76.0.3809.132/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin --strip-components=1 && rm /usr/local/bin/sha512_sum \n',
                 '# linux64 Operadriver 75.0.3770.100 (supports Opera 62) release',
-                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.75.0.3770.100/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin && rm /usr/local/bin/sha512_sum \n',
+                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.75.0.3770.100/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin --strip-components=1 && rm /usr/local/bin/sha512_sum \n',
                 '# linux64 Operadriver 2.45 (supports Opera 60 release)',
-                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.45/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin && rm /usr/local/bin/sha512_sum \n',
+                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.45/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin --strip-components=1 && rm /usr/local/bin/sha512_sum \n',
                 '# linux64 Operadriver 2.42 (supports Opera 58 release)',
-                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.42/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin && rm /usr/local/bin/sha512_sum \n',
+                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.42/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin --strip-components=1 && rm /usr/local/bin/sha512_sum \n',
                 '# linux64 Operadriver 2.41 (supports Opera 57) release',
-                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.41/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin && rm /usr/local/bin/sha512_sum \n',
+                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.41/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin --strip-components=1 && rm /usr/local/bin/sha512_sum \n',
                 '# linux64 Operadriver 2.40 (supports Opera 56 release)',
-                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.40/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin && rm /usr/local/bin/sha512_sum \n',
+                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.40/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin --strip-components=1 && rm /usr/local/bin/sha512_sum \n',
                 '# linux64 Operadriver 2.38 (supports Opera 55 release)',
-                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.38/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin && rm /usr/local/bin/sha512_sum \n',
+                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.38/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin &--strip-components=1 && rm /usr/local/bin/sha512_sum \n',
                 '# linux64 Operadriver 2.37 (supports Opera 54 release)',
-                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.37/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin && rm /usr/local/bin/sha512_sum \n',
-                f'{operadriverInfo}'
+                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.37/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin --strip-components=1 && rm /usr/local/bin/sha512_sum \n',
+                f'{operadriverInfo}',
                 f'{terminalCopyPasteDirections}'
             ],
             'windows': [
                 'In progress!',
+                f'{operadriverDownloadInstructions}',
                 '# windows64 Operadriver 78.0.3904.87 (supports Opera Stable 65 release)',
                 'https://github.com/operasoftware/operachromiumdriver/releases/download/v.78.0.3904.87/operadriver_win64.zip \n',
                 '# windows64 Operadriver 77.0.3865.120 (supports Opera 64 release)',
@@ -136,13 +148,13 @@ class Common:
         },
         'safari': {
             'macos' : [
-                f'{terminalCopyPasteDirections}'
+                'In order to run safaridriver, you need to enable remote automation. To do so, open up the Safari browser and in the menu bar, go to\n"Safari" -> "Preferences" -> "Advanced" tab -> click "Show develop menu in menu bar"\nOnce you do that, "Develop" should appear in your menu bar. Click on the "Develop" bar, and then enable "Allow Remote Automation" (should be near the bottom of the list).\n\nAfter doing that, try rerunning the last command!\n :)'
             ],
             'linux': [
-                f'{terminalCopyPasteDirections}'
+                'Safari is probably not supported on Linux operating systems. In order for the safaridriver to run on a Linux OS, you will likely need to do many manual configurations. For this reason, this package does not provide built in support for safaridriver on a Linux OS.'
             ],
             'windows': [
-                'Not supported!'
+                'Safari is probably not supported on Windows operating systems. In order for the safaridriver to run on a Windows OS, you will likely need to do many manual configurations. For this reason, this package does not provide built in support for safaridriver on a Windows OS.'
             ]
         },
         'chrome': {
