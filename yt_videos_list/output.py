@@ -13,13 +13,15 @@ class Common:
         "\n    LG = ListGenerator(browser='chrome')" + \
         "\n    LG = ListGenerator(browser='firefox')"
 
-    geckodriverInfo  = 'For more information about the geckodriver, please visit https://github.com/mozilla/geckodriver'
-    operadriverInfo  = 'For more information about the operadriver, please visit https://github.com/operasoftware/operachromiumdriver'
-    chromedriverInfo = 'For more information about the chromedriver, please visit https://sites.google.com/a/chromium.org/chromedriver/home'
+    geckodriverInfo  = '# For more information about the geckodriver, please visit https://github.com/mozilla/geckodriver\n'
+    operadriverInfo  = '# For more information about the operadriver, please visit https://github.com/operasoftware/operachromiumdriver\n'
+    chromedriverInfo = '# For more information about the chromedriver, please visit https://sites.google.com/a/chromium.org/chromedriver/home\n'
 
     geckodriverDownloadInstructions = '(The given command downloads a geckodriver version that is compatible with Firefox versions ≥ 60. To see more information about the differences compared to older versions, please visit https://github.com/mozilla/geckodriver/releases)\n'
     operadriverDownloadInstructions = '(Your Opera browser version should match the "supports Opera ## release" below)\n'
     chromedriverDownloadInstructions = '(Your Chrome browser version should match the first numbers before the decimal place of the chromedriver version below)\n'
+
+    terminalCopyPasteDirections = 'Once you determine the right version to download, copy the command, open a new terminal session (usually possible with CMD+N or CMD+T from an active terminal session), and paste the command you just copied. Once you\'ve done that, you should be able to come back to this session and rerun the last command without an error!'
 
     browsersForOS = {
         'firefox': {
@@ -27,9 +29,11 @@ class Common:
                 'curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-macos.tar.gz | tar -xzvf - -C /usr/local/bin',
                 'curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-macos.tar.gz | tar -xzvf - -C /usr/local/bin',
                 'curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-macos.tar.gz | tar -xzvf - -C /usr/local/bin',
+                f'{terminalCopyPasteDirections}'
             ],
             'linux': [
 
+                f'{terminalCopyPasteDirections}'
             ],
             'windows': [
                 'In progress!'
@@ -37,22 +41,67 @@ class Common:
         },
         'opera': {
             'macos' : [
-                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.77.0.3865.120/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin --strip-components=1 && rm /usr/local/bin/sha512_sum'
+                '# mac64 Operadriver 78.0.3904.87 (supports Opera Stable 65)'
+                '# mac64 Operadriver '
+                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.77.0.3865.120/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin --strip-components=1 && rm /usr/local/bin/sha512_sum',
+                '# mac64 Operadriver ',
+
+                '# mac64 Operadriver ',
+                '# mac64 Operadriver ',
+                '# mac64 Operadriver ',
+                '# mac64 Operadriver ',
+                '# mac64 Operadriver ',
+                '# mac64 Operadriver ',
+                '# mac64 Operadriver ',
+                f'{operadriverInfo}',
+                f'{terminalCopyPasteDirections}'
 
             ],
             'linux': [
-
+                '# linux64 Operadriver 78.0.3904.87 (supports Opera Stable 65)',
+                '# linux64 Operadriver',
+                '# linux64 Operadriver',
+                '# linux64 Operadriver',
+                '# linux64 Operadriver',
+                '# linux64 Operadriver',
+                '# linux64 Operadriver',
+                '# linux64 Operadriver',
+                '# linux64 Operadriver',
+                '# linux64 Operadriver',
+                f'{operadriverInfo}'
+                f'{terminalCopyPasteDirections}'
             ],
             'windows': [
-                'In progress!'
+                'In progress!',
+                '# windows64 Operadriver 78.0.3904.87 (supports Opera Stable 65)',
+                '# windows64 Operadriver',
+                '# windows64 Operadriver',
+                '# windows64 Operadriver',
+                '# windows64 Operadriver',
+                '# windows64 Operadriver',
+                '# windows64 Operadriver',
+                '# windows64 Operadriver',
+                '# windows64 Operadriver',
+                '# windows64 Operadriver',
+                '# windows32 Operadriver 78.0.3904.87 (supports Opera Stable 65)',
+                '# windows32 Operadriver',
+                '# windows32 Operadriver',
+                '# windows32 Operadriver',
+                '# windows32 Operadriver',
+                '# windows32 Operadriver',
+                '# windows32 Operadriver',
+                '# windows32 Operadriver',
+                '# windows32 Operadriver',
+                '# windows32 Operadriver',
+                f'{operadriverInfo}'
             ]
         },
         'safari': {
             'macos' : [
-
+                f'{terminalCopyPasteDirections}'
             ],
             'linux': [
-
+                f'{terminalCopyPasteDirections}'
             ],
             'windows': [
                 'Not supported!'
@@ -76,7 +125,9 @@ class Common:
                 '# mac64 Chromedriver 73.0.3683.68',
                 'curl -SL https://chromedriver.storage.googleapis.com/73.0.3683.68/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin \n',
                 '# mac64 Chromedriver 2.46 (Supports Chrome v71-73)',
-                'curl -SL https://chromedriver.storage.googleapis.com/2.46/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin \n'
+                'curl -SL https://chromedriver.storage.googleapis.com/2.46/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin \n',
+                f'{chromedriverInfo}',
+                f'{terminalCopyPasteDirections}'
             ],
             'linux': [
                 f'{chromedriverDownloadInstructions}',
@@ -96,6 +147,8 @@ class Common:
                 'curl -SL https://chromedriver.storage.googleapis.com/73.0.3683.68/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin \n',
                 '# linux64 Chromedriver 2.46 (Supports Chrome v71-73)',
                 'curl -SL https://chromedriver.storage.googleapis.com/2.46/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin \n',
+                f'{chromedriverInfo}',
+                f'{terminalCopyPasteDirections}'
             ],
             'windows': [
                 'In progress!',
@@ -115,7 +168,8 @@ class Common:
                 '# win32 Chromedriver 73.0.3683.68',
                 'https://chromedriver.storage.googleapis.com/73.0.3683.68/chromedriver_win32.zip \n'
                 '# win32 Chromedriver 2.46 (Supports Chrome v71-73)',
-                'https://chromedriver.storage.googleapis.com/2.46/chromedriver_win32.zip \n'
+                'https://chromedriver.storage.googleapis.com/2.46/chromedriver_win32.zip \n',
+                f'{chromedriverInfo}'
             ]
         }
     }
