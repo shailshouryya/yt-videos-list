@@ -17,23 +17,23 @@ class Common:
     operadriverInfo  = '# For more information about the operadriver, please visit https://github.com/operasoftware/operachromiumdriver\n'
     chromedriverInfo = '# For more information about the chromedriver, please visit https://sites.google.com/a/chromium.org/chromedriver/home\n'
 
-    geckodriverDownloadInstructions = '(The given command downloads a geckodriver ("Firefoxdriver") version that is compatible with Firefox versions ≥ 60. To see more information about the differences compared to older versions, please visit https://github.com/mozilla/geckodriver/releases)\n'
-    operadriverDownloadInstructions = '(Your Opera browser version should match the "supports Opera ## release" below)\n'
-    chromedriverDownloadInstructions = '(Your Chrome browser version should match the first numbers before the decimal place of the chromedriver version below)\n'
+    geckodriverDownloadInstructions = '(The given command downloads a geckodriver ("Firefoxdriver") version that is compatible with Firefox versions ≥ 60. To see more information about the differences compared to older versions, please visit https://github.com/mozilla/geckodriver/releases)'
+    operadriverDownloadInstructions = '(Your Opera browser version should match the "supports Opera ## release" below)'
+    chromedriverDownloadInstructions = '(Your Chrome browser version should match the first numbers before the decimal place of the chromedriver version below)'
 
-    terminalCopyPasteDirections = 'Once you determine the right version to download, copy the command, open a new terminal session (usually possible with CMD+N or CMD+T from an active terminal session), and paste the command you just copied. Once you\'ve done that, you should be able to come back to this session and rerun the last command without an error!\n\n\n'
+    terminalCopyPasteDirections = 'Once you determine the right version to download, copy the command, open a new terminal session (usually possible with CMD+N or CMD+T from an active terminal session), and paste the command you just copied. Once you\'ve done that, you should be able to come back to this session and rerun the last command without an error!\n'
 
     browsersForOS = {
         'firefox': {
             'macos': [
-                f'{geckodriverDownloadInstructions}',
                 f'{terminalCopyPasteDirections}',
+                f'{geckodriverDownloadInstructions}',
                 '# macos geckodriver (Firefoxdriver) v0.26.0',
                 'curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-macos.tar.gz | tar -xzvf - -C /usr/local/bin/ \n'
             ],
             'linux': [
-                f'{geckodriverDownloadInstructions}',
                 f'{terminalCopyPasteDirections}',
+                f'{geckodriverDownloadInstructions}',
                 '# linux64 geckodriver (Firefoxdriver) v0.26.0',
                 'curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux64.tar.gz | tar -xzvf - -C /usr/local/bin/ \n',
                 '# linux32 geckodriver (Firefoxdriver) v0.26.0',
@@ -41,8 +41,8 @@ class Common:
             ],
             'windows': [
                 'In progress!',
-                f'{geckodriverDownloadInstructions}',
                 f'{terminalCopyPasteDirections}',
+                f'{geckodriverDownloadInstructions}',
                 '# windows64 geckodriver (Firefoxdriver) v0.26.0',
                 'https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win64.zip \n',
                 '# windows32 geckodriver (Firefoxdriver) v0.26.0',
@@ -51,8 +51,8 @@ class Common:
         },
         'opera': {
             'macos' : [
-                f'{operadriverDownloadInstructions}',
                 f'{terminalCopyPasteDirections}',
+                f'{operadriverDownloadInstructions}',
                 '# mac64 Operadriver 78.0.3904.87 (supports Opera Stable 65 release)',
                 'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.78.0.3904.87/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum \n',
                 '# mac64 Operadriver 77.0.3865.120 (supports Opera 64 release)',
@@ -76,8 +76,8 @@ class Common:
                 f'{operadriverInfo}'
             ],
             'linux': [
-                f'{operadriverDownloadInstructions}',
                 f'{terminalCopyPasteDirections}',
+                f'{operadriverDownloadInstructions}',
                 '# linux64 Operadriver 78.0.3904.87 (supports Opera Stable 65 release)',
                 'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.78.0.3904.87/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum \n',
                 '# linux64 Operadriver 77.0.3865.120 (supports Opera 64 release)',
@@ -159,8 +159,8 @@ class Common:
         },
         'chrome': {
             'macos' : [
-                f'{chromedriverDownloadInstructions}',
                 f'{terminalCopyPasteDirections}',
+                f'{chromedriverDownloadInstructions}',
                 '# mac64 Chromedriver 79.0.3945.36:',
                 'curl -SL https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ \n',
                 '# mac64 Chromedriver 78.0.3904.105',
@@ -180,8 +180,8 @@ class Common:
                 f'{chromedriverInfo}'
             ],
             'linux': [
-                f'{chromedriverDownloadInstructions}',
                 f'{terminalCopyPasteDirections}',
+                f'{chromedriverDownloadInstructions}',
                 '# linux64 Chromedriver 79.0.3945.36:',
                 'curl -SL https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ \n',
                 '# linux64 Chromedriver 78.0.3904.105:',
