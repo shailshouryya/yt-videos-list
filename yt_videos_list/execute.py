@@ -104,17 +104,17 @@ def run(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat
         # for some reason this also catches selenium.common.exceptions.SessionNotCreatedException: Message: session not created: This version of BROWSERDriver only supports BROWSER version ##
         print (f'\nThere was an error while trying to open up the remote selenium instance. The exact error was:\n{e}\nDon\'t worry though, this is an easy fix!')
         if platform.system().lower().startswith('darwin'):
-            os = 'macos'
+            userOS = 'macos'
         elif platform.system().lower().startswith('windows'):
-            os = 'windows'
+            userOS = 'windows'
         elif platform.system().lower().startswith('linux'):
-            os = 'linux'
+            userOS = 'linux'
         else:
             print ('The system you are using is not yet supported. Please create an issue at https://github.com/Shail-Shouryya/yt_videos_list/issues\nThanks!')
 
         if userBrowser != 'safari':
             cMessage.tellUserToDownloadBrowser(userBrowser)
-        for browserVersionDownload in cMessage.browsersForOS[userBrowser][os]:
+        for browserVersionDownload in cMessage.browsersForOS[userBrowser][userOS]:
             print (browserVersionDownload)
         return
 
