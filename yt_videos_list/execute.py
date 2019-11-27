@@ -125,10 +125,10 @@ def run(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat
             print (mMessage.checkChannelType) if executionType == 'module' else print (sMessage.checkChannelType)
             return
         if txt is True:
-            program.writeToTxt(videosList, channel, file_name, txtWriteFormat)
+            program.writeToTxt(videosList, channel, file_name, txtWriteFormat, chronological)
                 # saveToMemWriteToTxt(videosList, channel, file_name, writeFormat) # slightly slower than writing to disk directly
         if csv is True:
-            program.writeToCsv(videosList, channel, file_name, csvWriteFormat)
+            program.writeToCsv(videosList, channel, file_name, csvWriteFormat, chronological)
 
     programEnd = time.perf_counter()
     totalTime = programEnd - programStart

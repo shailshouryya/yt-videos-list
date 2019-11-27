@@ -104,7 +104,7 @@ To scrape the video titles along with the link to the video, you need to run the
 ### For more control:
 ```python
 ListGenerator(csv=True, csvWriteFormat='x', txt=True, txtWriteFormat='x', docx=False,
-              docxWriteFormat='x', chronological=True,
+              docxWriteFormat='x', chronological=False,
               headless=False, scrollPauseTime=0.7, browser='Firefox')
 ```
 There are a number of optional arguments you can specify during the instantiation of the ListGenerator object. The preceding arguments are run by default, but in case you want more flexibility, you can specify:
@@ -128,8 +128,8 @@ There are a number of optional arguments you can specify during the instantiatio
     * `csvWriteFormat='x'`  (default) OR `csvWriteFormat='w'`
     * `docxWriteFormat='x'` (unsupported) OR `docxWriteFormat='w'`
 * Options for the chronological argument are
-  - `False` (this is the only chronological option currently supported right now :D) - write the files in order from most recent to oldest.
-  - `True` (currently UNSUPPORTED!) - write the files in order from oldest videos to most recent
+  - `False` - write the files in order from most recent video to the oldest video
+  - `True` - write the files in order from oldest video to the most recent video
     * `chronological=False` (default) OR `chronological=True`
 * Options for the headless option are
   - `False` (default) - run the browser with an open Selenium instance for viewing

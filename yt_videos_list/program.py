@@ -47,7 +47,7 @@ def scrollToBottom (channel, channelType, seleniumInstance, scrollPauseTime):
     print(f'It took {functionTime} seconds to find all {len(elements)} videos from {url}\n')
     return elements
 
-def writeToTxt (listOfVideos, channel, fileName, writeFormat):
+def writeToTxt (listOfVideos, channel, fileName, writeFormat, chronological):
     if writeFormat == 0:
         return
 
@@ -56,7 +56,7 @@ def writeToTxt (listOfVideos, channel, fileName, writeFormat):
         print (f'Opened {f.name}, writing video information to file....')
 
         spacing = '\n    ' # newline followed by 4 spaces
-        for index, element in enumerate(listOfVideos, 1):
+        for index, element in enumerate(listOfVideos, 1) if not chronological else enumerate(listOfVideos[::-1], 1):
             f.write(f'Index:{spacing}{index}\n')
             f.write(f'Watched?{spacing}\n')
             f.write(f'Video Title:{spacing}{element.get_attribute("title")}\n')
@@ -75,7 +75,7 @@ def writeToTxt (listOfVideos, channel, fileName, writeFormat):
         functionTime = end - start
         print(f'It took {functionTime} seconds to write all {index} videos to {f.name}\n')
 
-def saveToMemWriteToTxt (listOfVideos, channel, fileName, writeFormat):
+def saveToMemWriteToTxt (listOfVideos, channel, fileName, writeFormat, chronological):
     if writeFormat == 0:
         return
 
@@ -85,7 +85,7 @@ def saveToMemWriteToTxt (listOfVideos, channel, fileName, writeFormat):
 
         text = ''
         spacing = '\n    ' # newline followed by 4 spaces
-        for index, element in enumerate(listOfVideos, 1):
+        for index, element in enumerate(listOfVideos, 1) if not chronological else enumerate(listOfVideos[::-1], 1):
             text += f'Index:{spacing}{index}' + '\n'
             text += f'Watched?{spacing}' + '\n'
             text += f'Video Title:{spacing}{element.get_attribute("title")}' + '\n'
@@ -105,7 +105,7 @@ def saveToMemWriteToTxt (listOfVideos, channel, fileName, writeFormat):
         functionTime = end - start
         print(f'It took {functionTime} seconds to write all {index} videos to {fm.name}\n')
 
-def writeToCsv (listOfVideos, channel, fileName, writeFormat):
+def writeToCsv (listOfVideos, channel, fileName, writeFormat, chronological):
     if writeFormat == 0:
         return
 
@@ -116,7 +116,7 @@ def writeToCsv (listOfVideos, channel, fileName, writeFormat):
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
 
-        for index, element in enumerate(listOfVideos, 1):
+        for index, element in enumerate(listOfVideos, 1) if not chronological else enumerate(listOfVideos[::-1], 1):
             writer.writerow(
             {'Index': f'{index}', 'Watched?': '', 'Video Title': f'{element.get_attribute("title")}', 'Video URL': f'{element.get_attribute("href")}', 'Watch again later?': '', 'Notes': ''})
             if index % 250 == 0:

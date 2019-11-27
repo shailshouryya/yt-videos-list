@@ -4,7 +4,7 @@ except:
     import script
 
 class ListGenerator:
-    def __init__(self, txt=True, txtWriteFormat='x', csv=True, csvWriteFormat='x', docx=False, docxWriteFormat='x', chronological=True, headless=False, scrollPauseTime=0.8, browser=None):
+    def __init__(self, txt=True, txtWriteFormat='x', csv=True, csvWriteFormat='x', docx=False, docxWriteFormat='x', chronological=False, headless=False, scrollPauseTime=0.8, browser=None):
         '''
 
         The ListGenerator class creates a list generator instance with no required arguments.
@@ -37,8 +37,8 @@ class ListGenerator:
              -> docxWriteFormat='x' (unsupported) OR docxWriteFormat='w'
 
         Options for the chronological argument ar
-          * False (this is the only chronological option currently supported right now :D) - write the files in order from most recent to oldest.
-          * True (currently UNSUPPORTED!) - write the files in order from oldest videos to most recent
+          * False - write the files in order from most recent video to the oldest video
+          * True - write the files in order from oldest video to the most recent video
              -> chronological=False (default) OR chronological=True
 
         Options for the headless option are
@@ -55,7 +55,7 @@ class ListGenerator:
 
         WORKING EXAMPLES:
         ###########################################################
-        For a ListGenerator object that creates csv files but no txt or docx files in headless mode with a 1 second pause between scrolls:
+        For a ListGenerator object that creates csv files but no txt or docx files in chronological order in headless mode with a 1 second pause between scrolls:
         LG = ListGenerator(txt=True, txtWriteFormat='x', csv=False, csvWriteFormat=0, docx=False, docxWriteFormat=0, chronological=True, headless=True, scrollPauseTime=1.0)
         ###########################################################
 
