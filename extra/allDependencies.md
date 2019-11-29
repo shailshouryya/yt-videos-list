@@ -63,7 +63,7 @@ Your Chrome browser version should match the first numbers before the decimal pl
 
 Once you determine the right version to download, copy the command, open a new terminal session (usually possible with CMD+N or CMD+T from an active terminal session), and paste the command you just copied. Once you\'ve done that, you should be able to come back to this session and rerun the last command without an error!
 
-- mac64 Chromedriver 79.0.3945.36:
+- mac64 Chromedriver 79.0.3945.36
 `curl -SL https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/`
 
 - mac64 Chromedriver 78.0.3904.105
@@ -148,10 +148,10 @@ Your Chrome browser version should match the first numbers before the decimal pl
 
 Once you determine the right version to download, copy the command, open a new terminal session (usually possible with CMD+N or CMD+T from an active terminal session), and paste the command you just copied. Once you\'ve done that, you should be able to come back to this session and rerun the last command without an error!
 
-- linux64 Chromedriver 79.0.3945.36:
+- linux64 Chromedriver 79.0.3945.36
 `curl -SL https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/`
 
-- linux64 Chromedriver 78.0.3904.105:
+- linux64 Chromedriver 78.0.3904.105
 `curl -SL https://chromedriver.storage.googleapis.com/78.0.3904.105/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/`
 
 - linux64 Chromedriver 77.0.3865.40
@@ -262,10 +262,10 @@ Your Chrome browser version should match the first numbers before the decimal pl
 
 Once you determine the right version to download, copy the command, open a new terminal session (usually possible with CMD+N or CMD+T from an active terminal session), and paste the command you just copied. Once you\'ve done that, you should be able to come back to this session and rerun the last command without an error!
 
-- win32 Chromedriver 79.0.3945.36:
+- win32 Chromedriver 79.0.3945.36
 `https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_win32.zip`
 
-- win32 Chromedriver 78.0.3904.105:
+- win32 Chromedriver 78.0.3904.105
 `https://chromedriver.storage.googleapis.com/78.0.3904.105/chromedriver_win32.zip`
 
 - win32 Chromedriver 77.0.3865.40
