@@ -29,7 +29,8 @@ class Common:
                 f'{terminalCopyPasteDirections}',
                 f'{geckodriverDownloadInstructions}',
                 '# macos geckodriver (Firefoxdriver) v0.26.0',
-                'curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-macos.tar.gz | tar -xzvf - -C /usr/local/bin/ \n'
+                'curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-macos.tar.gz | tar -xzvf - -C /usr/local/bin/ \n',
+                f'{geckodriverInfo}'
             ],
             'linux': [
                 f'{terminalCopyPasteDirections}',
@@ -37,7 +38,8 @@ class Common:
                 '# linux64 geckodriver (Firefoxdriver) v0.26.0',
                 'curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux64.tar.gz | tar -xzvf - -C /usr/local/bin/ \n',
                 '# linux32 geckodriver (Firefoxdriver) v0.26.0',
-                'curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux32.tar.gz | tar -xzvf - -C /usr/local/bin/ \n'
+                'curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux32.tar.gz | tar -xzvf - -C /usr/local/bin/ \n',
+                f'{geckodriverInfo}'
             ],
             'windows': [
                 'In progress!',
@@ -46,7 +48,8 @@ class Common:
                 '# windows64 geckodriver (Firefoxdriver) v0.26.0',
                 'https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win64.zip \n',
                 '# windows32 geckodriver (Firefoxdriver) v0.26.0',
-                'https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win32.zip \n'
+                'https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win32.zip \n',
+                f'{geckodriverInfo}'
             ]
         },
         'opera': {
