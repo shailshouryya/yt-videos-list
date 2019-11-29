@@ -164,7 +164,7 @@ class Common:
             'macos' : [
                 f'{terminalCopyPasteDirections}',
                 f'{chromedriverDownloadInstructions}',
-                '# mac64 Chromedriver 79.0.3945.36:',
+                '# mac64 Chromedriver 79.0.3945.3',
                 'curl -SL https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ \n',
                 '# mac64 Chromedriver 78.0.3904.105',
                 'curl -SL https://chromedriver.storage.googleapis.com/78.0.3904.105/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ \n',
@@ -185,9 +185,9 @@ class Common:
             'linux': [
                 f'{terminalCopyPasteDirections}',
                 f'{chromedriverDownloadInstructions}',
-                '# linux64 Chromedriver 79.0.3945.36:',
+                '# linux64 Chromedriver 79.0.3945.3',
                 'curl -SL https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ \n',
-                '# linux64 Chromedriver 78.0.3904.105:',
+                '# linux64 Chromedriver 78.0.3904.10',
                 'curl -SL https://chromedriver.storage.googleapis.com/78.0.3904.105/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ \n',
                 '# linux64 Chromedriver 77.0.3865.40',
                 'curl -SL https://chromedriver.storage.googleapis.com/77.0.3865.40/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ \n',
@@ -206,9 +206,9 @@ class Common:
             'windows': [
                 'In progress!',
                 f'{chromedriverDownloadInstructions}',
-                '# win32 Chromedriver 79.0.3945.36:',
+                '# win32 Chromedriver 79.0.3945.3',
                 'https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_win32.zip \n',
-                '# win32 Chromedriver 78.0.3904.105:',
+                '# win32 Chromedriver 78.0.3904.10',
                 'https://chromedriver.storage.googleapis.com/78.0.3904.105/chromedriver_win32.zip \n',
                 '# win32 Chromedriver 77.0.3865.40',
                 'https://chromedriver.storage.googleapis.com/77.0.3865.40/chromedriver_win32.zip \n',
