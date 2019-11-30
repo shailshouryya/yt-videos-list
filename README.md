@@ -76,7 +76,7 @@ LG = ListGenerator()
 LG.generate_list(channel='schafer5', channelType='user')
 
 # "channel" channelType (example uses freeCodeCamp) along with the optional fileName argument:
-LG.generate_list(channel='UC8butISFwT-Wl7EV0hUK0BQ', channelType='channel', fileName='freeCodeCamp.org')
+LG.generate_list(channel='UC8butISFwT-Wl7EV0hUK0BQ', channelType='channel', fileName='freeCodeCamp_org')
 
 # see the new files that were just created:
 import os
