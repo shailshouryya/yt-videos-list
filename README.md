@@ -169,4 +169,4 @@ Enter the name of the channel or user that you wish to scrape, and the program w
 ### [Future Features](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/futureFeatures.md)
 
 ## Technical Specifications
-Please see (/extra/technicalSpecifications.md)[/extra/technicalSpecifications.md]
+Please see (/extra/technicalSpecifications.md)[https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/technicalSpecifications.md]
