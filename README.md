@@ -11,6 +11,12 @@ OR
 pip3 install -U yt-videos-list
 ```
 
+**NOTE**: You do NOT need to download all Selenium drivers for your OS if you only want to run this program on a specific browser. If you want a specific driver, just copy and paste the corresponding command for the relevant browser.
+- to download the most recent version of the browser, go to the page for:
+  - [Firefox](https://www.mozilla.org/en-US/firefox/new/)
+  - [Opera](https://www.opera.com/)
+  - [Chrome](https://www.google.com/chrome/)
+  
 Copy paste the code block that's relevant for the OS of your machine:
 ```
 #### SETTING UP SELENIUM DEPENDENCIES FOR MACOS ####
@@ -40,7 +46,7 @@ https://github.com/operasoftware/operachromiumdriver/releases/download/v.76.0.38
 curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux32.tar.gz | tar -xzvf - -C /usr/local/bin
 
 
-#### SETTING UP SELENIUM DEPENDENCIES FOR WINDOWS 64 (in progress) ####
+#### SETTING UP SELENIUM DEPENDENCIES FOR WINDOWS 64 ####
 # Windows64 geckodriver (Mozilla Firefox) zip folder
 mkdir C:\yt_videos_list_TEMP\ && curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win64.zip -o C:\yt_videos_list_TEMP\geckodriver && tar -xzvf C:\yt_videos_list_TEMP\geckodriver -C C:\Windows\ && rmdir /q/ s C:\yt_videos_list_TEMP
 
@@ -48,7 +54,7 @@ mkdir C:\yt_videos_list_TEMP\ && curl -SL https://github.com/mozilla/geckodriver
 mkdir C:\yt_videos_list_TEMP\ && curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.78.0.3904.87/operadriver_win64.zip -o C:\yt_videos_list_TEMP\operadriver && tar -xzvf C:\yt_videos_list_TEMP\operadriver -C C:\Windows\ --strip-components=1 && rmdir /q/ s C:\yt_videos_list_TEMP && del C:\Windows\sha512_sum
 
 
-#### SETTING UP SELENIUM DEPENDENCIES FOR WINDOWS32 (in progress) ####
+#### SETTING UP SELENIUM DEPENDENCIES FOR WINDOWS32 ####
 # Windows32 geckodriver (Mozilla Firefox) zip folder
 mkdir C:\yt_videos_list_TEMP\ && curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win32.zip -o C:\yt_videos_list_TEMP\geckodriver && tar -xzvf C:\yt_videos_list_TEMP\geckodriver -C C:\Windows\ && rmdir /q/ s C:\yt_videos_list_TEMP
 
