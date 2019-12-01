@@ -6,6 +6,8 @@ class Common:
     noNewVideosFound = 'No new videos were found since the last scroll. Waiting another 0.6 seconds to see if more videos can be loaded....'
     invalidResponse = 'The response you entered was invalid.'
 
+    invalidBrowser = "The browser you specified is invalid. Please try rerunning the last command after specifying a valid browser. Supported browsers include:\n   Firefox\n   Opera\n   Safari\n   Chrome"
+
     runningDefaultBrowser = '\nNo browser specified during ListGenerator instantiation, running program using the Firefox browser.'
     showBrowserOptions = "To use a different browser, specify the browser in the browser argument during the ListGenerator instantiation. For example:" + \
         "\n    LG = ListGenerator(browser='opera')" + \

@@ -40,6 +40,9 @@ def setupBrowser(userBrowser):
         return webdriver.Opera
     elif 'safari' in userBrowser:
         return webdriver.Safari
+    else:
+        print (cMessage.invalidBrowser)
+        return 'invalid'
 
 def run(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat, docx, docxWriteFormat, chronological, headless, scrollPauseTime, userBrowser, executionType):
     mMessage = ModuleMessage()
@@ -70,6 +73,8 @@ def run(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat
         userBrowser = 'firefox'
 
     driver = setupBrowser(userBrowser)
+    if driver == 'invalid':
+        return
 
     programStart = time.perf_counter()
     try:
