@@ -263,27 +263,28 @@ Your Chrome browser version should match the first numbers before the decimal pl
 Once you determine the right version to download, copy the command, open a new terminal session (usually possible with CMD+N or CMD+T from an active terminal session), and paste the command you just copied. Once you\'ve done that, you should be able to come back to this session and rerun the last command without an error!
 
 win32 Chromedriver 79.0.3945.36
-`https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_win32.zip`
+`mkdir C:\yt_videos_list_TEMP\ && curl -SL https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_win32.zip -o C:\yt_videos_list_TEMP\chromedriver && tar -xzvf C:\yt_videos_list_TEMP\chromedriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP`
 
 win32 Chromedriver 78.0.3904.105
-`https://chromedriver.storage.googleapis.com/78.0.3904.105/chromedriver_win32.zip`
+`mkdir C:\yt_videos_list_TEMP\ && curl -SL https://chromedriver.storage.googleapis.com/78.0.3904.105/chromedriver_win32.zip -o C:\yt_videos_list_TEMP\chromedriver && tar -xzvf C:\yt_videos_list_TEMP\chromedriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP`
 
 win32 Chromedriver 77.0.3865.40
-`https://chromedriver.storage.googleapis.com/77.0.3865.40/chromedriver_win32.zip`
+`mkdir C:\yt_videos_list_TEMP\ && curl -SL https://chromedriver.storage.googleapis.com/77.0.3865.40/chromedriver_win32.zip -o C:\yt_videos_list_TEMP\chromedriver && tar -xzvf C:\yt_videos_list_TEMP\chromedriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP`
 
 win32 Chromedriver 76.0.3809.126
-`https://chromedriver.storage.googleapis.com/76.0.3809.126/chromedriver_win32.zip`
+`mkdir C:\yt_videos_list_TEMP\ && curl -SL https://chromedriver.storage.googleapis.com/76.0.3809.126/chromedriver_win32.zip -o C:\yt_videos_list_TEMP\chromedriver && tar -xzvf C:\yt_videos_list_TEMP\chromedriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP`
 
 win32 Chromedriver 75.0.3770.140
-`https://chromedriver.storage.googleapis.com/75.0.3770.140/chromedriver_win32.zip`
+`mkdir C:\yt_videos_list_TEMP\ && curl -SL https://chromedriver.storage.googleapis.com/75.0.3770.140/chromedriver_win32.zip -o C:\yt_videos_list_TEMP\chromedriver && tar -xzvf C:\yt_videos_list_TEMP\chromedriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP`
 
 win32 Chromedriver 74.0.3729.6
-`https://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_win32.zip`
-
+`mkdir C:\yt_videos_list_TEMP\ && curl -SL https://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_win32.zip -o C:\yt_videos_list_TEMP\chromedriver && tar -xzvf C:\yt_videos_list_TEMP\chromedriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP`
+\
 win32 Chromedriver 73.0.3683.68
-`https://chromedriver.storage.googleapis.com/73.0.3683.68/chromedriver_win32.zip`
+`mkdir C:\yt_videos_list_TEMP\ && curl -SL https://chromedriver.storage.googleapis.com/73.0.3683.68/chromedriver_win32.zip -o C:\yt_videos_list_TEMP\chromedriver && tar -xzvf C:\yt_videos_list_TEMP\chromedriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP`
 
 win32 Chromedriver 2.46 (Supports Chrome v71-73)
-`https://chromedriver.storage.googleapis.com/2.46/chromedriver_win32.zip`
+`mkdir C:\yt_videos_list_TEMP\ && curl -SL https://chromedriver.storage.googleapis.com/2.46/chromedriver_win32.zip -o C:\yt_videos_list_TEMP\chromedriver && tar -xzvf C:\yt_videos_list_TEMP\chromedriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP`
+
 
 For more information about the chromedriver, please visit https://sites.google.com/a/chromium.org/chromedriver/home
