@@ -179,11 +179,12 @@ The given command downloads a geckodriver ("Firefoxdriver") version that is comp
 
 Copy the given command (or modify it if using an older version from the link above), open a new terminal session (usually possible with CMD+N or CMD+T from an active terminal session), and paste the command you just copied. Once you've done that, you should be able to come back to this session and rerun the last command without an error!
 
-windows64 geckodriver (Firefoxdriver) v0.26.0',
-`https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win64.zip`
+windows64 geckodriver (Firefoxdriver) v0.26.0
+`mkdir C:\yt_videos_list_TEMP\ && curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win64.zip -o C:\yt_videos_list_TEMP\geckodriver && tar -xzvf C:\yt_videos_list_TEMP\geckodriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP`
 
-windows32 geckodriver (Firefoxdriver) v0.26.0,
-`https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win32.zip`
+windows32 geckodriver (Firefoxdriver) v0.26.0
+`mkdir C:\yt_videos_list_TEMP\ && curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win32.zip -o C:\yt_videos_list_TEMP\geckodriver && tar -xzvf C:\yt_videos_list_TEMP\geckodriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP`
+
 
 For more information about the geckodriver, please visit https://github.com/mozilla/geckodriver
 
