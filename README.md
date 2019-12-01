@@ -1,4 +1,12 @@
 # Automate a Videos List Creation for a YouTube Channel
+**TABLE OF CONTENTS**  
+[Overview](/#Overview)  
+[Quick Start](/#Quick-Start)
+[Running the module](/#Running-the-module)  
+[Understanding the API](/#Understanding-the-API)  
+[For more control](/#For-more-control)  
+[Future Features](/#Future-Features)  
+[Technical Specifications](/#Technical-Specifications)
 
 ## Overview
 This repo is intended to provide a quick, simple way to create a list of all videos posted to any YouTube channel by providing just the URL to that user's channel videos. The general format for this is
@@ -102,7 +110,7 @@ There are two types of YouTube channels: one type is a `user` channel and the ot
 
 To scrape the video titles along with the link to the video, you need to run the `generate_list(channel, channelType)` method on the ListGenerator object you just created, substituting the type of channel for `channelType` argument and the name of the channel for the `channel` argument. By default, the name of the file produced will be `channel`VideosList.ext where the `.ext` will be `.csv` or `.txt ` depending on the type of file(s) that you specified.
 
-### For more control:
+### For more control
 ```python
 ListGenerator(csv=True, csvWriteFormat='x', txt=True, txtWriteFormat='x', docx=False,
               docxWriteFormat='x', chronological=False,
@@ -159,3 +167,6 @@ Substitute what you see for YourChannelName and type it in below:
 Enter the name of the channel or user that you wish to scrape, and the program will do the rest for you!
 
 ### [Future Features](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/futureFeatures.md)
+
+## Technical Specifications
+Please see (/extra/technicalSpecifications.md)[/extra/technicalSpecifications.md]
