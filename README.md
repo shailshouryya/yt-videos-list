@@ -1,11 +1,11 @@
 # Automate a Videos List Creation for a YouTube Channel
-**TABLE OF CONTENTS**  
-[Overview](/#Overview)  
+**TABLE OF CONTENTS**
+[Overview](/#Overview)
 [Quick Start](/#Quick-Start)
-[Running the module](/#Running-the-module)  
-[Understanding the API](/#Understanding-the-API)  
-[For more control](/#For-more-control)  
-[Future Features](/#Future-Features)  
+[Running the module](/#Running-the-module)
+[Understanding the API](/#Understanding-the-API)
+[For more control](/#For-more-control)
+[Future Features](/#Future-Features)
 [Technical Specifications](/#Technical-Specifications)
 
 ## Overview
@@ -24,7 +24,7 @@ pip3 install -U yt-videos-list
   - [Firefox](https://www.mozilla.org/en-US/firefox/new/)
   - [Opera](https://www.opera.com/)
   - [Chrome](https://www.google.com/chrome/)
-  
+
 Copy paste the code block that's relevant for the OS of your machine:
 ```
 #### SETTING UP SELENIUM DEPENDENCIES FOR MACOS ####
