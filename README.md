@@ -1,7 +1,7 @@
 # Automate a Videos List Creation for a YouTube Channel
 **TABLE OF CONTENTS**
 <br>[Overview](https://github.com/Shail-Shouryya/yt_videos_list/#Overview)
-[Quick Start](https://github.com/Shail-Shouryya/yt_videos_list/#Quick-Start)
+<br>[Quick Start](https://github.com/Shail-Shouryya/yt_videos_list/#Quick-Start)
 <br>[Running the module](https://github.com/Shail-Shouryya/yt_videos_list/#Running-the-module)
 <br>[Understanding the API](https://github.com/Shail-Shouryya/yt_videos_list/#Understanding-the-API)
 <br>[For more control](https://github.com/Shail-Shouryya/yt_videos_list/#For-more-control)
