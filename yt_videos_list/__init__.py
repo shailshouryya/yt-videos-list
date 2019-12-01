@@ -8,7 +8,7 @@ license:  OSI Approved :: Apache License 2.0
 ideal_python_version: Python 3.7
 source: https://github.com/Shail-Shouryya/yt_videos_list
 '''
-__version__ = "0.2.15"
+__version__ = "0.2.16"
 __author__ = 'Shail-Shouryya'
 __development_status__ = '4 - Beta'
 __intended_audience__ = 'Developers, Hobbyists'
