@@ -209,24 +209,22 @@ class Common:
                 'In progress!',
                 f'{chromedriverDownloadInstructions}',
                 '# win32 Chromedriver 79.0.3945.3',
-                'https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_win32.zip \n',
+                'mkdir C:\yt_videos_list_TEMP\ && curl -SL https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_win32.zip -o C:\yt_videos_list_TEMP\chromedriver && tar -xzvf C:\yt_videos_list_TEMP\chromedriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP \n',
                 '# win32 Chromedriver 78.0.3904.10',
-                'https://chromedriver.storage.googleapis.com/78.0.3904.105/chromedriver_win32.zip \n',
+                'mkdir C:\yt_videos_list_TEMP\ && curl -SL https://chromedriver.storage.googleapis.com/78.0.3904.105/chromedriver_win32.zip -o C:\yt_videos_list_TEMP\chromedriver && tar -xzvf C:\yt_videos_list_TEMP\chromedriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP \n',
                 '# win32 Chromedriver 77.0.3865.40',
-                'https://chromedriver.storage.googleapis.com/77.0.3865.40/chromedriver_win32.zip \n',
+                'mkdir C:\yt_videos_list_TEMP\ && curl -SL https://chromedriver.storage.googleapis.com/77.0.3865.40/chromedriver_win32.zip -o C:\yt_videos_list_TEMP\chromedriver && tar -xzvf C:\yt_videos_list_TEMP\chromedriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP \n',
                 '# win32 Chromedriver 76.0.3809.126',
-                'https://chromedriver.storage.googleapis.com/76.0.3809.126/chromedriver_win32.zip \n'
+                'mkdir C:\yt_videos_list_TEMP\ && curl -SL https://chromedriver.storage.googleapis.com/76.0.3809.126/chromedriver_win32.zip -o C:\yt_videos_list_TEMP\chromedriver && tar -xzvf C:\yt_videos_list_TEMP\chromedriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP \n',
                 '# win32 Chromedriver 75.0.3770.140',
-                'https://chromedriver.storage.googleapis.com/75.0.3770.140/chromedriver_win32.zip \n'
+                'mkdir C:\yt_videos_list_TEMP\ && curl -SL https://chromedriver.storage.googleapis.com/75.0.3770.140/chromedriver_win32.zip -o C:\yt_videos_list_TEMP\chromedriver && tar -xzvf C:\yt_videos_list_TEMP\chromedriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP \n',
                 '# win32 Chromedriver 74.0.3729.6',
-                'https://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_win32.zip \n'
+                'mkdir C:\yt_videos_list_TEMP\ && curl -SL https://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_win32.zip -o C:\yt_videos_list_TEMP\chromedriver && tar -xzvf C:\yt_videos_list_TEMP\chromedriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP \n',\
                 '# win32 Chromedriver 73.0.3683.68',
-                'https://chromedriver.storage.googleapis.com/73.0.3683.68/chromedriver_win32.zip \n'
+                'mkdir C:\yt_videos_list_TEMP\ && curl -SL https://chromedriver.storage.googleapis.com/73.0.3683.68/chromedriver_win32.zip -o C:\yt_videos_list_TEMP\chromedriver && tar -xzvf C:\yt_videos_list_TEMP\chromedriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP \n',
                 '# win32 Chromedriver 2.46 (Supports Chrome v71-73)',
-                'https://chromedriver.storage.googleapis.com/2.46/chromedriver_win32.zip \n',
+                'mkdir C:\yt_videos_list_TEMP\ && curl -SL https://chromedriver.storage.googleapis.com/2.46/chromedriver_win32.zip -o C:\yt_videos_list_TEMP\chromedriver && tar -xzvf C:\yt_videos_list_TEMP\chromedriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP \n',
                 f'{chromedriverInfo}'
-                mkdir C:\yt_videos_list_TEMP\ && curl -SL https://chromedriver.storage.googleapis.com/78.0.3904.70/chromedriver_win32.zip -o C:\yt_videos_list_TEMP\chromedriver && tar -xzvf C:\yt_videos_list_TEMP\chromedriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP
-
             ]
         }
     }
