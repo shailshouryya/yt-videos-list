@@ -46,10 +46,12 @@ class Common:
                 f'{terminalCopyPasteDirections}',
                 f'{geckodriverDownloadInstructions}',
                 '# windows64 geckodriver (Firefoxdriver) v0.26.0',
-                'https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win64.zip \n',
+                'mkdir C:\yt_videos_list_TEMP\ && curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win64.zip -o C:\yt_videos_list_TEMP\geckodriver && tar -xzvf C:\yt_videos_list_TEMP\geckodriver -C C:\Windows\ && rmdir /q/ s C:\yt_videos_list_TEMP \n',
                 '# windows32 geckodriver (Firefoxdriver) v0.26.0',
-                'https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win32.zip \n',
+                'mkdir C:\yt_videos_list_TEMP\ && curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win32.zip -o C:\yt_videos_list_TEMP\geckodriver && tar -xzvf C:\yt_videos_list_TEMP\geckodriver -C C:\Windows\ && rmdir /q/ s C:\yt_videos_list_TEMP \n',
                 f'{geckodriverInfo}'
+
+
             ]
         },
         'opera': {
@@ -147,6 +149,7 @@ class Common:
                 '# windows32 Operadriver 2.37 (supports Opera 54 release)',
                 'https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.37/operadriver_win32.zip \n',
                 f'{operadriverInfo}'
+                mkdir C:\yt_videos_list_TEMP\ && curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.76.0.3809.132/operadriver_win32.zip -o C:\yt_videos_list_TEMP\operadriver && tar -xzvf C:\yt_videos_list_TEMP\operadriver -C C:\Windows\ --strip-components=1 && rmdir /q/ s C:\yt_videos_list_TEMP && del C:\Windows\sha512_sum
             ]
         },
         'safari': {
@@ -223,6 +226,8 @@ class Common:
                 '# win32 Chromedriver 2.46 (Supports Chrome v71-73)',
                 'https://chromedriver.storage.googleapis.com/2.46/chromedriver_win32.zip \n',
                 f'{chromedriverInfo}'
+                mkdir C:\yt_videos_list_TEMP\ && curl -SL https://chromedriver.storage.googleapis.com/78.0.3904.70/chromedriver_win32.zip -o C:\yt_videos_list_TEMP\chromedriver && tar -xzvf C:\yt_videos_list_TEMP\chromedriver -C C:\Windows\ && rmdir /q/ s C:\yt_videos_list_TEMP
+
             ]
         }
     }

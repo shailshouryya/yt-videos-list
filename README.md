@@ -42,7 +42,7 @@ curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckod
 
 #### SETTING UP SELENIUM DEPENDENCIES FOR WINDOWS 64 (in progress) ####
 # Windows64 geckodriver (Mozilla Firefox) zip folder
-mkdir C:\yt_videos_list_TEMP\ && curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win64.zip -o C:\yt_videos_list_TEMP\chromedriver && tar -xzvf C:\yt_videos_list_TEMP\chromedriver -C C:\Windows\ && rmdir /q/ s C:\yt_videos_list_TEMP
+mkdir C:\yt_videos_list_TEMP\ && curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win64.zip -o C:\yt_videos_list_TEMP\geckodriver && tar -xzvf C:\yt_videos_list_TEMP\geckodriver -C C:\Windows\ && rmdir /q/ s C:\yt_videos_list_TEMP
 
 # Windows64 operadriver (Opera Browser 76.0.3809.132, 77.0.3865.120 had compatibility issues) tar.gz file:
 mkdir C:\yt_videos_list_TEMP\ && curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.78.0.3904.87/operadriver_win64.zip -o C:\yt_videos_list_TEMP\operadriver && tar -xzvf C:\yt_videos_list_TEMP\operadriver -C C:\Windows\ --strip-components=1 && rmdir /q/ s C:\yt_videos_list_TEMP && del C:\Windows\sha512_sum
@@ -50,7 +50,7 @@ mkdir C:\yt_videos_list_TEMP\ && curl -SL https://github.com/operasoftware/opera
 
 #### SETTING UP SELENIUM DEPENDENCIES FOR WINDOWS32 (in progress) ####
 # Windows32 geckodriver (Mozilla Firefox) zip folder
-mkdir C:\yt_videos_list_TEMP\ && curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win32.zip -o C:\yt_videos_list_TEMP\chromedriver && tar -xzvf C:\yt_videos_list_TEMP\chromedriver -C C:\Windows\ && rmdir /q/ s C:\yt_videos_list_TEMP
+mkdir C:\yt_videos_list_TEMP\ && curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win32.zip -o C:\yt_videos_list_TEMP\geckodriver && tar -xzvf C:\yt_videos_list_TEMP\geckodriver -C C:\Windows\ && rmdir /q/ s C:\yt_videos_list_TEMP
 
 # Windows32 chromedriver (Google Chrome 78.0.3904.70) zip folder:
 mkdir C:\yt_videos_list_TEMP\ && curl -SL https://chromedriver.storage.googleapis.com/78.0.3904.70/chromedriver_win32.zip -o C:\yt_videos_list_TEMP\chromedriver && tar -xzvf C:\yt_videos_list_TEMP\chromedriver -C C:\Windows\ && rmdir /q/ s C:\yt_videos_list_TEMP
