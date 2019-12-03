@@ -52,8 +52,6 @@ class Common:
                 '# windows32 geckodriver (Firefoxdriver) v0.26.0',
                 'mkdir C:\yt_videos_list_TEMP\ && curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win32.zip -o C:\yt_videos_list_TEMP\geckodriver && tar -xzvf C:\yt_videos_list_TEMP\geckodriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP \n',
                 f'{geckodriverInfo}'
-
-
             ]
         },
         'opera': {
