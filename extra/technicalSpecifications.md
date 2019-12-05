@@ -19,6 +19,8 @@ This module provides built-in support for common errors and exceptions, along wi
   - checking to see if the user has the correct Selenium dependency installed for the browser they want to run the program in, and showing the user the commands they can run to install the correct dependency if the user has an incorrect dependency (or hasn't downloaded the dependency at all)
     - program checks the operating system of the user's machine and returns a `curl` command piped into a `tar` command to download the correct dependecy into a directory the program can access without having to add the executable to PATH manually
     - user still needs to pick the correct command to run by following the directions
+  - checking to see if the result of the scraping returns results, and prompts the user to verify the name/string they provided for `channel` and the `channelType` they specified
+    - if the name/string is correct, the `channelType` was likely specified incorrectly, so change it to `user` or `channel` (whichever one was not specified the first time)
 
 ## Overview of the module structure
 ### `__init__.py`
