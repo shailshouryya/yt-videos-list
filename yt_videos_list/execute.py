@@ -100,10 +100,10 @@ def run(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat
                 options = webdriver.ChromeOptions()
                 options.add_argument('headless')
                 driver = driver(options=options)
-                print ('\nHeadless mode is unsupported in OperaDriver. We are waiting on the Opera dev team to start offering support for headless mode to allow remote automation without opening a browser. We will update this when support is added...\n:)\n\n\n')
+                print (cMessage.unsupportedOperaHeadless)
             if userBrowser == 'safari':
                 driver = driver()
-                print ('\nHeadless mode is unsupported in SafariDriver. We are waiting on Apple to start offering support for headless mode to allow remote automation without opening a browser. We will update this when support is added...\n:)\n\n\n')
+                print (cMessage.unsupportedSafariHeadless)
     except selenium.common.exceptions.WebDriverException as e:
         # selenium.common.exceptions.WebDriverException: Message: 'BROWSERdriver' executable needs to be in PATH. Please see https://................
         # for some reason this also catches selenium.common.exceptions.SessionNotCreatedException: Message: session not created: This version of BROWSERDriver only supports BROWSER version ##
@@ -115,7 +115,7 @@ def run(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat
         elif platform.system().lower().startswith('linux'):
             userOS = 'linux'
         else:
-            print ('The system you are using is not yet supported. Please create an issue at https://github.com/Shail-Shouryya/yt_videos_list/issues\nThanks!')
+            print (cMessage.unsupportedOS)
 
         if userBrowser != 'safari':
             cMessage.tellUserToDownloadBrowser(userBrowser)
