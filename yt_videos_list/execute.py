@@ -107,7 +107,7 @@ def run(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat
     except selenium.common.exceptions.WebDriverException as e:
         # selenium.common.exceptions.WebDriverException: Message: 'BROWSERdriver' executable needs to be in PATH. Please see https://................
         # for some reason this also catches selenium.common.exceptions.SessionNotCreatedException: Message: session not created: This version of BROWSERDriver only supports BROWSER version ##
-        print (f'\nThere was an error while trying to open up the remote selenium instance. The exact error was:\n{e}\nDon\'t worry though, this is an easy fix!')
+        cMessage.seleniumDependencyError(e)
         if platform.system().lower().startswith('darwin'):
             userOS = 'macos'
         elif platform.system().lower().startswith('windows'):
@@ -131,7 +131,7 @@ def run(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat
             return
         if txt is True:
             program.writeToTxt(videosList, channel, file_name, txtWriteFormat, chronological)
-                # saveToMemWriteToTxt(videosList, channel, file_name, writeFormat) # slightly slower than writing to disk directly
+            # saveToMemWriteToTxt(videosList, channel, file_name, writeFormat) # slightly slower than writing to disk directly
         if csv is True:
             program.writeToCsv(videosList, channel, file_name, csvWriteFormat, chronological)
 

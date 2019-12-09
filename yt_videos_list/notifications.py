@@ -234,6 +234,10 @@ class Common:
     }
 
     @staticmethod
+    def seleniumDependencyError(errorMessage):
+        print (f'\nThere was an error while trying to open up the remote selenium instance. The exact error was:\n{errorMessage}\nDon\'t worry though, this is an easy fix!')
+
+    @staticmethod
     def tellUserToDownloadBrowser(userBrowser):
         print (f"\nIt looks like you don't have the correct selenium dependency set up to run this program using the remote {userBrowser}driver.\nThe version of your {userBrowser.title()} browser - usually found by going to {userBrowser.title()} -> \"About browser\" within a {userBrowser.title()} window - should match the comment for the corresponding command.\nPlease download it using the relevant command from the list of commands below.\n")
 
