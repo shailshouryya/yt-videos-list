@@ -25,53 +25,7 @@ pip3 install -U yt-videos-list
   - [Opera](https://www.opera.com/)
   - [Chrome](https://www.google.com/chrome/)
 
-Copy paste the code block that's relevant for the OS of your machine:
-```
-#### SETTING UP SELENIUM DEPENDENCIES FOR MACOS ####
-# MacOS geckodriver (Mozilla Firefox) tar.gz file:
-curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-macos.tar.gz | tar -xzvf - -C /usr/local/bin
-
-# Mac64 chromedriver (Google Chrome 78.0.3904.70) zip folder:
-curl -SL https://chromedriver.storage.googleapis.com/78.0.3904.70/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin
-
-# Mac64 operadriver (Opera Browser 76.0.3809.132, 77.0.3865.120 had compatibility issues) tar.gz file:
-curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.77.0.3865.120/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin --strip-components=1 && rm /usr/local/bin/sha512_sum
-
-
-#### SETTING UP SELENIUM DEPENDENCIES FOR LINUX64 ####
-# Linux64 geckodriver (Mozilla Firefox) tar.gz file:
-curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux64.tar.gz | tar -xzvf - -C /usr/local/bin/
-
-# Linux64 chromedriver (Google Chrome 78.0.3904.70) zip folder:
-curl -SL https://chromedriver.storage.googleapis.com/78.0.3904.70/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin
-
-# Linux64 operadriver (Opera Browser 76.0.3809.132, 77.0.3865.120 had compatibility issues) tar.gz file:
-https://github.com/operasoftware/operachromiumdriver/releases/download/v.76.0.3809.132/operadriver_linux64.zip
-
-
-#### SETTING UP SELENIUM DEPENDENCIES FOR LINUX32 ####
-# Linux 32 geckodriver (Mozilla Firefox) tar.gz file:
-curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux32.tar.gz | tar -xzvf - -C /usr/local/bin
-
-
-#### SETTING UP SELENIUM DEPENDENCIES FOR WINDOWS 64 ####
-# Windows64 geckodriver (Mozilla Firefox) zip folder
-mkdir C:\yt_videos_list_TEMP\ && curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win64.zip -o C:\yt_videos_list_TEMP\geckodriver && tar -xzvf C:\yt_videos_list_TEMP\geckodriver -C C:\Windows\ && rmdir /q/ s C:\yt_videos_list_TEMP
-
-# Windows64 operadriver (Opera Browser 76.0.3809.132, 77.0.3865.120 had compatibility issues) tar.gz file:
-mkdir C:\yt_videos_list_TEMP\ && curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.78.0.3904.87/operadriver_win64.zip -o C:\yt_videos_list_TEMP\operadriver && tar -xzvf C:\yt_videos_list_TEMP\operadriver -C C:\Windows\ --strip-components=1 && rmdir /q/ s C:\yt_videos_list_TEMP && del C:\Windows\sha512_sum
-
-
-#### SETTING UP SELENIUM DEPENDENCIES FOR WINDOWS32 ####
-# Windows32 geckodriver (Mozilla Firefox) zip folder
-mkdir C:\yt_videos_list_TEMP\ && curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win32.zip -o C:\yt_videos_list_TEMP\geckodriver && tar -xzvf C:\yt_videos_list_TEMP\geckodriver -C C:\Windows\ && rmdir /q/ s C:\yt_videos_list_TEMP
-
-# Windows32 chromedriver (Google Chrome 78.0.3904.70) zip folder:
-mkdir C:\yt_videos_list_TEMP\ && curl -SL https://chromedriver.storage.googleapis.com/78.0.3904.70/chromedriver_win32.zip -o C:\yt_videos_list_TEMP\chromedriver && tar -xzvf C:\yt_videos_list_TEMP\chromedriver -C C:\Windows\ && rmdir /q/ s C:\yt_videos_list_TEMP
-
-# Windows32 operadriver (Opera Browser 76.0.3809.132, 77.0.3865.120 had compatibility issues) tar.gz file:
-mkdir C:\yt_videos_list_TEMP\ && curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.76.0.3809.132/operadriver_win32.zip -o C:\yt_videos_list_TEMP\operadriver && tar -xzvf C:\yt_videos_list_TEMP\operadriver -C C:\Windows\ --strip-components=1 && rmdir /q/ s C:\yt_videos_list_TEMP && del C:\Windows\sha512_sum
-```
+Copy paste the code block that's relevant for the OS of your machine for the browser you want from [here](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/README.md)
 
 ## Running the module
 ```
