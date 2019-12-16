@@ -25,7 +25,7 @@ pip3 install -U yt-videos-list
   - [Opera](https://www.opera.com/)
   - [Chrome](https://www.google.com/chrome/)
 
-Copy paste the code block that's relevant for the OS of your machine for the browser you want from [here](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/README.md)
+### Copy paste the code block that's relevant for the OS of your machine for the browser you want from **[here](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/README.md)**
 
 ## Running the module
 ```
