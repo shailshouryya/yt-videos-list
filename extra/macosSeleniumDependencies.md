@@ -1,5 +1,10 @@
 # Setting up your Selenium Dependencies
 ## MacOS
+**[Firefox driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/macosSeleniumDependencies.md#geckodriver-firefoxdriver)**
+<br> **[Opera driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/macosSeleniumDependencies.md#operadriver)**
+<br> **[Safari driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/macosSeleniumDependencies.md#safaridriver)**
+<br> **[Chrome driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/macosSeleniumDependencies.md#chromedriver)**
+
 ### geckodriver (Firefoxdriver)
 The given command downloads a geckodriver ("Firefoxdriver") version that is compatible with Firefox versions ≥ 60. To see more information about the differences compared to older versions, please visit https://github.com/mozilla/geckodriver/releases)
 
