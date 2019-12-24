@@ -1,7 +1,7 @@
 # https://test.pypi.org/pypi?%3Aaction=list_classifiers
 from setuptools import setup, find_packages
 
-with open("README.md", "r", encoding='utf-8') as f:
+with open('README.md', 'r', encoding='utf-8') as f:
     long_description = f.read()
 
 setup(

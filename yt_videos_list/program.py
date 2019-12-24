@@ -18,14 +18,14 @@ def scrollToBottom (channel, channelType, seleniumInstance, scrollPauseTime):
 
     driver.get(url)
     elemsCount = driver.execute_script(
-    "return document.querySelectorAll('ytd-grid-video-renderer').length"
+        'return document.querySelectorAll('ytd-grid-video-renderer').length'
     )
 
     while True:
-        driver.execute_script("window.scrollBy(0, 50000);")
+        driver.execute_script('window.scrollBy(0, 50000);')
         time.sleep(scrollPauseTime)
         newElemsCount = driver.execute_script(
-        "return document.querySelectorAll('ytd-grid-video-renderer').length"
+            'return document.querySelectorAll('ytd-grid-video-renderer').length'
         )
         print (f'Found {newElemsCount} videos...')
 
@@ -34,7 +34,7 @@ def scrollToBottom (channel, channelType, seleniumInstance, scrollPauseTime):
             print (cMessage.noNewVideosFound)
             time.sleep(0.6)
             newElemsCount = driver.execute_script(
-            "return document.querySelectorAll('ytd-grid-video-renderer').length"
+                'return document.querySelectorAll('ytd-grid-video-renderer').length'
             )
             if newElemsCount == elemsCount:
                 print('Reached end of page!')

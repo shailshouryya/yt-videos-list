@@ -8,7 +8,7 @@ def cli():
     '''
 
     first argument should be channel/user name
-    -c --channelType sets channelType to "channel"
+    -c --channelType sets channelType to 'channel'
     -o --overwrite overwrite file if a file of the same name already exists in the output directory
     --version shows version number and exits
     --csv writes to csv file
