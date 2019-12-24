@@ -5,7 +5,7 @@
 <br>**[Safari driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/windowsSeleniumDependencies.md#safaridriver)**
 <br>**[Chrome driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/windowsSeleniumDependencies.md#chromedriver)**
 
-### geckodriver
+### geckodriver (Firefoxdriver)
 The given command downloads a geckodriver ("Firefoxdriver") version that is compatible with Firefox versions ≥ 60. To see more information about the differences compared to older versions, please visit https://github.com/mozilla/geckodriver/releases)
 
 Copy the given command (or modify it if using an older version from the link above), open a new terminal session (usually possible with CMD+N or CMD+T from an active terminal session), and paste the command you just copied. Once you've done that, you should be able to come back to this session and rerun the last command without an error!
