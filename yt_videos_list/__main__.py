@@ -37,7 +37,7 @@ class ListGenerator:
              -> docxWriteFormat='x' (unsupported) OR docxWriteFormat='w'
 
         Options for the chronological argument ar
-          * False - write the files in order from most recent video to the oldest video
+          * False (default) - write the files in order from most recent video to the oldest video
           * True - write the files in order from oldest video to the most recent video
              -> chronological=False (default) OR chronological=True
 

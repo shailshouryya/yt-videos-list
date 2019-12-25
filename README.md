@@ -91,7 +91,7 @@ There are a number of optional arguments you can specify during the instantiatio
     * `csvWriteFormat='x'`  (default) OR `csvWriteFormat='w'`
     * `docxWriteFormat='x'` (unsupported) OR `docxWriteFormat='w'`
 * Options for the chronological argument are
-  - `False` - write the files in order from most recent video to the oldest video
+  - `False` (default) - write the files in order from most recent video to the oldest video
   - `True` - write the files in order from oldest video to the most recent video
     * `chronological=False` (default) OR `chronological=True`
 * Options for the headless option are
