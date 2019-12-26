@@ -1,5 +1,5 @@
-from yt_videos_list import program
-from yt_videos_list.notifications import Common, ModuleMessage, ScriptMessage
+from . import program
+from .notifications import Common, ModuleMessage, ScriptMessage
 import selenium
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options

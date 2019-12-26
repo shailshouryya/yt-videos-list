@@ -1,4 +1,4 @@
-from yt_videos_list.__main__ import ListGenerator
+from .__main__ import ListGenerator
 '''
 version: 0.2.15
 author: Shail-Shouryya

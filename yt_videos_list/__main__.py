@@ -1,5 +1,5 @@
 try:
-    from yt_videos_list import execute
+    from . import execute
 except:
     import script
 
