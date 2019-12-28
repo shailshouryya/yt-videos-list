@@ -27,4 +27,4 @@ def cli():
 def generate_list():
     _executionType = 'script'
     cliSpecifications = cli()
-    execute.run(*cliSpecifications, _executionType)
+    execute.logic(*cliSpecifications, _executionType)

@@ -44,7 +44,7 @@ def setupBrowser(userBrowser):
         print (cMessage.invalidBrowser)
         return 'invalid'
 
-def run(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat, docx, docxWriteFormat, chronological, headless, scrollPauseTime, userBrowser, executionType):
+def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat, docx, docxWriteFormat, chronological, headless, scrollPauseTime, userBrowser, executionType):
     mMessage = ModuleMessage()
     cMessage = Common()
     channel = channel.strip().strip('/')

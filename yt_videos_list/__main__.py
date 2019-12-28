@@ -94,7 +94,7 @@ class ListGenerator:
         You need to specify the channel, and channelType.
         You can also provide an optional fileName argument, but the fileName argument is not required.
         '''
-        execute.run(channel, channelType, fileName, self.txt, self.txtWriteFormat, self.csv, self.csvWriteFormat, self.docx, self.docxWriteFormat, self.chronological, self.headless, self.scrollPauseTime, self.browser, _executionType)
+        execute.logic(channel, channelType, fileName, self.txt, self.txtWriteFormat, self.csv, self.csvWriteFormat, self.docx, self.docxWriteFormat, self.chronological, self.headless, self.scrollPauseTime, self.browser, _executionType)
 
 def main():
     script.generate_list()
