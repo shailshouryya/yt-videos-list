@@ -1,12 +1,12 @@
 # Automate a Videos List Creation for a YouTube Channel
 **TABLE OF CONTENTS**
-<br>[Overview](https://github.com/Shail-Shouryya/yt_videos_list/#Overview)
-<br>[Quick Start](https://github.com/Shail-Shouryya/yt_videos_list/#Quick-Start)
-<br>[Running the module](https://github.com/Shail-Shouryya/yt_videos_list/#Running-the-module)
-<br>[Understanding the API](https://github.com/Shail-Shouryya/yt_videos_list/#Understanding-the-API)
-<br>[For more control](https://github.com/Shail-Shouryya/yt_videos_list/#For-more-control)
-<br>[Future Features](https://github.com/Shail-Shouryya/yt_videos_list/#Future-Features)
-<br>[Technical Specifications](https://github.com/Shail-Shouryya/yt_videos_list/#Technical-Specifications)
+<br>[Overview](./README.md#Overview)
+<br>[Quick Start](./README.md#Quick-Start)
+<br>[Running the module](./README.md#Running-the-module)
+<br>[Understanding the API](./README.md#Understanding-the-API)
+<br>[For more control](./README.md#For-more-control)
+<br>[Future Features](./README.md#Future-Features)
+<br>[Technical Specifications](./README.md#Technical-Specifications)
 
 ## Overview
 This repo is intended to provide a quick, simple way to create a list of all videos posted to any YouTube channel by providing just the URL to that user's channel videos. The general format for this is
