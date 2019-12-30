@@ -46,28 +46,28 @@ def writeToTxt (listOfVideos, channel, fileName, writeFormat, chronological):
         return
 
     start = time.perf_counter()
-    with open(f'{fileName}VideosList.txt', writeFormat) as f:
-        print (f'Opened {f.name}, writing video information to file....')
+    with open(f'{fileName}VideosList.txt', writeFormat) as txtFile:
+        print (f'Opened {txtFile.name}, writing video information to file....')
 
         spacing = '\n    ' # newline followed by 4 spaces
         for index, element in enumerate(listOfVideos, 1) if not chronological else enumerate(listOfVideos[::-1], 1):
-            f.write(f'Index:{spacing}{index}\n')
-            f.write(f'Watched?{spacing}\n')
-            f.write(f'Video Title:{spacing}{element.get_attribute("title")}\n')
-            f.write(f'Video URL:{spacing}{element.get_attribute("href")}\n')
-            f.write(f'Watch again later?{spacing}\n')
-            f.write(f'Notes:{spacing}\n')
+            txtFile.write(f'Index:{spacing}{index}\n')
+            txtFile.write(f'Watched?{spacing}\n')
+            txtFile.write(f'Video Title:{spacing}{element.get_attribute("title")}\n')
+            txtFile.write(f'Video URL:{spacing}{element.get_attribute("href")}\n')
+            txtFile.write(f'Watch again later?{spacing}\n')
+            txtFile.write(f'Notes:{spacing}\n')
 
-            f.write('*'*75 + '\n')
+            txtFile.write('*'*75 + '\n')
             if index % 250 == 0:
-                print (f'{index} videos written to {f.name}...')
-        print (f'Finished writing to {f.name}')
-        print (f'{index} videos written to {f.name}')
-        print (f'Closing {f.name}\n')
+                print (f'{index} videos written to {txtFile.name}...')
+        print (f'Finished writing to {txtFile.name}')
+        print (f'{index} videos written to {txtFile.name}')
+        print (f'Closing {txtFile.name}\n')
 
         end = time.perf_counter()
         functionTime = end - start
-        print(f'It took {functionTime} seconds to write all {index} videos to {f.name}\n')
+        print(f'It took {functionTime} seconds to write all {index} videos to {txtFile.name}\n')
 
 def saveToMemWriteToTxt (listOfVideos, channel, fileName, writeFormat, chronological):
     if writeFormat == 0:
