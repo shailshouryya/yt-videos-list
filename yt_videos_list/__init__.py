@@ -1,4 +1,3 @@
-from .__main__ import main
 from . import execute
 
 '''
@@ -110,6 +109,3 @@ class ListGenerator:
         You can also provide an optional fileName argument, but the fileName argument is not required.
         '''
         execute.logic(channel, channelType, fileName, self.txt, self.txtWriteFormat, self.csv, self.csvWriteFormat, self.docx, self.docxWriteFormat, self.chronological, self.headless, self.scrollPauseTime, self.browser, _executionType)
-
-if __name__ == '__main__':
-    main()
