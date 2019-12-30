@@ -104,20 +104,20 @@ def writeToCsv (listOfVideos, channel, fileName, writeFormat, chronological):
         return
 
     start = time.perf_counter()
-    with open(f'{fileName}VideosList.csv', writeFormat) as csvfile:
-        print (f'Opened {csvfile.name}, writing video information to file....')
+    with open(f'{fileName}VideosList.csv', writeFormat) as csvFile:
+        print (f'Opened {csvFile.name}, writing video information to file....')
         fieldnames = ['Index', 'Watched?', 'Video Title', 'Video URL', 'Watch again later?', 'Notes']
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        writer = csv.DictWriter(csvFile, fieldnames=fieldnames)
         writer.writeheader()
 
         for index, element in enumerate(listOfVideos, 1) if not chronological else enumerate(listOfVideos[::-1], 1):
             writer.writerow(
             {'Index': f'{index}', 'Watched?': '', 'Video Title': f'{element.get_attribute("title")}', 'Video URL': f'{element.get_attribute("href")}', 'Watch again later?': '', 'Notes': ''})
             if index % 250 == 0:
-                print(f'{index} videos written to {csvfile.name}...')
-        print (f'Finished writing to {csvfile.name}')
-        print (f'{index} videos written to {csvfile.name}')
-        print (f'Closing {csvfile.name}\n')
+                print(f'{index} videos written to {csvFile.name}...')
+        print (f'Finished writing to {csvFile.name}')
+        print (f'{index} videos written to {csvFile.name}')
+        print (f'Closing {csvFile.name}\n')
         end = time.perf_counter()
         functionTime = end - start
-        print(f'It took {functionTime} to write all {index} videos to {csvfile.name}\n')
+        print(f'It took {functionTime} to write all {index} videos to {csvFile.name}\n')
