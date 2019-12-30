@@ -68,7 +68,7 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
 
     if userBrowser is None:
         print (cMessage.runningDefaultBrowser)
-        print (cMessage.showBrowserOptions)
+        print (mMessage.showBrowserOptions) if executionType == 'module' else print (sMessage.showBrowserOptions) if executionType == 'script'
         userBrowser = 'firefox'
 
     driver = setupBrowser(userBrowser)

@@ -9,11 +9,6 @@ class Common:
     invalidBrowser = 'The browser you specified is invalid. Please try rerunning the last command after specifying a valid browser. Supported browsers include:\n   Firefox\n   Opera\n   Safari\n   Chrome'
 
     runningDefaultBrowser = '\nNo browser specified during ListGenerator instantiation, running program using the Firefox browser.'
-    showBrowserOptions = 'To use a different browser, specify the browser in the browser argument during the ListGenerator instantiation. For example:' + \
-        "\n    LG = ListGenerator(browser='opera')" + \
-        "\n    LG = ListGenerator(browser='safari')" + \
-        "\n    LG = ListGenerator(browser='chrome')" + \
-        "\n    LG = ListGenerator(browser='firefox')"
 
     geckodriverInfo  = '# For more information about the geckodriver, please visit https://github.com/mozilla/geckodriver\n'
     operadriverInfo  = '# For more information about the operadriver, please visit https://github.com/operasoftware/operachromiumdriver\n'
@@ -258,7 +253,15 @@ class ModuleMessage(Common):
     fileAlreadyExists = 'This error indicates that a file of this name already exists in the current directory. If you want to overwrite this file, run the generate_list method again with the optional parameter "writeFormat" set to "w"'
     fileAlreadyExistsRerunUsage = 'Example usage:\n LG.generate_list(writeFormat="w")\n'
 
+    showBrowserOptions = 'To use a different browser, specify the browser in the browser argument during the ListGenerator instantiation. For example:' + \
+        "\n    LG = ListGenerator(browser='opera')" + \
+        "\n    LG = ListGenerator(browser='safari')" + \
+        "\n    LG = ListGenerator(browser='chrome')" + \
+        "\n    LG = ListGenerator(browser='firefox')"
+
 class ScriptMessage(Common):
     inputMessage = "What is the name of the YouTube channel you want to generate the list for?\n\nIf you're unsure, click on the channel and look at the URL.\nIt should be in the format:\nhttps://www.youtube.com/user/YourChannelName\nOR\nhttps://www.youtube.com/channel/YourChannelName\n\nSubstitute what you see for YourChannelName and type it in below (NOTE: if your url looks like the second option, you need to run this script with the -c or --channel flag):\n"
 
     checkChannelType = 'If you did type the name in correctly, perhaps the channelType is set incorrectly. Try using the -c or --channelType flag for this script if you didn\'t do it when running this script, or try running the script without the -c or --channelType flag if you DID include that flag when running this script.'
+
+    showBrowserOptions = 'To use a different browser, specify the browser in the browser flag. For example:'
