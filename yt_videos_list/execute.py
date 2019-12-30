@@ -56,16 +56,16 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
         else:
             return channel
 
-    file_name = determineFileName(fileName)
+    fileName = determineFileName(fileName)
 
     if txt is True and txtWriteFormat == 'x':
-        txtWriteFormat = verifyWriteFormat(file_name, 'txt')
+        txtWriteFormat = verifyWriteFormat(fileName, 'txt')
 
     if csv is True and csvWriteFormat == 'x':
-        csvWriteFormat = verifyWriteFormat(file_name, 'csv')
+        csvWriteFormat = verifyWriteFormat(fileName, 'csv')
 
     if docx is True and docxWriteFormat == 'x' is True:
-        docxWriteFormat = verifyWriteFormat(file_name, 'docx')
+        docxWriteFormat = verifyWriteFormat(fileName, 'docx')
 
     if userBrowser is None:
         print (cMessage.runningDefaultBrowser)
@@ -130,10 +130,10 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
             print (mMessage.checkChannelType) if executionType == 'module' else print (sMessage.checkChannelType)
             return
         if txt is True:
-            program.writeToTxt(videosList, channel, file_name, txtWriteFormat, chronological)
-            # saveToMemWriteToTxt(videosList, channel, file_name, writeFormat) # slightly slower than writing to disk directly
+            program.writeToTxt(videosList, channel, fileName, txtWriteFormat, chronological)
+            # saveToMemWriteToTxt(videosList, channel, fileName, writeFormat) # slightly slower than writing to disk directly
         if csv is True:
-            program.writeToCsv(videosList, channel, file_name, csvWriteFormat, chronological)
+            program.writeToCsv(videosList, channel, fileName, csvWriteFormat, chronological)
 
     programEnd = time.perf_counter()
     totalTime = programEnd - programStart
