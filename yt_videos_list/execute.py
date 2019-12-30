@@ -54,7 +54,7 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
         if fileName is not None:
             return fileName
         else:
-            return channel.strip('/')
+            return channel
 
     file_name = determineFileName(fileName)
 
