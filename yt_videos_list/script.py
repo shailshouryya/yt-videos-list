@@ -1,5 +1,5 @@
-import execute
-from notifications import Common, ModuleMessage, ScriptMessage
+from .import execute
+from .notifications import Common, ModuleMessage, ScriptMessage
 
 def cli():
     '''
