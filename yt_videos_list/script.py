@@ -25,7 +25,19 @@ def cli():
     -p --pause change pause time between scrolls, set to 0.8s by default
     -r --reverse reverse the indexing so oldest video starts at 1 and most recent video has highest index
     '''
-    pass
+    channel = 'schafer5'
+    channelType = 'user'
+    fileName = None
+    txt = True
+    txtWriteFormat = 'x'
+    csv = True
+    csvWriteFormat = 'x'
+    docx = False
+    docxWriteFormat = 'x'
+    chronological = False
+    headless = False
+    scrollPauseTime = 0.8
+    userBrowser = None
     return (channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat, docx, docxWriteFormat, chronological, headless, scrollPauseTime, userBrowser)
 
 def generate_list():
