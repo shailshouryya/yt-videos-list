@@ -10,26 +10,30 @@ import os
 cMessage = Common()
 sMessage = ScriptMessage()
 
-def verifyWriteFormat(fileName, fileType):
-    filename = f'{fileName}VideosList.{fileType}'
-    fileExists = True if os.path.isfile(f'./{filename}') else False
+def verifyWriteFormat(fileType, writeFormat, fileName, fileExtension):
+    if fileType is True and writeFormat == 'x':
+        filename = f'{fileName}VideosList.{fileExtension}'
+        fileExists = True if os.path.isfile(f'./{filename}') else False
 
-    def newWriteFormat():
-        userResponse = input()
-        if 'proceed' in userResponse.strip().lower():
-            return 'w'
-        elif 'skip' in userResponse.strip().lower():
-            return 0
-        else:
-            print ('\n' + cMessage.invalidResponse)
+        def newWriteFormat():
+            userResponse = input()
+            if 'proceed' in userResponse.strip().lower():
+                return 'w'
+            elif 'skip' in userResponse.strip().lower():
+                return 0
+            else:
+                print ('\n' + cMessage.invalidResponse)
+                cMessage.fileAlreadyExistsPrompt(filename)
+                return newWriteFormat()
+
+        if fileExists is True:
+            cMessage.fileAlreadyExistsWarning(filename)
             cMessage.fileAlreadyExistsPrompt(filename)
             return newWriteFormat()
+        return 'x'
 
-    if fileExists is True:
-        cMessage.fileAlreadyExistsWarning(filename)
-        cMessage.fileAlreadyExistsPrompt(filename)
-        return newWriteFormat()
-    return 'x'
+    else:
+        return writeFormat
 
 def setupBrowser(userBrowser):
     if 'firefox' in userBrowser:
@@ -58,14 +62,9 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
 
     fileName = determineFileName(fileName)
 
-    if txt is True and txtWriteFormat == 'x':
-        txtWriteFormat = verifyWriteFormat(fileName, 'txt')
-
-    if csv is True and csvWriteFormat == 'x':
-        csvWriteFormat = verifyWriteFormat(fileName, 'csv')
-
-    if docx is True and docxWriteFormat == 'x' is True:
-        docxWriteFormat = verifyWriteFormat(fileName, 'docx')
+    txtWriteFormat = verifyWriteFormat(txt, txtWriteFormat, fileName, 'txt')
+    csvWriteFormat = verifyWriteFormat(csv, csvWriteFormat, fileName, 'csv')
+    docxWriteFormat = verifyWriteFormat(docx, docxWriteFormat, fileName, 'docx')
 
     if userBrowser is None:
         print (cMessage.runningDefaultBrowser)
