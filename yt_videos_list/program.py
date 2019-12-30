@@ -14,7 +14,7 @@ def scrollToBottom (channel, channelType, seleniumInstance, scrollPauseTime):
 
     baseUrl = 'https://www.youtube.com'
     videos = 'videos'
-    url = baseUrl + '/' + channelType + '/' + channel + '/' + videos
+    url = f'{baseUrl}/{channelType}/{channel}/{videos}'
 
     driver.get(url)
     elemsCount = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
@@ -80,12 +80,12 @@ def saveToMemWriteToTxt (listOfVideos, channel, fileName, writeFormat, chronolog
         text = ''
         spacing = '\n    ' # newline followed by 4 spaces
         for index, element in enumerate(listOfVideos, 1) if not chronological else enumerate(listOfVideos[::-1], 1):
-            text += f'Index:{spacing}{index}' + '\n'
-            text += f'Watched?{spacing}' + '\n'
-            text += f'Video Title:{spacing}{element.get_attribute("title")}' + '\n'
-            text += f'Video URL:{spacing}{element.get_attribute("href")}' + '\n'
-            text += f'Watch again later?{spacing}' + '\n'
-            text += f'Notes:{spacing}' + '\n'
+            text += f'Index:{spacing}{index}\n'
+            text += f'Watched?{spacing}\n'
+            text += f'Video Title:{spacing}{element.get_attribute("title")}\n'
+            text += f'Video URL:{spacing}{element.get_attribute("href")}\n'
+            text += f'Watch again later?{spacing}\n'
+            text += f'Notes:{spacing}\n'
 
             text += '*'*75 + '\n'
             if index % 250 == 0:
