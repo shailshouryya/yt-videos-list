@@ -20,3 +20,19 @@
 - Put check for `userBrowser is None` first since you can't iterate over `None` as you can iterate over strings. This comes up in the setupBrowser() method in execute.py
   - `TypeError: argument of type 'NoneType' is not iterable`
 - [selenium.common.exceptions](https://selenium.dev/selenium/docs/api/py/common/selenium.common.exceptions.html)
+- running as a module (as of commit 2dbc5a15ab83a79aeeb884a106062ef2b1f52c76):
+```
+python3 -m yt_videos_list
+/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/runpy.py:125: RuntimeWarning: 'yt_videos_list.__main__' found in sys.modules after import of package 'yt_videos_list', but prior to execution of 'yt_videos_list.__main__'; this may result in unpredictable behaviour
+  warn(RuntimeWarning(msg))
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/yt_videos_list/__main__.py", line 103, in <module>
+    main()
+  File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/yt_videos_list/__main__.py", line 100, in main
+    script.generate_list()
+NameError: name 'script' is not defined
+```
