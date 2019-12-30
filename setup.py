@@ -33,7 +33,9 @@ setup(
         'Topic :: Internet :: WWW/HTTP :: Indexing/Search',
         'Topic :: Multimedia :: Video',
         'Topic :: Scientific/Engineering :: Information Analysis',
-        'Topic :: Software Development :: Libraries :: Python Modules'
+        'Topic :: Software Development :: Libraries :: Python Modules',
+        'Topic :: Software Development :: Version Control :: Git',
+        'Topic :: Text Processing :: Markup :: HTML'
     ],
 
     keywords='YoutTube videos URL scraping automation',
