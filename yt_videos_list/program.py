@@ -50,7 +50,7 @@ def writeToTxt (listOfVideos, channel, fileName, writeFormat, chronological):
         print (f'Opened {txtFile.name}, writing video information to file....')
 
         spacing = '\n    ' # newline followed by 4 spaces
-        for index, element in enumerate(listOfVideos, 1) if not chronological else enumerate(listOfVideos[::-1], 1):
+        for index, element in enumerate(listOfVideos, 1) if chronological is False else enumerate(listOfVideos[::-1], 1):
             txtFile.write(f'Index:{spacing}{index}\n')
             txtFile.write(f'Watched?{spacing}\n')
             txtFile.write(f'Video Title:{spacing}{element.get_attribute("title")}\n')
@@ -79,7 +79,7 @@ def saveToMemWriteToTxt (listOfVideos, channel, fileName, writeFormat, chronolog
 
         text = ''
         spacing = '\n    ' # newline followed by 4 spaces
-        for index, element in enumerate(listOfVideos, 1) if not chronological else enumerate(listOfVideos[::-1], 1):
+        for index, element in enumerate(listOfVideos, 1) if chronological is False else enumerate(listOfVideos[::-1], 1):
             text += f'Index:{spacing}{index}\n'
             text += f'Watched?{spacing}\n'
             text += f'Video Title:{spacing}{element.get_attribute("title")}\n'
@@ -110,7 +110,7 @@ def writeToCsv (listOfVideos, channel, fileName, writeFormat, chronological):
         writer = csv.DictWriter(csvFile, fieldnames=fieldnames)
         writer.writeheader()
 
-        for index, element in enumerate(listOfVideos, 1) if not chronological else enumerate(listOfVideos[::-1], 1):
+        for index, element in enumerate(listOfVideos, 1) if chronological is False else enumerate(listOfVideos[::-1], 1):
             writer.writerow(
             {'Index': f'{index}', 'Watched?': '', 'Video Title': f'{element.get_attribute("title")}', 'Video URL': f'{element.get_attribute("href")}', 'Watch again later?': '', 'Notes': ''})
             if index % 250 == 0:
