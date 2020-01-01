@@ -20,7 +20,6 @@ __source__ = 'https://github.com/Shail-Shouryya/yt_videos_list'
 class ListGenerator:
     def __init__(self, txt=True, txtWriteFormat='x', csv=True, csvWriteFormat='x', docx=False, docxWriteFormat='x', chronological=False, headless=False, scrollPauseTime=0.8, browser=None):
         '''
-
         The ListGenerator class creates a list generator instance with no required arguments.
         Example usage:
             LG = ListGenerator()
