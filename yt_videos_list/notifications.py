@@ -246,7 +246,6 @@ class Common:
         print (f'If you wish to skip the creation of {filename}, type "skip"')
 
 class ModuleMessage(Common):
-
     runInHeadless = '\nAdvanced usage: you can run this program in headless mode with the optional "headless" parameter set to True to speed up execution slightly:'
     runInHeadlessExample = '    LG = ListGenerator(headless=True)\n\n\n'
     checkChannelType = 'If you did type the name in correctly, perhaps the channelType is set incorrectly. Try setting channelType to "channel" in the generate_list() method call if you set channelType to "user" for this run, or try running the method with channelType set to "user" if you ran this method with channelType set to "channel" for this run\n'
