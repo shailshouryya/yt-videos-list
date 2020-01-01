@@ -37,16 +37,12 @@ setup(
         'Topic :: Software Development :: Version Control :: Git',
         'Topic :: Text Processing :: Markup :: HTML'
     ],
-
     keywords='YoutTube videos URL scraping automation',
-
     packages=find_packages(),
 #    packages=find_packages(),
-
 #    package_dir={'':'src'},
 
     python_requires='>=3.6.*, <4',
-
     install_requires=['selenium>=3.141.0'],  # Optional
     # https://packaging.python.org/discussions/install-requires-vs-requirements/
 
@@ -55,10 +51,10 @@ setup(
     #
     # If using Python 2.6 or earlier, then these have to be included in
     # MANIFEST.in as well.
+
     package_data={  # Optional
         # 'sample': ['package_data.dat'],
     },
-
     # Although 'package_data' is the preferred approach, in some case you may
     # need to place data files outside of your packages. See:
     # http://docs.python.org/3.4/distutils/setupscript.html#installing-additional-files
