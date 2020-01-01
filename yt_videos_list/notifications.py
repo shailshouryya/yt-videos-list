@@ -1,6 +1,6 @@
 class Common:
     '''
-    This class contains messages that are common to both the pyYT_videos_list and execute modules.
+    This class contains messages that are common regardless of whether the package is being run as a module using the -m option from the CLI or as a module from within the Python interpreter (or another Python script).
     '''
     noVideosFound = 'No videos were found for the channel you provided. Are you sure you typed in the channel name correctly?\n'
     noNewVideosFound = 'No new videos were found since the last scroll. Waiting another 0.6 seconds to see if more videos can be loaded....'
