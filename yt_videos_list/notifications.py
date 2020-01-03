@@ -10,9 +10,9 @@ class Common:
 
     runningDefaultBrowser = '\nNo browser specified during ListGenerator instantiation, running program using the Firefox browser.'
 
-    geckodriverInfo  = '# For more information about the geckodriver, please visit https://github.com/mozilla/geckodriver\n'
-    operadriverInfo  = '# For more information about the operadriver, please visit https://github.com/operasoftware/operachromiumdriver\n'
-    chromedriverInfo = '# For more information about the chromedriver, please visit https://sites.google.com/a/chromium.org/chromedriver/home\n'
+    geckodriverInfo  = '# For more information about the geckodriver, please visit https://github.com/mozilla/geckodriver\nNOTE! You must also have the Mozilla Firefox browser installed to use this. If you don\'t have it installed, install it from\nhttps://www.mozilla.org/en-US/firefox/new/'
+    operadriverInfo  = '# For more information about the operadriver, please visit https://github.com/operasoftware/operachromiumdriver\nNOTE! You must also have the Opera browser installed to use this. If you don\'t have it installed, install it from\nhttps://www.opera.com/'
+    chromedriverInfo = '# For more information about the chromedriver, please visit https://sites.google.com/a/chromium.org/chromedriver/home\nNOTE! You must also have the Chrome browser installed to use this. If you don\'t have it installed, install it from\nhttps://www.google.com/chrome/'
 
     geckodriverDownloadInstructions = '(The given command downloads a geckodriver ("Firefoxdriver") version that is compatible with Firefox versions ≥ 60. To see more information about the differences compared to older versions, please visit https://github.com/mozilla/geckodriver/releases)'
     operadriverDownloadInstructions = '(Your Opera browser version should match the "supports Opera ## release" below)'
