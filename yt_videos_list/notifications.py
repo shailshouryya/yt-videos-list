@@ -20,7 +20,7 @@ class Common:
         operadriverDownloadInstructions = '(Your Opera browser version should match the "supports Opera ## release" below)'
         chromedriverDownloadInstructions = '(Your Chrome browser version should match the first numbers before the decimal place of the chromedriver version below)'
 
-        terminalCopyPasteDirections = 'Once you determine the right version to download, copy the command, open a new terminal session (usually possible with CMD+N or CMD+T (or CTRL+N or CTRL+D depending on your keyboard/OS) from an active terminal session), and paste the command you just copied. Once you\'ve done that, you should be able to come back to this session and rerun the last command without an error!\n'
+        terminalCopyPasteDirections = 'Once you determine the right version to download, copy the command, open a new terminal session (usually possible with CMD+N or CMD+T (or CTRL+N or CTRL+D depending on your keyboard/OS) from an active terminal session), and paste the command you just copied. Once you\'ve done that, you should be able to come back to this session and rerun the last command without an error!\n\n'
 
         browsersForOS = {
             'firefox': {
@@ -223,13 +223,13 @@ class Common:
                 'chrome': ['chromedriver', 'https://sites.google.com/a/chromium.org/chromedriver/home', 'Chrome', 'https://www.google.com/chrome/']
             }
 
-            print (f'# For more information about the {moreBrowserInfo[userBrowser][0]}, please visit\n{moreBrowserInfo[userBrowser][1]}\n\nNOTE! You must also have the {moreBrowserInfo[userBrowser][2]} browser installed to use this. If you don\'t have it installed, install it from\n{moreBrowserInfo[userBrowser][3]}')
+            print (f'\n\n# For more information about the {moreBrowserInfo[userBrowser][0]}, please visit\n{moreBrowserInfo[userBrowser][1]}\n\nNOTE! You must also have the {moreBrowserInfo[userBrowser][2]} browser installed to use this. If you don\'t have it installed, install it from\n{moreBrowserInfo[userBrowser][3]}')
 
         displayMoreDependencyInformation(userBrowser)
 
     @staticmethod
     def seleniumDependencyError(errorMessage):
-        print (f'\nThere was an error while trying to open up the remote selenium instance. The exact error was:\n{errorMessage}\nDon\'t worry though, this is an easy fix!')
+        print (f'\n\n\n\n\n\n\nThere was an error while trying to open up the remote selenium instance. The exact error was:\n{errorMessage}\nDon\'t worry though, this is an easy fix!')
 
     @staticmethod
     def tellUserToDownloadBrowser(userBrowser):
