@@ -118,8 +118,7 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
 
         if userBrowser != 'safari':
             cMessage.tellUserToDownloadBrowser(userBrowser)
-        for browserVersionDownload in cMessage.browsersForOS[userBrowser][userOS]:
-            print (browserVersionDownload)
+        cMessage.displayDependencySetupInstructions(userBrowser, userOS)
         return
 
     with driver:
