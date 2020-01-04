@@ -27,7 +27,7 @@ class Common:
 
         print (geckodriverDownloadInstructions) if userBrowser == 'firefox' else print (operadriverDownloadInstructions) if userBrowser == 'opera' else print (chromedriverDownloadInstructions) if userBrowser == 'chrome' else print ('This is an OS specific browser.')
 
-        browsersForOS = {
+        driverDownloadsListForOS = {
             'firefox': {
                 'macos': [
                     '# macos geckodriver (Firefoxdriver) v0.26.0',
@@ -206,7 +206,7 @@ class Common:
             }
         }
 
-        for browserVersionDownload in browsersForOS[userBrowser][userOS]:
+        for browserVersionDownload in driverDownloadsListForOS[userBrowser][userOS]:
             print (browserVersionDownload)
 
         def displayMoreDependencyInformation(userBrowser):
