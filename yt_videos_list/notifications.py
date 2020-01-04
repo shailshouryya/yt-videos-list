@@ -206,8 +206,8 @@ class Common:
             }
         }
 
-        for browserVersionDownload in driverDownloadsListForOS[userBrowser][userOS]:
-            print (browserVersionDownload)
+        for driverVersionDownload in driverDownloadsListForOS[userBrowser][userOS]:
+            print (driverVersionDownload)
 
         def displayMoreDependencyInformation(userBrowser):
             moreBrowserInfo = {
