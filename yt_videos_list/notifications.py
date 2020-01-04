@@ -16,11 +16,6 @@ class Common:
 
     @staticmethod
     def displayDependencySetupInstructions(userBrowser, userOS):
-
-        geckodriverInfo  = '# For more information about the geckodriver, please visit https://github.com/mozilla/geckodriver\nNOTE! You must also have the Mozilla Firefox browser installed to use this. If you don\'t have it installed, install it from\nhttps://www.mozilla.org/en-US/firefox/new/'
-        operadriverInfo  = '# For more information about the operadriver, please visit https://github.com/operasoftware/operachromiumdriver\nNOTE! You must also have the Opera browser installed to use this. If you don\'t have it installed, install it from\nhttps://www.opera.com/'
-        chromedriverInfo = '# For more information about the chromedriver, please visit https://sites.google.com/a/chromium.org/chromedriver/home\nNOTE! You must also have the Chrome browser installed to use this. If you don\'t have it installed, install it from\nhttps://www.google.com/chrome/'
-
         geckodriverDownloadInstructions = '(The given command downloads a geckodriver ("Firefoxdriver") version that is compatible with Firefox versions ≥ 60. To see more information about the differences compared to older versions, please visit https://github.com/mozilla/geckodriver/releases)'
         operadriverDownloadInstructions = '(Your Opera browser version should match the "supports Opera ## release" below)'
         chromedriverDownloadInstructions = '(Your Chrome browser version should match the first numbers before the decimal place of the chromedriver version below)'
@@ -32,16 +27,14 @@ class Common:
                 'macos': [
                     f'{geckodriverDownloadInstructions}',
                     '# macos geckodriver (Firefoxdriver) v0.26.0',
-                    'curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-macos.tar.gz | tar -xzvf - -C /usr/local/bin/ \n',
-                    f'{geckodriverInfo}'
+                    'curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-macos.tar.gz | tar -xzvf - -C /usr/local/bin/ \n'
                 ],
                 'linux': [
                     f'{geckodriverDownloadInstructions}',
                     '# linux64 geckodriver (Firefoxdriver) v0.26.0',
                     'curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux64.tar.gz | tar -xzvf - -C /usr/local/bin/ \n',
                     '# linux32 geckodriver (Firefoxdriver) v0.26.0',
-                    'curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux32.tar.gz | tar -xzvf - -C /usr/local/bin/ \n',
-                    f'{geckodriverInfo}'
+                    'curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux32.tar.gz | tar -xzvf - -C /usr/local/bin/ \n'
                 ],
                 'windows': [
                     'In progress!',
@@ -49,8 +42,7 @@ class Common:
                     '# windows64 geckodriver (Firefoxdriver) v0.26.0',
                     r'mkdir C:\yt_videos_list_TEMP\ && curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win64.zip -o C:\yt_videos_list_TEMP\geckodriver && tar -xzvf C:\yt_videos_list_TEMP\geckodriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP \n',
                     '# windows32 geckodriver (Firefoxdriver) v0.26.0',
-                    r'mkdir C:\yt_videos_list_TEMP\ && curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win32.zip -o C:\yt_videos_list_TEMP\geckodriver && tar -xzvf C:\yt_videos_list_TEMP\geckodriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP \n',
-                    f'{geckodriverInfo}'
+                    r'mkdir C:\yt_videos_list_TEMP\ && curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win32.zip -o C:\yt_videos_list_TEMP\geckodriver && tar -xzvf C:\yt_videos_list_TEMP\geckodriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP \n'
                 ]
             },
             'opera': {
@@ -75,8 +67,7 @@ class Common:
                     '# mac64 Operadriver 2.38 (supports Opera 55 release)',
                     'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.38/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum \n',
                     '# mac64 Operadriver 2.37 (supports Opera 54 release)',
-                    'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.37/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum \n',
-                    f'{operadriverInfo}'
+                    'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.37/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum \n'
                 ],
                 'linux': [
                     f'{operadriverDownloadInstructions}',
@@ -99,8 +90,7 @@ class Common:
                     '# linux64 Operadriver 2.38 (supports Opera 55 release)',
                     'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.38/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ &--strip-components=1 && rm /usr/local/bin/sha512_sum \n',
                     '# linux64 Operadriver 2.37 (supports Opera 54 release)',
-                    'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.37/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum \n',
-                    f'{operadriverInfo}'
+                    'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.37/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum \n'
                 ],
                 'windows': [
                     'In progress!',
@@ -144,8 +134,7 @@ class Common:
                     '# windows32 Operadriver 2.38 (supports Opera 55 release)',
                     r'mkdir C:\yt_videos_list_TEMP\ && curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.38/operadriver_win32.zip -o C:\yt_videos_list_TEMP\operadriver && tar -xzvf C:\yt_videos_list_TEMP\operadriver -C C:\Windows\ --strip-components=1 && rmdir /q /s C:\yt_videos_list_TEMP && del C:\Windows\sha512_sum \n',
                     '# windows32 Operadriver 2.37 (supports Opera 54 release)',
-                    r'mkdir C:\yt_videos_list_TEMP\ && curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.37/operadriver_win32.zip -o C:\yt_videos_list_TEMP\operadriver && tar -xzvf C:\yt_videos_list_TEMP\operadriver -C C:\Windows\ --strip-components=1 && rmdir /q /s C:\yt_videos_list_TEMP && del C:\Windows\sha512_sum \n',
-                    f'{operadriverInfo}'
+                    r'mkdir C:\yt_videos_list_TEMP\ && curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.37/operadriver_win32.zip -o C:\yt_videos_list_TEMP\operadriver && tar -xzvf C:\yt_videos_list_TEMP\operadriver -C C:\Windows\ --strip-components=1 && rmdir /q /s C:\yt_videos_list_TEMP && del C:\Windows\sha512_sum \n'
                 ]
             },
             'safari': {
@@ -177,8 +166,7 @@ class Common:
                     '# mac64 Chromedriver 73.0.3683.68',
                     'curl -SL https://chromedriver.storage.googleapis.com/73.0.3683.68/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ \n',
                     '# mac64 Chromedriver 2.46 (Supports Chrome v71-73)',
-                    'curl -SL https://chromedriver.storage.googleapis.com/2.46/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ \n',
-                    f'{chromedriverInfo}'
+                    'curl -SL https://chromedriver.storage.googleapis.com/2.46/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ \n'
                 ],
                 'linux': [
                     f'{chromedriverDownloadInstructions}',
@@ -197,8 +185,7 @@ class Common:
                     '# linux64 Chromedriver 73.0.3683.68',
                     'curl -SL https://chromedriver.storage.googleapis.com/73.0.3683.68/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ \n',
                     '# linux64 Chromedriver 2.46 (Supports Chrome v71-73)',
-                    'curl -SL https://chromedriver.storage.googleapis.com/2.46/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ \n',
-                    f'{chromedriverInfo}'
+                    'curl -SL https://chromedriver.storage.googleapis.com/2.46/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ \n'
                 ],
                 'windows': [
                     'In progress!',
@@ -218,8 +205,7 @@ class Common:
                     '# win32 Chromedriver 73.0.3683.68',
                     r'mkdir C:\yt_videos_list_TEMP\ && curl -SL https://chromedriver.storage.googleapis.com/73.0.3683.68/chromedriver_win32.zip -o C:\yt_videos_list_TEMP\chromedriver && tar -xzvf C:\yt_videos_list_TEMP\chromedriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP \n',
                     '# win32 Chromedriver 2.46 (Supports Chrome v71-73)',
-                    r'mkdir C:\yt_videos_list_TEMP\ && curl -SL https://chromedriver.storage.googleapis.com/2.46/chromedriver_win32.zip -o C:\yt_videos_list_TEMP\chromedriver && tar -xzvf C:\yt_videos_list_TEMP\chromedriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP \n',
-                    f'{chromedriverInfo}'
+                    r'mkdir C:\yt_videos_list_TEMP\ && curl -SL https://chromedriver.storage.googleapis.com/2.46/chromedriver_win32.zip -o C:\yt_videos_list_TEMP\chromedriver && tar -xzvf C:\yt_videos_list_TEMP\chromedriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP \n'
                 ]
             }
         }
@@ -228,6 +214,18 @@ class Common:
 
         for browserVersionDownload in browsersForOS[userBrowser][userOS]:
             print (browserVersionDownload)
+
+        def displayMoreDependencyInformation(userBrowser):
+            moreBrowserInfo = {
+                # 'browser': ['driverName', 'url for more driver info', 'browser name', 'url for browser download']
+                'firefox': ['geckodriver', 'https://github.com/mozilla/geckodriver', 'Mozilla Firefox', 'https://www.mozilla.org/en-US/firefox/new/'],
+                'opera': ['operadriver', 'https://github.com/operasoftware/operachromiumdriver', 'Opera', 'https://www.opera.com/'],
+                'chrome': ['chromedriver', 'https://sites.google.com/a/chromium.org/chromedriver/home', 'Chrome', 'https://www.google.com/chrome/']
+            }
+
+            print (f'# For more information about the {moreBrowserInfo[userBrowser][0]}, please visit\n{moreBrowserInfo[userBrowser][1]}\n\nNOTE! You must also have the {moreBrowserInfo[userBrowser][2]} browser installed to use this. If you don\'t have it installed, install it from\n{moreBrowserInfo[userBrowser][3]}')
+
+        displayMoreDependencyInformation(userBrowser)
 
     @staticmethod
     def seleniumDependencyError(errorMessage):
