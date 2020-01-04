@@ -30,14 +30,12 @@ class Common:
         browsersForOS = {
             'firefox': {
                 'macos': [
-                    f'{terminalCopyPasteDirections}',
                     f'{geckodriverDownloadInstructions}',
                     '# macos geckodriver (Firefoxdriver) v0.26.0',
                     'curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-macos.tar.gz | tar -xzvf - -C /usr/local/bin/ \n',
                     f'{geckodriverInfo}'
                 ],
                 'linux': [
-                    f'{terminalCopyPasteDirections}',
                     f'{geckodriverDownloadInstructions}',
                     '# linux64 geckodriver (Firefoxdriver) v0.26.0',
                     'curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux64.tar.gz | tar -xzvf - -C /usr/local/bin/ \n',
@@ -47,7 +45,6 @@ class Common:
                 ],
                 'windows': [
                     'In progress!',
-                    f'{terminalCopyPasteDirections}',
                     f'{geckodriverDownloadInstructions}',
                     '# windows64 geckodriver (Firefoxdriver) v0.26.0',
                     r'mkdir C:\yt_videos_list_TEMP\ && curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win64.zip -o C:\yt_videos_list_TEMP\geckodriver && tar -xzvf C:\yt_videos_list_TEMP\geckodriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP \n',
@@ -58,7 +55,6 @@ class Common:
             },
             'opera': {
                 'macos' : [
-                    f'{terminalCopyPasteDirections}',
                     f'{operadriverDownloadInstructions}',
                     '# mac64 Operadriver 78.0.3904.87 (supports Opera Stable 65 release)',
                     'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.78.0.3904.87/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum \n',
@@ -83,7 +79,6 @@ class Common:
                     f'{operadriverInfo}'
                 ],
                 'linux': [
-                    f'{terminalCopyPasteDirections}',
                     f'{operadriverDownloadInstructions}',
                     '# linux64 Operadriver 78.0.3904.87 (supports Opera Stable 65 release)',
                     'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.78.0.3904.87/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum \n',
@@ -166,7 +161,6 @@ class Common:
             },
             'chrome': {
                 'macos' : [
-                    f'{terminalCopyPasteDirections}',
                     f'{chromedriverDownloadInstructions}',
                     '# mac64 Chromedriver 79.0.3945.36',
                     'curl -SL https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ \n',
@@ -187,7 +181,6 @@ class Common:
                     f'{chromedriverInfo}'
                 ],
                 'linux': [
-                    f'{terminalCopyPasteDirections}',
                     f'{chromedriverDownloadInstructions}',
                     '# linux64 Chromedriver 79.0.3945.36',
                     'curl -SL https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ \n',
@@ -230,6 +223,9 @@ class Common:
                 ]
             }
         }
+        if userOS != 'windows':
+            print (f'{terminalCopyPasteDirections}')
+
         for browserVersionDownload in browsersForOS[userBrowser][userOS]:
             print (browserVersionDownload)
 
