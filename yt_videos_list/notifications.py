@@ -25,15 +25,15 @@ class Common:
         operadriverDownloadInstructions = '(Your Opera browser version should match the "supports Opera ## release" below)'
         chromedriverDownloadInstructions = '(Your Chrome browser version should match the first numbers before the decimal place of the chromedriver version below)'
 
+        print (geckodriverDownloadInstructions) if userBrowser == 'firefox' else print (operadriverDownloadInstructions) if userBrowser == 'opera' else print (chromedriverDownloadInstructions) if userBrowser == 'chrome' else print ('This is an OS specific browser.')
+
         browsersForOS = {
             'firefox': {
                 'macos': [
-                    f'{geckodriverDownloadInstructions}',
                     '# macos geckodriver (Firefoxdriver) v0.26.0',
                     'curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-macos.tar.gz | tar -xzvf - -C /usr/local/bin/ \n'
                 ],
                 'linux': [
-                    f'{geckodriverDownloadInstructions}',
                     '# linux64 geckodriver (Firefoxdriver) v0.26.0',
                     'curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux64.tar.gz | tar -xzvf - -C /usr/local/bin/ \n',
                     '# linux32 geckodriver (Firefoxdriver) v0.26.0',
@@ -41,7 +41,6 @@ class Common:
                 ],
                 'windows': [
                     'In progress!',
-                    f'{geckodriverDownloadInstructions}',
                     '# windows64 geckodriver (Firefoxdriver) v0.26.0',
                     r'mkdir C:\yt_videos_list_TEMP\ && curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win64.zip -o C:\yt_videos_list_TEMP\geckodriver && tar -xzvf C:\yt_videos_list_TEMP\geckodriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP \n',
                     '# windows32 geckodriver (Firefoxdriver) v0.26.0',
@@ -50,7 +49,6 @@ class Common:
             },
             'opera': {
                 'macos' : [
-                    f'{operadriverDownloadInstructions}',
                     '# mac64 Operadriver 78.0.3904.87 (supports Opera Stable 65 release)',
                     'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.78.0.3904.87/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum \n',
                     '# mac64 Operadriver 77.0.3865.120 (supports Opera 64 release)',
@@ -73,7 +71,6 @@ class Common:
                     'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.37/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum \n'
                 ],
                 'linux': [
-                    f'{operadriverDownloadInstructions}',
                     '# linux64 Operadriver 78.0.3904.87 (supports Opera Stable 65 release)',
                     'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.78.0.3904.87/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum \n',
                     '# linux64 Operadriver 77.0.3865.120 (supports Opera 64 release)',
@@ -97,7 +94,6 @@ class Common:
                 ],
                 'windows': [
                     'In progress!',
-                    f'{operadriverDownloadInstructions}',
                     '# windows64 Operadriver 78.0.3904.87 (supports Opera Stable 65 release)',
                     r'mkdir C:\yt_videos_list_TEMP\ && curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.78.0.3904.87/operadriver_win64.zip -o C:\yt_videos_list_TEMP\operadriver && tar -xzvf C:\yt_videos_list_TEMP\operadriver -C C:\Windows\ --strip-components=1 && rmdir /q /s C:\yt_videos_list_TEMP && del C:\Windows\sha512_sum \n',
                     '# windows64 Operadriver 77.0.3865.120 (supports Opera 64 release)',
@@ -153,7 +149,6 @@ class Common:
             },
             'chrome': {
                 'macos' : [
-                    f'{chromedriverDownloadInstructions}',
                     '# mac64 Chromedriver 79.0.3945.36',
                     'curl -SL https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ \n',
                     '# mac64 Chromedriver 78.0.3904.105',
@@ -172,7 +167,6 @@ class Common:
                     'curl -SL https://chromedriver.storage.googleapis.com/2.46/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ \n'
                 ],
                 'linux': [
-                    f'{chromedriverDownloadInstructions}',
                     '# linux64 Chromedriver 79.0.3945.36',
                     'curl -SL https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ \n',
                     '# linux64 Chromedriver 78.0.3904.105',
@@ -192,7 +186,6 @@ class Common:
                 ],
                 'windows': [
                     'In progress!',
-                    f'{chromedriverDownloadInstructions}',
                     '# win32 Chromedriver 79.0.3945.36',
                     r'mkdir C:\yt_videos_list_TEMP\ && curl -SL https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_win32.zip -o C:\yt_videos_list_TEMP\chromedriver && tar -xzvf C:\yt_videos_list_TEMP\chromedriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP \n',
                     '# win32 Chromedriver 78.0.3904.105',
@@ -226,7 +219,8 @@ class Common:
 
             print (f'\n\n# For more information about the {moreBrowserInfo[userBrowser][0]}, please visit\n{moreBrowserInfo[userBrowser][1]}\n\nNOTE! You must also have the {moreBrowserInfo[userBrowser][2]} browser installed to use this. If you don\'t have it installed, install it from\n{moreBrowserInfo[userBrowser][3]}')
 
-        displayMoreDependencyInformation(userBrowser)
+        if userBrowser != 'safari':
+            displayMoreDependencyInformation(userBrowser)
 
     @staticmethod
     def seleniumDependencyError(errorMessage):
