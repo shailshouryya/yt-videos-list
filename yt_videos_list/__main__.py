@@ -1,3 +1,6 @@
 from . import script
 
-script.generate_list()
+def main():
+    script.generate_list()
+
+main()
