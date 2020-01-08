@@ -1,18 +1,12 @@
 # Automate a Videos List Creation for a YouTube Channel
 **TABLE OF CONTENTS**
-<br>[Overview](./README.md#Overview)
 <br>[Quick Start](./README.md#Quick-Start)
 <br>[Running the module](./README.md#Running-the-module)
 <br>[Understanding the API](./README.md#Understanding-the-API)
 <br>[For more control](./README.md#For-more-control)
+<br>[General Overview](./README.md#General-Overview)
 <br>[Future Features](./README.md#Future-Features)
 <br>[Technical Specifications](./README.md#Technical-Specifications)
-
-## Overview
-This repo is intended to provide a quick, simple way to create a list of all videos posted to any YouTube channel by providing just the URL to that user's channel videos. The general format for this is
-`https://www.youtube.com/user/TheChannelYouWantToScrape/videos`
-OR
-`https://www.youtube.com/channel/TheChannelYouWantToScrape/videos`.
 
 ## Quick Start
 ```
@@ -122,6 +116,12 @@ https://www.youtube.com/channel/YourChannelName
 Substitute what you see for YourChannelName and type it in below:
 ```
 Enter the name of the channel or user that you wish to scrape, and the program will do the rest for you!
+
+## General Overview
+This repo is intended to provide a quick, simple way to create a list of all videos posted to any YouTube channel by providing just the URL to that user's channel videos. The general format for this is
+`https://www.youtube.com/user/TheChannelYouWantToScrape/videos`
+OR
+`https://www.youtube.com/channel/TheChannelYouWantToScrape/videos`.
 
 ### [Future Features](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/futureFeatures.md)
 
