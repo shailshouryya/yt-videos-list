@@ -115,6 +115,7 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
             userOS = 'linux'
         else:
             print (cMessage.unsupportedOS)
+            return
 
         if userBrowser != 'safari':
             cMessage.tellUserToDownloadBrowser(userBrowser)
