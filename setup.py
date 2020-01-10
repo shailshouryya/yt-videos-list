@@ -43,7 +43,7 @@ setup(
 #    package_dir={'':'src'},
 
     python_requires='>=3.6.*, <4',
-    install_requires=['selenium>=3.141.0'],  # Optional
+    install_requires=['selenium>=3.141.0,<4'],  # Optional
     # https://packaging.python.org/discussions/install-requires-vs-requirements/
 
     # If there are data files included in your packages that need to be
