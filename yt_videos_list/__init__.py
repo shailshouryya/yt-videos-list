@@ -34,14 +34,14 @@ class ListGenerator:
           * Opera
           * Safari
 
-        Options for the file type argument are
+        Options for the file type arguments (`csv`, `txt`, `docx`) are
           * True (default) - create a file for the specified type
           * False - do not create a file for the specified type.
              -> txt=True  (default) OR txt=False
              -> csv=True  (default) OR csv=False
              -> docx=True (unsupported) OR docx=False
 
-        Options for the write format arguments are
+        Options for the write format arguments (`csvWriteFormat`, `txtWriteFormat`, `docxWriteFormat`) are
           * 'x' (default) - does not overwrite an existing file with the same name
           * 'w' - if an existing file with the same name exists, it will be overwritten.
           NOTE: if you specify the file type argument to be False, you don't need to touch this - the program will automatically skip this step.
