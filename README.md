@@ -69,7 +69,7 @@ ListGenerator(csv=True, csvWriteFormat='x', txt=True, txtWriteFormat='x', docx=F
 ```
 There are a number of optional arguments you can specify during the instantiation of the ListGenerator object. The preceding arguments are run by default, but in case you want more flexibility, you can specify:
 
-* Options for the browser argument are
+* Options for the `browser` argument are
   - `Firefox` (default)
   - `Chrome`
   - `Opera`
@@ -87,15 +87,15 @@ There are a number of optional arguments you can specify during the instantiatio
     * `txtWriteFormat='x'`  (default) OR `txtWriteFormat='w'`
     * `csvWriteFormat='x'`  (default) OR `csvWriteFormat='w'`
     * `docxWriteFormat='x'` (unsupported) OR `docxWriteFormat='w'`
-* Options for the chronological argument are
+* Options for the `chronological` argument are
   - `False` (default) - write the files in order from most recent video to the oldest video
   - `True` - write the files in order from oldest video to the most recent video
     * `chronological=False` (default) OR `chronological=True`
-* Options for the headless argument are
+* Options for the `headless` argument are
   - `False` (default) - run the browser with an open Selenium instance for viewing
   - `True` - run the browser in "invisible" mode.
     * `headless=False` (default) OR `headless=True`
-* Options for the scrollPauseTime argument are any float values greater than `0` (default `0.8`). The value you provide will be how long the program waits before trying to scroll the videos list page down for the channel you want to scrape. For fast internet connections, you may want to reduce the value, and for slow connections you may want to increase the value.
+* Options for the `scrollPauseTime` argument are any float values greater than `0` (default `0.8`). The value you provide will be how long the program waits before trying to scroll the videos list page down for the channel you want to scrape. For fast internet connections, you may want to reduce the value, and for slow connections you may want to increase the value.
   * `scrollPauseTime=0.8` (default)
   * CAUTION: reducing this value too much will result in the programming not capturing all the videos, so be careful! Experiment :)
 
