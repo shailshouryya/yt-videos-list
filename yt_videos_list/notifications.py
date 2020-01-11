@@ -17,7 +17,7 @@ class Common:
         terminalCopyPasteDirections = 'Once you determine the right version to download, copy the command, open a new terminal session (usually possible with CMD+N or CMD+T (or CTRL+N or CTRL+D depending on your keyboard/OS) from an active terminal session), and paste the command you just copied. Once you\'ve done that, you should be able to come back to this session and rerun the last command without an error!\n\n'
 
         if userOS != 'windows' and userBrowser != 'safari':
-            print (f'{terminalCopyPasteDirections}')
+            print (terminalCopyPasteDirections)
 
         geckodriverDownloadInstructions = '(The given command downloads a geckodriver ("Firefoxdriver") version that is compatible with Firefox versions ≥ 60. To see more information about the differences compared to older versions, please visit https://github.com/mozilla/geckodriver/releases)'
         operadriverDownloadInstructions = '(Your Opera browser version should match the "supports Opera ## release" below)'
