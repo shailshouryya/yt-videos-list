@@ -214,7 +214,6 @@ class Common:
                 'opera': ['operadriver', 'https://github.com/operasoftware/operachromiumdriver', 'Opera', 'https://www.opera.com/'],
                 'chrome': ['chromedriver', 'https://sites.google.com/a/chromium.org/chromedriver/home', 'Chrome', 'https://www.google.com/chrome/']
             }
-
             print (f'\n\n# For more information about the {moreBrowserInfo[userBrowser][0]}, please visit\n{moreBrowserInfo[userBrowser][1]}\n\nNOTE! You must also have the {moreBrowserInfo[userBrowser][2]} browser installed to use this. If you don\'t have it installed, install it from\n{moreBrowserInfo[userBrowser][3]}')
 
         if userBrowser != 'safari':
