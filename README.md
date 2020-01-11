@@ -63,8 +63,8 @@ To scrape the video titles along with the link to the video, you need to run the
 
 ### For more control
 ```python
-ListGenerator(csv=True, csvWriteFormat='x', txt=True, txtWriteFormat='x', docx=False,
-              docxWriteFormat='x', chronological=False,
+ListGenerator(csv=True, csvWriteFormat='x', txt=True, txtWriteFormat='x',
+              chronological=False,
               headless=False, scrollPauseTime=0.7, browser='Firefox')
 ```
 There are a number of optional arguments you can specify during the instantiation of the ListGenerator object. The preceding arguments are run by default, but in case you want more flexibility, you can specify:
@@ -74,19 +74,17 @@ There are a number of optional arguments you can specify during the instantiatio
   - `Chrome`
   - `Opera`
   - `Safari`
-* Options for the file type arguments (`csv`, `txt`, `docx`) are
+* Options for the file type arguments (`csv`, `txt`) are
   - `True` (default) - create a file for the specified type
   - `False` - do not create a file for the specified type.
     * `txt=True`  (default) OR `txt=False`
     * `csv=True`  (default) OR `csv=False`
-    * `docx=True` (unsupported) OR `docx=False`
-* Options for the write format arguments (`csvWriteFormat`, `txtWriteFormat`, `docxWriteFormat`) are
+* Options for the write format arguments (`csvWriteFormat`, `txtWriteFormat`) are
   - `'x'` (default) - does not overwrite an existing file with the same name
   - `'w'` - if an existing file with the same name exists, it will be overwritten
   * NOTE: if you specify the file type argument to be False, you don't need to touch this - the program will automatically skip this step.
     * `txtWriteFormat='x'`  (default) OR `txtWriteFormat='w'`
     * `csvWriteFormat='x'`  (default) OR `csvWriteFormat='w'`
-    * `docxWriteFormat='x'` (unsupported) OR `docxWriteFormat='w'`
 * Options for the `chronological` argument are
   - `False` (default) - write the files in order from most recent video to the oldest video
   - `True` - write the files in order from oldest video to the most recent video

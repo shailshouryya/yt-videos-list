@@ -34,20 +34,18 @@ class ListGenerator:
           * Opera
           * Safari
 
-        Options for the file type arguments (`csv`, `txt`, `docx`) are
+        Options for the file type arguments (`csv`, `txt`) are
           * True (default) - create a file for the specified type
           * False - do not create a file for the specified type.
              -> txt=True  (default) OR txt=False
              -> csv=True  (default) OR csv=False
-             -> docx=True (unsupported) OR docx=False
 
-        Options for the write format arguments (`csvWriteFormat`, `txtWriteFormat`, `docxWriteFormat`) are
+        Options for the write format arguments (`csvWriteFormat`, `txtWriteFormat`) are
           * 'x' (default) - does not overwrite an existing file with the same name
           * 'w' - if an existing file with the same name exists, it will be overwritten.
           NOTE: if you specify the file type argument to be False, you don't need to touch this - the program will automatically skip this step.
              -> txtWriteFormat='x'  (default) OR txtWriteFormat='w'
              -> csvWriteFormat='x'  (default) OR csvWriteFormat='w'
-             -> docxWriteFormat='x' (unsupported) OR docxWriteFormat='w'
 
         Options for the `chronological` argument are
           * False (default) - write the files in order from most recent video to the oldest video
@@ -68,13 +66,13 @@ class ListGenerator:
 
         WORKING EXAMPLES:
         ###########################################################
-        For a ListGenerator object that creates csv files but no txt or docx files in chronological order in headless mode with a 1 second pause between scrolls:
-        LG = ListGenerator(txt=True, txtWriteFormat='x', csv=False, csvWriteFormat=0, docx=False, docxWriteFormat=0, chronological=True, headless=True, scrollPauseTime=1.0)
+        For a ListGenerator object that creates csv files but no txt files in chronological order in headless mode with a 1 second pause between scrolls:
+        LG = ListGenerator(txt=True, txtWriteFormat='x', csv=False, csvWriteFormat=0, chronological=True, headless=True, scrollPauseTime=1.0)
         ###########################################################
 
         ###########################################################
         The same could also be done by specifying only the arguments that change from the default, but notice how this is less explicit and can become confusing if you forget what the default arguments are:
-        LG = ListGenerator(txt=False, docx=False, headless=True, scrollPauseTime=1.0)
+        LG = ListGenerator(txt=False, headless=True, scrollPauseTime=1.0)
         ###########################################################
 
         -----------------------------------------------------------
