@@ -1,24 +1,24 @@
 # Operating System
-## MacOS
 ### Table of Contents
-**MacOS**
+**[MacOS](./allDependencies.md#macos)**
 - **[Firefox driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/macosSeleniumDependencies.md#geckodriver-firefoxdriver)**
 - **[Opera driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/macosSeleniumDependencies.md#operadriver)**
 - **[Safari driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/macosSeleniumDependencies.md#safaridriver)**
 - **[Chrome driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/macosSeleniumDependencies.md#chromedriver)**
 
->**Linux**
+**[Linux](./allDependencies.md#linux)**
 - **[Firefox driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/linuxSeleniumDependencies.md#geckodriver-firefoxdriver)**
 - **[Opera driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/linuxSeleniumDependencies.md#operadriver)**
 - **[Safari driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/linuxSeleniumDependencies.md#safaridriver)**
 - **[Chrome driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/linuxSeleniumDependencies.md#chromedriver)**
 
-**Windows**
+**[Windows](./allDependencies.md#windows)**
 - **[Firefox driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/windowsSeleniumDependencies.md#geckodriver-firefoxdriver)**
 - **[Opera driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/windowsSeleniumDependencies.md#operadriver)**
 - **[Safari driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/windowsSeleniumDependencies.md#safaridriver)**
 - **[Chrome driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/windowsSeleniumDependencies.md#chromedriver)**
 
+## MacOS
 ### geckodriver (Firefoxdriver)
 The given command downloads a geckodriver ("Firefoxdriver") version that is compatible with Firefox versions ≥ 60. To see more information about the differences compared to older versions, please visit https://github.com/mozilla/geckodriver/releases)
 
@@ -109,11 +109,6 @@ Once you determine the right version to download, copy the command, open a new t
 For more information about the chromedriver, please visit https://sites.google.com/a/chromium.org/chromedriver/home
 
 ## Linux
-**[Firefox driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/linuxSeleniumDependencies.md#geckodriver-firefoxdriver)**
-<br>**[Opera driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/linuxSeleniumDependencies.md#operadriver)**
-<br>**[Safari driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/linuxSeleniumDependencies.md#safaridriver)**
-<br>**[Chrome driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/linuxSeleniumDependencies.md#chromedriver)**
-
 ### geckodriver (Firefoxdriver)
 The given command downloads a geckodriver ("Firefoxdriver") version that is compatible with Firefox versions ≥ 60. To see more information about the differences compared to older versions, please visit https://github.com/mozilla/geckodriver/releases)
 
@@ -199,11 +194,6 @@ curl -SL https://chromedriver.storage.googleapis.com/2.46/chromedriver_linux64.z
 For more information about the chromedriver, please visit https://sites.google.com/a/chromium.org/chromedriver/home
 
 ## Windows
-**[Firefox driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/windowsSeleniumDependencies.md#geckodriver-firefoxdriver)**
-<br>**[Opera driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/windowsSeleniumDependencies.md#operadriver)**
-<br>**[Safari driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/windowsSeleniumDependencies.md#safaridriver)**
-<br>**[Chrome driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/windowsSeleniumDependencies.md#chromedriver)**
-
 ### geckodriver (Firefoxdriver)
 The given command downloads a geckodriver ("Firefoxdriver") version that is compatible with Firefox versions ≥ 60. To see more information about the differences compared to older versions, please visit https://github.com/mozilla/geckodriver/releases)
 
