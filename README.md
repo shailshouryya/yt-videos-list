@@ -69,12 +69,12 @@ ListGenerator(csv=True, csvWriteFormat='x', txt=True, txtWriteFormat='x', docx=F
 ```
 There are a number of optional arguments you can specify during the instantiation of the ListGenerator object. The preceding arguments are run by default, but in case you want more flexibility, you can specify:
 
-* Options for the browser arguments are
+* Options for the browser argument are
   - `Firefox` (default)
   - `Chrome`
   - `Opera`
   - `Safari`
-* Options for the file type arguments are
+* Options for the file type argument are
   - `True` (default) - create a file for the specified type
   - `False` - do not create a file for the specified type.
     * `txt=True`  (default) OR `txt=False`

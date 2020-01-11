@@ -34,7 +34,7 @@ class ListGenerator:
           * Opera
           * Safari
 
-        Options for the file type arguments are
+        Options for the file type argument are
           * True (default) - create a file for the specified type
           * False - do not create a file for the specified type.
              -> txt=True  (default) OR txt=False
