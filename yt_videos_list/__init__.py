@@ -99,10 +99,11 @@ class ListGenerator:
         self.scrollPauseTime = scrollPauseTime
         self.browser = None if browser is None else browser.lower()
 
-    def generate_list(self, channel, channelType, fileName=None, _executionType='module'):
+    def generate_list(self, channel, channelType, fileName=None):
         '''
         The generate_list method creates a list using the arguments specified during the instantiation of ListGenerator object.
         You need to specify the channel, and channelType.
         You can also provide an optional fileName argument, but the fileName argument is not required.
         '''
+        _executionType='module'
         execute.logic(channel, channelType, fileName, self.txt, self.txtWriteFormat, self.csv, self.csvWriteFormat, self.docx, self.docxWriteFormat, self.chronological, self.headless, self.scrollPauseTime, self.browser, _executionType)
