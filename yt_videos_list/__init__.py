@@ -28,7 +28,7 @@ class ListGenerator:
         OPTIONAL: specify the settings you want to use by substituing the desired values for the default arguments.
         An overview is given directly below this, but for a full working example scroll to the bottom.
 
-        Options for the browser arguments are
+        Options for the browser argument are
           * Firefox (default)
           * Chrome
           * Opera
@@ -41,7 +41,7 @@ class ListGenerator:
              -> csv=True  (default) OR csv=False
              -> docx=True (unsupported) OR docx=False
 
-        Options for the write formats are
+        Options for the write format arguments are
           * 'x' (default) - does not overwrite an existing file with the same name
           * 'w' - if an existing file with the same name exists, it will be overwritten.
           NOTE: if you specify the file type argument to be False, you don't need to touch this - the program will automatically skip this step.
@@ -49,12 +49,12 @@ class ListGenerator:
              -> csvWriteFormat='x'  (default) OR csvWriteFormat='w'
              -> docxWriteFormat='x' (unsupported) OR docxWriteFormat='w'
 
-        Options for the chronological argument ar
+        Options for the chronological argument are
           * False (default) - write the files in order from most recent video to the oldest video
           * True - write the files in order from oldest video to the most recent video
              -> chronological=False (default) OR chronological=True
 
-        Options for the headless option are
+        Options for the headless argument are
           * False (default) - run the browser with an open Selenium instance for viewing
           * True - run the browser in "invisible" mode.
              -> headless=False (default) OR headless=True
