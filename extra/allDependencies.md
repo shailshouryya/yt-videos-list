@@ -6,11 +6,13 @@
 - **[Opera driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/macosSeleniumDependencies.md#operadriver)**
 - **[Safari driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/macosSeleniumDependencies.md#safaridriver)**
 - **[Chrome driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/macosSeleniumDependencies.md#chromedriver)**
-**Linux**
+
+>**Linux**
 - **[Firefox driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/linuxSeleniumDependencies.md#geckodriver-firefoxdriver)**
 - **[Opera driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/linuxSeleniumDependencies.md#operadriver)**
 - **[Safari driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/linuxSeleniumDependencies.md#safaridriver)**
 - **[Chrome driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/linuxSeleniumDependencies.md#chromedriver)**
+
 **Windows**
 - **[Firefox driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/windowsSeleniumDependencies.md#geckodriver-firefoxdriver)**
 - **[Opera driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/windowsSeleniumDependencies.md#operadriver)**
