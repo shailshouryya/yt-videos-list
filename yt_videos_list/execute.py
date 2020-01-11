@@ -67,7 +67,7 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
     docxWriteFormat = verifyWriteFormat(docx, docxWriteFormat, fileName, 'docx')
 
     if userBrowser is None:
-        print (cMessage.runningDefaultBrowser)
+        print (mMessage.runningDefaultBrowser) if executionType == 'module' else print (sMessage.runningDefaultBrowser)
         print (mMessage.showBrowserOptions) if executionType == 'module' else print (sMessage.showBrowserOptions)
         userBrowser = 'firefox'
 

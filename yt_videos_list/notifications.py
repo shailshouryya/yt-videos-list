@@ -8,8 +8,6 @@ class Common:
 
     invalidBrowser = 'The browser you specified is invalid. Please try rerunning the last command after specifying a valid browser. Supported browsers include:\n   Firefox\n   Opera\n   Safari\n   Chrome'
 
-    runningDefaultBrowser = '\nNo browser specified during ListGenerator instantiation, running program using the Firefox browser.'
-
     unsupportedOperaHeadless = '\nHeadless mode is unsupported in OperaDriver. We are waiting on the Opera dev team to start offering support for headless mode to allow remote automation without opening a browser. We will update this when support is added...\n:)\n\n\n'
     unsupportedSafariHeadless = '\nHeadless mode is unsupported in SafariDriver. We are waiting on Apple to start offering support for headless mode to allow remote automation without opening a browser. We will update this when support is added...\n:)\n\n\n'
     unsupportedOS = 'The system you are using is not yet supported. Please create an issue at https://github.com/Shail-Shouryya/yt_videos_list/issues\nThanks!'
@@ -240,6 +238,7 @@ class Common:
         print (f'If you wish to skip the creation of {filename}, type "skip"')
 
 class ModuleMessage(Common):
+    runningDefaultBrowser = '\nNo browser specified during ListGenerator instantiation, so running program using the Firefox browser.'
     runInHeadless = '\nAdvanced usage: you can run this program in headless mode with the optional "headless" parameter set to True to speed up execution slightly:'
     runInHeadlessExample = '    LG = ListGenerator(headless=True)\n\n\n'
 
@@ -255,6 +254,8 @@ class ModuleMessage(Common):
         "\n    LG = ListGenerator(browser='firefox')"
 
 class ScriptMessage(Common):
+    runningDefaultBrowser = '\nNo browser flag used, so running program using the Firefox browser.'
+
     inputMessage = "What is the name of the YouTube channel you want to generate the list for?\n\nIf you're unsure, click on the channel and look at the URL.\nIt should be in the format:\nhttps://www.youtube.com/user/YourChannelName\nOR\nhttps://www.youtube.com/channel/YourChannelName\n\nSubstitute what you see for YourChannelName and type it in below (NOTE: if your url looks like the second option, you need to run this script with the -c or --channel flag):\n"
 
     checkChannelType = 'If you did type the name in correctly, perhaps the channelType is set incorrectly. Try using the -c or --channelType flag for this script if you didn\'t do it when running this script, or try running the script without the -c or --channelType flag if you DID include that flag when running this script.'
