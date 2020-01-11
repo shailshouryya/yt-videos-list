@@ -1,22 +1,22 @@
 # Operating System
 ### Table of Contents
 **[MacOS](./allDependencies.md#macos)**
-- **[Firefox driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/macosSeleniumDependencies.md#geckodriver-firefoxdriver)**
-- **[Opera driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/macosSeleniumDependencies.md#operadriver)**
-- **[Safari driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/macosSeleniumDependencies.md#safaridriver)**
-- **[Chrome driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/macosSeleniumDependencies.md#chromedriver)**
+- **[Firefox driver](./allDependencies.md#geckodriver-firefoxdriver)**
+- **[Opera driver](./allDependencies.md#operadriver)**
+- **[Safari driver](./allDependencies.md#safaridriver)**
+- **[Chrome driver](./allDependencies.md#chromedriver)**
 
 **[Linux](./allDependencies.md#linux)**
-- **[Firefox driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/linuxSeleniumDependencies.md#geckodriver-firefoxdriver)**
-- **[Opera driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/linuxSeleniumDependencies.md#operadriver)**
-- **[Safari driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/linuxSeleniumDependencies.md#safaridriver)**
-- **[Chrome driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/linuxSeleniumDependencies.md#chromedriver)**
+- **[Firefox driver](./allDependencies.md#geckodriver-firefoxdriver-1)**
+- **[Opera driver](./allDependencies.md#operadriver-1)**
+- **[Safari driver](./allDependencies.md#safaridriver-1)**
+- **[Chrome driver](./allDependencies.md#chromedriver-1)**
 
 **[Windows](./allDependencies.md#windows)**
-- **[Firefox driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/windowsSeleniumDependencies.md#geckodriver-firefoxdriver)**
-- **[Opera driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/windowsSeleniumDependencies.md#operadriver)**
-- **[Safari driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/windowsSeleniumDependencies.md#safaridriver)**
-- **[Chrome driver](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/windowsSeleniumDependencies.md#chromedriver)**
+- **[Firefox driver](./allDependencies.md#geckodriver-firefoxdriver-2)**
+- **[Opera driver](./allDependencies.md#operadriver-2)**
+- **[Safari driver](./allDependencies.md#safaridriver-2)**
+- **[Chrome driver](./allDependencies.md#chromedriver-2)**
 
 ## MacOS
 ### geckodriver (Firefoxdriver)
