@@ -49,8 +49,8 @@ help(LG)
 ### Understanding the API
 There are two types of YouTube channels: one type is a `user` channel and the other is a `channel` channel.
 * The url for a `user` channel consists of `youtube.com` followed by `user` followed by the name. For example:
-  * sentdex: https://www.youtube.com/user/sentdex
   * Disney: https://www.youtube.com/user/disneysshows
+  * sentdex: https://www.youtube.com/user/sentdex
   * Marvel: https://www.youtube.com/user/MARVEL
   * Apple: https://www.youtube.com/user/Apple
 * The url for a `channel` channel consists of `youtube.com` followed by `channel` followed by a string of rather unpredictable characters. For example:
