@@ -36,19 +36,3 @@ Traceback (most recent call last):
     script.generate_list()
 NameError: name 'script' is not defined
 ```
-- come up with a way to dynamically ouput browser info in `BROWSERdriverinfo` from the browsersForOS dictionary in `notifications.py`, something similar to below. The problem with the below code is that you can't call a static method from within the same class, and you also can't call a method from within the class from a class variable.
-```python
-    moreBrowserInfo = {
-        'firefox': ['geckodriver', 'https://github.com/mozilla/geckodriver', 'Mozilla Firefox', 'https://www.mozilla.org/en-US/firefox/new/'],
-        'opera': ['operadriver', 'https://github.com/operasoftware/operachromiumdriver', 'Opera', 'https://www.opera.com/'],
-        'chrome': ['chromedriver', 'https://sites.google.com/a/chromium.org/chromedriver/home', 'Chrome', 'https://www.google.com/chrome/']
-    }
-
-    @staticmethod
-    def provideMoreDependencyInformation(browser):
-        print (self.moreBrowserInfo[browser])
-        # return f'# For more information about the geckodriver, please visit {self.moreBrowserInfo["browser"][0]}\nNOTE! You must also have the {self.moreBrowserInfo["browser"][1]} browser installed to use this. If you don\'t have it installed, install it from\n{self.moreBrowserInfo["browser"][2]}'
-
-    geckodriverInfo = provideMoreDependencyInformation('firefox')
-
-```
