@@ -101,17 +101,6 @@ There are a number of optional arguments you can specify during the instantiatio
 ```
 python3 -m yt_videos_list
 ```
-You should see the following:
-```
-What is the name of the YouTube channel you want to generate the list for?
-If you're unsure, click on the channel and look at the URL.
-It should be in the format:
-https://www.youtube.com/user/YourChannelName
-OR
-https://www.youtube.com/channel/YourChannelName
-Substitute what you see for YourChannelName and type it in below:
-```
-Enter the name of the channel or user that you wish to scrape, and the program will do the rest for you!
 
 ## General Overview
 This repo is intended to provide a quick, simple way to create a list of all videos posted to any YouTube channel by providing just the URL to that user's channel videos. The general format for this is
