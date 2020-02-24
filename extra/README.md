@@ -1,7 +1,7 @@
 # Setting up your dependencies
-[Setting up your Selenium Dependencies for MacOS](./macosSeleniumDependencies.md)
-<br>[Setting up your Selenium Dependencies for Linux](./linuxSeleniumDependencies.md)
-<br>[Setting up your Selenium Dependencies for Windows](./windowsSeleniumDependencies.md)
+[Setting up your Selenium Dependencies for MacOS](./allDependencies.md#macos)
+<br>[Setting up your Selenium Dependencies for Linux](./allDependencies.md#linux)
+<br>[Setting up your Selenium Dependencies for Windows](./allDependencies.md#windows)
 <br>[Setting up your Selenium Dependencies (all operating systems)](./allDependencies.md)
 
 # Package Info
