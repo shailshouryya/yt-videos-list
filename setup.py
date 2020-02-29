@@ -1,4 +1,5 @@
 # https://test.pypi.org/pypi?%3Aaction=list_classifiers
+# https://github.com/pypa/sampleproject/blob/master/setup.py
 from setuptools import setup, find_packages
 
 with open('README.md', 'r', encoding='utf-8') as f:
