@@ -1,3 +1,4 @@
+# https://pypi.org/classifiers/
 # https://test.pypi.org/pypi?%3Aaction=list_classifiers
 # https://github.com/pypa/sampleproject/blob/master/setup.py
 from setuptools import setup, find_packages
