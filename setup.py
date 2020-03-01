@@ -40,8 +40,9 @@ setup(
         'Topic :: Text Processing :: Markup :: HTML'
     ],
     keywords='YoutTube videos URL scraping automation',
+    # http://code.nabla.net/doc/setuptools/api/setuptools/setuptools.find_packages.html
+    # https://stackoverflow.com/questions/51286928/what-is-where-argument-for-in-setuptools-find-packages
     packages=find_packages(),
-#    packages=find_packages(),
 #    package_dir={'':'src'},
 
     python_requires='>=3.6.*, <4',
