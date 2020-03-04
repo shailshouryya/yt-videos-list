@@ -36,25 +36,25 @@ class ListGenerator:
 
         Options for the file type arguments (`csv`, `txt`) are
           * True (default) - create a file for the specified type
-          * False - do not create a file for the specified type.
+          * False - does NOT create a file for the specified type.
              -> txt=True  (default) OR txt=False
              -> csv=True  (default) OR csv=False
 
         Options for the write format arguments (`csvWriteFormat`, `txtWriteFormat`) are
-          * 'x' (default) - does not overwrite an existing file with the same name
-          * 'w' - if an existing file with the same name exists, it will be overwritten.
+          * 'x' (default) - does NOT overwrite an existing file with the same name
+          * 'w'           - does overwrite an existing file with the same name
           NOTE: if you specify the file type argument to be False, you don't need to touch this - the program will automatically skip this step.
              -> txtWriteFormat='x'  (default) OR txtWriteFormat='w'
              -> csvWriteFormat='x'  (default) OR csvWriteFormat='w'
 
         Options for the `chronological` argument are
           * False (default) - write the files in order from most recent video to the oldest video
-          * True - write the files in order from oldest video to the most recent video
+          * True            - write the files in order from oldest video to the most recent video
              -> chronological=False (default) OR chronological=True
 
         Options for the `headless` argument are
           * False (default) - run the browser with an open Selenium instance for viewing
-          * True - run the browser in "invisible" mode.
+          * True            - run the browser without an open Selenium instance for viewing (runs in "invisible" mode)
              -> headless=False (default) OR headless=True
 
         Options for the `scrollPauseTime argument` are any float values greater than 0 (default 0.8).
@@ -102,7 +102,7 @@ class ListGenerator:
     def generate_list(self, channel, channelType, fileName=None):
         '''
         The generate_list method creates a list using the arguments specified during the instantiation of ListGenerator object.
-        You need to specify the channel, and channelType.
+        You need to specify the channel and channelType.
         You can also provide an optional fileName argument, but the fileName argument is not required.
         '''
         _executionType='module'
