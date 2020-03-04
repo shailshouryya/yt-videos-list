@@ -66,7 +66,7 @@ class ListGenerator:
 
         WORKING EXAMPLES:
         ###########################################################
-        For a ListGenerator object that creates csv files but no txt files in chronological order in headless mode with a 1 second pause between scrolls:
+        For a ListGenerator object that creates a csv file but not a txt file in chronological order in headless mode with a 1 second pause between scrolls:
         LG = ListGenerator(txt=True, txtWriteFormat='x', csv=False, csvWriteFormat=0, chronological=True, headless=True, scrollPauseTime=1.0)
         ###########################################################
 
