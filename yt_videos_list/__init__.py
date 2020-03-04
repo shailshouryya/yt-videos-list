@@ -84,7 +84,7 @@ class ListGenerator:
         -----------------------------------------------------------
 
         ###########################################################
-        For a ListGenerator object that creates a txt and csv file, but the program overwrites an existing txt file of the same name but does not overwrite an existing csv file of the same name, with all other arguments unmodified:
+        For a ListGenerator object that creates a txt and csv file and overwrites an existing txt file of the same name but does not overwrite an existing csv file of the same name (with all other arguments unmodified):
         LG = ListGenerator(txtWriteFormat='w')
         ###########################################################
         '''
