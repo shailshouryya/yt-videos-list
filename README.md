@@ -13,13 +13,13 @@
 pip3 install -U yt-videos-list
 ```
 
-**NOTE**: You do ***not*** need to download all Selenium drivers for your OS if you only want to run this program on a specific driver. If you want a specific driver, just copy and paste the corresponding command for the relevant driver.
+**NOTE**: You do ***not*** need to download all Selenium drivers for your OS if you only want to run this program on a specific driver. If you want a specific driver, just copy and paste the corresponding command for the relevant driver from below.
+### Copy paste the code block that's relevant for the OS of your machine for the driver you want from **[here](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/README.md)**
+**NOTE** that you also need the corresponding browser installed to properly run the selenium driver.
 - to download the most recent version of the browser, go to the page for:
   - [Firefox](https://www.mozilla.org/en-US/firefox/new/)
   - [Opera](https://www.opera.com/)
   - [Chrome](https://www.google.com/chrome/)
-
-### Copy paste the code block that's relevant for the OS of your machine for the driver you want from **[here](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/README.md)**
 
 ## Running the module from the python interpreter
 ```
