@@ -14,12 +14,12 @@ def cli():
     --csv writes to csv file
     --txt writes to txt file
     --docx writes to word dox (not yet available)
-    --browser=Firefox sets selenium browser type to Firefox
-    --browser=Opera sets selenium browser type to Opera
-    --browser=Safari sets selenium browser type to Safari
-    --browser=Chrome sets selenium browser type to Chrome
+    --driver=Firefox sets selenium driver type to Firefox
+    --driver=Opera sets selenium driver type to Opera
+    --driver=Safari sets selenium driver type to Safari
+    --driver=Chrome sets selenium driver type to Chrome
     -v --verbose print every 10 videos written to file
-    -i --invisible opens a headless instance of the selenium browser to run the program in the background
+    -i --invisible opens a headless instance of the selenium driver to run the program in the background
     -q --quiet suppresses program updates, only prints to stdout when scrolling is complete files are opened and closed, and any errors that may occur
     -h --help display information on usage and functionality
     -p --pause change pause time between scrolls, set to 0.8s by default
@@ -37,8 +37,8 @@ def cli():
     chronological = False
     headless = False
     scrollPauseTime = 0.8
-    userBrowser = None
-    return (channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat, docx, docxWriteFormat, chronological, headless, scrollPauseTime, userBrowser)
+    userDriver = None
+    return (channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat, docx, docxWriteFormat, chronological, headless, scrollPauseTime, userDriver)
 
 def generate_list():
     _executionType = 'script'

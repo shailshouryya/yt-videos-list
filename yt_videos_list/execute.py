@@ -35,20 +35,20 @@ def verifyWriteFormat(fileType, writeFormat, fileName, fileExtension):
     else:
         return writeFormat
 
-def setupBrowser(userBrowser):
-    if 'firefox' in userBrowser:
+def setupDriver(userDriver):
+    if 'firefox' in userDriver:
         return webdriver.Firefox
-    elif 'chrome' in userBrowser:
+    elif 'chrome' in userDriver:
         return webdriver.Chrome
-    elif 'opera' in userBrowser:
+    elif 'opera' in userDriver:
         return webdriver.Opera
-    elif 'safari' in userBrowser:
+    elif 'safari' in userDriver:
         return webdriver.Safari
     else:
-        print (cMessage.invalidBrowser)
+        print (cMessage.invalidDriver)
         return 'invalid'
 
-def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat, docx, docxWriteFormat, chronological, headless, scrollPauseTime, userBrowser, executionType):
+def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat, docx, docxWriteFormat, chronological, headless, scrollPauseTime, userDriver, executionType):
     mMessage = ModuleMessage()
     cMessage = Common()
     channel = channel.strip().strip('/')
@@ -66,12 +66,12 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
     csvWriteFormat = verifyWriteFormat(csv, csvWriteFormat, fileName, 'csv')
     docxWriteFormat = verifyWriteFormat(docx, docxWriteFormat, fileName, 'docx')
 
-    if userBrowser is None:
-        print (mMessage.runningDefaultBrowser) if executionType == 'module' else print (sMessage.runningDefaultBrowser)
-        print (mMessage.showBrowserOptions) if executionType == 'module' else print (sMessage.showBrowserOptions)
-        userBrowser = 'firefox'
+    if userDriver is None:
+        print (mMessage.runningDefaultDriver) if executionType == 'module' else print (sMessage.runningDefaultDriver)
+        print (mMessage.showDriverOptions) if executionType == 'module' else print (sMessage.showDriverOptions)
+        userDriver = 'firefox'
 
-    driver = setupBrowser(userBrowser)
+    driver = setupDriver(userDriver)
     if driver == 'invalid':
         return
 
@@ -83,16 +83,16 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
                 print (mMessage.runInHeadless)
                 print (mMessage.runInHeadlessExample)
         else: # headless is True
-            if userBrowser == 'firefox':
+            if userDriver == 'firefox':
                 options = selenium.webdriver.firefox.options.Options()
                 options.headless = True
                 driver = driver(options=options)
-            if userBrowser == 'chrome':
+            if userDriver == 'chrome':
                 # options = selenium.webdriver.chrome.options.Options()
                 options = webdriver.ChromeOptions()
                 options.add_argument('headless')
                 driver = driver(chrome_options=options)
-            if userBrowser == 'opera':
+            if userDriver == 'opera':
                 # Opera driver MRO: WebDriver -> OperaDriver -> selenium.webdriver.chrome.webdriver.WebDriver -> selenium.webdriver.remote.webdriver.WebDriver -> builtins.object
                 # options = selenium.webdriver.chrome.options.Options()
                 # options.headless = True
@@ -100,7 +100,7 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
                 options.add_argument('headless')
                 driver = driver(options=options)
                 print (cMessage.unsupportedOperaHeadless)
-            if userBrowser == 'safari':
+            if userDriver == 'safari':
                 driver = driver()
                 print (cMessage.unsupportedSafariHeadless)
     except selenium.common.exceptions.WebDriverException as e:
@@ -117,9 +117,9 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
             print (cMessage.unsupportedOS)
             return
 
-        if userBrowser != 'safari':
-            cMessage.tellUserToDownloadBrowser(userBrowser)
-        cMessage.displayDependencySetupInstructions(userBrowser, userOS)
+        if userDriver != 'safari':
+            cMessage.tellUserToDownloadDriver(userDriver)
+        cMessage.displayDependencySetupInstructions(userDriver, userOS)
         return
 
     with driver:

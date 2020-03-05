@@ -18,7 +18,7 @@ __ideal_python_version__ = 'Python 3.7'
 __source__ = 'https://github.com/Shail-Shouryya/yt_videos_list'
 
 class ListGenerator:
-    def __init__(self, txt=True, txtWriteFormat='x', csv=True, csvWriteFormat='x', docx=False, docxWriteFormat='x', chronological=False, headless=False, scrollPauseTime=0.8, browser=None):
+    def __init__(self, txt=True, txtWriteFormat='x', csv=True, csvWriteFormat='x', docx=False, docxWriteFormat='x', chronological=False, headless=False, scrollPauseTime=0.8, driver=None):
         '''
         The ListGenerator class creates a list generator instance with no required arguments.
         Example usage:
@@ -28,7 +28,7 @@ class ListGenerator:
         OPTIONAL: specify the settings you want to use by substituing the desired values for the default arguments.
         An overview is given directly below this, but for a full working example scroll to the bottom.
 
-        Options for the `browser` argument are
+        Options for the `driver` argument are
           * Firefox (default)
           * Chrome
           * Opera
@@ -53,8 +53,8 @@ class ListGenerator:
              -> chronological=False (default) OR chronological=True
 
         Options for the `headless` argument are
-          * False (default) - run the browser with an open Selenium instance for viewing
-          * True            - run the browser without an open Selenium instance for viewing (runs in "invisible" mode)
+          * False (default) - run the driver with an open Selenium instance for viewing
+          * True            - run the driver without an open Selenium instance for viewing (runs in "invisible" mode)
              -> headless=False (default) OR headless=True
 
         Options for the `scrollPauseTime argument` are any float values greater than 0 (default 0.8).
@@ -97,7 +97,7 @@ class ListGenerator:
         self.chronological = chronological
         self.headless = headless
         self.scrollPauseTime = scrollPauseTime
-        self.browser = None if browser is None else browser.lower()
+        self.driver = None if driver is None else driver.lower()
 
     def generate_list(self, channel, channelType, fileName=None):
         '''
@@ -106,4 +106,4 @@ class ListGenerator:
         You can also provide an optional fileName argument, but the fileName argument is not required.
         '''
         _executionType='module'
-        execute.logic(channel, channelType, fileName, self.txt, self.txtWriteFormat, self.csv, self.csvWriteFormat, self.docx, self.docxWriteFormat, self.chronological, self.headless, self.scrollPauseTime, self.browser, _executionType)
+        execute.logic(channel, channelType, fileName, self.txt, self.txtWriteFormat, self.csv, self.csvWriteFormat, self.docx, self.docxWriteFormat, self.chronological, self.headless, self.scrollPauseTime, self.driver, _executionType)

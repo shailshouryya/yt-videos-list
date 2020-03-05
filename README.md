@@ -13,13 +13,13 @@
 pip3 install -U yt-videos-list
 ```
 
-**NOTE**: You do ***not*** need to download all Selenium drivers for your OS if you only want to run this program on a specific browser. If you want a specific driver, just copy and paste the corresponding command for the relevant browser.
+**NOTE**: You do ***not*** need to download all Selenium drivers for your OS if you only want to run this program on a specific driver. If you want a specific driver, just copy and paste the corresponding command for the relevant driver.
 - to download the most recent version of the browser, go to the page for:
   - [Firefox](https://www.mozilla.org/en-US/firefox/new/)
   - [Opera](https://www.opera.com/)
   - [Chrome](https://www.google.com/chrome/)
 
-### Copy paste the code block that's relevant for the OS of your machine for the browser you want from **[here](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/README.md)**
+### Copy paste the code block that's relevant for the OS of your machine for the driver you want from **[here](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/README.md)**
 
 ## Running the module from the python interpreter
 ```
@@ -65,11 +65,11 @@ To scrape the video titles along with the link to the video, you need to run the
 ```python
 ListGenerator(csv=True, csvWriteFormat='x', txt=True, txtWriteFormat='x',
               chronological=False,
-              headless=False, scrollPauseTime=0.8, browser='Firefox')
+              headless=False, scrollPauseTime=0.8, driver='Firefox')
 ```
 There are a number of optional arguments you can specify during the instantiation of the ListGenerator object. The preceding arguments are run by default, but in case you want more flexibility, you can specify:
 
-* Options for the `browser` argument are
+* Options for the `driver` argument are
   - `Firefox` (default)
   - `Chrome`
   - `Opera`
@@ -90,8 +90,8 @@ There are a number of optional arguments you can specify during the instantiatio
   - `True` - write the files in order from oldest video to the most recent video
     * `chronological=False` (default) OR `chronological=True`
 * Options for the `headless` argument are
-  - `False` (default) - run the browser with an open Selenium instance for viewing
-  - `True` - run the browser in "invisible" mode.
+  - `False` (default) - run the driver with an open Selenium instance for viewing
+  - `True` - run the driver in "invisible" mode.
     * `headless=False` (default) OR `headless=True`
 * Options for the `scrollPauseTime` argument are any float values greater than `0` (default `0.8`). The value you provide will be how long the program waits before trying to scroll the videos list page down for the channel you want to scrape. For fast internet connections, you may want to reduce the value, and for slow connections you may want to increase the value.
   * `scrollPauseTime=0.8` (default)

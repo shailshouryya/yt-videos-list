@@ -6,24 +6,24 @@ class Common:
     noNewVideosFound = 'No new videos were found since the last scroll. Waiting another 0.6 seconds to see if more videos can be loaded....'
     invalidResponse = 'The response you entered was invalid.'
 
-    invalidBrowser = 'The browser you specified is invalid. Please try rerunning the last command after specifying a valid browser. Supported browsers include:\n   Firefox\n   Opera\n   Safari\n   Chrome'
+    invalidDriver = 'The driver you specified is invalid. Please try rerunning the last command after specifying a valid driver. Supported drivers include:\n   Firefox\n   Opera\n   Safari\n   Chrome'
 
-    unsupportedOperaHeadless = '\nHeadless mode is unsupported in OperaDriver. We are waiting on the Opera dev team to start offering support for headless mode to allow remote automation without opening a browser. We will update this when support is added...\n:)\n\n\n'
-    unsupportedSafariHeadless = '\nHeadless mode is unsupported in SafariDriver. We are waiting on Apple to start offering support for headless mode to allow remote automation without opening a browser. We will update this when support is added...\n:)\n\n\n'
+    unsupportedOperaHeadless = '\nHeadless mode is unsupported in OperaDriver. We are waiting on the Opera dev team to start offering support for headless mode to allow remote automation without opening a driver. We will update this when support is added...\n:)\n\n\n'
+    unsupportedSafariHeadless = '\nHeadless mode is unsupported in SafariDriver. We are waiting on Apple to start offering support for headless mode to allow remote automation without opening a driver. We will update this when support is added...\n:)\n\n\n'
     unsupportedOS = 'The system you are using is not yet supported. Please create an issue at https://github.com/Shail-Shouryya/yt_videos_list/issues\nThanks!'
 
     @staticmethod
-    def displayDependencySetupInstructions(userBrowser, userOS):
+    def displayDependencySetupInstructions(userDriver, userOS):
         terminalCopyPasteDirections = 'Once you determine the right version to download, copy the command, open a new terminal session (usually possible with CMD+N or CMD+T (or CTRL+N or CTRL+D depending on your keyboard/OS) from an active terminal session), and paste the command you just copied. Once you\'ve done that, you should be able to come back to this session and rerun the last command without an error!\n\n'
 
-        if userOS != 'windows' and userBrowser != 'safari':
+        if userOS != 'windows' and userDriver != 'safari':
             print (terminalCopyPasteDirections)
 
         geckodriverDownloadInstructions = '(The given command downloads a geckodriver ("Firefoxdriver") version that is compatible with Firefox versions ≥ 60. To see more information about the differences compared to older versions, please visit https://github.com/mozilla/geckodriver/releases)'
         operadriverDownloadInstructions = '(Your Opera browser version should match the "supports Opera ## release" below)'
         chromedriverDownloadInstructions = '(Your Chrome browser version should match the first numbers before the decimal place of the chromedriver version below)'
 
-        print (geckodriverDownloadInstructions) if userBrowser == 'firefox' else print (operadriverDownloadInstructions) if userBrowser == 'opera' else print (chromedriverDownloadInstructions) if userBrowser == 'chrome' else print ('This is an OS specific browser.')
+        print (geckodriverDownloadInstructions) if userDriver == 'firefox' else print (operadriverDownloadInstructions) if userDriver == 'opera' else print (chromedriverDownloadInstructions) if userDriver == 'chrome' else print ('This is an OS specific driver.')
 
         driverDownloadsForOS = {
             'firefox': {
@@ -204,28 +204,28 @@ class Common:
             }
         }
 
-        for driverVersionDownload in driverDownloadsForOS[userBrowser][userOS]:
+        for driverVersionDownload in driverDownloadsForOS[userDriver][userOS]:
             print (driverVersionDownload)
 
-        def displayMoreDependencyInformation(userBrowser):
-            moreBrowserInfo = {
-                # 'browser': ['driverName', 'url for more driver info', 'browser name', 'url for browser download']
+        def displayMoreDependencyInformation(userDriver):
+            moreDriverInfo = {
+                # 'driver': ['driverName', 'url for more driver info', 'browser name', 'url for browser download']
                 'firefox': ['geckodriver', 'https://github.com/mozilla/geckodriver', 'Mozilla Firefox', 'https://www.mozilla.org/en-US/firefox/new/'],
                 'opera': ['operadriver', 'https://github.com/operasoftware/operachromiumdriver', 'Opera', 'https://www.opera.com/'],
                 'chrome': ['chromedriver', 'https://sites.google.com/a/chromium.org/chromedriver/home', 'Chrome', 'https://www.google.com/chrome/']
             }
-            print (f'\n\n# For more information about the {moreBrowserInfo[userBrowser][0]}, please visit\n{moreBrowserInfo[userBrowser][1]}\n\nNOTE! You must also have the {moreBrowserInfo[userBrowser][2]} browser installed to use this. If you don\'t have it installed, install it from\n{moreBrowserInfo[userBrowser][3]}')
+            print (f'\n\n# For more information about the {moreDriverInfo[userDriver][0]}, please visit\n{moreDriverInfo[userDriver][1]}\n\nNOTE! You must also have the {moreDriverInfo[userDriver][2]} browser installed to use this. If you don\'t have it installed, install it from\n{moreDriverInfo[userDriver][3]}')
 
-        if userBrowser != 'safari':
-            displayMoreDependencyInformation(userBrowser)
+        if userDriver != 'safari':
+            displayMoreDependencyInformation(userDriver)
 
     @staticmethod
     def seleniumDependencyError(errorMessage):
         print (f'\n\n\n\n\n\n\nThere was an error while trying to open up the remote selenium instance. The exact error was:\n{errorMessage}\nDon\'t worry though, this is an easy fix!')
 
     @staticmethod
-    def tellUserToDownloadBrowser(userBrowser):
-        print (f'\nIt looks like you don\'t have the correct Selenium dependency set up to run this program using the remote {userBrowser}driver.\nThe version of your {userBrowser.title()} browser - usually found by going to {userBrowser.title()} -> \"About browser\" within a {userBrowser.title()} window - should match the comment for the corresponding command.\nPlease download it using the relevant command from the list of commands below.\n')
+    def tellUserToDownloadDriver(userDriver):
+        print (f'\nIt looks like you don\'t have the correct Selenium dependency set up to run this program using the remote {userDriver}driver.\nThe version of your {userDriver.title()} browser - usually found by going to {userDriver.title()} -> \"About browser\" within a {userDriver.title()} window - should match the comment for the corresponding command.\nPlease download it using the relevant command from the list of commands below.\n')
 
     @staticmethod
     def fileAlreadyExistsWarning(filename):
@@ -237,7 +237,7 @@ class Common:
         print (f'If you wish to skip the creation of {filename}, type "skip"')
 
 class ModuleMessage(Common):
-    runningDefaultBrowser = '\nNo browser specified during ListGenerator instantiation, so running program using the Firefox browser.'
+    runningDefaultDriver = '\nNo driver specified during ListGenerator instantiation, so running program using the Firefox driver.'
     runInHeadless = '\nAdvanced usage: you can run this program in headless mode with the optional "headless" parameter set to True to speed up execution slightly:'
     runInHeadlessExample = '    LG = ListGenerator(headless=True)\n\n\n'
 
@@ -246,17 +246,17 @@ class ModuleMessage(Common):
     fileAlreadyExists = 'This error indicates that a file of this name already exists in the current directory. If you want to overwrite this file, run the generate_list method again with the optional parameter "writeFormat" set to "w"'
     fileAlreadyExistsRerunUsage = 'Example usage:\n LG.generate_list(writeFormat="w")\n'
 
-    showBrowserOptions = 'To use a different browser, specify the browser in the browser argument during the ListGenerator instantiation. For example:' + \
-        "\n    LG = ListGenerator(browser='opera')" + \
-        "\n    LG = ListGenerator(browser='safari')" + \
-        "\n    LG = ListGenerator(browser='chrome')" + \
-        "\n    LG = ListGenerator(browser='firefox')"
+    showDriverOptions = 'To use a different driver, specify the driver in the driver argument during the ListGenerator instantiation. For example:' + \
+        "\n    LG = ListGenerator(driver='opera')" + \
+        "\n    LG = ListGenerator(driver='safari')" + \
+        "\n    LG = ListGenerator(driver='chrome')" + \
+        "\n    LG = ListGenerator(driver='firefox')"
 
 class ScriptMessage(Common):
-    runningDefaultBrowser = '\nNo browser flag used, so running program using the Firefox browser.'
+    runningDefaultDriver = '\nNo driver flag used, so running program using the Firefox driver.'
 
     inputMessage = "What is the name of the YouTube channel you want to generate the list for?\n\nIf you're unsure, click on the channel and look at the URL.\nIt should be in the format:\nhttps://www.youtube.com/user/YourChannelName\nOR\nhttps://www.youtube.com/channel/YourChannelName\n\nSubstitute what you see for YourChannelName and type it in below (NOTE: if your url looks like the second option, you need to run this script with the -c or --channel flag):\n"
 
     checkChannelType = 'If you did type the name in correctly, perhaps the channelType is set incorrectly. Try using the -c or --channelType flag for this script if you didn\'t do it when running this script, or try running the script without the -c or --channelType flag if you DID include that flag when running this script.'
 
-    showBrowserOptions = 'To use a different browser, specify the browser in the browser flag. For example:'
+    showDriverOptions = 'To use a different driver, specify the driver in the driver flag. For example:'
