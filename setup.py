@@ -61,19 +61,14 @@ setup(
     # data_files=[('my_data', ['data/data_file'])],  # Optional
 
 
-    # To provide executable scripts, use entry points in preference to the
-    # "scripts" keyword. Entry points provide crossplatform support and allow
-    # `pip` to create the appropriate form of executable for the target
-    # platform.
-    #
-    # For example, the following would provide a command called `yt_videos_list` which
-    # executes the function `script` from this package when invoked:
-#    entry_points={  # Optional
-#        'console_scripts': [
-#            'sample=yt_videos_list:script',
-#        ],
-#    },
-
+    # To provide executable scripts, use entry points in preference to the "scripts" keyword.
+    # Entry points provide cross-platform support and allow `pip` to create the appropriate form of executable for the target platform.
+    # For example, the following would provide a command called `yt_videos_list` which executes the code in the module `__main__` from this package when invoked directly from the command line:
+    # entry_points={  # Optional
+    #    'console_scripts': [
+    #        'yt_videos_list=yt_videos_list:__main__',
+    #    ],
+    # },
 
     project_urls={
         'Source': 'https://github.com/Shail-Shouryya/yt_videos_list',
