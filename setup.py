@@ -71,6 +71,8 @@ setup(
     # },
 
     project_urls={
-        'Source': 'https://github.com/Shail-Shouryya/yt_videos_list',
+        'Bug Reports':  'https://github.com/Shail-Shouryya/yt_videos_list/issues',
+        'PyPi Funding': 'https://donate.pypi.org',
+        'Source':       'https://github.com/Shail-Shouryya/yt_videos_list'
     },
 )
