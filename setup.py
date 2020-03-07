@@ -43,31 +43,26 @@ setup(
     # http://code.nabla.net/doc/setuptools/api/setuptools/setuptools.find_packages.html
     # https://stackoverflow.com/questions/51286928/what-is-where-argument-for-in-setuptools-find-packages
     packages=find_packages(),
-#    package_dir={'':'src'},
+    # package_dir={'':'src'},
 
     python_requires='>=3.6.*, <4',
     install_requires=['selenium>=3.141.0,<4'],  # Optional
     # https://packaging.python.org/discussions/install-requires-vs-requirements/
 
-    # If there are data files included in your packages that need to be
-    # installed, specify them here.
-    #
-    # If using Python 2.6 or earlier, then these have to be included in
-    # MANIFEST.in as well.
+    # If there are data files included in your packages that need to be installed, specify them here.
+    # If using Python 2.6 or earlier, then these have to be included in MANIFEST.in as well.
 
     package_data={  # Optional
         # 'sample': ['package_data.dat'],
     },
-    # Although 'package_data' is the preferred approach, in some case you may
-    # need to place data files outside of your packages. See:
+    # Although 'package_data' is the preferred approach, in some case you may need to place data files outside of your packages. See:
     # http://docs.python.org/3.4/distutils/setupscript.html#installing-additional-files
-    #
     # In this case, 'data_file' will be installed into '<sys.prefix>/my_data'
     # data_files=[('my_data', ['data/data_file'])],  # Optional
 
 
     # To provide executable scripts, use entry points in preference to the
-    # "scripts" keyword. Entry points provide cross-platform support and allow
+    # "scripts" keyword. Entry points provide crossplatform support and allow
     # `pip` to create the appropriate form of executable for the target
     # platform.
     #
@@ -78,6 +73,7 @@ setup(
 #            'sample=yt_videos_list:script',
 #        ],
 #    },
+
 
     project_urls={
         'Source': 'https://github.com/Shail-Shouryya/yt_videos_list',
