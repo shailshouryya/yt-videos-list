@@ -22,6 +22,9 @@
 - [Traps for the Unwary in Python’s Import System](https://python-notes.curiousefficiency.org/en/latest/python_concepts/import_traps.html) - Docs » Python Concepts » Traps for the Unwary in Python’s Import System
   - READ THIS!
 - [How to create a Python Package with __init__.py](https://timothybramlett.com/How_to_create_a_Python_Package_with___init__py.html) - Timothy Bramlett
+- after reading the previous 2, read these
+  - [ValueError: attempted relative import beyond top-level package](https://stackoverflow.com/questions/35166821/valueerror-attempted-relative-import-beyond-top-level-package) - Stack Overflow
+  - [Relative imports for the billionth time](https://stackoverflow.com/questions/14132789/relative-imports-for-the-billionth-time/14132912#14132912) - Stack Overflow
 - [What is __init__.py for?](https://stackoverflow.com/questions/448271/what-is-init-py-for) - Stack Overflow
     - Files named __init__.py are used to mark directories on disk as Python package directories. If you have the files
 
