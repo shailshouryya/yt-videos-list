@@ -1,4 +1,5 @@
 from . import program
+from . import selenium_macos, selenium_windows, selenium_linux
 from .notifications import Common, ModuleMessage, ScriptMessage
 import selenium
 from selenium import webdriver
@@ -130,7 +131,7 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
             return
 
         try:
-            # osSeleniumDriver.download(userDriver)
+            globals()[f'selenium_{userOS}'].download(userDriver)
             sys.exit() # skip this try block for now until the logic to install the correct Selenium driver based on the user's OS and specified driver is added
         except: # could not download the correct Selenium driver based on the user's OS and specified driver
             showUserHowToSetupSeleniumFor(userDriver, userOS)
