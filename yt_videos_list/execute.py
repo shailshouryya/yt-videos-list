@@ -8,7 +8,7 @@ import time
 import os
 
 commonMessage = Common()
-sMessage = ScriptMessage()
+scriptMessage = ScriptMessage()
 
 def verifyWriteFormat(fileType, writeFormat, fileName, fileExtension):
     if fileType is True and writeFormat == 'x':
@@ -67,8 +67,8 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
     docxWriteFormat = verifyWriteFormat(docx, docxWriteFormat, fileName, 'docx')
 
     if userDriver is None:
-        print (mMessage.runningDefaultDriver) if executionType == 'module' else print (sMessage.runningDefaultDriver)
-        print (mMessage.showDriverOptions) if executionType == 'module' else print (sMessage.showDriverOptions)
+        print (mMessage.runningDefaultDriver) if executionType == 'module' else print (scriptMessage.runningDefaultDriver)
+        print (mMessage.showDriverOptions) if executionType == 'module' else print (scriptMessage.showDriverOptions)
         userDriver = 'firefox'
 
     driver = setupDriver(userDriver)
@@ -126,7 +126,7 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
         videosList = program.scrollToBottom(channel, channelType, driver, scrollPauseTime)
         if len(videosList) == 0:
             print (commonMessage.noVideosFound)
-            print (mMessage.checkChannelType) if executionType == 'module' else print (sMessage.checkChannelType)
+            print (mMessage.checkChannelType) if executionType == 'module' else print (scriptMessage.checkChannelType)
             return
         if txt is True:
             program.writeToTxt(videosList, channel, fileName, txtWriteFormat, chronological)

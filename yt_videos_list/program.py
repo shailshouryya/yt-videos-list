@@ -5,7 +5,7 @@ import time
 import csv
 
 commonMessage = Common()
-sMessage = ScriptMessage()
+scriptMessage = ScriptMessage()
 
 def scrollToBottom (channel, channelType, seleniumInstance, scrollPauseTime):
     seleniumInstance.set_window_size(780, 880)
