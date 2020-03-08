@@ -209,12 +209,12 @@ class Common:
 
         def displayMoreDependencyInformation(userDriver):
             moreDriverInfo = {
-                # 'driver': ['driverName', 'url for more driver info', 'browser name', 'url for browser download']
-                'firefox': ['geckodriver', 'https://github.com/mozilla/geckodriver', 'Mozilla Firefox', 'https://www.mozilla.org/en-US/firefox/new/'],
-                'opera': ['operadriver', 'https://github.com/operasoftware/operachromiumdriver', 'Opera', 'https://www.opera.com/'],
-                'chrome': ['chromedriver', 'https://sites.google.com/a/chromium.org/chromedriver/home', 'Chrome', 'https://www.google.com/chrome/']
+                # 'driver': ['driverName', 'url for more driver info',  'url for driver releases', 'browser name', 'url for browser download']
+                'firefox': ['geckodriver', 'https://github.com/mozilla/geckodriver', 'https://github.com/mozilla/geckodriver/releases', 'Mozilla Firefox', 'https://www.mozilla.org/en-US/firefox/new/'],
+                'opera': ['operadriver', 'https://github.com/operasoftware/operachromiumdriver', 'https://github.com/operasoftware/operachromiumdriver/releases', 'Opera', 'https://www.opera.com/'],
+                'chrome': ['chromedriver', 'https://sites.google.com/a/chromium.org/chromedriver/home', 'https://sites.google.com/a/chromium.org/chromedriver/downloads', 'Chrome', 'https://www.google.com/chrome/']
             }
-            print (f'\n\n# For more information about the {moreDriverInfo[userDriver][0]}, please visit\n{moreDriverInfo[userDriver][1]}\n\nNOTE! You must also have the {moreDriverInfo[userDriver][2]} browser installed to use this. If you don\'t have it installed, install it from\n{moreDriverInfo[userDriver][3]}')
+            print (f'\n\n# For more information about the {moreDriverInfo[userDriver][0]}, please visit\n{moreDriverInfo[userDriver][1]}\n{moreDriverInfo[userDriver][2]}      (all supported versions)\n\nNOTE! You must also have the {moreDriverInfo[userDriver][3]} browser installed to use this. If you don\'t have it installed, install it from\n{moreDriverInfo[userDriver][4]}')
 
         if userDriver != 'safari':
             displayMoreDependencyInformation(userDriver)
