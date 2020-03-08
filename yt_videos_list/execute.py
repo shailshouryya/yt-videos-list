@@ -106,6 +106,13 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
                 print (commonMessage.unsupportedSafariHeadless)
         return driver
 
+
+
+    def showUserHowToSetupSeleniumFor(userDriver, userOS):
+        if userDriver != 'safari':
+            commonMessage.tellUserToDownloadDriver(userDriver)
+        commonMessage.displayDependencySetupInstructions(userDriver, userOS)
+
     try:
         driver = openUserDriver()
     except selenium.common.exceptions.WebDriverException as e:
@@ -122,9 +129,11 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
             print (commonMessage.unsupportedOS)
             return
 
-        if userDriver != 'safari':
-            commonMessage.tellUserToDownloadDriver(userDriver)
-        commonMessage.displayDependencySetupInstructions(userDriver, userOS)
+        try:
+            # osSeleniumDriver.download(userDriver)
+            sys.exit() # skip this try block for now until the logic to install the correct Selenium driver based on the user's OS and specified driver is added
+        except: # could not download the correct Selenium driver based on the user's OS and specified driver
+            showUserHowToSetupSeleniumFor(userDriver, userOS)
         return
 
     with driver:
