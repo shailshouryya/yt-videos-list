@@ -40,14 +40,14 @@ setup(
         'Topic :: Software Development :: Version Control :: Git',
         'Topic :: Text Processing :: Markup :: HTML'
     ],
-    keywords='YoutTube videos URL scraping automation',
+    keywords='YouTube videos URL scraping automation Selenium csv txt macos windows linux',
     # http://code.nabla.net/doc/setuptools/api/setuptools/setuptools.find_packages.html
     # https://stackoverflow.com/questions/51286928/what-is-where-argument-for-in-setuptools-find-packages
     packages=find_packages(),
     # package_dir={'':'src'},
 
     python_requires='>=3.6.*, <4',
-    install_requires=['selenium>=3.141.0,<4'],  # Optional
+    install_requires=['selenium>=3.141.0, <4'],  # Optional
     # https://packaging.python.org/discussions/install-requires-vs-requirements/
 
     # If there are data files included in your packages that need to be installed, specify them here.
