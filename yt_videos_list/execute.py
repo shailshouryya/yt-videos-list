@@ -71,38 +71,43 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
         print (moduleMessage.showDriverOptions) if executionType == 'module' else print (scriptMessage.showDriverOptions)
         userDriver = 'firefox'
 
-    driver = setupDriver(userDriver)
-    if driver == 'invalid':
+    userdriver = setupDriver(userDriver)
+    if userdriver == 'invalid':
         return
 
     programStart = time.perf_counter()
-    try:
+
+    def openUserDriver():
         if headless is False: # opens Selenium browsing instance
-            driver = driver()
+            driver = userdriver()
             if executionType == 'module':
                 print (moduleMessage.runInHeadless)
                 print (moduleMessage.runInHeadlessExample)
         else: # headless is True
-            if userDriver == 'firefox':
+            if userdriver == 'firefox':
                 options = selenium.webdriver.firefox.options.Options()
                 options.headless = True
-                driver = driver(options=options)
-            if userDriver == 'chrome':
+                driver = userdriver(options=options)
+            if userdriver == 'chrome':
                 # options = selenium.webdriver.chrome.options.Options()
                 options = webdriver.ChromeOptions()
                 options.add_argument('headless')
-                driver = driver(chrome_options=options)
-            if userDriver == 'opera':
+                driver = userdriver(chrome_options=options)
+            if userdriver == 'opera':
                 # Opera driver MRO: WebDriver -> OperaDriver -> selenium.webdriver.chrome.webdriver.WebDriver -> selenium.webdriver.remote.webdriver.WebDriver -> builtins.object
                 # options = selenium.webdriver.chrome.options.Options()
                 # options.headless = True
                 options = webdriver.ChromeOptions()
                 options.add_argument('headless')
-                driver = driver(options=options)
+                driver = userdriver(options=options)
                 print (commonMessage.unsupportedOperaHeadless)
-            if userDriver == 'safari':
-                driver = driver()
+            if userdriver == 'safari':
+                driver = userdriver()
                 print (commonMessage.unsupportedSafariHeadless)
+        return driver
+
+    try:
+        driver = openUserDriver()
     except selenium.common.exceptions.WebDriverException as e:
         # selenium.common.exceptions.WebDriverException: Message: 'BROWSERdriver' executable needs to be in PATH. Please see https://................
         # for some reason this also catches selenium.common.exceptions.SessionNotCreatedException: Message: session not created: This version of BROWSERDriver only supports BROWSER version ##
