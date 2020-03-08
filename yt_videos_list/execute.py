@@ -36,7 +36,7 @@ def verifyWriteFormat(fileType, writeFormat, fileName, fileExtension):
     else:
         return writeFormat
 
-def setupDriver(userDriver):
+def checkDriver(userDriver):
     if 'firefox' in userDriver:
         return webdriver.Firefox
     elif 'chrome' in userDriver:
@@ -72,7 +72,7 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
         print (moduleMessage.showDriverOptions) if executionType == 'module' else print (scriptMessage.showDriverOptions)
         userDriver = 'firefox'
 
-    userdriver = setupDriver(userDriver)
+    userdriver = checkDriver(userDriver)
     if userdriver == 'invalid':
         return
 
