@@ -72,7 +72,7 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
         print (moduleMessage.showDriverOptions) if executionType == 'module' else print (scriptMessage.showDriverOptions)
         userDriver = 'firefox'
 
-    userdriver = checkDriver(userDriver)
+    userdriver = checkDriver(userDriver) # NOTE the selenium webdriver object is referred to as userdriver, NOT userDriver; userDriver is used to check the user input as userdriver refers to something else
     if userdriver == 'invalid':
         return
 
