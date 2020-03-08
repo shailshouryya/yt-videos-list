@@ -9,6 +9,7 @@ import time
 import os
 
 commonMessage = Common()
+moduleMessage = ModuleMessage()
 scriptMessage = ScriptMessage()
 
 def verifyWriteFormat(fileType, writeFormat, fileName, fileExtension):
@@ -50,8 +51,6 @@ def checkDriver(userDriver):
         return 'invalid'
 
 def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat, docx, docxWriteFormat, chronological, headless, scrollPauseTime, userDriver, executionType):
-    moduleMessage = ModuleMessage()
-    commonMessage = Common()
     channel = channel.strip().strip('/')
     channelType = channelType.strip().strip('/')
 
