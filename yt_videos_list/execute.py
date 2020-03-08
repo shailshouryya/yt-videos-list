@@ -49,7 +49,7 @@ def setupDriver(userDriver):
         return 'invalid'
 
 def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat, docx, docxWriteFormat, chronological, headless, scrollPauseTime, userDriver, executionType):
-    mMessage = ModuleMessage()
+    moduleMessage = ModuleMessage()
     commonMessage = Common()
     channel = channel.strip().strip('/')
     channelType = channelType.strip().strip('/')
@@ -67,8 +67,8 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
     docxWriteFormat = verifyWriteFormat(docx, docxWriteFormat, fileName, 'docx')
 
     if userDriver is None:
-        print (mMessage.runningDefaultDriver) if executionType == 'module' else print (scriptMessage.runningDefaultDriver)
-        print (mMessage.showDriverOptions) if executionType == 'module' else print (scriptMessage.showDriverOptions)
+        print (moduleMessage.runningDefaultDriver) if executionType == 'module' else print (scriptMessage.runningDefaultDriver)
+        print (moduleMessage.showDriverOptions) if executionType == 'module' else print (scriptMessage.showDriverOptions)
         userDriver = 'firefox'
 
     driver = setupDriver(userDriver)
@@ -80,8 +80,8 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
         if headless is False: # opens Selenium browsing instance
             driver = driver()
             if executionType == 'module':
-                print (mMessage.runInHeadless)
-                print (mMessage.runInHeadlessExample)
+                print (moduleMessage.runInHeadless)
+                print (moduleMessage.runInHeadlessExample)
         else: # headless is True
             if userDriver == 'firefox':
                 options = selenium.webdriver.firefox.options.Options()
@@ -126,7 +126,7 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
         videosList = program.scrollToBottom(channel, channelType, driver, scrollPauseTime)
         if len(videosList) == 0:
             print (commonMessage.noVideosFound)
-            print (mMessage.checkChannelType) if executionType == 'module' else print (scriptMessage.checkChannelType)
+            print (moduleMessage.checkChannelType) if executionType == 'module' else print (scriptMessage.checkChannelType)
             return
         if txt is True:
             program.writeToTxt(videosList, channel, fileName, txtWriteFormat, chronological)
