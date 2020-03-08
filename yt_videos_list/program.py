@@ -1,11 +1,10 @@
-from .notifications import Common, ModuleMessage, ScriptMessage
+from .notifications import Common
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 import time
 import csv
 
 commonMessage = Common()
-scriptMessage = ScriptMessage()
 
 def scrollToBottom (channel, channelType, seleniumInstance, scrollPauseTime):
     seleniumInstance.set_window_size(780, 880)
