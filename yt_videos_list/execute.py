@@ -7,7 +7,7 @@ import platform
 import time
 import os
 
-cMessage = Common()
+commonMessage = Common()
 sMessage = ScriptMessage()
 
 def verifyWriteFormat(fileType, writeFormat, fileName, fileExtension):
@@ -22,13 +22,13 @@ def verifyWriteFormat(fileType, writeFormat, fileName, fileExtension):
             elif 'skip' in userResponse.strip().lower():
                 return 0
             else:
-                print ('\n' + cMessage.invalidResponse)
-                cMessage.fileAlreadyExistsPrompt(filename)
+                print ('\n' + commonMessage.invalidResponse)
+                commonMessage.fileAlreadyExistsPrompt(filename)
                 return newWriteFormat()
 
         if fileExists is True:
-            cMessage.fileAlreadyExistsWarning(filename)
-            cMessage.fileAlreadyExistsPrompt(filename)
+            commonMessage.fileAlreadyExistsWarning(filename)
+            commonMessage.fileAlreadyExistsPrompt(filename)
             return newWriteFormat()
         return 'x'
 
@@ -45,12 +45,12 @@ def setupDriver(userDriver):
     elif 'safari' in userDriver:
         return webdriver.Safari
     else:
-        print (cMessage.invalidDriver)
+        print (commonMessage.invalidDriver)
         return 'invalid'
 
 def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat, docx, docxWriteFormat, chronological, headless, scrollPauseTime, userDriver, executionType):
     mMessage = ModuleMessage()
-    cMessage = Common()
+    commonMessage = Common()
     channel = channel.strip().strip('/')
     channelType = channelType.strip().strip('/')
 
@@ -99,14 +99,14 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
                 options = webdriver.ChromeOptions()
                 options.add_argument('headless')
                 driver = driver(options=options)
-                print (cMessage.unsupportedOperaHeadless)
+                print (commonMessage.unsupportedOperaHeadless)
             if userDriver == 'safari':
                 driver = driver()
-                print (cMessage.unsupportedSafariHeadless)
+                print (commonMessage.unsupportedSafariHeadless)
     except selenium.common.exceptions.WebDriverException as e:
         # selenium.common.exceptions.WebDriverException: Message: 'BROWSERdriver' executable needs to be in PATH. Please see https://................
         # for some reason this also catches selenium.common.exceptions.SessionNotCreatedException: Message: session not created: This version of BROWSERDriver only supports BROWSER version ##
-        cMessage.seleniumDependencyError(e)
+        commonMessage.seleniumDependencyError(e)
         if platform.system().lower().startswith('darwin'):
             userOS = 'macos'
         elif platform.system().lower().startswith('windows'):
@@ -114,18 +114,18 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
         elif platform.system().lower().startswith('linux'):
             userOS = 'linux'
         else:
-            print (cMessage.unsupportedOS)
+            print (commonMessage.unsupportedOS)
             return
 
         if userDriver != 'safari':
-            cMessage.tellUserToDownloadDriver(userDriver)
-        cMessage.displayDependencySetupInstructions(userDriver, userOS)
+            commonMessage.tellUserToDownloadDriver(userDriver)
+        commonMessage.displayDependencySetupInstructions(userDriver, userOS)
         return
 
     with driver:
         videosList = program.scrollToBottom(channel, channelType, driver, scrollPauseTime)
         if len(videosList) == 0:
-            print (cMessage.noVideosFound)
+            print (commonMessage.noVideosFound)
             print (mMessage.checkChannelType) if executionType == 'module' else print (sMessage.checkChannelType)
             return
         if txt is True:

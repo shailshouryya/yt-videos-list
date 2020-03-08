@@ -4,7 +4,7 @@ from selenium.webdriver.firefox.options import Options
 import time
 import csv
 
-cMessage = Common()
+commonMessage = Common()
 sMessage = ScriptMessage()
 
 def scrollToBottom (channel, channelType, seleniumInstance, scrollPauseTime):
@@ -27,7 +27,7 @@ def scrollToBottom (channel, channelType, seleniumInstance, scrollPauseTime):
 
         if newElemsCount == elemsCount:
             # wait 0.6 seconds and check again to verify you really did reach the end of the page, and there wasn't a buffer loading period
-            print (cMessage.noNewVideosFound)
+            print (commonMessage.noNewVideosFound)
             time.sleep(0.6)
             newElemsCount = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
             if newElemsCount == elemsCount:
