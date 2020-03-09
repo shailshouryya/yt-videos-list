@@ -62,6 +62,12 @@ There are two types of YouTube channels: one type is a `user` channel and the ot
 To scrape the video titles along with the link to the video, you need to run the `generate_list(channel, channelType)` method on the ListGenerator object you just created, substituting the type of channel for `channelType` argument and the name of the channel for the `channel` argument. By default, the name of the file produced will be `channel`VideosList.ext where the `.ext` will be `.csv` or `.txt ` depending on the type of file(s) that you specified.
 
 ### For more control
+---
+**NOTE** that you can also access all the information below in the `python3` interpreter by entering 
+<br>`from yt_videos_list import ListGenerator`
+<br>`help(ListGenerator)`
+
+---
 ```python
 ListGenerator(csv=True, csvWriteFormat='x', txt=True, txtWriteFormat='x',
               chronological=False,
