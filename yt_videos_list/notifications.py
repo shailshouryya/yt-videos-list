@@ -191,6 +191,13 @@ class Common:
         }
     }
 
+    moreDriverInfo = {
+        # 'driver': ['driverName', 'url for more driver info',  'url for driver releases', 'browser name', 'url for browser download']
+        'firefox': ['geckodriver', 'https://github.com/mozilla/geckodriver', 'https://github.com/mozilla/geckodriver/releases', 'Mozilla Firefox', 'https://www.mozilla.org/en-US/firefox/new/'],
+        'opera': ['operadriver', 'https://github.com/operasoftware/operachromiumdriver', 'https://github.com/operasoftware/operachromiumdriver/releases', 'Opera', 'https://www.opera.com/'],
+        'chrome': ['chromedriver', 'https://sites.google.com/a/chromium.org/chromedriver/home', 'https://sites.google.com/a/chromium.org/chromedriver/downloads', 'Chrome', 'https://www.google.com/chrome/']
+    }
+
     @classmethod
     def displayDependencySetupInstructions(cls, userDriver, userOS):
         terminalCopyPasteDirections = 'Once you determine the right version to download, copy the command, open a new terminal session (usually possible with CMD+N or CMD+T (or CTRL+N or CTRL+D depending on your keyboard/OS) from an active terminal session), and paste the command you just copied. Once you\'ve done that, you should be able to come back to this session and rerun the last command without an error!\n\n'
@@ -208,13 +215,7 @@ class Common:
             print (driverVersionDownload)
 
         def displayMoreDependencyInformation(userDriver):
-            moreDriverInfo = {
-                # 'driver': ['driverName', 'url for more driver info',  'url for driver releases', 'browser name', 'url for browser download']
-                'firefox': ['geckodriver', 'https://github.com/mozilla/geckodriver', 'https://github.com/mozilla/geckodriver/releases', 'Mozilla Firefox', 'https://www.mozilla.org/en-US/firefox/new/'],
-                'opera': ['operadriver', 'https://github.com/operasoftware/operachromiumdriver', 'https://github.com/operasoftware/operachromiumdriver/releases', 'Opera', 'https://www.opera.com/'],
-                'chrome': ['chromedriver', 'https://sites.google.com/a/chromium.org/chromedriver/home', 'https://sites.google.com/a/chromium.org/chromedriver/downloads', 'Chrome', 'https://www.google.com/chrome/']
-            }
-            print (f'\n\n# For more information about the {moreDriverInfo[userDriver][0]}, please visit\n{moreDriverInfo[userDriver][1]}\n{moreDriverInfo[userDriver][2]}      (all supported versions)\n\nNOTE! You must also have the {moreDriverInfo[userDriver][3]} browser installed to use this. If you don\'t have it installed, install it from\n{moreDriverInfo[userDriver][4]}')
+            print (f'\n\n# For more information about the {cls.moreDriverInfo[userDriver][0]}, please visit\n{cls.moreDriverInfo[userDriver][1]}\n{cls.moreDriverInfo[userDriver][2]}      (all supported versions)\n\nNOTE! You must also have the {cls.moreDriverInfo[userDriver][3]} browser installed to use this. If you don\'t have it installed, install it from\n{cls.moreDriverInfo[userDriver][4]}')
 
         if userDriver != 'safari':
             displayMoreDependencyInformation(userDriver)
