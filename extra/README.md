@@ -17,5 +17,5 @@
 ### [Setting up your Selenium Dependencies (all operating systems)](./allDependencies.md)
 
 # Package Info
-[Technical Specifications for the yt_videos_list module](./technicalSpecifications.md)
+[Technical Specifications for the yt_videos_list package](./technicalSpecifications.md)
 <br>[Future Features](./futureFeatures.md)

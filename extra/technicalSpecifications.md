@@ -1,10 +1,10 @@
-# Technical Specifications for the yt_videos_list module
+# Technical Specifications for the yt_videos_list package
 
-This python3 module supports multi-platform, mutli-driver use and is currently under active development.
+This python3 package supports multi-platform, mutli-driver use and is currently under active development.
 
 Currently supported operating systems include MacOS, Linux32, Linux64, Windows32, and Windows64. Currently supported drivers include Firefox, Opera, Safari, and Chrome.
 
-This module provides built-in support for common errors and exceptions, along with helpful hints, including
+This package provides built-in support for common errors and exceptions, along with helpful hints, including
   - checking to see if the file to be created already exists
     - if it already exists, a message prompts the user to either move/rename the existing file or continue with the write to overwrite the existing file
     - proper way to do so would be to specify the write format for the output file as `csvWriteFormat='w'` or `txtWriteFormat='w'` or `docxWriteFormat='w'`
@@ -22,7 +22,7 @@ This module provides built-in support for common errors and exceptions, along wi
   - checking to see if the result of the scraping returns results, and prompts the user to verify the name/string they provided for `channel` and the `channelType` they specified
     - if the name/string is correct, the `channelType` was likely specified incorrectly, so change it to `user` or `channel` (whichever one was not specified the first time)
 
-## Overview of the module structure
+## Overview of the package structure
 ### `__init__.py`
 
 ### `__main__.py`

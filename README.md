@@ -1,7 +1,7 @@
 # Automate a Videos List Creation for a YouTube Channel
 **TABLE OF CONTENTS**
 <br>[Quick Start](./README.md#Quick-Start)
-<br>[Running the module from the python interpreter](./README.md#Running-the-module-from-the-python-interpreter)
+<br>[Running the package from the python interpreter](./README.md#Running-the-package-from-the-python-interpreter)
 <br>[Understanding the API](./README.md#Understanding-the-API)
 <br>[For more control](./README.md#For-more-control)
 <br>[General Overview](./README.md#General-Overview)
@@ -21,7 +21,7 @@ pip3 install -U yt-videos-list
   - [Opera](https://www.opera.com/)
   - [Chrome](https://www.google.com/chrome/)
 
-## Running the module from the python interpreter
+## Running the package from the python interpreter
 ```
 python3
 ```
@@ -97,7 +97,7 @@ There are a number of optional arguments you can specify during the instantiatio
   * `scrollPauseTime=0.8` (default)
   * CAUTION: reducing this value too much will result in the programming not capturing all the videos, so be careful! Experiment :)
 
-## Running the module from the CLI as a script using -m (coming in `0.3.x`!)
+## Running the package from the CLI as a script using -m (coming in `0.3.x`!)
 ```
 python3 -m yt_videos_list
 ```
