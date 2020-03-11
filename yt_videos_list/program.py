@@ -94,6 +94,7 @@ def saveToMemWriteToTxt (listOfVideos, channel, fileName, writeFormat, chronolog
         fm.write(text)
         print (f'{index} videos written to {fm.name}')
         print (f'Closing {fm.name}\n')
+
         end = time.perf_counter()
         functionTime = end - start
         print(f'It took {functionTime} seconds to write all {index} videos to {fm.name}\n')
@@ -117,6 +118,7 @@ def writeToCsv (listOfVideos, channel, fileName, writeFormat, chronological):
         print (f'Finished writing to {csvFile.name}')
         print (f'{index} videos written to {csvFile.name}')
         print (f'Closing {csvFile.name}\n')
+
         end = time.perf_counter()
         functionTime = end - start
         print(f'It took {functionTime} to write all {index} videos to {csvFile.name}\n')
