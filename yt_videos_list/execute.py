@@ -135,6 +135,7 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
         try:
             globals()[f'selenium_{userOS}'].download(userDriver)
             sys.exit() # skip this try block for now until the logic to install the correct Selenium driver based on the user's OS and specified driver is added
+            driver = openUserDriver()
         except: # could not download the correct Selenium driver based on the user's OS and specified driver
             showUserHowToSetupSelenium()
         return
