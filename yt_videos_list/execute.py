@@ -12,50 +12,50 @@ commonMessage = Common()
 moduleMessage = ModuleMessage()
 scriptMessage = ScriptMessage()
 
-def verifyWriteFormat(fileType, writeFormat, fileName, fileExtension):
-    if fileType is True and writeFormat == 'x':
-        filename = f'{fileName}VideosList.{fileExtension}'
-        fileExists = True if os.path.isfile(f'./{filename}') else False
-
-        def newWriteFormat():
-            userResponse = input()
-            if 'proceed' in userResponse.strip().lower():
-                return 'w'
-            elif 'skip' in userResponse.strip().lower():
-                return 0
-            else:
-                print ('\n' + commonMessage.invalidResponse)
-                commonMessage.fileAlreadyExistsPrompt(filename)
-                return newWriteFormat()
-
-        if fileExists is True:
-            commonMessage.fileAlreadyExistsWarning(filename)
-            commonMessage.fileAlreadyExistsPrompt(filename)
-            return newWriteFormat()
-        return 'x'
-
-    else:
-        return writeFormat
-
-def checkDriver(userDriver):
-    if 'firefox' in userDriver:
-        return webdriver.Firefox
-    elif 'chrome' in userDriver:
-        return webdriver.Chrome
-    elif 'opera' in userDriver:
-        return webdriver.Opera
-    elif 'safari' in userDriver:
-        return webdriver.Safari
-    else:
-        print (commonMessage.invalidDriver)
-        return 'invalid'
-
 def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat, docx, docxWriteFormat, chronological, headless, scrollPauseTime, userDriver, executionType):
     def determineFileName():
         if fileName is not None:
             return fileName
         else:
             return channel
+
+    def verifyWriteFormat(fileType, writeFormat, fileName, fileExtension):
+        if fileType is True and writeFormat == 'x':
+            filename = f'{fileName}VideosList.{fileExtension}'
+            fileExists = True if os.path.isfile(f'./{filename}') else False
+
+            def newWriteFormat():
+                userResponse = input()
+                if 'proceed' in userResponse.strip().lower():
+                    return 'w'
+                elif 'skip' in userResponse.strip().lower():
+                    return 0
+                else:
+                    print ('\n' + commonMessage.invalidResponse)
+                    commonMessage.fileAlreadyExistsPrompt(filename)
+                    return newWriteFormat()
+
+            if fileExists is True:
+                commonMessage.fileAlreadyExistsWarning(filename)
+                commonMessage.fileAlreadyExistsPrompt(filename)
+                return newWriteFormat()
+            return 'x'
+
+        else:
+            return writeFormat
+
+    def checkDriver():
+        if 'firefox' in userDriver:
+            return webdriver.Firefox
+        elif 'chrome' in userDriver:
+            return webdriver.Chrome
+        elif 'opera' in userDriver:
+            return webdriver.Opera
+        elif 'safari' in userDriver:
+            return webdriver.Safari
+        else:
+            print (commonMessage.invalidDriver)
+            return 'invalid'
 
     def openUserDriver():
         if headless is False: # opens Selenium browsing instance
@@ -107,7 +107,7 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
         print (moduleMessage.showDriverOptions) if executionType == 'module' else print (scriptMessage.showDriverOptions)
         userDriver = 'firefox'
 
-    userdriver = checkDriver(userDriver) # NOTE the selenium webdriver object is referred to as userdriver, NOT userDriver; userDriver is used to check the user input as userdriver refers to the webdriver object
+    userdriver = checkDriver() # NOTE the selenium webdriver object is referred to as userdriver, NOT userDriver; userDriver is used to check the user input as userdriver refers to the webdriver object
     if userdriver == 'invalid':
         return
 
