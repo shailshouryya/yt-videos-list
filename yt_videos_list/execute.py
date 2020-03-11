@@ -54,13 +54,13 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
     channel = channel.strip().strip('/')
     channelType = channelType.strip().strip('/')
 
-    def determineFileName(fileName):
+    def determineFileName():
         if fileName is not None:
             return fileName
         else:
             return channel
 
-    fileName = determineFileName(fileName)
+    fileName = determineFileName()
 
     txtWriteFormat = verifyWriteFormat(txt, txtWriteFormat, fileName, 'txt')
     csvWriteFormat = verifyWriteFormat(csv, csvWriteFormat, fileName, 'csv')
