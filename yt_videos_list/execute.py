@@ -13,6 +13,9 @@ moduleMessage = ModuleMessage()
 scriptMessage = ScriptMessage()
 
 def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat, docx, docxWriteFormat, chronological, headless, scrollPauseTime, userDriver, executionType):
+    #################################################################
+    #################### define helper functions ####################
+    #################################################################
 
     def determineFileName():
         if fileName is not None:
@@ -91,6 +94,9 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
             commonMessage.tellUserToDownloadDriver(userDriver)
         commonMessage.displayDependencySetupInstructions(userDriver, userOS)
 
+    #################################################################
+    #################### start running the logic ####################
+    #################################################################
 
     channel = channel.strip().strip('/')
     channelType = channelType.strip().strip('/')
