@@ -1,4 +1,4 @@
-# Automate a Videos List Creation for a YouTube Channel
+# Automate a videos list creation for a YouTube channel
 **TABLE OF CONTENTS**
 <br>[Quick Start](./README.md#Quick-Start)
 <br>[Running the package from the python interpreter](./README.md#Running-the-package-from-the-python-interpreter)
@@ -63,7 +63,7 @@ To scrape the video titles along with the link to the video, you need to run the
 
 ### For more control
 ---
-**NOTE** that you can also access all the information below in the `python3` interpreter by entering 
+**NOTE** that you can also access all the information below in the `python3` interpreter by entering
 <br>`from yt_videos_list import ListGenerator`
 <br>`help(ListGenerator)`
 

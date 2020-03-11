@@ -1,4 +1,4 @@
-# Technical Specifications for the yt_videos_list package
+# Technical specifications for the yt_videos_list package
 
 This python3 package supports multi-platform, mutli-driver use and is currently under active development.
 
