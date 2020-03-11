@@ -1,4 +1,4 @@
-# Automate a videos list creation for a YouTube channel
+# Automate creation of videos lists for YouTube channels
 **TABLE OF CONTENTS**
 <br>[Quick Start](./README.md#Quick-Start)
 <br>[Running the package from the python interpreter](./README.md#Running-the-package-from-the-python-interpreter)
