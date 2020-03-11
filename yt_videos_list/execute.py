@@ -1,12 +1,11 @@
 from . import program
 from . import selenium_macos, selenium_windows, selenium_linux
 from .notifications import Common, ModuleMessage, ScriptMessage
+import os, sys, platform
+import time
 import selenium
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
-import platform
-import time
-import os
 
 commonMessage = Common()
 moduleMessage = ModuleMessage()
@@ -89,6 +88,17 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
                 print (commonMessage.unsupportedSafariHeadless)
         return driver
 
+    def determineUserOS():
+        if platform.system().lower().startswith('darwin'):
+            return 'macos'
+        elif platform.system().lower().startswith('windows'):
+            return 'windows'
+        elif platform.system().lower().startswith('linux'):
+            return 'linux'
+        else:
+            print (commonMessage.unsupportedOS)
+            sys.exit()
+
     def showUserHowToSetupSeleniumFor(userDriver, userOS):
         if userDriver != 'safari':
             commonMessage.tellUserToDownloadDriver(userDriver)
@@ -119,17 +129,9 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
     except selenium.common.exceptions.WebDriverException as e:
         # selenium.common.exceptions.WebDriverException: Message: 'BROWSERdriver' executable needs to be in PATH. Please see https://................
         # for some reason this also catches selenium.common.exceptions.SessionNotCreatedException: Message: session not created: This version of BROWSERDriver only supports BROWSER version ##
-        commonMessage.seleniumDependencyError(e)
-        if platform.system().lower().startswith('darwin'):
-            userOS = 'macos'
-        elif platform.system().lower().startswith('windows'):
-            userOS = 'windows'
-        elif platform.system().lower().startswith('linux'):
-            userOS = 'linux'
-        else:
-            print (commonMessage.unsupportedOS)
-            return
 
+        commonMessage.seleniumDependencyError(e)
+        userOS = determineUserOS()
         try:
             globals()[f'selenium_{userOS}'].download(userDriver)
             sys.exit() # skip this try block for now until the logic to install the correct Selenium driver based on the user's OS and specified driver is added
