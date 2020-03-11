@@ -5,7 +5,6 @@ import os, sys, platform
 import time
 import selenium
 from selenium import webdriver
-from selenium.webdriver.firefox.options import Options
 
 commonMessage = Common()
 moduleMessage = ModuleMessage()
