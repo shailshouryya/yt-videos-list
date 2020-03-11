@@ -69,6 +69,7 @@ def writeToTxt (listOfVideos, channel, fileName, writeFormat, chronological):
         print(f'It took {functionTime} seconds to write all {index} videos to {txtFile.name}\n')
 
 def saveToMemWriteToTxt (listOfVideos, channel, fileName, writeFormat, chronological):
+    # this takes a little bit longer than the writeToCsv() function
     if writeFormat == 0:
         return
 
