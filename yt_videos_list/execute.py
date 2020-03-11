@@ -51,31 +51,11 @@ def checkDriver(userDriver):
         return 'invalid'
 
 def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat, docx, docxWriteFormat, chronological, headless, scrollPauseTime, userDriver, executionType):
-    channel = channel.strip().strip('/')
-    channelType = channelType.strip().strip('/')
-
     def determineFileName():
         if fileName is not None:
             return fileName
         else:
             return channel
-
-    fileName = determineFileName()
-
-    txtWriteFormat = verifyWriteFormat(txt, txtWriteFormat, fileName, 'txt')
-    csvWriteFormat = verifyWriteFormat(csv, csvWriteFormat, fileName, 'csv')
-    docxWriteFormat = verifyWriteFormat(docx, docxWriteFormat, fileName, 'docx')
-
-    if userDriver is None:
-        print (moduleMessage.runningDefaultDriver) if executionType == 'module' else print (scriptMessage.runningDefaultDriver)
-        print (moduleMessage.showDriverOptions) if executionType == 'module' else print (scriptMessage.showDriverOptions)
-        userDriver = 'firefox'
-
-    userdriver = checkDriver(userDriver) # NOTE the selenium webdriver object is referred to as userdriver, NOT userDriver; userDriver is used to check the user input as userdriver refers to the webdriver object
-    if userdriver == 'invalid':
-        return
-
-    programStart = time.perf_counter()
 
     def openUserDriver():
         if headless is False: # opens Selenium browsing instance
@@ -106,12 +86,32 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
                 print (commonMessage.unsupportedSafariHeadless)
         return driver
 
-
-
     def showUserHowToSetupSeleniumFor(userDriver, userOS):
         if userDriver != 'safari':
             commonMessage.tellUserToDownloadDriver(userDriver)
         commonMessage.displayDependencySetupInstructions(userDriver, userOS)
+
+
+
+    channel = channel.strip().strip('/')
+    channelType = channelType.strip().strip('/')
+
+    fileName = determineFileName()
+
+    txtWriteFormat = verifyWriteFormat(txt, txtWriteFormat, fileName, 'txt')
+    csvWriteFormat = verifyWriteFormat(csv, csvWriteFormat, fileName, 'csv')
+    docxWriteFormat = verifyWriteFormat(docx, docxWriteFormat, fileName, 'docx')
+
+    if userDriver is None:
+        print (moduleMessage.runningDefaultDriver) if executionType == 'module' else print (scriptMessage.runningDefaultDriver)
+        print (moduleMessage.showDriverOptions) if executionType == 'module' else print (scriptMessage.showDriverOptions)
+        userDriver = 'firefox'
+
+    userdriver = checkDriver(userDriver) # NOTE the selenium webdriver object is referred to as userdriver, NOT userDriver; userDriver is used to check the user input as userdriver refers to the webdriver object
+    if userdriver == 'invalid':
+        return
+
+    programStart = time.perf_counter()
 
     try:
         driver = openUserDriver()
