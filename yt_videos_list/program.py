@@ -1,6 +1,5 @@
 from .notifications import Common
 from selenium import webdriver
-from selenium.webdriver.firefox.options import Options
 import time
 import csv
 
