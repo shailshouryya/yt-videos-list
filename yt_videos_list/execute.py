@@ -142,7 +142,6 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
         except: # could not download the correct Selenium driver based on the user's OS and specified driver
             showUserHowToSetupSelenium()
         return
-
     with driver:
         videosList = program.scrollToBottom(channel, channelType, driver, scrollPauseTime)
         if len(videosList) == 0:
@@ -154,7 +153,6 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
             # saveToMemWriteToTxt(videosList, channel, fileName, writeFormat) # slightly slower than writing to disk directly
         if csv is True:
             program.writeToCsv(videosList, channel, fileName, csvWriteFormat, chronological)
-
     programEnd = time.perf_counter()
     totalTime = programEnd - programStart
     print(f'This program took {totalTime} seconds to complete.\n')
