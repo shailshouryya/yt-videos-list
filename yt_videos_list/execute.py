@@ -104,7 +104,7 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
         commonMessage.displayDependencySetupInstructions(userDriver, userOS)
 
     #################################################################
-    #################### start running the logic ####################
+    ####################### check user inputs #######################
     #################################################################
 
     channel = channel.strip().strip('/')
@@ -121,6 +121,10 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
     userdriver = checkDriver() # NOTE the selenium webdriver object is referred to as userdriver, NOT userDriver; userDriver is used to check the user input as userdriver refers to the webdriver object
     if userdriver == 'invalid':
         return
+
+    #################################################################
+    ######################### start program #########################
+    #################################################################
 
     programStart = time.perf_counter()
     try:
