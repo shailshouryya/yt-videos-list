@@ -16,7 +16,7 @@ It's recommend to install the latest version if you don't have existing projects
 pip3 install -U yt-videos-list
 ```
 
-**NOTE**: You do ***not*** need to download all Selenium drivers for your OS if you only want to run this program on a specific driver. If you want a specific driver, just copy and paste the corresponding command for the relevant driver from below. Otherwise, download the selenium dependencies for all the drivers that are supported on your OS to play around with them and see how they differ :)
+**NOTE**: You do need to have the Selenium driver installed to run this package, but you do ***not*** need to download all Selenium drivers for your OS if you only want to run this program on a specific driver. If you want a specific driver, just copy and paste the corresponding command for the relevant driver from below. Otherwise, download the selenium dependencies for all the drivers that are supported on your OS to play around with them and see how they differ :)
 ### Copy paste the code block that's relevant for the OS of your machine for the driver you want from **[here](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/README.md)**
 **NOTE** that you also need the corresponding browser installed to properly run the selenium driver.
 - To download the most recent version of the browser, go to the page for:
