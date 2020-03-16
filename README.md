@@ -13,6 +13,9 @@ This package uses [f-strings](https://cito.github.io/blog/f-strings/) (more [her
 
 It's recommend to install the latest version if you don't have existing projects that are dependent on a specific older version of Python, but if you want to install a different version, visit the [Python Downloads page](https://www.python.org/downloads/) and select the version you want. Once you do that, enter the following in your command line:
 ```
+# if something isn't working properly, try rerunning this
+# the problem may have been fixed with a newer version
+
 pip3 install -U yt-videos-list
 ```
 
