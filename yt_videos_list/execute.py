@@ -132,7 +132,6 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
     except selenium.common.exceptions.WebDriverException as e:
         # selenium.common.exceptions.WebDriverException: Message: 'BROWSERdriver' executable needs to be in PATH. Please see https://................
         # for some reason this also catches selenium.common.exceptions.SessionNotCreatedException: Message: session not created: This version of BROWSERDriver only supports BROWSER version ##
-
         commonMessage.seleniumDependencyError(e)
         userOS = determineUserOS()
         try:
