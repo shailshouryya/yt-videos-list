@@ -140,7 +140,7 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
             driver = openUserDriver()
         except: # could not download the correct Selenium driver based on the user's OS and specified driver
             showUserHowToSetupSelenium()
-        return
+            return
     with driver:
         videosList = program.scrollToBottom(channel, channelType, driver, scrollPauseTime)
         if len(videosList) == 0:
