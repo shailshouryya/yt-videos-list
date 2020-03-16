@@ -47,7 +47,7 @@ def writeToTxt (listOfVideos, channel, fileName, writeFormat, chronological):
     with open(f'{fileName}VideosList.txt', writeFormat) as txtFile:
         print (f'Opened {txtFile.name}, writing video information to file....')
 
-        spacing = '\n    ' # newline followed by 4 spaces
+        spacing = '\n    ' # newline followed by 4 spaces on the next line to pad the start of the line
         for index, element in enumerate(listOfVideos, 1) if chronological is False else enumerate(listOfVideos[::-1], 1):
             txtFile.write(f'Index:{spacing}{index}\n')
             txtFile.write(f'Watched?{spacing}\n')
@@ -77,7 +77,7 @@ def saveToMemWriteToTxt (listOfVideos, channel, fileName, writeFormat, chronolog
         print (f'Opened {fm.name}, writing video information to file....')
 
         text = ''
-        spacing = '\n    ' # newline followed by 4 spaces
+        spacing = '\n    ' # newline followed by 4 spaces on the next line to pad the start of the line
         for index, element in enumerate(listOfVideos, 1) if chronological is False else enumerate(listOfVideos[::-1], 1):
             text += f'Index:{spacing}{index}\n'
             text += f'Watched?{spacing}\n'
