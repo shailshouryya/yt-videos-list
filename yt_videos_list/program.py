@@ -13,6 +13,7 @@ def scrollToBottom (channel, channelType, seleniumInstance, scrollPauseTime):
     #################################
     ########## prepare url ##########
     #################################
+
     baseUrl = 'https://www.youtube.com'
     videos = 'videos'
     url = f'{baseUrl}/{channelType}/{channel}/{videos}'
@@ -20,12 +21,14 @@ def scrollToBottom (channel, channelType, seleniumInstance, scrollPauseTime):
     #####################################
     ########## navigate to url ##########
     #####################################
+
     driver.get(url)
     elemsCount = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
 
     ##############################################
     ########## scroll to bottom of page ##########
     ##############################################
+
     while True:
         driver.execute_script('window.scrollBy(0, 50000);')
         time.sleep(scrollPauseTime)
@@ -45,6 +48,7 @@ def scrollToBottom (channel, channelType, seleniumInstance, scrollPauseTime):
     ########################################################
     ########## save all elements to a python list ##########
     ########################################################
+
     elements = driver.find_elements_by_xpath('//*[@id="video-title"]')
     end = time.perf_counter()
     functionTime = end - start - 0.6 # subtract 0.6 to account for the extra waiting time to verify end of page
@@ -58,6 +62,7 @@ def writeToTxt (listOfVideos, channel, fileName, writeFormat, chronological):
     ###################################################
     ########## start writing to the txt file ##########
     ###################################################
+
     start = time.perf_counter()
     with open(f'{fileName}VideosList.txt', writeFormat) as txtFile:
         print (f'Opened {txtFile.name}, writing video information to file....')
@@ -66,6 +71,7 @@ def writeToTxt (listOfVideos, channel, fileName, writeFormat, chronological):
         ####################################################
         ########## iterate through list of videos ##########
         ####################################################
+
         for index, element in enumerate(listOfVideos, 1) if chronological is False else enumerate(listOfVideos[::-1], 1):
             txtFile.write(f'Index:{spacing}{index}\n')
             txtFile.write(f'Watched?{spacing}\n')
@@ -77,6 +83,7 @@ def writeToTxt (listOfVideos, channel, fileName, writeFormat, chronological):
             ################################################################
             ########## add asterisks as separators between videos ##########
             ################################################################
+
             txtFile.write('*'*75 + '\n')
             if index % 250 == 0:
                 print (f'{index} videos written to {txtFile.name}...')
@@ -87,6 +94,7 @@ def writeToTxt (listOfVideos, channel, fileName, writeFormat, chronological):
         ##############################################################
         ########## finished writing to txt file, stop timer ##########
         ##############################################################
+
         end = time.perf_counter()
         functionTime = end - start
         print(f'It took {functionTime} seconds to write all {index} videos to {txtFile.name}\n')
@@ -99,6 +107,7 @@ def saveToMemWriteToTxt (listOfVideos, channel, fileName, writeFormat, chronolog
     ###################################################
     ########## start writing to the txt file ##########
     ###################################################
+
     start = time.perf_counter()
     with open(f'{fileName}VideosList.txt', writeFormat) as fm:
         print (f'Opened {fm.name}, writing video information to file....')
@@ -108,6 +117,7 @@ def saveToMemWriteToTxt (listOfVideos, channel, fileName, writeFormat, chronolog
         ####################################################
         ########## iterate through list of videos ##########
         ####################################################
+
         for index, element in enumerate(listOfVideos, 1) if chronological is False else enumerate(listOfVideos[::-1], 1):
             text += f'Index:{spacing}{index}\n'
             text += f'Watched?{spacing}\n'
@@ -119,6 +129,7 @@ def saveToMemWriteToTxt (listOfVideos, channel, fileName, writeFormat, chronolog
             ################################################################
             ########## add asterisks as separators between videos ##########
             ################################################################
+
             text += '*'*75 + '\n'
             if index % 250 == 0:
                 print (f'{index} videos saved to memory...')
@@ -126,6 +137,7 @@ def saveToMemWriteToTxt (listOfVideos, channel, fileName, writeFormat, chronolog
         ####################################################
         ######### finished writing info to memory ##########
         ####################################################
+
         print (f'Finished saving video information to memory')
         fm.write(text)
         print (f'{index} videos written to {fm.name}')
@@ -134,6 +146,7 @@ def saveToMemWriteToTxt (listOfVideos, channel, fileName, writeFormat, chronolog
         ##############################################################
         ########## finished writing to txt file, stop timer ##########
         ##############################################################
+
         end = time.perf_counter()
         functionTime = end - start
         print(f'It took {functionTime} seconds to write all {index} videos to {fm.name}\n')
@@ -145,6 +158,7 @@ def writeToCsv (listOfVideos, channel, fileName, writeFormat, chronological):
     ###################################################
     ########## start writing to the csv file ##########
     ###################################################
+
     start = time.perf_counter()
     with open(f'{fileName}VideosList.csv', writeFormat) as csvFile:
         print (f'Opened {csvFile.name}, writing video information to file....')
@@ -155,6 +169,7 @@ def writeToCsv (listOfVideos, channel, fileName, writeFormat, chronological):
         ####################################################
         ########## iterate through list of videos ##########
         ####################################################
+
         for index, element in enumerate(listOfVideos, 1) if chronological is False else enumerate(listOfVideos[::-1], 1):
             writer.writerow(
             {'Index': f'{index}', 'Watched?': '', 'Video Title': f'{element.get_attribute("title")}', 'Video URL': f'{element.get_attribute("href")}', 'Watch again later?': '', 'Notes': ''})
@@ -167,6 +182,7 @@ def writeToCsv (listOfVideos, channel, fileName, writeFormat, chronological):
         ##############################################################
         ########## finished writing to csv file, stop timer ##########
         ##############################################################
+
         end = time.perf_counter()
         functionTime = end - start
         print(f'It took {functionTime} to write all {index} videos to {csvFile.name}\n')
