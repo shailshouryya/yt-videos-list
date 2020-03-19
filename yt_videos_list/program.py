@@ -92,11 +92,9 @@ def writeToTxt (listOfVideos, channel, fileName, writeFormat, chronological):
             txtFile.write(f'Video URL:{spacing}{element.get_attribute("href")}\n')
             txtFile.write(f'Watch again later?{spacing}\n')
             txtFile.write(f'Notes:{spacing}\n')
-
             ################################################################
             ########## add asterisks as separators between videos ##########
             ################################################################
-
             txtFile.write('*'*75 + '\n')
             if videoNumber % 250 == 0:
                 print (f'{videoNumber} videos written to {txtFile.name}...')
@@ -122,11 +120,9 @@ def saveToMemWriteToTxt (listOfVideos, channel, fileName, writeFormat, chronolog
             text += f'Video URL:{spacing}{element.get_attribute("href")}\n'
             text += f'Watch again later?{spacing}\n'
             text += f'Notes:{spacing}\n'
-
             ################################################################
             ########## add asterisks as separators between videos ##########
             ################################################################
-
             text += '*'*75 + '\n'
             if videoNumber % 250 == 0:
                 print (f'{videoNumber} videos saved to memory...')
