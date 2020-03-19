@@ -126,11 +126,9 @@ def saveToMemWriteToTxt (listOfVideos, channel, fileName, writeFormat, chronolog
             text += '*'*75 + '\n'
             if videoNumber % 250 == 0:
                 print (f'{videoNumber} videos saved to memory...')
-
         ####################################################
         ######### finished writing info to memory ##########
         ####################################################
-
         print (f'Finished saving video information to memory')
         fm.write(text)
     return fm.name, videoNumber
