@@ -85,11 +85,11 @@ def writeToTxt (listOfVideos, channel, fileName, writeFormat, chronological):
         ########## iterate through list of videos ##########
         ####################################################
 
-        for videoNumber, element in enumerate(listOfVideos, 1) if chronological is False else enumerate(listOfVideos[::-1], 1):
+        for videoNumber, seleniumElement in enumerate(listOfVideos, 1) if chronological is False else enumerate(listOfVideos[::-1], 1):
             txtFile.write(f'videoNumber:{spacing}{videoNumber}\n')
             txtFile.write(f'Watched?{spacing}\n')
-            txtFile.write(f'Video Title:{spacing}{element.get_attribute("title")}\n')
-            txtFile.write(f'Video URL:{spacing}{element.get_attribute("href")}\n')
+            txtFile.write(f'Video Title:{spacing}{seleniumElement.get_attribute("title")}\n')
+            txtFile.write(f'Video URL:{spacing}{seleniumElement.get_attribute("href")}\n')
             txtFile.write(f'Watch again later?{spacing}\n')
             txtFile.write(f'Notes:{spacing}\n')
             ################################################################
@@ -113,11 +113,11 @@ def saveToMemWriteToTxt (listOfVideos, channel, fileName, writeFormat, chronolog
         ########## iterate through list of videos ##########
         ####################################################
 
-        for videoNumber, element in enumerate(listOfVideos, 1) if chronological is False else enumerate(listOfVideos[::-1], 1):
+        for videoNumber, seleniumElement in enumerate(listOfVideos, 1) if chronological is False else enumerate(listOfVideos[::-1], 1):
             text += f'videoNumber:{spacing}{videoNumber}\n'
             text += f'Watched?{spacing}\n'
-            text += f'Video Title:{spacing}{element.get_attribute("title")}\n'
-            text += f'Video URL:{spacing}{element.get_attribute("href")}\n'
+            text += f'Video Title:{spacing}{seleniumElement.get_attribute("title")}\n'
+            text += f'Video URL:{spacing}{seleniumElement.get_attribute("href")}\n'
             text += f'Watch again later?{spacing}\n'
             text += f'Notes:{spacing}\n'
             ################################################################
@@ -148,9 +148,9 @@ def writeToCsv (listOfVideos, channel, fileName, writeFormat, chronological):
         ########## iterate through list of videos ##########
         ####################################################
 
-        for videoNumber, element in enumerate(listOfVideos, 1) if chronological is False else enumerate(listOfVideos[::-1], 1):
+        for videoNumber, seleniumElement in enumerate(listOfVideos, 1) if chronological is False else enumerate(listOfVideos[::-1], 1):
             writer.writerow(
-            {'videoNumber': f'{videoNumber}', 'Watched?': '', 'Video Title': f'{element.get_attribute("title")}', 'Video URL': f'{element.get_attribute("href")}', 'Watch again later?': '', 'Notes': ''})
+            {'videoNumber': f'{videoNumber}', 'Watched?': '', 'Video Title': f'{seleniumElement.get_attribute("title")}', 'Video URL': f'{seleniumElement.get_attribute("href")}', 'Watch again later?': '', 'Notes': ''})
             if videoNumber % 250 == 0:
                 print(f'{videoNumber} videos written to {csvFile.name}...')
     return csvFile.name, videoNumber
