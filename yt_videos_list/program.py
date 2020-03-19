@@ -100,7 +100,6 @@ def writeToTxt (listOfVideos, channel, fileName, writeFormat, chronological):
             txtFile.write('*'*75 + '\n')
             if videoNumber % 250 == 0:
                 print (f'{videoNumber} videos written to {txtFile.name}...')
-
     return txtFile.name, videoNumber
 
 
@@ -138,7 +137,6 @@ def saveToMemWriteToTxt (listOfVideos, channel, fileName, writeFormat, chronolog
 
         print (f'Finished saving video information to memory')
         fm.write(text)
-
     return fm.name, videoNumber
 
 
@@ -159,5 +157,4 @@ def writeToCsv (listOfVideos, channel, fileName, writeFormat, chronological):
             {'videoNumber': f'{videoNumber}', 'Watched?': '', 'Video Title': f'{element.get_attribute("title")}', 'Video URL': f'{element.get_attribute("href")}', 'Watch again later?': '', 'Notes': ''})
             if videoNumber % 250 == 0:
                 print(f'{videoNumber} videos written to {csvFile.name}...')
-
     return csvFile.name, videoNumber
