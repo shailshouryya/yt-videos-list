@@ -56,9 +56,6 @@ def scrollToBottom (channel, channelType, seleniumInstance, scrollPauseTime):
     return elements
 
 def writeToTxt (listOfVideos, channel, fileName, writeFormat, chronological):
-    if writeFormat == 0:
-        return
-
     ###################################################
     ########## start writing to the txt file ##########
     ###################################################
@@ -101,9 +98,6 @@ def writeToTxt (listOfVideos, channel, fileName, writeFormat, chronological):
 
 def saveToMemWriteToTxt (listOfVideos, channel, fileName, writeFormat, chronological):
     # this takes a little bit longer than the writeToCsv() function
-    if writeFormat == 0:
-        return
-
     ###################################################
     ########## start writing to the txt file ##########
     ###################################################
@@ -152,9 +146,6 @@ def saveToMemWriteToTxt (listOfVideos, channel, fileName, writeFormat, chronolog
         print(f'It took {functionTime} seconds to write all {index} videos to {fm.name}\n')
 
 def writeToCsv (listOfVideos, channel, fileName, writeFormat, chronological):
-    if writeFormat == 0:
-        return
-
     ###################################################
     ########## start writing to the csv file ##########
     ###################################################
