@@ -22,11 +22,7 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
             return channel
 
     def verifyWriteFormat(fileType, writeFormat, fileName, fileExtension):
-        if fileType is True and writeFormat == 'x':
-            filename = f'{fileName}VideosList.{fileExtension}'
-            fileExists = True if os.path.isfile(f'./{filename}') else False
-
-            def newWriteFormat():
+        def newWriteFormat():
                 userResponse = input()
                 if 'proceed' in userResponse.strip().lower():
                     return 'w'
@@ -37,6 +33,9 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
                     commonMessage.fileAlreadyExistsPrompt(filename)
                     return newWriteFormat()
 
+        if fileType is True and writeFormat == 'x':
+            filename = f'{fileName}VideosList.{fileExtension}'
+            fileExists = True if os.path.isfile(f'./{filename}') else False
             if fileExists is True:
                 commonMessage.fileAlreadyExistsWarning(filename)
                 commonMessage.fileAlreadyExistsPrompt(filename)
