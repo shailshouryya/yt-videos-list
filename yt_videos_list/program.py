@@ -1,5 +1,6 @@
 from .notifications import Common
 from selenium import webdriver
+import functools
 import time
 import csv
 
@@ -69,8 +70,8 @@ def writeToTxt (listOfVideos, channel, fileName, writeFormat, chronological):
         ########## iterate through list of videos ##########
         ####################################################
 
-        for index, element in enumerate(listOfVideos, 1) if chronological is False else enumerate(listOfVideos[::-1], 1):
-            txtFile.write(f'Index:{spacing}{index}\n')
+        for videoNumber, element in enumerate(listOfVideos, 1) if chronological is False else enumerate(listOfVideos[::-1], 1):
+            txtFile.write(f'videoNumber:{spacing}{videoNumber}\n')
             txtFile.write(f'Watched?{spacing}\n')
             txtFile.write(f'Video Title:{spacing}{element.get_attribute("title")}\n')
             txtFile.write(f'Video URL:{spacing}{element.get_attribute("href")}\n')
@@ -82,10 +83,10 @@ def writeToTxt (listOfVideos, channel, fileName, writeFormat, chronological):
             ################################################################
 
             txtFile.write('*'*75 + '\n')
-            if index % 250 == 0:
-                print (f'{index} videos written to {txtFile.name}...')
+            if videoNumber % 250 == 0:
+                print (f'{videoNumber} videos written to {txtFile.name}...')
         print (f'Finished writing to {txtFile.name}')
-        print (f'{index} videos written to {txtFile.name}')
+        print (f'{videoNumber} videos written to {txtFile.name}')
         print (f'Closing {txtFile.name}\n')
 
         ##############################################################
@@ -94,7 +95,7 @@ def writeToTxt (listOfVideos, channel, fileName, writeFormat, chronological):
 
         end = time.perf_counter()
         functionTime = end - start
-        print(f'It took {functionTime} seconds to write all {index} videos to {txtFile.name}\n')
+        print(f'It took {functionTime} seconds to write all {videoNumber} videos to {txtFile.name}\n')
 
 def saveToMemWriteToTxt (listOfVideos, channel, fileName, writeFormat, chronological):
     # this takes a little bit longer than the writeToCsv() function
@@ -112,8 +113,8 @@ def saveToMemWriteToTxt (listOfVideos, channel, fileName, writeFormat, chronolog
         ########## iterate through list of videos ##########
         ####################################################
 
-        for index, element in enumerate(listOfVideos, 1) if chronological is False else enumerate(listOfVideos[::-1], 1):
-            text += f'Index:{spacing}{index}\n'
+        for videoNumber, element in enumerate(listOfVideos, 1) if chronological is False else enumerate(listOfVideos[::-1], 1):
+            text += f'videoNumber:{spacing}{videoNumber}\n'
             text += f'Watched?{spacing}\n'
             text += f'Video Title:{spacing}{element.get_attribute("title")}\n'
             text += f'Video URL:{spacing}{element.get_attribute("href")}\n'
@@ -125,8 +126,8 @@ def saveToMemWriteToTxt (listOfVideos, channel, fileName, writeFormat, chronolog
             ################################################################
 
             text += '*'*75 + '\n'
-            if index % 250 == 0:
-                print (f'{index} videos saved to memory...')
+            if videoNumber % 250 == 0:
+                print (f'{videoNumber} videos saved to memory...')
 
         ####################################################
         ######### finished writing info to memory ##########
@@ -134,7 +135,7 @@ def saveToMemWriteToTxt (listOfVideos, channel, fileName, writeFormat, chronolog
 
         print (f'Finished saving video information to memory')
         fm.write(text)
-        print (f'{index} videos written to {fm.name}')
+        print (f'{videoNumber} videos written to {fm.name}')
         print (f'Closing {fm.name}\n')
 
         ##############################################################
@@ -143,7 +144,7 @@ def saveToMemWriteToTxt (listOfVideos, channel, fileName, writeFormat, chronolog
 
         end = time.perf_counter()
         functionTime = end - start
-        print(f'It took {functionTime} seconds to write all {index} videos to {fm.name}\n')
+        print(f'It took {functionTime} seconds to write all {videoNumber} videos to {fm.name}\n')
 
 def writeToCsv (listOfVideos, channel, fileName, writeFormat, chronological):
     ###################################################
@@ -153,7 +154,7 @@ def writeToCsv (listOfVideos, channel, fileName, writeFormat, chronological):
     start = time.perf_counter()
     with open(f'{fileName}VideosList.csv', writeFormat) as csvFile:
         print (f'Opened {csvFile.name}, writing video information to file....')
-        fieldnames = ['Index', 'Watched?', 'Video Title', 'Video URL', 'Watch again later?', 'Notes']
+        fieldnames = ['videoNumber', 'Watched?', 'Video Title', 'Video URL', 'Watch again later?', 'Notes']
         writer = csv.DictWriter(csvFile, fieldnames=fieldnames)
         writer.writeheader()
 
@@ -161,13 +162,13 @@ def writeToCsv (listOfVideos, channel, fileName, writeFormat, chronological):
         ########## iterate through list of videos ##########
         ####################################################
 
-        for index, element in enumerate(listOfVideos, 1) if chronological is False else enumerate(listOfVideos[::-1], 1):
+        for videoNumber, element in enumerate(listOfVideos, 1) if chronological is False else enumerate(listOfVideos[::-1], 1):
             writer.writerow(
-            {'Index': f'{index}', 'Watched?': '', 'Video Title': f'{element.get_attribute("title")}', 'Video URL': f'{element.get_attribute("href")}', 'Watch again later?': '', 'Notes': ''})
-            if index % 250 == 0:
-                print(f'{index} videos written to {csvFile.name}...')
+            {'videoNumber': f'{videoNumber}', 'Watched?': '', 'Video Title': f'{element.get_attribute("title")}', 'Video URL': f'{element.get_attribute("href")}', 'Watch again later?': '', 'Notes': ''})
+            if videoNumber % 250 == 0:
+                print(f'{videoNumber} videos written to {csvFile.name}...')
         print (f'Finished writing to {csvFile.name}')
-        print (f'{index} videos written to {csvFile.name}')
+        print (f'{videoNumber} videos written to {csvFile.name}')
         print (f'Closing {csvFile.name}\n')
 
         ##############################################################
@@ -176,4 +177,4 @@ def writeToCsv (listOfVideos, channel, fileName, writeFormat, chronological):
 
         end = time.perf_counter()
         functionTime = end - start
-        print(f'It took {functionTime} to write all {index} videos to {csvFile.name}\n')
+        print(f'It took {functionTime} to write all {videoNumber} videos to {csvFile.name}\n')
