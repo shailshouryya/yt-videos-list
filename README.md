@@ -83,13 +83,13 @@ There are a number of optional arguments you can specify during the instantiatio
 
 * Options for the `driver` argument are
   - `Firefox` (default)
-  - `Chrome`
   - `Opera`
   - `Safari`
+  - `Chrome`
     - -> driver='firefox'
-    - -> driver='chrome'
     - -> driver='opera'
     - -> driver='safari'
+    - -> driver='chrome'
 * Options for the file type arguments (`csv`, `txt`) are
   - `True` (default) - create a file for the specified type
   - `False` - do not create a file for the specified type.
