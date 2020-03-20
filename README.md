@@ -1,5 +1,5 @@
 # Automate creation of videos lists for YouTube channels
--*TABLE OF CONTENTS**
+**TABLE OF CONTENTS**
 <br>[Quick Start](./README.md#Quick-Start)
 <br>[Running the package from the python interpreter](./README.md#Running-the-package-from-the-python-interpreter)
 <br>[Understanding the API](./README.md#Understanding-the-API)
