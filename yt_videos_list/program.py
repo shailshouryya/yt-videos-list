@@ -79,7 +79,7 @@ def timeWriterFunction(writerFunction):
 def writeToTxt (listOfVideos, channel, fileName, writeFormat, chronological):
     with open(f'{fileName}VideosList.txt', writeFormat) as txtFile:
         print (f'Opened {txtFile.name}, writing video information to file....')
-        spacing = '\n    ' # newline followed by 4 spaces on the next line to pad the start of the line
+        spacing = '\n' + '\s'*12 # newline followed by 12 spaces on the next line to pad the start of the line
 
         ####################################################
         ########## iterate through list of videos ##########
@@ -107,7 +107,7 @@ def saveToMemWriteToTxt (listOfVideos, channel, fileName, writeFormat, chronolog
     with open(f'{fileName}VideosList.txt', writeFormat) as fm:
         print (f'Opened {fm.name}, writing video information to file....')
         text = ''
-        spacing = '\n    ' # newline followed by 4 spaces on the next line to pad the start of the line
+        spacing = '\n' + '\s'*12 # newline followed by 12 spaces on the next line to pad the start of the line
 
         ####################################################
         ########## iterate through list of videos ##########
