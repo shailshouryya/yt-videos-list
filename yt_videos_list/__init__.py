@@ -33,6 +33,10 @@ class ListGenerator:
           * Chrome
           * Opera
           * Safari
+            -> driver='firefox'
+            -> driver='chrome'
+            -> driver='opera'
+            -> driver='safari'
 
         Options for the file type arguments (`csv`, `txt`) are
           * True (default) - create a file for the specified type
