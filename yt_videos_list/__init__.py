@@ -103,6 +103,9 @@ class ListGenerator:
         self.scrollPauseTime = scrollPauseTime
         self.driver = None if driver is None else driver.lower()
 
+        # load all init variables into a settings list for easy list unpacking in execute.logic()
+        self.settings = [self.txt, self.txtWriteFormat, self.csv, self.csvWriteFormat, self.docx, self.docxWriteFormat, self.chronological, self.headless, self.scrollPauseTime, self.driver]
+
     def generate_list(self, channel, channelType, fileName=None):
         '''
         The generate_list() method creates a list using the arguments specified during instantiation of the ListGenerator object.
@@ -110,4 +113,4 @@ class ListGenerator:
         You can also provide an optional fileName argument, but the fileName argument is not required.
         '''
         _executionType='module'
-        execute.logic(channel, channelType, fileName, self.txt, self.txtWriteFormat, self.csv, self.csvWriteFormat, self.docx, self.docxWriteFormat, self.chronological, self.headless, self.scrollPauseTime, self.driver, _executionType)
+        execute.logic(channel, channelType, fileName, *self.settings, _executionType)
