@@ -113,6 +113,9 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
     csvWriteFormat = verifyWriteFormat(csv, csvWriteFormat, fileName, 'csv')
     docxWriteFormat = verifyWriteFormat(docx, docxWriteFormat, fileName, 'docx')
 
+    if txtWriteFormat == 0 and csvWriteFormat == 0:
+        return # the files already exist and the user doesn't want to overwrite either of them
+
     if userDriver is None:
         print (moduleMessage.runningDefaultDriver) if executionType == 'module' else print (scriptMessage.runningDefaultDriver)
         print (moduleMessage.showDriverOptions) if executionType == 'module' else print (scriptMessage.showDriverOptions)
