@@ -6,55 +6,51 @@ import csv
 
 commonMessage = Common()
 
+
 def scrollToBottom (channel, channelType, seleniumInstance, scrollPauseTime):
-    seleniumInstance.set_window_size(780, 880)
-    start = time.perf_counter()
-    driver = seleniumInstance
+    def navigateToChannel():
+        baseUrl = 'https://www.youtube.com'
+        videos = 'videos'
+        url = f'{baseUrl}/{channelType}/{channel}/{videos}'
+        driver.get(url)
+        return url
 
-    #################################
-    ########## prepare url ##########
-    #################################
-
-    baseUrl = 'https://www.youtube.com'
-    videos = 'videos'
-    url = f'{baseUrl}/{channelType}/{channel}/{videos}'
-
-    #####################################
-    ########## navigate to url ##########
-    #####################################
-
-    driver.get(url)
-    elemsCount = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
-
-    ##############################################
-    ########## scroll to bottom of page ##########
-    ##############################################
-
-    while True:
+    def scrollDown(currentElementsCount):
         driver.execute_script('window.scrollBy(0, 50000);')
         time.sleep(scrollPauseTime)
-        newElemsCount = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
-        print (f'Found {newElemsCount} videos...')
+        newElementsCount = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
+        print (f'Found {newElementsCount} videos...')
         # if the number of elements after scroll is the same as the number of elements before the scroll
-        if newElemsCount == elemsCount:
+        if newElementsCount == currentElementsCount:
             # wait 0.6 seconds and check again to verify you really did reach the end of the page, and there wasn't a buffer loading period
             print (commonMessage.noNewVideosFound)
             time.sleep(0.6)
-            newElemsCount = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
-            if newElemsCount == elemsCount:
+            newElementsCount = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
+            if newElementsCount == currentElementsCount:
                 print('Reached end of page!')
-                break
-        elemsCount = newElemsCount
+        return newElementsCount
 
-    ########################################################
-    ########## save all elements to a python list ##########
-    ########################################################
+    def saveElementsToList():
+        elements = driver.find_elements_by_xpath('//*[@id="video-title"]')
+        end = time.perf_counter()
+        functionTime = end - start - 0.6 # subtract 0.6 to account for the extra waiting time to verify end of page
+        print(f'It took {functionTime} seconds to find all {len(elements)} videos from {url}\n')
+        return elements
 
-    elements = driver.find_elements_by_xpath('//*[@id="video-title"]')
-    end = time.perf_counter()
-    functionTime = end - start - 0.6 # subtract 0.6 to account for the extra waiting time to verify end of page
-    print(f'It took {functionTime} seconds to find all {len(elements)} videos from {url}\n')
-    return elements
+
+    seleniumInstance.set_window_size(780, 880)
+    start = time.perf_counter()
+    driver = seleniumInstance
+    url = navigateToChannel()
+
+    currentElementsCount = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
+    while True:
+        newElementsCount = scrollDown(currentElementsCount)
+        if newElementsCount == currentElementsCount:
+            break
+        else:
+            currentElementsCount = newElementsCount
+    return saveElementsToList()
 
 
 def timeWriterFunction(writerFunction):
