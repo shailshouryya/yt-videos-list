@@ -7,7 +7,7 @@ import csv
 commonMessage = Common()
 
 
-def scrollToBottom (channel, channelType, seleniumInstance, scrollPauseTime):
+def scrollToBottom (channel, channelType, driver, scrollPauseTime):
     def navigateToChannel():
         baseUrl = 'https://www.youtube.com'
         videos = 'videos'
@@ -38,9 +38,8 @@ def scrollToBottom (channel, channelType, seleniumInstance, scrollPauseTime):
         return elements
 
 
-    seleniumInstance.set_window_size(780, 880)
+    driver.set_window_size(780, 880)
     start = time.perf_counter() # timer stops in saveElementsToList() function
-    driver = seleniumInstance
     url = navigateToChannel()
 
     currentElementsCount = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
