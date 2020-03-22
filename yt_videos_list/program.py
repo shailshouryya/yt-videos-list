@@ -39,7 +39,7 @@ def scrollToBottom (channel, channelType, seleniumInstance, scrollPauseTime):
 
 
     seleniumInstance.set_window_size(780, 880)
-    start = time.perf_counter()
+    start = time.perf_counter() # timer stops in saveElementsToList() function
     driver = seleniumInstance
     url = navigateToChannel()
 
