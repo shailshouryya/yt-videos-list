@@ -6,6 +6,7 @@ import csv
 
 commonMessage = Common()
 
+
 def scrollDown(currentElementsCount, driver, scrollPauseTime):
     driver.execute_script('window.scrollBy(0, 50000);')
     time.sleep(scrollPauseTime)
