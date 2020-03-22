@@ -70,10 +70,6 @@ def writeToTxt (listOfVideos, fileName, writeFormat, chronological):
         print (f'Opened {txtFile.name}, writing video information to file....')
         spacing = '\n' + ' '*12 # newline followed by 12 spaces on the next line to pad the start of the line
 
-        ####################################################
-        ########## iterate through list of videos ##########
-        ####################################################
-
         for videoNumber, seleniumElement in enumerate(listOfVideos, 1) if chronological is False else enumerate(listOfVideos[::-1], 1):
             txtFile.write(f'videoNumber:{spacing}{videoNumber}\n')
             txtFile.write(f'Watched?{spacing}\n')
@@ -81,9 +77,6 @@ def writeToTxt (listOfVideos, fileName, writeFormat, chronological):
             txtFile.write(f'Video URL:{spacing}{seleniumElement.get_attribute("href")}\n')
             txtFile.write(f'Watch again later?{spacing}\n')
             txtFile.write(f'Notes:{spacing}\n')
-            ################################################################
-            ########## add asterisks as separators between videos ##########
-            ################################################################
             txtFile.write('*'*75 + '\n')
             if videoNumber % 250 == 0:
                 print (f'{videoNumber} videos written to {txtFile.name}...')
@@ -98,10 +91,6 @@ def saveToMemWriteToTxt (listOfVideos, fileName, writeFormat, chronological):
         text = ''
         spacing = '\n' + ' '*12 # newline followed by 12 spaces on the next line to pad the start of the line
 
-        ####################################################
-        ########## iterate through list of videos ##########
-        ####################################################
-
         for videoNumber, seleniumElement in enumerate(listOfVideos, 1) if chronological is False else enumerate(listOfVideos[::-1], 1):
             text += f'videoNumber:{spacing}{videoNumber}\n'
             text += f'Watched?{spacing}\n'
@@ -109,15 +98,9 @@ def saveToMemWriteToTxt (listOfVideos, fileName, writeFormat, chronological):
             text += f'Video URL:{spacing}{seleniumElement.get_attribute("href")}\n'
             text += f'Watch again later?{spacing}\n'
             text += f'Notes:{spacing}\n'
-            ################################################################
-            ########## add asterisks as separators between videos ##########
-            ################################################################
             text += '*'*75 + '\n'
             if videoNumber % 250 == 0:
                 print (f'{videoNumber} videos saved to memory...')
-        ####################################################
-        ######### finished writing info to memory ##########
-        ####################################################
         print (f'Finished saving video information to memory')
         fm.write(text)
     return fm.name, videoNumber
@@ -130,10 +113,6 @@ def writeToCsv (listOfVideos, fileName, writeFormat, chronological):
         fieldnames = ['videoNumber', 'Watched?', 'Video Title', 'Video URL', 'Watch again later?', 'Notes']
         writer = csv.DictWriter(csvFile, fieldnames=fieldnames)
         writer.writeheader()
-
-        ####################################################
-        ########## iterate through list of videos ##########
-        ####################################################
 
         for videoNumber, seleniumElement in enumerate(listOfVideos, 1) if chronological is False else enumerate(listOfVideos[::-1], 1):
             writer.writerow(
