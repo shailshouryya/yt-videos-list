@@ -22,17 +22,17 @@ def scrollDown(currentElementsCount, driver, scrollPauseTime):
     return newElementsCount
 
 
-def saveElementsToList(driver, start, url):
+def saveElementsToList(driver, startTime, url):
     elements = driver.find_elements_by_xpath('//*[@id="video-title"]')
-    end = time.perf_counter()
-    functionTime = end - start - 0.6 # subtract 0.6 to account for the extra waiting time to verify end of page
+    endTime = time.perf_counter()
+    functionTime = endTime - startTime - 0.6 # subtract 0.6 to account for the extra waiting time to verify end of page
     print(f'It took {functionTime} seconds to find all {len(elements)} videos from {url}\n')
     return elements
 
 
 def scrollToBottom (url, driver, scrollPauseTime):
     driver.set_window_size(780, 880)
-    start = time.perf_counter() # timer stops in saveElementsToList() function
+    startTime = time.perf_counter() # timer stops in saveElementsToList() function
     driver.get(url)
 
     currentElementsCount = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
@@ -42,19 +42,19 @@ def scrollToBottom (url, driver, scrollPauseTime):
             break
         else:
             currentElementsCount = newElementsCount
-    return saveElementsToList(driver, start, url)
+    return saveElementsToList(driver, startTime, url)
 
 
 def timeWriterFunction(writerFunction):
     @functools.wraps(writerFunction)
     def wrapper_timer(*args, **kwargs):
-        start = time.perf_counter()
+        startTime = time.perf_counter()
 
         ########### check the name of the file and how many videos were written ###########
         filename, videosWritten = writerFunction(*args, **kwargs)
 
-        end = time.perf_counter()
-        functionTime = end - start
+        endTime = time.perf_counter()
+        functionTime = endTime - startTime
 
         print (f'Finished writing to {filename}')
         print (f'{videosWritten} videos written to {filename}')
