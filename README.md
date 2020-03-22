@@ -32,8 +32,8 @@ pip3 install -U yt-videos-list
 python3
 ```
 ```python
-from yt_videos_list import ListGenerator
-LG = ListGenerator()
+from yt_videos_list import ListCreator
+LG = ListCreator()
 
 # "user" channelType (example uses Corey Schafer):
 LG.generate_list(channel='schafer5', channelType='user')
@@ -65,21 +65,21 @@ There are two types of YouTube channels: one type is a `user` channel and the ot
   - Gordon Ramsay: https://www.youtube.com/channel/UCIEv3lZ_tNXHzL3ox-_uUGQ
   - PBS Space Time: https://www.youtube.com/channel/UC7_gcs09iThXybpVgjHZ_7g
 
-To scrape the video titles along with the link to the video, you need to run the `generate_list(channel, channelType)` method on the ListGenerator object you just created, substituting the name of the channel for the `channel` argument and the type of channel for `channelType` argument. By default, the name of the file produced will be `channel`VideosList.ext where the `.ext` will be `.csv` or `.txt ` depending on the type of file(s) that you specified.
+To scrape the video titles along with the link to the video, you need to run the `generate_list(channel, channelType)` method on the ListCreator object you just created, substituting the name of the channel for the `channel` argument and the type of channel for `channelType` argument. By default, the name of the file produced will be `channel`VideosList.ext where the `.ext` will be `.csv` or `.txt ` depending on the type of file(s) that you specified.
 
 ### For more control
 ---
 **NOTE** that you can also access all the information below in the `python3` interpreter by entering
-<br>`from yt_videos_list import ListGenerator`
-<br>`help(ListGenerator)`
+<br>`from yt_videos_list import ListCreator`
+<br>`help(ListCreator)`
 
 ---
 ```python
-ListGenerator(csv=True, csvWriteFormat='x', txt=True, txtWriteFormat='x',
+ListCreator(csv=True, csvWriteFormat='x', txt=True, txtWriteFormat='x',
               chronological=False,
               headless=False, scrollPauseTime=0.8, driver='Firefox')
 ```
-There are a number of optional arguments you can specify during the instantiation of the ListGenerator object. The preceding arguments are run by default, but in case you want more flexibility, you can specify:
+There are a number of optional arguments you can specify during the instantiation of the ListCreator object. The preceding arguments are run by default, but in case you want more flexibility, you can specify:
 
 - Options for the `driver` argument are
   - Firefox (default)

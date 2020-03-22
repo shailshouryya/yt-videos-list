@@ -17,12 +17,12 @@ __license__ =  'OSI Approved :: Apache License 2.0'
 __ideal_python_version__ = 'Python 3.6+'
 __source__ = 'https://github.com/Shail-Shouryya/yt_videos_list'
 
-class ListGenerator:
+class ListCreator:
     def __init__(self, txt=True, txtWriteFormat='x', csv=True, csvWriteFormat='x', docx=False, docxWriteFormat='x', chronological=False, headless=False, scrollPauseTime=0.8, driver=None):
         '''
-        The ListGenerator class creates a list generator instance with no required arguments.
+        The ListCreator class creates a list generator instance with no required arguments.
         Example usage:
-            LG = ListGenerator()
+            LG = ListCreator()
 
         ###########################################################
         OPTIONAL: specify the settings you want to use by substituing the desired values for the default arguments.
@@ -70,26 +70,26 @@ class ListGenerator:
 
         WORKING EXAMPLES:
         ###########################################################
-        For a ListGenerator object that creates a csv file but not a txt file in chronological order in headless mode with a 1 second pause between scrolls:
-        LG = ListGenerator(txt=True, txtWriteFormat='x', csv=False, csvWriteFormat=0, chronological=True, headless=True, scrollPauseTime=1.0)
+        For a ListCreator object that creates a csv file but not a txt file in chronological order in headless mode with a 1 second pause between scrolls:
+        LG = ListCreator(txt=True, txtWriteFormat='x', csv=False, csvWriteFormat=0, chronological=True, headless=True, scrollPauseTime=1.0)
         ###########################################################
 
         ###########################################################
         The same could also be done by specifying only the arguments that change from the default, but notice how this is less explicit and can become confusing if you forget what the default arguments are:
-        LG = ListGenerator(txt=False, headless=True, scrollPauseTime=1.0)
+        LG = ListCreator(txt=False, headless=True, scrollPauseTime=1.0)
         ###########################################################
 
         -----------------------------------------------------------
-        It is up to you as the user to decide how you want to instantiate the ListGenerator object.
+        It is up to you as the user to decide how you want to instantiate the ListCreator object.
         If you choose the shorthand version, make sure you remember the default arguments!
         -----------------------------------------------------------
-        PRO TIP: whichever way you decide to instantiate your object, if you use custom settings, name your ListGenerator instance to reflect what you changed.
+        PRO TIP: whichever way you decide to instantiate your object, if you use custom settings, name your ListCreator instance to reflect what you changed.
         E.g. For the previous case instead of naming your instance "LG", name it "headlessCsvLG" or "headless_csv_LG" - or something along those lines.
         -----------------------------------------------------------
 
         ###########################################################
-        For a ListGenerator object that creates a txt and csv file and overwrites an existing txt file of the same name but does not overwrite an existing csv file of the same name (with all other arguments unmodified):
-        LG = ListGenerator(txtWriteFormat='w')
+        For a ListCreator object that creates a txt and csv file and overwrites an existing txt file of the same name but does not overwrite an existing csv file of the same name (with all other arguments unmodified):
+        LG = ListCreator(txtWriteFormat='w')
         ###########################################################
         '''
         self.txt = txt
@@ -108,7 +108,7 @@ class ListGenerator:
 
     def generate_list(self, channel, channelType, fileName=None):
         '''
-        The generate_list() method creates a list using the arguments specified during instantiation of the ListGenerator object.
+        The generate_list() method creates a list using the arguments specified during instantiation of the ListCreator object.
         You need to specify the channel and channelType.
         You can also provide an optional fileName argument, but the fileName argument is not required.
         '''
