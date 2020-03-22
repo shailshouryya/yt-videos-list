@@ -7,14 +7,7 @@ import csv
 commonMessage = Common()
 
 
-def scrollToBottom (channel, channelType, driver, scrollPauseTime):
-    def navigateToChannel():
-        baseUrl = 'https://www.youtube.com'
-        videos = 'videos'
-        url = f'{baseUrl}/{channelType}/{channel}/{videos}'
-        driver.get(url)
-        return url
-
+def scrollToBottom (url, driver, scrollPauseTime):
     def scrollDown(currentElementsCount):
         driver.execute_script('window.scrollBy(0, 50000);')
         time.sleep(scrollPauseTime)
@@ -40,7 +33,7 @@ def scrollToBottom (channel, channelType, driver, scrollPauseTime):
 
     driver.set_window_size(780, 880)
     start = time.perf_counter() # timer stops in saveElementsToList() function
-    url = navigateToChannel()
+    driver.get(url)
 
     currentElementsCount = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
     while True:

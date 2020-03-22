@@ -108,6 +108,10 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
 
     channel = channel.strip().strip('/')
     channelType = channelType.strip().strip('/')
+    baseUrl = 'https://www.youtube.com'
+    videos = 'videos'
+    url = f'{baseUrl}/{channelType}/{channel}/{videos}'
+
     fileName = determineFileName()
     txtWriteFormat = verifyWriteFormat(txt, txtWriteFormat, fileName, 'txt')
     csvWriteFormat = verifyWriteFormat(csv, csvWriteFormat, fileName, 'csv')
@@ -145,7 +149,7 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
             showUserHowToSetupSelenium()
             return
     with driver:
-        videosList = program.scrollToBottom(channel, channelType, driver, scrollPauseTime)
+        videosList = program.scrollToBottom(url, driver, scrollPauseTime)
         if len(videosList) == 0:
             print (commonMessage.noVideosFound)
             print (moduleMessage.checkChannelType) if executionType == 'module' else print (scriptMessage.checkChannelType)
