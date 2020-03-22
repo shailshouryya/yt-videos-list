@@ -65,7 +65,7 @@ def timeWriterFunction(writerFunction):
 
 
 @timeWriterFunction
-def writeToTxt (listOfVideos, channel, fileName, writeFormat, chronological):
+def writeToTxt (listOfVideos, fileName, writeFormat, chronological):
     with open(f'{fileName}VideosList.txt', writeFormat) as txtFile:
         print (f'Opened {txtFile.name}, writing video information to file....')
         spacing = '\n' + ' '*12 # newline followed by 12 spaces on the next line to pad the start of the line
@@ -91,7 +91,7 @@ def writeToTxt (listOfVideos, channel, fileName, writeFormat, chronological):
 
 
 @timeWriterFunction
-def saveToMemWriteToTxt (listOfVideos, channel, fileName, writeFormat, chronological):
+def saveToMemWriteToTxt (listOfVideos, fileName, writeFormat, chronological):
     # this takes a little bit longer than the writeToCsv() function
     with open(f'{fileName}VideosList.txt', writeFormat) as fm:
         print (f'Opened {fm.name}, writing video information to file....')
@@ -124,7 +124,7 @@ def saveToMemWriteToTxt (listOfVideos, channel, fileName, writeFormat, chronolog
 
 
 @timeWriterFunction
-def writeToCsv (listOfVideos, channel, fileName, writeFormat, chronological):
+def writeToCsv (listOfVideos, fileName, writeFormat, chronological):
     with open(f'{fileName}VideosList.csv', writeFormat) as csvFile:
         print (f'Opened {csvFile.name}, writing video information to file....')
         fieldnames = ['videoNumber', 'Watched?', 'Video Title', 'Video URL', 'Watch again later?', 'Notes']

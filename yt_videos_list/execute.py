@@ -155,10 +155,10 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
             print (moduleMessage.checkChannelType) if executionType == 'module' else print (scriptMessage.checkChannelType)
             return
         if txt is True and txtWriteFormat != 0:
-            program.writeToTxt(videosList, channel, fileName, txtWriteFormat, chronological)
-            # saveToMemWriteToTxt(videosList, channel, fileName, writeFormat) # slightly slower than writing to disk directly
+            program.writeToTxt(videosList, fileName, txtWriteFormat, chronological)
+            # saveToMemWriteToTxt(videosList, fileName, writeFormat) # slightly slower than writing to disk directly
         if csv is True and csvWriteFormat != 0:
-            program.writeToCsv(videosList, channel, fileName, csvWriteFormat, chronological)
+            program.writeToCsv(videosList, fileName, csvWriteFormat, chronological)
     programEnd = time.perf_counter()
     totalTime = programEnd - programStart
     print(f'This program took {totalTime} seconds to complete.\n')
