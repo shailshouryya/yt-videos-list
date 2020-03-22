@@ -242,18 +242,18 @@ class Common:
 class ModuleMessage(Common):
     runningDefaultDriver = '\nNo driver specified during ListCreator instantiation, so running program using the Firefox driver.'
     runInHeadless = '\nAdvanced usage: you can run this program in headless mode with the optional "headless" parameter set to True to speed up execution slightly:'
-    runInHeadlessExample = '    LG = ListCreator(headless=True)\n\n\n'
+    runInHeadlessExample = '    LC = ListCreator(headless=True)\n\n\n'
 
     checkChannelType = 'If you did type the name in correctly, perhaps the channelType is set incorrectly. Try setting channelType to "channel" in the create_list() method call if you set channelType to "user" for this run, or try running the method with channelType set to "user" if you ran this method with channelType set to "channel" for this run.\n'
 
     fileAlreadyExists = 'This error indicates that a file of this name already exists in the current directory. If you want to overwrite this file, run the create_list method again with the optional parameter "writeFormat" set to "w"'
-    fileAlreadyExistsRerunUsage = 'Example usage:\n LG.create_list(writeFormat="w")\n'
+    fileAlreadyExistsRerunUsage = 'Example usage:\n LC.create_list(writeFormat="w")\n'
 
     showDriverOptions = 'To use a different driver, specify the driver in the driver argument during the ListCreator instantiation. For example:' + \
-        "\n    LG = ListCreator(driver='opera')" + \
-        "\n    LG = ListCreator(driver='safari')" + \
-        "\n    LG = ListCreator(driver='chrome')" + \
-        "\n    LG = ListCreator(driver='firefox')"
+        "\n    LC = ListCreator(driver='opera')" + \
+        "\n    LC = ListCreator(driver='safari')" + \
+        "\n    LC = ListCreator(driver='chrome')" + \
+        "\n    LC = ListCreator(driver='firefox')"
 
 class ScriptMessage(Common):
     runningDefaultDriver = '\nNo driver flag used, so running program using the Firefox driver.'

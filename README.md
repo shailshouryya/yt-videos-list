@@ -33,13 +33,13 @@ python3
 ```
 ```python
 from yt_videos_list import ListCreator
-LG = ListCreator()
+LC = ListCreator()
 
 # "user" channelType (example uses Corey Schafer):
-LG.create_list(channel='schafer5', channelType='user')
+LC.create_list(channel='schafer5', channelType='user')
 
 # "channel" channelType (example uses freeCodeCamp) along with the optional fileName argument:
-LG.create_list(channel='UC8butISFwT-Wl7EV0hUK0BQ', channelType='channel', fileName='freeCodeCamp_orgVideosList')
+LC.create_list(channel='UC8butISFwT-Wl7EV0hUK0BQ', channelType='channel', fileName='freeCodeCamp_orgVideosList')
 
 # see the new files that were just created:
 import os
@@ -49,7 +49,7 @@ os.system('ls -lt | head')
 os.system('dir /O-D | find "VideosList"')
 
 # for more information on using the module:
-help(LG)
+help(LC)
 ```
 
 ### Understanding the API
