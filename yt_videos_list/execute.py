@@ -99,7 +99,7 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
         commonMessage.displayDependencySetupInstructions(userDriver, userOS)
 
 
-
+    ### check user input ###
     channel = channel.strip().strip('/')
     channelType = channelType.strip().strip('/')
     baseUrl = 'https://www.youtube.com'
@@ -122,7 +122,7 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
     userdriver = checkDriver() # NOTE the selenium webdriver object is referred to as userdriver, NOT userDriver; userDriver is used to check the user input as userdriver refers to the webdriver object
     if userdriver == 'invalid':
         return
-
+    ### end user input check ###
 
 
     programStart = time.perf_counter()
