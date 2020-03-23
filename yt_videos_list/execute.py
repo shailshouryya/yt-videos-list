@@ -11,10 +11,6 @@ moduleMessage = ModuleMessage()
 scriptMessage = ScriptMessage()
 
 def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat, docx, docxWriteFormat, chronological, headless, scrollPauseTime, userDriver, executionType):
-    #################################################################
-    #################### define helper functions ####################
-    #################################################################
-
     def determineFileName():
         if fileName is not None:
             return fileName
@@ -102,9 +98,7 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
             commonMessage.tellUserToDownloadDriver(userDriver)
         commonMessage.displayDependencySetupInstructions(userDriver, userOS)
 
-    #################################################################
-    ####################### check user inputs #######################
-    #################################################################
+
 
     channel = channel.strip().strip('/')
     channelType = channelType.strip().strip('/')
@@ -129,9 +123,7 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
     if userdriver == 'invalid':
         return
 
-    #################################################################
-    ######################### start program #########################
-    #################################################################
+
 
     programStart = time.perf_counter()
     try:
