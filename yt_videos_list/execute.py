@@ -60,16 +60,16 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
                 print (moduleMessage.runInHeadless)
                 print (moduleMessage.runInHeadlessExample)
         else: # headless is True
-            if userdriver == 'firefox':
+            if userDriver == 'firefox':
                 options = selenium.webdriver.firefox.options.Options()
                 options.headless = True
                 driver = userdriver(options=options)
-            elif userdriver == 'chrome':
+            elif userDriver == 'chrome':
                 # options = selenium.webdriver.chrome.options.Options()
                 options = webdriver.ChromeOptions()
                 options.add_argument('headless')
                 driver = userdriver(chrome_options=options)
-            elif userdriver == 'opera':
+            elif userDriver == 'opera':
                 # Opera driver MRO: WebDriver -> OperaDriver -> selenium.webdriver.chrome.webdriver.WebDriver -> selenium.webdriver.remote.webdriver.WebDriver -> builtins.object
                 # options = selenium.webdriver.chrome.options.Options()
                 # options.headless = True
@@ -77,7 +77,7 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
                 options.add_argument('headless')
                 driver = userdriver(options=options)
                 print (commonMessage.unsupportedOperaHeadless)
-            elif userdriver == 'safari':
+            elif userDriver == 'safari':
                 driver = userdriver()
                 print (commonMessage.unsupportedSafariHeadless)
         return driver
