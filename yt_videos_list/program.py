@@ -14,19 +14,19 @@ def scrollDown(currentElementsCount, driver, scrollPauseTime):
     print (f'Found {newElementsCount} videos...')
     # if the number of elements after scroll is the same as the number of elements before the scroll
     if newElementsCount == currentElementsCount:
-        # wait 0.6 seconds and check again to verify you really did reach the end of the page, and there wasn't a buffer loading period
+        # wait scrollPauseTime seconds and check again to verify you really did reach the end of the page, and there wasn't a buffer loading period
         print (commonMessage.noNewVideosFound)
-        time.sleep(0.6)
+        time.sleep(scrollPauseTime)
         newElementsCount = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
         if newElementsCount == currentElementsCount:
             print('Reached end of page!')
     return newElementsCount
 
 
-def saveElementsToList(driver, startTime, url):
+def saveElementsToList(driver, startTime, scrollPauseTime, url):
     elements = driver.find_elements_by_xpath('//*[@id="video-title"]')
     endTime = time.perf_counter()
-    functionTime = endTime - startTime - 0.6 # subtract 0.6 to account for the extra waiting time to verify end of page
+    functionTime = endTime - startTime - scrollPauseTime # subtract scrollPauseTime to account for the extra waiting time to verify end of page
     print(f'It took {functionTime} seconds to find all {len(elements)} videos from {url}\n')
     return elements
 
@@ -43,7 +43,7 @@ def scrollToBottom (url, driver, scrollPauseTime):
             break
         else:
             currentElementsCount = newElementsCount
-    return saveElementsToList(driver, startTime, url)
+    return saveElementsToList(driver, startTime, scrollPauseTime, url)
 
 
 def timeWriterFunction(writerFunction):
