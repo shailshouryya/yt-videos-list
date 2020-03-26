@@ -2,7 +2,7 @@ class Common:
     '''
     This class contains messages that are common regardless of whether the package is being run as a module using the -m option from the CLI or as a module from within the Python interpreter (or another Python script).
     '''
-    notWritingToAnyFiles = '\nBased on your provided settings, yt_videos_list will not be writing to either a csv file or a txt file.\nIf you want to run this program, please change the csv OR txt setting to True.\nThis program will now exit.'
+    notWritingToAnyFiles = '\nBased on your provided settings, yt_videos_list will not be writing to either a csv file or a txt file.'
 
     noVideosFound = 'No videos were found for the channel you provided. Are you sure you typed in the channel name correctly?\n'
     noNewVideosFound = 'No new videos were found since the last scroll. Waiting another 0.6 seconds to see if more videos can be loaded....'
@@ -240,6 +240,8 @@ class Common:
         print (f'If you wish to skip the creation of {filename}, type "skip"')
 
 class ModuleMessage(Common):
+    notWritingToAnyFilesHint = 'If you want to run this program, please change the csv OR txt setting to True.\nThis program will now exit...'
+
     runningDefaultDriver = '\nNo driver specified during ListCreator instantiation, so running program using the Firefox driver.'
     runInHeadless = '\nAdvanced usage: you can run this program in headless mode with the optional "headless" parameter set to True to speed up execution slightly:'
     runInHeadlessExample = '    LC = ListCreator(headless=True)\n\n\n'
@@ -256,6 +258,8 @@ class ModuleMessage(Common):
         "\n    LC = ListCreator(driver='firefox')"
 
 class ScriptMessage(Common):
+    notWritingToAnyFilesHint = 'If you want to run this program, please change the csv OR txt setting TO FLAG.\nThis program will now exit...'
+
     runningDefaultDriver = '\nNo driver flag used, so running program using the Firefox driver.'
 
     inputMessage = "What is the name of the YouTube channel you want to generate the list for?\n\nIf you're unsure, click on the channel and look at the URL.\nIt should be in the format:\nhttps://www.youtube.com/user/YourChannelName\nOR\nhttps://www.youtube.com/channel/YourChannelName\n\nSubstitute what you see for YourChannelName and type it in below (NOTE: if your url looks like the second option, you need to run this script with the -c or --channel flag):\n"
