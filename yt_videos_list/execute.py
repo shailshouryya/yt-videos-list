@@ -55,7 +55,7 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
 
     def openUserDriver():
         if headless is False: # opens Selenium browsing instance
-            driver = userdriver()
+            driver = seleniumdriver()
             if executionType == 'module':
                 print (moduleMessage.runInHeadless)
                 print (moduleMessage.runInHeadlessExample)
@@ -63,22 +63,22 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
             if userDriver == 'firefox':
                 options = selenium.webdriver.firefox.options.Options()
                 options.headless = True
-                driver = userdriver(options=options)
+                driver = seleniumdriver(options=options)
             elif userDriver == 'chrome':
                 # options = selenium.webdriver.chrome.options.Options()
                 options = webdriver.ChromeOptions()
                 options.add_argument('headless')
-                driver = userdriver(chrome_options=options)
+                driver = seleniumdriver(chrome_options=options)
             elif userDriver == 'opera':
                 # Opera driver MRO: WebDriver -> OperaDriver -> selenium.webdriver.chrome.webdriver.WebDriver -> selenium.webdriver.remote.webdriver.WebDriver -> builtins.object
                 # options = selenium.webdriver.chrome.options.Options()
                 # options.headless = True
                 options = webdriver.ChromeOptions()
                 options.add_argument('headless')
-                driver = userdriver(options=options)
+                driver = seleniumdriver(options=options)
                 print (commonMessage.unsupportedOperaHeadless)
             elif userDriver == 'safari':
-                driver = userdriver()
+                driver = seleniumdriver()
                 print (commonMessage.unsupportedSafariHeadless)
         return driver
 
@@ -120,8 +120,8 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
         print (moduleMessage.runningDefaultDriver) if executionType == 'module' else print (scriptMessage.runningDefaultDriver)
         print (moduleMessage.showDriverOptions) if executionType == 'module' else print (scriptMessage.showDriverOptions)
         userDriver = 'firefox'
-    userdriver = checkDriver() # NOTE the selenium webdriver object is referred to as userdriver, NOT userDriver; userDriver is used to check the user input while userdriver refers to the webdriver object
-    if userdriver == 'invalid':
+    seleniumdriver = checkDriver()
+    if seleniumdriver == 'invalid':
         return
     ### end user input check ###
 
