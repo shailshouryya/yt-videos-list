@@ -2,6 +2,8 @@ class Common:
     '''
     This class contains messages that are common regardless of whether the package is being run as a module using the -m option from the CLI or as a module from within the Python interpreter (or another Python script).
     '''
+
+
     notWritingToAnyFiles = '\nBased on your provided settings, yt_videos_list will not be writing to either a csv file or a txt file.'
 
     noVideosFound = 'No videos were found for the channel you provided. Are you sure you typed in the channel name correctly?\n'

@@ -6,6 +6,7 @@ def cli():
     Provides optional arguments for user increased visibility. Note that using some of the arguments may slow down run time and program may take slightly longer to execute.
     '''
 
+
     '''
     first argument should be channel/user name
     -c --channelType sets channelType to 'channel'
@@ -25,6 +26,8 @@ def cli():
     -p --pause change pause time between scrolls, set to 0.8s by default
     -r --reverse reverse the indexing so oldest video starts at 1 and most recent video has highest index
     '''
+
+
     channel = 'schafer5'
     channelType = 'user'
     fileName = None
