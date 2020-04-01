@@ -18,6 +18,7 @@ setup(
     author_email='tbd@gmail.com',
     license='Apache License 2.0',
 
+
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
@@ -41,14 +42,18 @@ setup(
         'Topic :: Text Processing :: Markup :: HTML'
     ],
     keywords='YouTube videos URL scraping automation Selenium csv txt macos windows linux',
+
+
     # http://code.nabla.net/doc/setuptools/api/setuptools/setuptools.find_packages.html
     # https://stackoverflow.com/questions/51286928/what-is-where-argument-for-in-setuptools-find-packages
     packages=find_packages(),
     # package_dir={'':'src'},
 
+
     python_requires='>=3.6.*, <4',
     install_requires=['selenium>=3.141.0, <4'],  # Optional
     # https://packaging.python.org/discussions/install-requires-vs-requirements/
+
 
     # If there are data files included in your packages that need to be installed, specify them here.
     # If using Python 2.6 or earlier, then these have to be included in MANIFEST.in as well.
@@ -69,6 +74,7 @@ setup(
     #        'yt_videos_list=yt_videos_list:__main__',
     #    ],
     # },
+
 
     project_urls={
         'Bug Reports':  'https://github.com/Shail-Shouryya/yt_videos_list/issues',
