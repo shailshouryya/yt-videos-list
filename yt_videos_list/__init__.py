@@ -12,13 +12,13 @@ source: https://github.com/Shail-Shouryya/yt_videos_list
 '''
 
 
-__version__ = '0.2.16'
-__author__ = 'Shail-Shouryya'
-__development_status__ = '4 - Beta'
-__intended_audience__ = 'Developers, Hobbyists'
-__license__ =  'OSI Approved :: Apache License 2.0'
+__version__              = '0.2.16'
+__author__               = 'Shail-Shouryya'
+__development_status__   = '4 - Beta'
+__intended_audience__    = 'Developers, Hobbyists'
+__license__              =  'OSI Approved :: Apache License 2.0'
 __ideal_python_version__ = 'Python 3.6+'
-__source__ = 'https://github.com/Shail-Shouryya/yt_videos_list'
+__source__               = 'https://github.com/Shail-Shouryya/yt_videos_list'
 
 class ListCreator:
     def __init__(self, txt=True, txtWriteFormat='x', csv=True, csvWriteFormat='x', docx=False, docxWriteFormat='x', chronological=False, headless=False, scrollPauseTime=0.8, driver=None):
@@ -97,16 +97,16 @@ class ListCreator:
         '''
 
 
-        self.txt = txt
-        self.txtWriteFormat = txtWriteFormat
-        self.csv = csv
-        self.csvWriteFormat = csvWriteFormat
-        self.docx = docx
+        self.txt             = txt
+        self.txtWriteFormat  = txtWriteFormat
+        self.csv             = csv
+        self.csvWriteFormat  = csvWriteFormat
+        self.docx            = docx
         self.docxWriteFormat = docxWriteFormat
-        self.chronological = chronological
-        self.headless = headless
+        self.chronological   = chronological
+        self.headless        = headless
         self.scrollPauseTime = scrollPauseTime
-        self.driver = None if driver is None else driver.lower()
+        self.driver          = None if driver is None else driver.lower()
 
         # load all init variables into a settings list for easy list unpacking in execute.logic()
         self.settings = [self.txt, self.txtWriteFormat, self.csv, self.csvWriteFormat, self.docx, self.docxWriteFormat, self.chronological, self.headless, self.scrollPauseTime, self.driver]
