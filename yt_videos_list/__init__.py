@@ -20,6 +20,7 @@ __license__              =  'OSI Approved :: Apache License 2.0'
 __ideal_python_version__ = 'Python 3.6+'
 __source__               = 'https://github.com/Shail-Shouryya/yt_videos_list'
 
+
 class ListCreator:
     def __init__(self, txt=True, txtWriteFormat='x', csv=True, csvWriteFormat='x', docx=False, docxWriteFormat='x', chronological=False, headless=False, scrollPauseTime=0.8, driver=None):
         '''
