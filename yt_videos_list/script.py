@@ -37,8 +37,8 @@ def cli():
     chronological = False
     headless = False
     scrollPauseTime = 0.8
-    userDriver = None
-    return (channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat, docx, docxWriteFormat, chronological, headless, scrollPauseTime, userDriver)
+    driver = None
+    return (channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat, docx, docxWriteFormat, chronological, headless, scrollPauseTime, driver)
 
 def create_list():
     _executionType = 'script'
