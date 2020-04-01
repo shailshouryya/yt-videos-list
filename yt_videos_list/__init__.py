@@ -28,7 +28,7 @@ class ListCreator:
             LC = ListCreator()
 
         ###########################################################
-        OPTIONAL: specify the settings you want to use by substituing the desired values for the default arguments.
+        OPTIONAL: Specify the settings you want to use by substituing the desired values for the default arguments.
         An overview is given directly below this, but for a full working example scroll to the bottom.
 
         Options for the `driver` argument are
@@ -43,7 +43,7 @@ class ListCreator:
 
         Options for the file type arguments (`csv`, `txt`) are
           * True (default) - create a file for the specified type
-          * False - does NOT create a file for the specified type.
+          * False - does NOT create a file for the specified type
              -> txt=True  (default) OR txt=False
              -> csv=True  (default) OR csv=False
 
@@ -64,7 +64,7 @@ class ListCreator:
           * True            - run the driver without an open Selenium instance for viewing (runs in "invisible" mode)
              -> headless=False (default) OR headless=True
 
-        Options for the `scrollPauseTime argument` are any float values greater than 0 (defaults to 0.8).
+        Options for the `scrollPauseTime argument` are any float values greater than 0 (defaults to 0.8)
           * The value you provide will be how long (in seconds) the program waits before trying to scroll the videos list page down for the channel you want to scrape.
           * For fast internet connections, you may want to reduce the value, and for slow connections you may want to increase the value.
              -> scrollPauseTime=0.8 (default)
