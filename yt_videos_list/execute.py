@@ -30,7 +30,7 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
                     return newWriteFormat()
 
         if fileType is True and writeFormat == 'x':
-            filename = f'{fileName}VideosList.{fileExtension}'
+            filename   = f'{fileName}VideosList.{fileExtension}'
             fileExists = True if os.path.isfile(f'./{filename}') else False
             if fileExists is True:
                 commonMessage.fileAlreadyExistsWarning(filename)
@@ -100,15 +100,15 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
 
 
     ### check user input ###
-    channel = channel.strip().strip('/')
+    channel     = channel.strip().strip('/')
     channelType = channelType.strip().strip('/')
-    baseUrl = 'https://www.youtube.com'
-    videos = 'videos'
-    url = f'{baseUrl}/{channelType}/{channel}/{videos}'
+    baseUrl     = 'https://www.youtube.com'
+    videos      = 'videos'
+    url         = f'{baseUrl}/{channelType}/{channel}/{videos}'
 
     fileName = determineFileName()
-    txtWriteFormat = verifyWriteFormat(txt, txtWriteFormat, fileName, 'txt')
-    csvWriteFormat = verifyWriteFormat(csv, csvWriteFormat, fileName, 'csv')
+    txtWriteFormat  = verifyWriteFormat(txt,  txtWriteFormat,  fileName, 'txt')
+    csvWriteFormat  = verifyWriteFormat(csv,  csvWriteFormat,  fileName, 'csv')
     docxWriteFormat = verifyWriteFormat(docx, docxWriteFormat, fileName, 'docx')
 
     if (txtWriteFormat == 0 and csvWriteFormat == 0) or (txt is False and csv is False):
@@ -118,7 +118,7 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
 
     if userDriver is None:
         print (moduleMessage.runningDefaultDriver) if executionType == 'module' else print (scriptMessage.runningDefaultDriver)
-        print (moduleMessage.showDriverOptions) if executionType == 'module' else print (scriptMessage.showDriverOptions)
+        print (moduleMessage.showDriverOptions)    if executionType == 'module' else print (scriptMessage.showDriverOptions)
         userDriver = 'firefox'
     seleniumdriver = checkDriver()
     if seleniumdriver == 'invalid':
@@ -153,5 +153,5 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
         if csv is True and csvWriteFormat != 0:
             program.writeToCsv(videosList, fileName, csvWriteFormat, chronological)
     programEnd = time.perf_counter()
-    totalTime = programEnd - programStart
+    totalTime  = programEnd - programStart
     print(f'This program took {totalTime} seconds to complete.\n')
