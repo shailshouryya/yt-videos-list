@@ -6,7 +6,7 @@ import csv
 
 commonMessage = Common()
 
-def scrollDown(currentElementsCount, driver, scrollPauseTime):
+def scroll_down(currentElementsCount, driver, scrollPauseTime):
     driver.execute_script('window.scrollBy(0, 50000);')
     time.sleep(scrollPauseTime)
     newElementsCount = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
@@ -22,7 +22,7 @@ def scrollDown(currentElementsCount, driver, scrollPauseTime):
     return newElementsCount
 
 
-def saveElementsToList(driver, startTime, scrollPauseTime, url):
+def save_elements_to_list(driver, startTime, scrollPauseTime, url):
     elements = driver.find_elements_by_xpath('//*[@id="video-title"]')
     endTime = time.perf_counter()
     functionTime = endTime - startTime - scrollPauseTime # subtract scrollPauseTime to account for the extra waiting time to verify end of page
@@ -30,22 +30,22 @@ def saveElementsToList(driver, startTime, scrollPauseTime, url):
     return elements
 
 
-def scrollToBottom (url, driver, scrollPauseTime):
+def scroll_to_bottom (url, driver, scrollPauseTime):
     driver.set_window_size(780, 880)
-    startTime = time.perf_counter() # timer stops in saveElementsToList() function
+    startTime = time.perf_counter() # timer stops in save_elements_to_list() function
     driver.get(url)
 
     currentElementsCount = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
     while True:
-        newElementsCount = scrollDown(currentElementsCount, driver, scrollPauseTime)
+        newElementsCount = scroll_down(currentElementsCount, driver, scrollPauseTime)
         if newElementsCount == currentElementsCount:
             break
         else:
             currentElementsCount = newElementsCount
-    return saveElementsToList(driver, startTime, scrollPauseTime, url)
+    return save_elements_to_list(driver, startTime, scrollPauseTime, url)
 
 
-def timeWriterFunction(writerFunction):
+def time_writer_function(writerFunction):
     @functools.wraps(writerFunction)
     def wrapper_timer(*args, **kwargs):
         startTime = time.perf_counter()
@@ -63,8 +63,8 @@ def timeWriterFunction(writerFunction):
     return wrapper_timer
 
 
-@timeWriterFunction
-def writeToTxt (listOfVideos, fileName, writeFormat, chronological):
+@time_writer_function
+def write_to_txt (listOfVideos, fileName, writeFormat, chronological):
     with open(f'{fileName}VideosList.txt', writeFormat) as txtFile:
         print (f'Opened {txtFile.name}, writing video information to file....')
         spacing = '\n' + ' '*12 # newline followed by 12 spaces on the next line to pad the start of the line
@@ -82,9 +82,9 @@ def writeToTxt (listOfVideos, fileName, writeFormat, chronological):
     return txtFile.name, videoNumber
 
 
-@timeWriterFunction
-def saveToMemWriteToTxt (listOfVideos, fileName, writeFormat, chronological):
-    # this takes a little bit longer than the writeToCsv() function
+@time_writer_function
+def save_to_mem_write_to_txt (listOfVideos, fileName, writeFormat, chronological):
+    # this takes a little bit longer than the write_to_csv() function
     with open(f'{fileName}VideosList.txt', writeFormat) as fm:
         print (f'Opened {fm.name}, writing video information to file....')
         text = ''
@@ -105,8 +105,8 @@ def saveToMemWriteToTxt (listOfVideos, fileName, writeFormat, chronological):
     return fm.name, videoNumber
 
 
-@timeWriterFunction
-def writeToCsv (listOfVideos, fileName, writeFormat, chronological):
+@time_writer_function
+def write_to_csv (listOfVideos, fileName, writeFormat, chronological):
     with open(f'{fileName}VideosList.csv', writeFormat) as csvFile:
         print (f'Opened {csvFile.name}, writing video information to file....')
         fieldnames = ['videoNumber', 'Watched?', 'Video Title', 'Video URL', 'Watch again later?', 'Notes']

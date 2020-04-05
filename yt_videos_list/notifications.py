@@ -203,7 +203,7 @@ class Common:
     }
 
     @classmethod
-    def displayDependencySetupInstructions(cls, userDriver, userOS):
+    def display_dependency_setup_instructions(cls, userDriver, userOS):
         terminalCopyPasteDirections = 'Once you determine the right version to download, copy the command, open a new terminal session (usually possible with CMD+N or CMD+T (or CTRL+N or CTRL+D depending on your keyboard/OS) from an active terminal session), and paste the command you just copied. Once you\'ve done that, you should be able to come back to this session and rerun the last command without an error!\n\n'
 
         if userOS != 'windows' and userDriver != 'safari':
@@ -218,26 +218,26 @@ class Common:
         for driverVersionDownload in cls.driverDownloadsForOS[userDriver][userOS]:
             print (driverVersionDownload)
 
-        def displayMoreDependencyInformation(userDriver):
+        def display_more_dependency_information(userDriver):
             print (f'\n\n# For more information about the {cls.moreDriverInfo[userDriver][0]}, please visit\n{cls.moreDriverInfo[userDriver][1]}\n{cls.moreDriverInfo[userDriver][2]}      (all supported versions)\n\nNOTE! You must also have the {cls.moreDriverInfo[userDriver][3]} browser installed to use this. If you don\'t have it installed, install it from\n{cls.moreDriverInfo[userDriver][4]}')
 
         if userDriver != 'safari':
-            displayMoreDependencyInformation(userDriver)
+            display_more_dependency_information(userDriver)
 
     @staticmethod
-    def seleniumDependencyError(errorMessage):
+    def selenium_dependency_error(errorMessage):
         print (f'\n\n\n\n\n\n\nThere was an error while trying to open up the remote selenium instance. The exact error was:\n{errorMessage}\nDon\'t worry though, this is an easy fix!')
 
     @staticmethod
-    def tellUserToDownloadDriver(userDriver):
+    def tell_user_to_download_driver(userDriver):
         print (f'\nIt looks like you don\'t have the correct Selenium dependency set up to run this program using the remote {userDriver}driver.\nThe version of your {userDriver.title()} browser - usually found by going to {userDriver.title()} -> \"About browser\" in the menu bar within a {userDriver.title()} window - should match the comment for the corresponding command.\nPlease download it using the relevant command from the list of commands below.\n')
 
     @staticmethod
-    def fileAlreadyExistsWarning(filename):
+    def file_already_exists_warning(filename):
         print (f'\nWARNING! A file with the name {filename} already exists in the current directory.')
 
     @staticmethod
-    def fileAlreadyExistsPrompt(filename):
+    def file_already_exists_prompt(filename):
         print (f'If you wish to proceed and overwrite {filename}, type "proceed", otherwise move the file to a different directory on your computer OR rename the file before typing "proceed"')
         print (f'If you wish to skip the creation of {filename}, type "skip"')
 

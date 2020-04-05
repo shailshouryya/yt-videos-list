@@ -10,7 +10,7 @@ videos = 'videos'
 channelVideosUrl = f'{baseUrl}/{user}/{userName}/{videos}'
 soup = BeautifulSoup(requests.get(channelVideosUrl).content, 'lxml')
 
-def writeToTxt():
+def write_to_txt():
     with open ('{}VideosList.txt'.format(userName.strip('/')), 'w+') as f:
         print('Opened       {}, writing to file...'.format(f.name))
         for url in soup.find_all('a', attrs = {'class': 'yt-uix-sessionlink', 'dir':'ltr'}):
@@ -20,7 +20,7 @@ def writeToTxt():
             f.write('*'*50 + '\n')
         print('Wrote to     {}, closing file...'.format(f.name))
 
-def writeToCsv():
+def write_to_csv():
     with open ('{}VideosList.csv'.format(userName.strip('/')), 'w+') as csvfile:
         print('Opened       {}, writing to file...'.format(csvfile.name))
         fieldnames = ['Video Title', 'URL', 'Watched?']
@@ -34,8 +34,8 @@ def writeToCsv():
         print('Wrote to     {}, closing file...'.format(csvfile.name))
 
 def main():
-    writeToTxt()
-    writeToCsv()
+    write_to_txt()
+    write_to_csv()
 
 if __name__ == '__main__':
     main()
