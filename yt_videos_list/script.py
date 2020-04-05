@@ -43,7 +43,7 @@ def cli():
     driver = None
     return (channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat, docx, docxWriteFormat, chronological, headless, scrollPauseTime, driver)
 
-def create_list():
+def create_list_for():
     _executionType = 'script'
     cliSettings = cli()
     execute.logic(*cliSettings, _executionType)

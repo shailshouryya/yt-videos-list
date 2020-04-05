@@ -33,6 +33,6 @@ Traceback (most recent call last):
   File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/yt_videos_list/__main__.py", line 103, in <module>
     main()
   File "/Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/yt_videos_list/__main__.py", line 100, in main
-    script.create_list()
+    script.create_list_for()
 NameError: name 'script' is not defined
 ```

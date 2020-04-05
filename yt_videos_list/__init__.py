@@ -112,9 +112,9 @@ class ListCreator:
         # load all init variables into a settings tuple for easy list unpacking in execute.logic()
         self.settings = (self.txt, self.txtWriteFormat, self.csv, self.csvWriteFormat, self.docx, self.docxWriteFormat, self.chronological, self.headless, self.scrollPauseTime, self.driver)
 
-    def create_list(self, channel, channelType, fileName=None):
+    def create_list_for(self, channel, channelType, fileName=None):
         '''
-        The create_list() method creates a list using the arguments specified during instantiation of the ListCreator object.
+        The create_list_for() method creates a list using the arguments specified during instantiation of the ListCreator object.
         You need to specify the channel and channelType.
         You can also provide an optional fileName argument, but the fileName argument is not required.
         '''

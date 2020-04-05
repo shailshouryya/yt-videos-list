@@ -36,10 +36,10 @@ from yt_videos_list import ListCreator
 LC = ListCreator()
 
 # "user" channelType (example uses Corey Schafer):
-LC.create_list(channel='schafer5', channelType='user')
+LC.create_list_for(channel='schafer5', channelType='user')
 
 # "channel" channelType (example uses freeCodeCamp) along with the optional fileName argument:
-LC.create_list(channel='UC8butISFwT-Wl7EV0hUK0BQ', channelType='channel', fileName='freeCodeCamp_orgVideosList')
+LC.create_list_for(channel='UC8butISFwT-Wl7EV0hUK0BQ', channelType='channel', fileName='freeCodeCamp_orgVideosList')
 
 # see the new files that were just created:
 import os
@@ -65,7 +65,7 @@ There are two types of YouTube channels: one type is a `user` channel and the ot
   - Gordon Ramsay: https://www.youtube.com/channel/UCIEv3lZ_tNXHzL3ox-_uUGQ
   - PBS Space Time: https://www.youtube.com/channel/UC7_gcs09iThXybpVgjHZ_7g
 
-To scrape the video titles along with the link to the video, you need to run the `create_list(channel, channelType)` method on the ListCreator object you just created, substituting the name of the channel for the `channel` argument and the type of channel for `channelType` argument. By default, the name of the file produced will be `channel`VideosList.ext where the `.ext` will be `.csv` or `.txt ` depending on the type of file(s) that you specified.
+To scrape the video titles along with the link to the video, you need to run the `create_list_for(channel, channelType)` method on the ListCreator object you just created, substituting the name of the channel for the `channel` argument and the type of channel for `channelType` argument. By default, the name of the file produced will be `channel`VideosList.ext where the `.ext` will be `.csv` or `.txt ` depending on the type of file(s) that you specified.
 
 ### For more control
 ---
