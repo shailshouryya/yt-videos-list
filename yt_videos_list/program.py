@@ -30,7 +30,7 @@ def save_elements_to_list(driver, startTime, scrollPauseTime, url):
     return elements
 
 
-def scroll_to_bottom (url, driver, scrollPauseTime):
+def scroll_to_bottom(url, driver, scrollPauseTime):
     driver.set_window_size(780, 880)
     startTime = time.perf_counter() # timer stops in save_elements_to_list() function
     driver.get(url)
@@ -64,7 +64,7 @@ def time_writer_function(writerFunction):
 
 
 @time_writer_function
-def write_to_txt (listOfVideos, fileName, writeFormat, chronological):
+def write_to_txt(listOfVideos, fileName, writeFormat, chronological):
     with open(f'{fileName}VideosList.txt', writeFormat) as txtFile:
         print (f'Opened {txtFile.name}, writing video information to file....')
         spacing = '\n' + ' '*12 # newline followed by 12 spaces on the next line to pad the start of the line
@@ -83,7 +83,7 @@ def write_to_txt (listOfVideos, fileName, writeFormat, chronological):
 
 
 @time_writer_function
-def save_to_mem_write_to_txt (listOfVideos, fileName, writeFormat, chronological):
+def save_to_mem_write_to_txt(listOfVideos, fileName, writeFormat, chronological):
     # this takes a little bit longer than the write_to_csv() function
     with open(f'{fileName}VideosList.txt', writeFormat) as fm:
         print (f'Opened {fm.name}, writing video information to file....')
@@ -106,7 +106,7 @@ def save_to_mem_write_to_txt (listOfVideos, fileName, writeFormat, chronological
 
 
 @time_writer_function
-def write_to_csv (listOfVideos, fileName, writeFormat, chronological):
+def write_to_csv(listOfVideos, fileName, writeFormat, chronological):
     with open(f'{fileName}VideosList.csv', writeFormat) as csvFile:
         print (f'Opened {csvFile.name}, writing video information to file....')
         fieldnames = ['videoNumber', 'Watched?', 'Video Title', 'Video URL', 'Watch again later?', 'Notes']
