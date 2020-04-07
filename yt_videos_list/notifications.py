@@ -225,7 +225,7 @@ class Common:
             display_more_dependency_information(userDriver)
 
     @staticmethod
-    def selenium_dependency_error(errorMessage):
+    def display_selenium_dependency_error(errorMessage):
         print (f'\n\n\n\n\n\n\nThere was an error while trying to open up the remote selenium instance. The exact error was:\n{errorMessage}\nDon\'t worry though, this is an easy fix!')
 
     @staticmethod
@@ -233,11 +233,11 @@ class Common:
         print (f'\nIt looks like you don\'t have the correct Selenium dependency set up to run this program using the remote {userDriver}driver.\nThe version of your {userDriver.title()} browser - usually found by going to {userDriver.title()} -> \"About browser\" in the menu bar within a {userDriver.title()} window - should match the comment for the corresponding command.\nPlease download it using the relevant command from the list of commands below.\n')
 
     @staticmethod
-    def file_already_exists_warning(filename):
+    def display_file_already_exists_warning(filename):
         print (f'\nWARNING! A file with the name {filename} already exists in the current directory.')
 
     @staticmethod
-    def file_already_exists_prompt(filename):
+    def display_file_already_exists_prompt(filename):
         print (f'If you wish to proceed and overwrite {filename}, type "proceed", otherwise move the file to a different directory on your computer OR rename the file before typing "proceed"')
         print (f'If you wish to skip the creation of {filename}, type "skip"')
 

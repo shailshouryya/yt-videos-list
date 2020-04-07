@@ -26,15 +26,15 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
                     return 0
                 else:
                     print ('\n' + commonMessage.invalidResponse)
-                    commonMessage.file_already_exists_prompt(filename)
+                    commonMessage.display_file_already_exists_prompt(filename)
                     return new_write_format()
 
         if fileType is True and writeFormat == 'x':
             filename   = f'{fileName}VideosList.{fileExtension}'
             fileExists = True if os.path.isfile(f'./{filename}') else False
             if fileExists is True:
-                commonMessage.file_already_exists_warning(filename)
-                commonMessage.file_already_exists_prompt(filename)
+                commonMessage.display_file_already_exists_warning(filename)
+                commonMessage.display_file_already_exists_prompt(filename)
                 return new_write_format()
             return 'x'
         else:
@@ -132,7 +132,7 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
     except selenium.common.exceptions.WebDriverException as e:
         # selenium.common.exceptions.WebDriverException: Message: 'BROWSERdriver' executable needs to be in PATH. Please see https://................
         # for some reason this also catches selenium.common.exceptions.SessionNotCreatedException: Message: session not created: This version of BROWSERDriver only supports BROWSER version ##
-        commonMessage.selenium_dependency_error(e)
+        commonMessage.display_selenium_dependency_error(e)
         userOS = determine_user_os()
         try:
             globals()[f'selenium_{userOS}'].download(userDriver)
