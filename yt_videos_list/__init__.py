@@ -109,9 +109,6 @@ class ListCreator:
         self.scrollPauseTime = scrollPauseTime
         self.driver          = None if driver is None else driver.lower()
 
-        # load all init variables into a settings tuple for easy tuple unpacking in execute.logic()
-        # NOTE that this also makes modifying instance attributes impossible since create_list_for() uses self.settings instead of the direct instance attribute, thus effectively hiding data after instantiation!
-        self.settings = (self.txt, self.txtWriteFormat, self.csv, self.csvWriteFormat, self.docx, self.docxWriteFormat, self.chronological, self.headless, self.scrollPauseTime, self.driver)
 
     def create_list_for(self, channel, channelType, fileName=None):
         '''
@@ -122,4 +119,4 @@ class ListCreator:
 
 
         _executionType='module'
-        execute.logic(channel, channelType, fileName, *self.settings, _executionType)
+        execute.logic(channel, channelType, fileName, self.txt, self.txtWriteFormat, self.csv, self.csvWriteFormat, self.docx, self.docxWriteFormat, self.chronological, self.headless, self.scrollPauseTime, self.driver, _executionType)
