@@ -109,7 +109,7 @@ class ListCreator:
         self.scrollPauseTime = scrollPauseTime
         self.driver          = None if driver is None else driver.lower()
 
-        # load all init variables into a settings tuple for easy list unpacking in execute.logic()
+        # load all init variables into a settings tuple for easy tuple unpacking in execute.logic()
         self.settings = (self.txt, self.txtWriteFormat, self.csv, self.csvWriteFormat, self.docx, self.docxWriteFormat, self.chronological, self.headless, self.scrollPauseTime, self.driver)
 
     def create_list_for(self, channel, channelType, fileName=None):
