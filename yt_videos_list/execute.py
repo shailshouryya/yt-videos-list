@@ -98,34 +98,37 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
             commonMessage.tell_user_to_download_driver(userDriver)
         commonMessage.display_dependency_setup_instructions(userDriver, userOS)
 
+    def check_user_input():
+        nonlocal channel, channelType, fileName, txtWriteFormat, csvWriteFormat, docxWriteFormat, userDriver
+        channel     = channel.strip().strip('/')
+        channelType = channelType.strip().strip('/')
+        baseUrl     = 'https://www.youtube.com'
+        videos      = 'videos'
+        url         = f'{baseUrl}/{channelType}/{channel}/{videos}'
 
-    ### check user input ###
-    channel     = channel.strip().strip('/')
-    channelType = channelType.strip().strip('/')
-    baseUrl     = 'https://www.youtube.com'
-    videos      = 'videos'
-    url         = f'{baseUrl}/{channelType}/{channel}/{videos}'
+        fileName = determine_file_name()
+        txtWriteFormat  = verify_write_format(txt,  txtWriteFormat,  fileName, 'txt')
+        csvWriteFormat  = verify_write_format(csv,  csvWriteFormat,  fileName, 'csv')
+        docxWriteFormat = verify_write_format(docx, docxWriteFormat, fileName, 'docx')
 
-    fileName = determine_file_name()
-    txtWriteFormat  = verify_write_format(txt,  txtWriteFormat,  fileName, 'txt')
-    csvWriteFormat  = verify_write_format(csv,  csvWriteFormat,  fileName, 'csv')
-    docxWriteFormat = verify_write_format(docx, docxWriteFormat, fileName, 'docx')
+        if (txtWriteFormat == 0 and csvWriteFormat == 0) or (txt is False and csv is False):
+            print (commonMessage.notWritingToAnyFiles)
+            print (moduleMessage.notWritingToAnyFilesHint) if executionType == 'module' else print (scriptMessage.notWritingToAnyFilesHint)
+            return # the files already exist and the user doesn't want to overwrite either of them
 
-    if (txtWriteFormat == 0 and csvWriteFormat == 0) or (txt is False and csv is False):
-        print (commonMessage.notWritingToAnyFiles)
-        print (moduleMessage.notWritingToAnyFilesHint) if executionType == 'module' else print (scriptMessage.notWritingToAnyFilesHint)
-        return # the files already exist and the user doesn't want to overwrite either of them
-
-    if userDriver is None:
-        print (moduleMessage.runningDefaultDriver) if executionType == 'module' else print (scriptMessage.runningDefaultDriver)
-        print (moduleMessage.showDriverOptions)    if executionType == 'module' else print (scriptMessage.showDriverOptions)
-        userDriver = 'firefox'
-    seleniumdriver = check_driver()
-    if seleniumdriver == 'invalid':
-        return
-    ### end user input check ###
+        if userDriver is None:
+            print (moduleMessage.runningDefaultDriver) if executionType == 'module' else print (scriptMessage.runningDefaultDriver)
+            print (moduleMessage.showDriverOptions)    if executionType == 'module' else print (scriptMessage.showDriverOptions)
+            userDriver = 'firefox'
+        seleniumdriver = check_driver()
+        if seleniumdriver == 'invalid':
+            return
+        return url, seleniumdriver
 
 
+
+
+    url, seleniumdriver = check_user_input()
     programStart = time.perf_counter()
     try:
         driver = open_user_driver()
