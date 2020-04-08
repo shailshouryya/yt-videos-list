@@ -114,7 +114,7 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
         if (txtWriteFormat == 0 and csvWriteFormat == 0) or (txt is False and csv is False):
             print (commonMessage.notWritingToAnyFiles)
             print (moduleMessage.notWritingToAnyFilesHint) if executionType == 'module' else print (scriptMessage.notWritingToAnyFilesHint)
-            return # the files already exist and the user doesn't want to overwrite either of them
+            sys.exit() # the files already exist and the user doesn't want to overwrite either of them
 
         if userDriver is None:
             print (moduleMessage.runningDefaultDriver) if executionType == 'module' else print (scriptMessage.runningDefaultDriver)
@@ -122,7 +122,7 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
             userDriver = 'firefox'
         seleniumdriver = check_driver()
         if seleniumdriver == 'invalid':
-            return
+            sys.exit()
         return url, seleniumdriver
 
 
