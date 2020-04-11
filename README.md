@@ -113,7 +113,7 @@ There are a number of optional arguments you can specify during the instantiatio
   - `scrollPauseTime=0.8` (default)
   - CAUTION: reducing this value too much will result in the programming not capturing all the videos, so be careful! Experiment :)
 
-## Running the package from the CLI as a script using -m (coming in `0.3.x`!)
+## Running the package from the CLI as a script using -m (coming in yt-videos-list `2.0`!)
 ```shell
 python3 -m yt_videos_list
 ```
