@@ -28,7 +28,6 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
                     print ('\n' + commonMessage.invalidResponse)
                     commonMessage.display_file_already_exists_prompt(filename)
                     return new_write_format()
-
         if fileType is True and writeFormat == 'x':
             filename   = f'{fileName}VideosList.{fileExtension}'
             fileExists = True if os.path.isfile(f'./{filename}') else False
