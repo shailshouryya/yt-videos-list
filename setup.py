@@ -8,15 +8,15 @@ with open('README.md', 'r', encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='yt_videos_list',
-    version='0.2.16',
-    description='Python package to extract YouTube video titles and corresponding URLs for a specific channel and write the information to CSV and txt files with sections to mark a particular video as watched, to mark a video for rewatching, and for taking notes.',
-    long_description=long_description,
-    long_description_content_type='text/markdown',
-    url='https://github.com/Shail-Shouryya/yt_videos_list',
-    author='Shail-Shouryya',
-    author_email='tbd@gmail.com',
-    license='Apache License 2.0',
+    name                          = 'yt_videos_list',
+    version                       = '0.2.16',
+    description                   = 'Python package to extract YouTube video titles and corresponding URLs for a specific channel and write the information to CSV and txt files with sections to mark a particular video as watched, to mark a video for rewatching, and for taking notes.',
+    long_description              = long_description,
+    long_description_content_type = 'text/markdown',
+    url                           = 'https://github.com/Shail-Shouryya/yt_videos_list',
+    author                        = 'Shail-Shouryya',
+    author_email                  = 'tbd@gmail.com',
+    license                       = 'Apache License 2.0',
 
 
     classifiers=[
@@ -50,14 +50,14 @@ setup(
     # package_dir={'':'src'},
 
 
-    python_requires='>=3.6.*, <4',
-    install_requires=['selenium>=3.141.0, <4'],  # Optional
+    python_requires  = '>=3.6.*, <4',
+    install_requires = ['selenium>=3.141.0, <4'],  # Optional
     # https://packaging.python.org/discussions/install-requires-vs-requirements/
 
 
     # If there are data files included in your packages that need to be installed, specify them here.
     # If using Python 2.6 or earlier, then these have to be included in MANIFEST.in as well.
-    package_data={  # Optional
+    package_data = {  # Optional
         # 'sample': ['package_data.dat'],
     },
     # Although 'package_data' is the preferred approach, in some case you may need to place data files outside of your packages. See:
@@ -76,7 +76,7 @@ setup(
     # },
 
 
-    project_urls={
+    project_urls = {
         'Bug Reports':  'https://github.com/Shail-Shouryya/yt_videos_list/issues',
         'PyPi Funding': 'https://donate.pypi.org',
         'Source':       'https://github.com/Shail-Shouryya/yt_videos_list'
