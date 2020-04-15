@@ -53,7 +53,7 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
             return 'invalid'
 
     def open_user_driver():
-        if headless is False: # opens Selenium browsing instance
+        if headless is False:
             driver = seleniumdriver()
             if executionType == 'module':
                 print (moduleMessage.runInHeadless)
