@@ -128,7 +128,7 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
 
 
     url, seleniumdriver = check_user_input()
-    programStart = time.perf_counter()
+    programStart        = time.perf_counter()
     try:
         driver = open_user_driver()
     except selenium.common.exceptions.WebDriverException as e:
