@@ -156,4 +156,4 @@ def logic(channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteForm
             program.write_to_csv(videosList, fileName, csvWriteFormat, chronological)
     programEnd = time.perf_counter()
     totalTime  = programEnd - programStart
-    print(f'This program took {totalTime} seconds to complete.\n')
+    print (f'This program took {totalTime} seconds to complete.\n')

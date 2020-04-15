@@ -18,7 +18,7 @@ def scroll_down(currentElementsCount, driver, scrollPauseTime):
         time.sleep(scrollPauseTime)
         newElementsCount = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
         if newElementsCount == currentElementsCount:
-            print('Reached end of page!')
+            print ('Reached end of page!')
     return newElementsCount
 
 
@@ -26,7 +26,7 @@ def save_elements_to_list(driver, startTime, scrollPauseTime, url):
     elements = driver.find_elements_by_xpath('//*[@id="video-title"]')
     endTime = time.perf_counter()
     functionTime = endTime - startTime - scrollPauseTime # subtract scrollPauseTime to account for the extra waiting time to verify end of page
-    print(f'It took {functionTime} seconds to find all {len(elements)} videos from {url}\n')
+    print (f'It took {functionTime} seconds to find all {len(elements)} videos from {url}\n')
     return elements
 
 
@@ -59,7 +59,7 @@ def time_writer_function(writerFunction):
         print (f'Finished writing to {filename}')
         print (f'{videosWritten} videos written to {filename}')
         print (f'Closing {filename}\n')
-        print(f'It took {functionTime} to write all {videosWritten} videos to {filename}\n')
+        print (f'It took {functionTime} to write all {videosWritten} videos to {filename}\n')
     return wrapper_timer
 
 
@@ -117,5 +117,5 @@ def write_to_csv(listOfVideos, fileName, writeFormat, chronological):
             writer.writerow(
             {'videoNumber': f'{videoNumber}', 'Watched?': '', 'Video Title': f'{seleniumElement.get_attribute("title")}', 'Video URL': f'{seleniumElement.get_attribute("href")}', 'Watch again later?': '', 'Notes': ''})
             if videoNumber % 250 == 0:
-                print(f'{videoNumber} videos written to {csvFile.name}...')
+                print (f'{videoNumber} videos written to {csvFile.name}...')
     return csvFile.name, videoNumber

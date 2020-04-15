@@ -16,4 +16,4 @@ attrs = driver.execute_script(
         };                                                                                    \
         return items;', element
     )
-pprint(attrs)
+pprint (attrs)
