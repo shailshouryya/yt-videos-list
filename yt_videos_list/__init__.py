@@ -2,13 +2,13 @@ from . import execute
 
 
 '''
-version: 0.2.15
-author: Shail-Shouryya
-development_status: 4 - Beta
-intended_audience: Developers, Hobbyists
-license:  OSI Approved :: Apache License 2.0
+version:              0.2.15
+author:               Shail-Shouryya
+development_status:   4 - Beta
+intended_audience:    Developers, Hobbyists
+license:              OSI Approved :: Apache License 2.0
 ideal_python_version: Python 3.6+
-source: https://github.com/Shail-Shouryya/yt_videos_list
+source:               https://github.com/Shail-Shouryya/yt_videos_list
 '''
 
 
