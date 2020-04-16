@@ -67,3 +67,107 @@ The __init__.py file is usually empty, but can be used to export selected portio
 import spam
 ```
 - [Using TestPyPI](https://packaging.python.org/guides/using-testpypi/) - PyPA » Python Packaging User Guide » Guides »
+
+### closure scoping
+- [Don't understand why UnboundLocalError occurs (closure) [duplicate]](https://stackoverflow.com/questions/9264763/dont-understand-why-unboundlocalerror-occurs-closure) - Stack Overflow
+- [How do JavaScript closures work?](https://stackoverflow.com/questions/111102/how-do-javascript-closures-work) - Stack Overflow
+- [Local (?) variable referenced before assignment [duplicate]](https://stackoverflow.com/questions/11904981/local-variable-referenced-before-assignment) - Stack Overflow
+  - [Python 3: UnboundLocalError: local variable referenced before assignment [duplicate]](https://stackoverflow.com/questions/10851906/python-3-unboundlocalerror-local-variable-referenced-before-assignment) - Stack Overflow
+  - [Assigning to variable from parent function: “Local variable referenced before assignment” [duplicate]](https://stackoverflow.com/questions/8934772/assigning-to-variable-from-parent-function-local-variable-referenced-before-as?noredirect=1&lq=1) - Stack Overflow
+- [UnboundLocalError on local variable when reassigned after first use](https://stackoverflow.com/questions/370357/unboundlocalerror-on-local-variable-when-reassigned-after-first-use) - Stack Overflow
+- [Don't understand why UnboundLocalError occurs (closure) [duplicate]](https://stackoverflow.com/questions/9264763/dont-understand-why-unboundlocalerror-occurs-closure) - Stack Overflow
+  - Python doesn't have variable declarations, so it has to figure out the [scope](http://docs.python.org/3.3/tutorial/classes.html#python-scopes-and-namespaces) of variables itself. It does so by a simple rule: If there is an assignment to a variable inside a function, that variable is considered local.[1](http://docs.python.org/3.3/faq/programming.html#what-are-the-rules-for-local-and-global-variables-in-python) Thus, the line
+  - `counter += 1`
+  - implicitly makes `counter` local to `increment()`. Trying to execute this line, though, will try to read the value of the local variable `counter` before it is assigned, resulting in an `[UnboundLocalError](http://docs.python.org/3.3/library/exceptions.html#UnboundLocalError)`.[2](http://docs.python.org/3.3/faq/programming.html#why-am-i-getting-an-unboundlocalerror-when-the-variable-has-a-value)
+  - If `counter` is a global variable, the [global](http://docs.python.org/3.3/reference/simple_stmts.html#the-global-statement) keyword will help. If `increment()` is a local function and `counter` a local variable, you can use [nonlocal](http://docs.python.org/3.3/reference/simple_stmts.html#the-nonlocal-statement) in Python 3.x.
+  - Sven Marnach answered Feb 13 '12 at 17:15
+    - --> python 3 docs has a [faq page on why-am-i-getting-an-unboundlocalerror-when-the-variable-has-a-value](https://docs.python.org/3/faq/programming.html#why-am-i-getting-an-unboundlocalerror-when-the-variable-has-a-value) via [unboundlocalerror-local-variable-l-referenced-before-assignment-python – here](http://stackoverflow.com/questions/21456739/unboundlocalerror-local-variable-l-referenced-before-assignment-python) May 4 '14 at 7:19
+    - --> A note that caught me out, I had a variable declared at the top of the file that I can read inside a function without issue, however to write to a variable that I have declared at the top of the file, I had to use global. – mouckatron Feb 6 '18 at 14:35
+    - --> A more in-depth explanation: [docs.python.org/3.3/reference/…](https://docs.python.org/3.3/reference/executionmodel.html#naming-and-binding). Not only can assignments bind names, so can imports, so you may also get UnboundLocalError from a statement that uses an unbounded imported name. Example: `def foo(): bar = deepcopy({'a':1}); from copy import deepcopy; return bar`, then `from copy import deepcopy; foo()`. The call succeeds if the local import `from copy import deepcopy` is removed. – Yibo Yang Jun 27 '18 at 16:00
+<br>
+  - You need to use the [global statement](http://docs.python.org/py3k/reference/simple_stmts.html#the-global-statement) so that you are modifying the global variable counter, instead of a local variable:
+```shell
+counter = 0
+
+def increment():
+  global counter
+  counter += 1
+
+increment()
+```
+  - If the enclosing scope that `counter` is defined in is not the global scope, on Python 3.x you could use the [nonlocal statement](http://docs.python.org/py3k/reference/simple_stmts.html#the-nonlocal-statement). In the same situation on Python 2.x you would have no way to reassign to the nonlocal name `counter`, so you would need to make `counter` mutable and modify it:
+```shell
+counter = [0]
+
+def increment():
+  counter[0] += 1
+
+increment()
+print counter[0]  # prints '1'
+```
+  - Andrew Clark answered Feb 13 '12 at 17:13
+<br>
+  - To answer the question in your subject line,* yes, there are closures in Python, except they only apply inside a function, and also (in Python 2.x) they are read-only; you can't re-bind the name to a different object (though if the object is mutable, you can modify its contents). In Python 3.x, you can use the [nonlocal](https://docs.python.org/3/reference/simple_stmts.html?highlight=nonlocal#nonlocal) keyword to modify a closure variable.
+```shell
+def incrementer():
+    counter = 0
+    def increment():
+        nonlocal counter
+        counter += 1
+        return counter
+    return increment
+
+increment = incrementer()
+
+increment()   # 1
+increment()   # 2
+```
+  - * The question origially asked about closures in Python.
+  - kindall answered Feb 13 '12 at 17:21
+<br>
+  - The reason of why your code throws an `UnboundLocalError` is already well explained in other answers.
+  - But it seems to me that you're trying to build something that works like [itertools.count()](http://docs.python.org/library/itertools.html#itertools.count).
+  - So why don't you try it out, and see if it suits your case:
+
+>>> from itertools import count
+>>> counter = count(0)
+>>> counter
+count(0)
+>>> next(counter)
+0
+>>> counter
+count(1)
+>>> next(counter)
+1
+>>> counter
+count(2)
+  - Rik Poggi answered Feb 13 '12 at 17:31
+<br>
+  - Python has lexical scoping by default, which means that although an enclosed scope can access values in its enclosing scope, it cannot modify them (unless they're declared [global](http://docs.python.org/3.3/reference/simple_stmts.html#the-global-statement) with the global keyword).
+  - A closure binds values in the enclosing environment to names in the local environment. The local environment can then use the bound value, and even reassign that name to something else, but it can't modify the binding in the enclosing environment.
+  - In your case you are trying to treat `counter` as a local variable rather than a bound value. Note that this code, which binds the value of x assigned in the enclosing environment, works fine:
+```shell
+>>> x = 1
+
+>>> def f():
+>>>  return x
+
+>>> f()
+1
+```
+  - Chris Taylor answered Feb 13 '12 at 17:21
+<br>
+  - To modify a global variable inside a function, you must use the global keyword.
+  - When you try to do this without the line
+  - `global counter`
+  - inside of the definition of increment, a local variable named counter is created so as to keep you from mucking up the counter variable that the whole program may depend on.
+  - Note that you only need to use global when you are modifying the variable; you could read counter from within increment without the need for the global statement.
+  - chucksmash answered Feb 13 '12 at 17:13
+- [How to Do a Binary Search in Python](https://realpython.com/binary-search-python/) - [Real Python](https://realpython.com/), [Bartosz Zaczyński](https://realpython.com/binary-search-python/#author), Mar 16, 2020
+- [Python Scope & the LEGB Rule: Resolving Names in Your Code](https://realpython.com/python-scope-legb-rule/) - [Real Python](https://realpython.com/), Leodanis Pozo Ramos;  Mar 18, 2020
+  - [Discovering Unusual Python Scopes](https://realpython.com/python-scope-legb-rule/#discovering-unusual-python-scopes)
+  - [Using Scope Related Built-In Functions](https://realpython.com/python-scope-legb-rule/#using-scope-related-built-in-functions)
+    - `globals()`
+    - `locals()`
+    - `dir()`
+    - `vars()`
