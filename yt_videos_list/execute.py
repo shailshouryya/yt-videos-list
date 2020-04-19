@@ -1,7 +1,9 @@
 from . import program
 from . import selenium_macos, selenium_windows, selenium_linux
 from .notifications import Common, ModuleMessage, ScriptMessage
-import os, sys, platform
+import os
+import sys
+import platform
 import time
 import selenium
 from selenium import webdriver
