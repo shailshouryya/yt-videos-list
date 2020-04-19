@@ -22,7 +22,7 @@ __source__               = 'https://github.com/Shail-Shouryya/yt_videos_list'
 
 
 class ListCreator:
-    def __init__(self, txt=True, txtWriteFormat='x', csv=True, csvWriteFormat='x', docx=False, docxWriteFormat='x', chronological=False, headless=False, scrollPauseTime=0.8, driver=None):
+    def __init__(self, txt=True, txt_write_format='x', csv=True, csv_write_format='x', docx=False, docx_write_format='x', chronological=False, headless=False, scroll_pause_time=0.8, driver=None):
         '''
         The ListCreator class creates a ListCreator instance with no required arguments.
         Example usage:
@@ -48,12 +48,12 @@ class ListCreator:
              -> txt=True  (default) OR txt=False
              -> csv=True  (default) OR csv=False
 
-        Options for the write format arguments (`csvWriteFormat`, `txtWriteFormat`) are
+        Options for the write format arguments (`csv_write_format`, `txt_write_format`) are
           * 'x' (default) - does NOT overwrite an existing file with the same name
           * 'w'           - does overwrite an existing file with the same name
           NOTE: if you specify the file type argument to be False, you don't need to touch this - the program will automatically skip this step.
-             -> txtWriteFormat='x'  (default) OR txtWriteFormat='w'
-             -> csvWriteFormat='x'  (default) OR csvWriteFormat='w'
+             -> txt_write_format='x'  (default) OR txt_write_format='w'
+             -> csv_write_format='x'  (default) OR csv_write_format='w'
 
         Options for the `chronological` argument are
           * False (default) - write the files in order from most recent video to the oldest video
@@ -65,22 +65,22 @@ class ListCreator:
           * True            - run the driver without an open Selenium instance for viewing (runs in "invisible" mode)
              -> headless=False (default) OR headless=True
 
-        Options for the `scrollPauseTime argument` are any float values greater than 0 (defaults to 0.8)
+        Options for the `scroll_pause_time argument` are any float values greater than 0 (defaults to 0.8)
           * The value you provide will be how long (in seconds) the program waits before trying to scroll the videos list page down for the channel you want to scrape.
           * For fast internet connections, you may want to reduce the value, and for slow connections you may want to increase the value.
-             -> scrollPauseTime=0.8 (default)
+             -> scroll_pause_time=0.8 (default)
           * CAUTION: reducing this value too much will result in the programming not capturing all the videos, so be careful! Experiment :)
 
 
         WORKING EXAMPLES:
         ###########################################################
         For a ListCreator object that creates a csv file but not a txt file in chronological order in headless mode with a 1 second pause between scrolls:
-        LC = ListCreator(txt=True, txtWriteFormat='x', csv=False, csvWriteFormat=0, chronological=True, headless=True, scrollPauseTime=1.0)
+        LC = ListCreator(txt=True, txt_write_format='x', csv=False, csv_write_format=0, chronological=True, headless=True, scroll_pause_time=1.0)
         ###########################################################
 
         ###########################################################
         The same could also be done by specifying only the arguments that change from the default, but notice how this is less explicit and can become confusing if you forget what the default arguments are:
-        LC = ListCreator(txt=False, headless=True, scrollPauseTime=1.0)
+        LC = ListCreator(txt=False, headless=True, scroll_pause_time=1.0)
         ###########################################################
 
         -----------------------------------------------------------
@@ -93,33 +93,33 @@ class ListCreator:
 
         ###########################################################
         For a ListCreator object that creates a txt and csv file and overwrites an existing txt file of the same name but does not overwrite an existing csv file of the same name (with all other arguments unmodified):
-        LC = ListCreator(txtWriteFormat='w')
+        LC = ListCreator(txt_write_format='w')
         ###########################################################
         '''
 
 
-        self.txt             = txt
-        self.txtWriteFormat  = txtWriteFormat
-        self.csv             = csv
-        self.csvWriteFormat  = csvWriteFormat
-        self.docx            = docx
-        self.docxWriteFormat = docxWriteFormat
-        self.chronological   = chronological
-        self.headless        = headless
-        self.scrollPauseTime = scrollPauseTime
-        self.driver          = None if driver is None else driver.lower()
+        self.txt               = txt
+        self.txt_write_format  = txt_write_format
+        self.csv               = csv
+        self.csv_write_format  = csv_write_format
+        self.docx              = docx
+        self.docx_write_format = docx_write_format
+        self.chronological     = chronological
+        self.headless          = headless
+        self.scroll_pause_time = scroll_pause_time
+        self.driver            = None if driver is None else driver.lower()
 
 
-    def create_list_for(self, channel, channelType, fileName=None):
+    def create_list_for(self, channel, channel_type, file_name=None):
         '''
         The create_list_for() method creates a list using the arguments specified during instantiation of the ListCreator object.
-        You need to specify the channel and channelType.
-        You can also provide an optional fileName argument, but the fileName argument is not required.
+        You need to specify the channel and channel_type.
+        You can also provide an optional file_name argument, but the file_name argument is not required.
         '''
 
 
-        _executionType='module'
-        self.instanceAttributes = (self.txt, self.txtWriteFormat, self.csv, self.csvWriteFormat, self.docx, self.docxWriteFormat, self.chronological, self.headless, self.scrollPauseTime, self.driver)
+        _execution_type = 'module'
+        self.instance_attributes = (self.txt, self.txt_write_format, self.csv, self.csv_write_format, self.docx, self.docx_write_format, self.chronological, self.headless, self.scroll_pause_time, self.driver)
 
 
-        execute.logic(channel, channelType, fileName, *self.instanceAttributes, _executionType)
+        execute.logic(channel, channel_type, file_name, *self.instance_attributes, _execution_type)

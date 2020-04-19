@@ -9,7 +9,7 @@ def cli():
 
     '''
     first argument should be channel/user name
-    -c --channelType sets channelType to 'channel'
+    -c --channel_type sets channel_type to 'channel'
     -o --overwrite overwrite file if a file of the same name already exists in the output directory
     --version shows version number and exits
     --csv writes to csv file
@@ -29,21 +29,21 @@ def cli():
 
 
     channel = 'schafer5'
-    channelType = 'user'
-    fileName = None
+    channel_type = 'user'
+    file_name = None
     txt = True
-    txtWriteFormat = 'x'
+    txt_write_format = 'x'
     csv = True
-    csvWriteFormat = 'x'
+    csv_write_format = 'x'
     docx = False
-    docxWriteFormat = 'x'
+    docx_write_format = 'x'
     chronological = False
     headless = False
-    scrollPauseTime = 0.8
+    scroll_pause_time = 0.8
     driver = None
-    return (channel, channelType, fileName, txt, txtWriteFormat, csv, csvWriteFormat, docx, docxWriteFormat, chronological, headless, scrollPauseTime, driver)
+    return (channel, channel_type, file_name, txt, txt_write_format, csv, csv_write_format, docx, docx_write_format, chronological, headless, scroll_pause_time, driver)
 
 def create_list_for():
-    _executionType = 'script'
-    cliSettings = cli()
-    execute.logic(*cliSettings, _executionType)
+    _execution_type = 'script'
+    cli_settings = cli()
+    execute.logic(*cli_settings, _execution_type)

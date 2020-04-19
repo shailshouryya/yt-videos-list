@@ -17,7 +17,7 @@
 - [What are the benefits of using Marionette FirefoxDriver instead of the old Selenium FirefoxDriver for a Selenium tester?](https://stackoverflow.com/questions/38916650/what-are-the-benefits-of-using-marionette-firefoxdriver-instead-of-the-old-selen/38917100#38917100) - Stack Overflow
 - [selenium.common.exceptions.SessionNotCreatedException: Message: Unable to find a matching set of capabilities with GeckoDriver, Selenium and Firefox](https://stackoverflow.com/questions/52002958/selenium-common-exceptions-sessionnotcreatedexception-message-unable-to-find-a) - Stack Overflow
 
-- Put check for `userDriver is None` first since you can't iterate over `None` as you can iterate over strings. This comes up in the check_driver() method in execute.py
+- Put check for `user_driver is None` first since you can't iterate over `None` as you can iterate over strings. This comes up in the check_driver() method in execute.py
   - `TypeError: argument of type 'NoneType' is not iterable`
 - [selenium.common.exceptions](https://selenium.dev/selenium/docs/api/py/common/selenium.common.exceptions.html)
 - running as a module (as of commit 2dbc5a15ab83a79aeeb884a106062ef2b1f52c76):

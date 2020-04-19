@@ -35,11 +35,11 @@ python3
 from yt_videos_list import ListCreator
 LC = ListCreator()
 
-# "user" channelType (example uses Corey Schafer):
-LC.create_list_for(channel='schafer5', channelType='user')
+# "user" channel_type (example uses Corey Schafer):
+LC.create_list_for(channel='schafer5', channel_type='user')
 
-# "channel" channelType (example uses freeCodeCamp) along with the optional fileName argument:
-LC.create_list_for(channel='UC8butISFwT-Wl7EV0hUK0BQ', channelType='channel', fileName='freeCodeCamp_orgVideosList')
+# "channel" channel_type (example uses freeCodeCamp) along with the optional file_name argument:
+LC.create_list_for(channel='UC8butISFwT-Wl7EV0hUK0BQ', channel_type='channel', file_name='freeCodeCamp_orgVideosList')
 
 # see the new files that were just created:
 import os
@@ -65,7 +65,7 @@ There are two types of YouTube channels: one type is a `user` channel and the ot
   - Gordon Ramsay: https://www.youtube.com/channel/UCIEv3lZ_tNXHzL3ox-_uUGQ
   - PBS Space Time: https://www.youtube.com/channel/UC7_gcs09iThXybpVgjHZ_7g
 
-To scrape the video titles along with the link to the video, you need to run the `create_list_for(channel, channelType)` method on the ListCreator object you just created, substituting the name of the channel for the `channel` argument and the type of channel for `channelType` argument. By default, the name of the file produced will be `channel`VideosList.ext where the `.ext` will be `.csv` or `.txt ` depending on the type of file(s) that you specified.
+To scrape the video titles along with the link to the video, you need to run the `create_list_for(channel, channel_type)` method on the ListCreator object you just created, substituting the name of the channel for the `channel` argument and the type of channel for `channel_type` argument. By default, the name of the file produced will be `channel`VideosList.ext where the `.ext` will be `.csv` or `.txt ` depending on the type of file(s) that you specified.
 
 ### For more control
 ---
@@ -75,9 +75,9 @@ To scrape the video titles along with the link to the video, you need to run the
 
 ---
 ```python
-ListCreator(csv=True, csvWriteFormat='x', txt=True, txtWriteFormat='x',
+ListCreator(csv=True, csv_write_format='x', txt=True, txt_write_format='x',
               chronological=False,
-              headless=False, scrollPauseTime=0.8, driver='Firefox')
+              headless=False, scroll_pause_time=0.8, driver='Firefox')
 ```
 There are a number of optional arguments you can specify during the instantiation of the ListCreator object. The preceding arguments are run by default, but in case you want more flexibility, you can specify:
 
@@ -95,12 +95,12 @@ There are a number of optional arguments you can specify during the instantiatio
   - `False` - do not create a file for the specified type.
     - `txt=True`  (default) OR `txt=False`
     - `csv=True`  (default) OR `csv=False`
-- Options for the write format arguments (`csvWriteFormat`, `txtWriteFormat`) are
+- Options for the write format arguments (`csv_write_format`, `txt_write_format`) are
   - `'x'` (default) - does not overwrite an existing file with the same name
   - `'w'` - if an existing file with the same name exists, it will be overwritten
   - NOTE: if you specify the file type argument to be False, you don't need to touch this - the program will automatically skip this step.
-    - `txtWriteFormat='x'`  (default) OR `txtWriteFormat='w'`
-    - `csvWriteFormat='x'`  (default) OR `csvWriteFormat='w'`
+    - `txt_write_format='x'`  (default) OR `txt_write_format='w'`
+    - `csv_write_format='x'`  (default) OR `csv_write_format='w'`
 - Options for the `chronological` argument are
   - `False` (default) - write the files in order from most recent video to the oldest video
   - `True` - write the files in order from oldest video to the most recent video
@@ -109,8 +109,8 @@ There are a number of optional arguments you can specify during the instantiatio
   - `False` (default) - run the driver with an open Selenium instance for viewing
   - `True` - run the driver in "invisible" mode.
     - `headless=False` (default) OR `headless=True`
-- Options for the `scrollPauseTime` argument are any float values greater than `0` (default `0.8`). The value you provide will be how long the program waits before trying to scroll the videos list page down for the channel you want to scrape. For fast internet connections, you may want to reduce the value, and for slow connections you may want to increase the value.
-  - `scrollPauseTime=0.8` (default)
+- Options for the `scroll_pause_time` argument are any float values greater than `0` (default `0.8`). The value you provide will be how long the program waits before trying to scroll the videos list page down for the channel you want to scrape. For fast internet connections, you may want to reduce the value, and for slow connections you may want to increase the value.
+  - `scroll_pause_time=0.8` (default)
   - CAUTION: reducing this value too much will result in the programming not capturing all the videos, so be careful! Experiment :)
 
 ## Running the package from the CLI as a script using -m (coming in `yt-videos-list 2.0`!)

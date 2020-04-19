@@ -4,19 +4,19 @@ class Common:
     '''
 
 
-    notWritingToAnyFiles = '\nBased on your provided settings, yt_videos_list will not be writing to either a csv file or a txt file.'
+    not_writing_to_any_files = '\nBased on your provided settings, yt_videos_list will not be writing to either a csv file or a txt file.'
 
-    noVideosFound = 'No videos were found for the channel you provided. Are you sure you typed in the channel name correctly?\n'
-    noNewVideosFound = 'No new videos were found since the last scroll. Waiting another 0.6 seconds to see if more videos can be loaded....'
-    invalidResponse = 'The response you entered was invalid.'
+    no_videos_found = 'No videos were found for the channel you provided. Are you sure you typed in the channel name correctly?\n'
+    no_new_videos_found = 'No new videos were found since the last scroll. Waiting another 0.6 seconds to see if more videos can be loaded....'
+    invalid_response = 'The response you entered was invalid.'
 
-    invalidDriver = 'The driver you specified is invalid. Please try rerunning the last command after specifying a valid driver. Supported drivers include:\n   Firefox\n   Opera\n   Safari\n   Chrome'
+    invalid_driver = 'The driver you specified is invalid. Please try rerunning the last command after specifying a valid driver. Supported drivers include:\n   Firefox\n   Opera\n   Safari\n   Chrome'
 
-    unsupportedOperaHeadless = '\nHeadless mode is unsupported in OperaDriver. We are waiting on the Opera dev team to start offering support for headless mode to allow remote automation without opening a driver. We will update this when support is added...\n:)\n\n\n'
-    unsupportedSafariHeadless = '\nHeadless mode is unsupported in SafariDriver. We are waiting on Apple to start offering support for headless mode to allow remote automation without opening a driver. We will update this when support is added...\n:)\n\n\n'
-    unsupportedOS = 'The system you are using is not yet supported. Please create an issue at https://github.com/Shail-Shouryya/yt_videos_list/issues\nThanks!'
+    unsupported_opera_headless = '\nHeadless mode is unsupported in OperaDriver. We are waiting on the Opera dev team to start offering support for headless mode to allow remote automation without opening a driver. We will update this when support is added...\n:)\n\n\n'
+    unsupported_safari_headless = '\nHeadless mode is unsupported in SafariDriver. We are waiting on Apple to start offering support for headless mode to allow remote automation without opening a driver. We will update this when support is added...\n:)\n\n\n'
+    unsupported_os = 'The system you are using is not yet supported. Please create an issue at https://github.com/Shail-Shouryya/yt_videos_list/issues\nThanks!'
 
-    driverDownloadsForOS = {
+    driver_downloads_for_os = {
         'firefox': {
             'macos': [
                 '# macos geckodriver (Firefoxdriver) v0.26.0',
@@ -195,7 +195,7 @@ class Common:
         }
     }
 
-    moreDriverInfo = {
+    more_driver_info = {
         # 'driver': ['driverName', 'url for more driver info',  'url for driver releases', 'browser name', 'url for browser download']
         'firefox': ['geckodriver',  'https://github.com/mozilla/geckodriver',                    'https://github.com/mozilla/geckodriver/releases',                'Mozilla Firefox', 'https://www.mozilla.org/en-US/firefox/new/'],
         'opera':   ['operadriver',  'https://github.com/operasoftware/operachromiumdriver',      'https://github.com/operasoftware/operachromiumdriver/releases',  'Opera',           'https://www.opera.com/'],
@@ -203,34 +203,34 @@ class Common:
     }
 
     @classmethod
-    def display_dependency_setup_instructions(cls, userDriver, userOS):
-        terminalCopyPasteDirections = 'Once you determine the right version to download, copy the command, open a new terminal session (usually possible with CMD+N or CMD+T (or CTRL+N or CTRL+D depending on your keyboard/OS) from an active terminal session), and paste the command you just copied. Once you\'ve done that, you should be able to come back to this session and rerun the last command without an error!\n\n'
+    def display_dependency_setup_instructions(cls, user_driver, user_os):
+        terminal_copy_paste_directions = 'Once you determine the right version to download, copy the command, open a new terminal session (usually possible with CMD+N or CMD+T (or CTRL+N or CTRL+D depending on your keyboard/OS) from an active terminal session), and paste the command you just copied. Once you\'ve done that, you should be able to come back to this session and rerun the last command without an error!\n\n'
 
-        if userOS != 'windows' and userDriver != 'safari':
-            print (terminalCopyPasteDirections)
+        if user_os != 'windows' and user_driver != 'safari':
+            print (terminal_copy_paste_directions)
 
-        geckodriverDownloadInstructions = '(The given command downloads a geckodriver ("Firefoxdriver") version that is compatible with Firefox versions ≥ 60. To see more information about the differences compared to older versions, please visit https://github.com/mozilla/geckodriver/releases)'
-        operadriverDownloadInstructions = '(Your Opera browser version should match the "supports Opera ## release" below)'
-        chromedriverDownloadInstructions = '(Your Chrome browser version should match the first numbers before the decimal place of the chromedriver version below)'
+        geckodriver_download_instructions = '(The given command downloads a geckodriver ("Firefoxdriver") version that is compatible with Firefox versions ≥ 60. To see more information about the differences compared to older versions, please visit https://github.com/mozilla/geckodriver/releases)'
+        operadriver_download_instructions = '(Your Opera browser version should match the "supports Opera ## release" below)'
+        chromedriver_download_instructions = '(Your Chrome browser version should match the first numbers before the decimal place of the chromedriver version below)'
 
-        print (geckodriverDownloadInstructions) if userDriver == 'firefox' else print (operadriverDownloadInstructions) if userDriver == 'opera' else print (chromedriverDownloadInstructions) if userDriver == 'chrome' else print ('This is an OS specific driver.')
+        print (geckodriver_download_instructions) if user_driver == 'firefox' else print (operadriver_download_instructions) if user_driver == 'opera' else print (chromedriver_download_instructions) if user_driver == 'chrome' else print ('This is an OS specific driver.')
 
-        for driverVersionDownload in cls.driverDownloadsForOS[userDriver][userOS]:
-            print (driverVersionDownload)
+        for driver_version_download in cls.driver_downloads_for_os[user_driver][user_os]:
+            print (driver_version_download)
 
-        def display_more_dependency_information(userDriver):
-            print (f'\n\n# For more information about the {cls.moreDriverInfo[userDriver][0]}, please visit\n{cls.moreDriverInfo[userDriver][1]}\n{cls.moreDriverInfo[userDriver][2]}      (all supported versions)\n\nNOTE! You must also have the {cls.moreDriverInfo[userDriver][3]} browser installed to use this. If you don\'t have it installed, install it from\n{cls.moreDriverInfo[userDriver][4]}')
+        def display_more_dependency_information(user_driver):
+            print (f'\n\n# For more information about the {cls.more_driver_info[user_driver][0]}, please visit\n{cls.more_driver_info[user_driver][1]}\n{cls.more_driver_info[user_driver][2]}      (all supported versions)\n\nNOTE! You must also have the {cls.more_driver_info[user_driver][3]} browser installed to use this. If you don\'t have it installed, install it from\n{cls.more_driver_info[user_driver][4]}')
 
-        if userDriver != 'safari':
-            display_more_dependency_information(userDriver)
-
-    @staticmethod
-    def display_selenium_dependency_error(errorMessage):
-        print (f'\n\n\n\n\n\n\nThere was an error while trying to open up the remote selenium instance. The exact error was:\n{errorMessage}\nDon\'t worry though, this is an easy fix!')
+        if user_driver != 'safari':
+            display_more_dependency_information(user_driver)
 
     @staticmethod
-    def tell_user_to_download_driver(userDriver):
-        print (f'\nIt looks like you don\'t have the correct Selenium dependency set up to run this program using the remote {userDriver}driver.\nThe version of your {userDriver.title()} browser - usually found by going to {userDriver.title()} -> \"About browser\" in the menu bar within a {userDriver.title()} window - should match the comment for the corresponding command.\nPlease download it using the relevant command from the list of commands below.\n')
+    def display_selenium_dependency_error(error_message):
+        print (f'\n\n\n\n\n\n\nThere was an error while trying to open up the remote selenium instance. The exact error was:\n{error_message}\nDon\'t worry though, this is an easy fix!')
+
+    @staticmethod
+    def tell_user_to_download_driver(user_driver):
+        print (f'\nIt looks like you don\'t have the correct Selenium dependency set up to run this program using the remote {user_driver}driver.\nThe version of your {user_driver.title()} browser - usually found by going to {user_driver.title()} -> \"About browser\" in the menu bar within a {user_driver.title()} window - should match the comment for the corresponding command.\nPlease download it using the relevant command from the list of commands below.\n')
 
     @staticmethod
     def display_file_already_exists_warning(filename):
@@ -242,30 +242,30 @@ class Common:
         print (f'If you wish to skip the creation of {filename}, type "skip"')
 
 class ModuleMessage(Common):
-    notWritingToAnyFilesHint = 'If you want to run this program, please change the csv OR txt setting to True.\nThis program will now exit...'
+    not_writing_to_any_files_hint = 'If you want to run this program, please change the csv OR txt setting to True.\nThis program will now exit...'
 
-    runningDefaultDriver = '\nNo driver specified during ListCreator instantiation, so running program using the Firefox driver.'
-    runInHeadless = '\nAdvanced usage: you can run this program in headless mode with the optional "headless" parameter set to True to speed up execution slightly:'
-    runInHeadlessExample = '    LC = ListCreator(headless=True)\n\n\n'
+    running_default_driver = '\nNo driver specified during ListCreator instantiation, so running program using the Firefox driver.'
+    run_in_headless_hint = '\nAdvanced usage: you can run this program in headless mode with the optional "headless" parameter set to True to speed up execution slightly:'
+    run_in_headless_example = '    LC = ListCreator(headless=True)\n\n\n'
 
-    checkChannelType = 'If you did type the name in correctly, perhaps the channelType is set incorrectly. Try setting channelType to "channel" in the create_list_for() method call if you set channelType to "user" for this run, or try running the method with channelType set to "user" if you ran this method with channelType set to "channel" for this run.\n'
+    check_channel_type = 'If you did type the name in correctly, perhaps the channel_type is set incorrectly. Try setting channel_type to "channel" in the create_list_for() method call if you set channel_type to "user" for this run, or try running the method with channel_type set to "user" if you ran this method with channel_type set to "channel" for this run.\n'
 
-    fileAlreadyExists = 'This error indicates that a file of this name already exists in the current directory. If you want to overwrite this file, run the create_list_for method again with the optional parameter "writeFormat" set to "w"'
-    fileAlreadyExistsRerunUsage = 'Example usage:\n LC.create_list_for(writeFormat="w")\n'
+    file_already_exists = 'This error indicates that a file of this name already exists in the current directory. If you want to overwrite this file, run the create_list_for method again with the optional parameter "write_format" set to "w"'
+    file_already_exists_rerun_usage = 'Example usage:\n LC.create_list_for(write_format="w")\n'
 
-    showDriverOptions = 'To use a different driver, specify the driver in the driver argument during the ListCreator instantiation. For example:' + \
+    show_driver_options = 'To use a different driver, specify the driver in the driver argument during the ListCreator instantiation. For example:' + \
         "\n    LC = ListCreator(driver='opera')" + \
         "\n    LC = ListCreator(driver='safari')" + \
         "\n    LC = ListCreator(driver='chrome')" + \
         "\n    LC = ListCreator(driver='firefox')"
 
 class ScriptMessage(Common):
-    notWritingToAnyFilesHint = 'If you want to run this program, please change the csv OR txt setting TO FLAG.\nThis program will now exit...'
+    not_writing_to_any_files_hint = 'If you want to run this program, please change the csv OR txt setting TO FLAG.\nThis program will now exit...'
 
-    runningDefaultDriver = '\nNo driver flag used, so running program using the Firefox driver.'
+    running_default_driver = '\nNo driver flag used, so running program using the Firefox driver.'
 
-    inputMessage = "What is the name of the YouTube channel you want to generate the list for?\n\nIf you're unsure, click on the channel and look at the URL.\nIt should be in the format:\nhttps://www.youtube.com/user/YourChannelName\nOR\nhttps://www.youtube.com/channel/YourChannelName\n\nSubstitute what you see for YourChannelName and type it in below (NOTE: if your url looks like the second option, you need to run this script with the -c or --channel flag):\n"
+    input_message = "What is the name of the YouTube channel you want to generate the list for?\n\nIf you're unsure, click on the channel and look at the URL.\nIt should be in the format:\nhttps://www.youtube.com/user/YourChannelName\nOR\nhttps://www.youtube.com/channel/YourChannelName\n\nSubstitute what you see for YourChannelName and type it in below (NOTE: if your url looks like the second option, you need to run this script with the -c or --channel flag):\n"
 
-    checkChannelType = 'If you did type the name in correctly, perhaps the channelType is set incorrectly. Try using the -c or --channelType flag for this script if you didn\'t do it when running this script, or try running the script without the -c or --channelType flag if you DID include that flag when running this script.'
+    check_channel_type = 'If you did type the name in correctly, perhaps the channel_type is set incorrectly. Try using the -c or --channel_type flag for this script if you didn\'t do it when running this script, or try running the script without the -c or --channel_type flag if you DID include that flag when running this script.'
 
-    showDriverOptions = 'To use a different driver, specify the driver in the driver flag. For example:'
+    show_driver_options = 'To use a different driver, specify the driver in the driver flag. For example:'
