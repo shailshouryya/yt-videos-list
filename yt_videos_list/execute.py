@@ -6,11 +6,12 @@ import time
 import selenium
 from selenium import webdriver
 
-common_message = Common()
-module_message = ModuleMessage()
-script_message = ScriptMessage()
 
 def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_write_format, docx, docx_write_format, chronological, headless, scroll_pause_time, user_driver, execution_type):
+    common_message = Common()
+    module_message = ModuleMessage()
+    script_message = ScriptMessage()
+
     def determine_file_name():
         if file_name is not None:
             return file_name
