@@ -115,7 +115,8 @@ def write_to_csv(list_of_videos, file_name, write_format, chronological):
 
         for video_number, selenium_element in enumerate(list_of_videos, 1) if chronological is False else enumerate(list_of_videos[::-1], 1):
             writer.writerow(
-            {'video_number': f'{video_number}', 'Watched?': '', 'Video Title': f'{selenium_element.get_attribute("title")}', 'Video URL': f'{selenium_element.get_attribute("href")}', 'Watch again later?': '', 'Notes': ''})
+                {'video_number': f'{video_number}', 'Watched?': '', 'Video Title': f'{selenium_element.get_attribute("title")}', 'Video URL': f'{selenium_element.get_attribute("href")}', 'Watch again later?': '', 'Notes': ''}
+                )
             if video_number % 250 == 0:
                 print(f'{video_number} videos written to {csv_file.name}...')
     return csv_file.name, video_number
