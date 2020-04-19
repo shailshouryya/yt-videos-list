@@ -1,12 +1,15 @@
-from . import program
-from . import selenium_macos, selenium_windows, selenium_linux
-from .notifications import Common, ModuleMessage, ScriptMessage
 import os
 import sys
 import platform
 import time
+
 import selenium
 from selenium import webdriver
+
+from . import program
+from . import selenium_macos, selenium_windows, selenium_linux
+from .notifications import Common, ModuleMessage, ScriptMessage
+
 
 
 def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_write_format, docx, docx_write_format, chronological, headless, scroll_pause_time, user_driver, execution_type):
