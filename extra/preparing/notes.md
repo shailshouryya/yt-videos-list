@@ -124,7 +124,7 @@ increment = incrementer()
 increment()   # 1
 increment()   # 2
 ```
-  - * The question origially asked about closures in Python.
+  - The question origially asked about closures in Python.
   - kindall answered Feb 13 '12 at 17:21
 <br>
 
