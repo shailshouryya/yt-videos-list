@@ -2,8 +2,6 @@ import functools
 import time
 import csv
 
-from selenium import webdriver
-
 from .notifications import Common as common_message
 
 
