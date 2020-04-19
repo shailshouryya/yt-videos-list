@@ -1,8 +1,12 @@
-from .notifications import Common as common_message
-from selenium import webdriver
 import functools
 import time
 import csv
+
+from selenium import webdriver
+
+from .notifications import Common as common_message
+
+
 
 def scroll_down(current_elements_count, driver, scroll_pause_time):
     driver.execute_script('window.scrollBy(0, 50000);')
