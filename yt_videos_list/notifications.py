@@ -207,39 +207,39 @@ class Common:
         terminal_copy_paste_directions = 'Once you determine the right version to download, copy the command, open a new terminal session (usually possible with CMD+N or CMD+T (or CTRL+N or CTRL+D depending on your keyboard/OS) from an active terminal session), and paste the command you just copied. Once you\'ve done that, you should be able to come back to this session and rerun the last command without an error!\n\n'
 
         if user_os != 'windows' and user_driver != 'safari':
-            print (terminal_copy_paste_directions)
+            print(terminal_copy_paste_directions)
 
         geckodriver_download_instructions = '(The given command downloads a geckodriver ("Firefoxdriver") version that is compatible with Firefox versions ≥ 60. To see more information about the differences compared to older versions, please visit https://github.com/mozilla/geckodriver/releases)'
         operadriver_download_instructions = '(Your Opera browser version should match the "supports Opera ## release" below)'
         chromedriver_download_instructions = '(Your Chrome browser version should match the first numbers before the decimal place of the chromedriver version below)'
 
-        print (geckodriver_download_instructions) if user_driver == 'firefox' else print (operadriver_download_instructions) if user_driver == 'opera' else print (chromedriver_download_instructions) if user_driver == 'chrome' else print ('This is an OS specific driver.')
+        print(geckodriver_download_instructions) if user_driver == 'firefox' else print(operadriver_download_instructions) if user_driver == 'opera' else print(chromedriver_download_instructions) if user_driver == 'chrome' else print('This is an OS specific driver.')
 
         for driver_version_download in cls.driver_downloads_for_os[user_driver][user_os]:
-            print (driver_version_download)
+            print(driver_version_download)
 
         def display_more_dependency_information(user_driver):
-            print (f'\n\n# For more information about the {cls.more_driver_info[user_driver][0]}, please visit\n{cls.more_driver_info[user_driver][1]}\n{cls.more_driver_info[user_driver][2]}      (all supported versions)\n\nNOTE! You must also have the {cls.more_driver_info[user_driver][3]} browser installed to use this. If you don\'t have it installed, install it from\n{cls.more_driver_info[user_driver][4]}')
+            print(f'\n\n# For more information about the {cls.more_driver_info[user_driver][0]}, please visit\n{cls.more_driver_info[user_driver][1]}\n{cls.more_driver_info[user_driver][2]}      (all supported versions)\n\nNOTE! You must also have the {cls.more_driver_info[user_driver][3]} browser installed to use this. If you don\'t have it installed, install it from\n{cls.more_driver_info[user_driver][4]}')
 
         if user_driver != 'safari':
             display_more_dependency_information(user_driver)
 
     @staticmethod
     def display_selenium_dependency_error(error_message):
-        print (f'\n\n\n\n\n\n\nThere was an error while trying to open up the remote selenium instance. The exact error was:\n{error_message}\nDon\'t worry though, this is an easy fix!')
+        print(f'\n\n\n\n\n\n\nThere was an error while trying to open up the remote selenium instance. The exact error was:\n{error_message}\nDon\'t worry though, this is an easy fix!')
 
     @staticmethod
     def tell_user_to_download_driver(user_driver):
-        print (f'\nIt looks like you don\'t have the correct Selenium dependency set up to run this program using the remote {user_driver}driver.\nThe version of your {user_driver.title()} browser - usually found by going to {user_driver.title()} -> \"About browser\" in the menu bar within a {user_driver.title()} window - should match the comment for the corresponding command.\nPlease download it using the relevant command from the list of commands below.\n')
+        print(f'\nIt looks like you don\'t have the correct Selenium dependency set up to run this program using the remote {user_driver}driver.\nThe version of your {user_driver.title()} browser - usually found by going to {user_driver.title()} -> \"About browser\" in the menu bar within a {user_driver.title()} window - should match the comment for the corresponding command.\nPlease download it using the relevant command from the list of commands below.\n')
 
     @staticmethod
     def display_file_already_exists_warning(filename):
-        print (f'\nWARNING! A file with the name {filename} already exists in the current directory.')
+        print(f'\nWARNING! A file with the name {filename} already exists in the current directory.')
 
     @staticmethod
     def display_file_already_exists_prompt(filename):
-        print (f'If you wish to proceed and overwrite {filename}, type "proceed", otherwise move the file to a different directory on your computer OR rename the file before typing "proceed"')
-        print (f'If you wish to skip the creation of {filename}, type "skip"')
+        print(f'If you wish to proceed and overwrite {filename}, type "proceed", otherwise move the file to a different directory on your computer OR rename the file before typing "proceed"')
+        print(f'If you wish to skip the creation of {filename}, type "skip"')
 
 class ModuleMessage(Common):
     not_writing_to_any_files_hint = 'If you want to run this program, please change the csv OR txt setting to True.\nThis program will now exit...'

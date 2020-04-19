@@ -26,7 +26,7 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
                 elif 'skip' in user_response.strip().lower():
                     return 0
                 else:
-                    print ('\n' + common_message.invalid_response)
+                    print('\n' + common_message.invalid_response)
                     common_message.display_file_already_exists_prompt(filename)
                     return new_write_format()
         if file_type is True and write_format == 'x':
@@ -50,15 +50,15 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
         elif 'safari' in user_driver:
             return webdriver.Safari
         else:
-            print (common_message.invalid_driver)
+            print(common_message.invalid_driver)
             return 'invalid'
 
     def open_user_driver():
         if headless is False:
             driver = seleniumdriver()
             if execution_type == 'module':
-                print (module_message.run_in_headless_hint)
-                print (module_message.run_in_headless_example)
+                print(module_message.run_in_headless_hint)
+                print(module_message.run_in_headless_example)
         else: # headless is True
             if user_driver == 'firefox':
                 options = selenium.webdriver.firefox.options.Options()
@@ -76,10 +76,10 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
                 options = webdriver.ChromeOptions()
                 options.add_argument('headless')
                 driver = seleniumdriver(options=options)
-                print (common_message.unsupported_opera_headless)
+                print(common_message.unsupported_opera_headless)
             elif user_driver == 'safari':
                 driver = seleniumdriver()
-                print (common_message.unsupported_safari_headless)
+                print(common_message.unsupported_safari_headless)
         return driver
 
     def determine_user_os():
@@ -90,7 +90,7 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
         elif platform.system().lower().startswith('windows'):
             return 'windows'
         else:
-            print (common_message.unsupported_os)
+            print(common_message.unsupported_os)
             sys.exit()
 
     def show_user_how_to_setuo_selenium():
@@ -112,13 +112,13 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
         docx_write_format = verify_write_format(docx, docx_write_format, file_name, 'docx')
 
         if (txt_write_format == 0 and csv_write_format == 0) or (txt is False and csv is False):
-            print (common_message.not_writing_to_any_files)
-            print (module_message.not_writing_to_any_files_hint) if execution_type == 'module' else print (script_message.not_writing_to_any_files_hint)
+            print(common_message.not_writing_to_any_files)
+            print(module_message.not_writing_to_any_files_hint) if execution_type == 'module' else print(script_message.not_writing_to_any_files_hint)
             sys.exit() # the files already exist and the user doesn't want to overwrite either of them
 
         if user_driver is None:
-            print (module_message.running_default_driver) if execution_type == 'module' else print (script_message.running_default_driver)
-            print (module_message.show_driver_options)    if execution_type == 'module' else print (script_message.show_driver_options)
+            print(module_message.running_default_driver) if execution_type == 'module' else print(script_message.running_default_driver)
+            print(module_message.show_driver_options)    if execution_type == 'module' else print(script_message.show_driver_options)
             user_driver = 'firefox'
         seleniumdriver = check_driver()
         if seleniumdriver == 'invalid':
@@ -145,11 +145,11 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
             show_user_how_to_setuo_selenium()
             return
     with driver:
-        print (url)
+        print(url)
         videos_list = program.scroll_to_bottom(url, driver, scroll_pause_time)
         if len(videos_list) == 0:
-            print (common_message.no_videos_found)
-            print (module_message.check_channel_type) if execution_type == 'module' else print (script_message.check_channel_type)
+            print(common_message.no_videos_found)
+            print(module_message.check_channel_type) if execution_type == 'module' else print(script_message.check_channel_type)
             return
         if txt is True and txt_write_format != 0:
             program.write_to_txt(videos_list, file_name, txt_write_format, chronological)
@@ -158,4 +158,4 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
             program.write_to_csv(videos_list, file_name, csv_write_format, chronological)
     program_end = time.perf_counter()
     total_time  = program_end - program_start
-    print (f'This program took {total_time} seconds to complete.\n')
+    print(f'This program took {total_time} seconds to complete.\n')
