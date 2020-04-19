@@ -20,15 +20,15 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
 
     def verify_write_format(file_type, write_format, file_name, file_extension):
         def new_write_format():
-                user_response = input()
-                if 'proceed' in user_response.strip().lower():
-                    return 'w'
-                elif 'skip' in user_response.strip().lower():
-                    return 0
-                else:
-                    print('\n' + common_message.invalid_response)
-                    common_message.display_file_already_exists_prompt(filename)
-                    return new_write_format()
+            user_response = input()
+            if 'proceed' in user_response.strip().lower():
+                return 'w'
+            elif 'skip' in user_response.strip().lower():
+                return 0
+            else:
+                print('\n' + common_message.invalid_response)
+                common_message.display_file_already_exists_prompt(filename)
+                return new_write_format()
         if file_type is True and write_format == 'x':
             filename   = f'{file_name}VideosList.{file_extension}'
             file_exists = True if os.path.isfile(f'./{filename}') else False
