@@ -7,10 +7,8 @@ import selenium
 from selenium import webdriver
 
 from . import program
-from . import selenium_macos, selenium_windows, selenium_linux
+from . import selenium_macos, selenium_windows, selenium_linux # used in globals()[f'selenium_{user_os}'].download(user_driver)
 from .notifications import Common, ModuleMessage, ScriptMessage
-
-
 
 def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_write_format, docx, docx_write_format, chronological, headless, scroll_pause_time, user_driver, execution_type):
     common_message = Common()
