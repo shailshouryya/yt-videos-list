@@ -34,7 +34,7 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
                 return new_write_format()
         if file_type is True and write_format == 'x':
             filename   = f'{file_name}VideosList.{file_extension}'
-            file_exists = True if os.path.isfile(f'./{filename}') else False
+            file_exists = bool(os.path.isfile(f'./{filename}'))
             if file_exists is True:
                 common_message.display_file_already_exists_warning(filename)
                 common_message.display_file_already_exists_prompt(filename)
