@@ -85,6 +85,7 @@ import spam
     - --> A note that caught me out, I had a variable declared at the top of the file that I can read inside a function without issue, however to write to a variable that I have declared at the top of the file, I had to use global. – mouckatron Feb 6 '18 at 14:35
     - --> A more in-depth explanation: [docs.python.org/3.3/reference/…](https://docs.python.org/3.3/reference/executionmodel.html#naming-and-binding). Not only can assignments bind names, so can imports, so you may also get UnboundLocalError from a statement that uses an unbounded imported name. Example: `def foo(): bar = deepcopy({'a':1}); from copy import deepcopy; return bar`, then `from copy import deepcopy; foo()`. The call succeeds if the local import `from copy import deepcopy` is removed. – Yibo Yang Jun 27 '18 at 16:00
 <br>
+
   - You need to use the [global statement](http://docs.python.org/py3k/reference/simple_stmts.html#the-global-statement) so that you are modifying the global variable counter, instead of a local variable:
 ```shell
 counter = 0
@@ -107,6 +108,7 @@ print counter[0]  # prints '1'
 ```
   - Andrew Clark answered Feb 13 '12 at 17:13
 <br>
+
   - To answer the question in your subject line,* yes, there are closures in Python, except they only apply inside a function, and also (in Python 2.x) they are read-only; you can't re-bind the name to a different object (though if the object is mutable, you can modify its contents). In Python 3.x, you can use the [nonlocal](https://docs.python.org/3/reference/simple_stmts.html?highlight=nonlocal#nonlocal) keyword to modify a closure variable.
 ```shell
 def incrementer():
@@ -125,6 +127,7 @@ increment()   # 2
   - * The question origially asked about closures in Python.
   - kindall answered Feb 13 '12 at 17:21
 <br>
+
   - The reason of why your code throws an `UnboundLocalError` is already well explained in other answers.
   - But it seems to me that you're trying to build something that works like [itertools.count()](http://docs.python.org/library/itertools.html#itertools.count).
   - So why don't you try it out, and see if it suits your case:
@@ -143,6 +146,7 @@ count(1)
 count(2)
   - Rik Poggi answered Feb 13 '12 at 17:31
 <br>
+
   - Python has lexical scoping by default, which means that although an enclosed scope can access values in its enclosing scope, it cannot modify them (unless they're declared [global](http://docs.python.org/3.3/reference/simple_stmts.html#the-global-statement) with the global keyword).
   - A closure binds values in the enclosing environment to names in the local environment. The local environment can then use the bound value, and even reassign that name to something else, but it can't modify the binding in the enclosing environment.
   - In your case you are trying to treat `counter` as a local variable rather than a bound value. Note that this code, which binds the value of x assigned in the enclosing environment, works fine:
@@ -157,6 +161,7 @@ count(2)
 ```
   - Chris Taylor answered Feb 13 '12 at 17:21
 <br>
+
   - To modify a global variable inside a function, you must use the global keyword.
   - When you try to do this without the line
   - `global counter`
