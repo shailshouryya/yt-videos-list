@@ -5,7 +5,6 @@ import csv
 from .notifications import Common as common_message
 
 
-
 def scroll_down(current_elements_count, driver, scroll_pause_time):
     driver.execute_script('window.scrollBy(0, 50000);')
     time.sleep(scroll_pause_time)
