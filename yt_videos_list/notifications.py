@@ -246,18 +246,18 @@ class ModuleMessage(Common):
 
     running_default_driver = '\nNo driver specified during ListCreator instantiation, so running program using the Firefox driver.'
     run_in_headless_hint = '\nAdvanced usage: you can run this program in headless mode with the optional "headless" parameter set to True to speed up execution slightly:'
-    run_in_headless_example = '    LC = ListCreator(headless=True)\n\n\n'
+    run_in_headless_example = '    lc = ListCreator(headless=True)\n\n\n'
 
     check_channel_type = 'If you did type the name in correctly, perhaps the channel_type is set incorrectly. Try setting channel_type to "channel" in the create_list_for() method call if you set channel_type to "user" for this run, or try running the method with channel_type set to "user" if you ran this method with channel_type set to "channel" for this run.\n'
 
     file_already_exists = 'This error indicates that a file of this name already exists in the current directory. If you want to overwrite this file, run the create_list_for method again with the optional parameter "write_format" set to "w"'
-    file_already_exists_rerun_usage = 'Example usage:\n LC.create_list_for(write_format="w")\n'
+    file_already_exists_rerun_usage = 'Example usage:\n lc.create_list_for(write_format="w")\n'
 
     show_driver_options = 'To use a different driver, specify the driver in the driver argument during the ListCreator instantiation. For example:' + \
-        "\n    LC = ListCreator(driver='opera')" + \
-        "\n    LC = ListCreator(driver='safari')" + \
-        "\n    LC = ListCreator(driver='chrome')" + \
-        "\n    LC = ListCreator(driver='firefox')"
+        "\n    lc = ListCreator(driver='opera')" + \
+        "\n    lc = ListCreator(driver='safari')" + \
+        "\n    lc = ListCreator(driver='chrome')" + \
+        "\n    lc = ListCreator(driver='firefox')"
 
 class ScriptMessage(Common):
     not_writing_to_any_files_hint = 'If you want to run this program, please change the csv OR txt setting TO FLAG.\nThis program will now exit...'

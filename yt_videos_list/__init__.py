@@ -26,7 +26,7 @@ class ListCreator:
         '''
         The ListCreator class creates a ListCreator instance with no required arguments.
         Example usage:
-            LC = ListCreator()
+            lc = ListCreator()
 
         ###########################################################
         OPTIONAL: Specify the settings you want to use by substituing the desired values for the default arguments.
@@ -75,12 +75,12 @@ class ListCreator:
         WORKING EXAMPLES:
         ###########################################################
         For a ListCreator object that creates a csv file but not a txt file in chronological order in headless mode with a 1 second pause between scrolls:
-        LC = ListCreator(txt=True, txt_write_format='x', csv=False, csv_write_format=0, chronological=True, headless=True, scroll_pause_time=1.0)
+        lc = ListCreator(txt=True, txt_write_format='x', csv=False, csv_write_format=0, chronological=True, headless=True, scroll_pause_time=1.0)
         ###########################################################
 
         ###########################################################
         The same could also be done by specifying only the arguments that change from the default, but notice how this is less explicit and can become confusing if you forget what the default arguments are:
-        LC = ListCreator(txt=False, headless=True, scroll_pause_time=1.0)
+        lc = ListCreator(txt=False, headless=True, scroll_pause_time=1.0)
         ###########################################################
 
         -----------------------------------------------------------
@@ -88,12 +88,12 @@ class ListCreator:
         If you choose the shorthand version, make sure you remember the default arguments!
         -----------------------------------------------------------
         PRO TIP: whichever way you decide to instantiate your object, if you use custom settings, name your ListCreator instance to reflect what you changed.
-        E.g. For the previous case instead of naming your instance "LC", name it "headlessCsvLC" or "headless_csv_LC" - or something along those lines.
+        E.g. For the previous case instead of naming your instance "lc", name it "headlessCsvlc" or "headless_csv_lc" - or something along those lines.
         -----------------------------------------------------------
 
         ###########################################################
         For a ListCreator object that creates a txt and csv file and overwrites an existing txt file of the same name but does not overwrite an existing csv file of the same name (with all other arguments unmodified):
-        LC = ListCreator(txt_write_format='w')
+        lc = ListCreator(txt_write_format='w')
         ###########################################################
         '''
 
