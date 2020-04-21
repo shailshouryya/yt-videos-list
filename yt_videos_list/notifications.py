@@ -242,6 +242,11 @@ class Common:
         print(f'If you wish to skip the creation of {filename}, type "skip"')
 
 class ModuleMessage(Common):
+    '''
+    This class contains messages that are relevant for the package when it is being run as a module from within the Python interpreter (or another Python script).
+    '''
+
+
     not_writing_to_any_files_hint = 'If you want to run this program, please change the csv OR txt setting to True.\nThis program will now exit...'
 
     running_default_driver = '\nNo driver specified during ListCreator instantiation, so running program using the Firefox driver.'
@@ -260,6 +265,11 @@ class ModuleMessage(Common):
         "\n    lc = ListCreator(driver='firefox')"
 
 class ScriptMessage(Common):
+    '''
+    This class contains messages that relevant for the package it is being run as a module using the -m option from the CLI.
+    '''
+
+
     not_writing_to_any_files_hint = 'If you want to run this program, please change the csv OR txt setting TO FLAG.\nThis program will now exit...'
 
     running_default_driver = '\nNo driver flag used, so running program using the Firefox driver.'
