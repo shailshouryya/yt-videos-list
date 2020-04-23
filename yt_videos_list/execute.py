@@ -97,7 +97,7 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
             print(common_message.unsupported_os)
             sys.exit()
 
-    def show_user_how_to_setuo_selenium():
+    def show_user_how_to_set_up_selenium():
         if user_driver != 'safari':
             common_message.tell_user_to_download_driver(user_driver)
         common_message.display_dependency_setup_instructions(user_driver, user_os)
@@ -146,7 +146,7 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
             sys.exit() # skip this try block for now until the logic to install the correct Selenium driver based on the user's OS and specified driver is added
             driver = open_user_driver()
         except: # could not download the correct Selenium driver based on the user's OS and specified driver
-            show_user_how_to_setuo_selenium()
+            show_user_how_to_set_up_selenium()
             return
     with driver:
         print(url)
