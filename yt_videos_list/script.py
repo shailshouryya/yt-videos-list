@@ -44,6 +44,7 @@ def cli():
     driver = None
     return (channel, channel_type, file_name, txt, txt_write_format, csv, csv_write_format, docx, docx_write_format, chronological, headless, scroll_pause_time, driver)
 
+
 def create_list_for():
     _execution_type = 'script'
     cli_settings = cli()

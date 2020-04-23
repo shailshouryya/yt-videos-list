@@ -131,7 +131,7 @@ increment()   # 2
   - The reason of why your code throws an `UnboundLocalError` is already well explained in other answers.
   - But it seems to me that you're trying to build something that works like [itertools.count()](http://docs.python.org/library/itertools.html#itertools.count).
   - So why don't you try it out, and see if it suits your case:
-
+```python
 >>> from itertools import count
 >>> counter = count(0)
 >>> counter
@@ -144,6 +144,7 @@ count(1)
 1
 >>> counter
 count(2)
+```
   - Rik Poggi answered Feb 13 '12 at 17:31
 <br>
 

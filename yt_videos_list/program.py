@@ -49,7 +49,7 @@ def time_writer_function(writer_function):
     def wrapper_timer(*args, **kwargs):
         start_time = time.perf_counter()
 
-        ########### check the name of the file and how many videos were written ###########
+        # check name of file and number of videos written
         filename, videos_written = writer_function(*args, **kwargs)
 
         end_time = time.perf_counter()
@@ -66,7 +66,7 @@ def time_writer_function(writer_function):
 def write_to_txt(list_of_videos, file_name, write_format, chronological):
     with open(f'{file_name}VideosList.txt', write_format) as txt_file:
         print(f'Opened {txt_file.name}, writing video information to file....')
-        spacing = '\n' + ' '*12 # newline followed by 12 spaces on the next line to pad the start of the line
+        spacing = '\n' + ' '*12 # newline followed by 12 spaces on the next line to pad the start of line
 
         for video_number, selenium_element in enumerate(list_of_videos, 1) if chronological is False else enumerate(list_of_videos[::-1], 1):
             txt_file.write(f'video_number:{spacing}{video_number}\n')
@@ -87,7 +87,7 @@ def save_to_mem_write_to_txt(list_of_videos, file_name, write_format, chronologi
     with open(f'{file_name}VideosList.txt', write_format) as memory_file:
         print(f'Opened {memory_file.name}, writing video information to file....')
         text = ''
-        spacing = '\n' + ' '*12 # newline followed by 12 spaces on the next line to pad the start of the line
+        spacing = '\n' + ' '*12 # newline followed by 12 spaces on the next line to pad the start of line
 
         for video_number, selenium_element in enumerate(list_of_videos, 1) if chronological is False else enumerate(list_of_videos[::-1], 1):
             text += f'video_number:{spacing}{video_number}\n'

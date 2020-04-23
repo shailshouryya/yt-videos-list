@@ -241,6 +241,8 @@ class Common:
         print(f'If you wish to proceed and overwrite {filename}, type "proceed", otherwise move the file to a different directory on your computer OR rename the file before typing "proceed"')
         print(f'If you wish to skip the creation of {filename}, type "skip"')
 
+
+
 class ModuleMessage(Common):
     '''
     This class contains messages that are relevant for the package when it is being run as a module from within the Python interpreter (or another Python script).
@@ -263,6 +265,8 @@ class ModuleMessage(Common):
         "\n    lc = ListCreator(driver='safari')" + \
         "\n    lc = ListCreator(driver='chrome')" + \
         "\n    lc = ListCreator(driver='firefox')"
+
+
 
 class ScriptMessage(Common):
     '''

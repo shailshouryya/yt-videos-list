@@ -121,5 +121,4 @@ class ListCreator:
         _execution_type = 'module'
         instance_attributes = (self.txt, self.txt_write_format, self.csv, self.csv_write_format, self.docx, self.docx_write_format, self.chronological, self.headless, self.scroll_pause_time, self.driver)
 
-
         execute.logic(channel, channel_type, file_name, *instance_attributes, _execution_type)
