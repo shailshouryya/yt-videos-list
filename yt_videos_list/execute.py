@@ -57,34 +57,42 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
             print(common_message.invalid_driver)
             return 'invalid'
 
+    def set_up_headless_firefox_driver():
+        options = selenium.webdriver.firefox.options.Options()
+        options.headless = True
+        return seleniumdriver(options=options)
+
+    def set_up_headless_chrome_driver():
+        # options = selenium.webdriver.chrome.options.Options()
+        options = webdriver.ChromeOptions()
+        options.add_argument('headless')
+        return seleniumdriver(chrome_options=options)
+
+    def set_up_headless_opera_driver():
+        # Opera driver MRO: WebDriver -> OperaDriver -> selenium.webdriver.chrome.webdriver.WebDriver -> selenium.webdriver.remote.webdriver.WebDriver -> builtins.object
+        # options = selenium.webdriver.chrome.options.Options()
+        # options.headless = True
+        options = webdriver.ChromeOptions()
+        options.add_argument('headless')
+        driver = seleniumdriver(options=options)
+        print(common_message.unsupported_opera_headless)
+        return driver
+
+    def set_up_headless_safari_driver():
+        print(common_message.unsupported_safari_headless)
+        return seleniumdriver()
+
     def open_user_driver():
         if headless is False:
-            driver = seleniumdriver()
             if execution_type == 'module':
                 print(module_message.run_in_headless_hint)
                 print(module_message.run_in_headless_example)
+            return seleniumdriver()
         else: # headless is True
-            if user_driver == 'firefox':
-                options = selenium.webdriver.firefox.options.Options()
-                options.headless = True
-                driver = seleniumdriver(options=options)
-            elif user_driver == 'chrome':
-                # options = selenium.webdriver.chrome.options.Options()
-                options = webdriver.ChromeOptions()
-                options.add_argument('headless')
-                driver = seleniumdriver(chrome_options=options)
-            elif user_driver == 'opera':
-                # Opera driver MRO: WebDriver -> OperaDriver -> selenium.webdriver.chrome.webdriver.WebDriver -> selenium.webdriver.remote.webdriver.WebDriver -> builtins.object
-                # options = selenium.webdriver.chrome.options.Options()
-                # options.headless = True
-                options = webdriver.ChromeOptions()
-                options.add_argument('headless')
-                driver = seleniumdriver(options=options)
-                print(common_message.unsupported_opera_headless)
-            elif user_driver == 'safari':
-                driver = seleniumdriver()
-                print(common_message.unsupported_safari_headless)
-        return driver
+            if user_driver   == 'firefox': return set_up_headless_firefox_driver()
+            elif user_driver == 'chrome':  return set_up_headless_chrome_driver()
+            elif user_driver == 'opera':   return set_up_headless_opera_driver()
+            elif user_driver == 'safari':  return set_up_headless_safari_driver()
 
     def determine_user_os():
         if platform.system().lower().startswith('darwin'):
