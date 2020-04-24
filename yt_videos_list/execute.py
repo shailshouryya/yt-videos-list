@@ -25,16 +25,14 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
     def verify_write_format(file_type, write_format, file_name, file_extension):
         def new_write_format():
             user_response = input()
-            if 'proceed' in user_response.strip().lower():
-                return 'w'
-            elif 'skip' in user_response.strip().lower():
-                return 0
+            if 'proceed' in user_response.strip().lower(): return 'w'
+            elif 'skip' in user_response.strip().lower():  return 0
             else:
                 print('\n' + common_message.invalid_response)
                 common_message.display_file_already_exists_prompt(filename)
                 return new_write_format()
         if file_type is True and write_format == 'x':
-            filename   = f'{file_name}VideosList.{file_extension}'
+            filename    = f'{file_name}VideosList.{file_extension}'
             file_exists = bool(os.path.isfile(f'./{filename}'))
             if file_exists is True:
                 common_message.display_file_already_exists_warning(filename)
@@ -45,14 +43,10 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
             return write_format
 
     def check_driver():
-        if 'firefox' in user_driver:
-            return webdriver.Firefox
-        elif 'chrome' in user_driver:
-            return webdriver.Chrome
-        elif 'opera' in user_driver:
-            return webdriver.Opera
-        elif 'safari' in user_driver:
-            return webdriver.Safari
+        if   'firefox' in user_driver: return webdriver.Firefox
+        elif 'chrome' in user_driver:  return webdriver.Chrome
+        elif 'opera' in user_driver:   return webdriver.Opera
+        elif 'safari' in user_driver:  return webdriver.Safari
         else:
             print(common_message.invalid_driver)
             return 'invalid'
@@ -95,12 +89,9 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
             elif user_driver == 'safari':  return set_up_headless_safari_driver()
 
     def determine_user_os():
-        if platform.system().lower().startswith('darwin'):
-            return 'macos'
-        elif platform.system().lower().startswith('linux'):
-            return 'linux'
-        elif platform.system().lower().startswith('windows'):
-            return 'windows'
+        if   platform.system().lower().startswith('darwin'):  return 'macos'
+        elif platform.system().lower().startswith('linux'):   return 'linux'
+        elif platform.system().lower().startswith('windows'): return 'windows'
         else:
             print(common_message.unsupported_os)
             sys.exit()
