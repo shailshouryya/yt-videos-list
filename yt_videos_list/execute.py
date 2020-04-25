@@ -26,7 +26,7 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
         def new_write_format():
             user_response = input()
             if 'proceed' in user_response.strip().lower(): return 'w'
-            elif 'skip' in user_response.strip().lower():  return 0
+            elif 'skip'  in user_response.strip().lower(): return 0
             else:
                 print('\n' + common_message.invalid_response)
                 common_message.display_file_already_exists_prompt(filename)
@@ -44,9 +44,9 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
 
     def check_driver():
         if   'firefox' in user_driver: return webdriver.Firefox
-        elif 'chrome' in user_driver:  return webdriver.Chrome
-        elif 'opera' in user_driver:   return webdriver.Opera
-        elif 'safari' in user_driver:  return webdriver.Safari
+        elif 'opera'   in user_driver: return webdriver.Opera
+        elif 'safari'  in user_driver: return webdriver.Safari
+        elif 'chrome'  in user_driver: return webdriver.Chrome
         else:
             print(common_message.invalid_driver)
             return 'invalid'
@@ -55,12 +55,6 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
         options = selenium.webdriver.firefox.options.Options()
         options.headless = True
         return seleniumdriver(options=options)
-
-    def set_up_headless_chrome_driver():
-        # options = selenium.webdriver.chrome.options.Options()
-        options = webdriver.ChromeOptions()
-        options.add_argument('headless')
-        return seleniumdriver(chrome_options=options)
 
     def set_up_headless_opera_driver():
         # Opera driver MRO: WebDriver -> OperaDriver -> selenium.webdriver.chrome.webdriver.WebDriver -> selenium.webdriver.remote.webdriver.WebDriver -> builtins.object
@@ -76,6 +70,12 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
         print(common_message.unsupported_safari_headless)
         return seleniumdriver()
 
+    def set_up_headless_chrome_driver():
+        # options = selenium.webdriver.chrome.options.Options()
+        options = webdriver.ChromeOptions()
+        options.add_argument('headless')
+        return seleniumdriver(chrome_options=options)
+
     def open_user_driver():
         if headless is False:
             if execution_type == 'module':
@@ -83,10 +83,10 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
                 print(module_message.run_in_headless_example)
             return seleniumdriver()
         else: # headless is True
-            if user_driver   == 'firefox': return set_up_headless_firefox_driver()
-            elif user_driver == 'chrome':  return set_up_headless_chrome_driver()
+            if   user_driver == 'firefox': return set_up_headless_firefox_driver()
             elif user_driver == 'opera':   return set_up_headless_opera_driver()
             elif user_driver == 'safari':  return set_up_headless_safari_driver()
+            elif user_driver == 'chrome':  return set_up_headless_chrome_driver()
 
     def determine_user_os():
         if   platform.system().lower().startswith('darwin'):  return 'macos'
@@ -103,11 +103,11 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
 
     def check_user_input():
         nonlocal channel, channel_type, file_name, txt_write_format, csv_write_format, docx_write_format, user_driver
-        channel     = channel.strip().strip('/')
+        channel      = channel.strip().strip('/')
         channel_type = channel_type.strip().strip('/')
         base_url     = 'https://www.youtube.com'
-        videos      = 'videos'
-        url         = f'{base_url}/{channel_type}/{channel}/{videos}'
+        videos       = 'videos'
+        url          = f'{base_url}/{channel_type}/{channel}/{videos}'
 
         file_name = determine_file_name()
         txt_write_format  = verify_write_format(txt,  txt_write_format,  file_name, 'txt')
@@ -132,7 +132,7 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
 
 
     url, seleniumdriver = check_user_input()
-    program_start        = time.perf_counter()
+    program_start       = time.perf_counter()
     try:
         driver = open_user_driver()
     except selenium.common.exceptions.WebDriverException as err:
@@ -154,11 +154,8 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
             print(common_message.no_videos_found)
             print(module_message.check_channel_type) if execution_type == 'module' else print(script_message.check_channel_type)
             return
-        if txt is True and txt_write_format != 0:
-            program.write_to_txt(videos_list, file_name, txt_write_format, chronological)
-            # save_to_mem_write_to_txt(videos_list, file_name, write_format) # slightly slower than writing to disk directly
-        if csv is True and csv_write_format != 0:
-            program.write_to_csv(videos_list, file_name, csv_write_format, chronological)
+        if txt is True and txt_write_format != 0: program.write_to_txt(videos_list, file_name, txt_write_format, chronological)
+        if csv is True and csv_write_format != 0: program.write_to_csv(videos_list, file_name, csv_write_format, chronological)
     program_end = time.perf_counter()
     total_time  = program_end - program_start
     print(f'This program took {total_time} seconds to complete.\n')
