@@ -162,6 +162,10 @@ class Common:
         },
         'chrome': {
             'macos' : [
+                '# mac64 Chromedriver 81.0.4044.69',
+                'curl -SL https://chromedriver.storage.googleapis.com/81.0.4044.69/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ \n',
+                '# mac64 Chromedriver 80.0.3987.106',
+                'curl -SL https://chromedriver.storage.googleapis.com/80.0.3987.106/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ \n',
                 '# mac64 Chromedriver 79.0.3945.36',
                 'curl -SL https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ \n',
                 '# mac64 Chromedriver 78.0.3904.105',
