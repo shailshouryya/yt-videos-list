@@ -184,6 +184,10 @@ class Common:
                 'curl -SL https://chromedriver.storage.googleapis.com/2.46/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ \n'
             ],
             'linux': [
+                '# linux64 Chromedriver 81.0.4044.69',
+                'curl -SL https://chromedriver.storage.googleapis.com/81.0.4044.69/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ \n',
+                '# linux64 Chromedriver 80.0.3987.106',
+                'curl -SL https://chromedriver.storage.googleapis.com/80.0.3987.106/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ \n',
                 '# linux64 Chromedriver 79.0.3945.36',
                 'curl -SL https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ \n',
                 '# linux64 Chromedriver 78.0.3904.105',
