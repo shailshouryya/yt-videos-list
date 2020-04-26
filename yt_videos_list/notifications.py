@@ -66,6 +66,12 @@ class Common:
                 'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.37/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum \n'
             ],
             'linux': [
+                '# linux64 Operadriver 81.0.4044.113 (supports Opera Stable 68 release)',
+                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.81.0.4044.113/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum \n',
+                '# linux64 Operadriver 80.0.3987.100 (supports Opera Stable 67 release)',
+                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.80.0.3987.100/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum \n',
+                '# linux64 Operadriver 79.0.3945.79 (supports Opera Stable 66 release)',
+                'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.79.0.3945.79/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum \n',
                 '# linux64 Operadriver 78.0.3904.87 (supports Opera Stable 65 release)',
                 'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.78.0.3904.87/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum \n',
                 '# linux64 Operadriver 77.0.3865.120 (supports Opera 64 release)',
