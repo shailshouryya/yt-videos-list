@@ -21,134 +21,134 @@ class Common:
             'firefox': {
                 'macos': [
                     '# macos geckodriver (Firefoxdriver) v0.26.0',
-                    self.format_macos_geckodriver_download_command('https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-macos.tar.gz')
+                    self.format_macos_geckodriver_download_command('v0.26.0/')
                 ],
                 'linux': [
                     '# linux64 geckodriver (Firefoxdriver) v0.26.0',
-                    self.format_linux_geckodriver_download_command('https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux64.tar.gz'),
+                    self.format_linux_geckodriver_download_command('v0.26.0', '64'),
                     '# linux32 geckodriver (Firefoxdriver) v0.26.0',
-                    self.format_linux_geckodriver_download_command('https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux32.tar.gz')
+                    self.format_linux_geckodriver_download_command('v0.26.0', '32')
                 ],
                 'windows': [
                     'In progress!',
                     '# windows64 geckodriver (Firefoxdriver) v0.26.0',
-                    self.format_windows_geckodriver_download_command('https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win64.zip'),
+                    self.format_windows_geckodriver_download_command('v0.26.0', '64'),
                     '# windows32 geckodriver (Firefoxdriver) v0.26.0',
-                    self.format_windows_geckodriver_download_command('https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win32.zip')
+                    self.format_windows_geckodriver_download_command('v0.26.0', '32')
                 ]
             },
             'opera': {
                 'macos' : [
                     '# mac64 Operadriver 81.0.4044.113 (supports Opera Stable 68 release)',
-                    self.format_macos_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.81.0.4044.113/operadriver_mac64.zip'),
+                    self.format_macos_operadriver_download_command('v.81.0.4044.113'),
                     '# mac64 Operadriver 80.0.3987.100 (supports Opera Stable 67 release)',
-                    self.format_macos_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.80.0.3987.100/operadriver_mac64.zip'),
+                    self.format_macos_operadriver_download_command('v.80.0.3987.100'),
                     '# mac64 Operadriver 79.0.3945.79 (supports Opera Stable 66 release)',
-                    self.format_macos_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.79.0.3945.79/operadriver_mac64.zip'),
+                    self.format_macos_operadriver_download_command('v.79.0.3945.79'),
                     '# mac64 Operadriver 78.0.3904.87 (supports Opera Stable 65 release)',
-                    self.format_macos_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.78.0.3904.87/operadriver_mac64.zip'),
+                    self.format_macos_operadriver_download_command('v.78.0.3904.87'),
                     '# mac64 Operadriver 77.0.3865.120 (supports Opera 64 release)',
-                    self.format_macos_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.77.0.3865.120/operadriver_mac64.zip'),
+                    self.format_macos_operadriver_download_command('v.77.0.3865.120'),
                     '# mac64 Operadriver 76.0.3809.132 (supports Opera 63 release)',
-                    self.format_macos_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.76.0.3809.132/operadriver_mac64.zip'),
+                    self.format_macos_operadriver_download_command('v.76.0.3809.132'),
                     '# mac64 Operadriver 75.0.3770.100 (supports Opera 62 release)',
-                    self.format_macos_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.75.0.3770.100/operadriver_mac64.zip'),
+                    self.format_macos_operadriver_download_command('v.75.0.3770.100'),
                     '# mac64 Operadriver 2.45 (supports Opera 60 release)',
-                    self.format_macos_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.45/operadriver_mac64.zip'),
+                    self.format_macos_operadriver_download_command('v.2.45'),
                     '# mac64 Operadriver 2.42 (supports Opera 58 release)',
-                    self.format_macos_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.42/operadriver_mac64.zip'),
+                    self.format_macos_operadriver_download_command('v.2.42'),
                     '# mac64 Operadriver 2.41 (supports Opera 57 release)',
-                    self.format_macos_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.41/operadriver_mac64.zip'),
+                    self.format_macos_operadriver_download_command('v.2.41'),
                     '# mac64 Operadriver 2.40 (supports Opera 56 release)',
-                    self.format_macos_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.40/operadriver_mac64.zip'),
+                    self.format_macos_operadriver_download_command('v.2.40'),
                     '# mac64 Operadriver 2.38 (supports Opera 55 release)',
-                    self.format_macos_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.38/operadriver_mac64.zip'),
+                    self.format_macos_operadriver_download_command('v.2.38'),
                     '# mac64 Operadriver 2.37 (supports Opera 54 release)',
-                    self.format_macos_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.37/operadriver_mac64.zip')
+                    self.format_macos_operadriver_download_command('v.2.37')
                 ],
                 'linux': [
                     '# linux64 Operadriver 81.0.4044.113 (supports Opera Stable 68 release)',
-                    self.format_linux_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.81.0.4044.113/operadriver_linux64.zip'),
+                    self.format_linux_operadriver_download_command('v.81.0.4044.113'),
                     '# linux64 Operadriver 80.0.3987.100 (supports Opera Stable 67 release)',
-                    self.format_linux_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.80.0.3987.100/operadriver_linux64.zip'),
+                    self.format_linux_operadriver_download_command('v.80.0.3987.100'),
                     '# linux64 Operadriver 79.0.3945.79 (supports Opera Stable 66 release)',
-                    self.format_linux_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.79.0.3945.79/operadriver_linux64.zip'),
+                    self.format_linux_operadriver_download_command('v.79.0.3945.79'),
                     '# linux64 Operadriver 78.0.3904.87 (supports Opera Stable 65 release)',
-                    self.format_linux_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.78.0.3904.87/operadriver_linux64.zip'),
+                    self.format_linux_operadriver_download_command('v.78.0.3904.87'),
                     '# linux64 Operadriver 77.0.3865.120 (supports Opera 64 release)',
-                    self.format_linux_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.77.0.3865.120/operadriver_linux64.zip'),
+                    self.format_linux_operadriver_download_command('v.77.0.3865.120'),
                     '# linux64 Operadriver 76.0.3809.132 (supports Opera 63 release)',
-                    self.format_linux_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.76.0.3809.132/operadriver_linux64.zip'),
+                    self.format_linux_operadriver_download_command('v.76.0.3809.132'),
                     '# linux64 Operadriver 75.0.3770.100 (supports Opera 62) release',
-                    self.format_linux_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.75.0.3770.100/operadriver_linux64.zip'),
+                    self.format_linux_operadriver_download_command('v.75.0.3770.100'),
                     '# linux64 Operadriver 2.45 (supports Opera 60 release)',
-                    self.format_linux_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.45/operadriver_linux64.zip'),
+                    self.format_linux_operadriver_download_command('v.2.45'),
                     '# linux64 Operadriver 2.42 (supports Opera 58 release)',
-                    self.format_linux_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.42/operadriver_linux64.zip'),
+                    self.format_linux_operadriver_download_command('v.2.42'),
                     '# linux64 Operadriver 2.41 (supports Opera 57) release',
-                    self.format_linux_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.41/operadriver_linux64.zip'),
+                    self.format_linux_operadriver_download_command('v.2.41'),
                     '# linux64 Operadriver 2.40 (supports Opera 56 release)',
-                    self.format_linux_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.40/operadriver_linux64.zip'),
+                    self.format_linux_operadriver_download_command('v.2.40'),
                     '# linux64 Operadriver 2.38 (supports Opera 55 release)',
-                    self.format_linux_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.38/operadriver_linux64.zip'),
+                    self.format_linux_operadriver_download_command('v.2.38'),
                     '# linux64 Operadriver 2.37 (supports Opera 54 release)',
-                    self.format_linux_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.37/operadriver_linux64.zip')
+                    self.format_linux_operadriver_download_command('v.2.37')
                 ],
                 'windows': [
                     'In progress!',
                     '# windows64 Operadriver 81.0.4044.113 (supports Opera Stable 68 release)',
-                    self.format_windows_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.81.0.4044.113/operadriver_win64.zip'),
+                    self.format_windows_operadriver_download_command('v.81.0.4044.113', '64'),
                     '# windows64 Operadriver 80.0.3987.100 (supports Opera Stable 67 release)',
-                    self.format_windows_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.80.0.3987.100/operadriver_win64.zip'),
+                    self.format_windows_operadriver_download_command('v.80.0.3987.100', '64'),
                     '# windows64 Operadriver 79.0.3945.79 (supports Opera Stable 66 release)',
-                    self.format_windows_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.79.0.3945.79/operadriver_win64.zip'),
+                    self.format_windows_operadriver_download_command('v.79.0.3945.79', '64'),
                     '# windows64 Operadriver 78.0.3904.87 (supports Opera Stable 65 release)',
-                    self.format_windows_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.78.0.3904.87/operadriver_win64.zip'),
+                    self.format_windows_operadriver_download_command('v.78.0.3904.87', '64'),
                     '# windows64 Operadriver 77.0.3865.120 (supports Opera 64 release)',
-                    self.format_windows_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.77.0.3865.120/operadriver_win64.zip'),
+                    self.format_windows_operadriver_download_command('v.77.0.3865.120', '64'),
                     '# windows64 Operadriver 76.0.3809.132 (supports Opera 63 release)',
-                    self.format_windows_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.76.0.3809.132/operadriver_win64.zip'),
+                    self.format_windows_operadriver_download_command('v.76.0.3809.132', '64'),
                     '# windows64 Operadriver 75.0.3770.100 (supports Opera 62 release)',
-                    self.format_windows_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.75.0.3770.100/operadriver_win64.zip'),
+                    self.format_windows_operadriver_download_command('v.75.0.3770.100', '64'),
                     '# windows64 Operadriver 2.45 (supports Opera 60 release)',
-                    self.format_windows_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.45/operadriver_win64.zip'),
+                    self.format_windows_operadriver_download_command('v.2.45', '64'),
                     '# windows64 Operadriver 2.42 (supports Opera 58 release)',
-                    self.format_windows_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.42/operadriver_win64.zip'),
+                    self.format_windows_operadriver_download_command('v.2.42', '64'),
                     '# windows64 Operadriver 2.41 (supports Opera 57 release)',
-                    self.format_windows_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.41/operadriver_win64.zip'),
+                    self.format_windows_operadriver_download_command('v.2.41', '64'),
                     '# windows64 Operadriver 2.40 (supports Opera 56 release)',
-                    self.format_windows_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.40/operadriver_win64.zip'),
+                    self.format_windows_operadriver_download_command('v.2.40', '64'),
                     '# windows64 Operadriver 2.38 (supports Opera 55 release)',
-                    self.format_windows_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.38/operadriver_win64.zip'),
+                    self.format_windows_operadriver_download_command('v.2.38', '64'),
                     '# windows64 Operadriver 2.37 (supports Opera 54 release)',
-                    self.format_windows_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.37/operadriver_win64.zip') + '\n',
+                    self.format_windows_operadriver_download_command('v.2.37', '64') + '\n',
 
                     '# windows32 Operadriver 81.0.4044.113 (supports Opera Stable 68 release)',
-                    self.format_windows_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.81.0.4044.113/operadriver_win32.zip'),
+                    self.format_windows_operadriver_download_command('v.81.0.4044.113/', '32'),
                     '# windows32 Operadriver 80.0.3987.100 (supports Opera Stable 67 release)',
-                    self.format_windows_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.80.0.3987.100/operadriver_win32.zip'),
+                    self.format_windows_operadriver_download_command('v.80.0.3987.100/', '32'),
                     '# windows32 Operadriver 79.0.3945.79 (supports Opera Stable 66 release)',
-                    self.format_windows_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.79.0.3945.79/operadriver_win32.zip'),
+                    self.format_windows_operadriver_download_command('v.79.0.3945.79/', '32'),
                     '# windows32 Operadriver 78.0.3904.87 (supports Opera Stable 65 release)',
-                    self.format_windows_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.78.0.3904.87/operadriver_win32.zip'),
+                    self.format_windows_operadriver_download_command('v.78.0.3904.87/', '32'),
                     '# windows32 Operadriver 77.0.3865.120 (supports Opera 64 release)',
-                    self.format_windows_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.77.0.3865.120/operadriver_win32.zip'),
+                    self.format_windows_operadriver_download_command('v.77.0.3865.120/', '32'),
                     '# windows32 Operadriver 76.0.3809.132 (supports Opera 63 release)',
-                    self.format_windows_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.76.0.3809.132/operadriver_win32.zip'),
+                    self.format_windows_operadriver_download_command('v.76.0.3809.132/', '32'),
                     '# windows32 Operadriver 75.0.3770.100 (supports Opera 62 release)',
-                    self.format_windows_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.75.0.3770.100/operadriver_win32.zip'),
+                    self.format_windows_operadriver_download_command('v.75.0.3770.100/', '32'),
                     '# windows32 Operadriver 2.45 (supports Opera 60) release',
-                    self.format_windows_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.45/operadriver_win32.zip'),
+                    self.format_windows_operadriver_download_command('v.2.45/', '32'),
                     '# windows32 Operadriver 2.42 (supports Opera 58 release)',
-                    self.format_windows_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.42/operadriver_win32.zip'),
+                    self.format_windows_operadriver_download_command('v.2.42/', '32'),
                     '# windows32 Operadriver 2.41 (supports Opera 57 release)',
-                    self.format_windows_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.41/operadriver_win32.zip'),
+                    self.format_windows_operadriver_download_command('v.2.41/', '32'),
                     '# windows32 Operadriver 2.40 (supports Opera 56 release)',
-                    self.format_windows_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.40/operadriver_win32.zip'),
+                    self.format_windows_operadriver_download_command('v.2.40/', '32'),
                     '# windows32 Operadriver 2.38 (supports Opera 55 release)',
-                    self.format_windows_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.38/operadriver_win32.zip'),
+                    self.format_windows_operadriver_download_command('v.2.38/', '32'),
                     '# windows32 Operadriver 2.37 (supports Opera 54 release)',
-                    self.format_windows_operadriver_download_command('https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.37/operadriver_win32.zip')
+                    self.format_windows_operadriver_download_command('v.2.37/', '32')
                 ]
             },
             'safari': {
@@ -165,70 +165,70 @@ class Common:
             'chrome': {
                 'macos' : [
                     '# mac64 Chromedriver 81.0.4044.69',
-                    self.format_macos_chromedriver_download_command('https://chromedriver.storage.googleapis.com/81.0.4044.69/chromedriver_mac64.zip'),
+                    self.format_macos_chromedriver_download_command('81.0.4044.69/'),
                     '# mac64 Chromedriver 80.0.3987.106',
-                    self.format_macos_chromedriver_download_command('https://chromedriver.storage.googleapis.com/80.0.3987.106/chromedriver_mac64.zip'),
+                    self.format_macos_chromedriver_download_command('80.0.3987.106/'),
                     '# mac64 Chromedriver 79.0.3945.36',
-                    self.format_macos_chromedriver_download_command('https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_mac64.zip'),
+                    self.format_macos_chromedriver_download_command('79.0.3945.36/'),
                     '# mac64 Chromedriver 78.0.3904.105',
-                    self.format_macos_chromedriver_download_command('https://chromedriver.storage.googleapis.com/78.0.3904.105/chromedriver_mac64.zip'),
+                    self.format_macos_chromedriver_download_command('78.0.3904.105/'),
                     '# mac64 Chromedriver 77.0.3865.40',
-                    self.format_macos_chromedriver_download_command('https://chromedriver.storage.googleapis.com/77.0.3865.40/chromedriver_mac64.zip'),
+                    self.format_macos_chromedriver_download_command('77.0.3865.40/'),
                     '# mac64 Chromedriver 76.0.3809.126',
-                    self.format_macos_chromedriver_download_command('https://chromedriver.storage.googleapis.com/76.0.3809.126/chromedriver_mac64.zip'),
+                    self.format_macos_chromedriver_download_command('76.0.3809.126/'),
                     '# mac64 Chromedriver 75.0.3770.140',
-                    self.format_macos_chromedriver_download_command('https://chromedriver.storage.googleapis.com/75.0.3770.140/chromedriver_mac64.zip'),
+                    self.format_macos_chromedriver_download_command('75.0.3770.140/'),
                     '# mac64 Chromedriver 74.0.3729.6',
-                    self.format_macos_chromedriver_download_command('https://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_mac64.zip'),
+                    self.format_macos_chromedriver_download_command('74.0.3729.6/'),
                     '# mac64 Chromedriver 73.0.3683.68',
-                    self.format_macos_chromedriver_download_command('https://chromedriver.storage.googleapis.com/73.0.3683.68/chromedriver_mac64.zip'),
+                    self.format_macos_chromedriver_download_command('73.0.3683.68/'),
                     '# mac64 Chromedriver 2.46 (Supports Chrome v71-73)',
-                    self.format_macos_chromedriver_download_command('https://chromedriver.storage.googleapis.com/2.46/chromedriver_mac64.zip')
+                    self.format_macos_chromedriver_download_command('2.46/')
                 ],
                 'linux': [
                     '# linux64 Chromedriver 81.0.4044.69',
-                    self.format_linux_chromedriver_download_command('https://chromedriver.storage.googleapis.com/81.0.4044.69/chromedriver_linux64.zip'),
+                    self.format_linux_chromedriver_download_command('81.0.4044.69'),
                     '# linux64 Chromedriver 80.0.3987.106',
-                    self.format_linux_chromedriver_download_command('https://chromedriver.storage.googleapis.com/80.0.3987.106/chromedriver_linux64.zip'),
+                    self.format_linux_chromedriver_download_command('80.0.3987.106'),
                     '# linux64 Chromedriver 79.0.3945.36',
-                    self.format_linux_chromedriver_download_command('https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_linux64.zip'),
+                    self.format_linux_chromedriver_download_command('79.0.3945.36'),
                     '# linux64 Chromedriver 78.0.3904.105',
-                    self.format_linux_chromedriver_download_command('https://chromedriver.storage.googleapis.com/78.0.3904.105/chromedriver_linux64.zip'),
+                    self.format_linux_chromedriver_download_command('78.0.3904.105'),
                     '# linux64 Chromedriver 77.0.3865.40',
-                    self.format_linux_chromedriver_download_command('https://chromedriver.storage.googleapis.com/77.0.3865.40/chromedriver_linux64.zip'),
+                    self.format_linux_chromedriver_download_command('77.0.3865.40'),
                     '# linux64 Chromedriver 76.0.3809.126',
-                    self.format_linux_chromedriver_download_command('https://chromedriver.storage.googleapis.com/76.0.3809.126/chromedriver_linux64.zip'),
+                    self.format_linux_chromedriver_download_command('76.0.3809.126'),
                     '# linux64 Chromedriver 75.0.3770.140',
-                    self.format_linux_chromedriver_download_command('https://chromedriver.storage.googleapis.com/75.0.3770.140/chromedriver_linux64.zi'),
+                    self.format_linux_chromedriver_download_command('75.0.3770.140/chromedriver_linux64.zi'),
                     '# linux64 Chromedriver 74.0.3729.6',
-                    self.format_linux_chromedriver_download_command('https://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_linux64.zip'),
+                    self.format_linux_chromedriver_download_command('74.0.3729.6'),
                     '# linux64 Chromedriver 73.0.3683.68',
-                    self.format_linux_chromedriver_download_command('https://chromedriver.storage.googleapis.com/73.0.3683.68/chromedriver_linux64.zip'),
+                    self.format_linux_chromedriver_download_command('73.0.3683.68'),
                     '# linux64 Chromedriver 2.46 (Supports Chrome v71-73)',
-                    self.format_linux_chromedriver_download_command('https://chromedriver.storage.googleapis.com/2.46/chromedriver_linux64.zip')
+                    self.format_linux_chromedriver_download_command('2.46')
                 ],
                 'windows': [
                     'In progress!',
                     '# win32 Chromedriver 81.0.4044.69',
-                    self.format_windows_chromedriver_download_command('https://chromedriver.storage.googleapis.com/81.0.4044.69/chromedriver_win32.zip'),
+                    self.format_windows_chromedriver_download_command('81.0.4044.69'),
                     '# win32 Chromedriver 80.0.3987.106',
-                    self.format_windows_chromedriver_download_command('https://chromedriver.storage.googleapis.com/80.0.3987.106/chromedriver_win32.zip'),
+                    self.format_windows_chromedriver_download_command('80.0.3987.106'),
                     '# win32 Chromedriver 79.0.3945.36',
-                    self.format_windows_chromedriver_download_command('https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_win32.zip'),
+                    self.format_windows_chromedriver_download_command('79.0.3945.36'),
                     '# win32 Chromedriver 78.0.3904.105',
-                    self.format_windows_chromedriver_download_command('https://chromedriver.storage.googleapis.com/78.0.3904.105/chromedriver_win32.zip'),
+                    self.format_windows_chromedriver_download_command('78.0.3904.105'),
                     '# win32 Chromedriver 77.0.3865.40',
-                    self.format_windows_chromedriver_download_command('https://chromedriver.storage.googleapis.com/77.0.3865.40/chromedriver_win32.zip'),
+                    self.format_windows_chromedriver_download_command('77.0.3865.40'),
                     '# win32 Chromedriver 76.0.3809.126',
-                    self.format_windows_chromedriver_download_command('https://chromedriver.storage.googleapis.com/76.0.3809.126/chromedriver_win32.zip'),
+                    self.format_windows_chromedriver_download_command('76.0.3809.126'),
                     '# win32 Chromedriver 75.0.3770.140',
-                    self.format_windows_chromedriver_download_command('https://chromedriver.storage.googleapis.com/75.0.3770.140/chromedriver_win32.zip'),
+                    self.format_windows_chromedriver_download_command('75.0.3770.140'),
                     '# win32 Chromedriver 74.0.3729.6',
-                    self.format_windows_chromedriver_download_command('https://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_win32.zip'),
+                    self.format_windows_chromedriver_download_command('74.0.3729.6'),
                     '# win32 Chromedriver 73.0.3683.68',
-                    self.format_windows_chromedriver_download_command('https://chromedriver.storage.googleapis.com/73.0.3683.68/chromedriver_win32.zip'),
+                    self.format_windows_chromedriver_download_command('73.0.3683.68'),
                     '# win32 Chromedriver 2.46 (Supports Chrome v71-73)',
-                    self.format_windows_chromedriver_download_command('https://chromedriver.storage.googleapis.com/2.46/chromedriver_win32.zip')
+                    self.format_windows_chromedriver_download_command('2.46')
                 ]
             }
         }
@@ -241,42 +241,42 @@ class Common:
     }
 
     @staticmethod
-    def format_macos_geckodriver_download_command(url_for_driver_binary):
-        return f'curl -SL {url_for_driver_binary} | tar -xzvf - -C /usr/local/bin/ \n'
+    def format_macos_geckodriver_download_command(binary_version):
+        return f'curl -SL https://github.com/mozilla/geckodriver/releases/download/{binary_version}/geckodriver-v0.26.0-macos.tar.gz | tar -xzvf - -C /usr/local/bin/ \n'
 
     @staticmethod
-    def format_linux_geckodriver_download_command(url_for_driver_binary):
-        return f'curl -SL {url_for_driver_binary} | tar -xzvf - -C /usr/local/bin/ \n'
+    def format_linux_geckodriver_download_command(binary_version, system):
+        return f'curl -SL {binary_version}/geckodriver-v0.26.0-linux{system}.tar.gz | tar -xzvf - -C /usr/local/bin/ \n'
 
     @staticmethod
-    def format_windows_geckodriver_download_command(url_for_driver_binary):
-        return fr'mkdir C:\yt_videos_list_TEMP\ && curl -SL {url_for_driver_binary} -o C:\yt_videos_list_TEMP\geckodriver && tar -xzvf C:\yt_videos_list_TEMP\geckodriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP \n'
-
-
-    @staticmethod
-    def format_macos_operadriver_download_command(url_for_driver_binary):
-        return f'curl -SL {url_for_driver_binary} | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum \n'
-
-    @staticmethod
-    def format_linux_operadriver_download_command(url_for_driver_binary):
-        return f'curl -SL {url_for_driver_binary} | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum \n'
-
-    @staticmethod
-    def format_windows_operadriver_download_command(url_for_driver_binary):
-        return fr'mkdir C:\yt_videos_list_TEMP\ && curl -SL {url_for_driver_binary} -o C:\yt_videos_list_TEMP\operadriver && tar -xzvf C:\yt_videos_list_TEMP\operadriver -C C:\Windows\ --strip-components=1 && rmdir /q /s C:\yt_videos_list_TEMP && del C:\Windows\sha512_sum \n'
+    def format_windows_geckodriver_download_command(binary_version, system):
+        return fr'mkdir C:\yt_videos_list_TEMP\ && curl -SL {binary_version}/geckodriver-v0.26.0-win{system}.zip -o C:\yt_videos_list_TEMP\geckodriver && tar -xzvf C:\yt_videos_list_TEMP\geckodriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP \n'
 
 
     @staticmethod
-    def format_macos_chromedriver_download_command(url_for_driver_binary):
-        return f'curl -SL {url_for_driver_binary} | tar -xzvf - -C /usr/local/bin/ \n'
+    def format_macos_operadriver_download_command(binary_version):
+        return f'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/{binary_version}/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum \n'
 
     @staticmethod
-    def format_linux_chromedriver_download_command(url_for_driver_binary):
-        return f'curl -SL {url_for_driver_binary} | tar -xzvf - -C /usr/local/bin/ \n'
+    def format_linux_operadriver_download_command(binary_version):
+        return f'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/{binary_version}/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum \n'
 
     @staticmethod
-    def format_windows_chromedriver_download_command(url_for_driver_binary):
-        return fr'mkdir C:\yt_videos_list_TEMP\ && curl -SL {url_for_driver_binary} -o C:\yt_videos_list_TEMP\chromedriver && tar -xzvf C:\yt_videos_list_TEMP\chromedriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP \n'
+    def format_windows_operadriver_download_command(binary_version, system):
+        return fr'mkdir C:\yt_videos_list_TEMP\ && curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/{binary_version}/operadriver_win{system}.zip -o C:\yt_videos_list_TEMP\operadriver && tar -xzvf C:\yt_videos_list_TEMP\operadriver -C C:\Windows\ --strip-components=1 && rmdir /q /s C:\yt_videos_list_TEMP && del C:\Windows\sha512_sum \n'
+
+
+    @staticmethod
+    def format_macos_chromedriver_download_command(binary_version):
+        return f'curl -SL https://chromedriver.storage.googleapis.com/{binary_version}/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ \n'
+
+    @staticmethod
+    def format_linux_chromedriver_download_command(binary_version):
+        return f'curl -SL https://chromedriver.storage.googleapis.com/{binary_version}/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ \n'
+
+    @staticmethod
+    def format_windows_chromedriver_download_command(binary_version):
+        return fr'mkdir C:\yt_videos_list_TEMP\ && curl -SL https://chromedriver.storage.googleapis.com/{binary_version}/chromedriver_win32.zip -o C:\yt_videos_list_TEMP\chromedriver && tar -xzvf C:\yt_videos_list_TEMP\chromedriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP \n'
 
 
 
