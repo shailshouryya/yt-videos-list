@@ -2,7 +2,7 @@ from . import execute
 
 
 '''
-version:              0.3.1
+version:              0.3.2
 author:               Shail-Shouryya
 development_status:   4 - Beta
 intended_audience:    Developers, Hobbyists
@@ -12,7 +12,7 @@ source:               https://github.com/Shail-Shouryya/yt_videos_list
 '''
 
 
-__version__              = '0.3.1'
+__version__              = '0.3.2'
 __author__               = 'Shail-Shouryya'
 __development_status__   = '4 - Beta'
 __intended_audience__    = 'Developers, Hobbyists'
