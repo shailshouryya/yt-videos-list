@@ -1,4 +1,22 @@
+import re
 import sys
+import subprocess
+
+
+application_name = {
+    # 'driver': 'browser_name'
+    'firefox':  'Firefox',
+    'opera':    'Opera',
+    'chrome':   'Google Chrome'
+}
+
+def browser_exists(browser):
+    return browser in subprocess.getoutput('ls /Applications')
+
+def get_browser_version(browser):
+    with open (f'/Applications/{browser}.app/Contents/Info.plist') as f:
+        info_plist = f.read()
+    return re.search('<key>CFBundleShortVersionString</key>\s*<string>([0-9\.]+)', info_plist)[1]
 
 
 def download_geckodriver(version):
