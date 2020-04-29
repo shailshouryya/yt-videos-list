@@ -31,3 +31,11 @@ def download_chromedriver(version):
 def download(user_driver):
     print(f'Automatic Selenium dependency download for MacOS is not yet supported. Please follow the instructions below to set up the correct selenium dependecy for the {user_driver} driver.')
     sys.exit()
+
+def download_dependencies():
+    for driver in application_name:
+        browser = application_name[driver]
+        if browser_exists(browser):
+            full_version_number = get_browser_version(browser)
+            major_version = full_version_number.split('.')[0]
+            locals()[f'download_{driver}'](major_version)
