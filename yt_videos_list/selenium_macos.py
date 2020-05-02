@@ -2,6 +2,8 @@ import re
 import sys
 import subprocess
 
+from .download_dependencies import execute_download
+
 def browser_exists(browser):
     return browser in subprocess.getoutput('ls /Applications')
 
@@ -9,6 +11,9 @@ def get_browser_version(browser):
     with open (f'/Applications/{browser}.app/Contents/Info.plist') as f:
         info_plist = f.read()
     return re.search('<key>CFBundleShortVersionString</key>\s*<string>([0-9\.]+)', info_plist)[1]
+
+def download_driver(driver, version):
+    execute_download(driver, 'macos', version)
 
 def download(user_driver):
     print(f'Automatic Selenium dependency download for MacOS is not yet supported. Please follow the instructions below to set up the correct selenium dependecy for the {user_driver} driver.')
@@ -26,4 +31,6 @@ def download_dependencies():
         browser = application_name[driver]
         if browser_exists(browser):
             full_version_number = get_browser_version(browser)
+
             major_version = full_version_number.split('.')[0]
+            globals()[f'download_driver'](driver, major_version)
