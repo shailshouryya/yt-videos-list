@@ -1,9 +1,5 @@
 import re
-import sys
 import subprocess
-
-from .notifications import Common
-from . import download_dependencies
 
 def browser_exists(browser):
     return browser in subprocess.getoutput('ls /Applications')
