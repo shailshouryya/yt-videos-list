@@ -36,6 +36,6 @@ def download_dependencies():
             full_version_number = get_browser_version(browser)
             common_message.display_browser_found_information(browser, full_version_number)
             major_version = full_version_number.split('.')[0]
-            globals()[f'download_driver'](driver, major_version)
+            download_driver(driver, major_version)
         else:
             common_message.display_browser_not_found_information(browser, full_version_number)
