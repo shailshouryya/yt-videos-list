@@ -3,8 +3,7 @@ import sys
 import subprocess
 
 from .notifications import Common
-
-from .download_dependencies import execute_download
+from . import download_dependencies
 
 def browser_exists(browser):
     return browser in subprocess.getoutput('ls /Applications')
@@ -15,13 +14,13 @@ def get_browser_version(browser):
     return re.search('<key>CFBundleShortVersionString</key>\s*<string>([0-9\.]+)', info_plist)[1]
 
 def download_driver(driver, version):
-    execute_download(driver, 'macos', version)
+    download_dependencies.execute_download_command(driver, 'macos', version)
 
 def download(user_driver):
     print(f'Automatic Selenium dependency download for MacOS is not yet supported. Please follow the instructions below to set up the correct selenium dependecy for the {user_driver} driver.')
     sys.exit()
 
-def download_dependencies():
+def download_all_dependencies():
     common_message = Common()
     application_name = {
         # 'driver': 'browser_name'

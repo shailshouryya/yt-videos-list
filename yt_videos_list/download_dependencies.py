@@ -14,7 +14,7 @@ def determine_user_os():
         print(Common().unsupported_os)
         sys.exit()
 
-def execute_download(driver, user_os, version):
+def execute_download_command(driver, user_os, version):
     common_message = Common()
 
     # indexed values in reverse order to avoid having to map every version to a different element every time a new driver/browser version comes out since all the values get shifted down by 2 with new additions to the top of the list
@@ -76,4 +76,4 @@ def execute_download(driver, user_os, version):
 
 def run():
     user_os = determine_user_os()
-    globals()[f'selenium_{user_os}'].download_dependencies()
+    globals()[f'selenium_{user_os}'].download_all_dependencies()
