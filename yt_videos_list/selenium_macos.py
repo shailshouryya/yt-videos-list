@@ -13,9 +13,5 @@ def get_browser_version(browser):
         info_plist = f.read()
     return re.search('<key>CFBundleShortVersionString</key>\s*<string>([0-9\.]+)', info_plist)[1]
 
-def download_driver(driver, version):
+def download(driver, version):
     download_dependencies.execute_download_command(driver, 'macos', version)
-
-def download(user_driver):
-    print(f'Automatic Selenium dependency download for MacOS is not yet supported. Please follow the instructions below to set up the correct selenium dependecy for the {user_driver} driver.')
-    sys.exit()
