@@ -36,4 +36,4 @@ def download_dependencies():
             major_version = full_version_number.split('.')[0]
             globals()[f'download_driver'](driver, major_version)
         else:
-            print(f'Did not find an installed version of {browser}.\nIf you DO have {browser} installed but it was not detected, it may be because your {browser} was installed in a non-default location.\nPlease follow the directions under the {browser.title()} section at https://github.com/Shail-Shouryya/yt_videos_list/extra/README.md for "Setting up your Selenium dependencies for user_os.title"\n')
+            print(f'Did not find an installed version of {browser}.\nIf you DO have {browser} installed but it was not detected, it may be because your {browser} was installed in a non-default location.\nPlease follow the directions under the {browser} section at https://github.com/Shail-Shouryya/yt_videos_list/extra/README.md for "Setting up your Selenium dependencies for user_os.title"\n')
