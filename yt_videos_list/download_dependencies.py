@@ -76,6 +76,7 @@ def execute_download_command(driver, user_os, version):
 
 def download_all_dependencies(user_os):
     common_message = Common()
+    print(common_message.automated_driver_update)
     selenium_user_os = globals()[f'selenium_{user_os}']
     application_name = {
         'macos': {

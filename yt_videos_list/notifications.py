@@ -16,6 +16,8 @@ class Common:
     unsupported_safari_headless = '\nHeadless mode is unsupported in SafariDriver. We are waiting on Apple to start offering support for headless mode to allow remote automation without opening a driver. We will update this when support is added...\n:)\n\n\n'
     unsupported_os = 'The system you are using is not yet supported. Please create an issue at https://github.com/Shail-Shouryya/yt_videos_list/issues\nThanks!'
 
+    automated_driver_update = '\n=====> Now updating Selenium driver binaries and fixing any version incompatibility problems. This will update all corresponding Selenium drivers for browsers (which are installed in their default locations and) supported by the yt_videos_list package...'
+
     def __init__(self):
         self.driver_downloads_for_os = {
             'firefox': {
