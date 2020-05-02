@@ -33,6 +33,23 @@ def execute_download(driver, user_os, version):
             '62': -1,
             '61': -1,
             '60': -1,
+        },
+        'opera': {
+            '68': -25,
+            '67': -23,
+            '66': -21,
+            '65': -19,
+            '64': -17,
+            '63': -15,
+            '62': -13,
+            # there was no version 61
+            '60': -11,
+            # there was no version 59
+            '58': -9,
+            '57': -7,
+            '56': -5,
+            '55': -3,
+            '54': -1,
         }
     }
     row = row_in_list[driver][version]
