@@ -7,7 +7,7 @@ import selenium
 from selenium import webdriver
 
 from . import program
-from . import selenium_macos, selenium_windows, selenium_linux # used in globals()[f'selenium_{user_os}'].download(user_driver)
+from . import download_dependencies
 from .notifications import Common, ModuleMessage, ScriptMessage
 
 
@@ -141,8 +141,7 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
         common_message.display_selenium_dependency_error(err)
         user_os = determine_user_os()
         try:
-            globals()[f'selenium_{user_os}'].download(user_driver)
-            sys.exit() # skip this try block for now until the logic to install the correct Selenium driver based on the user's OS and specified driver is added
+            download_dependencies.run()
             driver = open_user_driver()
         except: # could not download the correct Selenium driver based on the user's OS and specified driver
             show_user_how_to_set_up_selenium()
