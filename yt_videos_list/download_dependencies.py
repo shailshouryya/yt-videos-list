@@ -16,6 +16,8 @@ def determine_user_os():
 
 def execute_download(driver, user_os, version):
     common_message = Common()
+
+    # indexed values in reverse order to avoid having to map every version to a different element every time a new driver/browser version comes out since all the values get shifted down by 2 with new additions to the top of the list
     row_in_list = {
         'firefox': {
             '74': -1,
@@ -65,6 +67,7 @@ def execute_download(driver, user_os, version):
             '71': -1
         }
     }
+
     row = row_in_list[driver][version]
     print(f'Now downloading the corresponding selenium driver for {driver} version {version} on {user_os}:')
     print(f'{common_message.driver_downloads_for_os[driver][user_os][row-1]} #')
