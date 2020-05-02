@@ -13,6 +13,16 @@ application_name = {
         'firefox':  'Firefox',
         'opera':    'Opera',
         'chrome':   'Google Chrome'
+    },
+    'linux': {
+        'firefox':  'Automatic Selenium dependency download for Linux is not yet supported. Please follow the instructions below to set up the correct selenium dependecy for the firefoxdriver.',
+        'opera':    'Automatic Selenium dependency download for Linux is not yet supported. Please follow the instructions below to set up the correct selenium dependecy for the operadriver.',
+        'chrome':   'Automatic Selenium dependency download for Linux is not yet supported. Please follow the instructions below to set up the correct selenium dependecy for the chromedriver.'
+    },
+    'windows': {
+        'firefox':  'Automatic Selenium dependency download for Windows is not yet supported. Please follow the instructions below to set up the correct selenium dependecy for the firefoxdriver.',
+        'opera':    'Automatic Selenium dependency download for Windows is not yet supported. Please follow the instructions below to set up the correct selenium dependecy for the operadriver.',
+        'chrome':   'Automatic Selenium dependency download for Windows is not yet supported. Please follow the instructions below to set up the correct selenium dependecy for the chromedriver.'
     }
 }
 
@@ -31,7 +41,7 @@ def download_specific_dependency(driver, user_os):
         full_version_number = selenium_user_os.get_browser_version(browser)
         common_message.display_browser_found_information(browser, full_version_number)
         major_version = full_version_number.split('.')[0]
-        selenium_user_os.download(driver, major_version)
+        execute_download_command(driver, user_os, major_version)
     else:
         common_message.display_browser_not_found_information(browser, full_version_number)
 

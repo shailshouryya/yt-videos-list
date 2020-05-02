@@ -12,6 +12,3 @@ def get_browser_version(browser):
     with open (f'/Applications/{browser}.app/Contents/Info.plist') as f:
         info_plist = f.read()
     return re.search('<key>CFBundleShortVersionString</key>\s*<string>([0-9\.]+)', info_plist)[1]
-
-def download(driver, version):
-    download_dependencies.execute_download_command(driver, 'macos', version)
