@@ -74,6 +74,29 @@ def execute_download_command(driver, user_os, version):
     print(f'{common_message.driver_downloads_for_os[driver][user_os][row]}')
     os.system(common_message.driver_downloads_for_os[driver][user_os][row])
 
+def download_all_dependencies(user_os):
+    common_message = Common()
+    selenium_user_os = globals()[f'selenium_{user_os}']
+    application_name = {
+        'macos': {
+            # 'driver': 'browser_name'
+            'firefox':  'Firefox',
+            'opera':    'Opera',
+            'chrome':   'Google Chrome'
+        }
+    }
+
+    for driver in application_name[user_os]:
+        browser = application_name[user_os][driver]
+        if selenium_user_os.browser_exists(browser):
+            full_version_number = selenium_user_os.get_browser_version(browser)
+            common_message.display_browser_found_information(browser, full_version_number)
+            major_version = full_version_number.split('.')[0]
+            selenium_user_os.download_driver(driver, major_version)
+        else:
+            common_message.display_browser_not_found_information(browser, full_version_number)
+
+
 def run():
     user_os = determine_user_os()
-    globals()[f'selenium_{user_os}'].download_all_dependencies()
+    download_all_dependencies(user_os)
