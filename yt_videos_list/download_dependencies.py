@@ -6,6 +6,16 @@ from . import selenium_linux, selenium_macos, selenium_windows
 from .notifications import Common
 
 
+common_message = Common()
+application_name = {
+    'macos': {
+        # 'driver': 'browser_name'
+        'firefox':  'Firefox',
+        'opera':    'Opera',
+        'chrome':   'Google Chrome'
+    }
+}
+
 def determine_user_os():
     if   platform.system().lower().startswith('darwin'):  return 'macos'
     elif platform.system().lower().startswith('linux'):   return 'linux'
@@ -15,8 +25,6 @@ def determine_user_os():
         sys.exit()
 
 def execute_download_command(driver, user_os, version):
-    common_message = Common()
-
     # indexed values in reverse order to avoid having to map every version to a different element every time a new driver/browser version comes out since all the values get shifted down by 2 with new additions to the top of the list
     row_in_list = {
         'firefox': {
@@ -74,29 +82,22 @@ def execute_download_command(driver, user_os, version):
     print(f'{common_message.driver_downloads_for_os[driver][user_os][row]}')
     os.system(common_message.driver_downloads_for_os[driver][user_os][row])
 
-def download_all_dependencies(user_os):
-    common_message = Common()
-    print(common_message.automated_driver_update)
+def download_specific_dependency(driver, user_os):
     selenium_user_os = globals()[f'selenium_{user_os}']
-    application_name = {
-        'macos': {
-            # 'driver': 'browser_name'
-            'firefox':  'Firefox',
-            'opera':    'Opera',
-            'chrome':   'Google Chrome'
-        }
-    }
+    browser = application_name[user_os][driver]
+    if selenium_user_os.browser_exists(browser):
+        full_version_number = selenium_user_os.get_browser_version(browser)
+        common_message.display_browser_found_information(browser, full_version_number)
+        major_version = full_version_number.split('.')[0]
+        selenium_user_os.download_driver(driver, major_version)
+    else:
+        common_message.display_browser_not_found_information(browser, full_version_number)
+
+def download_all_dependencies(user_os):
+    print(common_message.automated_driver_update)
 
     for driver in application_name[user_os]:
-        browser = application_name[user_os][driver]
-        if selenium_user_os.browser_exists(browser):
-            full_version_number = selenium_user_os.get_browser_version(browser)
-            common_message.display_browser_found_information(browser, full_version_number)
-            major_version = full_version_number.split('.')[0]
-            selenium_user_os.download_driver(driver, major_version)
-        else:
-            common_message.display_browser_not_found_information(browser, full_version_number)
-
+        download_specific_dependency(driver, user_os)
 
 def run():
     user_os = determine_user_os()
