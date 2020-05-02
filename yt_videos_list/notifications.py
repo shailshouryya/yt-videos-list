@@ -279,6 +279,13 @@ class Common:
         return fr'mkdir C:\yt_videos_list_TEMP\ && curl -SL https://chromedriver.storage.googleapis.com/{binary_version}/chromedriver_win32.zip -o C:\yt_videos_list_TEMP\chromedriver && tar -xzvf C:\yt_videos_list_TEMP\chromedriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP \n'
 
 
+    @staticmethod
+    def display_browser_found_information(browser, full_version_number):
+        print(f'\nFound an installed version of {browser}.\nYou are currently running {browser} version: {full_version_number}')
+
+    @staticmethod
+    def display_browser_not_found_information(browser, full_version_number):
+        print(f'Did not find an installed version of {browser}.\nIf you DO have {browser} installed but it was not detected, it may be because your {browser} was installed in a non-default location.\nPlease follow the directions under the {browser} section at https://github.com/Shail-Shouryya/yt_videos_list/extra/README.md for "Setting up your Selenium dependencies for user_os.title"\n')
 
 
     def display_dependency_setup_instructions(self, user_driver, user_os):
