@@ -244,41 +244,41 @@ class Common:
 
     @staticmethod
     def format_macos_geckodriver_download_command(binary_version):
-        return f'curl -SL https://github.com/mozilla/geckodriver/releases/download/{binary_version}/geckodriver-v0.26.0-macos.tar.gz | tar -xzvf - -C /usr/local/bin/ \n'
+        return f'curl -SL https://github.com/mozilla/geckodriver/releases/download/{binary_version}/geckodriver-v0.26.0-macos.tar.gz | tar -xzvf - -C /usr/local/bin/' + '\n'
 
     @staticmethod
     def format_linux_geckodriver_download_command(binary_version, system):
-        return f'curl -SL {binary_version}/geckodriver-v0.26.0-linux{system}.tar.gz | tar -xzvf - -C /usr/local/bin/ \n'
+        return f'curl -SL {binary_version}/geckodriver-v0.26.0-linux{system}.tar.gz | tar -xzvf - -C /usr/local/bin/' + '\n'
 
     @staticmethod
     def format_windows_geckodriver_download_command(binary_version, system):
-        return fr'mkdir C:\yt_videos_list_TEMP\ && curl -SL {binary_version}/geckodriver-v0.26.0-win{system}.zip -o C:\yt_videos_list_TEMP\geckodriver && tar -xzvf C:\yt_videos_list_TEMP\geckodriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP \n'
+        return fr'mkdir C:\yt_videos_list_TEMP\ && curl -SL {binary_version}/geckodriver-v0.26.0-win{system}.zip -o C:\yt_videos_list_TEMP\geckodriver && tar -xzvf C:\yt_videos_list_TEMP\geckodriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP' + '\n'
 
 
     @staticmethod
     def format_macos_operadriver_download_command(binary_version):
-        return f'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/{binary_version}/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum \n'
+        return f'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/{binary_version}/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum' + '\n'
 
     @staticmethod
     def format_linux_operadriver_download_command(binary_version):
-        return f'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/{binary_version}/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum \n'
+        return f'curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/{binary_version}/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum' + '\n'
 
     @staticmethod
     def format_windows_operadriver_download_command(binary_version, system):
-        return fr'mkdir C:\yt_videos_list_TEMP\ && curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/{binary_version}/operadriver_win{system}.zip -o C:\yt_videos_list_TEMP\operadriver && tar -xzvf C:\yt_videos_list_TEMP\operadriver -C C:\Windows\ --strip-components=1 && rmdir /q /s C:\yt_videos_list_TEMP && del C:\Windows\sha512_sum \n'
+        return fr'mkdir C:\yt_videos_list_TEMP\ && curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/{binary_version}/operadriver_win{system}.zip -o C:\yt_videos_list_TEMP\operadriver && tar -xzvf C:\yt_videos_list_TEMP\operadriver -C C:\Windows\ --strip-components=1 && rmdir /q /s C:\yt_videos_list_TEMP && del C:\Windows\sha512_sum' + '\n'
 
 
     @staticmethod
     def format_macos_chromedriver_download_command(binary_version):
-        return f'curl -SL https://chromedriver.storage.googleapis.com/{binary_version}/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ \n'
+        return f'curl -SL https://chromedriver.storage.googleapis.com/{binary_version}/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/' + '\n'
 
     @staticmethod
     def format_linux_chromedriver_download_command(binary_version):
-        return f'curl -SL https://chromedriver.storage.googleapis.com/{binary_version}/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ \n'
+        return f'curl -SL https://chromedriver.storage.googleapis.com/{binary_version}/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/' + '\n'
 
     @staticmethod
     def format_windows_chromedriver_download_command(binary_version):
-        return fr'mkdir C:\yt_videos_list_TEMP\ && curl -SL https://chromedriver.storage.googleapis.com/{binary_version}/chromedriver_win32.zip -o C:\yt_videos_list_TEMP\chromedriver && tar -xzvf C:\yt_videos_list_TEMP\chromedriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP \n'
+        return fr'mkdir C:\yt_videos_list_TEMP\ && curl -SL https://chromedriver.storage.googleapis.com/{binary_version}/chromedriver_win32.zip -o C:\yt_videos_list_TEMP\chromedriver && tar -xzvf C:\yt_videos_list_TEMP\chromedriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP' + '\n'
 
 
     @staticmethod
