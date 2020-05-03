@@ -3,6 +3,8 @@ import sys
 import subprocess
 
 
+USER = subprocess.getoutput("whoami").split('\\')[1]
+
 def firefox_exists():
     pass
 
