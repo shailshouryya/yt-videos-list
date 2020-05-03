@@ -15,14 +15,14 @@ application_name = {
         'chrome':   'Google Chrome'
     },
     'linux': {
-        'firefox':  'Automatic Selenium dependency download for Linux is not yet supported. Please follow the instructions below to set up the correct selenium dependecy for the firefoxdriver.',
-        'opera':    'Automatic Selenium dependency download for Linux is not yet supported. Please follow the instructions below to set up the correct selenium dependecy for the operadriver.',
-        'chrome':   'Automatic Selenium dependency download for Linux is not yet supported. Please follow the instructions below to set up the correct selenium dependecy for the chromedriver.'
-    },
-    'windows': {
         'firefox':  'Automatic Selenium dependency download for Windows is not yet supported. Please follow the instructions below to set up the correct selenium dependecy for the firefoxdriver.',
         'opera':    'Automatic Selenium dependency download for Windows is not yet supported. Please follow the instructions below to set up the correct selenium dependecy for the operadriver.',
         'chrome':   'Automatic Selenium dependency download for Windows is not yet supported. Please follow the instructions below to set up the correct selenium dependecy for the chromedriver.'
+    },
+    'windows': {
+        'firefox':  'Mozilla Firefox',
+        'opera':    'Opera',
+        'chrome':   'Chrome'
     }
 }
 
