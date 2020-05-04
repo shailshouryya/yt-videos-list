@@ -32,8 +32,8 @@ def get_firefox_version():
 def get_opera_version():
     drive = get_drive_letter()
     user  = get_user_name()
-    with open(rf'{drive}:\Users\{user}\AppData\Local\Programs\Opera\installation_status.json', 'r') as f:
-        opera = json.load(f)
+    with open(rf'{drive}:\Users\{user}\AppData\Local\Programs\Opera\installation_status.json', 'r') as file:
+        opera = json.load(file)
     return opera['_subfolder']
 
 def get_chrome_version():
