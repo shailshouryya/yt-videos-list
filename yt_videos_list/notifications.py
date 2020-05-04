@@ -33,10 +33,10 @@ class Common:
                 ],
                 'windows': [
                     'In progress!',
-                    '# windows64 geckodriver (Firefoxdriver) v0.26.0',
-                    self.format_windows_geckodriver_download_command('v0.26.0', '64'),
                     '# windows32 geckodriver (Firefoxdriver) v0.26.0',
-                    self.format_windows_geckodriver_download_command('v0.26.0', '32')
+                    self.format_windows_geckodriver_download_command('v0.26.0', '32'),
+                    '# windows64 geckodriver (Firefoxdriver) v0.26.0',
+                    self.format_windows_geckodriver_download_command('v0.26.0', '64')
                 ]
             },
             'opera': {
