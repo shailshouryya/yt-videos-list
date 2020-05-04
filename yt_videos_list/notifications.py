@@ -1,3 +1,6 @@
+from .windows import get_drive_letter
+
+
 class Common:
     '''
     This class contains messages that are common regardless of whether the package is being run as a module using the -m option from the CLI or as a module from within the Python interpreter (or another Python script).
@@ -257,7 +260,8 @@ class Common:
 
     @classmethod
     def format_windows_geckodriver_download_command(cls, binary_version, system):
-        return fr'mkdir C:\yt_videos_list_TEMP\ && curl -SL {cls.url_prefix_geckodriver}/{binary_version}/geckodriver-v0.26.0-win{system}.zip -o C:\yt_videos_list_TEMP\geckodriver && tar -xzvf C:\yt_videos_list_TEMP\geckodriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP' + '\n'
+        drive = get_drive_letter()
+        return fr'mkdir {drive}:\yt_videos_list_TEMP\ && curl -SL {cls.url_prefix_geckodriver}/{binary_version}/geckodriver-v0.26.0-win{system}.zip -o {drive}:\yt_videos_list_TEMP\geckodriver && tar -xzvf {drive}:\yt_videos_list_TEMP\geckodriver -C {drive}:\Windows\ && rmdir /q /s {drive}:\yt_videos_list_TEMP' + '\n'
 
 
     @classmethod
@@ -270,7 +274,8 @@ class Common:
 
     @classmethod
     def format_windows_operadriver_download_command(cls, binary_version, system):
-        return fr'mkdir C:\yt_videos_list_TEMP\ && curl -SL {cls.url_prefix_operadriver}/{binary_version}/operadriver_win{system}.zip -o C:\yt_videos_list_TEMP\operadriver && tar -xzvf C:\yt_videos_list_TEMP\operadriver -C C:\Windows\ --strip-components=1 && rmdir /q /s C:\yt_videos_list_TEMP && del C:\Windows\sha512_sum' + '\n'
+        drive = get_drive_letter()
+        return fr'mkdir {drive}:\yt_videos_list_TEMP\ && curl -SL {cls.url_prefix_operadriver}/{binary_version}/operadriver_win{system}.zip -o {drive}:\yt_videos_list_TEMP\operadriver && tar -xzvf {drive}:\yt_videos_list_TEMP\operadriver -C {drive}:\Windows\ --strip-components=1 && rmdir /q /s {drive}:\yt_videos_list_TEMP && del {drive}:\Windows\sha512_sum' + '\n'
 
 
     @classmethod
@@ -283,7 +288,8 @@ class Common:
 
     @classmethod
     def format_windows_chromedriver_download_command(cls, binary_version):
-        return fr'mkdir C:\yt_videos_list_TEMP\ && curl -SL {cls.url_prefix_chromedriver}/{binary_version}/chromedriver_win32.zip -o C:\yt_videos_list_TEMP\chromedriver && tar -xzvf C:\yt_videos_list_TEMP\chromedriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP' + '\n'
+        drive = get_drive_letter()
+        return fr'mkdir {drive}:\yt_videos_list_TEMP\ && curl -SL {cls.url_prefix_chromedriver}/{binary_version}/chromedriver_win32.zip -o {drive}:\yt_videos_list_TEMP\chromedriver && tar -xzvf {drive}:\yt_videos_list_TEMP\chromedriver -C {drive}:\Windows\ && rmdir /q /s {drive}:\yt_videos_list_TEMP' + '\n'
 
 
     @staticmethod

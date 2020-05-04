@@ -3,16 +3,21 @@ import sys
 import json
 import subprocess
 
+from .windows import get_drive_letter
+
 
 def firefox_exists(browser):
-    return browser in subprocess.getoutput(r'dir "C:\Program Files"')
+    drive = get_drive_letter()
+    return browser in subprocess.getoutput(rf'dir "{drive}:\Program Files"')
 
 def opera_exists(browser):
-    user = subprocess.getoutput("whoami").split('\\')[1]
-    return browser in subprocess.getoutput(rf'dir C:\Users\{user}\AppData\Local\Programs')
+    drive = get_drive_letter()
+    user  = subprocess.getoutput("whoami").split('\\')[1]
+    return browser in subprocess.getoutput(rf'dir {drive}:\Users\{user}\AppData\Local\Programs')
 
 def chrome_exists(browser):
-    return browser in  subprocess.getoutput(rf'dir "C:\Program Files (x86)\Google"')
+    drive = get_drive_letter()
+    return browser in  subprocess.getoutput(rf'dir "{drive}:\Program Files (x86)\Google"')
 
 def browser_exists(browser):
     if   browser == 'Mozilla Firefox': return firefox_exists(browser)
@@ -21,17 +26,20 @@ def browser_exists(browser):
 
 
 def get_firefox_version():
-    firefox = subprocess.getoutput(r'more "C:\Program Files\Mozilla Firefox\application.ini"')
+    drive   = get_drive_letter()
+    firefox = subprocess.getoutput(rf'more "{drive}:\Program Files\Mozilla Firefox\application.ini"')
     return re.search('MinVersion=(\d+\.[\d\.]*)', firefox)[1]
 
 def get_opera_version():
-    user = subprocess.getoutput("whoami").split('\\')[1]
-    with open(rf'C:\Users\{user}\AppData\Local\Programs\Opera\installation_status.json', 'r') as f:
+    drive = get_drive_letter()
+    user  = subprocess.getoutput("whoami").split('\\')[1]
+    with open(rf'{drive}:\Users\{user}\AppData\Local\Programs\Opera\installation_status.json', 'r') as f:
         opera = json.load(f)
     return opera['_subfolder']
 
 def get_chrome_version():
-    chrome = subprocess.getoutput(r'dir "C:\Program Files (x86)\Google\Chrome\Application"')
+    drive  = get_drive_letter()
+    chrome = subprocess.getoutput(rf'dir "{drive}:\Program Files (x86)\Google\Chrome\Application"')
     return re.search('(\d\d\.[\d\.]*)', chrome)[1]
 
 def get_browser_version(browser):
