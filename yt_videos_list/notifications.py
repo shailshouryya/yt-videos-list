@@ -287,7 +287,7 @@ class Common:
 
     @staticmethod
     def display_browser_not_found_information(browser):
-        print(f'Did not find an installed version of {browser}.\nIf you DO have {browser} installed but it was not detected, it may be because your {browser} was installed in a non-default location.\nPlease follow the directions under the {browser} section at https://github.com/Shail-Shouryya/yt_videos_list/extra/README.md for "Setting up your Selenium dependencies for user_os.title"\n')
+        print(f'\nDid not find an installed version of {browser}.\nIf you DO have {browser} installed but it was not detected, it may be because your {browser} was installed in a non-default location.\nPlease follow the directions under the {browser} section at https://github.com/Shail-Shouryya/yt_videos_list/extra/README.md for "Setting up your Selenium dependencies for user_os.title"\n')
 
 
     def display_dependency_setup_instructions(self, user_driver, user_os):
