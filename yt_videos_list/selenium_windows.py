@@ -7,13 +7,13 @@ import subprocess
 USER = subprocess.getoutput("whoami").split('\\')[1]
 
 def firefox_exists(browser):
-    return browser in r'more "C:\Program Files"'
+    return browser in subprocess.getoutput(r'dir "C:\Program Files"')
 
 def opera_exists(browser):
-    return browser in rf'C:\Users\{USER}\AppData\Local\Programs'
+    return browser in subprocess.getoutput(rf'dir C:\Users\{USER}\AppData\Local\Programs')
 
 def chrome_exists(browser):
-    return browser in rf'dir "C:\Program Files (x86)\Google"'
+    return browser in  subprocess.getoutput(rf'dir "C:\Program Files (x86)\Google"')
 
 def browser_exists(browser):
     if   browser == 'Mozilla Firefox': return firefox_exists(browser)
