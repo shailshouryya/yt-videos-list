@@ -31,7 +31,8 @@ def get_opera_version():
     return opera['_subfolder']
 
 def get_chrome_version():
-    pass
+    chrome = subprocess.getoutput(r'dir "C:\Program Files (x86)\Google\Chrome\Application"')
+    return re.search('(\d\d\.[\d\.]*)', chrome)[1]
 
 def get_browser_version(browser):
     if   browser == 'Mozilla Firefox': return get_firefox_version()
