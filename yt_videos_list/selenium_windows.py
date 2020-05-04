@@ -21,7 +21,8 @@ def browser_exists(browser):
 
 
 def get_firefox_version():
-    pass
+    firefox = subprocess.getoutput(r'more "C:\Program Files\Mozilla Firefox\application.ini"')
+    return re.search('MinVersion=(\d+\.[\d\.]*)', firefox)[1]
 
 def get_opera_version():
     pass
