@@ -1,6 +1,4 @@
-import re
 import sys
-import subprocess
 
 def browser_exists(browser):
     # return browser in subprocess.getoutput('ls /Applications')
