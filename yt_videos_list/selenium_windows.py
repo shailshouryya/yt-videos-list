@@ -19,8 +19,17 @@ def browser_exists(browser):
     elif browser == 'Opera':           return opera_exists(browser)
     elif browser == 'Google':          return chrome_exists(browser)
 
+
+def get_firefox_version():
+    pass
+
+def get_opera_version():
+    pass
+
+def get_chrome_version():
+    pass
+
 def get_browser_version(browser):
-    # with open (f'/Applications/{browser}.app/Contents/Info.plist') as f:
-    #     info_plist = f.read()
-    # return re.search('<key>CFBundleShortVersionString</key>\s*<string>([0-9\.]+)', info_plist)[1]
-    sys.exit()
+    if   browser == 'Mozilla Firefox': return get_firefox_version()
+    elif browser == 'Opera':           return get_opera_version()
+    elif browser == 'Google':          return get_chrome_version()
