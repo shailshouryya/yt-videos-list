@@ -17,7 +17,7 @@ def chrome_exists(browser):
 def browser_exists(browser):
     if   browser == 'Mozilla Firefox': return firefox_exists(browser)
     elif browser == 'Opera':           return opera_exists(browser)
-    elif browser == 'Google':          return chrome_exists(browser)
+    elif browser == 'Chrome':          return chrome_exists(browser)
 
 
 def get_firefox_version():
@@ -37,4 +37,4 @@ def get_chrome_version():
 def get_browser_version(browser):
     if   browser == 'Mozilla Firefox': return get_firefox_version()
     elif browser == 'Opera':           return get_opera_version()
-    elif browser == 'Google':          return get_chrome_version()
+    elif browser == 'Chrome':          return get_chrome_version()
