@@ -248,11 +248,11 @@ class Common:
 
     @staticmethod
     def format_linux_geckodriver_download_command(binary_version, system):
-        return f'curl -SL {binary_version}/geckodriver-v0.26.0-linux{system}.tar.gz | tar -xzvf - -C /usr/local/bin/' + '\n'
+        return f'curl -SL https://github.com/mozilla/geckodriver/releases/download/{binary_version}/geckodriver-v0.26.0-linux{system}.tar.gz | tar -xzvf - -C /usr/local/bin/' + '\n'
 
     @staticmethod
     def format_windows_geckodriver_download_command(binary_version, system):
-        return fr'mkdir C:\yt_videos_list_TEMP\ && curl -SL {binary_version}/geckodriver-v0.26.0-win{system}.zip -o C:\yt_videos_list_TEMP\geckodriver && tar -xzvf C:\yt_videos_list_TEMP\geckodriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP' + '\n'
+        return fr'mkdir C:\yt_videos_list_TEMP\ && curl -SL https://github.com/mozilla/geckodriver/releases/download/{binary_version}/geckodriver-v0.26.0-win{system}.zip -o C:\yt_videos_list_TEMP\geckodriver && tar -xzvf C:\yt_videos_list_TEMP\geckodriver -C C:\Windows\ && rmdir /q /s C:\yt_videos_list_TEMP' + '\n'
 
 
     @staticmethod
