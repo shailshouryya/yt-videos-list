@@ -4,13 +4,12 @@ import json
 import subprocess
 
 
-USER = subprocess.getoutput("whoami").split('\\')[1]
-
 def firefox_exists(browser):
     return browser in subprocess.getoutput(r'dir "C:\Program Files"')
 
 def opera_exists(browser):
-    return browser in subprocess.getoutput(rf'dir C:\Users\{USER}\AppData\Local\Programs')
+    user = subprocess.getoutput("whoami").split('\\')[1]
+    return browser in subprocess.getoutput(rf'dir C:\Users\{user}\AppData\Local\Programs')
 
 def chrome_exists(browser):
     return browser in  subprocess.getoutput(rf'dir "C:\Program Files (x86)\Google"')
@@ -26,7 +25,8 @@ def get_firefox_version():
     return re.search('MinVersion=(\d+\.[\d\.]*)', firefox)[1]
 
 def get_opera_version():
-    with open(rf'C:\Users\{USER}\AppData\Local\Programs\Opera\installation_status.json', 'r') as f:
+    user = subprocess.getoutput("whoami").split('\\')[1]
+    with open(rf'C:\Users\{user}\AppData\Local\Programs\Opera\installation_status.json', 'r') as f:
         opera = json.load(f)
     return opera['_subfolder']
 
