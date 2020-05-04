@@ -43,7 +43,7 @@ def download_specific_dependency(driver, user_os):
         major_version = full_version_number.split('.')[0]
         execute_download_command(driver, user_os, major_version)
     else:
-        common_message.display_browser_not_found_information(browser)
+        common_message.display_browser_not_found_information(browser, user_os)
 
 def download_all_dependencies(user_os):
     print(common_message.automated_driver_update)
