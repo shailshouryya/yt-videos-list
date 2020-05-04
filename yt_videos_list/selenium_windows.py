@@ -1,5 +1,6 @@
 import re
 import sys
+import json
 import subprocess
 
 
@@ -25,7 +26,9 @@ def get_firefox_version():
     return re.search('MinVersion=(\d+\.[\d\.]*)', firefox)[1]
 
 def get_opera_version():
-    pass
+    with open(rf'C:\Users\{USER}\AppData\Local\Programs\Opera\installation_status.json', 'r') as f:
+        opera = json.load(f)
+    return opera['_subfolder']
 
 def get_chrome_version():
     pass
