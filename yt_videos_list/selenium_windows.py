@@ -27,7 +27,7 @@ def browser_exists(browser):
 def get_firefox_version():
     drive   = get_drive_letter()
     firefox = subprocess.getoutput(rf'more "{drive}:\Program Files\Mozilla Firefox\application.ini"')
-    return re.search('MinVersion=(\d+\.[\d\.]*)', firefox)[1]
+    return re.search(r'MinVersion=(\d+\.[\d\.]*)', firefox)[1]
 
 def get_opera_version():
     drive = get_drive_letter()
@@ -39,7 +39,7 @@ def get_opera_version():
 def get_chrome_version():
     drive  = get_drive_letter()
     chrome = subprocess.getoutput(rf'dir "{drive}:\Program Files (x86)\Google\Chrome\Application"')
-    return re.search('(\d\d\.[\d\.]*)', chrome)[1]
+    return re.search(r'(\d\d\.[\d\.]*)', chrome)[1]
 
 def get_browser_version(browser):
     if   browser == 'Mozilla Firefox': return get_firefox_version()
