@@ -3,7 +3,7 @@ from .notifications import Common, ModuleMessage
 
 
 '''
-version:              0.3.4
+version:              0.3.5
 author:               Shail-Shouryya
 development_status:   4 - Beta
 intended_audience:    Developers, Hobbyists
@@ -13,7 +13,7 @@ source:               https://github.com/Shail-Shouryya/yt_videos_list
 '''
 
 
-__version__              = '0.3.4'
+__version__              = '0.3.5'
 __author__               = 'Shail-Shouryya'
 __development_status__   = '4 - Beta'
 __intended_audience__    = 'Developers, Hobbyists'
