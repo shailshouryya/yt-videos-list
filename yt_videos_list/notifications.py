@@ -11,7 +11,7 @@ class Common:
 
     not_writing_to_any_files = '\nBased on your provided settings, yt_videos_list will not be writing to either a csv file or a txt file.'
 
-    no_videos_found = 'No videos were found for the channel you provided. Are you sure you typed in the channel name correctly?\n'
+    no_videos_found = 'No videos were found for the channel you provided. Are you sure you entered the url correctly?\n'
     no_new_videos_found = 'No new videos were found since the last scroll. Waiting another 0.6 seconds to see if more videos can be loaded....'
     invalid_response = 'The response you entered was invalid.'
 
@@ -357,8 +357,6 @@ class ModuleMessage(Common):
     run_in_headless_hint = '\nAdvanced usage: you can run this program in headless mode with the optional "headless" parameter set to True to speed up execution slightly:'
     run_in_headless_example = '    lc = ListCreator(headless=True)\n\n\n'
 
-    check_channel_type = 'If you did type the name in correctly, perhaps the channel_type is set incorrectly. Try setting channel_type to "channel" in the create_list_for() method call if you set channel_type to "user" for this run, or try running the method with channel_type set to "user" if you ran this method with channel_type set to "channel" for this run.\n'
-
     file_already_exists = 'This error indicates that a file of this name already exists in the current directory. If you want to overwrite this file, run the create_list_for method again with the optional parameter "write_format" set to "w"'
     file_already_exists_rerun_usage = 'Example usage:\n lc.create_list_for(write_format="w")\n'
 
@@ -380,8 +378,6 @@ class ScriptMessage(Common):
 
     running_default_driver = '\nNo driver flag used, so running program using the Firefox driver.'
 
-    input_message = "What is the name of the YouTube channel you want to generate the list for?\n\nIf you're unsure, click on the channel and look at the URL.\nIt should be in the format:\nhttps://www.youtube.com/user/YourChannelName\nOR\nhttps://www.youtube.com/channel/YourChannelName\n\nSubstitute what you see for YourChannelName and type it in below (NOTE: if your url looks like the second option, you need to run this script with the -c or --channel flag):\n"
-
-    check_channel_type = 'If you did type the name in correctly, perhaps the channel_type is set incorrectly. Try using the -c or --channel_type flag for this script if you didn\'t do it when running this script, or try running the script without the -c or --channel_type flag if you DID include that flag when running this script.'
+    input_message = "What is the name of the YouTube channel you want to generate the list for?\n\nIf you're unsure, click on the channel and look at the URL.\nIt should be in the format:\nhttps://www.youtube.com/user/YourChannelName\nOR\nhttps://www.youtube.com/channel/YourChannelName\n\nSubstitute what you see for YourChannelName and type it in below:\n"
 
     show_driver_options = 'To use a different driver, specify the driver in the driver flag. For example:'

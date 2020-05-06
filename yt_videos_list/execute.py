@@ -149,7 +149,6 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
         videos_list = program.scroll_to_bottom(url, driver, scroll_pause_time)
         if len(videos_list) == 0:
             print(common_message.no_videos_found)
-            print(module_message.check_channel_type) if execution_type == 'module' else print(script_message.check_channel_type)
             return
         if txt is True and txt_write_format != 0: program.write_to_txt(videos_list, file_name, txt_write_format, chronological)
         if csv is True and csv_write_format != 0: program.write_to_csv(videos_list, file_name, csv_write_format, chronological)
