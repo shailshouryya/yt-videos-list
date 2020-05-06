@@ -3,10 +3,10 @@
 <br>[Quick Start](./README.md#Quick-Start)
 <br>[Running the package from the python interpreter](./README.md#Running-the-package-from-the-python-interpreter)
 <br>[For more control](./README.md#For-more-control)
-<br>[Understanding the API](./README.md#Understanding-the-API)
 <br>[General Overview](./README.md#General-Overview)
 <br>[Future Features](./README.md#Future-Features)
 <br>[Technical Specifications](./README.md#Technical-Specifications)
+
 
 ## Quick Start
 This package uses [f-strings](https://cito.github.io/blog/f-strings/) (more [here](https://realpython.com/python-f-strings/)) and as such requires Python 3.6+. If you have an older version of Python, you can download the Python 3.8.2 [macOS 64-bit installer](https://www.python.org/ftp/python/3.8.2/python-3.8.2-macosx10.9.pkg), [Windows x86-64 executable installer](https://www.python.org/ftp/python/3.8.2/python-3.8.2-amd64.exe), [Windows x86 executable installer](https://www.python.org/ftp/python/3.8.2/python-3.8.2.exe), or the [Gzipped source tarball](https://www.python.org/ftp/python/3.8.2/Python-3.8.2.tgz) (most useful for Linux) and follow the instructions to set up Python for your machine.
@@ -104,8 +104,8 @@ There are a number of optional arguments you can specify during the instantiatio
   - CAUTION: reducing this value too much will result in the programming not capturing all the videos, so be careful! Experiment :)
 
 
-## Understanding the API
-There are two types of YouTube channels: one type is a `user` channel and the other is a `channel` channel.
+## General Overview
+This package is intended to provide a quick, simple way to create a list of all videos posted to any YouTube channel by providing just the URL to that user's channel videos. There are two types of YouTube channels: one type is a `user` channel and the other is a `channel` channel.
 - Examples of the `user` channel type:
   - Disney: https://www.youtube.com/user/disneysshows
   - sentdex: https://www.youtube.com/user/sentdex
@@ -117,17 +117,11 @@ There are two types of YouTube channels: one type is a `user` channel and the ot
   - Gordon Ramsay: https://www.youtube.com/channel/UCIEv3lZ_tNXHzL3ox-_uUGQ
   - PBS Space Time: https://www.youtube.com/channel/UC7_gcs09iThXybpVgjHZ_7g
 
-To scrape the video titles along with the link to the video, you need to run the `create_list_for(url)` method on the ListCreator object you just created. By default, the name of the file produced will be `channel`VideosList.ext where the `.ext` will be `.csv` or `.txt ` depending on the type of file(s) that you specified.
+To scrape the video titles along with the link to the video, you need to run the `lc.create_list_for(url)` method on the ListCreator object you just created with `lc = ListCreator()`. By default, the name of the file produced will be `channel`VideosList.ext where the `.ext` will be `.csv` or `.txt `, depending on the type of file(s) that you specified.
 
-
-
-## General Overview
-This repo is intended to provide a quick, simple way to create a list of all videos posted to any YouTube channel by providing just the URL to that user's channel videos. The general format for this is
-`https://www.youtube.com/user/TheChannelYouWantToScrape/videos`
-OR
-`https://www.youtube.com/channel/TheChannelYouWantToScrape/videos`.
 
 ### [Future Features](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/futureFeatures.md)
+
 
 ## Technical Specifications
 Please see [/extra/technicalSpecifications.md](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/technicalSpecifications.md)
