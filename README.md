@@ -69,9 +69,9 @@ ListCreator(csv=True, csv_write_format='x', txt=True, txt_write_format='x',
               chronological=False,
               headless=False, scroll_pause_time=0.8, driver='Firefox')
 ```
-There are a number of optional arguments you can specify during the instantiation of the ListCreator object. The preceding arguments are run by default, but in case you want more flexibility, you can specify:
+There are a number of optional arguments you can specify during the instantiation of the ListCreator object. The preceding arguments are run by default, but in case you want more flexibility, you can specify the:
 
-- Options for the `driver` argument are
+- `driver` argument:
   - Firefox (default)
   - Opera
   - Safari
@@ -80,26 +80,28 @@ There are a number of optional arguments you can specify during the instantiatio
     - `driver='opera'`
     - `driver='safari'`
     - `driver='chrome'`
-- Options for the file type arguments (`csv`, `txt`) are
+- `csv`, `txt` file type argument:
   - `True` (default) - create a file for the specified type
   - `False` - do not create a file for the specified type.
     - `txt=True`  (default) OR `txt=False`
     - `csv=True`  (default) OR `csv=False`
-- Options for the write format arguments (`csv_write_format`, `txt_write_format`) are
+- `csv_write_format`, `txt_write_format` write format argument
   - `'x'` (default) - does not overwrite an existing file with the same name
   - `'w'` - if an existing file with the same name exists, it will be overwritten
   - NOTE: if you specify the file type argument to be False, you don't need to touch this - the program will automatically skip this step.
     - `txt_write_format='x'`  (default) OR `txt_write_format='w'`
     - `csv_write_format='x'`  (default) OR `csv_write_format='w'`
-- Options for the `chronological` argument are
+- `chronological` argument:
   - `False` (default) - write the files in order from most recent video to the oldest video
   - `True` - write the files in order from oldest video to the most recent video
     - `chronological=False` (default) OR `chronological=True`
-- Options for the `headless` argument are
+- `headless` argument:
   - `False` (default) - run the driver with an open Selenium instance for viewing
   - `True` - run the driver in "invisible" mode.
     - `headless=False` (default) OR `headless=True`
-- Options for the `scroll_pause_time` argument are any float values greater than `0` (default `0.8`). The value you provide will be how long the program waits before trying to scroll the videos list page down for the channel you want to scrape. For fast internet connections, you may want to reduce the value, and for slow connections you may want to increase the value.
+- `scroll_pause_time` argument:
+  - any float values greater than `0` (default `0.8`).
+    - The value you provide will be how long the program waits before trying to scroll the videos list page down for the channel you want to scrape. For fast internet connections, you may want to reduce the value, and for slow connections you may want to increase the value.
   - `scroll_pause_time=0.8` (default)
   - CAUTION: reducing this value too much will result in the program not capturing all the videos, so be careful! Experiment :)
 
