@@ -66,13 +66,13 @@ def time_writer_function(writer_function):
 def write_to_txt(list_of_videos, file_name, write_format, chronological):
     with open(f'{file_name}.txt', write_format) as txt_file:
         print(f'Opened {txt_file.name}, writing video information to file....')
-        spacing = '\n' + ' '*12 # newline followed by 12 spaces on the next line to pad the start of line
+        spacing = '\n' + ' '*4 # newline followed by 4 spaces on the next line to pad the start of line
 
         for video_number, selenium_element in enumerate(list_of_videos, 1) if chronological is False else enumerate(list_of_videos[::-1], 1):
-            txt_file.write(f'video_number:{spacing}{video_number}\n')
+            txt_file.write(f'Video Number: {video_number}\n')
+            txt_file.write(f'Video Title:  {selenium_element.get_attribute("title")}\n')
+            txt_file.write(f'Video URL:    {selenium_element.get_attribute("href")}\n')
             txt_file.write(f'Watched?{spacing}\n')
-            txt_file.write(f'Video Title:{spacing}{selenium_element.get_attribute("title")}\n')
-            txt_file.write(f'Video URL:{spacing}{selenium_element.get_attribute("href")}\n')
             txt_file.write(f'Watch again later?{spacing}\n')
             txt_file.write(f'Notes:{spacing}\n')
             txt_file.write('*'*75 + '\n')
@@ -87,13 +87,13 @@ def save_to_mem_write_to_txt(list_of_videos, file_name, write_format, chronologi
     with open(f'{file_name}.txt', write_format) as memory_file:
         print(f'Opened {memory_file.name}, writing video information to file....')
         text = ''
-        spacing = '\n' + ' '*12 # newline followed by 12 spaces on the next line to pad the start of line
+        spacing = '\n' + ' '*4 # newline followed by 4 spaces on the next line to pad the start of line
 
         for video_number, selenium_element in enumerate(list_of_videos, 1) if chronological is False else enumerate(list_of_videos[::-1], 1):
-            text += f'video_number:{spacing}{video_number}\n'
+            text += f'Video Number: {video_number}\n'
+            text += f'Video Title:  {selenium_element.get_attribute("title")}\n'
+            text += f'Video URL:    {selenium_element.get_attribute("href")}\n'
             text += f'Watched?{spacing}\n'
-            text += f'Video Title:{spacing}{selenium_element.get_attribute("title")}\n'
-            text += f'Video URL:{spacing}{selenium_element.get_attribute("href")}\n'
             text += f'Watch again later?{spacing}\n'
             text += f'Notes:{spacing}\n'
             text += '*'*75 + '\n'
@@ -108,13 +108,13 @@ def save_to_mem_write_to_txt(list_of_videos, file_name, write_format, chronologi
 def write_to_csv(list_of_videos, file_name, write_format, chronological):
     with open(f'{file_name}.csv', write_format) as csv_file:
         print(f'Opened {csv_file.name}, writing video information to file....')
-        fieldnames = ['video_number', 'Watched?', 'Video Title', 'Video URL', 'Watch again later?', 'Notes']
+        fieldnames = ['Video Number', 'Video Title', 'Video URL', 'Watched?', 'Watch again later?', 'Notes']
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
         writer.writeheader()
 
         for video_number, selenium_element in enumerate(list_of_videos, 1) if chronological is False else enumerate(list_of_videos[::-1], 1):
             writer.writerow(
-                {'video_number': f'{video_number}', 'Watched?': '', 'Video Title': f'{selenium_element.get_attribute("title")}', 'Video URL': f'{selenium_element.get_attribute("href")}', 'Watch again later?': '', 'Notes': ''}
+                {'Video Number': f'{video_number}', 'Video Title': f'{selenium_element.get_attribute("title")}', 'Video URL': f'{selenium_element.get_attribute("href")}', 'Watched?': '', 'Watch again later?': '', 'Notes': ''}
                 )
             if video_number % 250 == 0:
                 print(f'{video_number} videos written to {csv_file.name}...')
