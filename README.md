@@ -19,13 +19,6 @@ It's recommend to install the latest version if you don't have existing projects
 pip3 install -U yt-videos-list
 ```
 
-**NOTE**: You do need to have the Selenium driver installed to run this package, but you do ***not*** need to download all Selenium drivers for your OS if you only want to run this program on a specific driver. If you want a specific driver, just copy and paste the corresponding command for the relevant driver from below. Otherwise, download the selenium dependencies for all the drivers that are supported on your OS to play around with them and see how they differ :)
-### Copy paste the code block that's relevant for the OS of your machine for the Selenium driver(s) you want from **[here](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/README.md)**
-**NOTE** that you also need the corresponding browser installed to properly run the selenium driver.
-- To download the most recent version of the browser, go to the page for:
-  - [Firefox](https://www.mozilla.org/en-US/firefox/new/)
-  - [Opera](https://www.opera.com/)
-  - [Chrome](https://www.google.com/chrome/)
 
 ## Running the package from the python interpreter
 ```shell
@@ -36,10 +29,10 @@ from yt_videos_list import ListCreator
 lc = ListCreator()
 
 # "user" channel_type (example uses Corey Schafer):
-lc.create_list_for(channel='schafer5', channel_type='user')
+lc.create_list_for(url='https://www.youtube.com/user/schafer5')
 
 # "channel" channel_type (example uses freeCodeCamp) along with the optional file_name argument:
-lc.create_list_for(channel='UC8butISFwT-Wl7EV0hUK0BQ', channel_type='channel', file_name='freeCodeCamp_orgVideosList')
+lc.create_list_for(url='https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ', file_name='freeCodeCamp_orgVideosList')
 
 # see the new files that were just created:
 import os
@@ -51,21 +44,28 @@ os.system('dir /O-D | find "VideosList"')
 # for more information on using the module:
 help(lc)
 ```
+**NOTE**: You do need to have the Selenium driver installed to run this package - and the first time you run this package the automated downloader should install everything you need, but in case it doesn't refer to the link below and/or file an [issue here](https://github.com/Shail-Shouryya/yt_videos_list/issues). The Selenium drivers are all pretty similar but differ in subtle ways, so play around with them and see what's different:)
+### Copy paste the code block that's relevant for the OS of your machine for the Selenium driver(s) you want from **[here](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/README.md)**
+**NOTE** that you also need the corresponding browser installed to properly run the selenium driver.
+- To download the most recent version of the browser, go to the page for:
+  - [Firefox](https://www.mozilla.org/en-US/firefox/new/)
+  - [Opera](https://www.opera.com/)
+  - [Chrome](https://www.google.com/chrome/)
 
 ### Understanding the API
 There are two types of YouTube channels: one type is a `user` channel and the other is a `channel` channel.
-- The url for a `user` channel consists of `youtube.com` followed by `user` followed by the name. For example:
+- Examples of the `user` channel type:
   - Disney: https://www.youtube.com/user/disneysshows
   - sentdex: https://www.youtube.com/user/sentdex
   - Marvel: https://www.youtube.com/user/MARVEL
   - Apple: https://www.youtube.com/user/Apple
-- The url for a `channel` channel consists of `youtube.com` followed by `channel` followed by a string of rather unpredictable characters. For example:
+- Examples of the `channel` channel type:
   - Tasty: https://www.youtube.com/channel/UCJFp8uSYCjXOMnkUyb3CQ3Q
   - Billie Eilish: https://www.youtube.com/channel/UCiGm_E4ZwYSHV3bcW1pnSeQ
   - Gordon Ramsay: https://www.youtube.com/channel/UCIEv3lZ_tNXHzL3ox-_uUGQ
   - PBS Space Time: https://www.youtube.com/channel/UC7_gcs09iThXybpVgjHZ_7g
 
-To scrape the video titles along with the link to the video, you need to run the `create_list_for(channel, channel_type)` method on the ListCreator object you just created, substituting the name of the channel for the `channel` argument and the type of channel for `channel_type` argument. By default, the name of the file produced will be `channel`VideosList.ext where the `.ext` will be `.csv` or `.txt ` depending on the type of file(s) that you specified.
+To scrape the video titles along with the link to the video, you need to run the `create_list_for(url)` method on the ListCreator object you just created. By default, the name of the file produced will be `channel`VideosList.ext where the `.ext` will be `.csv` or `.txt ` depending on the type of file(s) that you specified.
 
 ### For more control
 ---
