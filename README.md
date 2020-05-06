@@ -101,7 +101,7 @@ There are a number of optional arguments you can specify during the instantiatio
     - `headless=False` (default) OR `headless=True`
 - Options for the `scroll_pause_time` argument are any float values greater than `0` (default `0.8`). The value you provide will be how long the program waits before trying to scroll the videos list page down for the channel you want to scrape. For fast internet connections, you may want to reduce the value, and for slow connections you may want to increase the value.
   - `scroll_pause_time=0.8` (default)
-  - CAUTION: reducing this value too much will result in the programming not capturing all the videos, so be careful! Experiment :)
+  - CAUTION: reducing this value too much will result in the program not capturing all the videos, so be careful! Experiment :)
 
 
 ## General Overview

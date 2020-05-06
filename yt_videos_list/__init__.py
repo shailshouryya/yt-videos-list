@@ -70,7 +70,7 @@ class ListCreator:
           * The value you provide will be how long (in seconds) the program waits before trying to scroll the videos list page down for the channel you want to scrape.
           * For fast internet connections, you may want to reduce the value, and for slow connections you may want to increase the value.
              -> scroll_pause_time=0.8 (default)
-          * CAUTION: reducing this value too much will result in the programming not capturing all the videos, so be careful! Experiment :)
+          * CAUTION: reducing this value too much will result in the program not capturing all the videos, so be careful! Experiment :)
 
 
         WORKING EXAMPLES:
