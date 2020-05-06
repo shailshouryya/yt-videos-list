@@ -1,4 +1,5 @@
 from . import execute
+from .notifications import Common, ModuleMessage
 
 
 '''
@@ -123,7 +124,7 @@ class ListCreator:
             channel_type = channel_info.split('/')[0]
             channel      = channel_info.split('/')[1]
         if channel is None or channel_type is None:
-            raise TypeError('create_list_for() missing 1 required positional argument: "url"\n    Please copy and paste the url to the YouTube channel you want to scrape as the first argument (make sure you put quotes around the url) and rerun this method!\n    EXAMPLE:\n        lc.create_list_for("https://www.youtube.com/user/schafer5")')
+            raise TypeError(Common().missing_url + ModuleMessage().url_argument_usage)
 
         _execution_type = 'module'
         instance_attributes = (self.txt, self.txt_write_format, self.csv, self.csv_write_format, self.docx, self.docx_write_format, self.chronological, self.headless, self.scroll_pause_time, self.driver)
