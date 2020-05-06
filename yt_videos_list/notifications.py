@@ -313,7 +313,10 @@ class Common:
         operadriver_download_instructions = '(Your Opera browser version should match the "supports Opera ## release" below)'
         chromedriver_download_instructions = '(Your Chrome browser version should match the first numbers before the decimal place of the chromedriver version below)'
 
-        print(geckodriver_download_instructions) if user_driver == 'firefox' else print(operadriver_download_instructions) if user_driver == 'opera' else print(chromedriver_download_instructions) if user_driver == 'chrome' else print('This is an OS specific driver.')
+        if   user_driver == 'firefox':  print(geckodriver_download_instructions)
+        elif user_driver == 'opera':    print(operadriver_download_instructions)
+        elif user_driver == 'chrome':   print(chromedriver_download_instructions)
+        else:                           print('This is an OS specific driver.')
 
         for driver_version_download in self.driver_downloads_for_os[user_driver][user_os]:
             print(driver_version_download)
