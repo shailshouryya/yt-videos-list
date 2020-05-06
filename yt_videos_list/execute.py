@@ -20,7 +20,7 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
         if file_name is not None:
             return file_name
         else:
-            return channel
+            return f'{channel}VideosList'
 
     def verify_write_format(file_type, write_format, file_name, file_extension):
         def new_write_format():
@@ -32,7 +32,7 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
                 common_message.display_file_already_exists_prompt(filename)
                 return new_write_format()
         if file_type is True and write_format == 'x':
-            filename    = f'{file_name}VideosList.{file_extension}'
+            filename    = f'{file_name}.{file_extension}'
             file_exists = bool(os.path.isfile(f'./{filename}'))
             if file_exists is True:
                 common_message.display_file_already_exists_warning(filename)
