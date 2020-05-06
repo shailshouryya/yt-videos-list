@@ -110,13 +110,20 @@ class ListCreator:
         self.driver            = None if driver is None else driver.lower()
 
 
-    def create_list_for(self, channel, channel_type, file_name=None):
+    def create_list_for(self, url=None, file_name=None, channel=None, channel_type=None):
         '''
         The create_list_for() method creates a list using the arguments specified during instantiation of the ListCreator object.
         You need to specify the channel and channel_type.
         You can also provide an optional file_name argument, but the file_name argument is not required.
         '''
 
+
+        if url is not None:
+            channel_info = url.split('youtube.com/')[1]
+            channel_type = channel_info.split('/')[0]
+            channel      = channel_info.split('/')[1]
+        if channel is None or channel_type is None:
+            raise TypeError('create_list_for() missing 1 required positional argument: "url"\n    Please copy and paste the url to the YouTube channel you want to scrape as the first argument (make sure you put quotes around the url) and rerun this method!\n    EXAMPLE:\n        lc.create_list_for("https://www.youtube.com/user/schafer5")')
 
         _execution_type = 'module'
         instance_attributes = (self.txt, self.txt_write_format, self.csv, self.csv_write_format, self.docx, self.docx_write_format, self.chronological, self.headless, self.scroll_pause_time, self.driver)

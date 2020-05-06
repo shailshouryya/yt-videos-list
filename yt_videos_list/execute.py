@@ -103,8 +103,6 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
 
     def check_user_input():
         nonlocal channel, channel_type, file_name, txt_write_format, csv_write_format, docx_write_format, user_driver
-        channel      = channel.strip().strip('/')
-        channel_type = channel_type.strip().strip('/')
         base_url     = 'https://www.youtube.com'
         videos       = 'videos'
         url          = f'{base_url}/{channel_type}/{channel}/{videos}'
