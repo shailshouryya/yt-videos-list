@@ -1,9 +1,13 @@
 import functools
+import platform
 import time
 import csv
 
 from .notifications import Common as common_message
 
+
+if platform.system().lower().startswith('windows'): NEWLINE = '\r\n'
+else:                                               NEWLINE = '\n'
 
 def scroll_down(current_elements_count, driver, scroll_pause_time):
     driver.execute_script('window.scrollBy(0, 50000);')
@@ -25,7 +29,7 @@ def save_elements_to_list(driver, start_time, scroll_pause_time, url):
     elements = driver.find_elements_by_xpath('//*[@id="video-title"]')
     end_time = time.perf_counter()
     total_time = end_time - start_time - scroll_pause_time # subtract scroll_pause_time to account for the extra waiting time to verify end of page
-    print(f'It took {total_time} seconds to find all {len(elements)} videos from {url}\n')
+    print(f'It took {total_time} seconds to find all {len(elements)} videos from {url}{NEWLINE}')
     return elements
 
 
@@ -57,8 +61,8 @@ def time_writer_function(writer_function):
 
         print(f'Finished writing to {filename}')
         print(f'{videos_written} videos written to {filename}')
-        print(f'Closing {filename}\n')
-        print(f'It took {total_time} to write all {videos_written} videos to {filename}\n')
+        print(f'Closing {filename}{NEWLINE}')
+        print(f'It took {total_time} to write all {videos_written} videos to {filename}{NEWLINE}')
     return wrapper_timer
 
 
@@ -66,16 +70,16 @@ def time_writer_function(writer_function):
 def write_to_txt(list_of_videos, file_name, write_format, chronological):
     with open(f'{file_name}.txt', write_format) as txt_file:
         print(f'Opened {txt_file.name}, writing video information to file....')
-        spacing = '\n' + ' '*4 # newline followed by 4 spaces on the next line to pad the start of line
+        spacing = f'{NEWLINE}' + ' '*4 # newline followed by 4 spaces on the next line to pad the start of line
 
         for video_number, selenium_element in enumerate(list_of_videos, 1) if chronological is False else enumerate(list_of_videos[::-1], 1):
-            txt_file.write(f'Video Number: {video_number}\n')
-            txt_file.write(f'Video Title:  {selenium_element.get_attribute("title")}\n')
-            txt_file.write(f'Video URL:    {selenium_element.get_attribute("href")}\n')
-            txt_file.write(f'Watched?{spacing}\n')
-            txt_file.write(f'Watch again later?{spacing}\n')
-            txt_file.write(f'Notes:{spacing}\n')
-            txt_file.write('*'*75 + '\n')
+            txt_file.write(f'Video Number: {video_number}{NEWLINE}')
+            txt_file.write(f'Video Title:  {selenium_element.get_attribute("title")}{NEWLINE}')
+            txt_file.write(f'Video URL:    {selenium_element.get_attribute("href")}{NEWLINE}')
+            txt_file.write(f'Watched?{spacing}{NEWLINE}')
+            txt_file.write(f'Watch again later?{spacing}{NEWLINE}')
+            txt_file.write(f'Notes:{spacing}{NEWLINE}')
+            txt_file.write('*'*75 + NEWLINE)
             if video_number % 250 == 0:
                 print(f'{video_number} videos written to {txt_file.name}...')
     return txt_file.name, video_number
@@ -87,16 +91,16 @@ def save_to_mem_write_to_txt(list_of_videos, file_name, write_format, chronologi
     with open(f'{file_name}.txt', write_format) as memory_file:
         print(f'Opened {memory_file.name}, writing video information to file....')
         text = ''
-        spacing = '\n' + ' '*4 # newline followed by 4 spaces on the next line to pad the start of line
+        spacing = NEWLINE + ' '*4 # newline followed by 4 spaces on the next line to pad the start of line
 
         for video_number, selenium_element in enumerate(list_of_videos, 1) if chronological is False else enumerate(list_of_videos[::-1], 1):
-            text += f'Video Number: {video_number}\n'
-            text += f'Video Title:  {selenium_element.get_attribute("title")}\n'
-            text += f'Video URL:    {selenium_element.get_attribute("href")}\n'
-            text += f'Watched?{spacing}\n'
-            text += f'Watch again later?{spacing}\n'
-            text += f'Notes:{spacing}\n'
-            text += '*'*75 + '\n'
+            text += f'Video Number: {video_number}{NEWLINE}'
+            text += f'Video Title:  {selenium_element.get_attribute("title")}{NEWLINE}'
+            text += f'Video URL:    {selenium_element.get_attribute("href")}{NEWLINE}'
+            text += f'Watched?{spacing}{NEWLINE}'
+            text += f'Watch again later?{spacing}{NEWLINE}'
+            text += f'Notes:{spacing}{NEWLINE}'
+            text += '*'*75 + NEWLINE
             if video_number % 250 == 0:
                 print(f'{video_number} videos saved to memory...')
         print(f'Finished saving video information to memory')
