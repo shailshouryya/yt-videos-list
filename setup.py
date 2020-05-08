@@ -11,7 +11,7 @@ with open('README.md', 'r', encoding='utf-8') as f:
 
 setup(
     name                          = 'yt_videos_list',
-    version                       = '0.3.5',
+    version                       = '0.3.6',
     description                   = 'Python package to extract YouTube video titles and corresponding URLs for a specific channel and write the information to CSV and txt files with sections to mark a particular video as watched, to mark a video for rewatching, and for taking notes.',
     long_description              = long_description,
     long_description_content_type = 'text/markdown',
