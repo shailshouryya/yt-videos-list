@@ -12,7 +12,8 @@ application_name = {
         # 'driver': 'browser_name'
         'firefox':  'Firefox',
         'opera':    'Opera',
-        'chrome':   'Google Chrome'
+        'chrome':   'Google Chrome',
+        'brave':    'Brave Browser'
     },
     'linux': {
         'firefox':  'Automatic Selenium dependency download for Windows is not yet supported. Please follow the instructions below to set up the correct selenium dependecy for the firefoxdriver.',
@@ -52,6 +53,8 @@ def download_all_dependencies(user_os):
 
 def execute_download_command(driver, user_os, version):
     # indexed values in reverse order to avoid having to map every version to a different element every time a new driver/browser version comes out since all the values get shifted down by 2 with new additions to the top of the list
+    if driver == 'brave':
+        driver = 'chrome' # use the corresponding chromedriver version for the Brave browser since Brave is chromium and doesn't (currently) have its own selenium driver
     row_in_list = {
         'firefox': {
             '74': -1,
