@@ -58,7 +58,7 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
         if platform.system().lower().startswith('windows'):
             drive  = get_drive_letter()
             options.binary_location = rf'{drive}:\Program Files (x86)\BraveSoftware\Brave-Browser\Application'
-            # executable_path         = r'C:\Windows'
+            executable_path         = rf'{drive}:\Windows\bravedriver'
         else:
             options.binary_location = '/Applications/Brave Browser.app/Contents/MacOS/Brave Browser'
             executable_path         = '/usr/local/bin/bravedriver'

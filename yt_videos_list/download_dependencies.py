@@ -121,6 +121,8 @@ def execute_download_command(driver, user_os, version):
     print(f'{common_message.driver_downloads_for_os[driver][user_os][row-1]} #')
     print(f'{common_message.driver_downloads_for_os[driver][user_os][row]}')
     os.system(common_message.driver_downloads_for_os[driver][user_os][row])
+    if driver == 'brave':
+        os.rename('bravedriver', 'bravedriver.exe')
 
 def run():
     user_os = determine_user_os()

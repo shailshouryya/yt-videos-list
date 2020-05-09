@@ -391,7 +391,7 @@ class Common:
         geckodriver_download_instructions = '(The given command downloads a geckodriver ("Firefoxdriver") version that is compatible with Firefox versions ≥ 60. To see more information about the differences compared to older versions, please visit https://github.com/mozilla/geckodriver/releases)'
         operadriver_download_instructions  = '(Your Opera browser version should match the "supports Opera ## release" below)'
         chromedriver_download_instructions = '(Your Chrome browser version should match the first numbers before the decimal place of the chromedriver version below)'
-        bravedriver_download_instructions  = '(Your Brave browser version should match the first numbers before the decimal place of the chromedriver version below)'
+        bravedriver_download_instructions  = '(Your Brave browser version should match the first numbers before the decimal place of the chromedriver version below\nOnce you run the command, make sure you rename bravedriver -> bravedriver.exe so the Windows operating system can execute the bravedriver!)'
 
         if   user_driver == 'firefox':  print(geckodriver_download_instructions)
         elif user_driver == 'opera':    print(operadriver_download_instructions)
