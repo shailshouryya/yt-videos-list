@@ -16,12 +16,17 @@ def opera_exists(browser):
 
 def chrome_exists(browser):
     drive = get_drive_letter()
-    return browser in  subprocess.getoutput(rf'dir "{drive}:\Program Files (x86)\Google"')
+    return browser in subprocess.getoutput(rf'dir "{drive}:\Program Files (x86)\Google"')
+
+def brave_exists(browser):
+    drive = get_drive_letter()
+    return browser in subprocess.getoutput(rf'dir "{drive}:\Program Files (x86)/BraveSoftware"')
 
 def browser_exists(browser):
     if   browser == 'Mozilla Firefox': return firefox_exists(browser)
     elif browser == 'Opera':           return opera_exists(browser)
     elif browser == 'Chrome':          return chrome_exists(browser)
+    elif browser == 'Brave-Browser':   return brave_exists(browser)
 
 
 def get_firefox_version():
@@ -41,7 +46,13 @@ def get_chrome_version():
     chrome = subprocess.getoutput(rf'dir "{drive}:\Program Files (x86)\Google\Chrome\Application"')
     return re.search(r'(\d\d\.[\d\.]*)', chrome)[1]
 
+def get_brave_version():
+    drive  = get_drive_letter()
+    brave = subprocess.getoutput(rf'dir "{drive}:\Program Files (x86)\BraveSoftware\Brave-Browser\Application"')
+    return re.search(r'(\d\d\.[\d\.]*)', brave)[1]
+
 def get_browser_version(browser):
     if   browser == 'Mozilla Firefox': return get_firefox_version()
     elif browser == 'Opera':           return get_opera_version()
     elif browser == 'Chrome':          return get_chrome_version()
+    elif browser == 'Brave-Browser':   return get_brave_version()

@@ -23,7 +23,8 @@ application_name = {
     'windows': {
         'firefox':  'Mozilla Firefox',
         'opera':    'Opera',
-        'chrome':   'Chrome'
+        'chrome':   'Chrome',
+        'brave':    'Brave-Browser'
     }
 }
 

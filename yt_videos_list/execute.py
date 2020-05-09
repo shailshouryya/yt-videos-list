@@ -8,6 +8,7 @@ from selenium import webdriver
 
 from . import program
 from . import download_dependencies
+from .windows import get_drive_letter, get_user_name
 from .notifications import Common, ModuleMessage, ScriptMessage
 
 
@@ -54,9 +55,15 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
 
     def configure_brave_driver():
         options = webdriver.ChromeOptions()
-        options.binary_location =  '/Applications/Brave Browser.app/Contents/MacOS/Brave Browser'
+        if platform.system().lower().startswith('windows'):
+            drive  = get_drive_letter()
+            options.binary_location = rf'{drive}:\Program Files (x86)\BraveSoftware\Brave-Browser\Application'
+            # executable_path         = r'C:\Windows'
+        else:
+            options.binary_location = '/Applications/Brave Browser.app/Contents/MacOS/Brave Browser'
+            executable_path         = '/usr/local/bin/bravedriver'
         # options.headless = True
-        return webdriver.Chrome(options=options, executable_path='/usr/local/bin/bravedriver')
+        return webdriver.Chrome(options=options, executable_path=executable_path)
 
     def set_up_headless_firefox_driver():
         options = selenium.webdriver.firefox.options.Options()
@@ -84,7 +91,7 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
         return seleniumdriver(chrome_options=options)
 
     def set_up_headless_brave_driver():
-        print(common_message.unsupported_opera_headless)
+        print(common_message.unsupported_brave_headless)
         return configure_brave_driver()
 
     def open_user_driver():
