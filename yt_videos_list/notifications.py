@@ -280,7 +280,6 @@ class Common:
         drive = get_drive_letter()
         return fr'mkdir {drive}:\yt_videos_list_TEMP\ && curl -SL {cls.url_prefix_operadriver}/{binary_version}/operadriver_win{system}.zip -o {drive}:\yt_videos_list_TEMP\operadriver && tar -xzvf {drive}:\yt_videos_list_TEMP\operadriver -C {drive}:\Windows\ --strip-components=1 && rmdir /q /s {drive}:\yt_videos_list_TEMP && del {drive}:\Windows\sha512_sum' + '\n'
 
-
     @classmethod
     def format_macos_chromedriver_download_command(cls, binary_version):
         return f'curl -SL {cls.url_prefix_chromedriver}/{binary_version}/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/' + '\n'
@@ -293,6 +292,20 @@ class Common:
     def format_windows_chromedriver_download_command(cls, binary_version):
         drive = get_drive_letter()
         return fr'mkdir {drive}:\yt_videos_list_TEMP\ && curl -SL {cls.url_prefix_chromedriver}/{binary_version}/chromedriver_win32.zip -o {drive}:\yt_videos_list_TEMP\chromedriver && tar -xzvf {drive}:\yt_videos_list_TEMP\chromedriver -C {drive}:\Windows\ && rmdir /q /s {drive}:\yt_videos_list_TEMP' + '\n'
+
+    ### Brave Browser doesn't have its own bravedriver, but since it's chromium we can just download the chromedriver and use the corresponding chromedriver for the Brave version (with it renamed to "bravedriver" in order to avoud conflict with different versions of Chrome and Brave installed at the same time) ###
+    @classmethod
+    def format_macos_bravedriver_download_command(cls, binary_version, system):
+        return f'curl -SL {cls.url_prefix_chromedriver}/{binary_version}/chromedriver_mac64.zip | tar -xzvf - -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver' + '\n'
+
+    @classmethod
+    def format_linux_bravedriver_download_command(cls, binary_version):
+        return f'curl -SL {cls.url_prefix_chromedriver}/{binary_version}/chromedriver_linux64.zip | tar -xzvf - -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver' + '\n'
+
+    @classmethod
+    def format_windows_bravedriver_download_command(cls, binary_version):
+        drive = get_drive_letter()
+        return fr'mkdir {drive}:\yt_videos_list_TEMP\ && curl -SL {cls.url_prefix_chromedriver}/{binary_version}/chromedriver_win32.zip -o {drive}:\yt_videos_list_TEMP\bravedriver && tar -xzvf {drive}:\yt_videos_list_TEMP\bravedriver -o > {drive}:\Windows\bravedriver && rmdir /q /s {drive}:\yt_videos_list_TEMP' + '\n'
 
 
     @staticmethod
