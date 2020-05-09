@@ -210,7 +210,7 @@ class Common:
                     '# linux64 Chromedriver 76.0.3809.126',
                     self.format_linux_chromedriver_download_command('76.0.3809.126'),
                     '# linux64 Chromedriver 75.0.3770.140',
-                    self.format_linux_chromedriver_download_command('75.0.3770.140/chromedriver_linux64.zi'),
+                    self.format_linux_chromedriver_download_command('75.0.3770.140'),
                     '# linux64 Chromedriver 74.0.3729.6',
                     self.format_linux_chromedriver_download_command('74.0.3729.6'),
                     '# linux64 Chromedriver 73.0.3683.68',
