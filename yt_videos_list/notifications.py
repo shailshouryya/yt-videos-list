@@ -295,7 +295,7 @@ class Common:
 
     ### Brave Browser doesn't have its own bravedriver, but since it's chromium we can just download the chromedriver and use the corresponding chromedriver for the Brave version (with it renamed to "bravedriver" in order to avoud conflict with different versions of Chrome and Brave installed at the same time) ###
     @classmethod
-    def format_macos_bravedriver_download_command(cls, binary_version, system):
+    def format_macos_bravedriver_download_command(cls, binary_version):
         return f'curl -SL {cls.url_prefix_chromedriver}/{binary_version}/chromedriver_mac64.zip | tar -xzvf - -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver' + '\n'
 
     @classmethod
