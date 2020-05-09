@@ -47,9 +47,16 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
         elif 'opera'   in user_driver: return webdriver.Opera
         elif 'safari'  in user_driver: return webdriver.Safari
         elif 'chrome'  in user_driver: return webdriver.Chrome
+        elif 'brave'   in user_driver: return configure_brave_driver
         else:
             print(common_message.invalid_driver)
             return 'invalid'
+
+    def configure_brave_driver():
+        options = webdriver.ChromeOptions()
+        options.binary_location =  '/Applications/Brave Browser.app/Contents/MacOS/Brave Browser'
+        # options.headless = True
+        return webdriver.Chrome(options=options, executable_path='/usr/local/bin/bravedriver')
 
     def set_up_headless_firefox_driver():
         options = selenium.webdriver.firefox.options.Options()
@@ -76,6 +83,10 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
         options.add_argument('headless')
         return seleniumdriver(chrome_options=options)
 
+    def set_up_headless_brave_driver():
+        print(common_message.unsupported_opera_headless)
+        return configure_brave_driver()
+
     def open_user_driver():
         if headless is False:
             if execution_type == 'module':
@@ -87,6 +98,7 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
             elif user_driver == 'opera':   return set_up_headless_opera_driver()
             elif user_driver == 'safari':  return set_up_headless_safari_driver()
             elif user_driver == 'chrome':  return set_up_headless_chrome_driver()
+            elif user_driver == 'brave':   return set_up_headless_brave_driver()
 
     def determine_user_os():
         if   platform.system().lower().startswith('darwin'):  return 'macos'
