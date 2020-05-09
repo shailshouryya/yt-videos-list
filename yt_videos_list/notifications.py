@@ -287,26 +287,32 @@ class Common:
                     self.format_linux_bravedriver_download_command('2.46')
                 ],
                 'windows': [
-                    '# win32 Chromedriver 81.0.4044.69',
-                    self.format_windows_bravedriver_download_command('81.0.4044.69'),
-                    '# win32 Chromedriver 80.0.3987.106',
-                    self.format_windows_bravedriver_download_command('80.0.3987.106'),
-                    '# win32 Chromedriver 79.0.3945.36',
-                    self.format_windows_bravedriver_download_command('79.0.3945.36'),
-                    '# win32 Chromedriver 78.0.3904.105',
-                    self.format_windows_bravedriver_download_command('78.0.3904.105'),
-                    '# win32 Chromedriver 77.0.3865.40',
-                    self.format_windows_bravedriver_download_command('77.0.3865.40'),
-                    '# win32 Chromedriver 76.0.3809.126',
-                    self.format_windows_bravedriver_download_command('76.0.3809.126'),
-                    '# win32 Chromedriver 75.0.3770.140',
-                    self.format_windows_bravedriver_download_command('75.0.3770.140'),
-                    '# win32 Chromedriver 74.0.3729.6',
-                    self.format_windows_bravedriver_download_command('74.0.3729.6'),
-                    '# win32 Chromedriver 73.0.3683.68',
-                    self.format_windows_bravedriver_download_command('73.0.3683.68'),
-                    '# win32 Chromedriver 2.46 (Supports Chrome v71-73)',
-                    self.format_windows_bravedriver_download_command('2.46')
+                    '# windows64 Operadriver 81.0.4044.113 (supports Opera Stable 68 release)',
+                    self.format_windows_bravedriver_download_command('v.81.0.4044.113'),
+                    '# windows64 Operadriver 80.0.3987.100 (supports Opera Stable 67 release)',
+                    self.format_windows_bravedriver_download_command('v.80.0.3987.100'),
+                    '# windows64 Operadriver 79.0.3945.79 (supports Opera Stable 66 release)',
+                    self.format_windows_bravedriver_download_command('v.79.0.3945.79'),
+                    '# windows64 Operadriver 78.0.3904.87 (supports Opera Stable 65 release)',
+                    self.format_windows_bravedriver_download_command('v.78.0.3904.87'),
+                    '# windows64 Operadriver 77.0.3865.120 (supports Opera 64 release)',
+                    self.format_windows_bravedriver_download_command('v.77.0.3865.120'),
+                    '# windows64 Operadriver 76.0.3809.132 (supports Opera 63 release)',
+                    self.format_windows_bravedriver_download_command('v.76.0.3809.132'),
+                    '# windows64 Operadriver 75.0.3770.100 (supports Opera 62 release)',
+                    self.format_windows_bravedriver_download_command('v.75.0.3770.100'),
+                    '# windows64 Operadriver 2.45 (supports Opera 60 release)',
+                    self.format_windows_bravedriver_download_command('v.2.45'),
+                    '# windows64 Operadriver 2.42 (supports Opera 58 release)',
+                    self.format_windows_bravedriver_download_command('v.2.42'),
+                    '# windows64 Operadriver 2.41 (supports Opera 57 release)',
+                    self.format_windows_bravedriver_download_command('v.2.41'),
+                    '# windows64 Operadriver 2.40 (supports Opera 56 release)',
+                    self.format_windows_bravedriver_download_command('v.2.40'),
+                    '# windows64 Operadriver 2.38 (supports Opera 55 release)',
+                    self.format_windows_bravedriver_download_command('v.2.38'),
+                    '# windows64 Operadriver 2.37 (supports Opera 54 release)',
+                    self.format_windows_bravedriver_download_command('v.2.37')
                 ]
             }
         }
@@ -343,7 +349,7 @@ class Common:
     @classmethod
     def format_windows_operadriver_download_command(cls, binary_version, system):
         drive = get_drive_letter()
-        return fr'curl -SL {cls.url_prefix_operadriver}/{binary_version}/operadriver_win{system}.zip -o {drive}:\Windows\operadriver && tar -xzvf {drive}:\Windows\operadriver --strip-components=1 -C {drive}:\Windows && del {drive}:\Windows\operadriver && del sha512_sum' + '\n'
+        return fr'curl -SL {cls.url_prefix_operadriver}/{binary_version}/operadriver_win{system}.zip -o {drive}:\Windows\operadriver && tar -xzvf {drive}:\Windows\operadriver --strip-components=1 -C {drive}:\Windows && del {drive}:\Windows\operadriver && del {drive}:\Windows\sha512_sum' + '\n'
 
     @classmethod
     def format_macos_chromedriver_download_command(cls, binary_version):
@@ -369,8 +375,9 @@ class Common:
 
     @classmethod
     def format_windows_bravedriver_download_command(cls, binary_version):
-        drive = get_drive_letter()
-        return fr'curl -SL {cls.url_prefix_chromedriver}/{binary_version}/chromedriver_win32.zip -o {drive}:\Windows\bravedriver && tar -xzvf {drive}:\Windows\bravedriver -C {drive}:\Windows && del {drive}:\Windows\bravedriver' + '\n'
+        drive  = get_drive_letter()
+        system = 64
+        return fr'curl -SL {cls.url_prefix_operadriver}/{binary_version}/operadriver_win{system}.zip -o {drive}:\Windows\bravedriver && tar -xzvf {drive}:\Windows\bravedriver --strip-components=1 -O > {drive}:\Windows\bravedriver.exe && del {drive}:\Windows\bravedriver' + '\n'
 
 
     @staticmethod
