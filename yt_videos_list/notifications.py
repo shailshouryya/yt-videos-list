@@ -377,7 +377,7 @@ class Common:
     def format_windows_bravedriver_download_command(cls, binary_version):
         drive  = get_drive_letter()
         system = 64
-        return fr'curl -SL {cls.url_prefix_operadriver}/{binary_version}/operadriver_win{system}.zip -o {drive}:\Windows\bravedriver && tar -xzvf {drive}:\Windows\bravedriver --strip-components=1 -O > {drive}:\Windows\bravedriver.exe && del {drive}:\Windows\bravedriver' + '\n'
+        return fr'curl -SL {cls.url_prefix_operadriver}/{binary_version}/operadriver_win{system}.zip -o {drive}:\Windows\bravedriver && tar -xzvf {drive}:\Windows\bravedriver --strip-components=1 -O > {drive}:\Windows\bravedriver.exe && del {drive}:\Windows\bravedriver && del {drive}:\Windows\sha512_sum' + '\n'
 
 
     @staticmethod
