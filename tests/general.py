@@ -14,6 +14,7 @@ lc_firefox = ListCreator(driver='firefox')
 lc_opera   = ListCreator(driver='opera')
 lc_safari  = ListCreator(driver='safari')
 lc_chrome  = ListCreator(driver='chrome')
+lc_brave   = ListCreator(driver='brave')
 
 
 delete_schafer5_file_if_exists()
@@ -24,6 +25,9 @@ delete_schafer5_file_if_exists()
 lc_safari.create_list_for ('youtube.com/user/schafer5')
 delete_schafer5_file_if_exists()
 lc_chrome.create_list_for ('youtube.com/user/schafer5')
+delete_schafer5_file_if_exists()
+lc_brave.create_list_for ('youtube.com/user/schafer5')
+
 
 lc_firefox.headless = True
 lc_opera.headless = True
