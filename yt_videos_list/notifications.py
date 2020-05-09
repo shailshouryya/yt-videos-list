@@ -329,7 +329,7 @@ class Common:
     @classmethod
     def format_windows_geckodriver_download_command(cls, binary_version, system):
         drive = get_drive_letter()
-        return fr'curl -SL {cls.url_prefix_geckodriver}/{binary_version}/geckodriver-v0.26.0-win{system}.zip -o {drive}:\Windows\geckodriver && tar -xzvf {drive}:\Windows\geckodriver -C {drive}:\Windows' + '\n'
+        return fr'curl -SL {cls.url_prefix_geckodriver}/{binary_version}/geckodriver-v0.26.0-win{system}.zip -o {drive}:\Windows\geckodriver && tar -xzvf {drive}:\Windows\geckodriver -C {drive}:\Windows && del {drive}:\Windows\geckodriver' + '\n'
 
 
     @classmethod
@@ -343,7 +343,7 @@ class Common:
     @classmethod
     def format_windows_operadriver_download_command(cls, binary_version, system):
         drive = get_drive_letter()
-        return fr'curl -SL {cls.url_prefix_operadriver}/{binary_version}/operadriver_win{system}.zip -o {drive}:\Windows\operadriver && tar -xzvf {drive}:\Windows\operadriver --strip-components=1 -C {drive}:\Windows' + '\n'
+        return fr'curl -SL {cls.url_prefix_operadriver}/{binary_version}/operadriver_win{system}.zip -o {drive}:\Windows\operadriver && tar -xzvf {drive}:\Windows\operadriver --strip-components=1 -C {drive}:\Windows && del {drive}:\Windows\operadriver && del sha512_sum' + '\n'
 
     @classmethod
     def format_macos_chromedriver_download_command(cls, binary_version):
@@ -356,7 +356,7 @@ class Common:
     @classmethod
     def format_windows_chromedriver_download_command(cls, binary_version):
         drive = get_drive_letter()
-        return fr'curl -SL {cls.url_prefix_chromedriver}/{binary_version}/chromedriver_win32.zip -o {drive}:\Windows\chromedriver && tar -xzvf {drive}:\Windows\chromedriver -C {drive}:\Windows' + '\n'
+        return fr'curl -SL {cls.url_prefix_chromedriver}/{binary_version}/chromedriver_win32.zip -o {drive}:\Windows\chromedriver && tar -xzvf {drive}:\Windows\chromedriver -C {drive}:\Windows && del {drive}:\Windows\chromedriver' + '\n'
 
     ### Brave Browser doesn't have its own bravedriver, but since it's chromium we can just download the chromedriver and use the corresponding chromedriver for the Brave version (with it renamed to "bravedriver" in order to avoud conflict with different versions of Chrome and Brave installed at the same time) ###
     @classmethod
@@ -370,7 +370,7 @@ class Common:
     @classmethod
     def format_windows_bravedriver_download_command(cls, binary_version):
         drive = get_drive_letter()
-        return fr'curl -SL {cls.url_prefix_chromedriver}/{binary_version}/chromedriver_win32.zip -o {drive}:\Windows\bravedriver && tar -xzvf {drive}:\Windows\bravedriver -C {drive}:\Windows' + '\n'
+        return fr'curl -SL {cls.url_prefix_chromedriver}/{binary_version}/chromedriver_win32.zip -o {drive}:\Windows\bravedriver && tar -xzvf {drive}:\Windows\bravedriver -C {drive}:\Windows && del {drive}:\Windows\bravedriver' + '\n'
 
 
     @staticmethod
