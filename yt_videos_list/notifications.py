@@ -324,12 +324,14 @@ class Common:
             print(terminal_copy_paste_directions)
 
         geckodriver_download_instructions = '(The given command downloads a geckodriver ("Firefoxdriver") version that is compatible with Firefox versions ≥ 60. To see more information about the differences compared to older versions, please visit https://github.com/mozilla/geckodriver/releases)'
-        operadriver_download_instructions = '(Your Opera browser version should match the "supports Opera ## release" below)'
+        operadriver_download_instructions  = '(Your Opera browser version should match the "supports Opera ## release" below)'
         chromedriver_download_instructions = '(Your Chrome browser version should match the first numbers before the decimal place of the chromedriver version below)'
+        bravedriver_download_instructions  = '(Your Brave browser version should match the first numbers before the decimal place of the chromedriver version below)'
 
         if   user_driver == 'firefox':  print(geckodriver_download_instructions)
         elif user_driver == 'opera':    print(operadriver_download_instructions)
         elif user_driver == 'chrome':   print(chromedriver_download_instructions)
+        elif user_driver == 'brave':    print(bravedriver_download_instructions)
         else:                           print('This is an OS specific driver.')
 
         for driver_version_download in self.driver_downloads_for_os[user_driver][user_os]:
