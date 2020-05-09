@@ -54,8 +54,6 @@ def download_all_dependencies(user_os):
 
 def execute_download_command(driver, user_os, version):
     # indexed values in reverse order to avoid having to map every version to a different element every time a new driver/browser version comes out since all the values get shifted down by 2 with new additions to the top of the list
-    if driver == 'brave':
-        driver = 'chrome' # use the corresponding chromedriver version for the Brave browser since Brave is chromium and doesn't (currently) have its own selenium driver
     row_in_list = {
         'firefox': {
             '74': -1,
@@ -92,6 +90,19 @@ def execute_download_command(driver, user_os, version):
             '54': -1,
         },
         'chrome': {
+            '81': -19,
+            '80': -17,
+            '79': -15,
+            '78': -13,
+            '77': -11,
+            '76': -9,
+            '75': -7,
+            '74': -5,
+            '73': -3,
+            '72': -1,
+            '71': -1
+        },
+        'brave': {
             '81': -19,
             '80': -17,
             '79': -15,
