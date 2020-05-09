@@ -402,9 +402,9 @@ class Common:
 
         if   user_driver == 'firefox':  print(geckodriver_download_instructions)
         elif user_driver == 'opera':    print(operadriver_download_instructions)
+        elif user_driver == 'safari':   print('This is an MacOS specific driver.')
         elif user_driver == 'chrome':   print(chromedriver_download_instructions)
         elif user_driver == 'brave':    print(bravedriver_download_instructions)
-        else:                           print('This is an OS specific driver.')
 
         for driver_version_download in self.driver_downloads_for_os[user_driver][user_os]:
             print(driver_version_download)
