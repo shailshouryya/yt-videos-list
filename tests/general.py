@@ -5,18 +5,19 @@ from yt_videos_list.windows import get_drive_letter
 from yt_videos_list import ListCreator
 
 os.system('pip install .')
+PLATFORM = platform.system().lower()
 
 def remove_dependencies():
-    if platform.system().lower().startswith('windows'):
+    if PLATFORM == 'windows':
         drive = get_drive_letter()
-        if os.path.exists(rf'{drive}:\Windows\geckodriver'):
-            os.remove(rf'{drive}:\Windows\geckodriver')
-        if os.path.exists(rf'{drive}:\Windows\operadriver'):
-            os.remove(rf'{drive}:\Windows\operadriver')
-        if os.path.exists(rf'{drive}:\Windows\chromedriver'):
-            os.remove(rf'{drive}:\Windows\chromedriver')
-        if os.path.exists(rf'{drive}:\Windows\bravedriver'):
-            os.remove(rf'{drive}:\Windows\bravedriver')
+        if os.path.exists(rf'{drive}:\Windows\geckodriver.exe'):
+            os.remove(rf'{drive}:\Windows\geckodriver.exe')
+        if os.path.exists(rf'{drive}:\Windows\operadriver.exe'):
+            os.remove(rf'{drive}:\Windows\operadriver.exe')
+        if os.path.exists(rf'{drive}:\Windows\chromedriver.exe'):
+            os.remove(rf'{drive}:\Windows\chromedriver.exe')
+        if os.path.exists(rf'{drive}:\Windows\bravedriver.exe'):
+            os.remove(rf'{drive}:\Windows\bravedriver.exe')
     else:
         if os.path.exists(r'/usr/local/bin/geckodriver'):
             os.remove(r'/usr/local/bin/geckodriver')
@@ -46,8 +47,9 @@ delete_schafer5_file_if_exists()
 lc_firefox.create_list_for('youtube.com/user/schafer5')
 delete_schafer5_file_if_exists()
 lc_opera.create_list_for  ('youtube.com/user/schafer5')
-delete_schafer5_file_if_exists()
-lc_safari.create_list_for ('youtube.com/user/schafer5')
+if PLATFORM == 'darwin':
+    delete_schafer5_file_if_exists()
+    lc_safari.create_list_for ('youtube.com/user/schafer5')
 delete_schafer5_file_if_exists()
 lc_chrome.create_list_for ('youtube.com/user/schafer5')
 delete_schafer5_file_if_exists()
