@@ -243,48 +243,60 @@ class Common:
             },
             'brave': {
                 'macos' : [
-                    '# mac64 Chromedriver 81.0.4044.69',
-                    self.format_macos_bravedriver_download_command('81.0.4044.69'),
-                    '# mac64 Chromedriver 80.0.3987.106',
-                    self.format_macos_bravedriver_download_command('80.0.3987.106'),
-                    '# mac64 Chromedriver 79.0.3945.36',
-                    self.format_macos_bravedriver_download_command('79.0.3945.36'),
-                    '# mac64 Chromedriver 78.0.3904.105',
-                    self.format_macos_bravedriver_download_command('78.0.3904.105'),
-                    '# mac64 Chromedriver 77.0.3865.40',
-                    self.format_macos_bravedriver_download_command('77.0.3865.40'),
-                    '# mac64 Chromedriver 76.0.3809.126',
-                    self.format_macos_bravedriver_download_command('76.0.3809.126'),
-                    '# mac64 Chromedriver 75.0.3770.140',
-                    self.format_macos_bravedriver_download_command('75.0.3770.140'),
-                    '# mac64 Chromedriver 74.0.3729.6',
-                    self.format_macos_bravedriver_download_command('74.0.3729.6'),
-                    '# mac64 Chromedriver 73.0.3683.68',
-                    self.format_macos_bravedriver_download_command('73.0.3683.68'),
-                    '# mac64 Chromedriver 2.46 (Supports Chrome v71-73)',
-                    self.format_macos_bravedriver_download_command('2.46')
+                    '# mac64 Operadriver 81.0.4044.113 (supports Opera Stable 68 release)',
+                    self.format_macos_bravedriver_download_command('v.81.0.4044.113'),
+                    '# mac64 Operadriver 80.0.3987.100 (supports Opera Stable 67 release)',
+                    self.format_macos_bravedriver_download_command('v.80.0.3987.100'),
+                    '# mac64 Operadriver 79.0.3945.79 (supports Opera Stable 66 release)',
+                    self.format_macos_bravedriver_download_command('v.79.0.3945.79'),
+                    '# mac64 Operadriver 78.0.3904.87 (supports Opera Stable 65 release)',
+                    self.format_macos_bravedriver_download_command('v.78.0.3904.87'),
+                    '# mac64 Operadriver 77.0.3865.120 (supports Opera 64 release)',
+                    self.format_macos_bravedriver_download_command('v.77.0.3865.120'),
+                    '# mac64 Operadriver 76.0.3809.132 (supports Opera 63 release)',
+                    self.format_macos_bravedriver_download_command('v.76.0.3809.132'),
+                    '# mac64 Operadriver 75.0.3770.100 (supports Opera 62 release)',
+                    self.format_macos_bravedriver_download_command('v.75.0.3770.100'),
+                    '# mac64 Operadriver 2.45 (supports Opera 60 release)',
+                    self.format_macos_bravedriver_download_command('v.2.45'),
+                    '# mac64 Operadriver 2.42 (supports Opera 58 release)',
+                    self.format_macos_bravedriver_download_command('v.2.42'),
+                    '# mac64 Operadriver 2.41 (supports Opera 57 release)',
+                    self.format_macos_bravedriver_download_command('v.2.41'),
+                    '# mac64 Operadriver 2.40 (supports Opera 56 release)',
+                    self.format_macos_bravedriver_download_command('v.2.40'),
+                    '# mac64 Operadriver 2.38 (supports Opera 55 release)',
+                    self.format_macos_bravedriver_download_command('v.2.38'),
+                    '# mac64 Operadriver 2.37 (supports Opera 54 release)',
+                    self.format_macos_bravedriver_download_command('v.2.37')
                 ],
                 'linux': [
-                    '# linux64 Chromedriver 81.0.4044.69',
-                    self.format_linux_bravedriver_download_command('81.0.4044.69'),
-                    '# linux64 Chromedriver 80.0.3987.106',
-                    self.format_linux_bravedriver_download_command('80.0.3987.106'),
-                    '# linux64 Chromedriver 79.0.3945.36',
-                    self.format_linux_bravedriver_download_command('79.0.3945.36'),
-                    '# linux64 Chromedriver 78.0.3904.105',
-                    self.format_linux_bravedriver_download_command('78.0.3904.105'),
-                    '# linux64 Chromedriver 77.0.3865.40',
-                    self.format_linux_bravedriver_download_command('77.0.3865.40'),
-                    '# linux64 Chromedriver 76.0.3809.126',
-                    self.format_linux_bravedriver_download_command('76.0.3809.126'),
-                    '# linux64 Chromedriver 75.0.3770.140',
-                    self.format_linux_bravedriver_download_command('75.0.3770.140/chromedriver_linux64.zi'),
-                    '# linux64 Chromedriver 74.0.3729.6',
-                    self.format_linux_bravedriver_download_command('74.0.3729.6'),
-                    '# linux64 Chromedriver 73.0.3683.68',
-                    self.format_linux_bravedriver_download_command('73.0.3683.68'),
-                    '# linux64 Chromedriver 2.46 (Supports Chrome v71-73)',
-                    self.format_linux_bravedriver_download_command('2.46')
+                    '# linux64 Operadriver 81.0.4044.113 (supports Opera Stable 68 release)',
+                    self.format_linux_bravedriver_download_command('v.81.0.4044.113'),
+                    '# linux64 Operadriver 80.0.3987.100 (supports Opera Stable 67 release)',
+                    self.format_linux_bravedriver_download_command('v.80.0.3987.100'),
+                    '# linux64 Operadriver 79.0.3945.79 (supports Opera Stable 66 release)',
+                    self.format_linux_bravedriver_download_command('v.79.0.3945.79'),
+                    '# linux64 Operadriver 78.0.3904.87 (supports Opera Stable 65 release)',
+                    self.format_linux_bravedriver_download_command('v.78.0.3904.87'),
+                    '# linux64 Operadriver 77.0.3865.120 (supports Opera 64 release)',
+                    self.format_linux_bravedriver_download_command('v.77.0.3865.120'),
+                    '# linux64 Operadriver 76.0.3809.132 (supports Opera 63 release)',
+                    self.format_linux_bravedriver_download_command('v.76.0.3809.132'),
+                    '# linux64 Operadriver 75.0.3770.100 (supports Opera 62) release',
+                    self.format_linux_bravedriver_download_command('v.75.0.3770.100'),
+                    '# linux64 Operadriver 2.45 (supports Opera 60 release)',
+                    self.format_linux_bravedriver_download_command('v.2.45'),
+                    '# linux64 Operadriver 2.42 (supports Opera 58 release)',
+                    self.format_linux_bravedriver_download_command('v.2.42'),
+                    '# linux64 Operadriver 2.41 (supports Opera 57) release',
+                    self.format_linux_bravedriver_download_command('v.2.41'),
+                    '# linux64 Operadriver 2.40 (supports Opera 56 release)',
+                    self.format_linux_bravedriver_download_command('v.2.40'),
+                    '# linux64 Operadriver 2.38 (supports Opera 55 release)',
+                    self.format_linux_bravedriver_download_command('v.2.38'),
+                    '# linux64 Operadriver 2.37 (supports Opera 54 release)',
+                    self.format_linux_bravedriver_download_command('v.2.37')
                 ],
                 'windows': [
                     '# windows64 Operadriver 81.0.4044.113 (supports Opera Stable 68 release)',
@@ -367,11 +379,11 @@ class Common:
     ### Brave Browser doesn't have its own bravedriver, but since it's chromium we can just download the chromedriver and use the corresponding chromedriver for the Brave version (with it renamed to "bravedriver" in order to avoud conflict with different versions of Chrome and Brave installed at the same time) ###
     @classmethod
     def format_macos_bravedriver_download_command(cls, binary_version):
-        return f'curl -SL {cls.url_prefix_chromedriver}/{binary_version}/chromedriver_mac64.zip | tar -xzvf - -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver ' + '\n'
+        return f'curl -SL {cls.url_prefix_operadriver}/{binary_version}/operadriver_mac64.zip | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum' + '\n'
 
     @classmethod
     def format_linux_bravedriver_download_command(cls, binary_version):
-        return f'curl -SL {cls.url_prefix_chromedriver}/{binary_version}/chromedriver_linux64.zip | tar -xzvf - -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver' + '\n'
+        return f'curl -SL {cls.url_prefix_operadriver}/{binary_version}/operadriver_linux64.zip | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum' + '\n'
 
     @classmethod
     def format_windows_bravedriver_download_command(cls, binary_version):
