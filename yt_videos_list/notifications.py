@@ -43,7 +43,6 @@ class Common:
                     self.format_linux_geckodriver_download_command('v0.26.0', '32')
                 ],
                 'windows': [
-                    'In progress!',
                     '# windows32 geckodriver (Firefoxdriver) v0.26.0',
                     self.format_windows_geckodriver_download_command('v0.26.0', '32'),
                     '# windows64 geckodriver (Firefoxdriver) v0.26.0',
@@ -108,7 +107,6 @@ class Common:
                     self.format_linux_operadriver_download_command('v.2.37')
                 ],
                 'windows': [
-                    'In progress!',
                     '# windows32 Operadriver 81.0.4044.113 (supports Opera Stable 68 release)',
                     self.format_windows_operadriver_download_command('v.81.0.4044.113/', '32'),
                     '# windows32 Operadriver 80.0.3987.100 (supports Opera Stable 67 release)',
@@ -221,7 +219,6 @@ class Common:
                     self.format_linux_chromedriver_download_command('2.46')
                 ],
                 'windows': [
-                    'In progress!',
                     '# win32 Chromedriver 81.0.4044.69',
                     self.format_windows_chromedriver_download_command('81.0.4044.69'),
                     '# win32 Chromedriver 80.0.3987.106',
