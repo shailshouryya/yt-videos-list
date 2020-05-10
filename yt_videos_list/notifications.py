@@ -15,7 +15,7 @@ class Common:
     no_new_videos_found = 'No new videos were found since the last scroll. Waiting another 0.6 seconds to see if more videos can be loaded....'
     invalid_response = 'The response you entered was invalid.'
 
-    invalid_driver = 'The driver you specified is invalid. Please try rerunning the last command after specifying a valid driver. Supported drivers include:\n   Firefox\n   Opera\n   Safari\n   Chrome'
+    invalid_driver = 'The driver you specified is invalid. Please try rerunning the last command after specifying a valid driver. Supported drivers include:\n   Firefox\n   Opera\n   Safari\n   Chrome\n   Brave'
 
     unsupported_opera_headless = '\nHeadless mode is unsupported in OperaDriver. We are waiting on the Opera dev team to start offering support for headless mode to allow remote automation without opening a driver. We will update this when support is added...\n:)\n\n\n'
     unsupported_safari_headless = '\nHeadless mode is unsupported in SafariDriver. We are waiting on Apple to start offering support for headless mode to allow remote automation without opening a driver. We will update this when support is added...\n:)\n\n\n'
@@ -464,10 +464,11 @@ class ModuleMessage(Common):
     file_already_exists_rerun_usage = 'Example usage:\n lc.create_list_for(write_format="w")\n'
 
     show_driver_options = 'To use a different driver, specify the driver in the driver argument during the ListCreator instantiation. For example:' + \
+        "\n    lc = ListCreator(driver='firefox')" + \
         "\n    lc = ListCreator(driver='opera')" + \
         "\n    lc = ListCreator(driver='safari')" + \
         "\n    lc = ListCreator(driver='chrome')" + \
-        "\n    lc = ListCreator(driver='firefox')"
+        "\n    lc = ListCreator(driver='brave')"
 
 
 

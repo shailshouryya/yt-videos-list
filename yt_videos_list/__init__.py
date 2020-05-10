@@ -38,10 +38,12 @@ class ListCreator:
           * Opera
           * Safari
           * Chrome
+          * Brave
             -> driver='firefox'
             -> driver='opera'
             -> driver='safari'
             -> driver='chrome'
+            -> driver='brave'
 
         Options for the file type arguments (`csv`, `txt`) are
           * True (default) - create a file for the specified type
