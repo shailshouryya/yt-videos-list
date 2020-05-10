@@ -43,16 +43,6 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
         else:
             return write_format
 
-    def check_driver():
-        if   'firefox' in user_driver: return webdriver.Firefox
-        elif 'opera'   in user_driver: return webdriver.Opera
-        elif 'safari'  in user_driver: return webdriver.Safari
-        elif 'chrome'  in user_driver: return webdriver.Chrome
-        elif 'brave'   in user_driver: return configure_brave_driver
-        else:
-            print(common_message.invalid_driver)
-            return 'invalid'
-
     def configure_brave_driver():
         options = webdriver.ChromeOptions()
         if platform.system().lower().startswith('windows'):
@@ -64,6 +54,16 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
             executable_path         = '/usr/local/bin/bravedriver'
         # options.headless = True
         return webdriver.Chrome(options=options, executable_path=executable_path)
+
+    def check_driver():
+        if   'firefox' in user_driver: return webdriver.Firefox
+        elif 'opera'   in user_driver: return webdriver.Opera
+        elif 'safari'  in user_driver: return webdriver.Safari
+        elif 'chrome'  in user_driver: return webdriver.Chrome
+        elif 'brave'   in user_driver: return configure_brave_driver
+        else:
+            print(common_message.invalid_driver)
+            return 'invalid'
 
     def set_up_headless_firefox_driver():
         options = selenium.webdriver.firefox.options.Options()
