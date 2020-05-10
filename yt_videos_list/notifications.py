@@ -175,72 +175,9 @@ class Common:
                 ]
             },
             'chrome': {
-                'macos' : [
-                    '# mac64 Chromedriver 81.0.4044.69',
-                    self.format_macos_chromedriver_download_command('81.0.4044.69'),
-                    '# mac64 Chromedriver 80.0.3987.106',
-                    self.format_macos_chromedriver_download_command('80.0.3987.106'),
-                    '# mac64 Chromedriver 79.0.3945.36',
-                    self.format_macos_chromedriver_download_command('79.0.3945.36'),
-                    '# mac64 Chromedriver 78.0.3904.105',
-                    self.format_macos_chromedriver_download_command('78.0.3904.105'),
-                    '# mac64 Chromedriver 77.0.3865.40',
-                    self.format_macos_chromedriver_download_command('77.0.3865.40'),
-                    '# mac64 Chromedriver 76.0.3809.126',
-                    self.format_macos_chromedriver_download_command('76.0.3809.126'),
-                    '# mac64 Chromedriver 75.0.3770.140',
-                    self.format_macos_chromedriver_download_command('75.0.3770.140'),
-                    '# mac64 Chromedriver 74.0.3729.6',
-                    self.format_macos_chromedriver_download_command('74.0.3729.6'),
-                    '# mac64 Chromedriver 73.0.3683.68',
-                    self.format_macos_chromedriver_download_command('73.0.3683.68'),
-                    '# mac64 Chromedriver 2.46 (Supports Chrome v71-73)',
-                    self.format_macos_chromedriver_download_command('2.46')
-                ],
-                'linux': [
-                    '# linux64 Chromedriver 81.0.4044.69',
-                    self.format_linux_chromedriver_download_command('81.0.4044.69'),
-                    '# linux64 Chromedriver 80.0.3987.106',
-                    self.format_linux_chromedriver_download_command('80.0.3987.106'),
-                    '# linux64 Chromedriver 79.0.3945.36',
-                    self.format_linux_chromedriver_download_command('79.0.3945.36'),
-                    '# linux64 Chromedriver 78.0.3904.105',
-                    self.format_linux_chromedriver_download_command('78.0.3904.105'),
-                    '# linux64 Chromedriver 77.0.3865.40',
-                    self.format_linux_chromedriver_download_command('77.0.3865.40'),
-                    '# linux64 Chromedriver 76.0.3809.126',
-                    self.format_linux_chromedriver_download_command('76.0.3809.126'),
-                    '# linux64 Chromedriver 75.0.3770.140',
-                    self.format_linux_chromedriver_download_command('75.0.3770.140'),
-                    '# linux64 Chromedriver 74.0.3729.6',
-                    self.format_linux_chromedriver_download_command('74.0.3729.6'),
-                    '# linux64 Chromedriver 73.0.3683.68',
-                    self.format_linux_chromedriver_download_command('73.0.3683.68'),
-                    '# linux64 Chromedriver 2.46 (Supports Chrome v71-73)',
-                    self.format_linux_chromedriver_download_command('2.46')
-                ],
-                'windows': [
-                    '# win32 Chromedriver 81.0.4044.69',
-                    self.format_windows_chromedriver_download_command('81.0.4044.69'),
-                    '# win32 Chromedriver 80.0.3987.106',
-                    self.format_windows_chromedriver_download_command('80.0.3987.106'),
-                    '# win32 Chromedriver 79.0.3945.36',
-                    self.format_windows_chromedriver_download_command('79.0.3945.36'),
-                    '# win32 Chromedriver 78.0.3904.105',
-                    self.format_windows_chromedriver_download_command('78.0.3904.105'),
-                    '# win32 Chromedriver 77.0.3865.40',
-                    self.format_windows_chromedriver_download_command('77.0.3865.40'),
-                    '# win32 Chromedriver 76.0.3809.126',
-                    self.format_windows_chromedriver_download_command('76.0.3809.126'),
-                    '# win32 Chromedriver 75.0.3770.140',
-                    self.format_windows_chromedriver_download_command('75.0.3770.140'),
-                    '# win32 Chromedriver 74.0.3729.6',
-                    self.format_windows_chromedriver_download_command('74.0.3729.6'),
-                    '# win32 Chromedriver 73.0.3683.68',
-                    self.format_windows_chromedriver_download_command('73.0.3683.68'),
-                    '# win32 Chromedriver 2.46 (Supports Chrome v71-73)',
-                    self.format_windows_chromedriver_download_command('2.46')
-                ]
+                'macos':   self.create_list_for('mac64',   'chromedriver'),
+                'linux':   self.create_list_for('linux64', 'chromedriver'),
+                'windows': self.create_list_for('win32',   'chromedriver')
             },
             'brave': {
                 'macos' : [
@@ -351,6 +288,40 @@ class Common:
         return formatter_function(operating_system)
 
     @classmethod
+    def format_chromedriver_list(cls, operating_system):
+        return [
+            cls.format_chromedriver_download_comment(operating_system, '81.0.4044.69', 81),
+            cls.format_chromedriver_download_command(operating_system, '81.0.4044.69'),
+            cls.format_chromedriver_download_comment(operating_system, '80.0.3987.106', 80),
+            cls.format_chromedriver_download_command(operating_system, '80.0.3987.106'),
+            cls.format_chromedriver_download_comment(operating_system, '79.0.3945.36', 79),
+            cls.format_chromedriver_download_command(operating_system, '79.0.3945.36'),
+            cls.format_chromedriver_download_comment(operating_system, '78.0.3904.105', 78),
+            cls.format_chromedriver_download_command(operating_system, '78.0.3904.105'),
+            cls.format_chromedriver_download_comment(operating_system, '77.0.3865.40', 77),
+            cls.format_chromedriver_download_command(operating_system, '77.0.3865.40'),
+            cls.format_chromedriver_download_comment(operating_system, '76.0.3809.126', 76),
+            cls.format_chromedriver_download_command(operating_system, '76.0.3809.126'),
+            cls.format_chromedriver_download_comment(operating_system, '75.0.3770.140', 75),
+            cls.format_chromedriver_download_command(operating_system, '75.0.3770.140'),
+            cls.format_chromedriver_download_comment(operating_system, '74.0.3729.6', 74),
+            cls.format_chromedriver_download_command(operating_system, '74.0.3729.6'),
+            cls.format_chromedriver_download_comment(operating_system, '73.0.3683.68', 73),
+            cls.format_chromedriver_download_command(operating_system, '73.0.3683.68'),
+            cls.format_chromedriver_download_comment(operating_system, '2.46', 'v71-73'),
+            cls.format_chromedriver_download_command(operating_system, '2.46'),
+        ]
+
+    @classmethod
+    def format_chromedriver_download_comment(cls, operating_system, version, major_version):
+        return f'# {operating_system} chromedriver {version} (supports Chrome {major_version})'
+
+    @classmethod
+    def format_chromedriver_download_command(cls, operating_system, version):
+        if operating_system.startswith('win'): return cls.format_windows_download(f'{cls.url_prefix_chromedriver}/{version}/chromedriver_{operating_system}.zip', 'chromedriver')
+        else:                                  return cls.format_unix_download   (f'{cls.url_prefix_chromedriver}/{version}/chromedriver_{operating_system}.zip')
+
+    @classmethod
     def format_edgedriver_list(cls, operating_system):
         return [
             cls.format_edgedriver_download_comment(operating_system, '81.0.409.0', 81),
@@ -405,19 +376,6 @@ class Common:
     def format_windows_operadriver_download_command(cls, binary_version, system):
         drive = get_drive_letter()
         return fr'curl -SL {cls.url_prefix_operadriver}/{binary_version}/operadriver_win{system}.zip -o {drive}:\Windows\operadriver && tar -xzvf {drive}:\Windows\operadriver --strip-components=1 -C {drive}:\Windows && del {drive}:\Windows\operadriver && del {drive}:\Windows\sha512_sum' + '\n'
-
-    @classmethod
-    def format_macos_chromedriver_download_command(cls, binary_version):
-        return f'curl -SL {cls.url_prefix_chromedriver}/{binary_version}/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/' + '\n'
-
-    @classmethod
-    def format_linux_chromedriver_download_command(cls, binary_version):
-        return f'curl -SL {cls.url_prefix_chromedriver}/{binary_version}/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/' + '\n'
-
-    @classmethod
-    def format_windows_chromedriver_download_command(cls, binary_version):
-        drive = get_drive_letter()
-        return fr'curl -SL {cls.url_prefix_chromedriver}/{binary_version}/chromedriver_win32.zip -o {drive}:\Windows\chromedriver && tar -xzvf {drive}:\Windows\chromedriver -C {drive}:\Windows && del {drive}:\Windows\chromedriver' + '\n'
 
     ### Brave Browser doesn't have its own bravedriver, but since it's chromium we can just download the chromedriver and use the corresponding chromedriver for the Brave version (with it renamed to "bravedriver" in order to avoud conflict with different versions of Chrome and Brave installed at the same time) ###
     @classmethod
