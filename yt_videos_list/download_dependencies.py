@@ -4,7 +4,6 @@ import platform
 
 from . import selenium_linux, selenium_macos, selenium_windows
 from .notifications import Common
-from .windows import get_drive_letter, get_user_name
 
 
 common_message = Common()

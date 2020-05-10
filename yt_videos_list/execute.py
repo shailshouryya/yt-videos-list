@@ -8,7 +8,7 @@ from selenium import webdriver
 
 from . import program
 from . import download_dependencies
-from .windows import get_drive_letter, get_user_name
+from .windows import get_drive_letter
 from .notifications import Common, ModuleMessage, ScriptMessage
 
 
