@@ -1,10 +1,11 @@
 import os
 import platform
+os.system('pip install .')
 
 from yt_videos_list.windows import get_drive_letter
 from yt_videos_list import ListCreator
 
-os.system('pip install .')
+
 PLATFORM = platform.system().lower()
 
 def remove_dependencies():
