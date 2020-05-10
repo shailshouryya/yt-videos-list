@@ -1,26 +1,28 @@
 import re
 import json
+import platform
 import subprocess
 
 from .windows import get_drive_letter, get_user_name
 
 
+# importing this module without this check results in errors on non-Windows platforms
+if platform.system().lower().startswith('windows'):
+    DRIVE = get_drive_letter()
+    USER  = get_user_name()
+
+
 def firefox_exists(browser):
-    drive = get_drive_letter()
-    return browser in subprocess.getoutput(rf'dir "{drive}:\Program Files"')
+    return browser in subprocess.getoutput(rf'dir "{DRIVE}:\Program Files"')
 
 def opera_exists(browser):
-    drive = get_drive_letter()
-    user  = get_user_name()
-    return browser in subprocess.getoutput(rf'dir {drive}:\Users\{user}\AppData\Local\Programs')
+    return browser in subprocess.getoutput(rf'dir {DRIVE}:\Users\{USER}\AppData\Local\Programs')
 
 def chrome_exists(browser):
-    drive = get_drive_letter()
-    return browser in subprocess.getoutput(rf'dir "{drive}:\Program Files (x86)\Google"')
+    return browser in subprocess.getoutput(rf'dir "{DRIVE}:\Program Files (x86)\Google"')
 
 def brave_exists(browser):
-    drive = get_drive_letter()
-    return browser in subprocess.getoutput(rf'dir "{drive}:\Program Files (x86)/BraveSoftware"')
+    return browser in subprocess.getoutput(rf'dir "{DRIVE}:\Program Files (x86)/BraveSoftware"')
 
 def browser_exists(browser):
     if   browser == 'Mozilla Firefox': return firefox_exists(browser)
@@ -30,25 +32,20 @@ def browser_exists(browser):
 
 
 def get_firefox_version():
-    drive   = get_drive_letter()
-    firefox = subprocess.getoutput(rf'more "{drive}:\Program Files\Mozilla Firefox\application.ini"')
+    firefox = subprocess.getoutput(rf'more "{DRIVE}:\Program Files\Mozilla Firefox\application.ini"')
     return re.search(r'MinVersion=(\d+\.[\d\.]*)', firefox)[1]
 
 def get_opera_version():
-    drive = get_drive_letter()
-    user  = get_user_name()
-    with open(rf'{drive}:\Users\{user}\AppData\Local\Programs\Opera\installation_status.json', 'r') as file:
+    with open(rf'{DRIVE}:\Users\{USER}\AppData\Local\Programs\Opera\installation_status.json', 'r') as file:
         opera = json.load(file)
     return opera['_subfolder']
 
 def get_chrome_version():
-    drive  = get_drive_letter()
-    chrome = subprocess.getoutput(rf'dir "{drive}:\Program Files (x86)\Google\Chrome\Application"')
+    chrome = subprocess.getoutput(rf'dir "{DRIVE}:\Program Files (x86)\Google\Chrome\Application"')
     return re.search(r'(\d\d\.[\d\.]*)', chrome)[1]
 
 def get_brave_version():
-    drive  = get_drive_letter()
-    brave = subprocess.getoutput(rf'dir "{drive}:\Program Files (x86)\BraveSoftware\Brave-Browser\Application"')
+    brave = subprocess.getoutput(rf'dir "{DRIVE}:\Program Files (x86)\BraveSoftware\Brave-Browser\Application"')
     return re.search(r'(\d\d\.[\d\.]*)', brave)[1]
 
 def get_browser_version(browser):
