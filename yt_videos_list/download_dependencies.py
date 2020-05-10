@@ -6,8 +6,8 @@ from . import selenium_linux, selenium_macos, selenium_windows
 from .notifications import Common
 
 
-common_message = Common()
-application_name = {
+COMMON_MESSAGE = Common()
+APPLICATION_NAME = {
     'macos': {
         # 'driver': 'browser_name'
         'firefox':  'Firefox',
@@ -38,18 +38,18 @@ def determine_user_os():
 
 def download_specific_dependency(driver, user_os):
     selenium_user_os = globals()[f'selenium_{user_os}']
-    browser = application_name[user_os][driver]
+    browser = APPLICATION_NAME[user_os][driver]
     if selenium_user_os.browser_exists(browser):
         full_version_number = selenium_user_os.get_browser_version(browser)
-        common_message.display_browser_found_information(browser, full_version_number)
+        COMMON_MESSAGE.display_browser_found_information(browser, full_version_number)
         major_version = full_version_number.split('.')[0]
         execute_download_command(driver, user_os, major_version)
     else:
-        common_message.display_browser_not_found_information(browser, user_os)
+        COMMON_MESSAGE.display_browser_not_found_information(browser, user_os)
 
 def download_all_dependencies(user_os):
-    print(common_message.automated_driver_update)
-    for driver in application_name[user_os]:
+    print(COMMON_MESSAGE.automated_driver_update)
+    for driver in APPLICATION_NAME[user_os]:
         download_specific_dependency(driver, user_os)
 
 def execute_download_command(driver, user_os, version):
@@ -119,9 +119,9 @@ def execute_download_command(driver, user_os, version):
     }
     row = row_in_list[driver][version]
     print(f'Now downloading the corresponding selenium driver for {driver} version {version} on {user_os}:')
-    print(f'{common_message.driver_downloads_for_os[driver][user_os][row-1]} #')
-    print(f'{common_message.driver_downloads_for_os[driver][user_os][row]}')
-    os.system(common_message.driver_downloads_for_os[driver][user_os][row])
+    print(f'{COMMON_MESSAGE.driver_downloads_for_os[driver][user_os][row-1]} #')
+    print(f'{COMMON_MESSAGE.driver_downloads_for_os[driver][user_os][row]}')
+    os.system(COMMON_MESSAGE.driver_downloads_for_os[driver][user_os][row])
 
 def run():
     user_os = determine_user_os()
