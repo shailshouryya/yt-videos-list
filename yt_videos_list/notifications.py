@@ -27,6 +27,7 @@ class Common:
     url_prefix_geckodriver  = 'https://github.com/mozilla/geckodriver/releases/download'
     url_prefix_operadriver  = 'https://github.com/operasoftware/operachromiumdriver/releases/download'
     url_prefix_chromedriver = 'https://chromedriver.storage.googleapis.com'
+    url_prefix_edgedriver   = 'https://msedgedriver.azureedge.net'
 
 
     def __init__(self):
@@ -326,6 +327,14 @@ class Common:
                     '# windows64 Operadriver 2.37 (supports Opera 54 release)',
                     self.format_windows_bravedriver_download_command('v.2.37')
                 ]
+            },
+            'edge': {
+                'macos':   self.create_list_for('mac64',   'edgedriver'),
+                'linux':   ['There is currently no dedicated edgedriver for Linux.\nHere are possible commands for an arm64 operating system.\nPlease visit https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/ for more information.'] + \
+                           self.create_list_for('arm64', 'edgedriver'),
+                'windows': self.create_list_for('win32',   'edgedriver') + \
+                           self.create_list_for('win64',   'edgedriver')
+
             }
         }
 
@@ -335,6 +344,40 @@ class Common:
         'opera':   ['operadriver',  'https://github.com/operasoftware/operachromiumdriver',      'https://github.com/operasoftware/operachromiumdriver/releases',  'Opera',           'https://www.opera.com/'],
         'chrome':  ['chromedriver', 'https://sites.google.com/a/chromium.org/chromedriver/home', 'https://sites.google.com/a/chromium.org/chromedriver/downloads', 'Chrome',          'https://www.google.com/chrome/']
     }
+
+    @classmethod
+    def create_list_for(cls, operating_system, driver):
+        formatter_function = getattr(cls, f'format_{driver}_list')
+        return formatter_function(operating_system)
+
+    @classmethod
+    def format_edgedriver_list(cls, operating_system):
+        return [
+            cls.format_edgedriver_download_comment(operating_system, '81.0.409.0', 81),
+            cls.format_edgedriver_download_command(operating_system, '81.0.409.0'),
+            cls.format_edgedriver_download_comment(operating_system, '80.0.361.111', 80),
+            cls.format_edgedriver_download_command(operating_system, '80.0.361.111'),
+            cls.format_edgedriver_download_comment(operating_system, '79.0.313.0', 79),
+            cls.format_edgedriver_download_command(operating_system, '79.0.313.0')
+        ]
+
+    @classmethod
+    def format_edgedriver_download_command(cls, operating_system, version):
+        if operating_system.startswith('win'): return cls.format_windows_download(f'{cls.url_prefix_edgedriver}/{version}/edgedriver_{operating_system}.zip', 'edgedriver')
+        else:                                  return cls.format_unix_download   (f'{cls.url_prefix_edgedriver}/{version}/edgedriver_{operating_system}.zip')
+
+    @classmethod
+    def format_edgedriver_download_comment(cls, operating_system, version, major_version):
+        return f'# {operating_system} edgedriver {version} (supports Edge {major_version})'
+
+    @staticmethod
+    def format_unix_download(url):
+        return f'curl -SL {url} | tar -xzvf - -C /usr/local/bin/' + '\n'
+
+    @staticmethod
+    def format_windows_download(url, driver):
+        drive = get_drive_letter()
+        return fr'curl -SL {url} -o {drive}:\Windows\{driver} && tar -xzvf {drive}:\Windows\{driver} -C {drive}:\Windows && del {drive}:\Windows\{driver}' + '\n'
 
     @classmethod
     def format_macos_geckodriver_download_command(cls, binary_version):
