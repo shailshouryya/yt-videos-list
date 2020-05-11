@@ -55,12 +55,26 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
         # options.headless = True
         return webdriver.Chrome(options=options, executable_path=executable_path)
 
+    def configure_edge_driver():
+        # options = selenium.webdriver.remote.webdriver.WebDriver()
+        if platform.system().lower().startswith('windows'):
+            drive  = get_drive_letter()
+            # options.binary_location = rf'{drive}:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe'
+            executable_path         = rf'{drive}:\Windows\msedgedriver.exe'
+        else:
+            # options.binary_location = '/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge'
+            executable_path         = '/usr/local/bin/msedgedriver'
+        # options.headless = True
+        return webdriver.Edge(executable_path=executable_path)
+
+
     def check_driver():
         if   'firefox' in user_driver: return webdriver.Firefox
         elif 'opera'   in user_driver: return webdriver.Opera
         elif 'safari'  in user_driver: return webdriver.Safari
         elif 'chrome'  in user_driver: return webdriver.Chrome
         elif 'brave'   in user_driver: return configure_brave_driver
+        elif 'edge'    in user_driver: return configure_edge_driver
         else:
             print(common_message.invalid_driver)
             return 'invalid'
