@@ -69,7 +69,7 @@ class Common:
         # 'driver': ['driverName', 'url for more driver info',  'url for driver releases', 'browser name', 'url for browser download']
         'firefox': ['geckodriver',  'https://github.com/mozilla/geckodriver',                    'https://github.com/mozilla/geckodriver/releases',                'Mozilla Firefox', 'https://www.mozilla.org/en-US/firefox/new/'],
         'opera':   ['operadriver',  'https://github.com/operasoftware/operachromiumdriver',      'https://github.com/operasoftware/operachromiumdriver/releases',  'Opera',           'https://www.opera.com/'],
-        'chrome':  ['chromedriver', 'https://sites.google.com/a/chromium.org/chromedriver/home', 'https://sites.google.com/a/chromium.org/chromedriver/downloads', 'Chrome',          'https://www.google.com/chrome/']
+        'chrome':  ['chromedriver', 'https://sites.google.com/a/chromium.org/chromedriver/home', 'https://sites.google.com/a/chromium.org/chromedriver/downloads', 'Google Chrome',   'https://www.google.com/chrome/']
     }
 
     @classmethod
@@ -118,55 +118,55 @@ class Common:
     @classmethod
     def format_chromedriver_list(cls, operating_system):
         return [
-            cls.format_driver_information(operating_system, 'chromedriver', 'Chrome', '81.0.4044.69', 81),
+            cls.format_driver_information(operating_system, 'chromedriver', 'Google Chrome', '81.0.4044.69', 81),
             cls.format_chromedriver_download_command(operating_system, '81.0.4044.69'),
-            cls.format_driver_information(operating_system, 'chromedriver', 'Chrome', '80.0.3987.106', 80),
+            cls.format_driver_information(operating_system, 'chromedriver', 'Google Chrome', '80.0.3987.106', 80),
             cls.format_chromedriver_download_command(operating_system, '80.0.3987.106'),
-            cls.format_driver_information(operating_system, 'chromedriver', 'Chrome', '79.0.3945.36', 79),
+            cls.format_driver_information(operating_system, 'chromedriver', 'Google Chrome', '79.0.3945.36', 79),
             cls.format_chromedriver_download_command(operating_system, '79.0.3945.36'),
-            cls.format_driver_information(operating_system, 'chromedriver', 'Chrome', '78.0.3904.105', 78),
+            cls.format_driver_information(operating_system, 'chromedriver', 'Google Chrome', '78.0.3904.105', 78),
             cls.format_chromedriver_download_command(operating_system, '78.0.3904.105'),
-            cls.format_driver_information(operating_system, 'chromedriver', 'Chrome', '77.0.3865.40', 77),
+            cls.format_driver_information(operating_system, 'chromedriver', 'Google Chrome', '77.0.3865.40', 77),
             cls.format_chromedriver_download_command(operating_system, '77.0.3865.40'),
-            cls.format_driver_information(operating_system, 'chromedriver', 'Chrome', '76.0.3809.126', 76),
+            cls.format_driver_information(operating_system, 'chromedriver', 'Google Chrome', '76.0.3809.126', 76),
             cls.format_chromedriver_download_command(operating_system, '76.0.3809.126'),
-            cls.format_driver_information(operating_system, 'chromedriver', 'Chrome', '75.0.3770.140', 75),
+            cls.format_driver_information(operating_system, 'chromedriver', 'Google Chrome', '75.0.3770.140', 75),
             cls.format_chromedriver_download_command(operating_system, '75.0.3770.140'),
-            cls.format_driver_information(operating_system, 'chromedriver', 'Chrome', '74.0.3729.6', 74),
+            cls.format_driver_information(operating_system, 'chromedriver', 'Google Chrome', '74.0.3729.6', 74),
             cls.format_chromedriver_download_command(operating_system, '74.0.3729.6'),
-            cls.format_driver_information(operating_system, 'chromedriver', 'Chrome', '73.0.3683.68', 73),
+            cls.format_driver_information(operating_system, 'chromedriver', 'Google Chrome', '73.0.3683.68', 73),
             cls.format_chromedriver_download_command(operating_system, '73.0.3683.68'),
-            cls.format_driver_information(operating_system, 'chromedriver', 'Chrome', '2.46', 'v71-73'),
+            cls.format_driver_information(operating_system, 'chromedriver', 'Google Chrome', '2.46', 'v71-73'),
             cls.format_chromedriver_download_command(operating_system, '2.46')
         ]
 
     @classmethod
     def format_bravedriver_list(cls, operating_system):
         return [
-            cls.format_driver_information(operating_system, 'bravedriver', 'Brave (Chromium)', 'v.81.0.4044.113', '81'),
+            cls.format_driver_information(operating_system, 'bravedriver', 'Brave Browser (Chromium)', 'v.81.0.4044.113', '81'),
             cls.format_bravedriver_download_command(operating_system, 'v.81.0.4044.113'),
-            cls.format_driver_information(operating_system, 'bravedriver', 'Brave (Chromium)','v.80.0.3987.100', '80'),
+            cls.format_driver_information(operating_system, 'bravedriver', 'Brave Browser (Chromium)','v.80.0.3987.100', '80'),
             cls.format_bravedriver_download_command(operating_system, 'v.80.0.3987.100'),
-            cls.format_driver_information(operating_system, 'bravedriver', 'Brave (Chromium)', 'v.79.0.3945.79', '79'),
+            cls.format_driver_information(operating_system, 'bravedriver', 'Brave Browser (Chromium)', 'v.79.0.3945.79', '79'),
             cls.format_bravedriver_download_command(operating_system, 'v.79.0.3945.79'),
-            cls.format_driver_information(operating_system, 'bravedriver', 'Brave (Chromium)', 'v.78.0.3904.87', '78'),
+            cls.format_driver_information(operating_system, 'bravedriver', 'Brave Browser (Chromium)', 'v.78.0.3904.87', '78'),
             cls.format_bravedriver_download_command(operating_system, 'v.78.0.3904.87'),
-            cls.format_driver_information(operating_system, 'bravedriver', 'Brave (Chromium)', 'v.77.0.3865.120', '77'),
+            cls.format_driver_information(operating_system, 'bravedriver', 'Brave Browser (Chromium)', 'v.77.0.3865.120', '77'),
             cls.format_bravedriver_download_command(operating_system, 'v.77.0.3865.120'),
-            cls.format_driver_information(operating_system, 'bravedriver', 'Brave (Chromium)', 'v.76.0.3809.132', '76'),
+            cls.format_driver_information(operating_system, 'bravedriver', 'Brave Browser (Chromium)', 'v.76.0.3809.132', '76'),
             cls.format_bravedriver_download_command(operating_system, 'v.76.0.3809.132'),
-            cls.format_driver_information(operating_system, 'bravedriver', 'Brave (Chromium)', 'v.75.0.3770.100', '75'),
+            cls.format_driver_information(operating_system, 'bravedriver', 'Brave Browser (Chromium)', 'v.75.0.3770.100', '75'),
             cls.format_bravedriver_download_command(operating_system, 'v.75.0.3770.100')
         ]
 
     @classmethod
     def format_msedgedriver_list(cls, operating_system):
         return [
-            cls.format_driver_information(operating_system, 'msedgedriver', 'Edge', '81.0.409.0', 81),
+            cls.format_driver_information(operating_system, 'msedgedriver', 'Microsoft Edge', '81.0.409.0', 81),
             cls.format_msedgedriver_download_command(operating_system, '81.0.409.0'),
-            cls.format_driver_information(operating_system, 'msedgedriver', 'Edge', '80.0.361.111', 80),
+            cls.format_driver_information(operating_system, 'msedgedriver', 'Microsoft Edge', '80.0.361.111', 80),
             cls.format_msedgedriver_download_command(operating_system, '80.0.361.111'),
-            cls.format_driver_information(operating_system, 'msedgedriver', 'Edge', '79.0.313.0', 79),
+            cls.format_driver_information(operating_system, 'msedgedriver', 'Microsoft Edge', '79.0.313.0', 79),
             cls.format_msedgedriver_download_command(operating_system, '79.0.313.0')
         ]
 
