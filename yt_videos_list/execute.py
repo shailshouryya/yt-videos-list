@@ -111,6 +111,10 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
         print(common_message.unsupported_brave_headless)
         return configure_brave_driver()
 
+    def set_up_headless_edge_driver():
+        print(common_message.unsupported_edge_headless)
+        return configure_edge_driver()
+
     def open_user_driver():
         if headless is False:
             if execution_type == 'module':
@@ -123,6 +127,7 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
             elif user_driver == 'safari':  return set_up_headless_safari_driver()
             elif user_driver == 'chrome':  return set_up_headless_chrome_driver()
             elif user_driver == 'brave':   return set_up_headless_brave_driver()
+            elif user_driver == 'edge':    return set_up_headless_edge_driver()
 
     def determine_user_os():
         if   platform.system().lower().startswith('darwin'):  return 'macos'
