@@ -103,18 +103,13 @@ def execute_download_command(driver, user_os, version):
             '71': -1
         },
         'brave': {
-            '81': -25,
-            '80': -23,
-            '79': -21,
-            '78': -19,
-            '77': -17,
-            '76': -15,
-            '75': -13,
-            # there was no version 61 - 74?
-            '73': -11,
-            # there was no version 59
-            '72': -9,
-            '71': -7,
+            '81': -13,
+            '80': -11,
+            '79': -9,
+            '78': -7,
+            '77': -5,
+            '76': -3,
+            '75': -1
         }
     }
     row = row_in_list[driver][version]
