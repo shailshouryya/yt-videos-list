@@ -13,7 +13,8 @@ APPLICATION_NAME = {
         'firefox':  'Firefox',
         'opera':    'Opera',
         'chrome':   'Google Chrome',
-        'brave':    'Brave Browser'
+        'brave':    'Brave Browser',
+        'edge':     'Microsoft Edge'
     },
     'linux': {
         'firefox':  'Automatic Selenium dependency download for Windows is not yet supported. Please follow the instructions below to set up the correct selenium dependecy for the firefoxdriver.',
@@ -110,6 +111,11 @@ def execute_download_command(driver, user_os, version):
             '77': -5,
             '76': -3,
             '75': -1
+        },
+        'edge': {
+            '81': -5,
+            '80': -3,
+            '79': -1
         }
     }
     row = row_in_list[driver][version]
