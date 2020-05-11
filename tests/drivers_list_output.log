@@ -4,8 +4,8 @@ Requirement already satisfied: urllib3 in /Library/Frameworks/Python.framework/V
 Building wheels for collected packages: yt-videos-list
   Building wheel for yt-videos-list (setup.py): started
   Building wheel for yt-videos-list (setup.py): finished with status 'done'
-  Created wheel for yt-videos-list: filename=yt_videos_list-0.3.7-py3-none-any.whl size=26294 sha256=8386c6407cec022b4ce548303f159687e98cdb1d069060b5f89ebe5a671242ee
-  Stored in directory: /private/var/folders/ch/vskbs73j2l15kc4w2q_74gpc0000gq/T/pip-ephem-wheel-cache-5f8c1lcs/wheels/1e/47/b1/cf2bde21801b64d39ba3a6cc17efc8d471fd63cc57b397b485
+  Created wheel for yt-videos-list: filename=yt_videos_list-0.3.7-py3-none-any.whl size=26383 sha256=f97621e50faaf91e225c7abe038ae3e9ad2d946669055f622354ad5789f2eed2
+  Stored in directory: /private/var/folders/ch/vskbs73j2l15kc4w2q_74gpc0000gq/T/pip-ephem-wheel-cache-9blj_c7i/wheels/1e/47/b1/cf2bde21801b64d39ba3a6cc17efc8d471fd63cc57b397b485
 Successfully built yt-videos-list
 Installing collected packages: yt-videos-list
   Attempting uninstall: yt-videos-list
@@ -14,19 +14,19 @@ Installing collected packages: yt-videos-list
       Successfully uninstalled yt-videos-list-0.3.7
 Successfully installed yt-videos-list-0.3.7
 firefox
-# macos geckodriver (Firefoxdriver) v0.26.0
-curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0//geckodriver-v0.26.0-macos.tar.gz | tar -xzvf - -C /usr/local/bin/
+# macos geckodriver v0.26.0 (supports Mozilla Firefox ≥ 60)
+curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-macos.tar.gz | tar -xzvf - -C /usr/local/bin/
 
-# linux64 geckodriver (Firefoxdriver) v0.26.0
+# linux64 geckodriver v0.26.0 (supports Mozilla Firefox ≥ 60)
 curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux64.tar.gz | tar -xzvf - -C /usr/local/bin/
 
-# linux32 geckodriver (Firefoxdriver) v0.26.0
+# linux32 geckodriver v0.26.0 (supports Mozilla Firefox ≥ 60)
 curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux32.tar.gz | tar -xzvf - -C /usr/local/bin/
 
-# windows32 geckodriver (Firefoxdriver) v0.26.0
+# win32 geckodriver v0.26.0 (supports Mozilla Firefox ≥ 60)
 curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win32.zip -o %CD%:\Windows\geckodriver && tar -xzvf %CD%:\Windows\geckodriver -C %CD%:\Windows && del %CD%:\Windows\geckodriver
 
-# windows64 geckodriver (Firefoxdriver) v0.26.0
+# win64 geckodriver v0.26.0 (supports Mozilla Firefox ≥ 60)
 curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win64.zip -o %CD%:\Windows\geckodriver && tar -xzvf %CD%:\Windows\geckodriver -C %CD%:\Windows && del %CD%:\Windows\geckodriver
 
 opera
