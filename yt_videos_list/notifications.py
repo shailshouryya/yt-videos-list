@@ -62,90 +62,9 @@ class Common:
                 'windows': self.create_list_for('win32',   'chromedriver')
             },
             'brave': {
-                'macos' : [
-                    '# mac64 Operadriver 81.0.4044.113 (supports Opera Stable 68 release)',
-                    self.format_macos_bravedriver_download_command('v.81.0.4044.113'),
-                    '# mac64 Operadriver 80.0.3987.100 (supports Opera Stable 67 release)',
-                    self.format_macos_bravedriver_download_command('v.80.0.3987.100'),
-                    '# mac64 Operadriver 79.0.3945.79 (supports Opera Stable 66 release)',
-                    self.format_macos_bravedriver_download_command('v.79.0.3945.79'),
-                    '# mac64 Operadriver 78.0.3904.87 (supports Opera Stable 65 release)',
-                    self.format_macos_bravedriver_download_command('v.78.0.3904.87'),
-                    '# mac64 Operadriver 77.0.3865.120 (supports Opera 64 release)',
-                    self.format_macos_bravedriver_download_command('v.77.0.3865.120'),
-                    '# mac64 Operadriver 76.0.3809.132 (supports Opera 63 release)',
-                    self.format_macos_bravedriver_download_command('v.76.0.3809.132'),
-                    '# mac64 Operadriver 75.0.3770.100 (supports Opera 62 release)',
-                    self.format_macos_bravedriver_download_command('v.75.0.3770.100'),
-                    '# mac64 Operadriver 2.45 (supports Opera 60 release)',
-                    self.format_macos_bravedriver_download_command('v.2.45'),
-                    '# mac64 Operadriver 2.42 (supports Opera 58 release)',
-                    self.format_macos_bravedriver_download_command('v.2.42'),
-                    '# mac64 Operadriver 2.41 (supports Opera 57 release)',
-                    self.format_macos_bravedriver_download_command('v.2.41'),
-                    '# mac64 Operadriver 2.40 (supports Opera 56 release)',
-                    self.format_macos_bravedriver_download_command('v.2.40'),
-                    '# mac64 Operadriver 2.38 (supports Opera 55 release)',
-                    self.format_macos_bravedriver_download_command('v.2.38'),
-                    '# mac64 Operadriver 2.37 (supports Opera 54 release)',
-                    self.format_macos_bravedriver_download_command('v.2.37')
-                ],
-                'linux': [
-                    '# linux64 Operadriver 81.0.4044.113 (supports Opera Stable 68 release)',
-                    self.format_linux_bravedriver_download_command('v.81.0.4044.113'),
-                    '# linux64 Operadriver 80.0.3987.100 (supports Opera Stable 67 release)',
-                    self.format_linux_bravedriver_download_command('v.80.0.3987.100'),
-                    '# linux64 Operadriver 79.0.3945.79 (supports Opera Stable 66 release)',
-                    self.format_linux_bravedriver_download_command('v.79.0.3945.79'),
-                    '# linux64 Operadriver 78.0.3904.87 (supports Opera Stable 65 release)',
-                    self.format_linux_bravedriver_download_command('v.78.0.3904.87'),
-                    '# linux64 Operadriver 77.0.3865.120 (supports Opera 64 release)',
-                    self.format_linux_bravedriver_download_command('v.77.0.3865.120'),
-                    '# linux64 Operadriver 76.0.3809.132 (supports Opera 63 release)',
-                    self.format_linux_bravedriver_download_command('v.76.0.3809.132'),
-                    '# linux64 Operadriver 75.0.3770.100 (supports Opera 62) release',
-                    self.format_linux_bravedriver_download_command('v.75.0.3770.100'),
-                    '# linux64 Operadriver 2.45 (supports Opera 60 release)',
-                    self.format_linux_bravedriver_download_command('v.2.45'),
-                    '# linux64 Operadriver 2.42 (supports Opera 58 release)',
-                    self.format_linux_bravedriver_download_command('v.2.42'),
-                    '# linux64 Operadriver 2.41 (supports Opera 57) release',
-                    self.format_linux_bravedriver_download_command('v.2.41'),
-                    '# linux64 Operadriver 2.40 (supports Opera 56 release)',
-                    self.format_linux_bravedriver_download_command('v.2.40'),
-                    '# linux64 Operadriver 2.38 (supports Opera 55 release)',
-                    self.format_linux_bravedriver_download_command('v.2.38'),
-                    '# linux64 Operadriver 2.37 (supports Opera 54 release)',
-                    self.format_linux_bravedriver_download_command('v.2.37')
-                ],
-                'windows': [
-                    '# windows64 Operadriver 81.0.4044.113 (supports Opera Stable 68 release)',
-                    self.format_windows_bravedriver_download_command('v.81.0.4044.113'),
-                    '# windows64 Operadriver 80.0.3987.100 (supports Opera Stable 67 release)',
-                    self.format_windows_bravedriver_download_command('v.80.0.3987.100'),
-                    '# windows64 Operadriver 79.0.3945.79 (supports Opera Stable 66 release)',
-                    self.format_windows_bravedriver_download_command('v.79.0.3945.79'),
-                    '# windows64 Operadriver 78.0.3904.87 (supports Opera Stable 65 release)',
-                    self.format_windows_bravedriver_download_command('v.78.0.3904.87'),
-                    '# windows64 Operadriver 77.0.3865.120 (supports Opera 64 release)',
-                    self.format_windows_bravedriver_download_command('v.77.0.3865.120'),
-                    '# windows64 Operadriver 76.0.3809.132 (supports Opera 63 release)',
-                    self.format_windows_bravedriver_download_command('v.76.0.3809.132'),
-                    '# windows64 Operadriver 75.0.3770.100 (supports Opera 62 release)',
-                    self.format_windows_bravedriver_download_command('v.75.0.3770.100'),
-                    '# windows64 Operadriver 2.45 (supports Opera 60 release)',
-                    self.format_windows_bravedriver_download_command('v.2.45'),
-                    '# windows64 Operadriver 2.42 (supports Opera 58 release)',
-                    self.format_windows_bravedriver_download_command('v.2.42'),
-                    '# windows64 Operadriver 2.41 (supports Opera 57 release)',
-                    self.format_windows_bravedriver_download_command('v.2.41'),
-                    '# windows64 Operadriver 2.40 (supports Opera 56 release)',
-                    self.format_windows_bravedriver_download_command('v.2.40'),
-                    '# windows64 Operadriver 2.38 (supports Opera 55 release)',
-                    self.format_windows_bravedriver_download_command('v.2.38'),
-                    '# windows64 Operadriver 2.37 (supports Opera 54 release)',
-                    self.format_windows_bravedriver_download_command('v.2.37')
-                ]
+                'macos':   self.create_list_for('mac64',   'bravedriver'),
+                'linux':   self.create_list_for('linux64', 'bravedriver'),
+                'windows': self.create_list_for('win64',   'bravedriver'),
             },
             'edge': {
                 'macos':   self.create_list_for('mac64',   'edgedriver'),
@@ -260,6 +179,35 @@ class Common:
         else:                                  return cls.format_unix_download   (f'{cls.url_prefix_chromedriver}/{version}/chromedriver_{operating_system}.zip')
 
     @classmethod
+    def format_bravedriver_list(cls, operating_system):
+        return [
+            cls.format_bravedriver_download_comment(operating_system, 'v.81.0.4044.113', '81'),
+            cls.format_bravedriver_download_command(operating_system, 'v.81.0.4044.113'),
+            cls.format_bravedriver_download_comment(operating_system, 'v.80.0.3987.100', '80'),
+            cls.format_bravedriver_download_command(operating_system, 'v.80.0.3987.100'),
+            cls.format_bravedriver_download_comment(operating_system, 'v.79.0.3945.79', '79'),
+            cls.format_bravedriver_download_command(operating_system, 'v.79.0.3945.79'),
+            cls.format_bravedriver_download_comment(operating_system, 'v.78.0.3904.87', '78'),
+            cls.format_bravedriver_download_command(operating_system, 'v.78.0.3904.87'),
+            cls.format_bravedriver_download_comment(operating_system, 'v.77.0.3865.120', '77'),
+            cls.format_bravedriver_download_command(operating_system, 'v.77.0.3865.120'),
+            cls.format_bravedriver_download_comment(operating_system, 'v.76.0.3809.132', '76'),
+            cls.format_bravedriver_download_command(operating_system, 'v.76.0.3809.132'),
+            cls.format_bravedriver_download_comment(operating_system, 'v.75.0.3770.100', '75'),
+            cls.format_bravedriver_download_command(operating_system, 'v.75.0.3770.100')
+        ]
+
+    @classmethod
+    def format_bravedriver_download_comment(cls, operating_system, version, major_version):
+        return f'# {operating_system} bravedriver {version} (supports Brave (Chromium) {major_version})'
+
+    @classmethod
+    def format_bravedriver_download_command(cls, operating_system, version):
+        ### Brave Browser doesn't have its own bravedriver, but since it's chromium we can just download the chromedriver and use the corresponding chromedriver for the Brave version (with it renamed to "bravedriver" in order to avoud conflict with different versions of Chrome and Brave installed at the same time) ###
+        if operating_system.startswith('win'): return cls.format_windows_bravedriver_download(f'{cls.url_prefix_operadriver}/{version}/operadriver_{operating_system}.zip', 'bravedriver')
+        else:                                  return cls.format_unix_bravedriver_download   (f'{cls.url_prefix_operadriver}/{version}/operadriver_{operating_system}.zip')
+
+    @classmethod
     def format_edgedriver_list(cls, operating_system):
         return [
             cls.format_edgedriver_download_comment(operating_system, '81.0.409.0', 81),
@@ -297,21 +245,14 @@ class Common:
         drive = get_drive_letter()
         return fr'curl -SL {url} -o {drive}:\Windows\{driver} && tar -xzvf {drive}:\Windows\{driver} --strip-components=1 -C {drive}:\Windows && del {drive}:\Windows\{driver} && del {drive}:\Windows\sha512_sum' + '\n'
 
+    @staticmethod
+    def format_unix_bravedriver_download(url):
+        return f'curl -SL {url} | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum' + '\n'
 
-    ### Brave Browser doesn't have its own bravedriver, but since it's chromium we can just download the chromedriver and use the corresponding chromedriver for the Brave version (with it renamed to "bravedriver" in order to avoud conflict with different versions of Chrome and Brave installed at the same time) ###
-    @classmethod
-    def format_macos_bravedriver_download_command(cls, binary_version):
-        return f'curl -SL {cls.url_prefix_operadriver}/{binary_version}/operadriver_mac64.zip | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum' + '\n'
-
-    @classmethod
-    def format_linux_bravedriver_download_command(cls, binary_version):
-        return f'curl -SL {cls.url_prefix_operadriver}/{binary_version}/operadriver_linux64.zip | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum' + '\n'
-
-    @classmethod
-    def format_windows_bravedriver_download_command(cls, binary_version):
-        drive  = get_drive_letter()
-        system = 64
-        return fr'curl -SL {cls.url_prefix_operadriver}/{binary_version}/operadriver_win{system}.zip -o {drive}:\Windows\bravedriver && tar -xzvf {drive}:\Windows\bravedriver --strip-components=1 -O > {drive}:\Windows\bravedriver.exe && del {drive}:\Windows\bravedriver && del {drive}:\Windows\sha512_sum' + '\n'
+    @staticmethod
+    def format_windows_bravedriver_download(url, driver):
+        drive = get_drive_letter()
+        return fr'curl -SL {url} -o {drive}:\Windows\{driver} && tar -xzvf {drive}:\Windows\{driver} --strip-components=1 -O > {drive}:\Windows\bravedriver.exe && del {drive}:\Windows\{driver} && del {drive}:\Windows\sha512_sum' + '\n'
 
 
     @staticmethod
