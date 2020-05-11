@@ -24,11 +24,15 @@ def chrome_exists(browser):
 def brave_exists(browser):
     return browser in subprocess.getoutput(rf'dir "{DRIVE}:\Program Files (x86)/BraveSoftware"')
 
+def edge_exists(browser):
+    return browser in subprocess.getoutput(rf'dir "{DRIVE}:\Program Files (x86)/Microsoft"')
+
 def browser_exists(browser):
     if   browser == 'Mozilla Firefox': return firefox_exists(browser)
     elif browser == 'Opera':           return opera_exists(browser)
     elif browser == 'Chrome':          return chrome_exists(browser)
     elif browser == 'Brave-Browser':   return brave_exists(browser)
+    elif browser == 'Edge':  return edge_exists(browser)
 
 
 def get_firefox_version():
@@ -48,8 +52,13 @@ def get_brave_version():
     brave = subprocess.getoutput(rf'dir "{DRIVE}:\Program Files (x86)\BraveSoftware\Brave-Browser\Application"')
     return re.search(r'(\d\d\.[\d\.]*)', brave)[1]
 
+def get_edge_version():
+    edge = subprocess.getoutput(rf'dir "{DRIVE}:\Program Files (x86)\Microsoft\Edge\Application"')
+    return re.search(r'(\d\d\.[\d\.]*)', edge)[1]
+
 def get_browser_version(browser):
     if   browser == 'Mozilla Firefox': return get_firefox_version()
     elif browser == 'Opera':           return get_opera_version()
     elif browser == 'Chrome':          return get_chrome_version()
     elif browser == 'Brave-Browser':   return get_brave_version()
+    elif browser == 'Edge':  return get_edge_version()

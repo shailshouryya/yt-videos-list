@@ -25,7 +25,8 @@ APPLICATION_NAME = {
         'firefox':  'Mozilla Firefox',
         'opera':    'Opera',
         'chrome':   'Chrome',
-        'brave':    'Brave-Browser'
+        'brave':    'Brave-Browser',
+        'edge':     'Edge'
     }
 }
 
