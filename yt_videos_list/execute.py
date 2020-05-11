@@ -64,6 +64,9 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
         else:
             # options.binary_location = '/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge'
             executable_path         = '/usr/local/bin/msedgedriver'
+            print(common_message.unsupported_edge)
+            print(module_message.show_driver_options)
+            sys.exit()
         # options.headless = True
         return webdriver.Edge(executable_path=executable_path)
 
