@@ -4,8 +4,8 @@ Requirement already satisfied: urllib3 in /Library/Frameworks/Python.framework/V
 Building wheels for collected packages: yt-videos-list
   Building wheel for yt-videos-list (setup.py): started
   Building wheel for yt-videos-list (setup.py): finished with status 'done'
-  Created wheel for yt-videos-list: filename=yt_videos_list-0.3.7-py3-none-any.whl size=25561 sha256=cb786c182c1e7a65b45ce68bc669fb9b278e6c35d5d7539655d2cf207c6e87bc
-  Stored in directory: /private/var/folders/ch/vskbs73j2l15kc4w2q_74gpc0000gq/T/pip-ephem-wheel-cache-3wle8isg/wheels/1e/47/b1/cf2bde21801b64d39ba3a6cc17efc8d471fd63cc57b397b485
+  Created wheel for yt-videos-list: filename=yt_videos_list-0.3.7-py3-none-any.whl size=25560 sha256=64fc0a58c708e4858c7b9ffdd84c36d9b9e973aca7fab3d3a24cd98e5d1ed1f0
+  Stored in directory: /private/var/folders/ch/vskbs73j2l15kc4w2q_74gpc0000gq/T/pip-ephem-wheel-cache-36rv2xnx/wheels/1e/47/b1/cf2bde21801b64d39ba3a6cc17efc8d471fd63cc57b397b485
 Successfully built yt-videos-list
 Installing collected packages: yt-videos-list
   Attempting uninstall: yt-videos-list
@@ -42,13 +42,13 @@ curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/
 # mac64 operadriver v.78.0.3904.87 (supports Opera Stable 65 release)
 curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.78.0.3904.87/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum
 
-# mac64 operadriver v.77.0.3865.120 (supports Opera Stable 64 release)
+# mac64 operadriver v.77.0.3865.120 (supports Opera 64 release)
 curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.77.0.3865.120/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum
 
-# mac64 operadriver v.76.0.3809.132 (supports Opera Stable 63 release)
+# mac64 operadriver v.76.0.3809.132 (supports Opera 63 release)
 curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.76.0.3809.132/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum
 
-# mac64 operadriver v.75.0.3770.100 (supports Opera Stable 62 release)
+# mac64 operadriver v.75.0.3770.100 (supports Opera 62 release)
 curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.75.0.3770.100/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum
 
 # mac64 operadriver v.2.45 (supports Opera 60 release)
@@ -81,13 +81,13 @@ curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/
 # linux64 operadriver v.78.0.3904.87 (supports Opera Stable 65 release)
 curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.78.0.3904.87/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum
 
-# linux64 operadriver v.77.0.3865.120 (supports Opera Stable 64 release)
+# linux64 operadriver v.77.0.3865.120 (supports Opera 64 release)
 curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.77.0.3865.120/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum
 
-# linux64 operadriver v.76.0.3809.132 (supports Opera Stable 63 release)
+# linux64 operadriver v.76.0.3809.132 (supports Opera 63 release)
 curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.76.0.3809.132/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum
 
-# linux64 operadriver v.75.0.3770.100 (supports Opera Stable 62 release)
+# linux64 operadriver v.75.0.3770.100 (supports Opera 62 release)
 curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.75.0.3770.100/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum
 
 # linux64 operadriver v.2.45 (supports Opera 60 release)
@@ -120,13 +120,13 @@ curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/
 # win32 operadriver v.78.0.3904.87 (supports Opera Stable 65 release)
 curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.78.0.3904.87/operadriver_win32.zip -o %CD%:\Windows\operadriver && tar -xzvf %CD%:\Windows\operadriver --strip-components=1 -C %CD%:\Windows && del %CD%:\Windows\operadriver && del %CD%:\Windows\sha512_sum
 
-# win32 operadriver v.77.0.3865.120 (supports Opera Stable 64 release)
+# win32 operadriver v.77.0.3865.120 (supports Opera 64 release)
 curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.77.0.3865.120/operadriver_win32.zip -o %CD%:\Windows\operadriver && tar -xzvf %CD%:\Windows\operadriver --strip-components=1 -C %CD%:\Windows && del %CD%:\Windows\operadriver && del %CD%:\Windows\sha512_sum
 
-# win32 operadriver v.76.0.3809.132 (supports Opera Stable 63 release)
+# win32 operadriver v.76.0.3809.132 (supports Opera 63 release)
 curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.76.0.3809.132/operadriver_win32.zip -o %CD%:\Windows\operadriver && tar -xzvf %CD%:\Windows\operadriver --strip-components=1 -C %CD%:\Windows && del %CD%:\Windows\operadriver && del %CD%:\Windows\sha512_sum
 
-# win32 operadriver v.75.0.3770.100 (supports Opera Stable 62 release)
+# win32 operadriver v.75.0.3770.100 (supports Opera 62 release)
 curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.75.0.3770.100/operadriver_win32.zip -o %CD%:\Windows\operadriver && tar -xzvf %CD%:\Windows\operadriver --strip-components=1 -C %CD%:\Windows && del %CD%:\Windows\operadriver && del %CD%:\Windows\sha512_sum
 
 # win32 operadriver v.2.45 (supports Opera 60 release)
@@ -159,13 +159,13 @@ curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/
 # win64 operadriver v.78.0.3904.87 (supports Opera Stable 65 release)
 curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.78.0.3904.87/operadriver_win64.zip -o %CD%:\Windows\operadriver && tar -xzvf %CD%:\Windows\operadriver --strip-components=1 -C %CD%:\Windows && del %CD%:\Windows\operadriver && del %CD%:\Windows\sha512_sum
 
-# win64 operadriver v.77.0.3865.120 (supports Opera Stable 64 release)
+# win64 operadriver v.77.0.3865.120 (supports Opera 64 release)
 curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.77.0.3865.120/operadriver_win64.zip -o %CD%:\Windows\operadriver && tar -xzvf %CD%:\Windows\operadriver --strip-components=1 -C %CD%:\Windows && del %CD%:\Windows\operadriver && del %CD%:\Windows\sha512_sum
 
-# win64 operadriver v.76.0.3809.132 (supports Opera Stable 63 release)
+# win64 operadriver v.76.0.3809.132 (supports Opera 63 release)
 curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.76.0.3809.132/operadriver_win64.zip -o %CD%:\Windows\operadriver && tar -xzvf %CD%:\Windows\operadriver --strip-components=1 -C %CD%:\Windows && del %CD%:\Windows\operadriver && del %CD%:\Windows\sha512_sum
 
-# win64 operadriver v.75.0.3770.100 (supports Opera Stable 62 release)
+# win64 operadriver v.75.0.3770.100 (supports Opera 62 release)
 curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.75.0.3770.100/operadriver_win64.zip -o %CD%:\Windows\operadriver && tar -xzvf %CD%:\Windows\operadriver --strip-components=1 -C %CD%:\Windows && del %CD%:\Windows\operadriver && del %CD%:\Windows\sha512_sum
 
 # win64 operadriver v.2.45 (supports Opera 60 release)
