@@ -34,22 +34,18 @@ class Common:
         self.driver_downloads_for_os = {
             'firefox': {
                 'macos':   self.create_list_for('macos',   'geckodriver'),
-                'linux':   self.create_list_for('linux64', 'geckodriver') + \
-                           self.create_list_for('linux32', 'geckodriver'),
-                'windows': self.create_list_for('win32',   'geckodriver') + \
-                           self.create_list_for('win64',   'geckodriver')
+                'linux':   self.create_list_for('linux64', 'geckodriver') + self.create_list_for('linux32', 'geckodriver'),
+                'windows': self.create_list_for('win32',   'geckodriver') + self.create_list_for('win64',   'geckodriver')
             },
             'opera': {
                 'macos':   self.create_list_for('mac64',   'operadriver'),
                 'linux':   self.create_list_for('linux64', 'operadriver'),
-                'windows': self.create_list_for('win32',   'operadriver') + \
-                           self.create_list_for('win64',   'operadriver')
+                'windows': self.create_list_for('win32',   'operadriver') + self.create_list_for('win64',   'operadriver')
             },
             'safari': {
                 'macos':   self.create_list_for('macos',   'safaridriver'),
                 'linux':   self.create_list_for('linux',   'safaridriver'),
                 'windows': self.create_list_for('windows', 'safaridriver')
-
             },
             'chrome': {
                 'macos':   self.create_list_for('mac64',   'chromedriver'),
@@ -59,15 +55,13 @@ class Common:
             'brave': {
                 'macos':   self.create_list_for('mac64',   'bravedriver'),
                 'linux':   self.create_list_for('linux64', 'bravedriver'),
-                'windows': self.create_list_for('win64',   'bravedriver'),
+                'windows': self.create_list_for('win64',   'bravedriver')
             },
             'edge': {
                 'macos':   self.create_list_for('mac64',   'edgedriver'),
                 'linux':   ['There is currently no dedicated edgedriver for Linux.\nHere are possible commands for an arm64 operating system.\nPlease visit https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/ for more information.'] + \
                            self.create_list_for('arm64', 'edgedriver'),
-                'windows': self.create_list_for('win32',   'edgedriver') + \
-                           self.create_list_for('win64',   'edgedriver')
-
+                'windows': self.create_list_for('win32',   'edgedriver') + self.create_list_for('win64',   'edgedriver')
             }
         }
 
@@ -89,15 +83,6 @@ class Common:
             cls.format_geckodriver_download_comment(operating_system, 'v0.26.0', '≥ 60'),
             cls.format_geckodriver_download_command(operating_system, 'v0.26.0')
         ]
-
-    @classmethod
-    def format_geckodriver_download_comment(cls, operating_system, version, major_version):
-        return f'# {operating_system} geckodriver {version} (supports Mozilla Firefox {major_version})'
-
-    @classmethod
-    def format_geckodriver_download_command(cls, operating_system, version):
-        if operating_system.startswith('win'): return cls.format_windows_download(f'{cls.url_prefix_geckodriver}/{version}/geckodriver-{version}-{operating_system}.zip', 'geckodriver')
-        else:                                  return cls.format_unix_download   (f'{cls.url_prefix_geckodriver}/{version}/geckodriver-{version}-{operating_system}.tar.gz')
 
     @classmethod
     def format_operadriver_list(cls, operating_system):
@@ -131,30 +116,6 @@ class Common:
         ]
 
     @classmethod
-    def format_operadriver_download_comment(cls, operating_system, version, major_version):
-        return f'# {operating_system} operadriver {version} (supports Opera {major_version} release)'
-
-    @classmethod
-    def format_operadriver_download_command(cls, operating_system, version):
-        if operating_system.startswith('win'): return cls.format_windows_operadriver_download(f'{cls.url_prefix_operadriver}/{version}/operadriver_{operating_system}.zip', 'operadriver')
-        else:                                  return cls.format_unix_operadriver_download   (f'{cls.url_prefix_operadriver}/{version}/operadriver_{operating_system}.zip')
-
-    @classmethod
-    def format_safaridriver_list(cls, operating_system):
-        if operating_system == 'macos':
-            return [
-                'In order to run safaridriver, you need to enable remote automation. To do so, open up the Safari browser and in the menu bar, go to\n"Safari" -> "Preferences" -> "Advanced" tab -> click "Show develop menu in menu bar"\nOnce you do that, "Develop" should appear in your menu bar. Click on the "Develop" bar, and then enable "Allow Remote Automation" (should be near the bottom of the list).\n\nAfter doing that, try rerunning the last command!\n :)'
-            ]
-        elif operating_system == 'linux':
-            return [
-                'Safari is probably not supported on Linux operating systems. In order for the safaridriver to run on a Linux OS, you will likely need to do many manual configurations. For this reason, this package does not provide built in support for safaridriver on a Linux OS.'
-            ]
-        elif operating_system == 'windows':
-            return [
-                'Safari is probably not supported on Windows operating systems. In order for the safaridriver to run on a Windows OS, you will likely need to do many manual configurations. For this reason, this package does not provide built in support for safaridriver on a Windows OS.'
-            ]
-
-    @classmethod
     def format_chromedriver_list(cls, operating_system):
         return [
             cls.format_chromedriver_download_comment(operating_system, '81.0.4044.69', 81),
@@ -180,15 +141,6 @@ class Common:
         ]
 
     @classmethod
-    def format_chromedriver_download_comment(cls, operating_system, version, major_version):
-        return f'# {operating_system} chromedriver {version} (supports Chrome {major_version})'
-
-    @classmethod
-    def format_chromedriver_download_command(cls, operating_system, version):
-        if operating_system.startswith('win'): return cls.format_windows_download(f'{cls.url_prefix_chromedriver}/{version}/chromedriver_{operating_system}.zip', 'chromedriver')
-        else:                                  return cls.format_unix_download   (f'{cls.url_prefix_chromedriver}/{version}/chromedriver_{operating_system}.zip')
-
-    @classmethod
     def format_bravedriver_list(cls, operating_system):
         return [
             cls.format_bravedriver_download_comment(operating_system, 'v.81.0.4044.113', '81'),
@@ -208,16 +160,6 @@ class Common:
         ]
 
     @classmethod
-    def format_bravedriver_download_comment(cls, operating_system, version, major_version):
-        return f'# {operating_system} bravedriver {version} (supports Brave (Chromium) {major_version})'
-
-    @classmethod
-    def format_bravedriver_download_command(cls, operating_system, version):
-        ### Brave Browser doesn't have its own bravedriver, but since it's chromium we can just download the chromedriver and use the corresponding chromedriver for the Brave version (with it renamed to "bravedriver" in order to avoud conflict with different versions of Chrome and Brave installed at the same time) ###
-        if operating_system.startswith('win'): return cls.format_windows_bravedriver_download(f'{cls.url_prefix_operadriver}/{version}/operadriver_{operating_system}.zip', 'bravedriver')
-        else:                                  return cls.format_unix_bravedriver_download   (f'{cls.url_prefix_operadriver}/{version}/operadriver_{operating_system}.zip')
-
-    @classmethod
     def format_edgedriver_list(cls, operating_system):
         return [
             cls.format_edgedriver_download_comment(operating_system, '81.0.409.0', 81),
@@ -229,17 +171,81 @@ class Common:
         ]
 
     @classmethod
-    def format_edgedriver_download_command(cls, operating_system, version):
-        if operating_system.startswith('win'): return cls.format_windows_download(f'{cls.url_prefix_edgedriver}/{version}/edgedriver_{operating_system}.zip', 'edgedriver')
-        else:                                  return cls.format_unix_download   (f'{cls.url_prefix_edgedriver}/{version}/edgedriver_{operating_system}.zip')
+    def format_safaridriver_list(cls, operating_system):
+        if operating_system == 'macos':
+            return [
+                'In order to run safaridriver, you need to enable remote automation. To do so, open up the Safari browser and in the menu bar, go to\n"Safari" -> "Preferences" -> "Advanced" tab -> click "Show develop menu in menu bar"\nOnce you do that, "Develop" should appear in your menu bar. Click on the "Develop" bar, and then enable "Allow Remote Automation" (should be near the bottom of the list).\n\nAfter doing that, try rerunning the last command!\n :)'
+            ]
+        elif operating_system == 'linux':
+            return [
+                'Safari is probably not supported on Linux operating systems. In order for the safaridriver to run on a Linux OS, you will likely need to do many manual configurations. For this reason, this package does not provide built in support for safaridriver on a Linux OS.'
+            ]
+        elif operating_system == 'windows':
+            return [
+                'Safari is probably not supported on Windows operating systems. In order for the safaridriver to run on a Windows OS, you will likely need to do many manual configurations. For this reason, this package does not provide built in support for safaridriver on a Windows OS.'
+            ]
+
+
+    @classmethod
+    def format_geckodriver_download_comment(cls, operating_system, version, major_version):
+        return f'# {operating_system} geckodriver {version} (supports Mozilla Firefox {major_version})'
+
+    @classmethod
+    def format_operadriver_download_comment(cls, operating_system, version, major_version):
+        return f'# {operating_system} operadriver {version} (supports Opera {major_version} release)'
+
+    @classmethod
+    def format_chromedriver_download_comment(cls, operating_system, version, major_version):
+        return f'# {operating_system} chromedriver {version} (supports Chrome {major_version})'
+
+    @classmethod
+    def format_bravedriver_download_comment(cls, operating_system, version, major_version):
+        return f'# {operating_system} bravedriver {version} (supports Brave (Chromium) {major_version})'
 
     @classmethod
     def format_edgedriver_download_comment(cls, operating_system, version, major_version):
         return f'# {operating_system} edgedriver {version} (supports Edge {major_version})'
 
+
+    @classmethod
+    def format_geckodriver_download_command(cls, operating_system, version):
+        if operating_system.startswith('win'): return cls.format_windows_download(f'{cls.url_prefix_geckodriver}/{version}/geckodriver-{version}-{operating_system}.zip', 'geckodriver')
+        else:                                  return cls.format_unix_download   (f'{cls.url_prefix_geckodriver}/{version}/geckodriver-{version}-{operating_system}.tar.gz')
+
+    @classmethod
+    def format_operadriver_download_command(cls, operating_system, version):
+        if operating_system.startswith('win'): return cls.format_windows_operadriver_download(f'{cls.url_prefix_operadriver}/{version}/operadriver_{operating_system}.zip', 'operadriver')
+        else:                                  return cls.format_unix_operadriver_download   (f'{cls.url_prefix_operadriver}/{version}/operadriver_{operating_system}.zip')
+
+    @classmethod
+    def format_chromedriver_download_command(cls, operating_system, version):
+        if operating_system.startswith('win'): return cls.format_windows_download(f'{cls.url_prefix_chromedriver}/{version}/chromedriver_{operating_system}.zip', 'chromedriver')
+        else:                                  return cls.format_unix_download   (f'{cls.url_prefix_chromedriver}/{version}/chromedriver_{operating_system}.zip')
+
+    @classmethod
+    def format_bravedriver_download_command(cls, operating_system, version):
+        ### Brave Browser doesn't have its own bravedriver, but since it's chromium we can just download the chromedriver and use the corresponding chromedriver for the Brave version (with it renamed to "bravedriver" in order to avoud conflict with different versions of Chrome and Brave installed at the same time) ###
+        if operating_system.startswith('win'): return cls.format_windows_bravedriver_download(f'{cls.url_prefix_operadriver}/{version}/operadriver_{operating_system}.zip', 'bravedriver')
+        else:                                  return cls.format_unix_bravedriver_download   (f'{cls.url_prefix_operadriver}/{version}/operadriver_{operating_system}.zip')
+
+    @classmethod
+    def format_edgedriver_download_command(cls, operating_system, version):
+        if operating_system.startswith('win'): return cls.format_windows_download(f'{cls.url_prefix_edgedriver}/{version}/edgedriver_{operating_system}.zip', 'edgedriver')
+        else:                                  return cls.format_unix_download   (f'{cls.url_prefix_edgedriver}/{version}/edgedriver_{operating_system}.zip')
+
+
     @staticmethod
     def format_unix_download(url):
         return f'curl -SL {url} | tar -xzvf - -C /usr/local/bin/' + '\n'
+
+    @staticmethod
+    def format_unix_operadriver_download(url):
+        return f'curl -SL {url} | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum' + '\n'
+
+    @staticmethod
+    def format_unix_bravedriver_download(url):
+        return f'curl -SL {url} | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum' + '\n'
+
 
     @staticmethod
     def format_windows_download(url, driver):
@@ -247,17 +253,9 @@ class Common:
         return fr'curl -SL {url} -o {drive}:\Windows\{driver} && tar -xzvf {drive}:\Windows\{driver} -C {drive}:\Windows && del {drive}:\Windows\{driver}' + '\n'
 
     @staticmethod
-    def format_unix_operadriver_download(url):
-        return f'curl -SL {url} | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum' + '\n'
-
-    @staticmethod
     def format_windows_operadriver_download(url, driver):
         drive = get_drive_letter()
         return fr'curl -SL {url} -o {drive}:\Windows\{driver} && tar -xzvf {drive}:\Windows\{driver} --strip-components=1 -C {drive}:\Windows && del {drive}:\Windows\{driver} && del {drive}:\Windows\sha512_sum' + '\n'
-
-    @staticmethod
-    def format_unix_bravedriver_download(url):
-        return f'curl -SL {url} | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum' + '\n'
 
     @staticmethod
     def format_windows_bravedriver_download(url, driver):
