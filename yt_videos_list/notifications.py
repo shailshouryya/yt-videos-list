@@ -267,13 +267,15 @@ class Common:
         geckodriver_download_instructions = '(The given command downloads a geckodriver ("Firefoxdriver") version that is compatible with Firefox versions ≥ 60. To see more information about the differences compared to older versions, please visit https://github.com/mozilla/geckodriver/releases)'
         operadriver_download_instructions  = '(Your Opera browser version should match the "supports Opera ## release" below)'
         chromedriver_download_instructions = '(Your Chrome browser version should match the first numbers before the decimal place of the chromedriver version below)'
-        bravedriver_download_instructions  = '(Your Brave browser version should match the first numbers before the decimal place of the chromedriver version below'
+        bravedriver_download_instructions  = '(Your Brave browser version should match the first numbers before the decimal place of the chromedriver version below)'
+        edgedriver_download_instructions   = '(Your Edge browser version should match the first numbers before the decimal place of the msedgedriver version below)'
 
         if   user_driver == 'firefox':  print(geckodriver_download_instructions)
         elif user_driver == 'opera':    print(operadriver_download_instructions)
         elif user_driver == 'safari':   print('This is an MacOS specific driver.')
         elif user_driver == 'chrome':   print(chromedriver_download_instructions)
         elif user_driver == 'brave':    print(bravedriver_download_instructions)
+        elif user_driver == 'edge':     print(edgedriver_download_instructions)
 
         for driver_version_download in self.driver_downloads_for_os[user_driver][user_os]:
             print(driver_version_download)
@@ -325,7 +327,8 @@ class ModuleMessage(Common):
         "\n    lc = ListCreator(driver='opera')" + \
         "\n    lc = ListCreator(driver='safari')" + \
         "\n    lc = ListCreator(driver='chrome')" + \
-        "\n    lc = ListCreator(driver='brave')"
+        "\n    lc = ListCreator(driver='brave')" + \
+        "\n    lc = ListCreator(driver='edge')"
 
 
 

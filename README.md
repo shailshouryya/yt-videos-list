@@ -77,11 +77,13 @@ There are a number of optional arguments you can specify during the instantiatio
   - Safari
   - Chrome
   - Brave
+  - Edge
     - `driver='firefox'`
     - `driver='opera'`
     - `driver='safari'`
     - `driver='chrome'`
     - `driver='brave'`
+    - `driver='edge'`
 - `csv`, `txt` file type argument:
   - `True` (default) - create a file for the specified type
   - `False` - do not create a file for the specified type.
