@@ -33,22 +33,11 @@ class Common:
     def __init__(self):
         self.driver_downloads_for_os = {
             'firefox': {
-                'macos': [
-                    '# macos geckodriver (Firefoxdriver) v0.26.0',
-                    self.format_macos_geckodriver_download_command('v0.26.0/')
-                ],
-                'linux': [
-                    '# linux64 geckodriver (Firefoxdriver) v0.26.0',
-                    self.format_linux_geckodriver_download_command('v0.26.0', '64'),
-                    '# linux32 geckodriver (Firefoxdriver) v0.26.0',
-                    self.format_linux_geckodriver_download_command('v0.26.0', '32')
-                ],
-                'windows': [
-                    '# windows32 geckodriver (Firefoxdriver) v0.26.0',
-                    self.format_windows_geckodriver_download_command('v0.26.0', '32'),
-                    '# windows64 geckodriver (Firefoxdriver) v0.26.0',
-                    self.format_windows_geckodriver_download_command('v0.26.0', '64')
-                ]
+                'macos':   self.create_list_for('macos',   'geckodriver'),
+                'linux':   self.create_list_for('linux64', 'geckodriver') + \
+                           self.create_list_for('linux32', 'geckodriver'),
+                'windows': self.create_list_for('win32',   'geckodriver') + \
+                           self.create_list_for('win64',   'geckodriver')
             },
             'opera': {
                 'macos' : [
@@ -288,6 +277,22 @@ class Common:
         return formatter_function(operating_system)
 
     @classmethod
+    def format_geckodriver_list(cls, operating_system):
+        return [
+            cls.format_geckodriver_download_comment(operating_system, 'v0.26.0', '≥ 60'),
+            cls.format_geckodriver_download_command(operating_system, 'v0.26.0')
+        ]
+
+    @classmethod
+    def format_geckodriver_download_comment(cls, operating_system, version, major_version):
+        return f'# {operating_system} geckodriver {version} (supports Mozilla Firefox {major_version})'
+
+    @classmethod
+    def format_geckodriver_download_command(cls, operating_system, version):
+        if operating_system.startswith('win'): return cls.format_windows_download(f'{cls.url_prefix_geckodriver}/{version}/geckodriver-{version}-{operating_system}.zip', 'geckodriver')
+        else:                                  return cls.format_unix_download   (f'{cls.url_prefix_geckodriver}/{version}/geckodriver-{version}-{operating_system}.tar.gz')
+
+    @classmethod
     def format_chromedriver_list(cls, operating_system):
         return [
             cls.format_chromedriver_download_comment(operating_system, '81.0.4044.69', 81),
@@ -349,19 +354,6 @@ class Common:
     def format_windows_download(url, driver):
         drive = get_drive_letter()
         return fr'curl -SL {url} -o {drive}:\Windows\{driver} && tar -xzvf {drive}:\Windows\{driver} -C {drive}:\Windows && del {drive}:\Windows\{driver}' + '\n'
-
-    @classmethod
-    def format_macos_geckodriver_download_command(cls, binary_version):
-        return f'curl -SL {cls.url_prefix_geckodriver}/{binary_version}/geckodriver-v0.26.0-macos.tar.gz | tar -xzvf - -C /usr/local/bin/' + '\n'
-
-    @classmethod
-    def format_linux_geckodriver_download_command(cls, binary_version, system):
-        return f'curl -SL {cls.url_prefix_geckodriver}/{binary_version}/geckodriver-v0.26.0-linux{system}.tar.gz | tar -xzvf - -C /usr/local/bin/' + '\n'
-
-    @classmethod
-    def format_windows_geckodriver_download_command(cls, binary_version, system):
-        drive = get_drive_letter()
-        return fr'curl -SL {cls.url_prefix_geckodriver}/{binary_version}/geckodriver-v0.26.0-win{system}.zip -o {drive}:\Windows\geckodriver && tar -xzvf {drive}:\Windows\geckodriver -C {drive}:\Windows && del {drive}:\Windows\geckodriver' + '\n'
 
 
     @classmethod
