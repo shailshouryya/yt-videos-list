@@ -25,13 +25,15 @@ python3
 ```
 ```python
 from yt_videos_list import ListCreator
-lc = ListCreator()
+
+my_driver = 'firefox' # SUBSTITUTE THE DRIVER YOU WANT
+lc = ListCreator(driver=my_driver)
 
 # "user" channel_type (example uses Corey Schafer):
 lc.create_list_for(url='https://www.youtube.com/user/schafer5')
 
 # "channel" channel_type (example uses freeCodeCamp) along with the optional file_name argument:
-lc.create_list_for(url='https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ', file_name='freeCodeCamp_orgVideosList')
+lc.create_list_for(url='https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ', file_name='freeCodeCamp_org')
 
 # see the new files that were just created:
 import os
@@ -43,7 +45,7 @@ os.system('dir /O-D | find "VideosList"')
 # for more information on using the module:
 help(lc)
 ```
-**NOTE**: You do need to have the Selenium driver installed to run this package - and the first time you run this package the automated downloader should install everything you need, but in case it doesn't refer to the link below and/or file an [issue here](https://github.com/Shail-Shouryya/yt_videos_list/issues). The Selenium drivers are all pretty similar but differ in subtle ways, so play around with them and see what's different:)
+**NOTE**: You do need to have the Selenium driver installed to run this package - the first time you run this package the automated downloader should install everything you need, but in case it doesn't, refer to the link below and/or file an [issue here](https://github.com/Shail-Shouryya/yt_videos_list/issues). The Selenium drivers are all pretty similar but differ in subtle ways, so play around with them and see what's different :)
 #### Copy paste the code block that's relevant for the OS of your machine for the Selenium driver(s) you want from **[here](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/README.md)**
 **NOTE** that you also need the corresponding browser installed to properly run the selenium driver.
 - To download the most recent version of the browser, go to the page for:
@@ -62,8 +64,10 @@ python3 -m yt_videos_list
 ## For more control
 ---
 **NOTE** that you can also access all the information below in the `python3` interpreter by entering
-<br>`from yt_videos_list import ListCreator`
-<br>`help(ListCreator)`
+```python
+from yt_videos_list import ListCreator`
+help(ListCreator)
+```
 
 ---
 ```python
@@ -91,7 +95,7 @@ There are a number of optional arguments you can specify during the instantiatio
   - `False` - do not create a file for the specified type.
     - `txt=True`  (default) OR `txt=False`
     - `csv=True`  (default) OR `csv=False`
-- `csv_write_format`, `txt_write_format` write format argument
+- `csv_write_format`, `txt_write_format` write format argument:
   - `'x'` (default) - does not overwrite an existing file with the same name
   - `'w'` - if an existing file with the same name exists, it will be overwritten
   - NOTE: if you specify the file type argument to be False, you don't need to touch this - the program will automatically skip this step.
@@ -114,18 +118,18 @@ There are a number of optional arguments you can specify during the instantiatio
 
 ## General Overview
 This package is intended to provide a quick, simple way to create a list of all videos posted to any YouTube channel by providing just the URL to that user's channel videos. There are two types of YouTube channels: one type is a `user` channel and the other is a `channel` channel.
-- Examples of the `user` channel type:
-  - Disney: https://www.youtube.com/user/disneysshows
+- user` channel type:
   - sentdex: https://www.youtube.com/user/sentdex
+  - Disney: https://www.youtube.com/user/disneysshows
   - Marvel: https://www.youtube.com/user/MARVEL
   - Apple: https://www.youtube.com/user/Apple
-- Examples of the `channel` channel type:
+- `channel` channel type:
   - Tasty: https://www.youtube.com/channel/UCJFp8uSYCjXOMnkUyb3CQ3Q
   - Billie Eilish: https://www.youtube.com/channel/UCiGm_E4ZwYSHV3bcW1pnSeQ
   - Gordon Ramsay: https://www.youtube.com/channel/UCIEv3lZ_tNXHzL3ox-_uUGQ
   - PBS Space Time: https://www.youtube.com/channel/UC7_gcs09iThXybpVgjHZ_7g
 
-To scrape the video titles along with the link to the video, you need to run the `lc.create_list_for(url)` method on the ListCreator object you just created with `lc = ListCreator()`. By default, the name of the file produced will be `channel`VideosList.ext where the `.ext` will be `.csv` or `.txt `, depending on the type of file(s) that you specified.
+To scrape the video titles along with the link to the video, you need to run the `lc.create_list_for(url)` method on the ListCreator object (create with `lc = ListCreator()`). By default, the name of the file produced will be `channel`VideosList.ext where the `.ext` will be `.csv` or `.txt `, depending on the type of file(s) that you specified.
 
 
 ### [Future Features](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/futureFeatures.md)
