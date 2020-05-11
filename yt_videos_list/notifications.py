@@ -70,9 +70,11 @@ class Common:
 
     more_driver_info = {
         # 'driver': ['driverName', 'url for more driver info',  'url for driver releases', 'browser name', 'url for browser download']
-        'firefox': ['geckodriver',  'https://github.com/mozilla/geckodriver',                    'https://github.com/mozilla/geckodriver/releases',                'Mozilla Firefox', 'https://www.mozilla.org/en-US/firefox/new/'],
-        'opera':   ['operadriver',  'https://github.com/operasoftware/operachromiumdriver',      'https://github.com/operasoftware/operachromiumdriver/releases',  'Opera',           'https://www.opera.com/'],
-        'chrome':  ['chromedriver', 'https://sites.google.com/a/chromium.org/chromedriver/home', 'https://sites.google.com/a/chromium.org/chromedriver/downloads', 'Google Chrome',   'https://www.google.com/chrome/']
+        'firefox': ['geckodriver',  'https://github.com/mozilla/geckodriver',                                'https://github.com/mozilla/geckodriver/releases',                                                  'Mozilla Firefox', 'https://www.mozilla.org/en-US/firefox/new/'],
+        'opera':   ['operadriver',  'https://github.com/operasoftware/operachromiumdriver',                  'https://github.com/operasoftware/operachromiumdriver/releases',                                    'Opera',           'https://www.opera.com/'],
+        'chrome':  ['chromedriver', 'https://sites.google.com/a/chromium.org/chromedriver/home',             'https://sites.google.com/a/chromium.org/chromedriver/downloads',                                   'Google Chrome',   'https://www.google.com/chrome/'],
+        'brave':   ['bravedriver',  'https://github.com/operasoftware/operachromiumdriver',                  'https://github.com/operasoftware/operachromiumdriver/releases',                                    'Brave',           'https://brave.com/'],
+        'edge':    ['msedgedriver', 'https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/', 'https://github.com/MicrosoftDocs/edge-developer/blob/master/microsoft-edge/webdriver-chromium.md', 'Microsoft Edge',  'https://www.microsoft.com/en-us/edge']
     }
 
     @classmethod
@@ -267,7 +269,7 @@ class Common:
         geckodriver_download_instructions = '(The given command downloads a geckodriver ("Firefoxdriver") version that is compatible with Firefox versions ≥ 60. To see more information about the differences compared to older versions, please visit https://github.com/mozilla/geckodriver/releases)'
         operadriver_download_instructions  = '(Your Opera browser version should match the "supports Opera ## release" below)'
         chromedriver_download_instructions = '(Your Chrome browser version should match the first numbers before the decimal place of the chromedriver version below)'
-        bravedriver_download_instructions  = '(Your Brave browser version should match the first numbers before the decimal place of the chromedriver version below)'
+        bravedriver_download_instructions  = '(Your Brave browser version should match the first numbers before the decimal place of the bravedriver version below. Note that there is currently no dedicated bravedriver, so this package substitutes the chromium operadriver.)'
         edgedriver_download_instructions   = '(Your Edge browser version should match the first numbers before the decimal place of the msedgedriver version below)'
 
         if   user_driver == 'firefox':  print(geckodriver_download_instructions)

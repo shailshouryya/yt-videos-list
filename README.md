@@ -50,6 +50,8 @@ help(lc)
   - [Firefox](https://www.mozilla.org/en-US/firefox/new/)
   - [Opera](https://www.opera.com/)
   - [Chrome](https://www.google.com/chrome/)
+  - [Brave](https://brave.com/)
+  - [Edge](https://www.microsoft.com/edge)
 
 ### Running the package from the CLI as a script using -m (coming in `yt-videos-list 2.0`!)
 ```shell
