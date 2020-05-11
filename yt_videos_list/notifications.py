@@ -27,7 +27,7 @@ class Common:
     url_prefix_geckodriver  = 'https://github.com/mozilla/geckodriver/releases/download'
     url_prefix_operadriver  = 'https://github.com/operasoftware/operachromiumdriver/releases/download'
     url_prefix_chromedriver = 'https://chromedriver.storage.googleapis.com'
-    url_prefix_edgedriver   = 'https://msedgedriver.azureedge.net'
+    url_prefix_msedgedriver = 'https://msedgedriver.azureedge.net'
 
 
     def __init__(self):
@@ -58,10 +58,10 @@ class Common:
                 'windows': self.create_list_for('win64',   'bravedriver')
             },
             'edge': {
-                'macos':   self.create_list_for('mac64',   'edgedriver'),
-                'linux':   ['There is currently no dedicated edgedriver for Linux.\nHere are possible commands for an arm64 operating system.\nPlease visit https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/ for more information.'] + \
-                           self.create_list_for('arm64', 'edgedriver'),
-                'windows': self.create_list_for('win32',   'edgedriver') + self.create_list_for('win64',   'edgedriver')
+                'macos':   self.create_list_for('mac64', 'msedgedriver'),
+                'linux':   ['There is currently no dedicated msedgedriver for Linux.\nHere are possible commands for an arm64 operating system.\nPlease visit https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/ for more information.'] + \
+                           self.create_list_for('arm64', 'msedgedriver'),
+                'windows': self.create_list_for('win32', 'msedgedriver') + self.create_list_for('win64',   'msedgedriver')
             }
         }
 
@@ -160,14 +160,14 @@ class Common:
         ]
 
     @classmethod
-    def format_edgedriver_list(cls, operating_system):
+    def format_msedgedriver_list(cls, operating_system):
         return [
-            cls.format_driver_information(operating_system, 'edgedriver', 'Edge', '81.0.409.0', 81),
-            cls.format_edgedriver_download_command(operating_system, '81.0.409.0'),
-            cls.format_driver_information(operating_system, 'edgedriver', 'Edge', '80.0.361.111', 80),
-            cls.format_edgedriver_download_command(operating_system, '80.0.361.111'),
-            cls.format_driver_information(operating_system, 'edgedriver', 'Edge', '79.0.313.0', 79),
-            cls.format_edgedriver_download_command(operating_system, '79.0.313.0')
+            cls.format_driver_information(operating_system, 'msedgedriver', 'Edge', '81.0.409.0', 81),
+            cls.format_msedgedriver_download_command(operating_system, '81.0.409.0'),
+            cls.format_driver_information(operating_system, 'msedgedriver', 'Edge', '80.0.361.111', 80),
+            cls.format_msedgedriver_download_command(operating_system, '80.0.361.111'),
+            cls.format_driver_information(operating_system, 'msedgedriver', 'Edge', '79.0.313.0', 79),
+            cls.format_msedgedriver_download_command(operating_system, '79.0.313.0')
         ]
 
     @classmethod
@@ -212,9 +212,9 @@ class Common:
         else:                                  return cls.format_unix_bravedriver_download   (f'{cls.url_prefix_operadriver}/{version}/operadriver_{operating_system}.zip')
 
     @classmethod
-    def format_edgedriver_download_command(cls, operating_system, version):
-        if operating_system.startswith('win'): return cls.format_windows_download(f'{cls.url_prefix_edgedriver}/{version}/edgedriver_{operating_system}.zip', 'edgedriver')
-        else:                                  return cls.format_unix_download   (f'{cls.url_prefix_edgedriver}/{version}/edgedriver_{operating_system}.zip')
+    def format_msedgedriver_download_command(cls, operating_system, version):
+        if operating_system.startswith('win'): return cls.format_windows_download(f'{cls.url_prefix_msedgedriver}/{version}/edgedriver_{operating_system}.zip', 'msedgedriver')
+        else:                                  return cls.format_unix_download   (f'{cls.url_prefix_msedgedriver}/{version}/edgedriver_{operating_system}.zip')
 
 
     @staticmethod
