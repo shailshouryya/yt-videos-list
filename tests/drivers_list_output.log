@@ -4,8 +4,8 @@ Requirement already satisfied: urllib3 in /Library/Frameworks/Python.framework/V
 Building wheels for collected packages: yt-videos-list
   Building wheel for yt-videos-list (setup.py): started
   Building wheel for yt-videos-list (setup.py): finished with status 'done'
-  Created wheel for yt-videos-list: filename=yt_videos_list-0.3.7-py3-none-any.whl size=25597 sha256=8124feafd9b9e7c132a5198b7996d6073337b1479f5f961648fd12048b768e90
-  Stored in directory: /private/var/folders/ch/vskbs73j2l15kc4w2q_74gpc0000gq/T/pip-ephem-wheel-cache-keutfaf4/wheels/1e/47/b1/cf2bde21801b64d39ba3a6cc17efc8d471fd63cc57b397b485
+  Created wheel for yt-videos-list: filename=yt_videos_list-0.3.7-py3-none-any.whl size=25635 sha256=5cdbdd4b39d6bf8e6e47010631037083c1cff5ce5b5670a5b703a7a8c9079567
+  Stored in directory: /private/var/folders/ch/vskbs73j2l15kc4w2q_74gpc0000gq/T/pip-ephem-wheel-cache-h5b7w5_q/wheels/1e/47/b1/cf2bde21801b64d39ba3a6cc17efc8d471fd63cc57b397b485
 Successfully built yt-videos-list
 Installing collected packages: yt-videos-list
   Attempting uninstall: yt-videos-list
@@ -351,41 +351,41 @@ curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/
 curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.75.0.3770.100/operadriver_win64.zip -o %CD%:\Windows\bravedriver && tar -xzvf %CD%:\Windows\bravedriver --strip-components=1 -O > %CD%:\Windows\bravedriver.exe && del %CD%:\Windows\bravedriver && del %CD%:\Windows\sha512_sum
 
 edge
-# mac64 edgedriver 81.0.409.0 (supports Edge 81)
+# mac64 msedgedriver 81.0.409.0 (supports Edge 81)
 curl -SL https://msedgedriver.azureedge.net/81.0.409.0/edgedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/
 
-# mac64 edgedriver 80.0.361.111 (supports Edge 80)
+# mac64 msedgedriver 80.0.361.111 (supports Edge 80)
 curl -SL https://msedgedriver.azureedge.net/80.0.361.111/edgedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/
 
-# mac64 edgedriver 79.0.313.0 (supports Edge 79)
+# mac64 msedgedriver 79.0.313.0 (supports Edge 79)
 curl -SL https://msedgedriver.azureedge.net/79.0.313.0/edgedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/
 
-There is currently no dedicated edgedriver for Linux.
+There is currently no dedicated msedgedriver for Linux.
 Here are possible commands for an arm64 operating system.
 Please visit https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/ for more information.
-# arm64 edgedriver 81.0.409.0 (supports Edge 81)
+# arm64 msedgedriver 81.0.409.0 (supports Edge 81)
 curl -SL https://msedgedriver.azureedge.net/81.0.409.0/edgedriver_arm64.zip | tar -xzvf - -C /usr/local/bin/
 
-# arm64 edgedriver 80.0.361.111 (supports Edge 80)
+# arm64 msedgedriver 80.0.361.111 (supports Edge 80)
 curl -SL https://msedgedriver.azureedge.net/80.0.361.111/edgedriver_arm64.zip | tar -xzvf - -C /usr/local/bin/
 
-# arm64 edgedriver 79.0.313.0 (supports Edge 79)
+# arm64 msedgedriver 79.0.313.0 (supports Edge 79)
 curl -SL https://msedgedriver.azureedge.net/79.0.313.0/edgedriver_arm64.zip | tar -xzvf - -C /usr/local/bin/
 
-# win32 edgedriver 81.0.409.0 (supports Edge 81)
-curl -SL https://msedgedriver.azureedge.net/81.0.409.0/edgedriver_win32.zip -o %CD%:\Windows\edgedriver && tar -xzvf %CD%:\Windows\edgedriver -C %CD%:\Windows && del %CD%:\Windows\edgedriver
+# win32 msedgedriver 81.0.409.0 (supports Edge 81)
+curl -SL https://msedgedriver.azureedge.net/81.0.409.0/edgedriver_win32.zip -o %CD%:\Windows\msedgedriver && tar -xzvf %CD%:\Windows\msedgedriver -C %CD%:\Windows && del %CD%:\Windows\msedgedriver
 
-# win32 edgedriver 80.0.361.111 (supports Edge 80)
-curl -SL https://msedgedriver.azureedge.net/80.0.361.111/edgedriver_win32.zip -o %CD%:\Windows\edgedriver && tar -xzvf %CD%:\Windows\edgedriver -C %CD%:\Windows && del %CD%:\Windows\edgedriver
+# win32 msedgedriver 80.0.361.111 (supports Edge 80)
+curl -SL https://msedgedriver.azureedge.net/80.0.361.111/edgedriver_win32.zip -o %CD%:\Windows\msedgedriver && tar -xzvf %CD%:\Windows\msedgedriver -C %CD%:\Windows && del %CD%:\Windows\msedgedriver
 
-# win32 edgedriver 79.0.313.0 (supports Edge 79)
-curl -SL https://msedgedriver.azureedge.net/79.0.313.0/edgedriver_win32.zip -o %CD%:\Windows\edgedriver && tar -xzvf %CD%:\Windows\edgedriver -C %CD%:\Windows && del %CD%:\Windows\edgedriver
+# win32 msedgedriver 79.0.313.0 (supports Edge 79)
+curl -SL https://msedgedriver.azureedge.net/79.0.313.0/edgedriver_win32.zip -o %CD%:\Windows\msedgedriver && tar -xzvf %CD%:\Windows\msedgedriver -C %CD%:\Windows && del %CD%:\Windows\msedgedriver
 
-# win64 edgedriver 81.0.409.0 (supports Edge 81)
-curl -SL https://msedgedriver.azureedge.net/81.0.409.0/edgedriver_win64.zip -o %CD%:\Windows\edgedriver && tar -xzvf %CD%:\Windows\edgedriver -C %CD%:\Windows && del %CD%:\Windows\edgedriver
+# win64 msedgedriver 81.0.409.0 (supports Edge 81)
+curl -SL https://msedgedriver.azureedge.net/81.0.409.0/edgedriver_win64.zip -o %CD%:\Windows\msedgedriver && tar -xzvf %CD%:\Windows\msedgedriver -C %CD%:\Windows && del %CD%:\Windows\msedgedriver
 
-# win64 edgedriver 80.0.361.111 (supports Edge 80)
-curl -SL https://msedgedriver.azureedge.net/80.0.361.111/edgedriver_win64.zip -o %CD%:\Windows\edgedriver && tar -xzvf %CD%:\Windows\edgedriver -C %CD%:\Windows && del %CD%:\Windows\edgedriver
+# win64 msedgedriver 80.0.361.111 (supports Edge 80)
+curl -SL https://msedgedriver.azureedge.net/80.0.361.111/edgedriver_win64.zip -o %CD%:\Windows\msedgedriver && tar -xzvf %CD%:\Windows\msedgedriver -C %CD%:\Windows && del %CD%:\Windows\msedgedriver
 
-# win64 edgedriver 79.0.313.0 (supports Edge 79)
-curl -SL https://msedgedriver.azureedge.net/79.0.313.0/edgedriver_win64.zip -o %CD%:\Windows\edgedriver && tar -xzvf %CD%:\Windows\edgedriver -C %CD%:\Windows && del %CD%:\Windows\edgedriver
+# win64 msedgedriver 79.0.313.0 (supports Edge 79)
+curl -SL https://msedgedriver.azureedge.net/79.0.313.0/edgedriver_win64.zip -o %CD%:\Windows\msedgedriver && tar -xzvf %CD%:\Windows\msedgedriver -C %CD%:\Windows && del %CD%:\Windows\msedgedriver
