@@ -36,8 +36,7 @@ def main():
         ListCreator(driver='firefox'),
         ListCreator(driver='opera'),
         ListCreator(driver='chrome'),
-        ListCreator(driver='brave'),
-        ListCreator(driver='edge')
+        ListCreator(driver='brave')
     ]
 
 
