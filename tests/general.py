@@ -38,28 +38,21 @@ def delete_schafer5_file_if_exists():
         os.remove(f'{schafer5}.csv')
 
 def main():
-    lc_firefox = ListCreator(driver='firefox')
-    lc_opera   = ListCreator(driver='opera')
-    lc_safari  = ListCreator(driver='safari')
-    lc_chrome  = ListCreator(driver='chrome')
-    lc_brave   = ListCreator(driver='brave')
-    lc_edge    = ListCreator(driver='edge')
+    test_cases = [
+        ListCreator(driver='firefox'),
+        ListCreator(driver='opera'),
+        ListCreator(driver='safari'),
+        ListCreator(driver='chrome'),
+        ListCreator(driver='brave'),
+        ListCreator(driver='edge'),
+    ]
+
 
     remove_dependencies()
     schafer5_url = 'youtube.com/user/schafer5'
-    delete_schafer5_file_if_exists()
-    lc_firefox.create_list_for(schafer5_url)
-    delete_schafer5_file_if_exists()
-    lc_opera.create_list_for  (schafer5_url)
-    if PLATFORM == 'darwin':
+    for test_case in test_cases:
         delete_schafer5_file_if_exists()
-        lc_safari.create_list_for (schafer5_url)
-    delete_schafer5_file_if_exists()
-    lc_chrome.create_list_for (schafer5_url)
-    delete_schafer5_file_if_exists()
-    lc_brave.create_list_for (schafer5_url)
-    delete_schafer5_file_if_exists()
-    lc_edge.create_list_for (schafer5_url)
+        test_case.create_list_for(schafer5_url)
 
 # add these later
 # lc_firefox.headless = True
