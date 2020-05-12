@@ -45,7 +45,7 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
 
     def configure_brave_driver():
         options = webdriver.ChromeOptions()
-        if platform.system().lower().startswith('windows'):
+        if user_os == 'windows':
             drive  = get_drive_letter()
             options.binary_location = rf'{drive}:\Program Files (x86)\BraveSoftware\Brave-Browser\Application\brave.exe'
             executable_path         = rf'{drive}:\Windows\bravedriver.exe'
@@ -57,7 +57,7 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
 
     def configure_edge_driver():
         # options = selenium.webdriver.remote.webdriver.WebDriver()
-        if platform.system().lower().startswith('windows'):
+        if user_os == 'windows':
             drive  = get_drive_letter()
             # options.binary_location = rf'{drive}:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe'
             executable_path         = rf'{drive}:\Windows\msedgedriver.exe'
@@ -167,6 +167,7 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
 
 
 
+    user_os             = determine_user_os()
     url, seleniumdriver = check_user_input()
     program_start       = time.perf_counter()
     try:
@@ -175,7 +176,6 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
         # selenium.common.exceptions.WebDriverException: Message: 'BROWSERdriver' executable needs to be in PATH. Please see https://................
         # for some reason this also catches selenium.common.exceptions.SessionNotCreatedException: Message: session not created: This version of BROWSERDriver only supports BROWSER version ##
         common_message.display_selenium_dependency_error(err)
-        user_os = determine_user_os()
         try:
             download_dependencies.run()
             driver = open_user_driver()
