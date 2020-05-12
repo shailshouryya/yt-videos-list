@@ -177,3 +177,5 @@ count(2)
     - `locals()`
     - `dir()`
     - `vars()`
+
+- [Python getattr()](https://www.programiz.com/python-programming/methods/built-in/getattr) - [Programiz](https://www.programiz.com/): [Python Programming](https://www.programiz.com/python-programming) > [Methods](https://www.programiz.com/python-programming/methods) > [Built in](https://www.programiz.com/python-programming/methods/built-in)
