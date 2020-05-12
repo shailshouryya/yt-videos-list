@@ -74,10 +74,14 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
     def check_driver():
         if   'firefox' in user_driver: return webdriver.Firefox
         elif 'opera'   in user_driver: return webdriver.Opera
-        elif 'safari'  in user_driver: return webdriver.Safari
         elif 'chrome'  in user_driver: return webdriver.Chrome
         elif 'brave'   in user_driver: return configure_brave_driver
         elif 'edge'    in user_driver: return configure_edge_driver
+        elif 'safari'  in user_driver:
+            if user_os != 'macos':
+                common_message.display_dependency_setup_instructions('safari', user_os)
+                sys.exit()
+            return webdriver.Safari
         else:
             print(common_message.invalid_driver)
             return 'invalid'
