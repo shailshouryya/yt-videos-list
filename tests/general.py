@@ -31,10 +31,11 @@ def remove_dependencies():
 
 
 def delete_schafer5_file_if_exists():
-    if os.path.exists('schafer5VideosList.txt'):
-        os.remove('schafer5VideosList.txt')
-    if os.path.exists('schafer5VideosList.csv'):
-        os.remove('schafer5VideosList.csv')
+    schafer5 = 'schafer5VideosList'
+    if os.path.exists(f'{schafer5}.txt'):
+        os.remove(f'{schafer5}.txt')
+    if os.path.exists(f'{schafer5}.csv'):
+        os.remove(f'{schafer5}.csv')
 
 def main():
     lc_firefox = ListCreator(driver='firefox')
@@ -44,17 +45,18 @@ def main():
     lc_brave   = ListCreator(driver='brave')
 
     remove_dependencies()
+    schafer5_url = 'youtube.com/user/schafer5'
     delete_schafer5_file_if_exists()
-    lc_firefox.create_list_for('youtube.com/user/schafer5')
+    lc_firefox.create_list_for(schafer5_url)
     delete_schafer5_file_if_exists()
-    lc_opera.create_list_for  ('youtube.com/user/schafer5')
+    lc_opera.create_list_for  (schafer5_url)
     if PLATFORM == 'darwin':
         delete_schafer5_file_if_exists()
-        lc_safari.create_list_for ('youtube.com/user/schafer5')
+        lc_safari.create_list_for (schafer5_url)
     delete_schafer5_file_if_exists()
-    lc_chrome.create_list_for ('youtube.com/user/schafer5')
+    lc_chrome.create_list_for (schafer5_url)
     delete_schafer5_file_if_exists()
-    lc_brave.create_list_for ('youtube.com/user/schafer5')
+    lc_brave.create_list_for (schafer5_url)
 
 # add these later
 # lc_firefox.headless = True
