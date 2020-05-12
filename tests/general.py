@@ -43,6 +43,7 @@ def main():
     lc_safari  = ListCreator(driver='safari')
     lc_chrome  = ListCreator(driver='chrome')
     lc_brave   = ListCreator(driver='brave')
+    lc_edge    = ListCreator(driver='edge')
 
     remove_dependencies()
     schafer5_url = 'youtube.com/user/schafer5'
@@ -57,6 +58,8 @@ def main():
     lc_chrome.create_list_for (schafer5_url)
     delete_schafer5_file_if_exists()
     lc_brave.create_list_for (schafer5_url)
+    delete_schafer5_file_if_exists()
+    lc_edge.create_list_for (schafer5_url)
 
 # add these later
 # lc_firefox.headless = True
