@@ -4,6 +4,7 @@ os.system('pip install .')
 
 from yt_videos_list.windows import get_drive_letter
 from yt_videos_list import ListCreator
+from test_shared import delete_schafer5_file_if_exists
 
 
 PLATFORM = platform.system().lower()
@@ -30,21 +31,13 @@ def remove_dependencies():
             os.remove(r'/usr/local/bin/bravedriver')
 
 
-def delete_schafer5_file_if_exists():
-    schafer5 = 'schafer5VideosList'
-    if os.path.exists(f'{schafer5}.txt'):
-        os.remove(f'{schafer5}.txt')
-    if os.path.exists(f'{schafer5}.csv'):
-        os.remove(f'{schafer5}.csv')
-
 def main():
     test_cases = [
         ListCreator(driver='firefox'),
         ListCreator(driver='opera'),
         ListCreator(driver='chrome'),
         ListCreator(driver='brave'),
-        ListCreator(driver='edge'),
-        ListCreator(driver='safari')
+        ListCreator(driver='edge')
     ]
 
 
