@@ -183,7 +183,7 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
             show_user_how_to_set_up_selenium()
             return
     with driver:
-        print(url)
+        print(f'\n\n\nNow scraping {url} using the {user_driver}driver:')
         videos_list = program.scroll_to_bottom(url, driver, scroll_pause_time)
         if len(videos_list) == 0:
             print(common_message.no_videos_found)
