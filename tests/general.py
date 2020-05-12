@@ -41,10 +41,10 @@ def main():
     test_cases = [
         ListCreator(driver='firefox'),
         ListCreator(driver='opera'),
-        ListCreator(driver='safari'),
         ListCreator(driver='chrome'),
         ListCreator(driver='brave'),
         ListCreator(driver='edge'),
+        ListCreator(driver='safari')
     ]
 
 
