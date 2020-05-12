@@ -318,8 +318,6 @@ class ModuleMessage(Common):
     not_writing_to_any_files_hint = 'If you want to run this program, please change the csv OR txt setting to True.\nThis program will now exit...'
 
     running_default_driver = '\nNo driver specified during ListCreator instantiation, so running program using the Firefox driver.'
-    run_in_headless_hint = '\nAdvanced usage: you can run this program in headless mode with the optional "headless" parameter set to True to speed up execution slightly:'
-    run_in_headless_example = '    lc = ListCreator(headless=True)\n\n\n'
 
     file_already_exists = 'This error indicates that a file of this name already exists in the current directory. If you want to overwrite this file, run the create_list_for method again with the optional parameter "write_format" set to "w"'
     file_already_exists_rerun_usage = 'Example usage:\n lc.create_list_for(write_format="w")\n'

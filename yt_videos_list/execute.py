@@ -117,9 +117,6 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
 
     def open_user_driver():
         if headless is False:
-            if execution_type == 'module':
-                print(module_message.run_in_headless_hint)
-                print(module_message.run_in_headless_example)
             return seleniumdriver()
         else: # headless is True
             if   user_driver == 'firefox': return set_up_headless_firefox_driver()
