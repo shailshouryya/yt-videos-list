@@ -12,23 +12,23 @@ PLATFORM = platform.system().lower()
 def remove_dependencies():
     if PLATFORM == 'windows':
         drive = get_drive_letter()
-        if os.path.exists(rf'{drive}:\Windows\geckodriver.exe'):
-            os.remove(rf'{drive}:\Windows\geckodriver.exe')
-        if os.path.exists(rf'{drive}:\Windows\operadriver.exe'):
-            os.remove(rf'{drive}:\Windows\operadriver.exe')
-        if os.path.exists(rf'{drive}:\Windows\chromedriver.exe'):
-            os.remove(rf'{drive}:\Windows\chromedriver.exe')
-        if os.path.exists(rf'{drive}:\Windows\bravedriver.exe'):
-            os.remove(rf'{drive}:\Windows\bravedriver.exe')
+        geckodriver_path  = rf'{drive}:\Windows\geckodriver.exe'
+        operadriver_path  = rf'{drive}:\Windows\operadriver.exe'
+        chromedriver_path = rf'{drive}:\Windows\chromedriver.exe'
+        bravedriver_path  = rf'{drive}:\Windows\bravedriver.exe'
     else:
-        if os.path.exists(r'/usr/local/bin/geckodriver'):
-            os.remove(r'/usr/local/bin/geckodriver')
-        if os.path.exists(r'/usr/local/bin/operadriver'):
-            os.remove(r'/usr/local/bin/operadriver')
-        if os.path.exists(r'/usr/local/bin/chromedriver'):
-            os.remove(r'/usr/local/bin/chromedriver')
-        if os.path.exists(r'/usr/local/bin/bravedriver'):
-            os.remove(r'/usr/local/bin/bravedriver')
+        geckodriver_path  = r'/usr/local/bin/geckodriver'
+        operadriver_path  = r'/usr/local/bin/operadriver'
+        chromedriver_path = r'/usr/local/bin/chromedriver'
+        bravedriver_path  = r'/usr/local/bin/bravedriver'
+    if os.path.exists(geckodriver_path):
+        os.remove(geckodriver_path)
+    if os.path.exists(operadriver_path):
+        os.remove(operadriver_path)
+    if os.path.exists(chromedriver_path):
+        os.remove(chromedriver_path)
+    if os.path.exists(bravedriver_path):
+        os.remove(bravedriver_path)
 
 
 def main():
