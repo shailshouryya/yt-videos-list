@@ -21,14 +21,10 @@ def remove_dependencies():
         operadriver_path  = r'/usr/local/bin/operadriver'
         chromedriver_path = r'/usr/local/bin/chromedriver'
         bravedriver_path  = r'/usr/local/bin/bravedriver'
-    if os.path.exists(geckodriver_path):
-        os.remove(geckodriver_path)
-    if os.path.exists(operadriver_path):
-        os.remove(operadriver_path)
-    if os.path.exists(chromedriver_path):
-        os.remove(chromedriver_path)
-    if os.path.exists(bravedriver_path):
-        os.remove(bravedriver_path)
+    if os.path.exists(geckodriver_path):  os.remove(geckodriver_path)
+    if os.path.exists(operadriver_path):  os.remove(operadriver_path)
+    if os.path.exists(chromedriver_path): os.remove(chromedriver_path)
+    if os.path.exists(bravedriver_path):  os.remove(bravedriver_path)
 
 
 def main():
