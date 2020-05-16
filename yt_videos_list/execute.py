@@ -21,7 +21,8 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
         if file_name is not None:
             return file_name
         else:
-            return f'{driver.find_element_by_class_name("ytd-channel-name").text}_videos_list'
+            channel_name = driver.find_element_by_class_name("ytd-channel-name").text.replace(' ', '')
+            return f'{channel_name}_videos_list'
 
     def configure_brave_driver():
         options = webdriver.ChromeOptions()
