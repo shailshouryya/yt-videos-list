@@ -296,15 +296,6 @@ class Common:
     def tell_user_to_download_driver(user_driver):
         print(f'\nIt looks like you don\'t have the correct Selenium dependency set up to run this program using the remote {user_driver}driver.\nThe version of your {user_driver.title()} browser - usually found by going to {user_driver.title()} -> \"About browser\" in the menu bar within a {user_driver.title()} window - should match the comment for the corresponding command.\nPlease download it using the relevant command from the list of commands below.\n')
 
-    @staticmethod
-    def display_file_already_exists_warning(filename):
-        print(f'\nWARNING! A file with the name {filename} already exists in the current directory.')
-
-    @staticmethod
-    def display_file_already_exists_prompt(filename):
-        print(f'If you wish to proceed and overwrite {filename}, type "proceed", otherwise move the file to a different directory on your computer OR rename the file before typing "proceed"')
-        print(f'If you wish to skip the creation of {filename}, type "skip"')
-
 
 
 class ModuleMessage(Common):

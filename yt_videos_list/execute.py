@@ -23,26 +23,6 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
         else:
             return f'{channel}_videos_list'
 
-    def verify_write_format(file_type, write_format, file_name, file_extension):
-        def new_write_format():
-            user_response = input()
-            if 'proceed' in user_response.strip().lower(): return 'w'
-            elif 'skip'  in user_response.strip().lower(): return 0
-            else:
-                print('\n' + common_message.invalid_response)
-                common_message.display_file_already_exists_prompt(filename)
-                return new_write_format()
-        if file_type is True and write_format == 'x':
-            filename    = f'{file_name}.{file_extension}'
-            file_exists = bool(os.path.isfile(f'./{filename}'))
-            if file_exists is True:
-                common_message.display_file_already_exists_warning(filename)
-                common_message.display_file_already_exists_prompt(filename)
-                return new_write_format()
-            return 'x'
-        else:
-            return write_format
-
     def configure_brave_driver():
         options = webdriver.ChromeOptions()
         if user_os == 'windows':
@@ -150,11 +130,8 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
         url          = f'{base_url}/{channel_type}/{channel}/{videos}'
 
         file_name = determine_file_name()
-        txt_write_format  = verify_write_format(txt,  txt_write_format,  file_name, 'txt')
-        csv_write_format  = verify_write_format(csv,  csv_write_format,  file_name, 'csv')
-        docx_write_format = verify_write_format(docx, docx_write_format, file_name, 'docx')
 
-        if (txt_write_format == 0 and csv_write_format == 0) or (txt is False and csv is False):
+        if txt is False and csv is False:
             print(common_message.not_writing_to_any_files)
             print(module_message.not_writing_to_any_files_hint) if execution_type == 'module' else print(script_message.not_writing_to_any_files_hint)
             sys.exit() # the files already exist and the user doesn't want to overwrite either of them
@@ -192,8 +169,8 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
         if len(videos_list) == 0:
             print(common_message.no_videos_found)
             return
-        if txt is True and txt_write_format != 0: program.write_to_txt(videos_list, file_name, txt_write_format, chronological)
-        if csv is True and csv_write_format != 0: program.write_to_csv(videos_list, file_name, csv_write_format, chronological)
+        if txt is True: program.write_to_txt(videos_list, file_name, txt_write_format, chronological)
+        if csv is True: program.write_to_csv(videos_list, file_name, csv_write_format, chronological)
     program_end = time.perf_counter()
     total_time  = program_end - program_start
     print(f'This program took {total_time} seconds to complete.\n')
