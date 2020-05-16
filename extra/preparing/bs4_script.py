@@ -11,7 +11,7 @@ channelVideosUrl = f'{base_url}/{user}/{userName}/{videos}'
 soup = BeautifulSoup(requests.get(channelVideosUrl).content, 'lxml')
 
 def write_to_txt():
-    with open ('{}VideosList.txt'.format(userName.strip('/')), 'w+') as f:
+    with open ('{}_videos_list.txt'.format(userName.strip('/')), 'w+') as f:
         print('Opened       {}, writing to file...'.format(f.name))
         for url in soup.find_all('a', attrs = {'class': 'yt-uix-sessionlink', 'dir':'ltr'}):
         	# f.write('{}\n'.format(url))
@@ -21,7 +21,7 @@ def write_to_txt():
         print('Wrote to     {}, closing file...'.format(f.name))
 
 def write_to_csv():
-    with open ('{}VideosList.csv'.format(userName.strip('/')), 'w+') as csvfile:
+    with open ('{}_videos_list.csv'.format(userName.strip('/')), 'w+') as csvfile:
         print('Opened       {}, writing to file...'.format(csvfile.name))
         fieldnames = ['Video Title', 'URL', 'Watched?']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)

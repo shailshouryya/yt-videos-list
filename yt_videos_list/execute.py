@@ -21,7 +21,7 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
         if file_name is not None:
             return file_name
         else:
-            return f'{channel}VideosList'
+            return f'{channel}_videos_list'
 
     def verify_write_format(file_type, write_format, file_name, file_extension):
         def new_write_format():
