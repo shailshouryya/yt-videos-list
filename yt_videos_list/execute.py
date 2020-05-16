@@ -21,7 +21,7 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
         if file_name is not None:
             return file_name
         else:
-            return f'{channel}_videos_list'
+            return f'{driver.find_element_by_class_name("ytd-channel-name").text}_videos_list'
 
     def configure_brave_driver():
         options = webdriver.ChromeOptions()
@@ -124,12 +124,10 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
         common_message.display_dependency_setup_instructions(user_driver, user_os)
 
     def check_user_input():
-        nonlocal channel, channel_type, file_name, txt_write_format, csv_write_format, docx_write_format, user_driver
+        nonlocal channel, channel_type, txt_write_format, csv_write_format, docx_write_format, user_driver
         base_url     = 'https://www.youtube.com'
         videos       = 'videos'
         url          = f'{base_url}/{channel_type}/{channel}/{videos}'
-
-        file_name = determine_file_name()
 
         if txt is False and csv is False:
             print(common_message.not_writing_to_any_files)
@@ -165,6 +163,8 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
             return
     with driver:
         print(f'\n\n\nNow scraping {url} using the {user_driver}driver:')
+        driver.get(url)
+        file_name = determine_file_name()
         videos_list = program.scroll_to_bottom(url, driver, scroll_pause_time)
         if len(videos_list) == 0:
             print(common_message.no_videos_found)
