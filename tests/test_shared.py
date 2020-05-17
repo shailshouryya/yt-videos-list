@@ -2,7 +2,7 @@ import os
 
 
 def delete_schafer5_file_if_exists():
-    schafer5 = 'schafer5_videos_list'
+    schafer5 = 'CoreySchafer_videos_list'
     if os.path.exists(f'{schafer5}.txt'):
         os.remove(f'{schafer5}.txt')
     if os.path.exists(f'{schafer5}.csv'):
