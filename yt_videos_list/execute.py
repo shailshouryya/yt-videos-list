@@ -6,7 +6,7 @@ import time
 import selenium
 from selenium import webdriver
 
-from . import program
+from . import create_file
 from . import download_dependencies
 from .windows import get_drive_letter
 from .notifications import Common, ModuleMessage, ScriptMessage
@@ -166,12 +166,12 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
         print(f'\n\n\nNow scraping {url} using the {user_driver}driver:')
         driver.get(url)
         file_name = determine_file_name()
-        videos_list = program.scroll_to_bottom(url, driver, scroll_pause_time)
+        videos_list = create_file.scroll_to_bottom(url, driver, scroll_pause_time)
         if len(videos_list) == 0:
             print(common_message.no_videos_found)
             return
-        if txt is True: program.write_to_txt(videos_list, file_name, txt_write_format, chronological)
-        if csv is True: program.write_to_csv(videos_list, file_name, csv_write_format, chronological)
+        if txt is True: create_file.write_to_txt(videos_list, file_name, txt_write_format, chronological)
+        if csv is True: create_file.write_to_csv(videos_list, file_name, csv_write_format, chronological)
     program_end = time.perf_counter()
     total_time  = program_end - program_start
     print(f'This program took {total_time} seconds to complete.\n')
