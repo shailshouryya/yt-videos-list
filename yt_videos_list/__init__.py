@@ -23,7 +23,7 @@ __source__               = 'https://github.com/Shail-Shouryya/yt_videos_list'
 
 
 class ListCreator:
-    def __init__(self, txt=True, txt_write_format='x', csv=True, csv_write_format='x', docx=False, docx_write_format='x', chronological=False, headless=False, scroll_pause_time=0.8, driver=None):
+    def __init__(self, txt=True, csv=True, docx=False, chronological=False, headless=False, scroll_pause_time=0.8, driver=None):
         '''
         The ListCreator class creates a ListCreator instance with no required arguments.
         Example usage:
@@ -53,13 +53,6 @@ class ListCreator:
              -> txt=True  (default) OR txt=False
              -> csv=True  (default) OR csv=False
 
-        Options for the write format arguments (`csv_write_format`, `txt_write_format`) are
-          * 'x' (default) - does NOT overwrite an existing file with the same name
-          * 'w'           - does overwrite an existing file with the same name
-          NOTE: if you specify the file type argument to be False, you don't need to touch this - the program will automatically skip this step.
-             -> txt_write_format='x'  (default) OR txt_write_format='w'
-             -> csv_write_format='x'  (default) OR csv_write_format='w'
-
         Options for the `chronological` argument are
           * False (default) - write the files in order from most recent video to the oldest video
           * True            - write the files in order from oldest video to the most recent video
@@ -80,7 +73,7 @@ class ListCreator:
         WORKING EXAMPLES:
         ###########################################################
         For a ListCreator object that creates a csv file but not a txt file in chronological order in headless mode with a 1 second pause between scrolls:
-        lc = ListCreator(txt=True, txt_write_format='x', csv=False, csv_write_format=0, chronological=True, headless=True, scroll_pause_time=1.0)
+        lc = ListCreator(txt=True, csv=False, chronological=True, headless=True, scroll_pause_time=1.0)
         ###########################################################
 
         ###########################################################
@@ -95,20 +88,12 @@ class ListCreator:
         PRO TIP: whichever way you decide to instantiate your object, if you use custom settings, name your ListCreator instance to reflect what you changed.
         E.g. For the previous case instead of naming your instance "lc", name it "headlessCsvlc" or "headless_csv_lc" - or something along those lines.
         -----------------------------------------------------------
-
-        ###########################################################
-        For a ListCreator object that creates a txt and csv file and overwrites an existing txt file of the same name but does not overwrite an existing csv file of the same name (with all other arguments unmodified):
-        lc = ListCreator(txt_write_format='w')
-        ###########################################################
         '''
 
 
         self.txt               = txt
-        self.txt_write_format  = txt_write_format
         self.csv               = csv
-        self.csv_write_format  = csv_write_format
         self.docx              = docx
-        self.docx_write_format = docx_write_format
         self.chronological     = chronological
         self.headless          = headless
         self.scroll_pause_time = scroll_pause_time
@@ -132,6 +117,6 @@ class ListCreator:
             raise TypeError(Common().missing_url + ModuleMessage().url_argument_usage)
 
         _execution_type = 'module'
-        instance_attributes = (self.txt, self.txt_write_format, self.csv, self.csv_write_format, self.docx, self.docx_write_format, self.chronological, self.headless, self.scroll_pause_time, self.driver)
+        instance_attributes = (self.txt, self.csv, self.docx, self.chronological, self.headless, self.scroll_pause_time, self.driver)
 
         execute.logic(channel, channel_type, file_name, *instance_attributes, _execution_type)

@@ -310,9 +310,6 @@ class ModuleMessage(Common):
 
     running_default_driver = '\nNo driver specified during ListCreator instantiation, so running program using the Firefox driver.'
 
-    file_already_exists = 'This error indicates that a file of this name already exists in the current directory. If you want to overwrite this file, run the create_list_for method again with the optional parameter "write_format" set to "w"'
-    file_already_exists_rerun_usage = 'Example usage:\n lc.create_list_for(write_format="w")\n'
-
     show_driver_options = 'To use a different driver, specify the driver in the driver argument during the ListCreator instantiation. For example:' + \
         "\n    lc = ListCreator(driver='firefox')" + \
         "\n    lc = ListCreator(driver='opera')" + \

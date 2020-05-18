@@ -67,8 +67,8 @@ def time_writer_function(writer_function):
 
 
 @time_writer_function
-def write_to_txt(list_of_videos, file_name, write_format, chronological):
-    with open(f'{file_name}.txt', write_format) as txt_file:
+def write_to_txt(list_of_videos, file_name, chronological):
+    with open(f'{file_name}.txt', 'x') as txt_file:
         print(f'Opened {txt_file.name}, writing video information to file....')
         spacing = f'{NEWLINE}' + ' '*4 # newline followed by 4 spaces on the next line to pad the start of line
 
@@ -86,9 +86,9 @@ def write_to_txt(list_of_videos, file_name, write_format, chronological):
 
 
 @time_writer_function
-def save_to_mem_write_to_txt(list_of_videos, file_name, write_format, chronological):
+def save_to_mem_write_to_txt(list_of_videos, file_name, chronological):
     # this takes a little bit longer than the write_to_csv() function
-    with open(f'{file_name}.txt', write_format) as memory_file:
+    with open(f'{file_name}.txt', 'x') as memory_file:
         print(f'Opened {memory_file.name}, writing video information to file....')
         text = ''
         spacing = NEWLINE + ' '*4 # newline followed by 4 spaces on the next line to pad the start of line
@@ -109,8 +109,8 @@ def save_to_mem_write_to_txt(list_of_videos, file_name, write_format, chronologi
 
 
 @time_writer_function
-def write_to_csv(list_of_videos, file_name, write_format, chronological):
-    with open(f'{file_name}.csv', write_format) as csv_file:
+def write_to_csv(list_of_videos, file_name, chronological):
+    with open(f'{file_name}.csv', 'x') as csv_file:
         print(f'Opened {csv_file.name}, writing video information to file....')
         fieldnames = ['Video Number', 'Video Title', 'Video URL', 'Watched?', 'Watch again later?', 'Notes']
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)

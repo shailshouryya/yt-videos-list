@@ -11,7 +11,7 @@ from .windows import get_drive_letter
 from .notifications import Common, ModuleMessage, ScriptMessage
 
 
-def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_write_format, docx, docx_write_format, chronological, headless, scroll_pause_time, user_driver, execution_type):
+def logic(channel, channel_type, file_name, txt, csv, docx, chronological, headless, scroll_pause_time, user_driver, execution_type):
     common_message = Common()
     module_message = ModuleMessage()
     script_message = ScriptMessage()
@@ -124,7 +124,7 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
         common_message.display_dependency_setup_instructions(user_driver, user_os)
 
     def check_user_input():
-        nonlocal channel, channel_type, txt_write_format, csv_write_format, docx_write_format, user_driver
+        nonlocal channel, channel_type, user_driver
         base_url     = 'https://www.youtube.com'
         videos       = 'videos'
         url          = f'{base_url}/{channel_type}/{channel}/{videos}'
@@ -165,7 +165,7 @@ def logic(channel, channel_type, file_name, txt, txt_write_format, csv, csv_writ
         print(f'\n\n\nNow scraping {url} using the {user_driver}driver:')
         driver.get(url)
         file_name = determine_file_name()
-        program.determine_action(url, driver, scroll_pause_time, chronological, file_name, txt, txt_write_format, csv, csv_write_format)
+        program.determine_action(url, driver, scroll_pause_time, chronological, file_name, txt, csv)
     program_end = time.perf_counter()
     total_time  = program_end - program_start
     print(f'This program took {total_time} seconds to complete.\n')

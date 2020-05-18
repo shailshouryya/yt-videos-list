@@ -71,9 +71,9 @@ help(ListCreator)
 
 ---
 ```python
-ListCreator(csv=True, csv_write_format='x', txt=True, txt_write_format='x',
-              chronological=False,
-              headless=False, scroll_pause_time=0.8, driver='Firefox')
+ListCreator(csv=True, txt=True, chronological=False,
+            headless=False, scroll_pause_time=0.8, driver='Firefox'
+          )
 ```
 There are a number of optional arguments you can specify during the instantiation of the ListCreator object. The preceding arguments are run by default, but in case you want more flexibility, you can specify the:
 
@@ -95,12 +95,6 @@ There are a number of optional arguments you can specify during the instantiatio
   - `False` - do not create a file for the specified type.
     - `txt=True`  (default) OR `txt=False`
     - `csv=True`  (default) OR `csv=False`
-- `csv_write_format`, `txt_write_format` write format argument:
-  - `'x'` (default) - does not overwrite an existing file with the same name
-  - `'w'` - if an existing file with the same name exists, it will be overwritten
-  - NOTE: if you specify the file type argument to be False, you don't need to touch this - the program will automatically skip this step.
-    - `txt_write_format='x'`  (default) OR `txt_write_format='w'`
-    - `csv_write_format='x'`  (default) OR `csv_write_format='w'`
 - `chronological` argument:
   - `False` (default) - write the files in order from most recent video to the oldest video
   - `True` - write the files in order from oldest video to the most recent video
