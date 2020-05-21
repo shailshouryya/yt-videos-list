@@ -2,6 +2,7 @@ import functools
 import platform
 import time
 import csv
+import os
 
 from .notifications import Common as common_message
 
@@ -68,7 +69,7 @@ def time_writer_function(writer_function):
 
 @time_writer_function
 def write_to_txt(list_of_videos, file_name, chronological):
-    with open(f'{file_name}.txt', 'x') as txt_file:
+    with open('yt_videos_list_temp.txt', 'x') as txt_file:
         print(f'Opened {txt_file.name}, writing video information to file....')
         spacing = f'{NEWLINE}' + ' '*4 # newline followed by 4 spaces on the next line to pad the start of line
 
@@ -82,13 +83,15 @@ def write_to_txt(list_of_videos, file_name, chronological):
             txt_file.write('*'*75 + NEWLINE)
             if video_number % 250 == 0:
                 print(f'{video_number} videos written to {txt_file.name}...')
+    os.rename('yt_videos_list_temp.txt', f'{file_name}.txt')
+    print(f'Successfully completed write, renamed yt_videos_list_temp.txt to {file_name}.txt')
     return txt_file.name, video_number
 
 
 @time_writer_function
 def save_to_mem_write_to_txt(list_of_videos, file_name, chronological):
     # this takes a little bit longer than the write_to_csv() function
-    with open(f'{file_name}.txt', 'x') as memory_file:
+    with open('yt_videos_list_temp.txt', 'x') as memory_file:
         print(f'Opened {memory_file.name}, writing video information to file....')
         text = ''
         spacing = NEWLINE + ' '*4 # newline followed by 4 spaces on the next line to pad the start of line
@@ -105,12 +108,14 @@ def save_to_mem_write_to_txt(list_of_videos, file_name, chronological):
                 print(f'{video_number} videos saved to memory...')
         print(f'Finished saving video information to memory')
         memory_file.write(text)
+    os.rename('yt_videos_list_temp.txt', f'{file_name}.txt')
+    print(f'Successfully completed write, renamed yt_videos_list_temp.txt to {file_name}.txt')
     return memory_file.name, video_number
 
 
 @time_writer_function
 def write_to_csv(list_of_videos, file_name, chronological):
-    with open(f'{file_name}.csv', 'x') as csv_file:
+    with open('yt_videos_list_temp.csv', 'x') as csv_file:
         print(f'Opened {csv_file.name}, writing video information to file....')
         fieldnames = ['Video Number', 'Video Title', 'Video URL', 'Watched?', 'Watch again later?', 'Notes']
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
@@ -122,4 +127,6 @@ def write_to_csv(list_of_videos, file_name, chronological):
                 )
             if video_number % 250 == 0:
                 print(f'{video_number} videos written to {csv_file.name}...')
+    os.rename('yt_videos_list_temp.csv', f'{file_name}.csv')
+    print(f'Successfully completed write, renamed yt_videos_list_temp.csv to {file_name}.csv')
     return csv_file.name, video_number
