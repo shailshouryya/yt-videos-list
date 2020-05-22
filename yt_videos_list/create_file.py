@@ -90,7 +90,7 @@ def write_to_txt(list_of_videos, file_name, chronological):
 
 @time_writer_function
 def save_to_mem_write_to_txt(list_of_videos, file_name, chronological):
-    # this takes a little bit longer than the write_to_csv() function
+    # this takes a little bit longer than the write_to_txt() function
     with open('yt_videos_list_temp.txt', 'x') as memory_file:
         print(f'Opened {memory_file.name}, writing video information to file....')
         text = ''
