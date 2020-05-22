@@ -15,7 +15,6 @@ def scroll_down(current_elements_count, driver, scroll_pause_time):
     time.sleep(scroll_pause_time)
     new_elements_count = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
     print(f'Found {new_elements_count} videos...')
-    # if the number of elements after scroll is the same as the number of elements before the scroll
     if new_elements_count == current_elements_count:
         # wait scroll_pause_time seconds and check again to verify you really did reach the end of the page, and there wasn't a buffer loading period
         print(common_message.no_new_videos_found)
@@ -71,7 +70,7 @@ def time_writer_function(writer_function):
 def write_to_txt(list_of_videos, file_name, chronological):
     with open('yt_videos_list_temp.txt', 'x') as txt_file:
         print(f'Opened {txt_file.name}, writing video information to file....')
-        spacing = f'{NEWLINE}' + ' '*4 # newline followed by 4 spaces on the next line to pad the start of line
+        spacing = f'{NEWLINE}' + ' '*4
 
         for video_number, selenium_element in enumerate(list_of_videos, 1) if chronological is False else enumerate(list_of_videos[::-1], 1):
             txt_file.write(f'Video Number: {video_number}{NEWLINE}')
@@ -94,7 +93,7 @@ def save_to_mem_write_to_txt(list_of_videos, file_name, chronological):
     with open('yt_videos_list_temp.txt', 'x') as memory_file:
         print(f'Opened {memory_file.name}, writing video information to file....')
         text = ''
-        spacing = NEWLINE + ' '*4 # newline followed by 4 spaces on the next line to pad the start of line
+        spacing = NEWLINE + ' '*4
 
         for video_number, selenium_element in enumerate(list_of_videos, 1) if chronological is False else enumerate(list_of_videos[::-1], 1):
             text += f'Video Number: {video_number}{NEWLINE}'
