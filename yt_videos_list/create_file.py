@@ -87,7 +87,7 @@ def write_to_txt(list_of_videos, file_name, chronological):
             if video_number % 250 == 0:
                 print(f'{video_number} videos written to {txt_file.name}...')
     os.rename('yt_videos_list_temp.txt', f'{file_name}.txt')
-    return txt_file.name, video_number
+    return file_name, video_number
 
 
 @time_writer_function
@@ -110,7 +110,7 @@ def save_to_mem_write_to_txt(list_of_videos, file_name, chronological):
         print(f'Finished saving video information to memory')
         memory_file.write(text)
     os.rename('yt_videos_list_temp.txt', f'{file_name}.txt')
-    return memory_file.name, video_number
+    return file_name, video_number
 
 
 @time_writer_function
@@ -127,4 +127,4 @@ def write_to_csv(list_of_videos, file_name, chronological):
             if video_number % 250 == 0:
                 print(f'{video_number} videos written to {csv_file.name}...')
     os.rename('yt_videos_list_temp.csv', f'{file_name}.csv')
-    return csv_file.name, video_number
+    return file_name, video_number
