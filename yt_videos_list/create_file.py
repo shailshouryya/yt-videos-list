@@ -74,7 +74,7 @@ def time_writer_function(writer_function):
 
 @time_writer_function
 def write_to_txt(list_of_videos, file_name, chronological):
-    with open('yt_videos_list_temp.txt', 'x') as txt_file:
+    with open('yt_videos_list_temp.txt', 'w') as txt_file:
         spacing = f'{NEWLINE}' + ' '*4
 
         for video_number, selenium_element in enumerate(list_of_videos, 1) if chronological is False else enumerate(list_of_videos[::-1], 1):
@@ -94,7 +94,7 @@ def write_to_txt(list_of_videos, file_name, chronological):
 @time_writer_function
 def save_to_mem_write_to_txt(list_of_videos, file_name, chronological):
     # this takes a little bit longer than the write_to_txt() function
-    with open('yt_videos_list_temp.txt', 'x') as memory_file:
+    with open('yt_videos_list_temp.txt', 'w') as memory_file:
         text = ''
         spacing = NEWLINE + ' '*4
 
@@ -116,7 +116,7 @@ def save_to_mem_write_to_txt(list_of_videos, file_name, chronological):
 
 @time_writer_function
 def write_to_csv(list_of_videos, file_name, chronological):
-    with open('yt_videos_list_temp.csv', 'x') as csv_file:
+    with open('yt_videos_list_temp.csv', 'w') as csv_file:
         fieldnames = ['Video Number', 'Video Title', 'Video URL', 'Watched?', 'Watch again later?', 'Notes']
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
         writer.writeheader()
