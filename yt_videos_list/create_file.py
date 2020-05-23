@@ -52,6 +52,10 @@ def time_writer_function(writer_function):
     @functools.wraps(writer_function)
     def wrapper_timer(*args, **kwargs):
         start_time = time.perf_counter()
+        extension  = writer_function.__name__.split('_')[-1]
+        temp_file  = 'yt_videos_list_temp'
+        temp       = f'{temp_file}.{extension}'
+        print(f'Opened {temp}, writing video information to file....')
 
         # check name of file and number of videos written
         filename, videos_written = writer_function(*args, **kwargs)
@@ -59,17 +63,17 @@ def time_writer_function(writer_function):
         end_time = time.perf_counter()
         total_time = end_time - start_time
 
-        print(f'Finished writing to {filename}')
-        print(f'{videos_written} videos written to {filename}')
-        print(f'Closing {filename}{NEWLINE}')
-        print(f'It took {total_time} to write all {videos_written} videos to {filename}{NEWLINE}')
+        print(f'Finished writing to {temp}')
+        print(f'{videos_written} videos written to {temp}')
+        print(f'Closing {temp}{NEWLINE}')
+        print(f'Successfully completed write, renamed {temp} to {filename}.{extension}')
+        print(f'It took {total_time} to write all {videos_written} videos to {filename}.{extension}{NEWLINE}')
     return wrapper_timer
 
 
 @time_writer_function
 def write_to_txt(list_of_videos, file_name, chronological):
     with open('yt_videos_list_temp.txt', 'x') as txt_file:
-        print(f'Opened {txt_file.name}, writing video information to file....')
         spacing = f'{NEWLINE}' + ' '*4
 
         for video_number, selenium_element in enumerate(list_of_videos, 1) if chronological is False else enumerate(list_of_videos[::-1], 1):
@@ -83,7 +87,6 @@ def write_to_txt(list_of_videos, file_name, chronological):
             if video_number % 250 == 0:
                 print(f'{video_number} videos written to {txt_file.name}...')
     os.rename('yt_videos_list_temp.txt', f'{file_name}.txt')
-    print(f'Successfully completed write, renamed yt_videos_list_temp.txt to {file_name}.txt')
     return txt_file.name, video_number
 
 
@@ -91,7 +94,6 @@ def write_to_txt(list_of_videos, file_name, chronological):
 def save_to_mem_write_to_txt(list_of_videos, file_name, chronological):
     # this takes a little bit longer than the write_to_txt() function
     with open('yt_videos_list_temp.txt', 'x') as memory_file:
-        print(f'Opened {memory_file.name}, writing video information to file....')
         text = ''
         spacing = NEWLINE + ' '*4
 
@@ -108,14 +110,12 @@ def save_to_mem_write_to_txt(list_of_videos, file_name, chronological):
         print(f'Finished saving video information to memory')
         memory_file.write(text)
     os.rename('yt_videos_list_temp.txt', f'{file_name}.txt')
-    print(f'Successfully completed write, renamed yt_videos_list_temp.txt to {file_name}.txt')
     return memory_file.name, video_number
 
 
 @time_writer_function
 def write_to_csv(list_of_videos, file_name, chronological):
     with open('yt_videos_list_temp.csv', 'x') as csv_file:
-        print(f'Opened {csv_file.name}, writing video information to file....')
         fieldnames = ['Video Number', 'Video Title', 'Video URL', 'Watched?', 'Watch again later?', 'Notes']
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
         writer.writeheader()
@@ -127,5 +127,4 @@ def write_to_csv(list_of_videos, file_name, chronological):
             if video_number % 250 == 0:
                 print(f'{video_number} videos written to {csv_file.name}...')
     os.rename('yt_videos_list_temp.csv', f'{file_name}.csv')
-    print(f'Successfully completed write, renamed yt_videos_list_temp.csv to {file_name}.csv')
     return csv_file.name, video_number
