@@ -54,20 +54,21 @@ def time_writer_function(writer_function):
         start_time = time.perf_counter()
         extension  = writer_function.__name__.split('_')[-1]
         temp_file  = 'yt_videos_list_temp'
-        temp       = f'{temp_file}.{extension}'
-        print(f'Opened {temp}, writing video information to file....')
+        temp_file  = f'{temp_file}.{extension}'
+        print(f'Opened {temp_file}, writing video information to file....')
 
         # check name of file and number of videos written
         filename, videos_written = writer_function(*args, **kwargs)
+        filename = f'{filename}.{extension}'
 
         end_time = time.perf_counter()
         total_time = end_time - start_time
 
-        print(f'Finished writing to {temp}')
-        print(f'{videos_written} videos written to {temp}')
-        print(f'Closing {temp}')
-        print(f'Successfully completed write, renamed {temp} to {filename}.{extension}')
-        print(f'It took {total_time} to write all {videos_written} videos to {filename}.{extension}{NEWLINE}')
+        print(f'Finished writing to {temp_file}')
+        print(f'{videos_written} videos written to {temp_file}')
+        print(f'Closing {temp_file}')
+        print(f'Successfully completed write, renamed {temp_file} to {filename}')
+        print(f'It took {total_time} to write all {videos_written} videos to {filename}{NEWLINE}')
     return wrapper_timer
 
 
