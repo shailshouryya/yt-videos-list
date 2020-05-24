@@ -33,14 +33,14 @@ def save_elements_to_list(driver, start_time, scroll_pause_time, url):
     return elements
 
 def scroll_to_old_videos(url, driver, scroll_pause_time, txt_exists, csv_exists, file_name):
-    global VISITED_VIDEOS
+    global VISITED_VIDEOS, STORED_IN_TXT, STORED_IN_CSV
     driver.set_window_size(780, 880)
-    stored_in_txt = None
-    stored_in_csv = None
-    if txt_exists: stored_in_txt = store_already_written_videos(file_name, 'txt')
-    if csv_exists: stored_in_csv = store_already_written_videos(file_name, 'csv')
-    if stored_in_txt and stored_in_csv: VISITED_VIDEOS = stored_in_txt.intersection(stored_in_csv) # same as stored_in_txt & stored_in_csv
-    else:                               VISITED_VIDEOS = stored_in_txt or stored_in_csv            # takes values from whichever file exists
+    STORED_IN_TXT = None
+    STORED_IN_CSV = None
+    if txt_exists: STORED_IN_TXT = store_already_written_videos(file_name, 'txt')
+    if csv_exists: STORED_IN_CSV = store_already_written_videos(file_name, 'csv')
+    if STORED_IN_TXT and STORED_IN_CSV: VISITED_VIDEOS = STORED_IN_TXT.intersection(STORED_IN_CSV) # same as STORED_IN_TXT & STORED_IN_CSV
+    else:                               VISITED_VIDEOS = STORED_IN_TXT or STORED_IN_CSV            # takes values from whichever file exists
     print(f'Detected an existing file with the name {file_name} in this directory, checking for new videos to update {file_name}....')
     start_time = time.perf_counter() # timer stops in save_elements_to_list() function
 
@@ -74,13 +74,13 @@ def time_writer_function(writer_function):
     return wrapper_timer
 
 
-def find_number_of_new_videos(list_of_videos):
+def find_number_of_new_videos(list_of_videos, videos_set):
     visited_on_page = {selenium_element.get_attribute("href") for selenium_element in list_of_videos}
-    return len(visited_on_page.difference(VISITED_VIDEOS)) # same as len(visited_on_page - VISITED_VIDEOS)
+    return len(visited_on_page.difference(videos_set)) # same as len(visited_on_page - VISITED_VIDEOS)
 
 
-def prepare_output(list_of_videos, video_number, chronological):
-    new_videos = find_number_of_new_videos(list_of_videos)
+def prepare_output(list_of_videos, videos_set, video_number, chronological):
+    new_videos = find_number_of_new_videos(list_of_videos, videos_set)
     total_writes = 0
     if not chronological:
         video_number += new_videos
@@ -101,11 +101,11 @@ def write_to_txt(list_of_videos, file_name, chronological):
     # then take the new videos and add it to a temp file and append contents of the original file to the end of temp file before renaming temp file to file_name.txt (overwrites original file)
     with open(f'{file_name}.txt', 'r+') as old_file, open('yt_videos_list_temp.txt', 'w+') as txt_file:
         video_number =  int(max(re.findall(r'^Video Number:\s*(\d+)', old_file.read(), re.M), key = lambda i: int(i)))
-        video_number, new_videos, total_writes, incrementer = prepare_output(list_of_videos, video_number, chronological)
+        video_number, new_videos, total_writes, incrementer = prepare_output(list_of_videos, STORED_IN_TXT, video_number, chronological)
         spacing      = f'{NEWLINE}' + ' '*4
 
         for selenium_element in list_of_videos if chronological is False else list_of_videos[::-1]:
-            if selenium_element.get_attribute("href") in VISITED_VIDEOS: continue
+            if selenium_element.get_attribute("href") in STORED_IN_TXT: continue
             else:
                 txt_file.write(f'Video Number: {video_number}{NEWLINE}')
                 txt_file.write(f'Video Title:  {selenium_element.get_attribute("title")}{NEWLINE}')
@@ -143,13 +143,13 @@ def write_to_csv(list_of_videos, file_name, chronological):
     # and append contents of the original file to the end of temp file before renaming temp file to file_name.csv (overwrites original file)
     with open(f'{file_name}.csv', 'r+') as old_file, open('yt_videos_list_temp.csv', 'w+') as csv_file:
         video_number =  int(max(re.findall(r'^(\d+)?,', old_file.read(), re.M), key = lambda i: int(i)))
-        video_number, new_videos, total_writes, incrementer = prepare_output(list_of_videos, video_number, chronological)
+        video_number, new_videos, total_writes, incrementer = prepare_output(list_of_videos, STORED_IN_CSV, video_number, chronological)
         fieldnames = ['Video Number', 'Video Title', 'Video URL', 'Watched?', 'Watch again later?', 'Notes']
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
 
         if chronological is False: writer.writeheader()
         for selenium_element in list_of_videos if chronological is False else list_of_videos[::-1]:
-            if selenium_element.get_attribute("href") in VISITED_VIDEOS: continue
+            if selenium_element.get_attribute("href") in STORED_IN_CSV: continue
             else:
                 writer.writerow(
                     {'Video Number': f'{video_number}', 'Video Title': f'{selenium_element.get_attribute("title")}', 'Video URL': f'{selenium_element.get_attribute("href")}', 'Watched?': '', 'Watch again later?': '', 'Notes': ''}
