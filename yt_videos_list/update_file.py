@@ -64,7 +64,10 @@ def write_to_txt(videos_list, file_name, chronological):
     # then break out of the loop
     # then take the new videos and add it to a temp file
     # and append contents of the original file to the end of temp file before renaming temp file to file_name.txt (overwrites original file)
-    pass
+    with open(f'{file_name}.txt', 'r') as old_file, open('yt_videos_list_temp.csv', 'w') as updated_file:
+        index =  max(re.findall(r'^Video Number:\s*(\d+)', old_file.read(), re.M), key = lambda i: int(i))
+
+
 
 def write_to_csv(videos_list, file_name, chronological):
     # if file_name.csv is chronological, start at the end of the list
@@ -76,4 +79,5 @@ def write_to_csv(videos_list, file_name, chronological):
     # then break out of the loop
     # then take the new videos and add it to a temp file
     # and append contents of the original file to the end of temp file before renaming temp file to file_name.csv (overwrites original file)
-    pass
+    with open(f'{file_name}.csv', 'r') as old_file, open('yt_videos_list_temp.txt', 'w') as updated_file:
+        index =  max(re.findall(r'^(\d+)?,', old_file.read(), re.M), key = lambda i: int(i))
