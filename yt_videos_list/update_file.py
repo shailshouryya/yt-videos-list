@@ -53,7 +53,26 @@ def time_writer_function(writer_function):
     @functools.wraps(writer_function)
     def wrapper_timer(*args, **kwargs):
         start_time = time.perf_counter()
+        extension  = writer_function.__name__.split('_')[-1]
+        temp_file  = 'yt_videos_list_temp'
+        temp_file  = f'{temp_file}.{extension}'
+        print(f'Opened {temp_file}, writing new video information to file....')
 
+        # check name of file and number of videos written
+        file_name, new_videos_written = writer_function(*args, **kwargs)
+        file_name = f'{file_name}.{extension}'
+
+        end_time = time.perf_counter()
+        total_time = end_time - start_time
+
+        print(f'Finished writing to {temp_file}')
+        print(f'{new_videos_written} new videos written to {temp_file}')
+        print(f'Closing {temp_file}')
+        print(f'Successfully completed write, renamed {temp_file} to {file_name}')
+        print(f'It took {total_time} to write the {new_videos_written} new videos to the pre-existing {file_name} {NEWLINE}')
+    return wrapper_timer
+
+@time_writer_function
 def write_to_txt(list_of_videos, file_name, chronological):
     # if file_name.txt is chronological, start at the end of the list
     # ignore all videos that are already in the file
