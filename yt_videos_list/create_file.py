@@ -72,8 +72,7 @@ def time_writer_function(writer_function):
     return wrapper_timer
 
 
-@time_writer_function
-def write_to_txt(list_of_videos, file_name, chronological):
+def prepare_output(list_of_videos, chronological):
     total_videos = len(list_of_videos)
     total_writes = 0
     if not chronological:
@@ -82,6 +81,12 @@ def write_to_txt(list_of_videos, file_name, chronological):
     else:
         video_number = 1
         incrementer  = 1
+    return total_videos, total_writes, video_number, incrementer
+
+
+@time_writer_function
+def write_to_txt(list_of_videos, file_name, chronological):
+    total_videos, total_writes, video_number, incrementer = prepare_output(list_of_videos, chronological)
     with open('yt_videos_list_temp.txt', 'w') as txt_file:
         spacing = f'{NEWLINE}' + ' '*4
 
@@ -104,14 +109,7 @@ def write_to_txt(list_of_videos, file_name, chronological):
 @time_writer_function
 def save_to_mem_write_to_txt(list_of_videos, file_name, chronological):
     # this takes a little bit longer than the write_to_txt() function
-    total_videos = len(list_of_videos)
-    total_writes = 0
-    if not chronological:
-        video_number = total_videos
-        incrementer  = -1
-    else:
-        video_number = 1
-        incrementer  = 1
+    total_videos, total_writes, video_number, incrementer = prepare_output(list_of_videos, chronological)
     with open('yt_videos_list_temp.txt', 'w') as memory_file:
         text = ''
         spacing = NEWLINE + ' '*4
@@ -136,14 +134,7 @@ def save_to_mem_write_to_txt(list_of_videos, file_name, chronological):
 
 @time_writer_function
 def write_to_csv(list_of_videos, file_name, chronological):
-    total_videos = len(list_of_videos)
-    total_writes = 0
-    if not chronological:
-        video_number = total_videos
-        incrementer  = -1
-    else:
-        video_number = 1
-        incrementer  = 1
+    total_videos, total_writes, video_number, incrementer = prepare_output(list_of_videos, chronological)
     with open('yt_videos_list_temp.csv', 'w') as csv_file:
         fieldnames = ['Video Number', 'Video Title', 'Video URL', 'Watched?', 'Watch again later?', 'Notes']
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
