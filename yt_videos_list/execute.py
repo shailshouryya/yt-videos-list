@@ -18,7 +18,7 @@ def logic(channel, channel_type, file_name, txt, csv, docx, chronological, headl
 
     def determine_file_name():
         if file_name is not None:
-            return file_name
+            return file_name.strip('.csv').strip('.txt')
         else:
             channel_name = driver.find_element_by_xpath("//yt-formatted-string[@class='style-scope ytd-channel-name']").text.replace(' ', '')
             return f'{channel_name}_videos_list'
