@@ -1,6 +1,7 @@
 import functools
 import platform
 import sys
+import os
 import time
 import csv
 import re
@@ -92,17 +93,41 @@ def prepare_output(list_of_videos, video_number, chronological):
 
 @time_writer_function
 def write_to_txt(list_of_videos, file_name, chronological):
-    # if file_name.txt is chronological, start at the end of the list
-    # ignore all videos that are already in the file
-    # add new videos to list until first element is reached
-    # then take the contents of the original file and write it to a temp file
+    # if file_name.txt is chronological, start at the end of the list and ignore all videos that are already in the file
+    # add new videos to list until first element is reached, then take the contents of the original file and write it to a temp file
     # and append new videos to end of temp file before renaming temp file to file_name.txt (overwrites original file)
     # otherwise start at the beginning of the list and continue adding videos to the list until a video that is already in the list is reached
     # then break out of the loop
-    # then take the new videos and add it to a temp file
-    # and append contents of the original file to the end of temp file before renaming temp file to file_name.txt (overwrites original file)
-    with open(f'{file_name}.txt', 'r') as old_file, open('yt_videos_list_temp.txt', 'w') as txt_file:
-        video_number =  max(re.findall(r'^Video Number:\s*(\d+)', old_file.read(), re.M), key = lambda i: int(i))
+    # then take the new videos and add it to a temp file and append contents of the original file to the end of temp file before renaming temp file to file_name.txt (overwrites original file)
+    with open(f'{file_name}.txt', 'r+') as old_file, open('yt_videos_list_temp.txt', 'w+') as txt_file:
+        video_number =  int(max(re.findall(r'^Video Number:\s*(\d+)', old_file.read(), re.M), key = lambda i: int(i)))
+        video_number, new_videos, total_writes, incrementer = prepare_output(list_of_videos, video_number, chronological)
+        total_writes = 0
+        spacing      = f'{NEWLINE}' + ' '*4
+
+        for selenium_element in list_of_videos if chronological is False else list_of_videos[::-1]:
+            if selenium_element.get_attribute("href") in VISITED_VIDEOS: continue
+            else:
+                txt_file.write(f'Video Number: {video_number}{NEWLINE}')
+                txt_file.write(f'Video Title:  {selenium_element.get_attribute("title")}{NEWLINE}')
+                txt_file.write(f'Video URL:    {selenium_element.get_attribute("href")}{NEWLINE}')
+                txt_file.write(f'Watched?{spacing}{NEWLINE}')
+                txt_file.write(f'Watch again later?{spacing}{NEWLINE}')
+                txt_file.write(f'Notes:{spacing}{NEWLINE}')
+                txt_file.write('*'*75 + NEWLINE)
+                video_number += incrementer
+                total_writes += 1
+                if total_writes % 250 == 0:
+                    print(f'{total_writes} new videos written to {txt_file.name}...')
+        if chronological is False:
+            old_file.seek(0)
+            for line in old_file: txt_file.write(line)
+        else:
+            txt_file.seek(0)
+            for line in txt_file: old_file.write(line)
+    if chronological is False: os.rename('yt_videos_list_temp.txt', f'{file_name}.txt')
+    else:                      os.remove('yt_videos_list_temp.txt')
+    return file_name, new_videos
 
 
 
