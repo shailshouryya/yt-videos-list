@@ -120,7 +120,8 @@ def write_to_txt(list_of_videos, file_name, chronological):
                     print(f'{total_writes} new videos written to {txt_file.name}...')
         if chronological is False:
             old_file.seek(0)
-            for line in old_file: txt_file.write(line)
+            for line in old_file:
+                txt_file.write(line)
         else:
             txt_file.seek(0)
             for line in txt_file: old_file.write(line)
@@ -129,7 +130,7 @@ def write_to_txt(list_of_videos, file_name, chronological):
     return file_name, new_videos
 
 
-
+@time_writer_function
 def write_to_csv(list_of_videos, file_name, chronological):
     # if file_name.csv is chronological, start at the end of the list
     # ignore all videos that are already in the file
@@ -140,5 +141,31 @@ def write_to_csv(list_of_videos, file_name, chronological):
     # then break out of the loop
     # then take the new videos and add it to a temp file
     # and append contents of the original file to the end of temp file before renaming temp file to file_name.csv (overwrites original file)
-    with open(f'{file_name}.csv', 'r') as old_file, open('yt_videos_list_temp.csv', 'w') as csv_file:
-        video_number =  max(re.findall(r'^(\d+)?,', old_file.read(), re.M), key = lambda i: int(i))
+    with open(f'{file_name}.csv', 'r+') as old_file, open('yt_videos_list_temp.csv', 'w+') as csv_file:
+        video_number =  int(max(re.findall(r'^(\d+)?,', old_file.read(), re.M), key = lambda i: int(i)))
+        video_number, new_videos, total_writes, incrementer = prepare_output(list_of_videos, video_number, chronological)
+        fieldnames = ['Video Number', 'Video Title', 'Video URL', 'Watched?', 'Watch again later?', 'Notes']
+        writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+
+        if chronological is False: writer.writeheader()
+        for selenium_element in list_of_videos if chronological is False else list_of_videos[::-1]:
+            if selenium_element.get_attribute("href") in VISITED_VIDEOS: continue
+            else:
+                writer.writerow(
+                    {'Video Number': f'{video_number}', 'Video Title': f'{selenium_element.get_attribute("title")}', 'Video URL': f'{selenium_element.get_attribute("href")}', 'Watched?': '', 'Watch again later?': '', 'Notes': ''}
+                    )
+                video_number += incrementer
+                total_writes += 1
+                if total_writes % 250 == 0:
+                    print(f'{total_writes} videos written to {csv_file.name}...')
+        if chronological is False:
+            old_file.seek(0)
+            old_file.readline() # skip the header since that's already written at the top of temp file
+            for line in old_file: csv_file.write(line)
+        else:
+            csv_file.seek(0)
+            for line in csv_file:
+                old_file.write(line)
+    if chronological is False: os.rename('yt_videos_list_temp.csv', f'{file_name}.csv')
+    else:                      os.remove('yt_videos_list_temp.csv')
+    return file_name, new_videos
