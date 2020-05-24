@@ -78,6 +78,18 @@ def find_number_of_new_videos(list_of_videos):
     return len(visited_on_page.difference(VISITED_VIDEOS)) # same as len(visited_on_page - VISITED_VIDEOS)
 
 
+def prepare_output(list_of_videos, video_number, chronological):
+    new_videos = find_number_of_new_videos(list_of_videos)
+    total_writes = 0
+    if not chronological:
+        video_number += new_videos
+        incrementer   = -1
+    else:
+        video_number += 1
+        incrementer   = 1
+    return video_number, new_videos, total_writes, incrementer
+
+
 @time_writer_function
 def write_to_txt(list_of_videos, file_name, chronological):
     # if file_name.txt is chronological, start at the end of the list
