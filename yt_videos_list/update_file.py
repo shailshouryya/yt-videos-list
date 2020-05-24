@@ -72,6 +72,12 @@ def time_writer_function(writer_function):
         print(f'It took {total_time} to write the {new_videos_written} new videos to the pre-existing {file_name} {NEWLINE}')
     return wrapper_timer
 
+
+def find_number_of_new_videos(list_of_videos):
+    visited_on_page = {selenium_element.get_attribute("href") for selenium_element in list_of_videos}
+    return len(visited_on_page.difference(VISITED_VIDEOS)) # same as len(visited_on_page - VISITED_VIDEOS)
+
+
 @time_writer_function
 def write_to_txt(list_of_videos, file_name, chronological):
     # if file_name.txt is chronological, start at the end of the list
