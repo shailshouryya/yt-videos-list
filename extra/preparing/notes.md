@@ -179,3 +179,19 @@ count(2)
     - `vars()`
 
 - [Python getattr()](https://www.programiz.com/python-programming/methods/built-in/getattr) - [Programiz](https://www.programiz.com/): [Python Programming](https://www.programiz.com/python-programming) > [Methods](https://www.programiz.com/python-programming/methods) > [Built in](https://www.programiz.com/python-programming/methods/built-in)
+
+
+- [Why can't I call read() twice on an open file?](https://stackoverflow.com/questions/3906137/why-cant-i-call-read-twice-on-an-open-file) - Stack Overflow
+  - Calling `read()` reads through the entire file and leaves the read cursor at the end of the file (with nothing more to read). If you are looking to read a certain number of lines at a time you could use `readline()`, `readlines()` or iterate through lines with `for line in handle:`.
+  - To answer your question directly, once a file has been read, with `read()` you can use `seek(0)` to return the read cursor to the start of the file (docs are [here](http://docs.python.org/2.4/lib/bltin-file-objects.html)). If you know the file isn't going to be too large, you can also save the `read()` output to a variable, using it in your `findall` expressions.
+  - Ps. Dont forget to close the file after you are done with it ;)
+<br>
+
+  - Every open file has an associated position.
+  - When you `read()` you read from that position. For example `read(10)` reads the first 10 bytes from a newly opened file, then another `read(10)` reads the next 10 bytes. `read()` without arguments reads all of the contents of the file, leaving the file position at the end of the file. Next time you call `read()` there is nothing to read.
+  - You can use `seek` to move the file position. Or probably better in your case would be to do one `read()` and keep the result for both searches.
+<br>
+
+  - `read()` ***consumes***. So, you could ***reset*** the file, or ***seek*** to the start before re-reading. Or, if it suites your task, you can use `read(n)` to consume only `n` bytes.
+- trying `open('somefile', '+')` when the `+` isn't preceeded with another value results in:
+  - `ValueError: Must have exactly one of create/read/write/append mode and at most one plus`
