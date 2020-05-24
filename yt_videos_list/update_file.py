@@ -54,7 +54,7 @@ def time_writer_function(writer_function):
     def wrapper_timer(*args, **kwargs):
         start_time = time.perf_counter()
 
-def write_to_txt(videos_list, file_name, chronological):
+def write_to_txt(list_of_videos, file_name, chronological):
     # if file_name.txt is chronological, start at the end of the list
     # ignore all videos that are already in the file
     # add new videos to list until first element is reached
@@ -69,7 +69,7 @@ def write_to_txt(videos_list, file_name, chronological):
 
 
 
-def write_to_csv(videos_list, file_name, chronological):
+def write_to_csv(list_of_videos, file_name, chronological):
     # if file_name.csv is chronological, start at the end of the list
     # ignore all videos that are already in the file
     # add new videos to list until first element is reached
