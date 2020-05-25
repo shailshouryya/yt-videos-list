@@ -1,5 +1,6 @@
 import sys
 
+
 def browser_exists(browser):
     # return browser in subprocess.getoutput('ls /Applications')
     sys.exit()

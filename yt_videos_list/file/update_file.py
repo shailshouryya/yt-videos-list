@@ -7,6 +7,7 @@ import os
 
 from . import write
 
+
 if platform.system().lower().startswith('windows'): NEWLINE = '\r\n'
 else:                                               NEWLINE = '\n'
 

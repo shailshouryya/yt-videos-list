@@ -6,6 +6,7 @@ from .notifications import Common
 
 COMMON_MESSAGE = Common()
 
+
 def determine_action(url, driver, scroll_pause_time, chronological, file_name, txt, csv):
     txt_exists = os.path.isfile(f'{file_name}.txt')
     csv_exists = os.path.isfile(f'{file_name}.csv')

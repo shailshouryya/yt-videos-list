@@ -8,9 +8,9 @@ from . import write
 from ..notifications import Common as common_message
 
 
-
 if platform.system().lower().startswith('windows'): NEWLINE = '\r\n'
 else:                                               NEWLINE = '\n'
+
 
 def scroll_down(current_elements_count, driver, scroll_pause_time):
     driver.execute_script('window.scrollBy(0, 50000);')
