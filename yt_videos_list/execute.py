@@ -16,12 +16,51 @@ def logic(channel, channel_type, file_name, txt, csv, docx, chronological, headl
     module_message = ModuleMessage()
     script_message = ScriptMessage()
 
-    def determine_file_name():
-        if file_name is not None:
-            return file_name.strip('.csv').strip('.txt')
+
+    def determine_user_os():
+        if   platform.system().lower().startswith('darwin'):  return 'macos'
+        elif platform.system().lower().startswith('linux'):   return 'linux'
+        elif platform.system().lower().startswith('windows'): return 'windows'
         else:
-            channel_name = driver.find_element_by_xpath("//yt-formatted-string[@class='style-scope ytd-channel-name']").text.replace(' ', '')
-            return f'{channel_name}_videos_list'
+            print(common_message.unsupported_os)
+            sys.exit()
+
+
+    def check_user_input():
+        nonlocal channel, channel_type, user_driver
+        base_url     = 'https://www.youtube.com'
+        videos       = 'videos'
+        url          = f'{base_url}/{channel_type}/{channel}/{videos}'
+
+        if txt is False and csv is False:
+            print(common_message.not_writing_to_any_files)
+            print(module_message.not_writing_to_any_files_hint) if execution_type == 'module' else print(script_message.not_writing_to_any_files_hint)
+            sys.exit() # the files already exist and the user doesn't want to overwrite either of them
+
+        if user_driver is None:
+            print(module_message.running_default_driver) if execution_type == 'module' else print(script_message.running_default_driver)
+            print(module_message.show_driver_options)    if execution_type == 'module' else print(script_message.show_driver_options)
+            user_driver = 'firefox'
+        seleniumdriver = check_driver()
+        if seleniumdriver == 'invalid':
+            sys.exit()
+        return url, seleniumdriver
+
+
+    def check_driver():
+        if   'firefox' in user_driver: return webdriver.Firefox
+        elif 'opera'   in user_driver: return webdriver.Opera
+        elif 'chrome'  in user_driver: return webdriver.Chrome
+        elif 'brave'   in user_driver: return configure_brave_driver
+        elif 'edge'    in user_driver: return configure_edge_driver
+        elif 'safari'  in user_driver:
+            if user_os != 'macos':
+                common_message.display_dependency_setup_instructions('safari', user_os)
+                sys.exit()
+            return webdriver.Safari
+        else:
+            print(common_message.invalid_driver)
+            return 'invalid'
 
     def configure_brave_driver():
         options = webdriver.ChromeOptions()
@@ -51,20 +90,16 @@ def logic(channel, channel_type, file_name, txt, csv, docx, chronological, headl
         return webdriver.Edge(executable_path=executable_path)
 
 
-    def check_driver():
-        if   'firefox' in user_driver: return webdriver.Firefox
-        elif 'opera'   in user_driver: return webdriver.Opera
-        elif 'chrome'  in user_driver: return webdriver.Chrome
-        elif 'brave'   in user_driver: return configure_brave_driver
-        elif 'edge'    in user_driver: return configure_edge_driver
-        elif 'safari'  in user_driver:
-            if user_os != 'macos':
-                common_message.display_dependency_setup_instructions('safari', user_os)
-                sys.exit()
-            return webdriver.Safari
-        else:
-            print(common_message.invalid_driver)
-            return 'invalid'
+    def open_user_driver():
+        if headless is False:
+            return seleniumdriver()
+        else: # headless is True
+            if   user_driver == 'firefox': return set_up_headless_firefox_driver()
+            elif user_driver == 'opera':   return set_up_headless_opera_driver()
+            elif user_driver == 'safari':  return set_up_headless_safari_driver()
+            elif user_driver == 'chrome':  return set_up_headless_chrome_driver()
+            elif user_driver == 'brave':   return set_up_headless_brave_driver()
+            elif user_driver == 'edge':    return set_up_headless_edge_driver()
 
     def set_up_headless_firefox_driver():
         options = selenium.webdriver.firefox.options.Options()
@@ -99,50 +134,19 @@ def logic(channel, channel_type, file_name, txt, csv, docx, chronological, headl
         print(common_message.unsupported_edge_headless)
         return configure_edge_driver()
 
-    def open_user_driver():
-        if headless is False:
-            return seleniumdriver()
-        else: # headless is True
-            if   user_driver == 'firefox': return set_up_headless_firefox_driver()
-            elif user_driver == 'opera':   return set_up_headless_opera_driver()
-            elif user_driver == 'safari':  return set_up_headless_safari_driver()
-            elif user_driver == 'chrome':  return set_up_headless_chrome_driver()
-            elif user_driver == 'brave':   return set_up_headless_brave_driver()
-            elif user_driver == 'edge':    return set_up_headless_edge_driver()
 
-    def determine_user_os():
-        if   platform.system().lower().startswith('darwin'):  return 'macos'
-        elif platform.system().lower().startswith('linux'):   return 'linux'
-        elif platform.system().lower().startswith('windows'): return 'windows'
+    def determine_file_name():
+        if file_name is not None:
+            return file_name.strip('.csv').strip('.txt')
         else:
-            print(common_message.unsupported_os)
-            sys.exit()
+            channel_name = driver.find_element_by_xpath("//yt-formatted-string[@class='style-scope ytd-channel-name']").text.replace(' ', '')
+            return f'{channel_name}_videos_list'
+
 
     def show_user_how_to_set_up_selenium():
         if user_driver != 'safari':
             common_message.tell_user_to_download_driver(user_driver)
         common_message.display_dependency_setup_instructions(user_driver, user_os)
-
-    def check_user_input():
-        nonlocal channel, channel_type, user_driver
-        base_url     = 'https://www.youtube.com'
-        videos       = 'videos'
-        url          = f'{base_url}/{channel_type}/{channel}/{videos}'
-
-        if txt is False and csv is False:
-            print(common_message.not_writing_to_any_files)
-            print(module_message.not_writing_to_any_files_hint) if execution_type == 'module' else print(script_message.not_writing_to_any_files_hint)
-            sys.exit() # the files already exist and the user doesn't want to overwrite either of them
-
-        if user_driver is None:
-            print(module_message.running_default_driver) if execution_type == 'module' else print(script_message.running_default_driver)
-            print(module_message.show_driver_options)    if execution_type == 'module' else print(script_message.show_driver_options)
-            user_driver = 'firefox'
-        seleniumdriver = check_driver()
-        if seleniumdriver == 'invalid':
-            sys.exit()
-        return url, seleniumdriver
-
 
 
 
