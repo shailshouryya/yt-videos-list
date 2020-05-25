@@ -46,11 +46,11 @@ def verify_update(driver, schafer5_url, test_file, full_file):
 
 
 def main():
+    browsers   = ['firefox', 'opera', 'chrome', 'brave']
     test_cases = [
-        ListCreator(driver='firefox'),
-        ListCreator(driver='opera'),
-        ListCreator(driver='chrome'),
-        ListCreator(driver='brave')
+        ListCreator(driver=browser, chronological=chrono)
+        for browser in browsers
+        for chrono in [False, True]
     ]
 
 
