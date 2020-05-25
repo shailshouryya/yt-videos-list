@@ -60,6 +60,7 @@ def time_writer_function(writer_function):
         # check name of file and number of videos written
         file_name, videos_written = writer_function(*args, **kwargs)
         file_name = f'{file_name}.{extension}'
+        os.rename(temp_file, file_name)
 
         end_time = time.perf_counter()
         total_time = end_time - start_time
@@ -102,7 +103,6 @@ def write_to_txt(list_of_videos, file_name, chronological):
             total_writes += 1
             if total_writes % 250 == 0:
                 print(f'{total_writes} videos written to {txt_file.name}...')
-    os.rename('yt_videos_list_temp.txt', f'{file_name}.txt')
     return file_name, total_videos
 
 
@@ -128,7 +128,6 @@ def save_to_mem_write_to_txt(list_of_videos, file_name, chronological):
                 print(f'{total_writes} videos saved to memory...')
         print(f'Finished saving video information to memory')
         memory_file.write(text)
-    os.rename('yt_videos_list_temp.txt', f'{file_name}.txt')
     return file_name, total_videos
 
 
@@ -148,5 +147,4 @@ def write_to_csv(list_of_videos, file_name, chronological):
             total_writes += 1
             if total_writes % 250 == 0:
                 print(f'{total_writes} videos written to {csv_file.name}...')
-    os.rename('yt_videos_list_temp.csv', f'{file_name}.csv')
     return file_name, total_videos

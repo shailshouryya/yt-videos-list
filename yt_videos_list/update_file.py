@@ -60,8 +60,10 @@ def time_writer_function(writer_function):
         print(f'Opened {temp_file}, writing new video information to file....')
 
         # check name of file and number of videos written
-        file_name, new_videos_written = writer_function(*args, **kwargs)
+        file_name, new_videos_written, chronological = writer_function(*args, **kwargs)
         file_name = f'{file_name}.{extension}'
+        if chronological is False: os.rename(temp_file, file_name)
+        else:                      os.remove(temp_file)
 
         end_time = time.perf_counter()
         total_time = end_time - start_time
@@ -125,9 +127,7 @@ def write_to_txt(list_of_videos, file_name, chronological):
         else:
             txt_file.seek(0)
             for line in txt_file: old_file.write(line)
-    if chronological is False: os.rename('yt_videos_list_temp.txt', f'{file_name}.txt')
-    else:                      os.remove('yt_videos_list_temp.txt')
-    return file_name, new_videos
+    return file_name, new_videos, chronological
 
 
 @time_writer_function
@@ -166,6 +166,4 @@ def write_to_csv(list_of_videos, file_name, chronological):
             csv_file.seek(0)
             for line in csv_file:
                 old_file.write(line)
-    if chronological is False: os.rename('yt_videos_list_temp.csv', f'{file_name}.csv')
-    else:                      os.remove('yt_videos_list_temp.csv')
-    return file_name, new_videos
+    return file_name, new_videos, chronological
