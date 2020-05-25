@@ -1,4 +1,4 @@
-from .windows import get_drive_letter
+from .download.windows_info import get_drive_letter
 
 
 class Common:
