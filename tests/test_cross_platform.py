@@ -2,9 +2,10 @@ import os
 import platform
 os.system('pip install .')
 
-from yt_videos_list.windows import get_drive_letter
-from yt_videos_list import ListCreator
-from test_shared import delete_schafer5_file_if_exists
+from yt_videos_list                       import ListCreator
+from yt_videos_list.download.windows_info import get_drive_letter
+from test_shared                          import delete_schafer5_file_if_exists
+
 
 
 PLATFORM = platform.system().lower()
