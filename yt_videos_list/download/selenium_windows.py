@@ -32,7 +32,7 @@ def browser_exists(browser):
     elif browser == 'Opera':           return opera_exists(browser)
     elif browser == 'Chrome':          return chrome_exists(browser)
     elif browser == 'Brave-Browser':   return brave_exists(browser)
-    elif browser == 'Edge':  return edge_exists(browser)
+    elif browser == 'Edge':            return edge_exists(browser)
 
 
 def get_firefox_version():
@@ -61,4 +61,4 @@ def get_browser_version(browser):
     elif browser == 'Opera':           return get_opera_version()
     elif browser == 'Chrome':          return get_chrome_version()
     elif browser == 'Brave-Browser':   return get_brave_version()
-    elif browser == 'Edge':  return get_edge_version()
+    elif browser == 'Edge':            return get_edge_version()
