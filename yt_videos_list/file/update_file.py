@@ -5,7 +5,7 @@ import csv
 import re
 import os
 
-from . import write_helper
+from . import write
 
 if platform.system().lower().startswith('windows'): NEWLINE = '\r\n'
 else:                                               NEWLINE = '\n'
@@ -109,7 +109,7 @@ def write_to_txt(list_of_videos, file_name, chronological):
         for selenium_element in list_of_videos if chronological is False else list_of_videos[::-1]:
             if selenium_element.get_attribute("href") in STORED_IN_TXT: continue
             else:
-                video_number, total_writes = write_helper.txt_entry(txt_file, selenium_element, NEWLINE, spacing, video_number, incrementer, total_writes)
+                video_number, total_writes = write.txt_entry(txt_file, selenium_element, NEWLINE, spacing, video_number, incrementer, total_writes)
                 if total_writes % 250 == 0:
                     print(f'{total_writes} new videos written to {txt_file.name}...')
         if chronological is False:
@@ -143,7 +143,7 @@ def write_to_csv(list_of_videos, file_name, chronological):
         for selenium_element in list_of_videos if chronological is False else list_of_videos[::-1]:
             if selenium_element.get_attribute("href") in STORED_IN_CSV: continue
             else:
-                video_number, total_writes = write_helper.csv_entry(writer, selenium_element, video_number, incrementer, total_writes)
+                video_number, total_writes = write.csv_entry(writer, selenium_element, video_number, incrementer, total_writes)
                 if total_writes % 250 == 0:
                     print(f'{total_writes} videos written to {csv_file.name}...')
         if chronological is False:
