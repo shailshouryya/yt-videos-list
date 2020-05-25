@@ -1,12 +1,10 @@
 import functools
 import platform
-import sys
-import os
 import time
 import csv
 import re
+import os
 
-from .notifications import Common as common_message
 
 
 if platform.system().lower().startswith('windows'): NEWLINE = '\r\n'
