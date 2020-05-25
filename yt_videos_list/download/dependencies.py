@@ -3,7 +3,7 @@ import sys
 import platform
 
 from . import selenium_linux, selenium_macos, selenium_windows
-from .notifications import Common
+from ..notifications import Common
 
 
 COMMON_MESSAGE = Common()
