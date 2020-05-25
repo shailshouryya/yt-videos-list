@@ -1,4 +1,5 @@
 import os
+import hashlib
 import platform
 os.system('pip install .')
 
@@ -27,6 +28,22 @@ def remove_dependencies():
     if os.path.exists(chromedriver_path): os.remove(chromedriver_path)
     if os.path.exists(bravedriver_path):  os.remove(bravedriver_path)
 
+def verify_update(driver, schafer5_url, test_file, full_file):
+    os.rename(f'{test_file}.txt', 'CoreySchafer_videos_list.txt')
+    os.rename(f'{test_file}.csv', 'CoreySchafer_videos_list.csv')
+    driver.create_list_for(schafer5_url)
+    # verify calling the create_list_for() method updates the partial file properly
+    with open('CoreySchafer_videos_list.txt', 'r') as test_txt, open('CoreySchafer_videos_list.csv', 'r') as test_csv:
+        current_txt = hashlib.sha256(test_txt.read().encode('utf-8')).hexdigest()
+        current_csv = hashlib.sha256(test_csv.read().encode('utf-8')).hexdigest()
+    with open(f'{full_file}.txt', 'r') as full_txt, open(f'{full_file}.csv', 'r') as full_csv:
+        verified_txt = hashlib.sha256(full_txt.read().encode('utf-8')).hexdigest()
+        verified_csv = hashlib.sha256(full_csv.read().encode('utf-8')).hexdigest()
+    if current_txt != verified_txt: print(f'The updated txt file does NOT match the {full_file}.txt file!')
+    else:                           print(f'The updated txt file matches the {full_file}.txt file :)')
+    if current_csv != verified_csv: print(f'The updated csv file does NOT match the {full_file}.csv file!')
+    else:                           print(f'The updated csv file matches the {full_file}.csv file :)')
+
 
 def main():
     test_cases = [
@@ -42,6 +59,9 @@ def main():
     for test_case in test_cases:
         delete_schafer5_file_if_exists()
         test_case.create_list_for(schafer5_url)
+        if getattr(test_case, 'chronological'): verify_update(test_case, schafer5_url, 'tests/partial_schafer5_chronological',     'tests/full_schafer5_chronological')
+        else:                                   verify_update(test_case, schafer5_url, 'tests/partial_schafer5_non_chronological', 'tests/full_schafer5_non_chronological')
+
 
 # add these later
 # lc_firefox.headless = True
