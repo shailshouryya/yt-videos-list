@@ -4,7 +4,9 @@ import time
 import csv
 import os
 
+from . import write_helper
 from .notifications import Common as common_message
+
 
 
 if platform.system().lower().startswith('windows'): NEWLINE = '\r\n'
@@ -92,15 +94,7 @@ def write_to_txt(list_of_videos, file_name, chronological):
         spacing = f'{NEWLINE}' + ' '*4
 
         for selenium_element in list_of_videos if chronological is False else list_of_videos[::-1]:
-            txt_file.write(f'Video Number: {video_number}{NEWLINE}')
-            txt_file.write(f'Video Title:  {selenium_element.get_attribute("title")}{NEWLINE}')
-            txt_file.write(f'Video URL:    {selenium_element.get_attribute("href")}{NEWLINE}')
-            txt_file.write(f'Watched?{spacing}{NEWLINE}')
-            txt_file.write(f'Watch again later?{spacing}{NEWLINE}')
-            txt_file.write(f'Notes:{spacing}{NEWLINE}')
-            txt_file.write('*'*75 + NEWLINE)
-            video_number += incrementer
-            total_writes += 1
+            video_number, total_writes = write_helper.txt_entry(txt_file, selenium_element, NEWLINE, spacing, video_number, incrementer, total_writes)
             if total_writes % 250 == 0:
                 print(f'{total_writes} videos written to {txt_file.name}...')
     return file_name, total_videos
@@ -140,9 +134,7 @@ def write_to_csv(list_of_videos, file_name, chronological):
         writer.writeheader()
 
         for selenium_element in list_of_videos if chronological is False else list_of_videos[::-1]:
-            writer.writerow(
-                {'Video Number': f'{video_number}', 'Video Title': f'{selenium_element.get_attribute("title")}', 'Video URL': f'{selenium_element.get_attribute("href")}', 'Watched?': '', 'Watch again later?': '', 'Notes': ''}
-                )
+            write_helper.csv_entry(writer, selenium_element, video_number, incrementer, total_writes)
             video_number += incrementer
             total_writes += 1
             if total_writes % 250 == 0:
