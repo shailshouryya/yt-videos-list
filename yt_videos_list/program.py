@@ -17,10 +17,8 @@ def determine_action(url, driver, scroll_pause_time, chronological, file_name, t
         return
 
     if txt is True:
-        if txt_exists:
-            file.update_file.write_to_txt(videos_list, file_name, chronological)
-        else:         file.create_file.write_to_txt(videos_list, file_name, chronological)
+        if txt_exists: file.update_file.write_to_txt(videos_list, file_name, chronological)
+        else:          file.create_file.write_to_txt(videos_list, file_name, chronological)
     if csv is True:
-        if csv_exists:
-            file.update_file.write_to_csv(videos_list, file_name, chronological)
-        else:         file.create_file.write_to_csv(videos_list, file_name, chronological)
+        if csv_exists: file.update_file.write_to_csv(videos_list, file_name, chronological)
+        else:          file.create_file.write_to_csv(videos_list, file_name, chronological)
