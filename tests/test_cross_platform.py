@@ -31,9 +31,8 @@ def main():
     test_cases = create_test_cases(browsers)
 
     remove_dependencies()
-    schafer5_url = 'youtube.com/user/schafer5'
     for test_case in test_cases:
-        run_test_case(PLATFORM, test_case, schafer5_url)
+        run_test_case(PLATFORM, test_case)
         print('Moving on to the next driver...\n' + '⏬ '*11)
 
 
