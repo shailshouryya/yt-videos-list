@@ -2,9 +2,8 @@ import os
 import platform
 os.system('pip install .')
 
-from yt_videos_list                       import ListCreator
 from yt_videos_list.download.windows_info import get_drive_letter
-from test_shared                          import delete_schafer5_file_if_exists, verify_update
+from test_shared                          import create_test_cases, delete_schafer5_file_if_exists, verify_update
 
 
 
@@ -30,11 +29,7 @@ def remove_dependencies():
 
 def main():
     browsers   = ['firefox', 'opera', 'chrome', 'brave']
-    test_cases = [
-        ListCreator(driver=browser, chronological=chrono)
-        for browser in browsers
-        for chrono in [False, True]
-    ]
+    test_cases = create_test_cases(browsers)
     if PLATFORM == 'windows': path_slash = '\\'
     else:                     path_slash = '/'
 

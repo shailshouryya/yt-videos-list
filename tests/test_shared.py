@@ -2,6 +2,8 @@ import os
 import shutil
 import hashlib
 
+from yt_videos_list import ListCreator
+
 
 def delete_schafer5_file_if_exists():
     schafer5 = 'CoreySchafer_videos_list'
@@ -9,6 +11,13 @@ def delete_schafer5_file_if_exists():
         os.remove(f'{schafer5}.txt')
     if os.path.exists(f'{schafer5}.csv'):
         os.remove(f'{schafer5}.csv')
+
+def create_test_cases(browsers):
+    return [
+        ListCreator(driver=browser, chronological=chrono)
+        for browser in browsers
+        for chrono in [False, True]
+    ]
 
 def verify_update(driver, schafer5_url, test_file, full_file):
     shutil.copy(f'{test_file}.txt', 'CoreySchafer_videos_list.txt')
