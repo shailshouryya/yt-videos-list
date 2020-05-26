@@ -136,7 +136,7 @@ def write_to_csv(list_of_videos, file_name, chronological):
     # and append contents of the original file to the end of temp file before renaming temp file to file_name.csv (overwrites original file)
     if 'STORED_IN_CSV' not in globals(): stored_in_csv = store_already_written_videos(file_name, 'csv')
     else:                                stored_in_csv = STORED_IN_CSV
-    with open(f'{file_name}.csv', 'r+') as old_file, open('yt_videos_list_temp.csv', 'w+', newline='', encoding='utf-8') as csv_file:
+    with open(f'{file_name}.csv', 'r+', newline='', encoding='utf-8') as old_file, open('yt_videos_list_temp.csv', 'w+', newline='', encoding='utf-8') as csv_file:
         video_number =  int(max(re.findall(r'^(\d+)?,', old_file.read(), re.M), key = lambda i: int(i)))
         video_number, new_videos, total_writes, incrementer = prepare_output(list_of_videos, stored_in_csv, video_number, chronological)
         fieldnames = ['Video Number', 'Video Title', 'Video URL', 'Watched?', 'Watch again later?', 'Notes']
