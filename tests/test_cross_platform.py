@@ -3,8 +3,7 @@ import platform
 os.system('pip install .')
 
 from yt_videos_list.download.windows_info import get_drive_letter
-from test_shared                          import create_test_cases, delete_schafer5_file_if_exists, verify_update
-
+from test_shared                          import create_test_cases, run_test_case
 
 
 PLATFORM = platform.system().lower()
@@ -30,17 +29,11 @@ def remove_dependencies():
 def main():
     browsers   = ['firefox', 'opera', 'chrome', 'brave']
     test_cases = create_test_cases(browsers)
-    if PLATFORM == 'windows': path_slash = '\\'
-    else:                     path_slash = '/'
-
 
     remove_dependencies()
     schafer5_url = 'youtube.com/user/schafer5'
     for test_case in test_cases:
-        delete_schafer5_file_if_exists()
-        test_case.create_list_for(schafer5_url)
-        if getattr(test_case, 'chronological'): verify_update(test_case, schafer5_url, f'tests{path_slash}partial_schafer5_chronological',     f'tests{path_slash}full_schafer5_chronological')
-        else:                                   verify_update(test_case, schafer5_url, f'tests{path_slash}partial_schafer5_non_chronological', f'tests{path_slash}full_schafer5_non_chronological')
+        run_test_case(PLATFORM, test_case, schafer5_url)
         print('Moving on to the next driver...\n' + '⏬ '*11)
 
 

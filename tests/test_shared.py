@@ -12,12 +12,23 @@ def delete_schafer5_file_if_exists():
     if os.path.exists(f'{schafer5}.csv'):
         os.remove(f'{schafer5}.csv')
 
+
 def create_test_cases(browsers):
     return [
         ListCreator(driver=browser, chronological=chrono)
         for browser in browsers
         for chrono in [False, True]
     ]
+
+
+def run_test_case(platform, list_creator, schafer5_url):
+    if platform == 'windows': path_slash = '\\'
+    else:                     path_slash = '/'
+    delete_schafer5_file_if_exists()
+    list_creator.create_list_for(schafer5_url)
+    if getattr(list_creator, 'chronological'): verify_update(list_creator, schafer5_url, f'tests{path_slash}partial_schafer5_chronological',     f'tests{path_slash}full_schafer5_chronological')
+    else:                                      verify_update(list_creator, schafer5_url, f'tests{path_slash}partial_schafer5_non_chronological', f'tests{path_slash}full_schafer5_non_chronological')
+
 
 def verify_update(driver, schafer5_url, test_file, full_file):
     shutil.copy(f'{test_file}.txt', 'CoreySchafer_videos_list.txt')
