@@ -178,9 +178,10 @@ count(2)
     - `dir()`
     - `vars()`
 
+### getattr()
 - [Python getattr()](https://www.programiz.com/python-programming/methods/built-in/getattr) - [Programiz](https://www.programiz.com/): [Python Programming](https://www.programiz.com/python-programming) > [Methods](https://www.programiz.com/python-programming/methods) > [Built in](https://www.programiz.com/python-programming/methods/built-in)
 
-
+### File seeking
 - [Why can't I call read() twice on an open file?](https://stackoverflow.com/questions/3906137/why-cant-i-call-read-twice-on-an-open-file) - Stack Overflow
   - Calling `read()` reads through the entire file and leaves the read cursor at the end of the file (with nothing more to read). If you are looking to read a certain number of lines at a time you could use `readline()`, `readlines()` or iterate through lines with `for line in handle:`.
   - To answer your question directly, once a file has been read, with `read()` you can use `seek(0)` to return the read cursor to the start of the file (docs are [here](http://docs.python.org/2.4/lib/bltin-file-objects.html)). If you know the file isn't going to be too large, you can also save the `read()` output to a variable, using it in your `findall` expressions.
