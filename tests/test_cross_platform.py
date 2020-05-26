@@ -1,4 +1,5 @@
 import os
+import shutil
 import hashlib
 import platform
 os.system('pip install .')
@@ -29,8 +30,8 @@ def remove_dependencies():
     if os.path.exists(bravedriver_path):  os.remove(bravedriver_path)
 
 def verify_update(driver, schafer5_url, test_file, full_file):
-    os.rename(f'{test_file}.txt', 'CoreySchafer_videos_list.txt')
-    os.rename(f'{test_file}.csv', 'CoreySchafer_videos_list.csv')
+    shutil.copy(f'{test_file}.txt', 'CoreySchafer_videos_list.txt')
+    shutil.copy(f'{test_file}.csv', 'CoreySchafer_videos_list.csv')
     driver.create_list_for(schafer5_url)
     # verify calling the create_list_for() method updates the partial file properly
     with open('CoreySchafer_videos_list.txt', 'r') as test_txt, open('CoreySchafer_videos_list.csv', 'r') as test_csv:
