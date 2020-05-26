@@ -63,7 +63,7 @@ def time_writer_function(writer_function):
         # check name of file and number of videos written
         file_name, new_videos_written, chronological = writer_function(*args, **kwargs)
         file_name = f'{file_name}.{extension}'
-        if chronological is False: os.rename(temp_file, file_name)
+        if chronological is False: os.replace(temp_file, file_name)
         else:                      os.remove(temp_file)
 
         end_time = time.perf_counter()

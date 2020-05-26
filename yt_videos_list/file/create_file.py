@@ -62,7 +62,7 @@ def time_writer_function(writer_function):
         # check name of file and number of videos written
         file_name, videos_written = writer_function(*args, **kwargs)
         file_name = f'{file_name}.{extension}'
-        os.rename(temp_file, file_name)
+        os.replace(temp_file, file_name)
 
         end_time = time.perf_counter()
         total_time = end_time - start_time
