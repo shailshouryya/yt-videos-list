@@ -53,6 +53,8 @@ def main():
         for browser in browsers
         for chrono in [False, True]
     ]
+    if PLATFORM == 'windows': path_slash = '\\'
+    else:                     path_slash = '/'
 
 
     remove_dependencies()
@@ -60,8 +62,8 @@ def main():
     for test_case in test_cases:
         delete_schafer5_file_if_exists()
         test_case.create_list_for(schafer5_url)
-        if getattr(test_case, 'chronological'): verify_update(test_case, schafer5_url, 'tests/partial_schafer5_chronological',     'tests/full_schafer5_chronological')
-        else:                                   verify_update(test_case, schafer5_url, 'tests/partial_schafer5_non_chronological', 'tests/full_schafer5_non_chronological')
+        if getattr(test_case, 'chronological'): verify_update(test_case, schafer5_url, f'tests{path_slash}partial_schafer5_chronological',     f'tests{path_slash}full_schafer5_chronological')
+        else:                                   verify_update(test_case, schafer5_url, f'tests{path_slash}partial_schafer5_non_chronological', f'tests{path_slash}full_schafer5_non_chronological')
         print('Moving on to the next driver...\n' + '⏬ '*9)
 
 
