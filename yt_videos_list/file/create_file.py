@@ -1,5 +1,4 @@
 import functools
-import platform
 import time
 import csv
 import os
@@ -8,8 +7,7 @@ from . import write
 from ..notifications import Common as common_message
 
 
-if platform.system().lower().startswith('windows'): NEWLINE = '\r\n'
-else:                                               NEWLINE = '\n'
+NEWLINE = '\n'
 
 
 def scroll_down(current_elements_count, driver, scroll_pause_time):

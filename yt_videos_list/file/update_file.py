@@ -1,5 +1,4 @@
 import functools
-import platform
 import time
 import csv
 import re
@@ -8,8 +7,7 @@ import os
 from . import write
 
 
-if platform.system().lower().startswith('windows'): NEWLINE = '\r\n'
-else:                                               NEWLINE = '\n'
+NEWLINE = '\n'
 
 
 def store_already_written_videos(file_name, file_type):
