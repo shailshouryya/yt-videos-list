@@ -195,3 +195,65 @@ count(2)
   - `read()` ***consumes***. So, you could ***reset*** the file, or ***seek*** to the start before re-reading. Or, if it suites your task, you can use `read(n)` to consume only `n` bytes.
 - trying `open('somefile', '+')` when the `+` isn't preceeded with another value results in:
   - `ValueError: Must have exactly one of create/read/write/append mode and at most one plus`
+
+
+### figuring out if a variable exists
+- commit a756485b66e0c06831ff9b4b42a8b0cc36a38721
+```python
+'myVar' in vars()
+'myVar' in vars(__builtins__)
+'myVar' in locals()
+'myVar' in globals()
+hasattr(obj, 'attr_name')
+```
+- [Determine if variable is defined in Python [duplicate]](https://stackoverflow.com/questions/1592565/determine-if-variable-is-defined-in-python) - Stack Overflow
+- [Easy way to check that a variable is defined in python? [duplicate]](https://stackoverflow.com/questions/750298/easy-way-to-check-that-a-variable-is-defined-in-python) - Stack Overflow
+- [How do I check if a variable exists?](https://stackoverflow.com/questions/843277/how-do-i-check-if-a-variable-exists) - Stack Overflow
+
+
+### copying a file
+- see commit `bdba91c3fcd584e2fc1b49a3398a168637f17e3d`
+- [How do I copy a file in Python?](https://stackoverflow.com/questions/123198/how-do-i-copy-a-file-in-python) - Stack Overflow
+┌──────────────────┬────────┬───────────┬───────┬────────────────┐
+│     Function     │ Copies │   Copies  │Can use│   Destination  │
+│                  │metadata│permissions│buffer │may be directory│
+├──────────────────┼────────┼───────────┼───────┼────────────────┤
+│shutil.copy       │   No   │    Yes    │   No  │      Yes       │
+│shutil.copyfile   │   No   │     No    │   No  │       No       │
+│shutil.copy2      │  Yes   │    Yes    │   No  │      Yes       │
+│shutil.copyfileobj│   No   │     No    │  Yes  │       No       │
+└──────────────────┴────────┴───────────┴───────┴────────────────┘
+
+
+### renaming a pre-existing file (Windows problem)
+- see commit `edd2e21d612af1164afd52666b280d24bc8b21c0`
+  - FileExistsError: [WinError 183] Cannot create a file when that file already exists: 'yt_videos_list_temp.txt' -> 'CoreySchafer_videos_list.txt'
+- [Force Overwrite in Os.Rename](https://stackoverflow.com/questions/8107352/force-overwrite-in-os-rename) - Stack Overflow
+  - Since Python 3.3, there is now a standard cross-platform solution, `os.replace`:
+    - Rename the file or directory src to dst. If dst is a directory, `OSError` will be raised. If **dst exists and is a file, it will be replaced silently if the user has permission**. The operation may fail if src and dst are on different filesystems. If successful, the renaming will be an atomic operation (this is a POSIX requirement).
+    - **Availability: Unix, Windows.**
+    - New in version 3.3.
+    - However, contrary to the documentation, on Windows it's not guaranteed to be atomic (in Python 3.4.4). That's because [internally](https://hg.python.org/cpython/file/v3.4.4/Modules/posixmodule.c#l4289) it uses `[MoveFileEx](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365240%28v=vs.85%29.aspx)` on Windows, which doesn't make such a guarantee.
+  - https://docs.python.org/3/library/os.html#os.replace
+<br>
+
+  - On unix systems `rename` overwrites the destination if exists (because the operation is guaranteed to be atomic).
+<br>
+
+  - On Unix, if dst exists and is a file, it will be replaced silently if the user has permission. The operation may fail on some Unix flavors if src and dst are on different filesystems. If successful, the renaming will be an atomic operation (this is a POSIX requirement). **On Windows, if dst already exists, OSError will be raised even if it is a file; there may be no way to implement an atomic rename when dst names an existing file**. http://docs.python.org/library/os.html#os.rename
+- [Error [183] when using python os.rename](https://stackoverflow.com/questions/8990725/error-183-when-using-python-os-rename) - Stack Overflow
+- [WindowsError: [Error 183] Cannot create a file when that file already exists #13](https://github.com/kfogel/OneTime/) - [kfogel/OneTime](https://github.com/kfogel/OneTime/issues/13)
+- [os.Rename() Causing Issues on Windows #4510](https://github.com/certbot/certbot/issues/4510) - [certbot/certbot](https://github.com/certbot/certbot/)
+
+### write problems on Windows
+- see commits `63cb9660887627aa3f28c3385d23d9d775977d23`, `fc278e3af1a944940996d2c5a164f8ed82184cf8`, `1ed71c6ca78c59f5d1329fddaee5963a0f8828d9`
+- added
+  - `with open('output.csv', 'w+', newline='', encoding='utf-8') as f:`
+  - `with open('output.csv', 'r+', newline='', encoding='utf-8') as f:
+- [CSV in Python adding an extra carriage return, on Windows](https://stackoverflow.com/questions/3191528/csv-in-python-adding-an-extra-carriage-return-on-windows/29116560#29116560)
+  - interesting: "Note that if you use DictWriter, you will have a new line from the open function and a new line from the writerow function. You can use newline='' within the open function to remove the extra newline."
+  - this would explain why setting `newline=''` in the `open` method worked:
+    - "If `newline=''` is not specified, newlines embedded inside quoted fields will not be interpreted correctly, and on platforms that use `\r\n` linendings on write an extra `\r` will be added. It should always be safe to specify `newline=''`, **since the csv module does its own (universal) newline handling**."
+  - another workaround:
+  - You can introduce the `lineterminator='\n'` parameter in the csv writer command.
+  - `writer = csv.writer(stream, delimiter=delimiter, quoting=csv.QUOTE_NONE, quotechar='',  lineterminator='\n')`
