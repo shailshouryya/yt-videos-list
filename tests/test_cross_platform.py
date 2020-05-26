@@ -32,7 +32,7 @@ def main():
 
     remove_dependencies()
     for test_case in test_cases:
-        run_test_case(PLATFORM, test_case)
+        run_test_case(test_case)
         print('Moving on to the next driver...\n' + '⏬ '*11)
 
 

@@ -1,6 +1,7 @@
 import os
 import shutil
 import hashlib
+import platform
 
 from yt_videos_list import ListCreator
 
@@ -21,9 +22,10 @@ def create_test_cases(browsers):
     ]
 
 
-def run_test_case(platform, list_creator):
-    if platform == 'windows': path_slash = '\\'
-    else:                     path_slash = '/'
+def run_test_case(list_creator):
+    user_os = platform.system().lower()
+    if user_os == 'windows': path_slash = '\\'
+    else:                    path_slash = '/'
     schafer5_url = 'youtube.com/user/schafer5'
     delete_schafer5_file_if_exists()
     list_creator.create_list_for(schafer5_url)
