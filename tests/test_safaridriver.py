@@ -1,12 +1,13 @@
-from yt_videos_list import ListCreator
-
-from test_shared import delete_schafer5_file_if_exists
+from test_shared import create_test_cases, run_test_case
 
 
 def main():
-    schafer5_url = 'youtube.com/user/schafer5'
-    delete_schafer5_file_if_exists()
-    ListCreator(driver='safari').create_list_for(schafer5_url)
+    browsers   = ['safari']
+    test_cases = create_test_cases(browsers)
+
+    for test_case in test_cases:
+        run_test_case(test_case)
+        print('Moving on to the next driver...\n' + '⏬ '*11)
 
 
 if __name__ == '__main__':
