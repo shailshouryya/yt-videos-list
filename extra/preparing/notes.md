@@ -215,15 +215,14 @@ hasattr(obj, 'attr_name')
 ### copying a file
 - see commit [`bdba91c3fcd584e2fc1b49a3398a168637f17e3d`](https://github.com/Shail-Shouryya/yt_videos_list/commit/bdba91c3fcd584e2fc1b49a3398a168637f17e3d)
 - [How do I copy a file in Python?](https://stackoverflow.com/questions/123198/how-do-i-copy-a-file-in-python) - Stack Overflow
-┌──────────────────┬────────┬───────────┬───────┬────────────────┐
-│     Function     │ Copies │   Copies  │Can use│   Destination  │
-│                  │metadata│permissions│buffer │may be directory│
-├──────────────────┼────────┼───────────┼───────┼────────────────┤
-│shutil.copy       │   No   │    Yes    │   No  │      Yes       │
-│shutil.copyfile   │   No   │     No    │   No  │       No       │
-│shutil.copy2      │  Yes   │    Yes    │   No  │      Yes       │
-│shutil.copyfileobj│   No   │     No    │  Yes  │       No       │
-└──────────────────┴────────┴───────────┴───────┴────────────────┘
+
+
+|      Function      | Copies metadata | Copies permissions | Can use buffer | Destination may be directory |
+|:------------------:|:---------------:|:------------------:|:--------------:|:----------------------------:|
+|     shutil.copy    |        No       |         Yes        |       No       |              Yes             |
+|   shutil.copyfile  |        No       |         No         |       No       |              No              |
+|    shutil.copy2    |       Yes       |         Yes        |       No       |              Yes             |
+| shutil.copyfileobj |        No       |         No         |       Yes      |              No              |
 
 
 ### renaming a pre-existing file (Windows problem)
