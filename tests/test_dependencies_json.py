@@ -9,18 +9,18 @@ def write_json(drivers_dictionary):
     with open('temp.json', 'w') as file:
         file.write('{\n')
         for driver in drivers_dictionary:
-            file.write(f'  "{driver}": ' + '{\n')
+            file.write(f'  {driver}: ' + '{\n')
             for supproted_os in drivers_dictionary[driver]:
-                file.write(f'    "{supproted_os}": [\n')
+                file.write(f'    {supproted_os}: [\n')
                 for command in drivers_dictionary[driver][supproted_os]:
-                    command = command.replace('\n', '').replace('"', "'")
-                    file.write(f'      "{command}",\n')
+                    command = command.replace('\n', '')
+                    file.write(f'      {command}\n')
                 file.write('    ],\n')
             file.write('  },\n')
         file.write('}')
 
 def format_json():
-    with open('temp.json', 'r') as ftemp, open('dependencies.json', 'w') as ffinal:
+    with open('temp.json', 'r') as ftemp, open('dependencies_pseudo_json.txt', 'w') as ffinal:
         formatted = re.sub(',\n    ]', '\n    ]', ftemp.read())
         formatted = re.sub('],\n  },', ']\n  },', formatted)
         formatted = re.sub('},\n}',    '}\n}',    formatted)
