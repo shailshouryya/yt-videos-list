@@ -24,6 +24,7 @@ def main():
         formatted = re.sub(',\n    ]', '\n    ]', ftemp.read())
         formatted = re.sub('],\n  },', ']\n  },', formatted)
         formatted = re.sub('},\n}',    '}\n}',    formatted)
+        formatted = re.sub('%CD%',     'C',       formatted)
         ffinal.write(formatted)
 
 
