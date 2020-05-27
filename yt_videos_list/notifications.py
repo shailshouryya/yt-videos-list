@@ -198,7 +198,7 @@ class Common:
     @classmethod
     def format_geckodriver_download_command(cls, operating_system, version):
         if operating_system.startswith('win'): return cls.format_windows_download(f'{cls.url_prefix_geckodriver}/{version}/geckodriver-{version}-{operating_system}.zip', 'geckodriver')
-        else:                                  return cls.format_unix_download   (f'{cls.url_prefix_geckodriver}/{version}/geckodriver-{version}-{operating_system}.tar.gz')
+        else:                                  return cls.format_unix_download   (f'{cls.url_prefix_geckodriver}/{version}/geckodriver-{version}-{operating_system}.tar.gz') + '\n'
 
     @classmethod
     def format_operadriver_download_command(cls, operating_system, version):

@@ -3,12 +3,15 @@
     macos: [
       # macos geckodriver v0.26.0 (supports Mozilla Firefox ≥ 60)
       curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-macos.tar.gz | tar -xzvf - -C /usr/local/bin/
+
     ],
     linux: [
       # linux64 geckodriver v0.26.0 (supports Mozilla Firefox ≥ 60)
       curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux64.tar.gz | tar -xzvf - -C /usr/local/bin/
+
       # linux32 geckodriver v0.26.0 (supports Mozilla Firefox ≥ 60)
       curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux32.tar.gz | tar -xzvf - -C /usr/local/bin/
+
     ],
     windows: [
       # win32 geckodriver v0.26.0 (supports Mozilla Firefox ≥ 60)
