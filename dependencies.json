@@ -2,20 +2,20 @@
   "firefox": {
     "macos": [
       "# macos geckodriver v0.26.0 (supports Mozilla Firefox ≥ 60)",
-      "curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-macos.tar.gz | tar -xzvf - -C /usr/local/bin/",
+      "curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-macos.tar.gz | tar -xzvf - -C /usr/local/bin/"
     ],
     "linux": [
       "# linux64 geckodriver v0.26.0 (supports Mozilla Firefox ≥ 60)",
       "curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux64.tar.gz | tar -xzvf - -C /usr/local/bin/",
       "# linux32 geckodriver v0.26.0 (supports Mozilla Firefox ≥ 60)",
-      "curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux32.tar.gz | tar -xzvf - -C /usr/local/bin/",
+      "curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux32.tar.gz | tar -xzvf - -C /usr/local/bin/"
     ],
     "windows": [
       "# win32 geckodriver v0.26.0 (supports Mozilla Firefox ≥ 60)",
       "curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win32.zip -o %CD%:\Windows\geckodriver && tar -xzvf %CD%:\Windows\geckodriver -C %CD%:\Windows && del %CD%:\Windows\geckodriver",
       "# win64 geckodriver v0.26.0 (supports Mozilla Firefox ≥ 60)",
-      "curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win64.zip -o %CD%:\Windows\geckodriver && tar -xzvf %CD%:\Windows\geckodriver -C %CD%:\Windows && del %CD%:\Windows\geckodriver",
-    ],
+      "curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win64.zip -o %CD%:\Windows\geckodriver && tar -xzvf %CD%:\Windows\geckodriver -C %CD%:\Windows && del %CD%:\Windows\geckodriver"
+    ]
   },
   "opera": {
     "macos": [
@@ -44,7 +44,7 @@
       "# mac64 operadriver v.2.38 (supports Opera 55)",
       "curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.38/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver",
       "# mac64 operadriver v.2.37 (supports Opera 54)",
-      "curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.37/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver",
+      "curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.37/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver"
     ],
     "linux": [
       "# linux64 operadriver v.81.0.4044.113 (supports Opera Stable 68)",
@@ -72,7 +72,7 @@
       "# linux64 operadriver v.2.38 (supports Opera 55)",
       "curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.38/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver",
       "# linux64 operadriver v.2.37 (supports Opera 54)",
-      "curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.37/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver",
+      "curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.37/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver"
     ],
     "windows": [
       "# win32 operadriver v.81.0.4044.113 (supports Opera Stable 68)",
@@ -126,19 +126,19 @@
       "# win64 operadriver v.2.38 (supports Opera 55)",
       "curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.38/operadriver_win64.zip -o %CD%:\Windows\operadriver && tar -xzvf %CD%:\Windows\operadriver --strip-components=1 -C %CD%:\Windows && del %CD%:\Windows\operadriver && del %CD%:\Windows\sha512_sum",
       "# win64 operadriver v.2.37 (supports Opera 54)",
-      "curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.37/operadriver_win64.zip -o %CD%:\Windows\operadriver && tar -xzvf %CD%:\Windows\operadriver --strip-components=1 -C %CD%:\Windows && del %CD%:\Windows\operadriver && del %CD%:\Windows\sha512_sum",
-    ],
+      "curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.37/operadriver_win64.zip -o %CD%:\Windows\operadriver && tar -xzvf %CD%:\Windows\operadriver --strip-components=1 -C %CD%:\Windows && del %CD%:\Windows\operadriver && del %CD%:\Windows\sha512_sum"
+    ]
   },
   "safari": {
     "macos": [
-      "In order to run safaridriver, you need to enable remote automation. To do so, open up the Safari browser and in the menu bar, go to'Safari' -> 'Preferences' -> 'Advanced' tab -> click 'Show develop menu in menu bar'Once you do that, 'Develop' should appear in your menu bar. Click on the 'Develop' bar, and then enable 'Allow Remote Automation' (should be near the bottom of the list).After doing that, try rerunning the last command! :)",
+      "In order to run safaridriver, you need to enable remote automation. To do so, open up the Safari browser and in the menu bar, go to'Safari' -> 'Preferences' -> 'Advanced' tab -> click 'Show develop menu in menu bar'Once you do that, 'Develop' should appear in your menu bar. Click on the 'Develop' bar, and then enable 'Allow Remote Automation' (should be near the bottom of the list).After doing that, try rerunning the last command! :)"
     ],
     "linux": [
-      "Safari is probably not supported on Linux operating systems. In order for the safaridriver to run on a Linux OS, you will likely need to do many manual configurations. For this reason, this package does not provide built in support for safaridriver on a Linux OS.",
+      "Safari is probably not supported on Linux operating systems. In order for the safaridriver to run on a Linux OS, you will likely need to do many manual configurations. For this reason, this package does not provide built in support for safaridriver on a Linux OS."
     ],
     "windows": [
-      "Safari is probably not supported on Windows operating systems. In order for the safaridriver to run on a Windows OS, you will likely need to do many manual configurations. For this reason, this package does not provide built in support for safaridriver on a Windows OS.",
-    ],
+      "Safari is probably not supported on Windows operating systems. In order for the safaridriver to run on a Windows OS, you will likely need to do many manual configurations. For this reason, this package does not provide built in support for safaridriver on a Windows OS."
+    ]
   },
   "chrome": {
     "macos": [
@@ -161,7 +161,7 @@
       "# mac64 chromedriver 73.0.3683.68 (supports Google Chrome 73)",
       "curl -SL https://chromedriver.storage.googleapis.com/73.0.3683.68/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver",
       "# mac64 chromedriver 2.46 (supports Google Chrome v71-73)",
-      "curl -SL https://chromedriver.storage.googleapis.com/2.46/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver",
+      "curl -SL https://chromedriver.storage.googleapis.com/2.46/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver"
     ],
     "linux": [
       "# linux64 chromedriver 81.0.4044.69 (supports Google Chrome 81)",
@@ -183,7 +183,7 @@
       "# linux64 chromedriver 73.0.3683.68 (supports Google Chrome 73)",
       "curl -SL https://chromedriver.storage.googleapis.com/73.0.3683.68/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver",
       "# linux64 chromedriver 2.46 (supports Google Chrome v71-73)",
-      "curl -SL https://chromedriver.storage.googleapis.com/2.46/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver",
+      "curl -SL https://chromedriver.storage.googleapis.com/2.46/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver"
     ],
     "windows": [
       "# win32 chromedriver 81.0.4044.69 (supports Google Chrome 81)",
@@ -205,8 +205,8 @@
       "# win32 chromedriver 73.0.3683.68 (supports Google Chrome 73)",
       "curl -SL https://chromedriver.storage.googleapis.com/73.0.3683.68/chromedriver_win32.zip -o %CD%:\Windows\chromedriver && tar -xzvf %CD%:\Windows\chromedriver -C %CD%:\Windows && del %CD%:\Windows\chromedriver",
       "# win32 chromedriver 2.46 (supports Google Chrome v71-73)",
-      "curl -SL https://chromedriver.storage.googleapis.com/2.46/chromedriver_win32.zip -o %CD%:\Windows\chromedriver && tar -xzvf %CD%:\Windows\chromedriver -C %CD%:\Windows && del %CD%:\Windows\chromedriver",
-    ],
+      "curl -SL https://chromedriver.storage.googleapis.com/2.46/chromedriver_win32.zip -o %CD%:\Windows\chromedriver && tar -xzvf %CD%:\Windows\chromedriver -C %CD%:\Windows && del %CD%:\Windows\chromedriver"
+    ]
   },
   "brave": {
     "macos": [
@@ -223,7 +223,7 @@
       "# mac64 bravedriver v.76.0.3809.132 (supports Brave Browser (Chromium) 76)",
       "curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.76.0.3809.132/operadriver_mac64.zip | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/bravedriver",
       "# mac64 bravedriver v.75.0.3770.100 (supports Brave Browser (Chromium) 75)",
-      "curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.75.0.3770.100/operadriver_mac64.zip | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/bravedriver",
+      "curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.75.0.3770.100/operadriver_mac64.zip | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/bravedriver"
     ],
     "linux": [
       "# linux64 bravedriver v.81.0.4044.113 (supports Brave Browser (Chromium) 81)",
@@ -239,7 +239,7 @@
       "# linux64 bravedriver v.76.0.3809.132 (supports Brave Browser (Chromium) 76)",
       "curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.76.0.3809.132/operadriver_linux64.zip | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/bravedriver",
       "# linux64 bravedriver v.75.0.3770.100 (supports Brave Browser (Chromium) 75)",
-      "curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.75.0.3770.100/operadriver_linux64.zip | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/bravedriver",
+      "curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.75.0.3770.100/operadriver_linux64.zip | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/bravedriver"
     ],
     "windows": [
       "# win64 bravedriver v.81.0.4044.113 (supports Brave Browser (Chromium) 81)",
@@ -255,8 +255,8 @@
       "# win64 bravedriver v.76.0.3809.132 (supports Brave Browser (Chromium) 76)",
       "curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.76.0.3809.132/operadriver_win64.zip -o %CD%:\Windows\bravedriver && tar -xzvf %CD%:\Windows\bravedriver --strip-components=1 -O > %CD%:\Windows\bravedriver.exe && del %CD%:\Windows\bravedriver && del %CD%:\Windows\sha512_sum",
       "# win64 bravedriver v.75.0.3770.100 (supports Brave Browser (Chromium) 75)",
-      "curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.75.0.3770.100/operadriver_win64.zip -o %CD%:\Windows\bravedriver && tar -xzvf %CD%:\Windows\bravedriver --strip-components=1 -O > %CD%:\Windows\bravedriver.exe && del %CD%:\Windows\bravedriver && del %CD%:\Windows\sha512_sum",
-    ],
+      "curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.75.0.3770.100/operadriver_win64.zip -o %CD%:\Windows\bravedriver && tar -xzvf %CD%:\Windows\bravedriver --strip-components=1 -O > %CD%:\Windows\bravedriver.exe && del %CD%:\Windows\bravedriver && del %CD%:\Windows\sha512_sum"
+    ]
   },
   "edge": {
     "macos": [
@@ -265,7 +265,7 @@
       "# mac64 msedgedriver 80.0.361.111 (supports Microsoft Edge 80)",
       "curl -SL https://msedgedriver.azureedge.net/80.0.361.111/edgedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver",
       "# mac64 msedgedriver 79.0.313.0 (supports Microsoft Edge 79)",
-      "curl -SL https://msedgedriver.azureedge.net/79.0.313.0/edgedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver",
+      "curl -SL https://msedgedriver.azureedge.net/79.0.313.0/edgedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver"
     ],
     "linux": [
       "There is currently no dedicated msedgedriver for Linux.Here are possible commands for an arm64 operating system.Please visit https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/ for more information.",
@@ -274,7 +274,7 @@
       "# arm64 msedgedriver 80.0.361.111 (supports Microsoft Edge 80)",
       "curl -SL https://msedgedriver.azureedge.net/80.0.361.111/edgedriver_arm64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver",
       "# arm64 msedgedriver 79.0.313.0 (supports Microsoft Edge 79)",
-      "curl -SL https://msedgedriver.azureedge.net/79.0.313.0/edgedriver_arm64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver",
+      "curl -SL https://msedgedriver.azureedge.net/79.0.313.0/edgedriver_arm64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver"
     ],
     "windows": [
       "# win32 msedgedriver 81.0.409.0 (supports Microsoft Edge 81)",
@@ -288,7 +288,7 @@
       "# win64 msedgedriver 80.0.361.111 (supports Microsoft Edge 80)",
       "curl -SL https://msedgedriver.azureedge.net/80.0.361.111/edgedriver_win64.zip -o %CD%:\Windows\msedgedriver && tar -xzvf %CD%:\Windows\msedgedriver -C %CD%:\Windows && del %CD%:\Windows\msedgedriver",
       "# win64 msedgedriver 79.0.313.0 (supports Microsoft Edge 79)",
-      "curl -SL https://msedgedriver.azureedge.net/79.0.313.0/edgedriver_win64.zip -o %CD%:\Windows\msedgedriver && tar -xzvf %CD%:\Windows\msedgedriver -C %CD%:\Windows && del %CD%:\Windows\msedgedriver",
-    ],
-  },
+      "curl -SL https://msedgedriver.azureedge.net/79.0.313.0/edgedriver_win64.zip -o %CD%:\Windows\msedgedriver && tar -xzvf %CD%:\Windows\msedgedriver -C %CD%:\Windows && del %CD%:\Windows\msedgedriver"
+    ]
+  }
 }
