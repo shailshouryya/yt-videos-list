@@ -12,9 +12,9 @@ def main():
         f.write('{\n')
         for driver in drivers_dictionary:
             f.write(f'  "{driver}": ' + '{\n')
-            for os in drivers_dictionary[driver]:
-                f.write(f'    "{os}": [\n')
-                for command in drivers_dictionary[driver][os]:
+            for supproted_os in drivers_dictionary[driver]:
+                f.write(f'    "{supproted_os}": [\n')
+                for command in drivers_dictionary[driver][supproted_os]:
                     command = command.replace('\n', '').replace('"', "'")
                     f.write(f'      "{command}",\n')
                 f.write('    ],\n')
@@ -26,6 +26,7 @@ def main():
         formatted = re.sub('},\n}',    '}\n}',    formatted)
         formatted = re.sub('%CD%',     'C',       formatted)
         ffinal.write(formatted)
+    os.remove('temp.json')
 
 
 if __name__ == '__main__':
