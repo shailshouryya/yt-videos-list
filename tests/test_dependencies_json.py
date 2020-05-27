@@ -13,7 +13,6 @@ def write_json(drivers_dictionary):
             for supproted_os in drivers_dictionary[driver]:
                 file.write(f'    {supproted_os}: [\n')
                 for command in drivers_dictionary[driver][supproted_os]:
-                    command = command.replace('\n', '')
                     file.write(f'      {command}\n')
                 file.write('    ],\n')
             file.write('  },\n')
