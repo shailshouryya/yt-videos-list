@@ -1,11 +1,13 @@
 {
   firefox: {
     macos: [
+
       # macos geckodriver v0.26.0 (supports Mozilla Firefox ≥ 60)
       curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-macos.tar.gz | tar -xzvf - -C /usr/local/bin/
 
     ],
     linux: [
+
       # linux64 geckodriver v0.26.0 (supports Mozilla Firefox ≥ 60)
       curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux64.tar.gz | tar -xzvf - -C /usr/local/bin/
 
@@ -14,6 +16,7 @@
 
     ],
     windows: [
+
       # win32 geckodriver v0.26.0 (supports Mozilla Firefox ≥ 60)
       curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win32.zip -o C:\Windows\geckodriver && tar -xzvf C:\Windows\geckodriver -C C:\Windows && del C:\Windows\geckodriver
 
@@ -24,6 +27,7 @@
   },
   opera: {
     macos: [
+
       # mac64 operadriver v.81.0.4044.113 (supports Opera Stable 68)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.81.0.4044.113/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver
 
@@ -65,6 +69,7 @@
 
     ],
     linux: [
+
       # linux64 operadriver v.81.0.4044.113 (supports Opera Stable 68)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.81.0.4044.113/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver
 
@@ -106,6 +111,7 @@
 
     ],
     windows: [
+
       # win32 operadriver v.81.0.4044.113 (supports Opera Stable 68)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.81.0.4044.113/operadriver_win32.zip -o C:\Windows\operadriver && tar -xzvf C:\Windows\operadriver --strip-components=1 -C C:\Windows && del C:\Windows\operadriver && del C:\Windows\sha512_sum
 
@@ -188,6 +194,7 @@
   },
   safari: {
     macos: [
+
       In order to run safaridriver, you need to enable remote automation. To do so, open up the Safari browser and in the menu bar, go to
 "Safari" -> "Preferences" -> "Advanced" tab -> click "Show develop menu in menu bar"
 Once you do that, "Develop" should appear in your menu bar. Click on the "Develop" bar, and then enable "Allow Remote Automation" (should be near the bottom of the list).
@@ -196,14 +203,17 @@ After doing that, try rerunning the last command!
  :)
     ],
     linux: [
+
       Safari is probably not supported on Linux operating systems. In order for the safaridriver to run on a Linux OS, you will likely need to do many manual configurations. For this reason, this package does not provide built in support for safaridriver on a Linux OS.
     ],
     windows: [
+
       Safari is probably not supported on Windows operating systems. In order for the safaridriver to run on a Windows OS, you will likely need to do many manual configurations. For this reason, this package does not provide built in support for safaridriver on a Windows OS.
     ]
   },
   chrome: {
     macos: [
+
       # mac64 chromedriver 81.0.4044.69 (supports Google Chrome 81)
       curl -SL https://chromedriver.storage.googleapis.com/81.0.4044.69/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
 
@@ -236,6 +246,7 @@ After doing that, try rerunning the last command!
 
     ],
     linux: [
+
       # linux64 chromedriver 81.0.4044.69 (supports Google Chrome 81)
       curl -SL https://chromedriver.storage.googleapis.com/81.0.4044.69/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
 
@@ -268,6 +279,7 @@ After doing that, try rerunning the last command!
 
     ],
     windows: [
+
       # win32 chromedriver 81.0.4044.69 (supports Google Chrome 81)
       curl -SL https://chromedriver.storage.googleapis.com/81.0.4044.69/chromedriver_win32.zip -o C:\Windows\chromedriver && tar -xzvf C:\Windows\chromedriver -C C:\Windows && del C:\Windows\chromedriver
 
@@ -302,6 +314,7 @@ After doing that, try rerunning the last command!
   },
   brave: {
     macos: [
+
       # mac64 bravedriver v.81.0.4044.113 (supports Brave Browser (Chromium) 81)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.81.0.4044.113/operadriver_mac64.zip | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/bravedriver
 
@@ -325,6 +338,7 @@ After doing that, try rerunning the last command!
 
     ],
     linux: [
+
       # linux64 bravedriver v.81.0.4044.113 (supports Brave Browser (Chromium) 81)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.81.0.4044.113/operadriver_linux64.zip | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/bravedriver
 
@@ -348,6 +362,7 @@ After doing that, try rerunning the last command!
 
     ],
     windows: [
+
       # win64 bravedriver v.81.0.4044.113 (supports Brave Browser (Chromium) 81)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.81.0.4044.113/operadriver_win64.zip -o C:\Windows\bravedriver && tar -xzvf C:\Windows\bravedriver --strip-components=1 -O > C:\Windows\bravedriver.exe && del C:\Windows\bravedriver && del C:\Windows\sha512_sum
 
@@ -373,6 +388,7 @@ After doing that, try rerunning the last command!
   },
   edge: {
     macos: [
+
       # mac64 msedgedriver 81.0.409.0 (supports Microsoft Edge 81)
       curl -SL https://msedgedriver.azureedge.net/81.0.409.0/edgedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver
 
@@ -384,6 +400,7 @@ After doing that, try rerunning the last command!
 
     ],
     linux: [
+
       There is currently no dedicated msedgedriver for Linux.
 Here are possible commands for an arm64 operating system.
 Please visit https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/ for more information.
@@ -398,6 +415,7 @@ Please visit https://developer.microsoft.com/en-us/microsoft-edge/tools/webdrive
 
     ],
     windows: [
+
       # win32 msedgedriver 81.0.409.0 (supports Microsoft Edge 81)
       curl -SL https://msedgedriver.azureedge.net/81.0.409.0/edgedriver_win32.zip -o C:\Windows\msedgedriver && tar -xzvf C:\Windows\msedgedriver -C C:\Windows && del C:\Windows\msedgedriver
 
