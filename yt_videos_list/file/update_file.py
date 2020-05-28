@@ -92,14 +92,16 @@ def prepare_output(list_of_videos, videos_set, video_number, chronological):
     return video_number, new_videos, total_writes, incrementer
 
 
+
+# if chronological is True, start at the end of the selenium elements list and ignore all videos that are already in the file
+# add new videos to temp file until first element is reached
+# then append new videos to end of old file - make sure to remove temp file!
+# otherwise start at the beginning of the list and continue adding videos to the temp file until a video that is already in the list is reached
+# ignore all videos that are already in the original file
+# then take the contents of the original file and append it to the end of the temp file before renaming temp file to file_name.txt (overwrites original file)
+
 @time_writer_function
 def write_to_txt(list_of_videos, file_name, chronological):
-    # if file_name.txt is chronological, start at the end of the list and ignore all videos that are already in the file
-    # add new videos to list until first element is reached, then take the contents of the original file and write it to a temp file
-    # and append new videos to end of temp file before renaming temp file to file_name.txt (overwrites original file)
-    # otherwise start at the beginning of the list and continue adding videos to the list until a video that is already in the list is reached
-    # then break out of the loop
-    # then take the new videos and add it to a temp file and append contents of the original file to the end of temp file before renaming temp file to file_name.txt (overwrites original file)
     if 'STORED_IN_TXT' not in globals(): stored_in_txt = store_already_written_videos(file_name, 'txt')
     else:                                stored_in_txt = STORED_IN_TXT
     with open(f'{file_name}.txt', 'r+') as old_file, open('yt_videos_list_temp.txt', 'w+') as txt_file:
@@ -125,15 +127,6 @@ def write_to_txt(list_of_videos, file_name, chronological):
 
 @time_writer_function
 def write_to_csv(list_of_videos, file_name, chronological):
-    # if file_name.csv is chronological, start at the end of the list
-    # ignore all videos that are already in the file
-    # add new videos to list until first element is reached
-    # then take the contents of the original file and write it to a temp file
-    # and append new videos to end of temp file before renaming temp file to file_name.csv (overwrites original file)
-    # otherwise start at the beginning of the list and continue adding videos to the list until a video that is already in the list is reached
-    # then break out of the loop
-    # then take the new videos and add it to a temp file
-    # and append contents of the original file to the end of temp file before renaming temp file to file_name.csv (overwrites original file)
     if 'STORED_IN_CSV' not in globals(): stored_in_csv = store_already_written_videos(file_name, 'csv')
     else:                                stored_in_csv = STORED_IN_CSV
     with open(f'{file_name}.csv', 'r+', newline='', encoding='utf-8') as old_file, open('yt_videos_list_temp.csv', 'w+', newline='', encoding='utf-8') as csv_file:
