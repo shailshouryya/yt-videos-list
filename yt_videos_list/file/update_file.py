@@ -59,10 +59,10 @@ def time_writer_function(writer_function):
         print(f'Opened {temp_file}, writing new video information to file....')
 
         # check name of file and number of videos written
-        file_name, new_videos_written, chronological = writer_function(*args, **kwargs)
+        file_name, new_videos_written, reverse_chronological = writer_function(*args, **kwargs)
         file_name = f'{file_name}.{extension}'
-        if chronological is False: os.replace(temp_file, file_name)
-        else:                      os.remove(temp_file)
+        if reverse_chronological: os.replace(temp_file, file_name)
+        else:                     os.remove(temp_file)
 
         end_time = time.perf_counter()
         total_time = end_time - start_time
@@ -80,10 +80,10 @@ def find_number_of_new_videos(list_of_videos, videos_set):
     return len(visited_on_page.difference(videos_set)) # same as len(visited_on_page - VISITED_VIDEOS)
 
 
-def prepare_output(list_of_videos, videos_set, video_number, chronological):
+def prepare_output(list_of_videos, videos_set, video_number, reverse_chronological):
     new_videos = find_number_of_new_videos(list_of_videos, videos_set)
     total_writes = 0
-    if not chronological:
+    if reverse_chronological:
         video_number += new_videos
         incrementer   = -1
     else:
@@ -93,7 +93,7 @@ def prepare_output(list_of_videos, videos_set, video_number, chronological):
 
 
 
-# if chronological is True, start at the end of the selenium elements list and ignore all videos that are already in the file
+# if reverse_chronological is True, start at the end of the selenium elements list and ignore all videos that are already in the file
 # add new videos to temp file until first element is reached
 # then append new videos to end of old file - make sure to remove temp file!
 # otherwise start at the beginning of the list and continue adding videos to the temp file until a video that is already in the list is reached
@@ -101,48 +101,48 @@ def prepare_output(list_of_videos, videos_set, video_number, chronological):
 # then take the contents of the original file and append it to the end of the temp file before renaming temp file to file_name.txt (overwrites original file)
 
 @time_writer_function
-def write_to_txt(list_of_videos, file_name, chronological):
+def write_to_txt(list_of_videos, file_name, reverse_chronological):
     if 'STORED_IN_TXT' not in globals(): stored_in_txt = store_already_written_videos(file_name, 'txt')
     else:                                stored_in_txt = STORED_IN_TXT
     with open(f'{file_name}.txt', 'r+') as old_file, open('yt_videos_list_temp.txt', 'w+') as txt_file:
         video_number =  int(max(re.findall(r'^Video Number:\s*(\d+)', old_file.read(), re.M), key = lambda i: int(i)))
-        video_number, new_videos, total_writes, incrementer = prepare_output(list_of_videos, stored_in_txt, video_number, chronological)
+        video_number, new_videos, total_writes, incrementer = prepare_output(list_of_videos, stored_in_txt, video_number, reverse_chronological)
         spacing      = f'{NEWLINE}' + ' '*4
 
-        for selenium_element in list_of_videos if chronological is False else list_of_videos[::-1]:
+        for selenium_element in list_of_videos if reverse_chronological else list_of_videos[::-1]:
             if selenium_element.get_attribute("href") in STORED_IN_TXT: continue
             else:
                 video_number, total_writes = write.txt_entry(txt_file, selenium_element, NEWLINE, spacing, video_number, incrementer, total_writes)
                 if total_writes % 250 == 0:
                     print(f'{total_writes} new videos written to {txt_file.name}...')
-        if chronological is False:
+        if reverse_chronological:
             old_file.seek(0)
             for line in old_file:
                 txt_file.write(line)
         else:
             txt_file.seek(0)
             for line in txt_file: old_file.write(line)
-    return file_name, new_videos, chronological
+    return file_name, new_videos, reverse_chronological
 
 
 @time_writer_function
-def write_to_csv(list_of_videos, file_name, chronological):
+def write_to_csv(list_of_videos, file_name, reverse_chronological):
     if 'STORED_IN_CSV' not in globals(): stored_in_csv = store_already_written_videos(file_name, 'csv')
     else:                                stored_in_csv = STORED_IN_CSV
     with open(f'{file_name}.csv', 'r+', newline='', encoding='utf-8') as old_file, open('yt_videos_list_temp.csv', 'w+', newline='', encoding='utf-8') as csv_file:
         video_number =  int(max(re.findall(r'^(\d+)?,', old_file.read(), re.M), key = lambda i: int(i)))
-        video_number, new_videos, total_writes, incrementer = prepare_output(list_of_videos, stored_in_csv, video_number, chronological)
+        video_number, new_videos, total_writes, incrementer = prepare_output(list_of_videos, stored_in_csv, video_number, reverse_chronological)
         fieldnames = ['Video Number', 'Video Title', 'Video URL', 'Watched?', 'Watch again later?', 'Notes']
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
 
-        if chronological is False: writer.writeheader()
-        for selenium_element in list_of_videos if chronological is False else list_of_videos[::-1]:
+        if reverse_chronological: writer.writeheader()
+        for selenium_element in list_of_videos if reverse_chronological else list_of_videos[::-1]:
             if selenium_element.get_attribute("href") in STORED_IN_CSV: continue
             else:
                 video_number, total_writes = write.csv_entry(writer, selenium_element, video_number, incrementer, total_writes)
                 if total_writes % 250 == 0:
                     print(f'{total_writes} videos written to {csv_file.name}...')
-        if chronological is False:
+        if reverse_chronological:
             old_file.seek(0)
             old_file.readline() # skip the header since that's already written at the top of temp file
             for line in old_file: csv_file.write(line)
@@ -150,4 +150,4 @@ def write_to_csv(list_of_videos, file_name, chronological):
             csv_file.seek(0)
             for line in csv_file:
                 old_file.write(line)
-    return file_name, new_videos, chronological
+    return file_name, new_videos, reverse_chronological

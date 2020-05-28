@@ -73,10 +73,10 @@ def time_writer_function(writer_function):
     return wrapper_timer
 
 
-def prepare_output(list_of_videos, chronological):
+def prepare_output(list_of_videos, reverse_chronological):
     total_videos = len(list_of_videos)
     total_writes = 0
-    if not chronological:
+    if reverse_chronological:
         video_number = total_videos
         incrementer  = -1
     else:
@@ -86,12 +86,12 @@ def prepare_output(list_of_videos, chronological):
 
 
 @time_writer_function
-def write_to_txt(list_of_videos, file_name, chronological):
-    total_videos, total_writes, video_number, incrementer = prepare_output(list_of_videos, chronological)
+def write_to_txt(list_of_videos, file_name, reverse_chronological):
+    total_videos, total_writes, video_number, incrementer = prepare_output(list_of_videos, reverse_chronological)
     with open('yt_videos_list_temp.txt', 'w') as txt_file:
         spacing = f'{NEWLINE}' + ' '*4
 
-        for selenium_element in list_of_videos if chronological is False else list_of_videos[::-1]:
+        for selenium_element in list_of_videos if reverse_chronological else list_of_videos[::-1]:
             video_number, total_writes = write.txt_entry(txt_file, selenium_element, NEWLINE, spacing, video_number, incrementer, total_writes)
             if total_writes % 250 == 0:
                 print(f'{total_writes} videos written to {txt_file.name}...')
@@ -99,14 +99,14 @@ def write_to_txt(list_of_videos, file_name, chronological):
 
 
 @time_writer_function
-def save_to_mem_write_to_txt(list_of_videos, file_name, chronological):
+def save_to_mem_write_to_txt(list_of_videos, file_name, reverse_chronological):
     # this takes a little bit longer than the write_to_txt() function
-    total_videos, total_writes, video_number, incrementer = prepare_output(list_of_videos, chronological)
+    total_videos, total_writes, video_number, incrementer = prepare_output(list_of_videos, reverse_chronological)
     with open('yt_videos_list_temp.txt', 'w') as memory_file:
         text = ''
         spacing = NEWLINE + ' '*4
 
-        for selenium_element in list_of_videos if chronological is False else list_of_videos[::-1]:
+        for selenium_element in list_of_videos if reverse_chronological else list_of_videos[::-1]:
             text += f'Video Number: {video_number}{NEWLINE}'
             text += f'Video Title:  {selenium_element.get_attribute("title")}{NEWLINE}'
             text += f'Video URL:    {selenium_element.get_attribute("href")}{NEWLINE}'
@@ -124,14 +124,14 @@ def save_to_mem_write_to_txt(list_of_videos, file_name, chronological):
 
 
 @time_writer_function
-def write_to_csv(list_of_videos, file_name, chronological):
-    total_videos, total_writes, video_number, incrementer = prepare_output(list_of_videos, chronological)
+def write_to_csv(list_of_videos, file_name, reverse_chronological):
+    total_videos, total_writes, video_number, incrementer = prepare_output(list_of_videos, reverse_chronological)
     with open('yt_videos_list_temp.csv', 'w', newline='', encoding='utf-8') as csv_file:
         fieldnames = ['Video Number', 'Video Title', 'Video URL', 'Watched?', 'Watch again later?', 'Notes']
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
         writer.writeheader()
 
-        for selenium_element in list_of_videos if chronological is False else list_of_videos[::-1]:
+        for selenium_element in list_of_videos if reverse_chronological else list_of_videos[::-1]:
             video_number, total_writes = write.csv_entry(writer, selenium_element, video_number, incrementer, total_writes)
             if total_writes % 250 == 0:
                 print(f'{total_writes} videos written to {csv_file.name}...')

@@ -19,7 +19,7 @@ def delete_schafer5_file_if_exists():
 
 def create_test_cases(browsers):
     return [
-        ListCreator(driver=browser, chronological=chrono)
+        ListCreator(driver=browser, reverse_chronological=chrono)
         for browser in browsers
         for chrono in [False, True]
     ]
@@ -31,8 +31,8 @@ def run_test_case(list_creator):
     schafer5_url = 'youtube.com/user/schafer5'
     delete_schafer5_file_if_exists()
     list_creator.create_list_for(schafer5_url)
-    if getattr(list_creator, 'chronological'): verify_update(list_creator, schafer5_url, f'tests{path_slash}partial_schafer5_chronological',     f'tests{path_slash}full_schafer5_chronological')
-    else:                                      verify_update(list_creator, schafer5_url, f'tests{path_slash}partial_schafer5_non_chronological', f'tests{path_slash}full_schafer5_non_chronological')
+    if getattr(list_creator, 'reverse_chronological'): verify_update(list_creator, schafer5_url, f'tests{path_slash}partial_schafer5_non_chronological', f'tests{path_slash}full_schafer5_non_chronological')
+    else:                                              verify_update(list_creator, schafer5_url, f'tests{path_slash}partial_schafer5_chronological',     f'tests{path_slash}full_schafer5_chronological')
 
 
 def verify_update(driver, schafer5_url, test_file, full_file):

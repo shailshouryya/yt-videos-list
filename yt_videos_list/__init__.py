@@ -23,7 +23,7 @@ __source__               = 'https://github.com/Shail-Shouryya/yt_videos_list'
 
 
 class ListCreator:
-    def __init__(self, txt=True, csv=True, docx=False, chronological=False, headless=False, scroll_pause_time=0.8, driver=None):
+    def __init__(self, txt=True, csv=True, docx=False, reverse_chronological=True, headless=False, scroll_pause_time=0.8, driver=None):
         '''
         The ListCreator class creates a ListCreator instance with no required arguments.
         Example usage:
@@ -53,10 +53,10 @@ class ListCreator:
              -> txt=True  (default) OR txt=False
              -> csv=True  (default) OR csv=False
 
-        Options for the `chronological` argument are
-          * False (default) - write the files in order from most recent video to the oldest video
-          * True            - write the files in order from oldest video to the most recent video
-             -> chronological=False (default) OR chronological=True
+        Options for the `reverse_chronological` argument are
+          * True (default) - write the files in order from most recent video to the oldest video
+          * False          - write the files in order from oldest video to the most recent video
+             -> reverse_chronological=True (default) OR reverse_chronological=False
 
         Options for the `headless` argument are
           * False (default) - run the driver with an open Selenium instance for viewing
@@ -72,8 +72,8 @@ class ListCreator:
 
         WORKING EXAMPLES:
         ###########################################################
-        For a ListCreator object that creates a csv file but not a txt file in chronological order in headless mode with a 1 second pause between scrolls:
-        lc = ListCreator(txt=True, csv=False, chronological=True, headless=True, scroll_pause_time=1.0)
+        For a ListCreator object that creates a csv file but not a txt file in reverse_chronological order in headless mode with a 1 second pause between scrolls:
+        lc = ListCreator(txt=True, csv=False, headless=True, scroll_pause_time=1.0)
         ###########################################################
 
         ###########################################################
@@ -91,13 +91,13 @@ class ListCreator:
         '''
 
 
-        self.txt               = txt
-        self.csv               = csv
-        self.docx              = docx
-        self.chronological     = chronological
-        self.headless          = headless
-        self.scroll_pause_time = scroll_pause_time
-        self.driver            = None if driver is None else driver.lower()
+        self.txt                   = txt
+        self.csv                   = csv
+        self.docx                  = docx
+        self.reverse_chronological = reverse_chronological
+        self.headless              = headless
+        self.scroll_pause_time     = scroll_pause_time
+        self.driver                = None if driver is None else driver.lower()
 
 
     def create_list_for(self, url=None, file_name=None, channel=None, channel_type=None):
@@ -117,6 +117,6 @@ class ListCreator:
             raise TypeError(Common().missing_url + ModuleMessage().url_argument_usage)
 
         _execution_type = 'module'
-        instance_attributes = (self.txt, self.csv, self.docx, self.chronological, self.headless, self.scroll_pause_time, self.driver)
+        instance_attributes = (self.txt, self.csv, self.docx, self.reverse_chronological, self.headless, self.scroll_pause_time, self.driver)
 
         execute.logic(channel, channel_type, file_name, *instance_attributes, _execution_type)

@@ -71,7 +71,7 @@ help(ListCreator)
 
 ---
 ```python
-ListCreator(csv=True, txt=True, chronological=False,
+ListCreator(csv=True, txt=True, reverse_chronological=True,
             headless=False, scroll_pause_time=0.8, driver='Firefox'
           )
 ```
@@ -95,10 +95,10 @@ There are a number of optional arguments you can specify during the instantiatio
   - `False` - do not create a file for the specified type.
     - `txt=True`  (default) OR `txt=False`
     - `csv=True`  (default) OR `csv=False`
-- `chronological` argument:
-  - `False` (default) - write the files in order from most recent video to the oldest video
-  - `True` - write the files in order from oldest video to the most recent video
-    - `chronological=False` (default) OR `chronological=True`
+- `reverse_chronological` argument:
+  - `True` (default) - write the files in order from most recent video to the oldest video
+  - `False` - write the files in order from oldest video to the most recent video
+    - `reverse_chronological=True` (default) OR `reverse_chronological=False`
 - `headless` argument:
   - `False` (default) - run the driver with an open Selenium instance for viewing
   - `True` - run the driver in "invisible" mode.
