@@ -1,7 +1,7 @@
 import os
 
 from yt_videos_list import ListCreator
-from test_shared import determine_user_os
+from test_shared import determine_path_slash
 
 
 def update_schafer5_chronological():
@@ -13,8 +13,7 @@ def update_schafer5_non_chronological():
 
 
 def move_reference_files_to_tests():
-    if determine_user_os() == 'windows': path_slash = '\\'
-    else:                                path_slash = '/'
+    path_slash = determine_path_slash()
     os.replace('full_schafer5_chronological.txt', f'tests{path_slash}full_schafer5_chronological.txt')
     os.replace('full_schafer5_chronological.csv', f'tests{path_slash}full_schafer5_chronological.csv')
     os.replace('full_schafer5_non_chronological.txt', f'tests{path_slash}full_schafer5_non_chronological.txt')

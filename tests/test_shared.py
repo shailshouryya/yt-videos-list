@@ -9,6 +9,12 @@ from yt_videos_list import ListCreator
 def determine_user_os():
     return platform.system().lower()
 
+
+def determine_path_slash():
+    if determine_user_os() == 'windows': return '\\'
+    else:                                return '/'
+
+
 def delete_schafer5_file_if_exists():
     schafer5 = 'CoreySchafer_videos_list'
     if os.path.exists(f'{schafer5}.txt'):
@@ -26,8 +32,7 @@ def create_test_cases(browsers):
 
 
 def run_test_case(list_creator):
-    if determine_user_os() == 'windows': path_slash = '\\'
-    else:                                path_slash = '/'
+    path_slash = determine_path_slash()
     schafer5_url = 'youtube.com/user/schafer5'
     delete_schafer5_file_if_exists()
     list_creator.create_list_for(schafer5_url)
