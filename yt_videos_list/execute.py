@@ -1,5 +1,4 @@
 import sys
-import platform
 import time
 
 import selenium
@@ -8,6 +7,7 @@ from selenium import webdriver
 from . import program
 from .download.windows_info import get_drive_letter
 from .download.dependencies import download_dependencies
+from .download.user_os_info import determine_user_os
 from .notifications import Common, ModuleMessage, ScriptMessage
 
 
@@ -16,14 +16,6 @@ def logic(channel, channel_type, file_name, txt, csv, docx, reverse_chronologica
     module_message = ModuleMessage()
     script_message = ScriptMessage()
 
-
-    def determine_user_os():
-        if   platform.system().lower().startswith('darwin'):  return 'macos'
-        elif platform.system().lower().startswith('linux'):   return 'linux'
-        elif platform.system().lower().startswith('windows'): return 'windows'
-        else:
-            print(common_message.unsupported_os)
-            sys.exit()
 
 
     def check_user_input():

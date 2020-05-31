@@ -1,8 +1,7 @@
 import os
-import sys
-import platform
 
-from . import selenium_linux, selenium_macos, selenium_windows
+from .               import selenium_linux, selenium_macos, selenium_windows
+from .user_os_info   import determine_user_os
 from ..notifications import Common
 
 
@@ -30,13 +29,6 @@ APPLICATION_NAME = {
     }
 }
 
-def determine_user_os():
-    if   platform.system().lower().startswith('darwin'):  return 'macos'
-    elif platform.system().lower().startswith('linux'):   return 'linux'
-    elif platform.system().lower().startswith('windows'): return 'windows'
-    else:
-        print(Common().unsupported_os)
-        sys.exit()
 
 def download_specific_dependency(driver, user_os):
     selenium_user_os = globals()[f'selenium_{user_os}']

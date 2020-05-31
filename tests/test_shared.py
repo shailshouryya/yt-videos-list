@@ -1,13 +1,9 @@
 import os
 import shutil
 import hashlib
-import platform
 
-from yt_videos_list import ListCreator
-
-
-def determine_user_os():
-    return platform.system().lower()
+from yt_videos_list                       import ListCreator
+from yt_videos_list.download.user_os_info import determine_user_os
 
 
 def determine_path_slash():
