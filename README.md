@@ -1,6 +1,6 @@
 # General Overview
 This package is intended to provide a quick, simple way to create a list of all videos posted to any YouTube channel by providing just the URL to that user's channel videos. There are two types of YouTube channels: one type is a `user` channel and the other is a `channel` channel.
-- user` channel type:
+- `user` channel type:
   - sentdex: https://www.youtube.com/user/sentdex
   - Disney: https://www.youtube.com/user/disneysshows
   - Marvel: https://www.youtube.com/user/MARVEL
