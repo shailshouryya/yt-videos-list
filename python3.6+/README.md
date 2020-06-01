@@ -43,4 +43,4 @@ help(lc)
 python3 -m yt_videos_list
 ```
 
-## [More API information](../docs/python.md#For-more-control)
+## [More API information](../docs/python3.6+.md#For-more-control)
