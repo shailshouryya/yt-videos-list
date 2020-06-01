@@ -3,6 +3,7 @@ import re
 os.system('pip install .')
 
 from yt_videos_list.notifications import Common
+from test_shared                  import determine_path_slash
 
 
 def write_json(drivers_dictionary):
@@ -19,7 +20,8 @@ def write_json(drivers_dictionary):
         file.write('}')
 
 def format_json():
-    with open('temp.json', 'r') as ftemp, open('dependencies_pseudo_json.txt', 'w') as ffinal:
+    path_slash = determine_path_slash()
+    with open('temp.json', 'r') as ftemp, open(f'docs{path_slash}dependencies_pseudo_json.txt', 'w') as ffinal:
         formatted = re.sub(',\n    ]', '\n    ]', ftemp.read())
         formatted = re.sub('],\n  },', ']\n  },', formatted)
         formatted = re.sub('},\n}',    '}\n}',    formatted)
