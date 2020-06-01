@@ -21,7 +21,7 @@ def write_json(drivers_dictionary):
 
 def format_json():
     path_slash = determine_path_slash()
-    with open('temp.json', 'r') as ftemp, open(f'docs{path_slash}dependencies_pseudo_json.txt', 'w') as ffinal:
+    with open('temp.json', 'r') as ftemp, open(f'..{path_slash}docs{path_slash}dependencies_pseudo_json.txt', 'w') as ffinal:
         formatted = re.sub(',\n    ]', '\n    ]', ftemp.read())
         formatted = re.sub('],\n  },', ']\n  },', formatted)
         formatted = re.sub('},\n}',    '}\n}',    formatted)
