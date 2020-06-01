@@ -25,8 +25,7 @@ To scrape the video titles along with the link to the video, you need to run the
   - [Edge](https://www.microsoft.com/edge)
 
 
-## [Future Features](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/futureFeatures.md)
+## [Future Features](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/docs/futureFeatures.md)
 
 
-## Technical Specifications
-Please see [/extra/technicalSpecifications.md](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/extra/technicalSpecifications.md)
+## [Technical Specifications](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/docs/technicalSpecifications.md)

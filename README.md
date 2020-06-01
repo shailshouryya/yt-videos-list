@@ -2,7 +2,7 @@
 **TABLE OF CONTENTS**
 <br>[Quick Start](./README.md#Quick-Start)
 <br>[Running the package from the python interpreter](./README.md#Running-the-package-from-the-python-interpreter)
-<br>[For more control](./docs_python.md#For-more-control)
+<br>[For more control](./docs/python.md#For-more-control)
 
 
 ## Quick Start
