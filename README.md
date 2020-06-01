@@ -11,8 +11,6 @@ This package is intended to provide a quick, simple way to create a list of all 
   - Gordon Ramsay: https://www.youtube.com/channel/UCIEv3lZ_tNXHzL3ox-_uUGQ
   - PBS Space Time: https://www.youtube.com/channel/UC7_gcs09iThXybpVgjHZ_7g
 
-To scrape the video titles along with the link to the video, you need to run the `lc.create_list_for(url)` method on the ListCreator object (create with `lc = ListCreator()`). By default, the name of the file produced will be `channel`_videos_list.ext where the `.ext` will be `.csv` or `.txt `, depending on the type of file(s) that you specified.
-
 ## API guides
 ### [python3](./python3.6+/README.md)
 
