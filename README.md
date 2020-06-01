@@ -13,6 +13,9 @@ This package is intended to provide a quick, simple way to create a list of all 
 
 To scrape the video titles along with the link to the video, you need to run the `lc.create_list_for(url)` method on the ListCreator object (create with `lc = ListCreator()`). By default, the name of the file produced will be `channel`_videos_list.ext where the `.ext` will be `.csv` or `.txt `, depending on the type of file(s) that you specified.
 
+## API guides
+### [python3](./python3.6+/README.md)
+
 ## Dependencies
 **NOTE**: You do need to have the Selenium driver installed to run this package - the first time you run this package the automated downloader should install everything you need, but in case it doesn't, refer to the link below and/or file an [issue here](https://github.com/Shail-Shouryya/yt_videos_list/issues). The Selenium drivers are all pretty similar but differ in subtle ways, so play around with them and see what's different :)
 #### Copy paste the code block that's relevant for the OS of your machine for the Selenium driver(s) you want from **[here](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/docs/dependencies_pseudo_json.txt)**
