@@ -14,7 +14,7 @@ def write_to_txt():
     with open ('{}_videos_list.txt'.format(userName.strip('/')), 'w+') as f:
         print('Opened       {}, writing to file...'.format(f.name))
         for url in soup.find_all('a', attrs = {'class': 'yt-uix-sessionlink', 'dir':'ltr'}):
-        	# f.write('{}\n'.format(url))
+            # f.write('{}\n'.format(url))
             f.write('title:\n{}\n'.format(url.string))
             f.write('url.href:\n{}{}\n'.format(base_url, url.get('href')))
             f.write('*'*50 + '\n')
