@@ -19,7 +19,7 @@ python3
 from yt_videos_list import ListCreator
 
 my_driver = 'firefox' # SUBSTITUTE THE DRIVER YOU WANT
-lc = ListCreator(driver=my_driver)
+lc = ListCreator(driver=my_driver, scroll_pause_time=0.8)
 
 # "user" channel_type (example uses Corey Schafer):
 lc.create_list_for(url='https://www.youtube.com/user/schafer5')
@@ -37,6 +37,14 @@ os.system('dir /O-D | find "_videos_list"')
 # for more information on using the module:
 help(lc)
 ```
+- options for `my_driver` include:
+  - `my_driver = 'firefox'`
+  - `my_driver = 'opera'`
+  - `my_driver = 'safari'`
+  - `my_driver = 'chrome'`
+  - `my_driver = 'brave'`
+  - `my_driver = 'edge'` (Windows only!)
+- increase `scroll_pause_time` for laggy internet and decrease `scroll_pause_time` for fast internet
 
 ### Running the package from the CLI as a script using -m (coming in `yt-videos-list 2.0`!)
 ```shell
