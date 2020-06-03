@@ -39,7 +39,7 @@ class ListCreator:
           * Safari
           * Chrome
           * Brave
-          * Edge
+          * Edge (Windows only)
             -> driver='firefox'
             -> driver='opera'
             -> driver='safari'

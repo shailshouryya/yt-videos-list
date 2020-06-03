@@ -20,7 +20,7 @@ There are a number of optional arguments you can specify during the instantiatio
   - Safari
   - Chrome
   - Brave
-  - Edge
+  - Edge (Windows only)
     - `driver='firefox'`
     - `driver='opera'`
     - `driver='safari'`
