@@ -123,8 +123,10 @@ class Common:
     @classmethod
     def format_chromedriver_list(cls, operating_system):
         return [
-            cls.format_driver_information           (operating_system, '81.0.4044.69',  '81', 'chromedriver', 'Google Chrome'),
-            cls.format_chromedriver_download_command(operating_system, '81.0.4044.69'),
+            cls.format_driver_information           (operating_system, '83.0.4103.39',  '83', 'chromedriver', 'Google Chrome'),
+            cls.format_chromedriver_download_command(operating_system, '83.0.4103.39'),
+            cls.format_driver_information           (operating_system, '81.0.4044.138', '81', 'chromedriver', 'Google Chrome'),
+            cls.format_chromedriver_download_command(operating_system, '81.0.4044.138'),
             cls.format_driver_information           (operating_system, '80.0.3987.106', '80', 'chromedriver', 'Google Chrome'),
             cls.format_chromedriver_download_command(operating_system, '80.0.3987.106'),
             cls.format_driver_information           (operating_system, '79.0.3945.36',  '79', 'chromedriver', 'Google Chrome'),
@@ -167,6 +169,14 @@ class Common:
     @classmethod
     def format_msedgedriver_list(cls, operating_system):
         return [
+            cls.format_driver_information           (operating_system, '85.0.535.0',   '85', 'msedgedriver', 'Microsoft Edge'),
+            cls.format_msedgedriver_download_command(operating_system, '85.0.535.0'),
+            cls.format_driver_information           (operating_system, '84.0.524.0',   '84', 'msedgedriver', 'Microsoft Edge'),
+            cls.format_msedgedriver_download_command(operating_system, '84.0.524.0'),
+            cls.format_driver_information           (operating_system, '83.0.478.44',  '83', 'msedgedriver', 'Microsoft Edge'),
+            cls.format_msedgedriver_download_command(operating_system, '83.0.478.44'),
+            cls.format_driver_information           (operating_system, '82.0.459.1',   '82', 'msedgedriver', 'Microsoft Edge'),
+            cls.format_msedgedriver_download_command(operating_system, '82.0.459.1'),
             cls.format_driver_information           (operating_system, '81.0.409.0',   '81', 'msedgedriver', 'Microsoft Edge'),
             cls.format_msedgedriver_download_command(operating_system, '81.0.409.0'),
             cls.format_driver_information           (operating_system, '80.0.361.111', '80', 'msedgedriver', 'Microsoft Edge'),

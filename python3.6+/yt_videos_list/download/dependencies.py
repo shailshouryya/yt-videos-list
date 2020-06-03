@@ -89,6 +89,8 @@ def execute_download_command(driver, user_os, version):
             '54': -1,
         },
         'chrome': {
+            '83': -21,
+            # there was no 82
             '81': -19,
             '80': -17,
             '79': -15,
@@ -111,6 +113,10 @@ def execute_download_command(driver, user_os, version):
             '75': -1
         },
         'edge': {
+            '85': -13,
+            '84': -11,
+            '83': -9,
+            '82': -7,
             '81': -5,
             '80': -3,
             '79': -1
