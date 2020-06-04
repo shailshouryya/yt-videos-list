@@ -110,7 +110,7 @@ def write_to_txt(list_of_videos, file_name, reverse_chronological):
         spacing      = f'{NEWLINE}' + ' '*4
 
         for selenium_element in list_of_videos if reverse_chronological else list_of_videos[::-1]:
-            if selenium_element.get_attribute("href") in STORED_IN_TXT: continue
+            if selenium_element.get_attribute("href") in stored_in_txt: continue
             else:
                 video_number, total_writes = write.txt_entry(txt_file, selenium_element, NEWLINE, spacing, video_number, incrementer, total_writes)
                 if total_writes % 250 == 0:
@@ -137,7 +137,7 @@ def write_to_csv(list_of_videos, file_name, reverse_chronological):
 
         if reverse_chronological: writer.writeheader()
         for selenium_element in list_of_videos if reverse_chronological else list_of_videos[::-1]:
-            if selenium_element.get_attribute("href") in STORED_IN_CSV: continue
+            if selenium_element.get_attribute("href") in stored_in_csv: continue
             else:
                 video_number, total_writes = write.csv_entry(writer, selenium_element, video_number, incrementer, total_writes)
                 if total_writes % 250 == 0:
