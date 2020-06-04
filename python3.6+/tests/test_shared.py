@@ -11,12 +11,18 @@ def determine_path_slash():
     else:                                return '/'
 
 
-def delete_schafer5_file_if_exists():
+def delete_txt(filepath):
+    if os.path.exists(f'{filepath}.txt'):
+        os.remove(f'{filepath}.txt')
+
+def delete_csv(filepath):
+    if os.path.exists(f'{filepath}.csv'):
+        os.remove(f'{filepath}.csv')
+
+def delete_all_schafer5_files():
     schafer5 = 'CoreySchafer_videos_list'
-    if os.path.exists(f'{schafer5}.txt'):
-        os.remove(f'{schafer5}.txt')
-    if os.path.exists(f'{schafer5}.csv'):
-        os.remove(f'{schafer5}.csv')
+    delete_txt(schafer5)
+    delete_csv(schafer5)
 
 
 def create_test_cases(browsers):
@@ -30,7 +36,7 @@ def create_test_cases(browsers):
 def run_test_case(list_creator):
     path_slash = determine_path_slash()
     schafer5_url = 'youtube.com/user/schafer5'
-    delete_schafer5_file_if_exists()
+    delete_all_schafer5_files()
     list_creator.create_list_for(schafer5_url)
     if getattr(list_creator, 'reverse_chronological'): verify_update(list_creator, schafer5_url, f'tests{path_slash}partial_schafer5_non_chronological', f'tests{path_slash}full_schafer5_non_chronological')
     else:                                              verify_update(list_creator, schafer5_url, f'tests{path_slash}partial_schafer5_chronological',     f'tests{path_slash}full_schafer5_chronological')
