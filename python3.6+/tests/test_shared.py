@@ -43,11 +43,23 @@ def run_test_case(list_creator):
 
 
 def verify_update(driver, schafer5_url, test_file, full_file):
+    variations = [use_partial_csv_and_txt]
+    for variation in variations:
+        variation(test_file)
+        driver.create_list_for(schafer5_url)
+        # verify calling the create_list_for() method updates the partial file properly
+        compare_test_files_to_reference_files(full_file)
+
+
+def use_partial_csv_and_txt(test_file):
+    create_partial_txt(test_file)
+    create_partial_csv(test_file)
+
+def create_partial_txt(test_file):
     shutil.copy(f'{test_file}.txt', 'CoreySchafer_videos_list.txt')
+
+def create_partial_csv(test_file):
     shutil.copy(f'{test_file}.csv', 'CoreySchafer_videos_list.csv')
-    driver.create_list_for(schafer5_url)
-    # verify calling the create_list_for() method updates the partial file properly
-    compare_test_files_to_reference_files(full_file)
 
 
 def compare_test_files_to_reference_files(full_file):
