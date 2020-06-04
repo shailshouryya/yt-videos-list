@@ -47,6 +47,10 @@ def verify_update(driver, schafer5_url, test_file, full_file):
     shutil.copy(f'{test_file}.csv', 'CoreySchafer_videos_list.csv')
     driver.create_list_for(schafer5_url)
     # verify calling the create_list_for() method updates the partial file properly
+    compare_test_files_to_reference_files(full_file)
+
+
+def compare_test_files_to_reference_files(full_file):
     with open('CoreySchafer_videos_list.txt', 'r') as test_txt, open('CoreySchafer_videos_list.csv', 'r') as test_csv:
         current_txt = hashlib.sha256(test_txt.read().encode('utf-8')).hexdigest()
         current_csv = hashlib.sha256(test_csv.read().encode('utf-8')).hexdigest()
