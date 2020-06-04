@@ -102,8 +102,8 @@ def prepare_output(list_of_videos, videos_set, video_number, reverse_chronologic
 
 @time_writer_function
 def write_to_txt(list_of_videos, file_name, reverse_chronological):
-    if 'STORED_IN_TXT' not in globals(): stored_in_txt = store_already_written_videos(file_name, 'txt')
-    else:                                stored_in_txt = STORED_IN_TXT
+    if 'STORED_IN_TXT' not in locals(): stored_in_txt = store_already_written_videos(file_name, 'txt')
+    else:                               stored_in_txt = STORED_IN_TXT
     with open(f'{file_name}.txt', 'r+') as old_file, open('yt_videos_list_temp.txt', 'w+') as txt_file:
         video_number =  int(max(re.findall(r'^Video Number:\s*(\d+)', old_file.read(), re.M), key = lambda i: int(i)))
         video_number, new_videos, total_writes, incrementer = prepare_output(list_of_videos, stored_in_txt, video_number, reverse_chronological)
@@ -127,8 +127,8 @@ def write_to_txt(list_of_videos, file_name, reverse_chronological):
 
 @time_writer_function
 def write_to_csv(list_of_videos, file_name, reverse_chronological):
-    if 'STORED_IN_CSV' not in globals(): stored_in_csv = store_already_written_videos(file_name, 'csv')
-    else:                                stored_in_csv = STORED_IN_CSV
+    if 'STORED_IN_CSV' not in locals(): stored_in_csv = store_already_written_videos(file_name, 'csv')
+    else:                               stored_in_csv = STORED_IN_CSV
     with open(f'{file_name}.csv', 'r+', newline='', encoding='utf-8') as old_file, open('yt_videos_list_temp.csv', 'w+', newline='', encoding='utf-8') as csv_file:
         video_number =  int(max(re.findall(r'^(\d+)?,', old_file.read(), re.M), key = lambda i: int(i)))
         video_number, new_videos, total_writes, incrementer = prepare_output(list_of_videos, stored_in_csv, video_number, reverse_chronological)
