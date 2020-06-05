@@ -45,6 +45,7 @@ def run_test_case(list_creator):
 def verify_update(driver, schafer5_url, test_file, full_file):
     variations = [use_partial_csv_only, use_partial_txt_only, use_partial_csv_and_txt]
     for variation in variations:
+        print(f'\nTESTING list_creator with list_creator.reverse_chronological set to {vars(driver)["reverse_chronological"]}')
         variation(test_file)
         driver.create_list_for(schafer5_url)
         # verify calling the create_list_for() method updates the partial file properly
@@ -52,14 +53,17 @@ def verify_update(driver, schafer5_url, test_file, full_file):
 
 
 def use_partial_txt_only(test_file):
+    print('TESTING with a pre-existing txt file only (no pre-existing csv file) ....')
     delete_all_schafer5_files()
     create_partial_txt(test_file)
 
 def use_partial_csv_only(test_file):
+    print('TESTING with a pre-existing csv file only (no pre-existing txt file) ....')
     delete_all_schafer5_files()
     create_partial_csv(test_file)
 
 def use_partial_csv_and_txt(test_file):
+    print('TESTING with both pre-existing txt and csv files ....')
     create_partial_txt(test_file)
     create_partial_csv(test_file)
 
