@@ -11,6 +11,14 @@ def determine_path_slash():
     else:                                return '/'
 
 
+def create_test_cases(browsers):
+    return [
+        ListCreator(driver=browser, reverse_chronological=chrono)
+        for browser in browsers
+        for chrono in [False, True]
+    ]
+
+
 def delete_txt(filepath):
     if os.path.exists(f'{filepath}.txt'):
         os.remove(f'{filepath}.txt')
@@ -23,14 +31,6 @@ def delete_all_schafer5_files():
     schafer5 = 'CoreySchafer_videos_list'
     delete_txt(schafer5)
     delete_csv(schafer5)
-
-
-def create_test_cases(browsers):
-    return [
-        ListCreator(driver=browser, reverse_chronological=chrono)
-        for browser in browsers
-        for chrono in [False, True]
-    ]
 
 
 def run_test_case(list_creator):
@@ -66,6 +66,7 @@ def use_partial_csv_and_txt(test_file):
     print('TESTING with both pre-existing txt and csv files ....')
     create_partial_txt(test_file)
     create_partial_csv(test_file)
+
 
 def create_partial_txt(test_file):
     shutil.copy(f'{test_file}.txt', 'CoreySchafer_videos_list.txt')
