@@ -2,7 +2,8 @@ import os
 os.system('pip install .')
 
 from yt_videos_list.download.windows_info import get_drive_letter
-from test_shared                          import determine_user_os, create_test_cases, run_test_case
+from yt_videos_list.download.user_os_info import determine_user_os
+from test_shared                          import create_test_cases, run_test_case
 
 
 def remove_dependencies():
