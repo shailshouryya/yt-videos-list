@@ -53,17 +53,17 @@ def verify_update(driver, schafer5_url, test_file, full_file):
 
 
 def use_partial_txt_only(test_file):
-    print('TESTING with a pre-existing txt file only (no pre-existing csv file) ....')
+    print('TESTING with a pre-existing txt file only (no pre-existing csv file)....')
     delete_all_schafer5_files()
     create_partial_txt(test_file)
 
 def use_partial_csv_only(test_file):
-    print('TESTING with a pre-existing csv file only (no pre-existing txt file) ....')
+    print('TESTING with a pre-existing csv file only (no pre-existing txt file)....')
     delete_all_schafer5_files()
     create_partial_csv(test_file)
 
 def use_partial_csv_and_txt(test_file):
-    print('TESTING with both pre-existing txt and csv files ....')
+    print('TESTING with both pre-existing txt and csv files....')
     create_partial_txt(test_file)
     create_partial_csv(test_file)
 
