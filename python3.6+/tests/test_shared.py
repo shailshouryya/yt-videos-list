@@ -13,9 +13,9 @@ def determine_path_slash():
 
 def create_test_cases(browsers):
     return [
-        ListCreator(driver=browser, reverse_chronological=chrono)
+        ListCreator(driver=browser, reverse_chronological=is_reverse_chronological)
         for browser in browsers
-        for chrono in [False, True]
+        for is_reverse_chronological in [True, False]
     ]
 
 
