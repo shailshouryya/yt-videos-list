@@ -54,8 +54,7 @@ def time_writer_function(writer_function):
     def wrapper_timer(*args, **kwargs):
         start_time = time.perf_counter()
         extension  = writer_function.__name__.split('_')[-1]
-        temp_file  = 'yt_videos_list_temp'
-        temp_file  = f'{temp_file}.{extension}'
+        temp_file  = f'yt_videos_list_temp.{extension}'
         print(f'Opened {temp_file}, writing new video information to file....')
 
         # check name of file and number of videos written
