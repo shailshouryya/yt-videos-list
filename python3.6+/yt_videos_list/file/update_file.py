@@ -116,8 +116,7 @@ def write_to_txt(list_of_videos, file_name, reverse_chronological):
                     print(f'{total_writes} new videos written to {txt_file.name}...')
         if reverse_chronological:
             old_file.seek(0)
-            for line in old_file:
-                txt_file.write(line)
+            for line in old_file: txt_file.write(line)
         else:
             txt_file.seek(0)
             for line in txt_file: old_file.write(line)
@@ -147,6 +146,5 @@ def write_to_csv(list_of_videos, file_name, reverse_chronological):
             for line in old_file: csv_file.write(line)
         else:
             csv_file.seek(0)
-            for line in csv_file:
-                old_file.write(line)
+            for line in csv_file: old_file.write(line)
     return file_name, new_videos, reverse_chronological
