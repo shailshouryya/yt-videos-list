@@ -1,10 +1,7 @@
 import os
-
 from .      import selenium_linux, selenium_macos, selenium_windows
 from .user_os_info   import determine_user_os
 from ..notifications import Common
-
-
 COMMON_MESSAGE = Common()
 APPLICATION_NAME = {
  'macos': {
@@ -28,8 +25,6 @@ APPLICATION_NAME = {
   'edge':  'Edge'
  }
 }
-
-
 def download_specific_dependency(driver, user_os):
  selenium_user_os = globals()[f'selenium_{user_os}']
  browser = APPLICATION_NAME[user_os][driver]
@@ -40,12 +35,10 @@ def download_specific_dependency(driver, user_os):
   execute_download_command(driver, user_os, major_version)
  else:
   COMMON_MESSAGE.display_browser_not_found_information(browser, user_os)
-
 def download_all_dependencies(user_os):
  print(COMMON_MESSAGE.automated_driver_update)
  for driver in APPLICATION_NAME[user_os]:
   download_specific_dependency(driver, user_os)
-
 def execute_download_command(driver, user_os, version):
  # indexed values in reverse order to avoid having to map every version to a different element every time a new driver/browser version comes out since all the values get shifted down by 2 with new additions to the top of the list
  row_in_list = {
@@ -127,7 +120,6 @@ def execute_download_command(driver, user_os, version):
  print(f'{COMMON_MESSAGE.driver_downloads_for_os[driver][user_os][row-1]} #')
  print(f'{COMMON_MESSAGE.driver_downloads_for_os[driver][user_os][row]}')
  os.system(COMMON_MESSAGE.driver_downloads_for_os[driver][user_os][row])
-
 def download_dependencies():
  user_os = determine_user_os()
  download_all_dependencies(user_os)

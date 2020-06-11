@@ -20,6 +20,7 @@ def main():
         with open(f'yt_videos_list/{file}', 'r') as read_file, open(f'ship{file}', 'w') as write_file:
             formatted = read_file.read()
             formatted = re.sub(r'    ', ' ', formatted)
+            formatted = re.sub(r'^\n', '',   formatted, flags=re.MULTILINE)
             write_file.write(formatted)
 
 if __name__ == '__main__':
