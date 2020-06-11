@@ -18,6 +18,9 @@ def main():
             valid_files.append(filepath)
     for file in valid_files:
         with open(f'yt_videos_list/{file}', 'r') as read_file, open(f'ship{file}', 'w') as write_file:
+            if file.split('/')[-1] == '__init__.py':
+                write_file.write(read_file.read())
+                continue
             formatted = read_file.read()
             formatted = re.sub(r'    ', ' ', formatted)
             formatted = re.sub(r'^\n', '',   formatted, flags=re.MULTILINE)
