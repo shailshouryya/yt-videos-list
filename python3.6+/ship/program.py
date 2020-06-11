@@ -6,7 +6,7 @@ def determine_action(url, driver, scroll_pause_time, reverse_chronological, file
  txt_exists = os.path.isfile(f'{file_name}.txt')
  csv_exists = os.path.isfile(f'{file_name}.csv')
  if txt_exists and csv_exists: videos_list = file.update_file.scroll_to_old_videos(url, driver, scroll_pause_time, txt_exists, csv_exists, file_name)
- else:       videos_list = file.create_file.scroll_to_bottom (url, driver, scroll_pause_time) # run when either the txt or csv file needs to be created from scratch
+ else:       videos_list = file.create_file.scroll_to_bottom (url, driver, scroll_pause_time)
  if len(videos_list) == 0:
   print(COMMON_MESSAGE.no_videos_found)
   return

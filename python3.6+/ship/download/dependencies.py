@@ -5,7 +5,7 @@ from ..notifications import Common
 COMMON_MESSAGE = Common()
 APPLICATION_NAME = {
  'macos': {
-  # 'driver': 'browser_name'
+    
   'firefox':  'Firefox',
   'opera': 'Opera',
   'chrome':   'Google Chrome',
@@ -40,7 +40,7 @@ def download_all_dependencies(user_os):
  for driver in APPLICATION_NAME[user_os]:
   download_specific_dependency(driver, user_os)
 def execute_download_command(driver, user_os, version):
- # indexed values in reverse order to avoid having to map every version to a different element every time a new driver/browser version comes out since all the values get shifted down by 2 with new additions to the top of the list
+   
  row_in_list = {
   'firefox': {
    '79': -1,
@@ -72,9 +72,9 @@ def execute_download_command(driver, user_os, version):
    '64': -17,
    '63': -15,
    '62': -13,
-   # there was no version 61
+     
    '60': -11,
-   # there was no version 59
+     
    '58': -9,
    '57': -7,
    '56': -5,
@@ -83,7 +83,7 @@ def execute_download_command(driver, user_os, version):
   },
   'chrome': {
    '83': -21,
-   # there was no 82
+     
    '81': -19,
    '80': -17,
    '79': -15,

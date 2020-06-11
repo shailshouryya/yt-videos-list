@@ -20,7 +20,7 @@ def scroll_down(driver, scroll_pause_time):
 def save_elements_to_list(driver, start_time, scroll_pause_time, url):
  elements = driver.find_elements_by_xpath('//*[@id="video-title"]')
  end_time = time.perf_counter()
- total_time = end_time - start_time - scroll_pause_time # subtract scroll_pause_time to account for the extra waiting time to verify end of page
+ total_time = end_time - start_time - scroll_pause_time
  print(f'It took {total_time} seconds to find {len(elements)} videos from {url}{NEWLINE}')
  return elements
 def scroll_to_old_videos(url, driver, scroll_pause_time, txt_exists, csv_exists, file_name):
@@ -30,10 +30,10 @@ def scroll_to_old_videos(url, driver, scroll_pause_time, txt_exists, csv_exists,
  STORED_IN_CSV = None
  if txt_exists: STORED_IN_TXT = store_already_written_videos(file_name, 'txt')
  if csv_exists: STORED_IN_CSV = store_already_written_videos(file_name, 'csv')
- if STORED_IN_TXT and STORED_IN_CSV: VISITED_VIDEOS = STORED_IN_TXT.intersection(STORED_IN_CSV) # same as STORED_IN_TXT & STORED_IN_CSV
- else:          VISITED_VIDEOS = STORED_IN_TXT or STORED_IN_CSV   # takes values from whichever file exists
+ if STORED_IN_TXT and STORED_IN_CSV: VISITED_VIDEOS = STORED_IN_TXT.intersection(STORED_IN_CSV)
+ else:          VISITED_VIDEOS = STORED_IN_TXT or STORED_IN_CSV     
  print(f'Detected an existing file with the name {file_name} in this directory, checking for new videos to update {file_name}....')
- start_time = time.perf_counter() # timer stops in save_elements_to_list() function
+ start_time = time.perf_counter()
  found_old_videos = False
  while found_old_videos is False:
   found_old_videos = scroll_down(driver, scroll_pause_time)
@@ -45,7 +45,7 @@ def time_writer_function(writer_function):
   extension  = writer_function.__name__.split('_')[-1]
   temp_file  = f'yt_videos_list_temp.{extension}'
   print(f'Opened {temp_file}, writing new video information to file....')
-  # check name of file and number of videos written
+    
   file_name, new_videos_written, reverse_chronological = writer_function(*args, **kwargs)
   file_name = f'{file_name}.{extension}'
   if reverse_chronological: os.replace(temp_file, file_name)
@@ -60,7 +60,7 @@ def time_writer_function(writer_function):
  return wrapper_timer
 def find_number_of_new_videos(list_of_videos, videos_set):
  visited_on_page = {selenium_element.get_attribute("href") for selenium_element in list_of_videos}
- return len(visited_on_page.difference(videos_set)) # same as len(visited_on_page - VISITED_VIDEOS)
+ return len(visited_on_page.difference(videos_set))
 def prepare_output(list_of_videos, videos_set, video_number, reverse_chronological):
  new_videos = find_number_of_new_videos(list_of_videos, videos_set)
  total_writes = 0
@@ -116,7 +116,7 @@ def write_to_csv(list_of_videos, file_name, reverse_chronological):
      print(f'{total_writes} videos written to {csv_file.name}...')
   if reverse_chronological:
    old_file.seek(0)
-   old_file.readline() # skip the header since that's already written at the top of temp file
+   old_file.readline()
    for line in old_file: csv_file.write(line)
   else:
    csv_file.seek(0)

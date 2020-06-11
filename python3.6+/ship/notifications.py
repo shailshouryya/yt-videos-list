@@ -55,7 +55,7 @@ class Common:
    }
   }
  more_driver_info = {
-  # 'driver': ['driverName', 'url for more driver info',  'url for driver releases', 'browser name', 'url for browser download']
+    
   'firefox': ['geckodriver',  'https://github.com/mozilla/geckodriver',        'https://github.com/mozilla/geckodriver/releases',              'Mozilla Firefox', 'https://www.mozilla.org/en-US/firefox/new/'],
   'opera':   ['operadriver',  'https://github.com/operasoftware/operachromiumdriver',      'https://github.com/operasoftware/operachromiumdriver/releases',         'Opera',     'https://www.opera.com/'],
   'chrome':  ['chromedriver', 'https://sites.google.com/a/chromium.org/chromedriver/home',    'https://sites.google.com/a/chromium.org/chromedriver/downloads',           'Google Chrome',   'https://www.google.com/chrome/'],
