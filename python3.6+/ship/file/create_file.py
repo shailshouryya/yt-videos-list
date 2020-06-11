@@ -11,7 +11,6 @@ def scroll_down(current_elements_count, driver, scroll_pause_time):
  new_elements_count = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
  print(f'Found {new_elements_count} videos...')
  if new_elements_count == current_elements_count:
-    
   print(common_message.no_new_videos_found)
   time.sleep(scroll_pause_time)
   new_elements_count = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
@@ -43,7 +42,6 @@ def time_writer_function(writer_function):
   extension  = writer_function.__name__.split('_')[-1]
   temp_file  = f'yt_videos_list_temp.{extension}'
   print(f'Opened {temp_file}, writing video information to file....')
-    
   file_name, videos_written = writer_function(*args, **kwargs)
   file_name = f'{file_name}.{extension}'
   os.replace(temp_file, file_name)
@@ -77,7 +75,6 @@ def write_to_txt(list_of_videos, file_name, reverse_chronological):
  return file_name, total_videos
 @time_writer_function
 def save_to_mem_write_to_txt(list_of_videos, file_name, reverse_chronological):
-   
  total_videos, total_writes, video_number, incrementer = prepare_output(list_of_videos, reverse_chronological)
  with open('yt_videos_list_temp.txt', 'w') as memory_file:
   text = ''

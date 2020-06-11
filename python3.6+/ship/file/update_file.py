@@ -31,8 +31,7 @@ def scroll_to_old_videos(url, driver, scroll_pause_time, txt_exists, csv_exists,
  if txt_exists: STORED_IN_TXT = store_already_written_videos(file_name, 'txt')
  if csv_exists: STORED_IN_CSV = store_already_written_videos(file_name, 'csv')
  if STORED_IN_TXT and STORED_IN_CSV: VISITED_VIDEOS = STORED_IN_TXT.intersection(STORED_IN_CSV)
- else:          VISITED_VIDEOS = STORED_IN_TXT or STORED_IN_CSV     
- print(f'Detected an existing file with the name {file_name} in this directory, checking for new videos to update {file_name}....')
+ else:          VISITED_VIDEOS = STORED_IN_TXT or STORED_IN_CSV print(f'Detected an existing file with the name {file_name} in this directory, checking for new videos to update {file_name}....')
  start_time = time.perf_counter()
  found_old_videos = False
  while found_old_videos is False:
@@ -45,7 +44,6 @@ def time_writer_function(writer_function):
   extension  = writer_function.__name__.split('_')[-1]
   temp_file  = f'yt_videos_list_temp.{extension}'
   print(f'Opened {temp_file}, writing new video information to file....')
-    
   file_name, new_videos_written, reverse_chronological = writer_function(*args, **kwargs)
   file_name = f'{file_name}.{extension}'
   if reverse_chronological: os.replace(temp_file, file_name)

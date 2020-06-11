@@ -23,6 +23,7 @@ def main():
                 continue
             formatted = read_file.read()
             formatted = re.sub(r' # .+', '', formatted)
+            formatted = re.sub(r' +\n', '',  formatted)
             formatted = re.sub(r'    ', ' ', formatted)
             formatted = re.sub(r'^\n', '',   formatted, flags=re.MULTILINE)
             write_file.write(formatted)

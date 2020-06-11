@@ -51,21 +51,16 @@ def logic(channel, channel_type, file_name, txt, csv, docx, reverse_chronologica
   else:
    options.binary_location = '/Applications/Brave Browser.app/Contents/MacOS/Brave Browser'
    executable_path   = '/usr/local/bin/bravedriver'
-    
   return webdriver.Chrome(options=options, executable_path=executable_path)
  def configure_edge_driver():
-    
   if user_os == 'windows':
    drive  = get_drive_letter()
-     
    executable_path   = rf'{drive}:\Windows\msedgedriver.exe'
   else:
-     
    executable_path   = '/usr/local/bin/msedgedriver'
    print(common_message.unsupported_edge)
    print(module_message.show_driver_options)
    sys.exit()
-    
   return webdriver.Edge(executable_path=executable_path)
  def open_user_driver():
   if headless is False:
@@ -82,9 +77,6 @@ def logic(channel, channel_type, file_name, txt, csv, docx, reverse_chronologica
   options.headless = True
   return seleniumdriver(options=options)
  def set_up_headless_opera_driver():
-    
-    
-    
   options = webdriver.ChromeOptions()
   options.add_argument('headless')
   driver = seleniumdriver(options=options)
@@ -94,7 +86,6 @@ def logic(channel, channel_type, file_name, txt, csv, docx, reverse_chronologica
   print(common_message.unsupported_safari_headless)
   return seleniumdriver()
  def set_up_headless_chrome_driver():
-    
   options = webdriver.ChromeOptions()
   options.add_argument('headless')
   return seleniumdriver(chrome_options=options)
@@ -120,8 +111,6 @@ def logic(channel, channel_type, file_name, txt, csv, docx, reverse_chronologica
  try:
   driver = open_user_driver()
  except selenium.common.exceptions.WebDriverException as err:
-    
-    
   common_message.display_selenium_dependency_error(err)
   try:
    download_dependencies()
