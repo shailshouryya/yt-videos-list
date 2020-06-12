@@ -1,3 +1,13 @@
+Video Number: 228
+Video Title:  Python YouTube API Tutorial: Calculating the Duration of a Playlist
+Video URL:    https://www.youtube.com/watch?v=coZbOM6E47I
+Watched?
+    
+Watch again later?
+    
+Notes:
+    
+***************************************************************************
 Video Number: 227
 Video Title:  Python YouTube API Tutorial: Getting Started - Creating an API Key and Querying the API
 Video URL:    https://www.youtube.com/watch?v=th5_9woFJmk
