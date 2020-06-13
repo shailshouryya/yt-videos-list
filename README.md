@@ -1,15 +1,7 @@
 # General Overview
-This package provides a quick, simple way to create a list of all videos posted to any YouTube channel by providing just the URL to that channel's videos. There are two types of YouTube channels: one type is a `user` channel and the other is a `channel` channel.
-- `user` channel type:
-  - sentdex: https://www.youtube.com/user/sentdex
-  - Disney: https://www.youtube.com/user/disneysshows
-  - Marvel: https://www.youtube.com/user/MARVEL
-  - Apple: https://www.youtube.com/user/Apple
-- `channel` channel type:
-  - Tasty: https://www.youtube.com/channel/UCJFp8uSYCjXOMnkUyb3CQ3Q
-  - Billie Eilish: https://www.youtube.com/channel/UCiGm_E4ZwYSHV3bcW1pnSeQ
-  - Gordon Ramsay: https://www.youtube.com/channel/UCIEv3lZ_tNXHzL3ox-_uUGQ
-  - PBS Space Time: https://www.youtube.com/channel/UC7_gcs09iThXybpVgjHZ_7g
+This package provides a quick, simple way to create a list of all videos posted to any YouTube channel by providing just the URL to that channel's videos. Follow the link to the API in the language you want to work in from the API guides section below.
+
+If you found this interesting or useful, **please consider starring this repo** so other people can more easily find and use this. Thank you!!
 
 ## API guides
 ### [python3](./python3.6+/README.md)
@@ -26,5 +18,17 @@ This package provides a quick, simple way to create a list of all videos posted 
   - [Edge](https://www.microsoft.com/edge)
 
 ## [Future Features](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/docs/futureFeatures.md)
-
 ## [Technical Specifications](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/docs/technicalSpecifications.md)
+
+## Interesting information about YouTube
+There are two types of YouTube channels: one type is a `user` channel and the other is a `channel` channel.
+- `user` channel type:
+  - sentdex: https://www.youtube.com/user/sentdex
+  - Disney: https://www.youtube.com/user/disneysshows
+  - Marvel: https://www.youtube.com/user/MARVEL
+  - Apple: https://www.youtube.com/user/Apple
+- `channel` channel type:
+  - Tasty: https://www.youtube.com/channel/UCJFp8uSYCjXOMnkUyb3CQ3Q
+  - Billie Eilish: https://www.youtube.com/channel/UCiGm_E4ZwYSHV3bcW1pnSeQ
+  - Gordon Ramsay: https://www.youtube.com/channel/UCIEv3lZ_tNXHzL3ox-_uUGQ
+  - PBS Space Time: https://www.youtube.com/channel/UC7_gcs09iThXybpVgjHZ_7g

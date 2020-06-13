@@ -46,10 +46,6 @@ help(lc)
   - `my_driver = 'edge'` (Windows only!)
 - increase `scroll_pause_time` for laggy internet and decrease `scroll_pause_time` for fast internet
 
-### Running the package from the CLI as a script using -m (coming in `yt-videos-list 2.0`!)
-```shell
-python3 -m yt_videos_list
-```
-
 ## [More API information](../docs/python3.6+.md#For-more-control)
 ## [Back to main page](../README.md)
+### If you found this interesting or useful, **please consider starring this repo** so other people can more easily find and use this. Thank you!!
