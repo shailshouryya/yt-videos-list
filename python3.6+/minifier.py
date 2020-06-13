@@ -15,6 +15,7 @@ def main():
         for file in files:
             filepath = os.path.join(root, file).split('yt_videos_list')[2]
             if filepath.endswith('DS_Store'): continue
+            if '__pycache__' in filepath:     continue
             valid_files.append(filepath)
     for file in valid_files:
         with open(f'yt_videos_list/{file}', 'r') as read_file, open(f'ship{file}', 'w') as write_file:
