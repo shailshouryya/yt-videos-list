@@ -2,7 +2,7 @@
 # https://test.pypi.org/pypi?%3Aaction=list_classifiers
 # https://github.com/pypa/sampleproject/blob/master/setup.py
 # https://packaging.python.org/guides/distributing-packages-using-setuptools/
-from setuptools import setup, find_packages
+from setuptools import setup, find_packages, find_namespace_packages
 
 
 with open('README.md', 'r', encoding='utf-8') as f:
@@ -48,7 +48,8 @@ setup(
 
     # http://code.nabla.net/doc/setuptools/api/setuptools/setuptools.find_packages.html
     # https://stackoverflow.com/questions/51286928/what-is-where-argument-for-in-setuptools-find-packages
-    packages=find_packages(),
+    packages=find_packages(include='./ship*'),
+    # packages=find_namespace_packages(include=['ship']),
     # package_dir={'':'src'},
 
 
