@@ -19,6 +19,9 @@ If you found this interesting or useful, **please consider starring this repo** 
 
 ## [Future Features](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/docs/futureFeatures.md)
 ## [Technical Specifications](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/docs/technicalSpecifications.md)
+## Usage Statistics
+- [PePy](https://pepy.tech/project/yt-videos-list)
+- [PyPi Stats](https://pypistats.org/packages/yt-videos-list)
 
 ## Interesting information about YouTube
 There are two types of YouTube channels: one type is a `user` channel and the other is a `channel` channel.
