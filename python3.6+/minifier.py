@@ -29,7 +29,7 @@ def main():
             formatted = read_file.read()
             formatted = re.sub(r' +# .+', '', formatted)
             formatted = re.sub(r' +\n', '',  formatted)
-            if file.split('/')[-1] != 'notifications.py': formatted = re.sub(r'    ', ' ', formatted)
+            if file.split('/')[-1] != 'notifications.py' and file.split('/')[-1] != 'write.py': formatted = re.sub(r'    ', ' ', formatted)
             formatted = re.sub(r'^\n', '',   formatted, flags=re.MULTILINE)
             write_file.write(formatted)
 
