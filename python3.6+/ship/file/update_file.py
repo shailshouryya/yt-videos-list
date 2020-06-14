@@ -31,7 +31,8 @@ def scroll_to_old_videos(url, driver, scroll_pause_time, txt_exists, csv_exists,
  if txt_exists: STORED_IN_TXT = store_already_written_videos(file_name, 'txt')
  if csv_exists: STORED_IN_CSV = store_already_written_videos(file_name, 'csv')
  if STORED_IN_TXT and STORED_IN_CSV: VISITED_VIDEOS = STORED_IN_TXT.intersection(STORED_IN_CSV)
- else:          VISITED_VIDEOS = STORED_IN_TXT or STORED_IN_CSV print(f'Detected an existing file with the name {file_name} in this directory, checking for new videos to update {file_name}....')
+ else:          VISITED_VIDEOS = STORED_IN_TXT or STORED_IN_CSV
+ print(f'Detected an existing file with the name {file_name} in this directory, checking for new videos to update {file_name}....')
  start_time = time.perf_counter()
  found_old_videos = False
  while found_old_videos is False:
