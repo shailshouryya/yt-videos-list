@@ -6,14 +6,14 @@ Once you do that, enter the following in your command line:
 # if something isn't working properly, try rerunning this
 # the problem may have been fixed with a newer version
 
-pip3 install -U yt-videos-list
-# no "3" on Windows: pip install -U yt-videos-list
+pip3 install -U yt-videos-list # MacOS/Linux
+pip install -U yt-videos-list  # Windows
 ```
 
 ### Running the package from the python interpreter
 ```shell
-python3
-# no "3" on Windows: python
+python3 # MacOS/Linux
+python  # Windows
 ```
 ```python
 from yt_videos_list import ListCreator
@@ -29,10 +29,8 @@ lc.create_list_for(url='https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ
 
 # see the new files that were just created:
 import os
-# MacOS and Linux users:
-os.system('ls -lt | head')
-# Windows users:
-os.system('dir /O-D | find "_videos_list"')
+os.system('ls -lt | head')                  # MacOS/Linux
+os.system('dir /O-D | find "_videos_list"') # Windows
 
 # for more information on using the module:
 help(lc)

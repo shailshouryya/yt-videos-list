@@ -88,6 +88,10 @@ class ListCreator:
         PRO TIP: whichever way you decide to instantiate your object, if you use custom settings, name your ListCreator instance to reflect what you changed.
         E.g. For the previous case instead of naming your instance "lc", name it "headlessCsvlc" or "headless_csv_lc" - or something along those lines.
         -----------------------------------------------------------
+
+        ===========================================================
+        If you found this interesting or useful, ** please consider STARRING this repo at https://github.com/Shail-Shouryya/yt_videos_list ** so other people can more easily find and use this. Thank you!!
+        ===========================================================
         '''
 
 
