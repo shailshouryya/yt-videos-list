@@ -2,7 +2,7 @@
 # https://test.pypi.org/pypi?%3Aaction=list_classifiers
 # https://github.com/pypa/sampleproject/blob/master/setup.py
 # https://packaging.python.org/guides/distributing-packages-using-setuptools/
-from setuptools import setup, find_packages, find_namespace_packages
+from setuptools import setup, find_packages
 
 
 with open('README.md', 'r', encoding='utf-8') as f:
