@@ -1,3 +1,4 @@
+python minifier.py
 python tests\test_cross_platform.py
 python tests\test_safaridriver.py
 python tests\test_msedgedriver.py
