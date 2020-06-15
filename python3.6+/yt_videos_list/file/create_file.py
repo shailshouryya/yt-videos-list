@@ -73,6 +73,8 @@ def write_to_txt(list_of_videos, file_name, reverse_chronological):
    if total_writes % 250 == 0:
     print(f'{total_writes} videos written to {txt_file.name}...')
  return file_name, total_videos
+def write_to_md(list_of_videos, file_name, reverse_chronological):
+ pass
 @time_writer_function
 def save_to_mem_write_to_txt(list_of_videos, file_name, reverse_chronological):
  total_videos, total_writes, video_number, incrementer = prepare_output(list_of_videos, reverse_chronological)

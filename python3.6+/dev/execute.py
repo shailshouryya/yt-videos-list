@@ -161,7 +161,7 @@ def logic(channel, channel_type, file_name, txt, csv, markdown, reverse_chronolo
         print(f'\n\n\nNow scraping {url} using the {user_driver}driver:')
         driver.get(url)
         file_name = determine_file_name()
-        program.determine_action(url, driver, scroll_pause_time, reverse_chronological, file_name, txt, csv)
+        program.determine_action(url, driver, scroll_pause_time, reverse_chronological, file_name, txt, csv, markdown)
     program_end = time.perf_counter()
     total_time  = program_end - program_start
     print(f'This program took {total_time} seconds to complete.\n')

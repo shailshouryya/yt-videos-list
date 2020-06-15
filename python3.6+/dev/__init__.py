@@ -23,7 +23,7 @@ __source__               = 'https://github.com/Shail-Shouryya/yt_videos_list'
 
 
 class ListCreator:
-    def __init__(self, txt=True, csv=True, markdown=False, reverse_chronological=True, headless=False, scroll_pause_time=0.8, driver=None):
+    def __init__(self, txt=True, csv=True, markdown=True, reverse_chronological=True, headless=False, scroll_pause_time=0.8, driver=None):
         '''
         The ListCreator class creates a ListCreator instance with no required arguments.
         Example usage:

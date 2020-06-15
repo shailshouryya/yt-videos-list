@@ -9,6 +9,7 @@ def store_already_written_videos(file_name, file_type):
  with open(f'{file_name}.{file_type}') as file:
   if file_type == 'txt': return set(re.findall(r'(https://www\.youtube\.com/watch\?v=.+?)(?:\s|\n)', file.read()))
   if file_type == 'csv': return set(re.findall(r'(https://www\.youtube\.com/watch\?v=.+?),', file.read()))
+  if file_type == 'md':  return set(re.findall(r'(https://www\.youtube\.com/watch\?v=.+?)(?:\s|\n)', file.read()))
 def scroll_down(driver, scroll_pause_time):
  driver.execute_script('window.scrollBy(0, 50000);')
  time.sleep(scroll_pause_time)
@@ -23,13 +24,15 @@ def save_elements_to_list(driver, start_time, scroll_pause_time, url):
  total_time = end_time - start_time - scroll_pause_time
  print(f'It took {total_time} seconds to find {len(elements)} videos from {url}{NEWLINE}')
  return elements
-def scroll_to_old_videos(url, driver, scroll_pause_time, txt_exists, csv_exists, file_name):
- global VISITED_VIDEOS, STORED_IN_TXT, STORED_IN_CSV
+def scroll_to_old_videos(url, driver, scroll_pause_time, txt_exists, csv_exists, md_exists, file_name):
+ global VISITED_VIDEOS, STORED_IN_TXT, STORED_IN_CSV, STORED_IN_MD
  driver.set_window_size(780, 880)
  STORED_IN_TXT = None
  STORED_IN_CSV = None
+ STORED_IN_MD  = None
  if txt_exists: STORED_IN_TXT = store_already_written_videos(file_name, 'txt')
  if csv_exists: STORED_IN_CSV = store_already_written_videos(file_name, 'csv')
+ if md_exists:  STORED_IN_MD =  store_already_written_videos(file_name, 'md' )
  if STORED_IN_TXT and STORED_IN_CSV: VISITED_VIDEOS = STORED_IN_TXT.intersection(STORED_IN_CSV)
  else:          VISITED_VIDEOS = STORED_IN_TXT or STORED_IN_CSV
  print(f'Detected an existing file with the name {file_name} in this directory, checking for new videos to update {file_name}....')
@@ -97,6 +100,8 @@ def write_to_txt(list_of_videos, file_name, reverse_chronological):
    txt_file.seek(0)
    for line in txt_file: old_file.write(line)
  return file_name, new_videos, reverse_chronological
+def write_to_md(list_of_videos, file_name, reverse_chronological):
+ pass
 @time_writer_function
 def write_to_csv(list_of_videos, file_name, reverse_chronological):
  if 'STORED_IN_CSV' not in locals(): stored_in_csv = store_already_written_videos(file_name, 'csv')

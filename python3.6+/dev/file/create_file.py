@@ -97,6 +97,10 @@ def write_to_txt(list_of_videos, file_name, reverse_chronological):
     return file_name, total_videos
 
 
+def write_to_md(list_of_videos, file_name, reverse_chronological):
+    pass
+
+
 @time_writer_function
 def save_to_mem_write_to_txt(list_of_videos, file_name, reverse_chronological):
     # this takes a little bit longer than the write_to_txt() function
