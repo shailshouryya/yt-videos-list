@@ -87,18 +87,28 @@ def prepare_output(list_of_videos, reverse_chronological):
 @time_writer_function
 def write_to_txt(list_of_videos, file_name, reverse_chronological):
     total_videos, total_writes, video_number, incrementer = prepare_output(list_of_videos, reverse_chronological)
+    markdown_formatting = False
     with open('yt_videos_list_temp.txt', 'w') as txt_file:
         spacing = f'{NEWLINE}' + ' '*4
 
         for selenium_element in list_of_videos if reverse_chronological else list_of_videos[::-1]:
-            video_number, total_writes = write.txt_entry(txt_file, selenium_element, NEWLINE, spacing, video_number, incrementer, total_writes)
+            video_number, total_writes = write.txt_entry(txt_file, markdown_formatting, selenium_element, NEWLINE, spacing, video_number, incrementer, total_writes)
             if total_writes % 250 == 0:
                 print(f'{total_writes} videos written to {txt_file.name}...')
     return file_name, total_videos
 
-
+@time_writer_function
 def write_to_md(list_of_videos, file_name, reverse_chronological):
-    pass
+    total_videos, total_writes, video_number, incrementer = prepare_output(list_of_videos, reverse_chronological)
+    markdown_formatting = True
+    with open('yt_videos_list_temp.md', 'w') as md_file:
+        spacing = f'{NEWLINE}' + '- '
+
+        for selenium_element in list_of_videos if reverse_chronological else list_of_videos[::-1]:
+            video_number, total_writes = write.txt_entry(md_file, markdown_formatting, selenium_element, NEWLINE*2, spacing, video_number, incrementer, total_writes)
+            if total_writes % 250 == 0:
+                print(f'{total_writes} videos written to {md_file.name}...')
+    return file_name, total_videos
 
 
 @time_writer_function

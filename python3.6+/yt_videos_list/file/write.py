@@ -2,9 +2,13 @@ def update_status(video_number, total_writes, incrementer):
     video_number += incrementer
     total_writes += 1
     return video_number, total_writes
-def txt_entry(file, selenium_element, newline, spacing, video_number, incrementer, total_writes):
-    file.write(f'Video Number: {video_number}{newline}')
-    file.write(f'Video Title:  {selenium_element.get_attribute("title")}{newline}')
+def txt_entry(file, markdown_formatting, selenium_element, newline, spacing, video_number, incrementer, total_writes):
+    if markdown_formatting is True:
+        file.write(f'### Video Title:  {selenium_element.get_attribute("title")}{newline}')
+        file.write(f'Video Number: {video_number}{newline}')
+    else:
+        file.write(f'Video Number: {video_number}{newline}')
+        file.write(f'Video Title:  {selenium_element.get_attribute("title")}{newline}')
     file.write(f'Video URL:    {selenium_element.get_attribute("href")}{newline}')
     file.write(f'Watched?{spacing}{newline}')
     file.write(f'Watch again later?{spacing}{newline}')
