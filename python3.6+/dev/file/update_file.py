@@ -107,10 +107,10 @@ def write_to_txt(list_of_videos, file_name, reverse_chronological):
     if 'STORED_IN_TXT' not in locals(): stored_in_txt = store_already_written_videos(file_name, 'txt')
     else:                               stored_in_txt = STORED_IN_TXT
     markdown_formatting = False
+    spacing             = f'{NEWLINE}' + ' '*4
     with open(f'{file_name}.txt', 'r+') as old_file, open('yt_videos_list_temp.txt', 'w+') as txt_file:
-        video_number =  int(max(re.findall(r'^Video Number:\s*(\d+)', old_file.read(), re.M), key = lambda i: int(i)))
+        video_number                                        =  int(max(re.findall(r'^Video Number:\s*(\d+)', old_file.read(), re.M), key = lambda i: int(i)))
         video_number, new_videos, total_writes, incrementer = prepare_output(list_of_videos, stored_in_txt, video_number, reverse_chronological)
-        spacing      = f'{NEWLINE}' + ' '*4
 
         for selenium_element in list_of_videos if reverse_chronological else list_of_videos[::-1]:
             if selenium_element.get_attribute("href") in stored_in_txt: continue
