@@ -103,7 +103,7 @@ def write_to_md(list_of_videos, file_name, reverse_chronological):
     spacing = f'{NEWLINE}' + '- '
     with open('yt_videos_list_temp.md', 'w') as md_file:
         for selenium_element in list_of_videos if reverse_chronological else list_of_videos[::-1]:
-            video_number, total_writes = write.txt_entry(md_file, markdown_formatting, selenium_element, NEWLINE*2, spacing, video_number, incrementer, total_writes)
+            video_number, total_writes = write.txt_entry(md_file, markdown_formatting, selenium_element, NEWLINE, spacing, video_number, incrementer, total_writes)
             if total_writes % 250 == 0:
                 print(f'{total_writes} videos written to {md_file.name}...')
     return file_name, total_videos
