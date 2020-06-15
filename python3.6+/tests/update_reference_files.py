@@ -16,8 +16,10 @@ def move_reference_files_to_tests():
     path_slash = determine_path_slash()
     os.replace('full_schafer5_chronological.txt',         f'tests{path_slash}full_schafer5_chronological.txt')
     os.replace('full_schafer5_chronological.csv',         f'tests{path_slash}full_schafer5_chronological.csv')
+    os.replace('full_schafer5_chronological.md',          f'tests{path_slash}full_schafer5_chronological.md')
     os.replace('full_schafer5_reverse_chronological.txt', f'tests{path_slash}full_schafer5_reverse_chronological.txt')
     os.replace('full_schafer5_reverse_chronological.csv', f'tests{path_slash}full_schafer5_reverse_chronological.csv')
+    os.replace('full_schafer5_reverse_chronological.md',  f'tests{path_slash}full_schafer5_reverse_chronological.md')
 
 
 def main():
