@@ -103,7 +103,7 @@ def write_to_txt(list_of_videos, file_name, reverse_chronological):
 def write_to_md(list_of_videos, file_name, reverse_chronological):
     total_videos, total_writes, video_number, incrementer = prepare_output(list_of_videos, reverse_chronological)
     markdown_formatting = True
-    spacing = f'{NEWLINE}' + '- '
+    spacing = f'{NEWLINE}' + '- ' + f'{NEWLINE}'
     with open('yt_videos_list_temp.md', 'w') as md_file:
         txt_writer(md_file, markdown_formatting, reverse_chronological, list_of_videos, NEWLINE, spacing, video_number, incrementer, total_writes)
     return file_name, total_videos
