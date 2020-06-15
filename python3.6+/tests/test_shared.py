@@ -19,23 +19,15 @@ def create_test_cases(browsers):
     ]
 
 
-def delete_txt(filepath):
-    if os.path.exists(f'{filepath}.txt'):
-        os.remove(f'{filepath}.txt')
-
-def delete_csv(filepath):
-    if os.path.exists(f'{filepath}.csv'):
-        os.remove(f'{filepath}.csv')
-
-def delete_md(filepath):
-    if os.path.exists(f'{filepath}.md'):
-        os.remove(f'{filepath}.md')
+def delete_file(filepath, extension):
+    if os.path.exists(f'{filepath}.{extension}'):
+        os.remove(f'{filepath}.{extension}')
 
 def delete_all_schafer5_files():
     schafer5 = 'CoreySchafer_videos_list'
-    delete_txt(schafer5)
-    delete_csv(schafer5)
-    delete_md (schafer5)
+    delete_file(schafer5, 'txt')
+    delete_file(schafer5, 'csv')
+    delete_file(schafer5, 'md' )
 
 
 def run_test_case(list_creator):
@@ -60,33 +52,26 @@ def verify_update(driver, schafer5_url, test_file, full_file):
 def use_partial_txt_only(test_file):
     print('TESTING with a pre-existing txt file only (no pre-existing csv or md file)....')
     delete_all_schafer5_files()
-    create_partial_txt(test_file)
+    create_partial_file(test_file, 'txt')
 
 def use_partial_csv_only(test_file):
     print('TESTING with a pre-existing csv file only (no pre-existing txt or md file)....')
     delete_all_schafer5_files()
-    create_partial_csv(test_file)
+    create_partial_file(test_file, 'csv')
 
 def use_partial_md_only(test_file):
     print('TESTING with a pre-existing md file only (no pre-existing txt or csv file)....')
     delete_all_schafer5_files()
-    create_partial_md(test_file)
+    create_partial_file(test_file, 'md')
 
 def use_partial_csv_txt_and_md(test_file):
     print('TESTING with pre-existing txt, csv, and md files....')
-    create_partial_txt(test_file)
-    create_partial_csv(test_file)
-    create_partial_md (test_file)
+    create_partial_file(test_file, 'txt')
+    create_partial_file(test_file, 'csv')
+    create_partial_file(test_file, 'md' )
 
-
-def create_partial_txt(test_file):
-    shutil.copy(f'{test_file}.txt', 'CoreySchafer_videos_list.txt')
-
-def create_partial_csv(test_file):
-    shutil.copy(f'{test_file}.csv', 'CoreySchafer_videos_list.csv')
-
-def create_partial_md(test_file):
-    shutil.copy(f'{test_file}.md', 'CoreySchafer_videos_list.md')
+def create_partial_file(test_file, extension):
+    shutil.copy(f'{test_file}.{extension}', f'CoreySchafer_videos_list.{extension}')
 
 
 def compare_test_files_to_reference_files(full_file):
