@@ -3,7 +3,7 @@ from .notifications import Common, ModuleMessage
 
 
 '''
-version:              0.4.1
+version:              0.4.2
 author:               Shail-Shouryya
 development_status:   4 - Beta
 intended_audience:    Developers, Hobbyists
@@ -13,7 +13,7 @@ source:               https://github.com/Shail-Shouryya/yt_videos_list
 '''
 
 
-__version__              = '0.4.1'
+__version__              = '0.4.2'
 __author__               = 'Shail-Shouryya'
 __development_status__   = '4 - Beta'
 __intended_audience__    = 'Developers, Hobbyists'
@@ -23,7 +23,7 @@ __source__               = 'https://github.com/Shail-Shouryya/yt_videos_list'
 
 
 class ListCreator:
-    def __init__(self, txt=True, csv=True, docx=False, reverse_chronological=True, headless=False, scroll_pause_time=0.8, driver=None):
+    def __init__(self, txt=True, csv=True, markdown=False, reverse_chronological=True, headless=False, scroll_pause_time=0.8, driver=None):
         '''
         The ListCreator class creates a ListCreator instance with no required arguments.
         Example usage:
@@ -97,7 +97,7 @@ class ListCreator:
 
         self.txt                   = txt
         self.csv                   = csv
-        self.docx                  = docx
+        self.markdown              = markdown
         self.reverse_chronological = reverse_chronological
         self.headless              = headless
         self.scroll_pause_time     = scroll_pause_time
@@ -121,6 +121,6 @@ class ListCreator:
             raise TypeError(Common().missing_url + ModuleMessage().url_argument_usage)
 
         _execution_type = 'module'
-        instance_attributes = (self.txt, self.csv, self.docx, self.reverse_chronological, self.headless, self.scroll_pause_time, self.driver)
+        instance_attributes = (self.txt, self.csv, self.markdown, self.reverse_chronological, self.headless, self.scroll_pause_time, self.driver)
 
         execute.logic(channel, channel_type, file_name, *instance_attributes, _execution_type)

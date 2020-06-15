@@ -11,7 +11,7 @@ from .download.user_os_info import determine_user_os
 from .notifications import Common, ModuleMessage, ScriptMessage
 
 
-def logic(channel, channel_type, file_name, txt, csv, docx, reverse_chronological, headless, scroll_pause_time, user_driver, execution_type):
+def logic(channel, channel_type, file_name, txt, csv, markdown, reverse_chronological, headless, scroll_pause_time, user_driver, execution_type):
     common_message = Common()
     module_message = ModuleMessage()
     script_message = ScriptMessage()
