@@ -27,10 +27,15 @@ def delete_csv(filepath):
     if os.path.exists(f'{filepath}.csv'):
         os.remove(f'{filepath}.csv')
 
+def delete_md(filepath):
+    if os.path.exists(f'{filepath}.md'):
+        os.remove(f'{filepath}.md')
+
 def delete_all_schafer5_files():
     schafer5 = 'CoreySchafer_videos_list'
     delete_txt(schafer5)
     delete_csv(schafer5)
+    delete_md (schafer5)
 
 
 def run_test_case(list_creator):
@@ -43,7 +48,7 @@ def run_test_case(list_creator):
 
 
 def verify_update(driver, schafer5_url, test_file, full_file):
-    variations = [use_partial_csv_only, use_partial_txt_only, use_partial_csv_and_txt]
+    variations = [use_partial_csv_only, use_partial_txt_only, use_partial_md_only, use_partial_csv_txt_and_md]
     for variation in variations:
         print(f'\nTESTING list_creator with list_creator.reverse_chronological set to {vars(driver)["reverse_chronological"]}')
         variation(test_file)
@@ -53,19 +58,25 @@ def verify_update(driver, schafer5_url, test_file, full_file):
 
 
 def use_partial_txt_only(test_file):
-    print('TESTING with a pre-existing txt file only (no pre-existing csv file)....')
+    print('TESTING with a pre-existing txt file only (no pre-existing csv or md file)....')
     delete_all_schafer5_files()
     create_partial_txt(test_file)
 
 def use_partial_csv_only(test_file):
-    print('TESTING with a pre-existing csv file only (no pre-existing txt file)....')
+    print('TESTING with a pre-existing csv file only (no pre-existing txt or md file)....')
     delete_all_schafer5_files()
     create_partial_csv(test_file)
 
-def use_partial_csv_and_txt(test_file):
-    print('TESTING with both pre-existing txt and csv files....')
+def use_partial_md_only(test_file):
+    print('TESTING with a pre-existing md file only (no pre-existing txt or csv file)....')
+    delete_all_schafer5_files()
+    create_partial_md(test_file)
+
+def use_partial_csv_txt_and_md(test_file):
+    print('TESTING with pre-existing txt, csv, and md files....')
     create_partial_txt(test_file)
     create_partial_csv(test_file)
+    create_partial_md (test_file)
 
 
 def create_partial_txt(test_file):
@@ -74,15 +85,22 @@ def create_partial_txt(test_file):
 def create_partial_csv(test_file):
     shutil.copy(f'{test_file}.csv', 'CoreySchafer_videos_list.csv')
 
+def create_partial_md(test_file):
+    shutil.copy(f'{test_file}.md', 'CoreySchafer_videos_list.md')
+
 
 def compare_test_files_to_reference_files(full_file):
-    with open('CoreySchafer_videos_list.txt', 'r') as test_txt, open('CoreySchafer_videos_list.csv', 'r') as test_csv:
+    with open('CoreySchafer_videos_list.txt', 'r') as test_txt, open('CoreySchafer_videos_list.csv', 'r') as test_csv, open('CoreySchafer_videos_list.md', 'r') as test_md:
         current_txt = hashlib.sha256(test_txt.read().encode('utf-8')).hexdigest()
         current_csv = hashlib.sha256(test_csv.read().encode('utf-8')).hexdigest()
-    with open(f'{full_file}.txt', 'r') as full_txt, open(f'{full_file}.csv', 'r') as full_csv:
+        current_md  = hashlib.sha256(test_md.read().encode ('utf-8')).hexdigest()
+    with open(f'{full_file}.txt', 'r') as full_txt, open(f'{full_file}.csv', 'r') as full_csv, open(f'{full_file}.md', 'r') as full_md:
         verified_txt = hashlib.sha256(full_txt.read().encode('utf-8')).hexdigest()
         verified_csv = hashlib.sha256(full_csv.read().encode('utf-8')).hexdigest()
+        verified_md  = hashlib.sha256(full_md.read().encode ('utf-8')).hexdigest()
     if current_txt != verified_txt: print(f'❌ ERROR! The updated txt file does NOT match the {full_file}.txt file!')
     else:                           print(f'✅ The updated txt file matches the {full_file}.txt file :)')
     if current_csv != verified_csv: print(f'❌ ERROR! The updated csv file does NOT match the {full_file}.csv file!')
     else:                           print(f'✅ The updated csv file matches the {full_file}.csv file :)')
+    if current_md  != verified_md:  print(f'❌ ERROR! The updated md  file does NOT match the {full_file}.md file!')
+    else:                           print(f'✅ The updated md  file matches the {full_file}.md file :)')
