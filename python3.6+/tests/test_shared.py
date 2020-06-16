@@ -87,5 +87,5 @@ def compare_test_files_to_reference_files(full_file):
     else:                           print(f'✅ The updated txt file matches the {full_file}.txt file :)')
     if current_csv != verified_csv: print(f'❌ ERROR! The updated csv file does NOT match the {full_file}.csv file!')
     else:                           print(f'✅ The updated csv file matches the {full_file}.csv file :)')
-    if current_md  != verified_md:  print(f'❌ ERROR! The updated md  file does NOT match the {full_file}.md file!')
-    else:                           print(f'✅ The updated md  file matches the {full_file}.md file :)')
+    if current_md  != verified_md:  print(f'❌ ERROR! The updated md  file does NOT match the {full_file}.md  file!')
+    else:                           print(f'✅ The updated md  file matches the {full_file}.md  file :)')
