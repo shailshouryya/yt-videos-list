@@ -63,7 +63,7 @@ def prepare_output(list_of_videos, reverse_chronological):
   video_number = 1
   incrementer  = 1
  return total_videos, total_writes, video_number, incrementer
-def txt_writer(file, markdown_formatting, reverse_chronological, list_of_videos, NEWLINE, spacing, video_number, incrementer, total_writes):
+def txt_writer(file, markdown_formatting, reverse_chronological, list_of_videos, spacing, video_number, incrementer, total_writes):
  for selenium_element in list_of_videos if reverse_chronological else list_of_videos[::-1]:
   video_number, total_writes = write.txt_entry(file, markdown_formatting, selenium_element, NEWLINE, spacing, video_number, incrementer, total_writes)
   if total_writes % 250 == 0:
@@ -74,7 +74,7 @@ def write_to_txt(list_of_videos, file_name, reverse_chronological):
  markdown_formatting = False
  spacing = f'{NEWLINE}' + ' '*4
  with open('yt_videos_list_temp.txt', 'w') as txt_file:
-  txt_writer(txt_file, markdown_formatting, reverse_chronological, list_of_videos, NEWLINE, spacing, video_number, incrementer, total_writes)
+  txt_writer(txt_file, markdown_formatting, reverse_chronological, list_of_videos, spacing, video_number, incrementer, total_writes)
  return file_name, total_videos
 @time_writer_function
 def write_to_md(list_of_videos, file_name, reverse_chronological):
@@ -82,7 +82,7 @@ def write_to_md(list_of_videos, file_name, reverse_chronological):
  markdown_formatting = True
  spacing = f'{NEWLINE}' + '- ' + f'{NEWLINE}'
  with open('yt_videos_list_temp.md', 'w') as md_file:
-  txt_writer(md_file, markdown_formatting, reverse_chronological, list_of_videos, NEWLINE, spacing, video_number, incrementer, total_writes)
+  txt_writer(md_file, markdown_formatting, reverse_chronological, list_of_videos, spacing, video_number, incrementer, total_writes)
  return file_name, total_videos
 @time_writer_function
 def save_to_mem_write_to_txt(list_of_videos, file_name, reverse_chronological):

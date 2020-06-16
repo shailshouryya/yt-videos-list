@@ -95,7 +95,7 @@ def prepare_output(list_of_videos, videos_set, video_number, reverse_chronologic
 
 
 
-def txt_writer(new_file, old_file, visited_videos, markdown_formatting, reverse_chronological, list_of_videos, NEWLINE, spacing, video_number, incrementer, total_writes):
+def txt_writer(new_file, old_file, visited_videos, markdown_formatting, reverse_chronological, list_of_videos, spacing, video_number, incrementer, total_writes):
     for selenium_element in list_of_videos if reverse_chronological else list_of_videos[::-1]:
         if selenium_element.get_attribute("href") in visited_videos: continue
         else:
@@ -126,7 +126,7 @@ def write_to_txt(list_of_videos, file_name, reverse_chronological):
     with open(f'{file_name}.txt', 'r+') as old_file, open('yt_videos_list_temp.txt', 'w+') as txt_file:
         video_number                                        =  int(max(re.findall(r'^Video Number:\s*(\d+)', old_file.read(), re.M), key = lambda i: int(i)))
         video_number, new_videos, total_writes, incrementer = prepare_output(list_of_videos, stored_in_txt, video_number, reverse_chronological)
-        txt_writer(txt_file, old_file, stored_in_txt, markdown_formatting, reverse_chronological, list_of_videos, NEWLINE, spacing, video_number, incrementer, total_writes)
+        txt_writer(txt_file, old_file, stored_in_txt, markdown_formatting, reverse_chronological, list_of_videos, spacing, video_number, incrementer, total_writes)
     return file_name, new_videos, reverse_chronological
 
 
@@ -139,7 +139,7 @@ def write_to_md(list_of_videos, file_name, reverse_chronological):
     with open(f'{file_name}.md', 'r+') as old_file, open('yt_videos_list_temp.md', 'w+') as md_file:
         video_number                                        =  int(max(re.findall(r'^Video Number:\s*(\d+)', old_file.read(), re.M), key = lambda i: int(i)))
         video_number, new_videos, total_writes, incrementer = prepare_output(list_of_videos, stored_in_md, video_number, reverse_chronological)
-        txt_writer(md_file, old_file, stored_in_md, markdown_formatting, reverse_chronological, list_of_videos, NEWLINE, spacing, video_number, incrementer, total_writes)
+        txt_writer(md_file, old_file, stored_in_md, markdown_formatting, reverse_chronological, list_of_videos, spacing, video_number, incrementer, total_writes)
     return file_name, new_videos, reverse_chronological
 
 
