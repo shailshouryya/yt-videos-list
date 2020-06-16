@@ -5,11 +5,9 @@ import shutil
 
 
 def main():
-    try:
-        shutil.move('yt_videos_list/README.md', 'temp.md')
-        shutil.rmtree('./yt_videos_list')
-        time.sleep(2)
-    except: print('The directory "./ship" does not exist')
+    shutil.move('yt_videos_list/README.md', 'temp.md')
+    shutil.rmtree('./yt_videos_list')
+    time.sleep(2)
     os.mkdir('yt_videos_list')
     os.mkdir('yt_videos_list/download')
     os.mkdir('yt_videos_list/file')
