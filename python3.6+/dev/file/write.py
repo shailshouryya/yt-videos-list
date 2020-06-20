@@ -4,7 +4,7 @@ def update_status(video_number, total_writes, incrementer):
     return video_number, total_writes
 
 def txt_entry(file, markdown_formatting, selenium_element, newline, spacing, video_number, incrementer, total_writes):
-    if markdown_formatting is True:
+    if markdown_formatting:
         file.write(f'### Video Title:  {selenium_element.get_attribute("title")}{newline}')
         file.write(f'Video Number: {video_number}{newline}')
     else:
