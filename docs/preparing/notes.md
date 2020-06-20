@@ -282,3 +282,6 @@ hasattr(obj, 'attr_name')
   - another workaround:
   - You can introduce the `lineterminator='\n'` parameter in the csv writer command.
   - `writer = csv.writer(stream, delimiter=delimiter, quoting=csv.QUOTE_NONE, quotechar='',  lineterminator='\n')`
+
+### truthy/falsy versus True and False
+- [What is Truthy and Falsy? How is it different from True and False?](https://stackoverflow.com/questions/39983695/what-is-truthy-and-falsy-how-is-it-different-from-true-and-false) - Stack Overflow
