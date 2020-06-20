@@ -12,9 +12,8 @@ NEWLINE = '\n'
 
 def store_already_written_videos(file_name, file_type):
     with open(f'{file_name}.{file_type}') as file:
-        if file_type == 'txt': return set(re.findall(r'(https://www\.youtube\.com/watch\?v=.+?)(?:\s|\n)', file.read()))
-        if file_type == 'csv': return set(re.findall(r'(https://www\.youtube\.com/watch\?v=.+?),', file.read()))
-        if file_type == 'md':  return set(re.findall(r'(https://www\.youtube\.com/watch\?v=.+?)(?:\s|\n)', file.read()))
+        if file_type == 'txt' or file_type == 'md': return set(re.findall(r'(https://www\.youtube\.com/watch\?v=.+?)(?:\s|\n)', file.read()))
+        if file_type == 'csv':                      return set(re.findall(r'(https://www\.youtube\.com/watch\?v=.+?),', file.read()))
 
 def scroll_down(driver, scroll_pause_time):
     driver.execute_script('window.scrollBy(0, 50000);')
