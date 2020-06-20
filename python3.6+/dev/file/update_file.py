@@ -34,14 +34,14 @@ def save_elements_to_list(driver, start_time, scroll_pause_time, url):
 def scroll_to_old_videos(url, driver, scroll_pause_time, txt_exists, csv_exists, md_exists, file_name):
     global VISITED_VIDEOS, STORED_IN_TXT, STORED_IN_CSV, STORED_IN_MD
     driver.set_window_size(780, 880)
-    STORED_IN_TXT = None
-    STORED_IN_CSV = None
-    STORED_IN_MD  = None
+    STORED_IN_TXT = set()
+    STORED_IN_CSV = set()
+    STORED_IN_MD  = set()
     if txt_exists: STORED_IN_TXT = store_already_written_videos(file_name, 'txt')
     if csv_exists: STORED_IN_CSV = store_already_written_videos(file_name, 'csv')
     if md_exists:  STORED_IN_MD =  store_already_written_videos(file_name, 'md' )
-    if STORED_IN_TXT and STORED_IN_CSV: VISITED_VIDEOS = STORED_IN_TXT.intersection(STORED_IN_CSV) # same as STORED_IN_TXT & STORED_IN_CSV
-    else:                               VISITED_VIDEOS = STORED_IN_TXT or STORED_IN_CSV            # takes values from whichever file exists
+    if STORED_IN_TXT and STORED_IN_CSV and STORED_IN_MD: VISITED_VIDEOS = STORED_IN_TXT.intersection(STORED_IN_CSV).intersection(STORED_IN_MD) # same as STORED_IN_TXT & STORED_IN_CSV & STORED_IN_MD
+    else:                                                VISITED_VIDEOS = STORED_IN_TXT.intersection(STORED_IN_CSV).intersection(STORED_IN_MD) # takes values from whichever file(s) exists
     print(f'Detected an existing file with the name {file_name} in this directory, checking for new videos to update {file_name}....')
     start_time = time.perf_counter() # timer stops in save_elements_to_list() function
 
