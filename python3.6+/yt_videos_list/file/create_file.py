@@ -85,27 +85,6 @@ def write_to_md(list_of_videos, file_name, reverse_chronological):
   txt_writer(md_file, markdown_formatting, reverse_chronological, list_of_videos, spacing, video_number, incrementer, total_writes)
  return file_name, total_videos
 @time_writer_function
-def save_to_mem_write_to_txt(list_of_videos, file_name, reverse_chronological):
- total_videos, total_writes, video_number, incrementer = prepare_output(list_of_videos, reverse_chronological)
- with open('yt_videos_list_temp.txt', 'w') as memory_file:
-  text = ''
-  spacing = NEWLINE + ' '*4
-  for selenium_element in list_of_videos if reverse_chronological else list_of_videos[::-1]:
-   text += f'Video Number: {video_number}{NEWLINE}'
-   text += f'Video Title:  {selenium_element.get_attribute("title")}{NEWLINE}'
-   text += f'Video URL: {selenium_element.get_attribute("href")}{NEWLINE}'
-   text += f'Watched?{spacing}{NEWLINE}'
-   text += f'Watch again later?{spacing}{NEWLINE}'
-   text += f'Notes:{spacing}{NEWLINE}'
-   text += '*'*75 + NEWLINE
-   video_number += incrementer
-   total_writes += 1
-   if total_writes % 250 == 0:
-    print(f'{total_writes} videos saved to memory...')
-  print(f'Finished saving video information to memory')
-  memory_file.write(text)
- return file_name, total_videos
-@time_writer_function
 def write_to_csv(list_of_videos, file_name, reverse_chronological):
  total_videos, total_writes, video_number, incrementer = prepare_output(list_of_videos, reverse_chronological)
  with open('yt_videos_list_temp.csv', 'w', newline='', encoding='utf-8') as csv_file:
