@@ -43,6 +43,7 @@ help(lc)
   - `my_driver = 'brave'`
   - `my_driver = 'edge'` (Windows only!)
 - increase `scroll_pause_time` for laggy internet and decrease `scroll_pause_time` for fast internet
+#### If you already scraped a channel and the channel uploaded a new video, simply rerun this program on that channel and this package updates your files to include the newer video(s)!
 
 ## [More API information](../docs/python3.6+.md#For-more-control)
 ## Usage Statistics

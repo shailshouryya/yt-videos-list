@@ -1,6 +1,8 @@
 # General Overview
 This package provides a quick, simple way to create a list of all videos posted to any YouTube channel by providing just the URL to that channel's videos. Follow the link to the API in the language you want to work in from the API guides section below.
 
+#### If you already scraped a channel and the channel uploaded a new video, simply rerun this program on that channel and this package updates your files to include the newer video(s)!
+
 If you found this interesting or useful, **please consider starring this repo** so other people can more easily find and use this. Thank you!!
 
 ## API guides
