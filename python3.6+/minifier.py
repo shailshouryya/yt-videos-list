@@ -3,24 +3,30 @@ import re
 import time
 import shutil
 
+from tests.test_shared import determine_path_slash
+
 
 def main():
-    shutil.move('yt_videos_list/README.md', 'temp.md')
-    shutil.rmtree('./yt_videos_list')
+    slash            = determine_path_slash()
+    source_directory = 'dev'
+    target_directory = 'yt_videos_list'
+    readme           = f'./{target_directory}/README.md'
+    shutil.move  (f'{readme}', 'temp.md')
+    shutil.rmtree(f'./{target_directory}')
     time.sleep(2)
-    os.mkdir('yt_videos_list')
+    os.mkdir(target_directory)
     os.mkdir('yt_videos_list/download')
     os.mkdir('yt_videos_list/file')
-    shutil.move('temp.md', 'yt_videos_list/README.md')
-    valid_files = []
-    for root, _, files in os.walk(os.path.abspath("./dev/")):
+    shutil.move('temp.md', f'{readme}')
+    valid_files      = []
+    for root, _, files in os.walk(os.path.abspath(f'./{source_directory}')):
         for file in files:
-            filepath = os.path.join(root, file).split('dev')[1]
+            filepath = os.path.join(root, file).split(source_directory)[1]
             if filepath.endswith('DS_Store'): continue
             if '__pycache__' in filepath:     continue
             valid_files.append(filepath)
     for file in valid_files:
-        with open(f'dev/{file}', 'r') as read_file, open(f'yt_videos_list{file}', 'w') as write_file:
+        with open(f'{source_directory}{slash}{file}', 'r') as read_file, open(f'{target_directory}{slash}{file}', 'w') as write_file:
             if '__init__.py' in file:
                 write_file.write(read_file.read())
                 continue
