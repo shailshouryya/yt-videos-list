@@ -11,13 +11,16 @@ def main():
     source_directory = 'dev'
     target_directory = 'yt_videos_list'
     readme           = f'./{target_directory}/README.md'
+
     shutil.move  (f'{readme}', 'temp.md')
     shutil.rmtree(f'./{target_directory}')
     time.sleep(2)
     os.mkdir(target_directory)
     shutil.move('temp.md', f'{readme}')
+
     valid_files       = []
     local_directories = set()
+
     for root, _, files in os.walk(os.path.abspath(f'./{source_directory}')):
         for file in files:
             filepath = os.path.join(root, file).split(source_directory)[1]
@@ -39,6 +42,7 @@ def main():
             if 'notifications.py' not in file and 'write.py' not in file: formatted = re.sub(r'    ', ' ', formatted)
             formatted = re.sub(r'^\n', '',   formatted, flags=re.MULTILINE)
             write_file.write(formatted)
+
 
 if __name__ == '__main__':
     main()
