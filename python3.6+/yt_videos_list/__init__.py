@@ -73,21 +73,33 @@ class ListCreator:
 
         WORKING EXAMPLES:
         ###########################################################
-        For a ListCreator object that creates a csv file but not a txt file in reverse_chronological order in headless mode with a 1 second pause between scrolls:
-        lc = ListCreator(txt=True, csv=False, headless=True, scroll_pause_time=1.0)
+        Minimalist (ListCreator object creates a csv, txt, and md file in reverse chronological order - meaning the most recently uploaded videos are at the top of the file):
+        lc = ListCreator()
+
+
+        Minimalist with reverse chronological order (ListCreator object creates a csv, txt, and md file with oldest videos at the top of the file instead of the most recently uploaded videos at the top)
+        lc = ListCreator(reverse_chronological=False)
         ###########################################################
 
+
         ###########################################################
-        The same could also be done by specifying only the arguments that change from the default, but notice how this is less explicit and can become confusing if you forget what the default arguments are:
-        lc = ListCreator(txt=False, headless=True, scroll_pause_time=1.0)
+        Minimalist with greater pauses (useful for slow internet):
+        lc = ListCreator(scroll_pause_time=1.2)
+
+        Minimalist with shorter pauses (useful for fast internet):
+        lc = ListCreator(scroll_pause_time=0.7)
         ###########################################################
 
+
+        ###########################################################
+        Only creating a csv file with everything else set to default:
+        lc = ListCreator(txt=False, md=False)
+        ###########################################################
+
+
         -----------------------------------------------------------
-        It is up to you as the user to decide how you want to instantiate the ListCreator object.
-        If you choose the shorthand version, make sure you remember the default arguments!
-        -----------------------------------------------------------
-        PRO TIP: whichever way you decide to instantiate your object, if you use custom settings, name your ListCreator instance to reflect what you changed.
-        E.g. For the previous case instead of naming your instance "lc", name it "headlessCsvlc" or "headless_csv_lc" - or something along those lines.
+        SWE PRO TIP: however you decide to instantiate your object, if you use custom settings, name your ListCreator instance to reflect what you changed.
+        E.g. For the last case, instead of naming your instance "lc", name it "headlessCsvLc" or "headless_csv_lc" - or something along those lines.
         -----------------------------------------------------------
 
         ===========================================================
