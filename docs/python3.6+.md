@@ -27,11 +27,12 @@ There are a number of optional arguments you can specify during the instantiatio
     - `driver='chrome'`
     - `driver='brave'`
     - `driver='edge'`
-- `csv`, `txt` file type argument:
+- `csv`, `txt`, `md` file type argument:
   - `True` (default) - create a file for the specified type
   - `False` - do not create a file for the specified type.
     - `txt=True`  (default) OR `txt=False`
     - `csv=True`  (default) OR `csv=False`
+    - ` md=True`  (default) OR ` md=False`
 - `reverse_chronological` argument:
   - `True` (default) - write the files in order from most recent video to the oldest video
   - `False` - write the files in order from oldest video to the most recent video

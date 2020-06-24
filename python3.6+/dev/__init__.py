@@ -47,11 +47,12 @@ class ListCreator:
             -> driver='brave'
             -> driver='edge'
 
-        Options for the file type arguments (`csv`, `txt`) are
+        Options for the file type arguments (`csv`, `txt`, `md`) are
           * True (default) - create a file for the specified type
           * False - does NOT create a file for the specified type
              -> txt=True  (default) OR txt=False
              -> csv=True  (default) OR csv=False
+             ->  md=True  (default) OR  md=False
 
         Options for the `reverse_chronological` argument are
           * True (default) - write the files in order from most recent video to the oldest video
