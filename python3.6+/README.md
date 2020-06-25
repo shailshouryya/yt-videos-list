@@ -52,8 +52,12 @@ help(lc)
 
 ## [More API information](../docs/python3.6+.md#For-more-control)
 ## Usage Statistics
+<details>
+
 - [PePy](https://pepy.tech/project/yt-videos-list)
 - [PyPi Stats](https://pypistats.org/packages/yt-videos-list)
+
+</details>
 
 ## [Back to main page](../README.md)
 ### If you found this interesting or useful, **please consider starring this repo** so other people can more easily find and use this. Thank you!!
