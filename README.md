@@ -9,6 +9,8 @@ If you found this interesting or useful, **please consider starring this repo** 
 ### [python3](./python3.6+/README.md)
 
 ## Dependencies
+<details>
+
 **NOTE**: You need to have the Selenium driver installed to run this package - the first time you run this package the automated downloader should install everything you need, but in case it doesn't, refer to the link below and/or file an [issue here](https://github.com/Shail-Shouryya/yt_videos_list/issues). The Selenium drivers are all pretty similar but differ in subtle ways, so play around with them and see what's different :)
 ##### Manual Selenium downloads **[here](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/docs/dependencies_pseudo_json.txt)**
 **NOTE** that you also need the corresponding browser installed to properly run the selenium driver.
@@ -18,6 +20,8 @@ If you found this interesting or useful, **please consider starring this repo** 
   - [Chrome](https://www.google.com/chrome/)
   - [Brave](https://brave.com/)
   - [Edge](https://www.microsoft.com/edge)
+
+</details>
 
 ## [Future Features](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/docs/futureFeatures.md)
 ## [Technical Specifications](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/docs/technicalSpecifications.md)
