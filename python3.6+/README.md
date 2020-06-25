@@ -11,31 +11,31 @@ After you install Python 3.6+ (if needed), enter the following in your command l
 # if something isn't working properly, try rerunning this
 # the problem may have been fixed with a newer version
 
-pip3 install -U yt-videos-list # MacOS/Linux
-pip install -U yt-videos-list  # Windows
+pip3 install -U yt-videos-list     # MacOS/Linux
+pip install -U yt-videos-list      # Windows
 ```
 
 ### Running the package from the python interpreter
 ```shell
-python3 # MacOS/Linux
-python  # Windows
+python3     # MacOS/Linux
+python      # Windows
 ```
 ```python
 from yt_videos_list import ListCreator
 
+
 my_driver = 'firefox' # SUBSTITUTE THE DRIVER YOU WANT
 lc = ListCreator(driver=my_driver, scroll_pause_time=0.8)
 
-# "user" channel_type (example uses Corey Schafer):
-lc.create_list_for(url='https://www.youtube.com/user/schafer5')
 
-# "channel" channel_type (example uses freeCodeCamp) along with the optional file_name argument:
-lc.create_list_for(url='https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ', file_name='freeCodeCamp_org')
+lc.create_list_for(url='https://www.youtube.com/user/schafer5')
+lc.create_list_for(url='https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ')
+
 
 # see the new files that were just created:
 import os
-os.system('ls -lt | head')                  # MacOS/Linux
-os.system('dir /O-D | find "_videos_list"') # Windows
+os.system('ls -lt | head')                      # MacOS/Linux
+os.system('dir /O-D | find "_videos_list"')     # Windows
 
 # for more information on using the module:
 help(lc)
