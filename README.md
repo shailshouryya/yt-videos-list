@@ -26,10 +26,16 @@ If you found this interesting or useful, **please consider starring this repo** 
 ## [Future Features](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/docs/futureFeatures.md)
 ## [Technical Specifications](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/docs/technicalSpecifications.md)
 ## Usage Statistics
+<details>
+
 - [PePy](https://pepy.tech/project/yt-videos-list)
 - [PyPi Stats](https://pypistats.org/packages/yt-videos-list)
 
+</details>
+
 ## Interesting information about YouTube
+<details>
+
 There are two types of YouTube channels: one type is a `user` channel and the other is a `channel` channel.
 - `user` channel type:
   - sentdex: https://www.youtube.com/user/sentdex
@@ -41,3 +47,5 @@ There are two types of YouTube channels: one type is a `user` channel and the ot
   - Billie Eilish: https://www.youtube.com/channel/UCiGm_E4ZwYSHV3bcW1pnSeQ
   - Gordon Ramsay: https://www.youtube.com/channel/UCIEv3lZ_tNXHzL3ox-_uUGQ
   - PBS Space Time: https://www.youtube.com/channel/UC7_gcs09iThXybpVgjHZ_7g
+
+</details>
