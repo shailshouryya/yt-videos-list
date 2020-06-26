@@ -119,10 +119,11 @@ class ListCreator:
 
     def create_list_for(self, url=None, file_name=None, channel=None, channel_type=None):
         '''
-        NOTE that the "channel" and "channel_type" arguments are now deprecated, and remain for legacy purposes.
         The create_list_for() method creates a list using the arguments specified during instantiation of the ListCreator object.
-        You need to specify the url to the channel you want to scrape.
-        You can also provide an optional file_name argument, but the file_name argument is not required.
+        You need to specify just the url to the channel you want to scrape.
+
+        You can also provide an optional file_name argument, but this is NOT recommended - the program finds the name of the channel automatically and if you rename the file the file won't be automatically updated if the channel uploads a new video and you run this on that channel UNLESS you provide the same **exact** name every time you rerun this.
+        NOTE that the "channel" and "channel_type" arguments are now deprecated, and remain for legacy purposes.
         '''
 
 
