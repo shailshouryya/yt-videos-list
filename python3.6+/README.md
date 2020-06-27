@@ -7,17 +7,21 @@ This package uses [f-strings](https://cito.github.io/blog/f-strings/) (more [her
 </details>
 
 If this is your first time running this:
-##### On Windows: makes sure you "Run as Administrator"
 <details>
+
+  ##### On Windows: makes sure you "Run as Administrator"
+  <details>
 
   - shortcut: <mark>⊞ Win</mark> + <mark>X</mark> + <mark>A</mark>
 
-</details>
+  </details>
 
-##### On Unix based machines (MacOS, Linux), make sure you have read and write access to `/usr/local/bin/`
-<details>
+  ##### On Unix based machines (MacOS, Linux), make sure you have read and write access to `/usr/local/bin/`
+  <details>
 
   - if not sure, run `sudo chown $USER /usr/local/bin/` in terminal
+
+  </details>
 
 </details>
 
