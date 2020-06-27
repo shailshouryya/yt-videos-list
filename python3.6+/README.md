@@ -6,23 +6,20 @@ This package uses [f-strings](https://cito.github.io/blog/f-strings/) (more [her
 
 </details>
 
-If this is your first time running this:
 <details>
-
-  ##### On Windows: makes sure you "Run as Administrator"
+  <summary><b>First time running this</b></summary>
   <details>
+    <summary><b>On Windows: makes sure you "Run as Administrator"</b></summary>
 
-  - shortcut: <mark>⊞ Win</mark> + <mark>X</mark> + <mark>A</mark>
+  - shortcut: `⊞ Win` + `X` + `A`
 
   </details>
-
-  ##### On Unix based machines (MacOS, Linux), make sure you have read and write access to `/usr/local/bin/`
   <details>
+    <summary><b>On Unix based machines (MacOS, Linux), make sure you have read and write access to `/usr/local/bin/`</b></summary>
 
-  - if not sure, run `sudo chown $USER /usr/local/bin/` in terminal
+  - if you're not sure, open terminal and run `sudo chown $USER /usr/local/bin/`
 
   </details>
-
 </details>
 
 After you install Python 3.6+ (if needed), enter the following in your command line:
