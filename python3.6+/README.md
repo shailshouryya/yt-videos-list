@@ -5,11 +5,21 @@
 This package uses [f-strings](https://cito.github.io/blog/f-strings/) (more [here](https://realpython.com/python-f-strings/)) and as such requires Python 3.6+. If you have an older version of Python, you can download the Python 3.8.2 [macOS 64-bit installer](https://www.python.org/ftp/python/3.8.2/python-3.8.2-macosx10.9.pkg), [Windows x86-64 executable installer](https://www.python.org/ftp/python/3.8.2/python-3.8.2-amd64.exe), [Windows x86 executable installer](https://www.python.org/ftp/python/3.8.2/python-3.8.2.exe), or the [Gzipped source tarball](https://www.python.org/ftp/python/3.8.2/Python-3.8.2.tgz) (most useful for Linux) and follow the instructions to set up Python for your machine. If you want to install a different version, visit the [Python Downloads page](https://www.python.org/downloads/) and select the version you want.
 
 </details>
+
 If this is your first time running this:
 ##### On Windows: makes sure you "Run as Administrator"
+<details>
+
   - shortcut: <mark>⊞ Win</mark> + <mark>X</mark> + <mark>A</mark>
+
+</details>
+
 ##### On Unix based machines (MacOS, Linux), make sure you have read and write access to `/usr/local/bin/`
+<details>
+
   - if not sure, run `sudo chown $USER /usr/local/bin/` in terminal
+
+</details>
 
 After you install Python 3.6+ (if needed), enter the following in your command line:
 
