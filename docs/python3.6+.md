@@ -2,8 +2,8 @@
 ---
 **NOTE** that you can also access all the information below in the `python3` interpreter by entering
 ```python
-from yt_videos_list import ListCreator`
-help(ListCreator)
+import yt_videos_list
+help(yt_videos_list)
 ```
 
 ---
