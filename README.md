@@ -20,7 +20,6 @@ If you found this interesting or useful, **please consider starring this repo** 
   - [Chrome](https://www.google.com/chrome/)
   - [Brave](https://brave.com/)
   - [Edge](https://www.microsoft.com/edge)
-
 </details>
 
 ## [Future Features](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/docs/futureFeatures.md)
@@ -30,7 +29,6 @@ If you found this interesting or useful, **please consider starring this repo** 
 
 - [PePy](https://pepy.tech/project/yt-videos-list)
 - [PyPi Stats](https://pypistats.org/packages/yt-videos-list)
-
 </details>
 
 ## Interesting information about YouTube
@@ -47,5 +45,4 @@ There are two types of YouTube channels: one type is a `user` channel and the ot
   - Billie Eilish: https://www.youtube.com/channel/UCiGm_E4ZwYSHV3bcW1pnSeQ
   - Gordon Ramsay: https://www.youtube.com/channel/UCIEv3lZ_tNXHzL3ox-_uUGQ
   - PBS Space Time: https://www.youtube.com/channel/UC7_gcs09iThXybpVgjHZ_7g
-
 </details>

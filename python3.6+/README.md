@@ -3,7 +3,6 @@
   <summary><b>Python 3.6+ setup (required if not already installed)</b></summary>
 
 This package uses [f-strings](https://cito.github.io/blog/f-strings/) (more [here](https://realpython.com/python-f-strings/)) and as such requires Python 3.6+. If you have an older version of Python, you can download the Python 3.8.2 [macOS 64-bit installer](https://www.python.org/ftp/python/3.8.2/python-3.8.2-macosx10.9.pkg), [Windows x86-64 executable installer](https://www.python.org/ftp/python/3.8.2/python-3.8.2-amd64.exe), [Windows x86 executable installer](https://www.python.org/ftp/python/3.8.2/python-3.8.2.exe), or the [Gzipped source tarball](https://www.python.org/ftp/python/3.8.2/Python-3.8.2.tgz) (most useful for Linux) and follow the instructions to set up Python for your machine. If you want to install a different version, visit the [Python Downloads page](https://www.python.org/downloads/) and select the version you want.
-
 </details>
 
 <details>
@@ -12,13 +11,11 @@ This package uses [f-strings](https://cito.github.io/blog/f-strings/) (more [her
     <summary><b>On Windows: makes sure you "Run as Administrator"</b></summary>
 
   - shortcut: `⊞ Win` + `X` + `A`
-
   </details>
   <details>
     <summary><b>On Unix based machines (MacOS, Linux), make sure you have read and write access to `/usr/local/bin/`</b></summary>
 
   - if you're not sure, open terminal and run `sudo chown $USER /usr/local/bin/`
-
   </details>
 </details>
 
@@ -73,7 +70,6 @@ help(lc)
 
 - [PePy](https://pepy.tech/project/yt-videos-list)
 - [PyPi Stats](https://pypistats.org/packages/yt-videos-list)
-
 </details>
 
 ## [Back to main page](../README.md)
