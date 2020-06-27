@@ -13,6 +13,8 @@ If you have an older version of Python, you can download Python 3.8.2 (follow li
 
 <details>
   <summary><b>Permissions for first run</b></summary>
+
+  This is required to make sure you can download and install the required Selenium binary dependencies
   <details>
     <summary><b>On Windows: makes sure you "Run as Administrator"</b></summary>
 
