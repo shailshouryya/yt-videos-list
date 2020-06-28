@@ -27,13 +27,6 @@ If you found this interesting or useful, **please consider starring this repo** 
 </details>
 
 <details>
-  <summary><b>Usage Statistics</b></summary>
-
-- [PePy](https://pepy.tech/project/yt-videos-list)
-- [PyPi Stats](https://pypistats.org/packages/yt-videos-list)
-</details>
-
-<details>
   <summary><b>Interesting information about YouTube</b></summary>
 
 There are two types of YouTube channels: one type is a `user` channel and the other is a `channel` channel.
@@ -102,4 +95,11 @@ This package provides built-in support for common errors and exceptions, along w
 #### `program.py`
 
 #### `script.py`
+</details>
+
+<details>
+  <summary><b>Usage Statistics</b></summary>
+
+- [PePy](https://pepy.tech/project/yt-videos-list)
+- [PyPi Stats](https://pypistats.org/packages/yt-videos-list)
 </details>
