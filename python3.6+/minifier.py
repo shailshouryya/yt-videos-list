@@ -6,10 +6,7 @@ import shutil
 from tests.test_shared import determine_path_slash
 
 
-def main():
-    slash            = determine_path_slash()
-    source_directory = 'dev'
-    target_directory = 'yt_videos_list'
+def clear_target_directory(target_directory):
     readme           = f'./{target_directory}/README.md'
 
     shutil.move  (f'{readme}', 'temp.md')
@@ -18,6 +15,8 @@ def main():
     os.mkdir(target_directory)
     shutil.move('temp.md', f'{readme}')
 
+
+def minify_source_directory_into_target_directory(slash, source_directory, target_directory):
     valid_files       = []
     local_directories = set()
 
@@ -42,6 +41,15 @@ def main():
             formatted = re.sub(r'^\n', '',   formatted, flags=re.MULTILINE)
             if 'notifications.py' not in file and 'write.py' not in file: formatted = re.sub(r'    ', ' ', formatted)
             write_file.write(formatted)
+
+
+def main():
+    slash            = determine_path_slash()
+    source_directory = 'dev'
+    target_directory = 'yt_videos_list'
+
+    clear_target_directory(target_directory)
+    minify_source_directory_into_target_directory(slash, source_directory, target_directory)
 
 
 if __name__ == '__main__':
