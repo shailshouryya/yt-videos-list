@@ -3,8 +3,6 @@ This package provides a quick, simple way to create a list of all videos posted 
 
 #### If you already scraped a channel and the channel uploaded a new video, simply rerun this program on that channel and this package updates your files to include the newer video(s)!
 
-If you found this interesting or useful, **please consider starring this repo** so other people can more easily find and use this. Thanks!
-
 # API guides
 ### [python3](./python3.6+/README.md)
 
@@ -103,3 +101,5 @@ This package provides built-in support for common errors and exceptions, along w
 - [PePy](https://pepy.tech/project/yt-videos-list)
 - [PyPi Stats](https://pypistats.org/packages/yt-videos-list)
 </details>
+
+If you found this interesting or useful, **please consider starring this repo** so other people can more easily find and use this. Thanks!
