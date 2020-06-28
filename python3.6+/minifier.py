@@ -1,17 +1,14 @@
 import os
 import re
-import time
 import shutil
 
 from tests.test_shared import determine_path_slash
 
 
 def clear_target_directory(target_directory):
-    readme           = f'./{target_directory}/README.md'
-
+    readme = f'./{target_directory}/README.md'
     shutil.move  (f'{readme}', 'temp.md')
     shutil.rmtree(f'./{target_directory}')
-    time.sleep(2)
     os.mkdir(target_directory)
     shutil.move('temp.md', f'{readme}')
 
@@ -19,7 +16,6 @@ def clear_target_directory(target_directory):
 def minify_source_directory_into_target_directory(slash, source_directory, target_directory):
     valid_files       = []
     local_directories = set()
-
     for root, _, files in os.walk(os.path.abspath(f'./{source_directory}')):
         for file in files:
             filepath = os.path.join(root, file).split(source_directory)[1]
@@ -37,8 +33,8 @@ def minify_source_directory_into_target_directory(slash, source_directory, targe
                 continue
             formatted = read_file.read()
             formatted = re.sub(r' +# .+', '', formatted)
-            formatted = re.sub(r' +\n', '',  formatted)
-            formatted = re.sub(r'^\n', '',   formatted, flags=re.MULTILINE)
+            formatted = re.sub(r' +\n', '',   formatted)
+            formatted = re.sub(r'^\n', '',    formatted, flags=re.MULTILINE)
             if 'notifications.py' not in file and 'write.py' not in file: formatted = re.sub(r'    ', ' ', formatted)
             write_file.write(formatted)
 
