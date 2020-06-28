@@ -132,7 +132,7 @@ class ListCreator:
             channel_type = channel_info.split('/')[0]
             channel      = channel_info.split('/')[1]
         if channel is None or channel_type is None:
-            raise TypeError(Common().missing_url + ModuleMessage().url_argument_usage)
+            raise RuntimeError(Common().missing_url + ModuleMessage().url_argument_usage)
 
         _execution_type = 'module'
         instance_attributes = (self.txt, self.csv, self.markdown, self.reverse_chronological, self.headless, self.scroll_pause_time, self.driver)
