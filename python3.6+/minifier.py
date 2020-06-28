@@ -39,8 +39,8 @@ def main():
             formatted = read_file.read()
             formatted = re.sub(r' +# .+', '', formatted)
             formatted = re.sub(r' +\n', '',  formatted)
-            if 'notifications.py' not in file and 'write.py' not in file: formatted = re.sub(r'    ', ' ', formatted)
             formatted = re.sub(r'^\n', '',   formatted, flags=re.MULTILINE)
+            if 'notifications.py' not in file and 'write.py' not in file: formatted = re.sub(r'    ', ' ', formatted)
             write_file.write(formatted)
 
 
