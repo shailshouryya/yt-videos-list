@@ -99,7 +99,7 @@ class ListCreator:
 
         -----------------------------------------------------------
         SWE PRO TIP: however you decide to instantiate your object, if you use custom settings, name your ListCreator instance to reflect what you changed.
-        E.g. For the last case, instead of naming your instance "lc", name it "headlessCsvLc" or "headless_csv_lc" - or something along those lines.
+        E.g. For the last case, instead of naming your instance "lc", name it "CsvOnlyLc" or "csv_only_lc" - or something along those lines.
         -----------------------------------------------------------
 
         ===========================================================
