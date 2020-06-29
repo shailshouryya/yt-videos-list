@@ -81,18 +81,25 @@ This package provides built-in support for common errors and exceptions, along w
     - user still needs to pick the correct command to run by following the directions
   - checking to see if the result of the scraping returns results, and prompts the user to verify the `url` argument if no results are found
 
-### Overview of the package structure
+### Overview of package structure
 #### `__init__.py`
 
 #### `__main__.py`
 
-#### `execute.py`
+#### `script.py`
 
-#### `notifications.py`
+#### `execute.py`
 
 #### `program.py`
 
-#### `script.py`
+#### `file` submodule
+
+#### `download` submodule
+
+#### `notifications.py`
+
+
+
 </details>
 
 <details>
