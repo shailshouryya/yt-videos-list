@@ -17,3 +17,7 @@ attrs = driver.execute_script(
         return items;', element
     )
 pprint(attrs)
+
+# simpler way from https://stackoverflow.com/a/44665566
+print(element.get_property('attributes')[0])
+print(element.get_property('attributes')[0].keys()) # displays just the names
