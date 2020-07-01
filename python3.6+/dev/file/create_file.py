@@ -34,7 +34,6 @@ def save_elements_to_list(driver, start_time, scroll_pause_time, url):
 
 
 def scroll_to_bottom(url, driver, scroll_pause_time):
-    driver.set_window_size(780, 880)
     start_time = time.perf_counter() # timer stops in save_elements_to_list() function
     driver.get(url)
 

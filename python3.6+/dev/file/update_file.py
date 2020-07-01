@@ -33,7 +33,6 @@ def save_elements_to_list(driver, start_time, scroll_pause_time, url):
 
 def scroll_to_old_videos(url, driver, scroll_pause_time, txt_exists, csv_exists, md_exists, file_name):
     global VISITED_VIDEOS, STORED_IN_TXT, STORED_IN_CSV, STORED_IN_MD
-    driver.set_window_size(780, 880)
     STORED_IN_TXT = set()
     STORED_IN_CSV = set()
     STORED_IN_MD  = set()

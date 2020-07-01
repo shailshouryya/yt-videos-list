@@ -24,7 +24,6 @@ def save_elements_to_list(driver, start_time, scroll_pause_time, url):
  print(f'It took {total_time} seconds to find all {len(elements)} videos from {url}{NEWLINE}')
  return elements
 def scroll_to_bottom(url, driver, scroll_pause_time):
- driver.set_window_size(780, 880)
  start_time = time.perf_counter()
  driver.get(url)
  current_elements_count = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
