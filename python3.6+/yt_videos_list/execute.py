@@ -122,6 +122,7 @@ def logic(channel, channel_type, file_name, txt, csv, markdown, reverse_chronolo
   print(f'\n\n\nNow scraping {url} using the {user_driver}driver:')
   driver.get(url)
   driver.set_window_size(780, 880)
+  driver.set_window_position(0, 0)
   file_name = determine_file_name()
   program.determine_action(url, driver, scroll_pause_time, reverse_chronological, file_name, txt, csv, markdown)
  program_end = time.perf_counter()
