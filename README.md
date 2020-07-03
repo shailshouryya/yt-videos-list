@@ -45,16 +45,16 @@ There are two types of YouTube channels: one type is a `user` channel and the ot
 
 ### Main Features
 - [X] take url and scrape the video name and url for every video for that user
-- [X] create csv
-- [ ] get date published (probably not possible without significantly increasing runtime, could get how long ago video was published, but that tends to be unspecific)
+- [X] create [txt](https://fileinfo.com/extension/txt), [csv](https://en.wikipedia.org/wiki/Comma-separated_values), [md](https://en.wikipedia.org/wiki/Markdown) files
 
 ### Additional Features
+- [x] enable custom name for output file
+- [x] update previously created file with new videos uploaded since file creation
+  - [x] put all urls from file in a (hash) set and check to see if any urls on page (next time program runs on same page) are missing from the (hash) set
 - [ ] create web interface
   - [ ] input box for channel url
-- [ ] ouput CSV with custom name
-- [ ] generate static HTML page with video URLs
-- [ ] update previously generated CSV with new videos uploaded since CSV generation
-  - [ ] using some kind of delta sync
+  - [ ] generate static HTML page with video URLs for output
+
 </details>
 
 <details>
