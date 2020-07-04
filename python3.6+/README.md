@@ -46,7 +46,7 @@ python      # Windows
 from yt_videos_list import ListCreator
 
 
-my_driver = 'firefox' # SUBSTITUTE THE DRIVER YOU WANT
+my_driver = 'firefox' # SUBSTITUTE DRIVER YOU WANT (options below)
 lc = ListCreator(driver=my_driver, scroll_pause_time=0.8)
 
 
@@ -62,13 +62,13 @@ os.system('dir /O-D | find "_videos_list"')     # Windows
 # for more information on using the module:
 help(lc)
 ```
-- options for `my_driver` include:
-  - `my_driver = 'firefox'`
-  - `my_driver = 'opera'`
-  - `my_driver = 'safari'`
-  - `my_driver = 'chrome'`
-  - `my_driver = 'brave'`
-  - `my_driver = 'edge'` (Windows only!)
+- `driver` options include:
+  - `'firefox'`
+  - `'opera'`
+  - `'safari'` (MacOS only)
+  - `'chrome'`
+  - `'brave'`
+  - `'edge'` (Windows only!)
 - increase `scroll_pause_time` for laggy internet and decrease `scroll_pause_time` for fast internet
 #### If you already scraped a channel and the channel uploaded a new video, simply rerun this program on that channel and this package updates your files to include the newer video(s)!
 
