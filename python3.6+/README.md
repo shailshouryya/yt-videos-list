@@ -84,9 +84,10 @@ help(yt_videos_list)
 
 ---
 ```python
-# options for the ListCreator object
+# default options for the ListCreator object
 
-ListCreator(csv=True, txt=True, reverse_chronological=True,
+ListCreator(csv=True, txt=True, md=True,
+            reverse_chronological=True,
             headless=False, scroll_pause_time=0.8,
             driver='Firefox')
 ```
