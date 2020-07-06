@@ -152,21 +152,21 @@ class Common:
     @classmethod
     def format_bravedriver_list(cls, operating_system):
         return [
-            cls.format_driver_information          (operating_system, 'v.83.0.4103.97', '83', 'bravedriver', 'Brave Browser (Chromium)'),
+            cls.format_driver_information          (operating_system, 'v.83.0.4103.97', '83', 'bravedriver (operadriver based)', 'Brave Browser'),
             cls.format_bravedriver_download_command(operating_system, 'v.83.0.4103.97'),
-            cls.format_driver_information          (operating_system, 'v.81.0.4044.113', '81', 'bravedriver', 'Brave Browser (Chromium)'),
+            cls.format_driver_information          (operating_system, 'v.81.0.4044.113', '81', 'bravedriver (operadriver based)', 'Brave Browser'),
             cls.format_bravedriver_download_command(operating_system, 'v.81.0.4044.113'),
-            cls.format_driver_information          (operating_system, 'v.80.0.3987.100', '80', 'bravedriver', 'Brave Browser (Chromium)'),
+            cls.format_driver_information          (operating_system, 'v.80.0.3987.100', '80', 'bravedriver (operadriver based)', 'Brave Browser'),
             cls.format_bravedriver_download_command(operating_system, 'v.80.0.3987.100'),
-            cls.format_driver_information          (operating_system, 'v.79.0.3945.79',  '79', 'bravedriver', 'Brave Browser (Chromium)'),
+            cls.format_driver_information          (operating_system, 'v.79.0.3945.79',  '79', 'bravedriver (operadriver based)', 'Brave Browser'),
             cls.format_bravedriver_download_command(operating_system, 'v.79.0.3945.79'),
-            cls.format_driver_information          (operating_system, 'v.78.0.3904.87',  '78', 'bravedriver', 'Brave Browser (Chromium)'),
+            cls.format_driver_information          (operating_system, 'v.78.0.3904.87',  '78', 'bravedriver (operadriver based)', 'Brave Browser'),
             cls.format_bravedriver_download_command(operating_system, 'v.78.0.3904.87'),
-            cls.format_driver_information          (operating_system, 'v.77.0.3865.120', '77', 'bravedriver', 'Brave Browser (Chromium)'),
+            cls.format_driver_information          (operating_system, 'v.77.0.3865.120', '77', 'bravedriver (operadriver based)', 'Brave Browser'),
             cls.format_bravedriver_download_command(operating_system, 'v.77.0.3865.120'),
-            cls.format_driver_information          (operating_system, 'v.76.0.3809.132', '76', 'bravedriver', 'Brave Browser (Chromium)'),
+            cls.format_driver_information          (operating_system, 'v.76.0.3809.132', '76', 'bravedriver (operadriver based)', 'Brave Browser'),
             cls.format_bravedriver_download_command(operating_system, 'v.76.0.3809.132'),
-            cls.format_driver_information          (operating_system, 'v.75.0.3770.100', '75', 'bravedriver', 'Brave Browser (Chromium)'),
+            cls.format_driver_information          (operating_system, 'v.75.0.3770.100', '75', 'bravedriver (operadriver based)', 'Brave Browser'),
             cls.format_bravedriver_download_command(operating_system, 'v.75.0.3770.100')
         ]
 
