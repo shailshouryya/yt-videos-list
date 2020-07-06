@@ -72,6 +72,7 @@ def execute_download_command(driver, user_os, version):
             '60': -1,
         },
         'opera': {
+            '69': -27,
             '68': -25,
             '67': -23,
             '66': -21,
@@ -104,6 +105,8 @@ def execute_download_command(driver, user_os, version):
             '71': -1
         },
         'brave': {
+            '83': -15,
+            # there was no 82
             '81': -13,
             '80': -11,
             '79': -9,
