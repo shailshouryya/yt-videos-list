@@ -1,7 +1,5 @@
 python minifier.py
-python tests\test_cross_platform.py
-python tests\test_safaridriver.py
-python tests\test_msedgedriver.py
+python tests/test_all_drivers.py
 python tests\test_dependencies_json.py
 
 echo "Finished running unit tests!"
