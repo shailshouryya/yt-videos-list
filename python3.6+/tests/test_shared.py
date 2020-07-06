@@ -84,9 +84,13 @@ def compare_test_files_to_reference_files(full_file):
         verified_txt = hashlib.sha256(full_txt.read().encode('utf-8')).hexdigest()
         verified_csv = hashlib.sha256(full_csv.read().encode('utf-8')).hexdigest()
         verified_md  = hashlib.sha256(full_md.read().encode ('utf-8')).hexdigest()
-    if current_txt != verified_txt: print(f'❌ ERROR! The updated txt file does NOT match the {full_file}.txt file!'); sys.exit()
+    failed = False
+    if current_txt != verified_txt: print(f'❌ ERROR! The updated txt file does NOT match the {full_file}.txt file!'); failed = True
     else:                           print(f'✅ The updated txt file matches the {full_file}.txt file :)')
-    if current_csv != verified_csv: print(f'❌ ERROR! The updated csv file does NOT match the {full_file}.csv file!'); sys.exit()
+    if current_csv != verified_csv: print(f'❌ ERROR! The updated csv file does NOT match the {full_file}.csv file!'); failed = True
     else:                           print(f'✅ The updated csv file matches the {full_file}.csv file :)')
-    if current_md  != verified_md:  print(f'❌ ERROR! The updated md  file does NOT match the {full_file}.md  file!'); sys.exit()
+    if current_md  != verified_md:  print(f'❌ ERROR! The updated md  file does NOT match the {full_file}.md  file!'); failed = True
     else:                           print(f'✅ The updated md  file matches the {full_file}.md  file :)')
+    if failed:
+        print('\n' * 5)
+        sys.exit()
