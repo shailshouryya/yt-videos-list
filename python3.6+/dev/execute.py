@@ -6,7 +6,7 @@ from selenium import webdriver
 
 from . import program
 from .download.windows_info import get_drive_letter
-from .download.dependencies import download_dependencies
+from .download.selenium_dependencies import download_dependencies
 from .download.user_os_info import determine_user_os
 from .notifications import Common, ModuleMessage, ScriptMessage
 
