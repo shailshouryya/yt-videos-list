@@ -1,4 +1,4 @@
-from . import execute
+from .              import execute
 from .notifications import Common, ModuleMessage
 
 

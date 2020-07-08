@@ -2,7 +2,7 @@ import functools
 import time
 import csv
 import os
-from . import write
+from .      import write
 from ..notifications import Common as common_message
 NEWLINE = '\n'
 def scroll_down(current_elements_count, driver, scroll_pause_time):

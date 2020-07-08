@@ -1,5 +1,5 @@
 import os
-from . import file
+from .     import file
 from .notifications import Common
 COMMON_MESSAGE = Common()
 def determine_action(url, driver, scroll_pause_time, reverse_chronological, file_name, txt, csv, markdown):

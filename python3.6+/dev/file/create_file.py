@@ -3,7 +3,7 @@ import time
 import csv
 import os
 
-from . import write
+from .               import write
 from ..notifications import Common as common_message
 
 

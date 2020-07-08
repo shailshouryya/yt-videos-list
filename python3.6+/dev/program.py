@@ -1,6 +1,6 @@
 import os
 
-from . import file
+from .              import file
 from .notifications import Common
 
 

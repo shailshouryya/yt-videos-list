@@ -5,10 +5,10 @@ import selenium
 from selenium import webdriver
 
 from . import program
-from .download.windows_info import get_drive_letter
 from .download.selenium_dependencies import download_dependencies
-from .download.user_os_info import determine_user_os
-from .notifications import Common, ModuleMessage, ScriptMessage
+from .download.windows_info          import get_drive_letter
+from .download.user_os_info          import determine_user_os
+from .notifications                  import Common, ModuleMessage, ScriptMessage
 
 
 def logic(channel, channel_type, file_name, txt, csv, markdown, reverse_chronological, headless, scroll_pause_time, user_driver, execution_type):
