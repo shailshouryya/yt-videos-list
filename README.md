@@ -69,7 +69,7 @@ This package provides built-in support for common errors and exceptions, along w
     - if it already exists, a message prompts the user to either move/rename the existing file or continue with the write to overwrite the existing file
     - proper way to do so would be to specify the write format for the output file as `csv_write_format='w'` or `txt_write_format='w'` or `docx_write_format='w'`
   - checking to see if the user explicitly specified a driver, and running the program using Firefox and showing the user the available driver options in the terminal output in case they didn't specify a driver
-    - explicitly specify driver using
+    - explicitly specifying driver using
       - `ListCreator(driver='firefox')`
       - `ListCreator(driver='opera')`
       - `ListCreator(driver='safari')`
