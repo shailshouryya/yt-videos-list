@@ -27,6 +27,25 @@ If you have an older version of Python, you can download Python 3.8.2 (follow li
   </details>
 </details>
 
+### Explicitly downloading all Selenium dependencies
+<details>
+  <summary><b>Ideal if you use Selenium for other projects</b></summary>
+
+Make sure you already have the `yt-videos-list` package installed (see [section](./README.md#running-the-package-from-the-python-interpreter) below for getting set up), then run the following:
+
+```shell
+python3     # MacOS/Linux
+python      # Windows
+```
+```python
+from yt_videos_list.download.selenium_dependencies import download_dependencies
+download_dependencies()
+```
+
+That's all! 🤓
+
+</details>
+
 After you install Python 3.6+ and ensure you have the required permissions (if either is needed), enter the following in your command line:
 
 ```shell
