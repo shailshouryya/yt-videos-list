@@ -1,4 +1,20 @@
 # python3.6+ Quick Start
+### Explicitly downloading all Selenium dependencies
+- Ideal if you use Selenium for other projects 😎
+
+Make sure you already have the `yt-videos-list` package installed (see section below for getting set up), then run the following:
+
+```shell
+python3     # MacOS/Linux
+python      # Windows
+```
+```python
+from yt_videos_list.download import selenium_webdriver_dependencies
+selenium_webdriver_dependencies.download_all()
+```
+
+That's all! 🤓
+
 <details>
   <summary><b>Python 3.6+ setup (required if not already installed)</b></summary>
 
@@ -25,24 +41,6 @@ If you have an older version of Python, you can download Python 3.8.2 (follow li
 
   - if you're not sure, open terminal and run `sudo chown $USER /usr/local/bin/`
   </details>
-</details>
-
-### Explicitly downloading all Selenium dependencies
-<details>
-  <summary><b>Ideal if you use Selenium for other projects</b></summary>
-
-Make sure you already have the `yt-videos-list` package installed (see [section](./README.md#running-the-package-from-the-python-interpreter) below for getting set up), then run the following:
-
-```shell
-python3     # MacOS/Linux
-python      # Windows
-```
-```python
-from yt_videos_list.download.selenium_webdriver_dependencies import download_all
-download_all()
-```
-
-That's all! 🤓
 </details>
 
 After you install Python 3.6+ and ensure you have the required permissions as needed, enter the following in your command line:
