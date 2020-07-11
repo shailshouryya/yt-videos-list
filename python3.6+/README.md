@@ -2,7 +2,7 @@
 <details>
   <summary><b>Python 3.6+ setup (required if not already installed)</b></summary>
 
-This package uses [f-strings](https://cito.github.io/blog/f-strings/) (more [here](https://realpython.com/python-f-strings/)) and as such requires Python 3.6+.
+This package uses [f-strings](https://cito.github.io/blog/f-strings/) (more [here](https://realpython.com/python-f-strings/)), and so requires Python 3.6+.
 
 If you have an older version of Python, you can download Python 3.8.2 (follow links below) and follow the instructions to set up Python for your machine. If you want to install a different version, visit the [Python Downloads page](https://www.python.org/downloads/) and select the version you want.
 - [macOS 64-bit installer](https://www.python.org/ftp/python/3.8.2/python-3.8.2-macosx10.9.pkg)
@@ -14,7 +14,7 @@ If you have an older version of Python, you can download Python 3.8.2 (follow li
 <details>
   <summary><b>Permissions for first run</b></summary>
 
-  This is required to make sure you can download and install the required Selenium binary dependencies
+  This is required to make sure you can download and install the required Selenium binary dependencies.
   <details>
     <summary><b>On Windows: makes sure you "Run as Administrator"</b></summary>
 
@@ -43,10 +43,9 @@ download_dependencies()
 ```
 
 That's all! 🤓
-
 </details>
 
-After you install Python 3.6+ and ensure you have the required permissions (if either is needed), enter the following in your command line:
+After you install Python 3.6+ and ensure you have the required permissions as needed, enter the following in your command line:
 
 ```shell
 # if something isn't working properly, try rerunning this
