@@ -38,8 +38,8 @@ python3     # MacOS/Linux
 python      # Windows
 ```
 ```python
-from yt_videos_list.download.selenium_webdriver_dependencies import download_dependencies
-download_dependencies()
+from yt_videos_list.download.selenium_webdriver_dependencies import download_all
+download_all()
 ```
 
 That's all! 🤓

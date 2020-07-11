@@ -5,7 +5,7 @@ import selenium
 from selenium import webdriver
 
 from . import program
-from .download.selenium_webdriver_dependencies import download_dependencies
+from .download.selenium_webdriver_dependencies import download_all
 from .download.windows_info                    import get_drive_letter
 from .download.user_os_info                    import determine_user_os
 from .notifications                            import Common, ModuleMessage, ScriptMessage
@@ -152,7 +152,7 @@ def logic(channel, channel_type, file_name, txt, csv, markdown, reverse_chronolo
         # for some reason this also catches selenium.common.exceptions.SessionNotCreatedException: Message: session not created: This version of BROWSERDriver only supports BROWSER version ##
         common_message.display_selenium_dependency_error(err)
         try:
-            download_dependencies()
+            download_all()
             driver = open_user_driver()
         except: # could not download the correct Selenium driver based on the user's OS and specified driver
             show_user_how_to_set_up_selenium()

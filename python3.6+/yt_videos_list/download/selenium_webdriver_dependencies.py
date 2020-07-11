@@ -117,6 +117,6 @@ def execute_download_command(driver, user_os, version):
  print(f'{COMMON_MESSAGE.driver_downloads_for_os[driver][user_os][row-1]} #')
  print(f'{COMMON_MESSAGE.driver_downloads_for_os[driver][user_os][row]}')
  os.system(COMMON_MESSAGE.driver_downloads_for_os[driver][user_os][row])
-def download_dependencies():
+def download_all():
  user_os = determine_user_os()
  download_all_dependencies(user_os)
