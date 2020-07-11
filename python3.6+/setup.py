@@ -12,7 +12,7 @@ with open('README.md', 'r', encoding='utf-8') as f:
 setup(
     name                          = 'yt_videos_list',
     version                       = '0.4.3',
-    description                   = 'Extract YouTube video titles & corresponding URLs for a specific channel and write information to output files with sections to mark a video as watched, mark a video for rewatching, and a section for notes.',
+    description                   = 'Automate Selenium webdriver dependency set up + extract YouTube video titles and URLs with end-to-end web scraping API',
     long_description              = long_description,
     long_description_content_type = 'text/markdown',
     url                           = 'https://github.com/Shail-Shouryya/yt_videos_list',
