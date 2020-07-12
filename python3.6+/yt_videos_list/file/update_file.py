@@ -83,12 +83,6 @@ def txt_writer(new_file, old_file, visited_videos, markdown_formatting, reverse_
  else:
   new_file.seek(0)
   for line in new_file: old_file.write(line)
-# if reverse_chronological is True, start at the end of the selenium elements list and ignore all videos that are already in the file
-# add new videos to temp file until first element is reached
-# then append new videos to end of old file - make sure to remove temp file!
-# otherwise start at the beginning of the list and continue adding videos to the temp file until a video that is already in the list is reached
-# ignore all videos that are already in the original file
-# then take the contents of the original file and append it to the end of the temp file before renaming temp file to file_name.txt (overwrites original file)
 @time_writer_function
 def write_to_txt(list_of_videos, file_name, reverse_chronological):
  if 'STORED_IN_TXT' not in locals(): stored_in_txt = store_already_written_videos(file_name, 'txt')

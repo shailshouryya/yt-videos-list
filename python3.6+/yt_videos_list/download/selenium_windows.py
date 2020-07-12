@@ -3,7 +3,6 @@ import json
 import subprocess
 from .windows_info import get_drive_letter, get_user_name
 from .user_os_info import determine_user_os
-# importing this module without this check results in errors on non-Windows platforms
 if determine_user_os() == 'windows':
  DRIVE = get_drive_letter()
  USER  = get_user_name()
