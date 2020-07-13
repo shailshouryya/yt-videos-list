@@ -1,20 +1,4 @@
 # python3.6+ Quick Start
-### Explicitly downloading all Selenium dependencies
-- Ideal if you use Selenium for other projects 😎
-
-Make sure you already have the `yt-videos-list` package installed (see section below for getting set up), then run the following:
-
-```shell
-python3     # MacOS/Linux
-python      # Windows
-```
-```python
-from yt_videos_list.download import selenium_webdriver_dependencies
-selenium_webdriver_dependencies.download_all()
-```
-
-That's all! 🤓
-
 <details>
   <summary><b>Python 3.6+ setup (required if not already installed)</b></summary>
 
@@ -43,17 +27,40 @@ If you have an older version of Python, you can download Python 3.8.2 (follow li
   </details>
 </details>
 
-After you install Python 3.6+ and ensure you have the required permissions as needed, enter the following in your command line:
+<details>
+  <summary><b>Installing the package</b></summary>
 
+After you install Python 3.6+ and ensure you have the required permissions as needed, enter the following in your command line:
 ```shell
 # if something isn't working properly, try rerunning this
 # the problem may have been fixed with a newer version
 
 pip3 install -U yt-videos-list     # MacOS/Linux
-pip install -U yt-videos-list      # Windows
+pip  install -U yt-videos-list     # Windows
 ```
+</details>
 
-### Running the package from the python interpreter
+
+<details>
+  <summary><b>Explicitly downloading all Selenium dependencies</b></summary>
+
+- Ideal if you use Selenium for other projects 😎
+
+Make sure you already have the `yt-videos-list` package installed (follow directions above for getting set up), then run the following:
+```shell
+python3     # MacOS/Linux
+python      # Windows
+```
+```python
+from yt_videos_list.download import selenium_webdriver_dependencies
+selenium_webdriver_dependencies.download_all()
+```
+That's all! 🤓
+</details>
+
+<details>
+  <summary><b>Running the package from the python interpreter</b></summary>
+
 ```shell
 python3     # MacOS/Linux
 python      # Windows
@@ -87,6 +94,7 @@ help(lc)
   - `'edge'` (Windows only!)
 - increase `scroll_pause_time` for laggy internet and decrease `scroll_pause_time` for fast internet
 #### If you already scraped a channel and the channel uploaded a new video, simply rerun this program on that channel and this package updates your files to include the newer video(s)!
+</details>
 
 <details>
   <summary><b>More API information</b></summary>
