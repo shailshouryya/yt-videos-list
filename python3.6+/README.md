@@ -25,6 +25,7 @@ If you have an older version of Python, you can download Python 3.8.2 (follow li
 
   - if you're not sure, open terminal and run `sudo chown $USER /usr/local/bin/`
   </details>
+<br>
 </details>
 
 <details>
