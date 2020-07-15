@@ -41,24 +41,6 @@ pip  install -U yt-videos-list     # Windows
 ```
 </details>
 
-
-<details>
-  <summary><b>Explicitly downloading all Selenium dependencies</b></summary>
-
-- Ideal if you use Selenium for other projects 😎
-
-Make sure you already have the `yt-videos-list` package installed (follow directions above for getting set up), then run the following:
-```shell
-python3     # MacOS/Linux
-python      # Windows
-```
-```python
-from yt_videos_list.download import selenium_webdriver_dependencies
-selenium_webdriver_dependencies.download_all()
-```
-That's all! 🤓
-</details>
-
 <details>
   <summary><b>Running the package from the python interpreter</b></summary>
 
@@ -95,6 +77,23 @@ help(lc)
   - `'edge'` (Windows only!)
 - increase `scroll_pause_time` for laggy internet and decrease `scroll_pause_time` for fast internet
 #### If you already scraped a channel and the channel uploaded a new video, simply rerun this program on that channel and this package updates your files to include the newer video(s)!
+</details>
+
+<details>
+  <summary><b>Explicitly downloading all Selenium dependencies</b></summary>
+
+Ideal if you use Selenium for other projects 😎
+- **NOTE**: NOT required if you already ran the commands above in the ***Running the package from the python interpreter*** section, since running those commands runs the following commands automatically under the hood 😁
+- Make sure you already have the `yt-videos-list` package installed (follow directions above for getting set up), then run the following:
+```shell
+python3     # MacOS/Linux
+python      # Windows
+```
+```python
+from yt_videos_list.download import selenium_webdriver_dependencies
+selenium_webdriver_dependencies.download_all()
+```
+That's all! 🤓
 </details>
 
 <details>
