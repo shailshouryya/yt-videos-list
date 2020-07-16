@@ -1,7 +1,7 @@
 # General Overview
-This package provides a quick, simple way to create a list of all videos posted to any YouTube channel by providing just the URL to that channel's videos. Follow the link to the API in the language you want to work in from the API guides section below.
+This package provides a quick, simple way to create a list of all videos posted to any YouTube channel by providing just the URL to that channel's videos. Follow the link to the API in the language you want to work in from the ***API guides*** section below.
 
-This program relies on Selenium so it has built-in dependecy setup for all Selenium webdrivers, but you can also explicitly **use submodules of this package to download Selenium webdriver dependencies for your own projects**. This makes it much easier to work with Selenium even if you update your browser constantly! See the [Explicitly downloading all Selenium dependencies](./python3.6+/README.md#explicitly-downloading-all-selenium-dependencies) for directions.
+This program relies on Selenium so it has built-in dependecy setup for all Selenium webdrivers, but you can also explicitly use submodules of this package to **download Selenium webdriver dependencies for your own projects**. This makes it much easier to work with Selenium even if you update your browser constantly! See the [Explicitly downloading all Selenium dependencies](./python3.6+/README.md#explicitly-downloading-all-selenium-dependencies) for directions.
 
 #### If you already scraped a channel and the channel uploaded a new video, simply rerun this program on that channel and this package updates your files to include the newer video(s)!
 
@@ -12,13 +12,12 @@ This program relies on Selenium so it has built-in dependecy setup for all Selen
 <details>
   <summary><b>Dependencies</b></summary>
 
-**NOTE**: You need to have the Selenium driver installed to run this package
-- the first time you run this package the automated downloader should install everything you need, but in case it doesn't, refer to the link below and/or file an [issue here](https://github.com/Shail-Shouryya/yt_videos_list/issues).
+- The first time you run this package the automated downloader should install everything you need, but in case it doesn't, refer to the link below and/or file an [issue here](https://github.com/Shail-Shouryya/yt_videos_list/issues).
   - Manual Selenium downloads **[here](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/docs/dependencies_pseudo_json.txt)**
 - The Selenium drivers are all pretty similar but differ in subtle ways, so play around with them and see what's different :)
 
 **NOTE** that you also need the corresponding browser installed to properly run the selenium driver.
-- To download the most recent version of the browser, go to the page for:
+- To download the most recent version of the browser you want, go to the page for:
   - [Firefox](https://www.mozilla.org/en-US/firefox/new/)
   - [Opera](https://www.opera.com/)
   - [Chrome](https://www.google.com/chrome/)
@@ -68,7 +67,7 @@ Currently supported operating systems include MacOS, Linux32, Linux64, Windows32
 
 This package provides built-in support for common errors and exceptions, along with helpful hints, including
   - checking to see if the file to be created already exists
-  - checking to see if the user explicitly specified a driver, and running the program using Firefox and showing the user the available driver options in the terminal output in case they didn't specify a driver
+  - checking to see if the user explicitly specified a driver to use, and in case they didn't specify a driver, running the program using Firefox as default and showing the user the available driver options in the terminal output
     - explicitly specifying driver using
       - `ListCreator(driver='firefox')`
       - `ListCreator(driver='opera')`
@@ -78,10 +77,11 @@ This package provides built-in support for common errors and exceptions, along w
       - `ListCreator(driver='edge')`
   - running the program in headless mode if using the geckodriver (Firefox) or chromedriver
     - `ListCreator(headless=True)`
-  - checking to see if the user has the correct Selenium dependency installed, and installing and showing the user the commands they can run to install the correct dependency if the user has an incorrect dependency (or hasn't downloaded the dependency at all)
-    - program checks the operating system of the user's machine and returns a `curl` command piped into a `tar` command to download the correct dependecy into a directory the program can access without having to add the executable to PATH manually
-    - user still needs to pick the correct command to run by following the directions
-  - checking to see if the result of the scraping returns results, and prompts the user to verify the `url` argument if no results are found
+  - checking to see if the user has the correct Selenium dependency installed
+    - installs and shows the user the commands they can run to install the correct dependency if the user has an incorrect dependency (or hasn't downloaded the dependency at all)
+      - program checks the operating system of the user's machine and returns a `curl` command piped into a `tar` command to download the correct dependecy into a directory the program can access without having to add the executable to PATH manually
+      - user still needs to pick the correct command to run by following the directions (if autoamted download doesn't complete)
+  - checking to see if the result of the scraping returns anything, and prompts the user to verify the `url` argument if nothing is found
 
 ### Overview of package structure
 #### `__init__.py`
