@@ -16,7 +16,7 @@ If you have an older version of Python, you can download Python 3.8.2 (follow li
 
   This is required to make sure you can download and install the required Selenium binary dependencies.
   <details>
-    <summary><b>On Windows: makes sure you "Run as Administrator"</b></summary>
+    <summary><b>On Windows: makes sure you open `Command Prompt` or `Powershell` (both work) in "Run as Administrator" mode</b></summary>
 
   - shortcut: <kbd>⊞ Win</kbd> + <kbd>X</kbd> + <kbd>A</kbd>
   </details>
@@ -84,7 +84,7 @@ help(lc)
 
 Ideal if you use Selenium for other projects 😎
 - **NOTE**: NOT required if you already ran the commands above in the ***Running the package from the python interpreter*** section, since running those commands runs the following commands automatically under the hood 😁
-- Make sure you already have the `yt-videos-list` package installed (follow directions above for getting set up), then run the following:
+- Otherwise, make sure you already have the `yt-videos-list` package installed (follow directions above for getting set up), then run the following:
 ```shell
 python3     # MacOS/Linux
 python      # Windows
@@ -116,7 +116,6 @@ ListCreator(csv=True, txt=True, md=True,
             driver='Firefox')
 ```
 There are a number of optional arguments you can specify during the instantiation of the ListCreator object. The preceding arguments are run by default, but in case you want more flexibility, you can specify the:
-
 - `driver` argument:
   - Firefox (default)
   - Opera
