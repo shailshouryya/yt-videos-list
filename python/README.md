@@ -1,4 +1,4 @@
-# python3.6+ Quick Start
+# Python Quick Start
 <details>
   <summary><b>Python 3.6+ setup (required if not already installed)</b></summary>
 
