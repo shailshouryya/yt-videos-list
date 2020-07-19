@@ -83,11 +83,12 @@ help(lc)
   <summary><b>Explicitly downloading all Selenium dependencies</b></summary>
 
 Ideal if you use Selenium for other projects 😎
-- **NOTE**: NOT required if you already ran the commands above in the ***Running the package from the python interpreter*** section, since running those commands runs the following commands automatically under the hood 😁
-- Otherwise, make sure you already have the `yt-videos-list` package installed (follow directions above for getting set up), then run the following:
+- Make sure you already have the `yt-videos-list` package installed (follow directions above for getting set up), then run the following:
 ```shell
-python3     # MacOS/Linux
-python      # Windows
+pip3 install -U yt-videos-list # MacOS/Linux: ensure latest package
+python3                        # MacOS/Linux: enter python interpreter
+pip install -U yt-videos-list  # Windows:     ensure latest package
+python                         # Windows:     enter python interpreter
 ```
 ```python
 from yt_videos_list.download import selenium_webdriver_dependencies
