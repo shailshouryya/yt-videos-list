@@ -11,8 +11,8 @@ def scroll_down(current_elements_count, driver, scroll_pause_time):
  new_elements_count = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
  print(f'Found {new_elements_count} videos...')
  if new_elements_count == current_elements_count:
-  print(common_message.no_new_videos_found)
-  time.sleep(scroll_pause_time)
+  print(common_message.no_new_videos_found(scroll_pause_time * 2))
+  time.sleep(scroll_pause_time * 2)
   new_elements_count = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
   if new_elements_count == current_elements_count:
    print('Reached end of page!')

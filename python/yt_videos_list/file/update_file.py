@@ -11,7 +11,7 @@ def store_already_written_videos(file_name, file_type):
   if file_type == 'csv':       return set(re.findall(r'(https://www\.youtube\.com/watch\?v=.+?),', file.read()))
 def scroll_down(driver, scroll_pause_time):
  driver.execute_script('window.scrollBy(0, 50000);')
- time.sleep(scroll_pause_time)
+ time.sleep(scroll_pause_time * 2)
  new_elements_count = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
  print(f'Found {new_elements_count} videos...')
  if driver.find_elements_by_xpath('//*[@id="video-title"]')[-1].get_attribute("href") in VISITED_VIDEOS:

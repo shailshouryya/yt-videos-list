@@ -6,7 +6,6 @@ class Common:
     missing_url = 'create_list_for() missing 1 required positional argument: "url"'
     not_writing_to_any_files = '\nBased on your provided settings, yt_videos_list will not be writing to either a csv file or a txt file.'
     no_videos_found = 'No videos were found for the channel you provided. Are you sure you entered the url correctly?\n'
-    no_new_videos_found = 'No new videos were found since the last scroll. Waiting another 0.6 seconds to see if more videos can be loaded....'
     invalid_response = 'The response you entered was invalid.'
     invalid_driver = 'The driver you specified is invalid. Please try rerunning the last command after specifying a valid driver. Supported drivers include:\n   Firefox\n   Opera\n   Safari\n   Chrome\n   Brave'
     unsupported_edge = 'ERROR! Selenium automation with msedgedriver (edge) is not yet supported on your platform. Please use a different browser.'
@@ -263,6 +262,9 @@ class Common:
     @staticmethod
     def tell_user_to_download_driver(user_driver):
         print(f'\nIt looks like you don\'t have the correct Selenium dependency set up to run this program using the remote {user_driver}driver.\nThe version of your {user_driver.title()} browser - usually found by going to {user_driver.title()} -> \"About browser\" in the menu bar within a {user_driver.title()} window - should match the comment for the corresponding command.\nPlease download it using the relevant command from the list of commands below.\n')
+    @staticmethod
+    def no_new_videos_found(pause_time):
+        return f'No new videos were found since the last scroll. Waiting another {pause_time} seconds to see if more videos can be loaded....'
 class ModuleMessage(Common):
     '''
     This class contains messages that are relevant for the package when it is being run as a module from within the Python interpreter (or another Python script).
