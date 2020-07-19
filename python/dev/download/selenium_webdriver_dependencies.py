@@ -116,6 +116,7 @@ def execute_download_command(driver, user_os, version):
             '75': -1
         },
         'edge': {
+            '86': -15,
             '85': -13,
             '84': -11,
             '83': -9,
