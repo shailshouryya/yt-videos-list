@@ -152,8 +152,8 @@ class Common:
     @classmethod
     def format_msedgedriver_list(cls, operating_system):
         return [
-            cls.format_driver_information           (operating_system, '85.0.564.0',   '85', 'msedgedriver', 'Microsoft Edge'),
-            cls.format_msedgedriver_download_command(operating_system, '85.0.564.0'),
+            cls.format_driver_information           (operating_system, '85.0.564.8',   '85', 'msedgedriver', 'Microsoft Edge'),
+            cls.format_msedgedriver_download_command(operating_system, '85.0.564.8'),
             cls.format_driver_information           (operating_system, '84.0.524.0',   '84', 'msedgedriver', 'Microsoft Edge'),
             cls.format_msedgedriver_download_command(operating_system, '84.0.524.0'),
             cls.format_driver_information           (operating_system, '83.0.478.58',  '83', 'msedgedriver', 'Microsoft Edge'),
