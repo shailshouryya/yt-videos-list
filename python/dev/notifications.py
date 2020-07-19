@@ -125,6 +125,8 @@ class Common:
     @classmethod
     def format_chromedriver_list(cls, operating_system):
         return [
+            cls.format_driver_information           (operating_system, '84.0.4147.30',  '84', 'chromedriver', 'Google Chrome'),
+            cls.format_chromedriver_download_command(operating_system, '84.0.4147.30'),
             cls.format_driver_information           (operating_system, '83.0.4103.39',  '83', 'chromedriver', 'Google Chrome'),
             cls.format_chromedriver_download_command(operating_system, '83.0.4103.39'),
             cls.format_driver_information           (operating_system, '81.0.4044.138', '81', 'chromedriver', 'Google Chrome'),
