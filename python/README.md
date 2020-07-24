@@ -158,5 +158,5 @@ There are a number of optional arguments you can specify during the instantiatio
 - [PyPi Stats](https://pypistats.org/packages/yt-videos-list)
 </details>
 
-#### [Back to main page](../README.md)
+#### [Back to main page](https://github.com/Shail-Shouryya/yt_videos_list/)
 If you found this interesting or useful, **please consider starring this repo** so other people can more easily find and use this. Thanks!
