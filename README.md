@@ -29,16 +29,25 @@ This program relies on Selenium so it has built-in dependecy setup for all Selen
   <summary><b>Interesting information about YouTube</b></summary>
 
 There are two types of YouTube channels: one type is a `user` channel and the other is a `channel` channel.
-- `user` channel type:
+- `/user/` channel type:
   - sentdex: https://www.youtube.com/user/sentdex
   - Disney: https://www.youtube.com/user/disneysshows
   - Marvel: https://www.youtube.com/user/MARVEL
   - Apple: https://www.youtube.com/user/Apple
-- `channel` channel type:
+- `/channel/` channel type:
   - Tasty: https://www.youtube.com/channel/UCJFp8uSYCjXOMnkUyb3CQ3Q
   - Billie Eilish: https://www.youtube.com/channel/UCiGm_E4ZwYSHV3bcW1pnSeQ
   - Gordon Ramsay: https://www.youtube.com/channel/UCIEv3lZ_tNXHzL3ox-_uUGQ
   - PBS Space Time: https://www.youtube.com/channel/UC7_gcs09iThXybpVgjHZ_7g
+- `/c/` shorthand channel type (new, human readable URL that (usually) consistently provides just the name of the channel) - for easy comparison, all examples below correspond to the 4 `user/` and 4 `channel/` channel types listed above using this new URL formatting:
+  - sentdex: https://www.youtube.com/c/sentdex/
+  - Disney: https://www.youtube.com/c/Disney/
+  - Marvel: https://www.youtube.com/c/marvel/
+  - Apple: https://www.youtube.com/user/Apple/ (looks like Apple isn't using the new formatting yet)
+  - Tasty: https://www.youtube.com/c/buzzfeedtasty/
+  - Billie Eilish: https://www.youtube.com/c/BillieEilish/
+  - Gordon Ramsay: https://www.youtube.com/user/gordonramsay/ (looks like Gordon Ramsay switched to the `user/` format instead of `c/`)
+  - PBS Space Time: https://www.youtube.com/c/pbsspacetime/
 </details>
 
 <details>
