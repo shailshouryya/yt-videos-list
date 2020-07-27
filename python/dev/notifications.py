@@ -16,7 +16,7 @@ class Common:
 
     invalid_driver = 'The driver you specified is invalid. Please try rerunning the last command after specifying a valid driver. Supported drivers include:\n   Firefox\n   Opera\n   Safari\n   Chrome\n   Brave'
 
-    unsupported_edge = 'ERROR! Selenium automation with msedgedriver (edge) is not yet supported on your platform. Please use a different browser.'
+    unsupported_edge = 'ERROR! Selenium automation with msedgedriver (Microsoft Edge) is not yet supported on your platform. Please use a different browser!'
 
     unsupported_opera_headless = '\nHeadless mode is unsupported in OperaDriver. We are waiting on the Opera dev team to start offering support for headless mode to allow remote automation without opening a driver. We will update this when support is added...\n:)\n\n\n'
     unsupported_safari_headless = '\nHeadless mode is unsupported in SafariDriver. We are waiting on Apple to start offering support for headless mode to allow remote automation without opening a driver. We will update this when support is added...\n:)\n\n\n'
