@@ -17,7 +17,7 @@ setup(
     long_description_content_type = 'text/markdown',
     url                           = 'https://github.com/Shail-Shouryya/yt_videos_list',
     author                        = 'Shail-Shouryya',
-    author_email                  = 'tbd@gmail.com',
+    author_email                  = 'yt.videos.list@gmail.com',
     license                       = 'Apache License 2.0',
 
 
