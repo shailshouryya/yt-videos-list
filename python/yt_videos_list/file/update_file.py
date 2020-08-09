@@ -55,7 +55,7 @@ def time_writer_function(writer_function):
   print(f'{new_videos_written} new videos written to {temp_file}')
   print(f'Closing {temp_file}')
   print(f'Successfully completed write, renamed {temp_file} to {file_name}')
-  print(f'It took {total_time} to write the {new_videos_written} new videos to the pre-existing {file_name} {NEWLINE}')
+  print(f'It took {total_time} seconds to write the {new_videos_written} new videos to the pre-existing {file_name} {NEWLINE}')
  return wrapper_timer
 def find_number_of_new_videos(list_of_videos, videos_set):
  visited_on_page = {selenium_element.get_attribute("href") for selenium_element in list_of_videos}

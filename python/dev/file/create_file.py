@@ -67,7 +67,7 @@ def time_writer_function(writer_function):
         print(f'{videos_written} videos written to {temp_file}')
         print(f'Closing {temp_file}')
         print(f'Successfully completed write, renamed {temp_file} to {file_name}')
-        print(f'It took {total_time} to write all {videos_written} videos to {file_name}{NEWLINE}')
+        print(f'It took {total_time} seconds to write all {videos_written} videos to {file_name}{NEWLINE}')
     return wrapper_timer
 
 
