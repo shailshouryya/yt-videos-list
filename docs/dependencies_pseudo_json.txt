@@ -452,8 +452,8 @@ After doing that, try rerunning the last command!
       # mac64 msedgedriver 86.0.601.0 (supports Microsoft Edge 86)
       curl -SL https://msedgedriver.azureedge.net/86.0.601.0/edgedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver
 
-      # mac64 msedgedriver 85.0.564.23 (supports Microsoft Edge 85)
-      curl -SL https://msedgedriver.azureedge.net/85.0.564.23/edgedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver
+      # mac64 msedgedriver 85.0.564.30 (supports Microsoft Edge 85)
+      curl -SL https://msedgedriver.azureedge.net/85.0.564.30/edgedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver
 
       # mac64 msedgedriver 84.0.524.0 (supports Microsoft Edge 84)
       curl -SL https://msedgedriver.azureedge.net/84.0.524.0/edgedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver
@@ -482,8 +482,8 @@ Please visit https://developer.microsoft.com/en-us/microsoft-edge/tools/webdrive
       # arm64 msedgedriver 86.0.601.0 (supports Microsoft Edge 86)
       curl -SL https://msedgedriver.azureedge.net/86.0.601.0/edgedriver_arm64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver
 
-      # arm64 msedgedriver 85.0.564.23 (supports Microsoft Edge 85)
-      curl -SL https://msedgedriver.azureedge.net/85.0.564.23/edgedriver_arm64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver
+      # arm64 msedgedriver 85.0.564.30 (supports Microsoft Edge 85)
+      curl -SL https://msedgedriver.azureedge.net/85.0.564.30/edgedriver_arm64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver
 
       # arm64 msedgedriver 84.0.524.0 (supports Microsoft Edge 84)
       curl -SL https://msedgedriver.azureedge.net/84.0.524.0/edgedriver_arm64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver
@@ -509,8 +509,8 @@ Please visit https://developer.microsoft.com/en-us/microsoft-edge/tools/webdrive
       # win32 msedgedriver 86.0.601.0 (supports Microsoft Edge 86)
       curl -SL https://msedgedriver.azureedge.net/86.0.601.0/edgedriver_win32.zip -o C:\Windows\msedgedriver && tar -xzvf C:\Windows\msedgedriver -C C:\Windows && del C:\Windows\msedgedriver
 
-      # win32 msedgedriver 85.0.564.23 (supports Microsoft Edge 85)
-      curl -SL https://msedgedriver.azureedge.net/85.0.564.23/edgedriver_win32.zip -o C:\Windows\msedgedriver && tar -xzvf C:\Windows\msedgedriver -C C:\Windows && del C:\Windows\msedgedriver
+      # win32 msedgedriver 85.0.564.30 (supports Microsoft Edge 85)
+      curl -SL https://msedgedriver.azureedge.net/85.0.564.30/edgedriver_win32.zip -o C:\Windows\msedgedriver && tar -xzvf C:\Windows\msedgedriver -C C:\Windows && del C:\Windows\msedgedriver
 
       # win32 msedgedriver 84.0.524.0 (supports Microsoft Edge 84)
       curl -SL https://msedgedriver.azureedge.net/84.0.524.0/edgedriver_win32.zip -o C:\Windows\msedgedriver && tar -xzvf C:\Windows\msedgedriver -C C:\Windows && del C:\Windows\msedgedriver
@@ -533,8 +533,8 @@ Please visit https://developer.microsoft.com/en-us/microsoft-edge/tools/webdrive
       # win64 msedgedriver 86.0.601.0 (supports Microsoft Edge 86)
       curl -SL https://msedgedriver.azureedge.net/86.0.601.0/edgedriver_win64.zip -o C:\Windows\msedgedriver && tar -xzvf C:\Windows\msedgedriver -C C:\Windows && del C:\Windows\msedgedriver
 
-      # win64 msedgedriver 85.0.564.23 (supports Microsoft Edge 85)
-      curl -SL https://msedgedriver.azureedge.net/85.0.564.23/edgedriver_win64.zip -o C:\Windows\msedgedriver && tar -xzvf C:\Windows\msedgedriver -C C:\Windows && del C:\Windows\msedgedriver
+      # win64 msedgedriver 85.0.564.30 (supports Microsoft Edge 85)
+      curl -SL https://msedgedriver.azureedge.net/85.0.564.30/edgedriver_win64.zip -o C:\Windows\msedgedriver && tar -xzvf C:\Windows\msedgedriver -C C:\Windows && del C:\Windows\msedgedriver
 
       # win64 msedgedriver 84.0.524.0 (supports Microsoft Edge 84)
       curl -SL https://msedgedriver.azureedge.net/84.0.524.0/edgedriver_win64.zip -o C:\Windows\msedgedriver && tar -xzvf C:\Windows\msedgedriver -C C:\Windows && del C:\Windows\msedgedriver
