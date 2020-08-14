@@ -11,7 +11,7 @@ with open('README.md', 'r', encoding='utf-8') as f:
 
 setup(
     name                          = 'yt_videos_list',
-    version                       = '0.4.3',
+    version                       = '0.4.4',
     description                   = 'Automate Selenium webdriver dependency set up + extract YouTube video titles and URLs with end-to-end web scraping API',
     long_description              = long_description,
     long_description_content_type = 'text/markdown',
