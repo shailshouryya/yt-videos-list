@@ -5,6 +5,7 @@ from .notifications import Common, ModuleMessage
 '''
 version:              0.4.4
 author:               Shail-Shouryya
+email:                yt.videos.list@gmail.com
 development_status:   4 - Beta
 intended_audience:    Developers, Hobbyists
 license:              OSI Approved :: Apache License 2.0
@@ -15,6 +16,7 @@ source:               https://github.com/Shail-Shouryya/yt_videos_list
 
 __version__              = '0.4.4'
 __author__               = 'Shail-Shouryya'
+__email__                = 'yt.videos.list@gmail.com'
 __development_status__   = '4 - Beta'
 __intended_audience__    = 'Developers, Hobbyists'
 __license__              = 'OSI Approved :: Apache License 2.0'
