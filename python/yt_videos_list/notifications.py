@@ -174,8 +174,8 @@ class Common:
             cls.format_driver_information           (operating_system, '79.0.313.0',   '79', 'msedgedriver', 'Microsoft Edge'),
             cls.format_msedgedriver_download_command(operating_system, '79.0.313.0')
         ]
-    @classmethod
-    def format_safaridriver_list(cls, operating_system):
+    @staticmethod
+    def format_safaridriver_list(operating_system):
         if operating_system == 'macos':
             return [
                 'In order to run safaridriver, you need to enable remote automation. To do so, open up the Safari browser and in the menu bar, go to\n"Safari" -> "Preferences" -> "Advanced" tab -> click "Show develop menu in menu bar"\nOnce you do that, "Develop" should appear in your menu bar. Click on the "Develop" bar, and then enable "Allow Remote Automation" (should be near the bottom of the list).\n\nAfter doing that, try rerunning the last command!\n :)'
@@ -188,8 +188,8 @@ class Common:
             return [
                 'Safari is probably not supported on Windows operating systems. In order for the safaridriver to run on a Windows OS, you will likely need to do many manual configurations. For this reason, this package does not provide built in support for safaridriver on a Windows OS.'
             ]
-    @classmethod
-    def format_driver_information(cls, operating_system, version, major_version, driver, browser):
+    @staticmethod
+    def format_driver_information(operating_system, version, major_version, driver, browser):
         return f'# {operating_system} {driver} {version} (supports {browser} {major_version})'
     @classmethod
     def format_geckodriver_download_command(cls, operating_system, version):
