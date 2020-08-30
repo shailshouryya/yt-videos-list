@@ -119,6 +119,9 @@ class ListCreator:
         self.driver                = None if driver is None else driver.lower()
 
 
+    def __repr__(self):
+        return f'{self.__class__.__name__}(txt={self.txt}, csv={self.csv}, md={self.markdown}, reverse_chronological={self.reverse_chronological}, headless={self.headless}, scroll_pause_time={self.scroll_pause_time}, driver={self.driver})'
+
     def create_list_for(self, url=None, file_name=None, channel=None, channel_type=None):
         '''
         The create_list_for() method creates a list using the arguments specified during instantiation of the ListCreator object.
