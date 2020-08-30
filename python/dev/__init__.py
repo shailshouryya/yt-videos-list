@@ -122,6 +122,22 @@ class ListCreator:
     def __repr__(self):
         return f'{self.__class__.__name__}(txt={self.txt}, csv={self.csv}, md={self.markdown}, reverse_chronological={self.reverse_chronological}, headless={self.headless}, scroll_pause_time={self.scroll_pause_time}, driver={self.driver})'
 
+
+    def __str__(self):
+        return f'''{self.__class__.__name__}() object created with attributes
+        txt                   = {self.txt}
+        csv                   = {self.csv}
+        md                    = {self.markdown}
+        reverse_chronological = {self.reverse_chronological}
+        headless              = {self.headless}
+        scroll_pause_time     = {self.scroll_pause_time}
+        driver                = {self.driver}
+
+        To recreate object, use:
+        {self.__class__.__name__}(txt={self.txt}, csv={self.csv}, md={self.markdown}, reverse_chronological={self.reverse_chronological}, headless={self.headless}, scroll_pause_time={self.scroll_pause_time}, driver={self.driver}
+        '''
+
+
     def create_list_for(self, url=None, file_name=None, channel=None, channel_type=None):
         '''
         The create_list_for() method creates a list using the arguments specified during instantiation of the ListCreator object.
