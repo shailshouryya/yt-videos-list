@@ -19,6 +19,13 @@ class Common:
     url_prefix_operadriver  = 'https://github.com/operasoftware/operachromiumdriver/releases/download'
     url_prefix_chromedriver = 'https://chromedriver.storage.googleapis.com'
     url_prefix_msedgedriver = 'https://msedgedriver.azureedge.net'
+    more_driver_info = {
+        'firefox': ['geckodriver',  'https://github.com/mozilla/geckodriver',                                'https://github.com/mozilla/geckodriver/releases',                                                  'Mozilla Firefox', 'https://www.mozilla.org/en-US/firefox/new/'],
+        'opera':   ['operadriver',  'https://github.com/operasoftware/operachromiumdriver',                  'https://github.com/operasoftware/operachromiumdriver/releases',                                    'Opera',           'https://www.opera.com/'],
+        'chrome':  ['chromedriver', 'https://sites.google.com/a/chromium.org/chromedriver/home',             'https://sites.google.com/a/chromium.org/chromedriver/downloads',                                   'Google Chrome',   'https://www.google.com/chrome/'],
+        'brave':   ['bravedriver',  'https://github.com/operasoftware/operachromiumdriver',                  'https://github.com/operasoftware/operachromiumdriver/releases',                                    'Brave',           'https://brave.com/'],
+        'edge':    ['msedgedriver', 'https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/', 'https://github.com/MicrosoftDocs/edge-developer/blob/master/microsoft-edge/webdriver-chromium.md', 'Microsoft Edge',  'https://www.microsoft.com/en-us/edge']
+    }
     def __init__(self):
         self.driver_downloads_for_os = {
             'firefox': {
@@ -53,13 +60,6 @@ class Common:
                 'windows': self.create_list_for('win32', 'msedgedriver') + self.create_list_for('win64',   'msedgedriver')
             }
         }
-    more_driver_info = {
-        'firefox': ['geckodriver',  'https://github.com/mozilla/geckodriver',                                'https://github.com/mozilla/geckodriver/releases',                                                  'Mozilla Firefox', 'https://www.mozilla.org/en-US/firefox/new/'],
-        'opera':   ['operadriver',  'https://github.com/operasoftware/operachromiumdriver',                  'https://github.com/operasoftware/operachromiumdriver/releases',                                    'Opera',           'https://www.opera.com/'],
-        'chrome':  ['chromedriver', 'https://sites.google.com/a/chromium.org/chromedriver/home',             'https://sites.google.com/a/chromium.org/chromedriver/downloads',                                   'Google Chrome',   'https://www.google.com/chrome/'],
-        'brave':   ['bravedriver',  'https://github.com/operasoftware/operachromiumdriver',                  'https://github.com/operasoftware/operachromiumdriver/releases',                                    'Brave',           'https://brave.com/'],
-        'edge':    ['msedgedriver', 'https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/', 'https://github.com/MicrosoftDocs/edge-developer/blob/master/microsoft-edge/webdriver-chromium.md', 'Microsoft Edge',  'https://www.microsoft.com/en-us/edge']
-    }
     @classmethod
     def create_list_for(cls, operating_system, driver):
         formatter_function = getattr(cls, f'format_{driver}_list')
