@@ -80,6 +80,7 @@ def execute_download_command(driver, user_os, version):
    '54': -1,
   },
   'chrome': {
+   '85': -25,
    '84': -23,
    '83': -21,
    '81': -19,
