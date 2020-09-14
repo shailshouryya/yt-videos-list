@@ -24,7 +24,7 @@ class Common:
     unsupported_edge_headless = '\nHeadless mode is unsupported in EdgeDriver. We are waiting for on the Miscrosoft Edge release to start offering support for headless mode to allow remote automation without opening a driver. We will update this when support is added...\n:)\n\n\n'
     unsupported_os = 'The system you are using is not yet supported. Please create an issue at https://github.com/Shail-Shouryya/yt_videos_list/issues\nThanks!'
 
-    automated_driver_update = '\n=====> Now updating Selenium driver binaries and fixing any version incompatibility problems.<=====\nThis will update all corresponding Selenium drivers for browsers (which are installed in their default locations and) supported by the yt_videos_list package...'
+    automated_driver_update = '\n=====> Now updating Selenium driver binaries and fixing any version incompatibility problems. <=====\nThis will update all corresponding Selenium drivers for browsers (which are installed in their default locations and) supported by the yt_videos_list package...'
 
     url_prefix_geckodriver  = 'https://github.com/mozilla/geckodriver/releases/download'
     url_prefix_operadriver  = 'https://github.com/operasoftware/operachromiumdriver/releases/download'
