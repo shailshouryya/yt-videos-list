@@ -73,9 +73,9 @@ class Common:
     @classmethod
     def format_operadriver_list(cls, operating_system):
         return [
-            cls.format_driver_information          (operating_system, 'v.84.0.4147.89', 'Stable 70', 'operadriver', 'Opera'),
+            cls.format_driver_information          (operating_system, 'v.84.0.4147.89',  'Stable 70', 'operadriver', 'Opera'),
             cls.format_operadriver_download_command(operating_system, 'v.84.0.4147.89'),
-            cls.format_driver_information          (operating_system, 'v.83.0.4103.97', 'Stable 69', 'operadriver', 'Opera'),
+            cls.format_driver_information          (operating_system, 'v.83.0.4103.97',  'Stable 69', 'operadriver', 'Opera'),
             cls.format_operadriver_download_command(operating_system, 'v.83.0.4103.97'),
             cls.format_driver_information          (operating_system, 'v.81.0.4044.113', 'Stable 68', 'operadriver', 'Opera'),
             cls.format_operadriver_download_command(operating_system, 'v.81.0.4044.113'),
@@ -85,23 +85,23 @@ class Common:
             cls.format_operadriver_download_command(operating_system, 'v.79.0.3945.79'),
             cls.format_driver_information          (operating_system, 'v.78.0.3904.87',  'Stable 65', 'operadriver', 'Opera'),
             cls.format_operadriver_download_command(operating_system, 'v.78.0.3904.87'),
-            cls.format_driver_information          (operating_system, 'v.77.0.3865.120', '64', 'operadriver', 'Opera'),
+            cls.format_driver_information          (operating_system, 'v.77.0.3865.120', '64',        'operadriver', 'Opera'),
             cls.format_operadriver_download_command(operating_system, 'v.77.0.3865.120'),
-            cls.format_driver_information          (operating_system, 'v.76.0.3809.132', '63', 'operadriver', 'Opera'),
+            cls.format_driver_information          (operating_system, 'v.76.0.3809.132', '63',        'operadriver', 'Opera'),
             cls.format_operadriver_download_command(operating_system, 'v.76.0.3809.132'),
-            cls.format_driver_information          (operating_system, 'v.75.0.3770.100', '62', 'operadriver', 'Opera'),
+            cls.format_driver_information          (operating_system, 'v.75.0.3770.100', '62',        'operadriver', 'Opera'),
             cls.format_operadriver_download_command(operating_system, 'v.75.0.3770.100'),
-            cls.format_driver_information          (operating_system, 'v.2.45', '60', 'operadriver', 'Opera'),
+            cls.format_driver_information          (operating_system, 'v.2.45',          '60',        'operadriver', 'Opera'),
             cls.format_operadriver_download_command(operating_system, 'v.2.45'),
-            cls.format_driver_information          (operating_system, 'v.2.42', '58', 'operadriver', 'Opera'),
+            cls.format_driver_information          (operating_system, 'v.2.42',          '58',        'operadriver', 'Opera'),
             cls.format_operadriver_download_command(operating_system, 'v.2.42'),
-            cls.format_driver_information          (operating_system, 'v.2.41', '57', 'operadriver', 'Opera'),
+            cls.format_driver_information          (operating_system, 'v.2.41',          '57',        'operadriver', 'Opera'),
             cls.format_operadriver_download_command(operating_system, 'v.2.41'),
-            cls.format_driver_information          (operating_system, 'v.2.40', '56', 'operadriver', 'Opera'),
+            cls.format_driver_information          (operating_system, 'v.2.40',          '56',        'operadriver', 'Opera'),
             cls.format_operadriver_download_command(operating_system, 'v.2.40'),
-            cls.format_driver_information          (operating_system, 'v.2.38', '55', 'operadriver', 'Opera'),
+            cls.format_driver_information          (operating_system, 'v.2.38',          '55',        'operadriver', 'Opera'),
             cls.format_operadriver_download_command(operating_system, 'v.2.38'),
-            cls.format_driver_information          (operating_system, 'v.2.37', '54', 'operadriver', 'Opera'),
+            cls.format_driver_information          (operating_system, 'v.2.37',          '54',        'operadriver', 'Opera'),
             cls.format_operadriver_download_command(operating_system, 'v.2.37')
         ]
     @classmethod
@@ -131,15 +131,15 @@ class Common:
             cls.format_chromedriver_download_command(operating_system, '74.0.3729.6'),
             cls.format_driver_information           (operating_system, '73.0.3683.68',  '73', 'chromedriver', 'Google Chrome'),
             cls.format_chromedriver_download_command(operating_system, '73.0.3683.68'),
-            cls.format_driver_information           (operating_system, '2.46', 'v71-73', 'chromedriver', 'Google Chrome'),
+            cls.format_driver_information           (operating_system, '2.46',      'v71-73', 'chromedriver', 'Google Chrome'),
             cls.format_chromedriver_download_command(operating_system, '2.46')
         ]
     @classmethod
     def format_bravedriver_list(cls, operating_system):
         return [
-            cls.format_driver_information          (operating_system, 'v.84.0.4147.89', '84', 'bravedriver (operadriver based)', 'Brave Browser'),
+            cls.format_driver_information          (operating_system, 'v.84.0.4147.89',  '84', 'bravedriver (operadriver based)', 'Brave Browser'),
             cls.format_bravedriver_download_command(operating_system, 'v.84.0.4147.89'),
-            cls.format_driver_information          (operating_system, 'v.83.0.4103.97', '83', 'bravedriver (operadriver based)', 'Brave Browser'),
+            cls.format_driver_information          (operating_system, 'v.83.0.4103.97',  '83', 'bravedriver (operadriver based)', 'Brave Browser'),
             cls.format_bravedriver_download_command(operating_system, 'v.83.0.4103.97'),
             cls.format_driver_information          (operating_system, 'v.81.0.4044.113', '81', 'bravedriver (operadriver based)', 'Brave Browser'),
             cls.format_bravedriver_download_command(operating_system, 'v.81.0.4044.113'),
