@@ -41,6 +41,11 @@ def download_all_dependencies(user_os):
 def execute_download_command(driver, user_os, version):
  row_in_list = {
   'firefox': {
+   '84': -1,
+   '83': -1,
+   '82': -1,
+   '81': -1,
+   '80': -1,
    '79': -1,
    '78': -1,
    '77': -1,
