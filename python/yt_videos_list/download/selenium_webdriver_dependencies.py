@@ -68,6 +68,7 @@ def execute_download_command(driver, user_os, version):
    '60': -1,
   },
   'opera': {
+   '72': -33,
    '71': -31,
    '70': -29,
    '69': -27,
