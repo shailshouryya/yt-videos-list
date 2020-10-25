@@ -390,6 +390,9 @@ After doing that, try rerunning the last command!
   brave: {
     macos: [
 
+      # mac64 bravedriver (operadriver based) v.86.0.4240.80 (supports Brave Browser 86)
+      curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.86.0.4240.80/operadriver_mac64.zip | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/bravedriver
+
       # mac64 bravedriver (operadriver based) v.85.0.4183.102 (supports Brave Browser 85)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.85.0.4183.102/operadriver_mac64.zip | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/bravedriver
 
@@ -423,6 +426,9 @@ After doing that, try rerunning the last command!
     ],
     linux: [
 
+      # linux64 bravedriver (operadriver based) v.86.0.4240.80 (supports Brave Browser 86)
+      curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.86.0.4240.80/operadriver_linux64.zip | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/bravedriver
+
       # linux64 bravedriver (operadriver based) v.85.0.4183.102 (supports Brave Browser 85)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.85.0.4183.102/operadriver_linux64.zip | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/bravedriver
 
@@ -455,6 +461,9 @@ After doing that, try rerunning the last command!
 
     ],
     windows: [
+
+      # win64 bravedriver (operadriver based) v.86.0.4240.80 (supports Brave Browser 86)
+      curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.86.0.4240.80/operadriver_win64.zip -o C:\Windows\bravedriver && tar -xzvf C:\Windows\bravedriver --strip-components=1 -O > C:\Windows\bravedriver.exe && del C:\Windows\bravedriver && del C:\Windows\sha512_sum
 
       # win64 bravedriver (operadriver based) v.85.0.4183.102 (supports Brave Browser 85)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.85.0.4183.102/operadriver_win64.zip -o C:\Windows\bravedriver && tar -xzvf C:\Windows\bravedriver --strip-components=1 -O > C:\Windows\bravedriver.exe && del C:\Windows\bravedriver && del C:\Windows\sha512_sum

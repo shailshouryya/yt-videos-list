@@ -115,6 +115,7 @@ def execute_download_command(driver, user_os, version):
             '71': -1
         },
         'brave': {
+            '86': -21,
             '85': -19,
             '84': -17,
             '83': -15,
