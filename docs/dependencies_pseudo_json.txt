@@ -262,6 +262,9 @@ After doing that, try rerunning the last command!
   chrome: {
     macos: [
 
+      # mac64 chromedriver 86.0.4240.22 (supports Google Chrome 86)
+      curl -SL https://chromedriver.storage.googleapis.com/86.0.4240.22/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
+
       # mac64 chromedriver 85.0.4183.87 (supports Google Chrome 85)
       curl -SL https://chromedriver.storage.googleapis.com/85.0.4183.87/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
 
@@ -304,6 +307,9 @@ After doing that, try rerunning the last command!
     ],
     linux: [
 
+      # linux64 chromedriver 86.0.4240.22 (supports Google Chrome 86)
+      curl -SL https://chromedriver.storage.googleapis.com/86.0.4240.22/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
+
       # linux64 chromedriver 85.0.4183.87 (supports Google Chrome 85)
       curl -SL https://chromedriver.storage.googleapis.com/85.0.4183.87/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
 
@@ -345,6 +351,9 @@ After doing that, try rerunning the last command!
 
     ],
     windows: [
+
+      # win32 chromedriver 86.0.4240.22 (supports Google Chrome 86)
+      curl -SL https://chromedriver.storage.googleapis.com/86.0.4240.22/chromedriver_win32.zip -o C:\Windows\chromedriver && tar -xzvf C:\Windows\chromedriver -C C:\Windows && del C:\Windows\chromedriver
 
       # win32 chromedriver 85.0.4183.87 (supports Google Chrome 85)
       curl -SL https://chromedriver.storage.googleapis.com/85.0.4183.87/chromedriver_win32.zip -o C:\Windows\chromedriver && tar -xzvf C:\Windows\chromedriver -C C:\Windows && del C:\Windows\chromedriver
