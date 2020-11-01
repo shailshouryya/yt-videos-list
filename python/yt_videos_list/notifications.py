@@ -206,7 +206,7 @@ class Common:
             ]
     @staticmethod
     def format_driver_information(operating_system, version, major_version, driver, browser):
-        return f'# {operating_system} {driver} {version} (supports {browser} {major_version})'
+        return f'# {operating_system} {driver} {version} (supports {browser} version: {major_version})'
     @classmethod
     def format_geckodriver_download_command(cls, operating_system, version):
         if operating_system.startswith('win'): return cls.format_windows_download(f'{cls.url_prefix_geckodriver}/{version}/geckodriver-{version}-{operating_system}.zip', 'geckodriver')

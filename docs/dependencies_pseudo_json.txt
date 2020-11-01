@@ -2,25 +2,25 @@
   firefox: {
     macos: [
 
-      # macos geckodriver v0.26.0 (supports Mozilla Firefox ≥ 60)
+      # macos geckodriver v0.26.0 (supports Mozilla Firefox version: ≥ 60)
       curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-macos.tar.gz | tar -xzvf - -C /usr/local/bin/
 
     ],
     linux: [
 
-      # linux64 geckodriver v0.26.0 (supports Mozilla Firefox ≥ 60)
+      # linux64 geckodriver v0.26.0 (supports Mozilla Firefox version: ≥ 60)
       curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux64.tar.gz | tar -xzvf - -C /usr/local/bin/
 
-      # linux32 geckodriver v0.26.0 (supports Mozilla Firefox ≥ 60)
+      # linux32 geckodriver v0.26.0 (supports Mozilla Firefox version: ≥ 60)
       curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux32.tar.gz | tar -xzvf - -C /usr/local/bin/
 
     ],
     windows: [
 
-      # win32 geckodriver v0.26.0 (supports Mozilla Firefox ≥ 60)
+      # win32 geckodriver v0.26.0 (supports Mozilla Firefox version: ≥ 60)
       curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win32.zip -o C:\Windows\geckodriver && tar -xzvf C:\Windows\geckodriver -C C:\Windows && del C:\Windows\geckodriver
 
-      # win64 geckodriver v0.26.0 (supports Mozilla Firefox ≥ 60)
+      # win64 geckodriver v0.26.0 (supports Mozilla Firefox version: ≥ 60)
       curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win64.zip -o C:\Windows\geckodriver && tar -xzvf C:\Windows\geckodriver -C C:\Windows && del C:\Windows\geckodriver
 
     ]
@@ -28,214 +28,214 @@
   opera: {
     macos: [
 
-      # mac64 operadriver v.86.0.4240.80 (supports Opera Stable 72)
+      # mac64 operadriver v.86.0.4240.80 (supports Opera version: Stable 72)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.86.0.4240.80/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver
 
-      # mac64 operadriver v.85.0.4183.102 (supports Opera Stable 71)
+      # mac64 operadriver v.85.0.4183.102 (supports Opera version: Stable 71)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.85.0.4183.102/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver
 
-      # mac64 operadriver v.84.0.4147.89 (supports Opera Stable 70)
+      # mac64 operadriver v.84.0.4147.89 (supports Opera version: Stable 70)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.84.0.4147.89/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver
 
-      # mac64 operadriver v.83.0.4103.97 (supports Opera Stable 69)
+      # mac64 operadriver v.83.0.4103.97 (supports Opera version: Stable 69)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.83.0.4103.97/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver
 
-      # mac64 operadriver v.81.0.4044.113 (supports Opera Stable 68)
+      # mac64 operadriver v.81.0.4044.113 (supports Opera version: Stable 68)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.81.0.4044.113/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver
 
-      # mac64 operadriver v.80.0.3987.100 (supports Opera Stable 67)
+      # mac64 operadriver v.80.0.3987.100 (supports Opera version: Stable 67)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.80.0.3987.100/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver
 
-      # mac64 operadriver v.79.0.3945.79 (supports Opera Stable 66)
+      # mac64 operadriver v.79.0.3945.79 (supports Opera version: Stable 66)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.79.0.3945.79/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver
 
-      # mac64 operadriver v.78.0.3904.87 (supports Opera Stable 65)
+      # mac64 operadriver v.78.0.3904.87 (supports Opera version: Stable 65)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.78.0.3904.87/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver
 
-      # mac64 operadriver v.77.0.3865.120 (supports Opera 64)
+      # mac64 operadriver v.77.0.3865.120 (supports Opera version: 64)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.77.0.3865.120/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver
 
-      # mac64 operadriver v.76.0.3809.132 (supports Opera 63)
+      # mac64 operadriver v.76.0.3809.132 (supports Opera version: 63)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.76.0.3809.132/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver
 
-      # mac64 operadriver v.75.0.3770.100 (supports Opera 62)
+      # mac64 operadriver v.75.0.3770.100 (supports Opera version: 62)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.75.0.3770.100/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver
 
-      # mac64 operadriver v.2.45 (supports Opera 60)
+      # mac64 operadriver v.2.45 (supports Opera version: 60)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.45/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver
 
-      # mac64 operadriver v.2.42 (supports Opera 58)
+      # mac64 operadriver v.2.42 (supports Opera version: 58)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.42/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver
 
-      # mac64 operadriver v.2.41 (supports Opera 57)
+      # mac64 operadriver v.2.41 (supports Opera version: 57)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.41/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver
 
-      # mac64 operadriver v.2.40 (supports Opera 56)
+      # mac64 operadriver v.2.40 (supports Opera version: 56)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.40/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver
 
-      # mac64 operadriver v.2.38 (supports Opera 55)
+      # mac64 operadriver v.2.38 (supports Opera version: 55)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.38/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver
 
-      # mac64 operadriver v.2.37 (supports Opera 54)
+      # mac64 operadriver v.2.37 (supports Opera version: 54)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.37/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver
 
     ],
     linux: [
 
-      # linux64 operadriver v.86.0.4240.80 (supports Opera Stable 72)
+      # linux64 operadriver v.86.0.4240.80 (supports Opera version: Stable 72)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.86.0.4240.80/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver
 
-      # linux64 operadriver v.85.0.4183.102 (supports Opera Stable 71)
+      # linux64 operadriver v.85.0.4183.102 (supports Opera version: Stable 71)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.85.0.4183.102/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver
 
-      # linux64 operadriver v.84.0.4147.89 (supports Opera Stable 70)
+      # linux64 operadriver v.84.0.4147.89 (supports Opera version: Stable 70)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.84.0.4147.89/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver
 
-      # linux64 operadriver v.83.0.4103.97 (supports Opera Stable 69)
+      # linux64 operadriver v.83.0.4103.97 (supports Opera version: Stable 69)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.83.0.4103.97/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver
 
-      # linux64 operadriver v.81.0.4044.113 (supports Opera Stable 68)
+      # linux64 operadriver v.81.0.4044.113 (supports Opera version: Stable 68)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.81.0.4044.113/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver
 
-      # linux64 operadriver v.80.0.3987.100 (supports Opera Stable 67)
+      # linux64 operadriver v.80.0.3987.100 (supports Opera version: Stable 67)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.80.0.3987.100/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver
 
-      # linux64 operadriver v.79.0.3945.79 (supports Opera Stable 66)
+      # linux64 operadriver v.79.0.3945.79 (supports Opera version: Stable 66)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.79.0.3945.79/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver
 
-      # linux64 operadriver v.78.0.3904.87 (supports Opera Stable 65)
+      # linux64 operadriver v.78.0.3904.87 (supports Opera version: Stable 65)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.78.0.3904.87/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver
 
-      # linux64 operadriver v.77.0.3865.120 (supports Opera 64)
+      # linux64 operadriver v.77.0.3865.120 (supports Opera version: 64)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.77.0.3865.120/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver
 
-      # linux64 operadriver v.76.0.3809.132 (supports Opera 63)
+      # linux64 operadriver v.76.0.3809.132 (supports Opera version: 63)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.76.0.3809.132/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver
 
-      # linux64 operadriver v.75.0.3770.100 (supports Opera 62)
+      # linux64 operadriver v.75.0.3770.100 (supports Opera version: 62)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.75.0.3770.100/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver
 
-      # linux64 operadriver v.2.45 (supports Opera 60)
+      # linux64 operadriver v.2.45 (supports Opera version: 60)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.45/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver
 
-      # linux64 operadriver v.2.42 (supports Opera 58)
+      # linux64 operadriver v.2.42 (supports Opera version: 58)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.42/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver
 
-      # linux64 operadriver v.2.41 (supports Opera 57)
+      # linux64 operadriver v.2.41 (supports Opera version: 57)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.41/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver
 
-      # linux64 operadriver v.2.40 (supports Opera 56)
+      # linux64 operadriver v.2.40 (supports Opera version: 56)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.40/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver
 
-      # linux64 operadriver v.2.38 (supports Opera 55)
+      # linux64 operadriver v.2.38 (supports Opera version: 55)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.38/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver
 
-      # linux64 operadriver v.2.37 (supports Opera 54)
+      # linux64 operadriver v.2.37 (supports Opera version: 54)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.37/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver
 
     ],
     windows: [
 
-      # win32 operadriver v.86.0.4240.80 (supports Opera Stable 72)
+      # win32 operadriver v.86.0.4240.80 (supports Opera version: Stable 72)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.86.0.4240.80/operadriver_win32.zip -o C:\Windows\operadriver && tar -xzvf C:\Windows\operadriver --strip-components=1 -C C:\Windows && del C:\Windows\operadriver && del C:\Windows\sha512_sum
 
-      # win32 operadriver v.85.0.4183.102 (supports Opera Stable 71)
+      # win32 operadriver v.85.0.4183.102 (supports Opera version: Stable 71)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.85.0.4183.102/operadriver_win32.zip -o C:\Windows\operadriver && tar -xzvf C:\Windows\operadriver --strip-components=1 -C C:\Windows && del C:\Windows\operadriver && del C:\Windows\sha512_sum
 
-      # win32 operadriver v.84.0.4147.89 (supports Opera Stable 70)
+      # win32 operadriver v.84.0.4147.89 (supports Opera version: Stable 70)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.84.0.4147.89/operadriver_win32.zip -o C:\Windows\operadriver && tar -xzvf C:\Windows\operadriver --strip-components=1 -C C:\Windows && del C:\Windows\operadriver && del C:\Windows\sha512_sum
 
-      # win32 operadriver v.83.0.4103.97 (supports Opera Stable 69)
+      # win32 operadriver v.83.0.4103.97 (supports Opera version: Stable 69)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.83.0.4103.97/operadriver_win32.zip -o C:\Windows\operadriver && tar -xzvf C:\Windows\operadriver --strip-components=1 -C C:\Windows && del C:\Windows\operadriver && del C:\Windows\sha512_sum
 
-      # win32 operadriver v.81.0.4044.113 (supports Opera Stable 68)
+      # win32 operadriver v.81.0.4044.113 (supports Opera version: Stable 68)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.81.0.4044.113/operadriver_win32.zip -o C:\Windows\operadriver && tar -xzvf C:\Windows\operadriver --strip-components=1 -C C:\Windows && del C:\Windows\operadriver && del C:\Windows\sha512_sum
 
-      # win32 operadriver v.80.0.3987.100 (supports Opera Stable 67)
+      # win32 operadriver v.80.0.3987.100 (supports Opera version: Stable 67)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.80.0.3987.100/operadriver_win32.zip -o C:\Windows\operadriver && tar -xzvf C:\Windows\operadriver --strip-components=1 -C C:\Windows && del C:\Windows\operadriver && del C:\Windows\sha512_sum
 
-      # win32 operadriver v.79.0.3945.79 (supports Opera Stable 66)
+      # win32 operadriver v.79.0.3945.79 (supports Opera version: Stable 66)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.79.0.3945.79/operadriver_win32.zip -o C:\Windows\operadriver && tar -xzvf C:\Windows\operadriver --strip-components=1 -C C:\Windows && del C:\Windows\operadriver && del C:\Windows\sha512_sum
 
-      # win32 operadriver v.78.0.3904.87 (supports Opera Stable 65)
+      # win32 operadriver v.78.0.3904.87 (supports Opera version: Stable 65)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.78.0.3904.87/operadriver_win32.zip -o C:\Windows\operadriver && tar -xzvf C:\Windows\operadriver --strip-components=1 -C C:\Windows && del C:\Windows\operadriver && del C:\Windows\sha512_sum
 
-      # win32 operadriver v.77.0.3865.120 (supports Opera 64)
+      # win32 operadriver v.77.0.3865.120 (supports Opera version: 64)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.77.0.3865.120/operadriver_win32.zip -o C:\Windows\operadriver && tar -xzvf C:\Windows\operadriver --strip-components=1 -C C:\Windows && del C:\Windows\operadriver && del C:\Windows\sha512_sum
 
-      # win32 operadriver v.76.0.3809.132 (supports Opera 63)
+      # win32 operadriver v.76.0.3809.132 (supports Opera version: 63)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.76.0.3809.132/operadriver_win32.zip -o C:\Windows\operadriver && tar -xzvf C:\Windows\operadriver --strip-components=1 -C C:\Windows && del C:\Windows\operadriver && del C:\Windows\sha512_sum
 
-      # win32 operadriver v.75.0.3770.100 (supports Opera 62)
+      # win32 operadriver v.75.0.3770.100 (supports Opera version: 62)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.75.0.3770.100/operadriver_win32.zip -o C:\Windows\operadriver && tar -xzvf C:\Windows\operadriver --strip-components=1 -C C:\Windows && del C:\Windows\operadriver && del C:\Windows\sha512_sum
 
-      # win32 operadriver v.2.45 (supports Opera 60)
+      # win32 operadriver v.2.45 (supports Opera version: 60)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.45/operadriver_win32.zip -o C:\Windows\operadriver && tar -xzvf C:\Windows\operadriver --strip-components=1 -C C:\Windows && del C:\Windows\operadriver && del C:\Windows\sha512_sum
 
-      # win32 operadriver v.2.42 (supports Opera 58)
+      # win32 operadriver v.2.42 (supports Opera version: 58)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.42/operadriver_win32.zip -o C:\Windows\operadriver && tar -xzvf C:\Windows\operadriver --strip-components=1 -C C:\Windows && del C:\Windows\operadriver && del C:\Windows\sha512_sum
 
-      # win32 operadriver v.2.41 (supports Opera 57)
+      # win32 operadriver v.2.41 (supports Opera version: 57)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.41/operadriver_win32.zip -o C:\Windows\operadriver && tar -xzvf C:\Windows\operadriver --strip-components=1 -C C:\Windows && del C:\Windows\operadriver && del C:\Windows\sha512_sum
 
-      # win32 operadriver v.2.40 (supports Opera 56)
+      # win32 operadriver v.2.40 (supports Opera version: 56)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.40/operadriver_win32.zip -o C:\Windows\operadriver && tar -xzvf C:\Windows\operadriver --strip-components=1 -C C:\Windows && del C:\Windows\operadriver && del C:\Windows\sha512_sum
 
-      # win32 operadriver v.2.38 (supports Opera 55)
+      # win32 operadriver v.2.38 (supports Opera version: 55)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.38/operadriver_win32.zip -o C:\Windows\operadriver && tar -xzvf C:\Windows\operadriver --strip-components=1 -C C:\Windows && del C:\Windows\operadriver && del C:\Windows\sha512_sum
 
-      # win32 operadriver v.2.37 (supports Opera 54)
+      # win32 operadriver v.2.37 (supports Opera version: 54)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.37/operadriver_win32.zip -o C:\Windows\operadriver && tar -xzvf C:\Windows\operadriver --strip-components=1 -C C:\Windows && del C:\Windows\operadriver && del C:\Windows\sha512_sum
 
-      # win64 operadriver v.86.0.4240.80 (supports Opera Stable 72)
+      # win64 operadriver v.86.0.4240.80 (supports Opera version: Stable 72)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.86.0.4240.80/operadriver_win64.zip -o C:\Windows\operadriver && tar -xzvf C:\Windows\operadriver --strip-components=1 -C C:\Windows && del C:\Windows\operadriver && del C:\Windows\sha512_sum
 
-      # win64 operadriver v.85.0.4183.102 (supports Opera Stable 71)
+      # win64 operadriver v.85.0.4183.102 (supports Opera version: Stable 71)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.85.0.4183.102/operadriver_win64.zip -o C:\Windows\operadriver && tar -xzvf C:\Windows\operadriver --strip-components=1 -C C:\Windows && del C:\Windows\operadriver && del C:\Windows\sha512_sum
 
-      # win64 operadriver v.84.0.4147.89 (supports Opera Stable 70)
+      # win64 operadriver v.84.0.4147.89 (supports Opera version: Stable 70)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.84.0.4147.89/operadriver_win64.zip -o C:\Windows\operadriver && tar -xzvf C:\Windows\operadriver --strip-components=1 -C C:\Windows && del C:\Windows\operadriver && del C:\Windows\sha512_sum
 
-      # win64 operadriver v.83.0.4103.97 (supports Opera Stable 69)
+      # win64 operadriver v.83.0.4103.97 (supports Opera version: Stable 69)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.83.0.4103.97/operadriver_win64.zip -o C:\Windows\operadriver && tar -xzvf C:\Windows\operadriver --strip-components=1 -C C:\Windows && del C:\Windows\operadriver && del C:\Windows\sha512_sum
 
-      # win64 operadriver v.81.0.4044.113 (supports Opera Stable 68)
+      # win64 operadriver v.81.0.4044.113 (supports Opera version: Stable 68)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.81.0.4044.113/operadriver_win64.zip -o C:\Windows\operadriver && tar -xzvf C:\Windows\operadriver --strip-components=1 -C C:\Windows && del C:\Windows\operadriver && del C:\Windows\sha512_sum
 
-      # win64 operadriver v.80.0.3987.100 (supports Opera Stable 67)
+      # win64 operadriver v.80.0.3987.100 (supports Opera version: Stable 67)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.80.0.3987.100/operadriver_win64.zip -o C:\Windows\operadriver && tar -xzvf C:\Windows\operadriver --strip-components=1 -C C:\Windows && del C:\Windows\operadriver && del C:\Windows\sha512_sum
 
-      # win64 operadriver v.79.0.3945.79 (supports Opera Stable 66)
+      # win64 operadriver v.79.0.3945.79 (supports Opera version: Stable 66)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.79.0.3945.79/operadriver_win64.zip -o C:\Windows\operadriver && tar -xzvf C:\Windows\operadriver --strip-components=1 -C C:\Windows && del C:\Windows\operadriver && del C:\Windows\sha512_sum
 
-      # win64 operadriver v.78.0.3904.87 (supports Opera Stable 65)
+      # win64 operadriver v.78.0.3904.87 (supports Opera version: Stable 65)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.78.0.3904.87/operadriver_win64.zip -o C:\Windows\operadriver && tar -xzvf C:\Windows\operadriver --strip-components=1 -C C:\Windows && del C:\Windows\operadriver && del C:\Windows\sha512_sum
 
-      # win64 operadriver v.77.0.3865.120 (supports Opera 64)
+      # win64 operadriver v.77.0.3865.120 (supports Opera version: 64)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.77.0.3865.120/operadriver_win64.zip -o C:\Windows\operadriver && tar -xzvf C:\Windows\operadriver --strip-components=1 -C C:\Windows && del C:\Windows\operadriver && del C:\Windows\sha512_sum
 
-      # win64 operadriver v.76.0.3809.132 (supports Opera 63)
+      # win64 operadriver v.76.0.3809.132 (supports Opera version: 63)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.76.0.3809.132/operadriver_win64.zip -o C:\Windows\operadriver && tar -xzvf C:\Windows\operadriver --strip-components=1 -C C:\Windows && del C:\Windows\operadriver && del C:\Windows\sha512_sum
 
-      # win64 operadriver v.75.0.3770.100 (supports Opera 62)
+      # win64 operadriver v.75.0.3770.100 (supports Opera version: 62)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.75.0.3770.100/operadriver_win64.zip -o C:\Windows\operadriver && tar -xzvf C:\Windows\operadriver --strip-components=1 -C C:\Windows && del C:\Windows\operadriver && del C:\Windows\sha512_sum
 
-      # win64 operadriver v.2.45 (supports Opera 60)
+      # win64 operadriver v.2.45 (supports Opera version: 60)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.45/operadriver_win64.zip -o C:\Windows\operadriver && tar -xzvf C:\Windows\operadriver --strip-components=1 -C C:\Windows && del C:\Windows\operadriver && del C:\Windows\sha512_sum
 
-      # win64 operadriver v.2.42 (supports Opera 58)
+      # win64 operadriver v.2.42 (supports Opera version: 58)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.42/operadriver_win64.zip -o C:\Windows\operadriver && tar -xzvf C:\Windows\operadriver --strip-components=1 -C C:\Windows && del C:\Windows\operadriver && del C:\Windows\sha512_sum
 
-      # win64 operadriver v.2.41 (supports Opera 57)
+      # win64 operadriver v.2.41 (supports Opera version: 57)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.41/operadriver_win64.zip -o C:\Windows\operadriver && tar -xzvf C:\Windows\operadriver --strip-components=1 -C C:\Windows && del C:\Windows\operadriver && del C:\Windows\sha512_sum
 
-      # win64 operadriver v.2.40 (supports Opera 56)
+      # win64 operadriver v.2.40 (supports Opera version: 56)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.40/operadriver_win64.zip -o C:\Windows\operadriver && tar -xzvf C:\Windows\operadriver --strip-components=1 -C C:\Windows && del C:\Windows\operadriver && del C:\Windows\sha512_sum
 
-      # win64 operadriver v.2.38 (supports Opera 55)
+      # win64 operadriver v.2.38 (supports Opera version: 55)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.38/operadriver_win64.zip -o C:\Windows\operadriver && tar -xzvf C:\Windows\operadriver --strip-components=1 -C C:\Windows && del C:\Windows\operadriver && del C:\Windows\sha512_sum
 
-      # win64 operadriver v.2.37 (supports Opera 54)
+      # win64 operadriver v.2.37 (supports Opera version: 54)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.37/operadriver_win64.zip -o C:\Windows\operadriver && tar -xzvf C:\Windows\operadriver --strip-components=1 -C C:\Windows && del C:\Windows\operadriver && del C:\Windows\sha512_sum
 
     ]
@@ -262,136 +262,136 @@ After doing that, try rerunning the last command!
   chrome: {
     macos: [
 
-      # mac64 chromedriver 86.0.4240.22 (supports Google Chrome 86)
+      # mac64 chromedriver 86.0.4240.22 (supports Google Chrome version: 86)
       curl -SL https://chromedriver.storage.googleapis.com/86.0.4240.22/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
 
-      # mac64 chromedriver 85.0.4183.87 (supports Google Chrome 85)
+      # mac64 chromedriver 85.0.4183.87 (supports Google Chrome version: 85)
       curl -SL https://chromedriver.storage.googleapis.com/85.0.4183.87/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
 
-      # mac64 chromedriver 84.0.4147.30 (supports Google Chrome 84)
+      # mac64 chromedriver 84.0.4147.30 (supports Google Chrome version: 84)
       curl -SL https://chromedriver.storage.googleapis.com/84.0.4147.30/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
 
-      # mac64 chromedriver 83.0.4103.39 (supports Google Chrome 83)
+      # mac64 chromedriver 83.0.4103.39 (supports Google Chrome version: 83)
       curl -SL https://chromedriver.storage.googleapis.com/83.0.4103.39/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
 
-      # mac64 chromedriver 81.0.4044.138 (supports Google Chrome 81)
+      # mac64 chromedriver 81.0.4044.138 (supports Google Chrome version: 81)
       curl -SL https://chromedriver.storage.googleapis.com/81.0.4044.138/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
 
-      # mac64 chromedriver 80.0.3987.106 (supports Google Chrome 80)
+      # mac64 chromedriver 80.0.3987.106 (supports Google Chrome version: 80)
       curl -SL https://chromedriver.storage.googleapis.com/80.0.3987.106/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
 
-      # mac64 chromedriver 79.0.3945.36 (supports Google Chrome 79)
+      # mac64 chromedriver 79.0.3945.36 (supports Google Chrome version: 79)
       curl -SL https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
 
-      # mac64 chromedriver 78.0.3904.105 (supports Google Chrome 78)
+      # mac64 chromedriver 78.0.3904.105 (supports Google Chrome version: 78)
       curl -SL https://chromedriver.storage.googleapis.com/78.0.3904.105/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
 
-      # mac64 chromedriver 77.0.3865.40 (supports Google Chrome 77)
+      # mac64 chromedriver 77.0.3865.40 (supports Google Chrome version: 77)
       curl -SL https://chromedriver.storage.googleapis.com/77.0.3865.40/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
 
-      # mac64 chromedriver 76.0.3809.126 (supports Google Chrome 76)
+      # mac64 chromedriver 76.0.3809.126 (supports Google Chrome version: 76)
       curl -SL https://chromedriver.storage.googleapis.com/76.0.3809.126/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
 
-      # mac64 chromedriver 75.0.3770.140 (supports Google Chrome 75)
+      # mac64 chromedriver 75.0.3770.140 (supports Google Chrome version: 75)
       curl -SL https://chromedriver.storage.googleapis.com/75.0.3770.140/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
 
-      # mac64 chromedriver 74.0.3729.6 (supports Google Chrome 74)
+      # mac64 chromedriver 74.0.3729.6 (supports Google Chrome version: 74)
       curl -SL https://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
 
-      # mac64 chromedriver 73.0.3683.68 (supports Google Chrome 73)
+      # mac64 chromedriver 73.0.3683.68 (supports Google Chrome version: 73)
       curl -SL https://chromedriver.storage.googleapis.com/73.0.3683.68/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
 
-      # mac64 chromedriver 2.46 (supports Google Chrome v71-73)
+      # mac64 chromedriver 2.46 (supports Google Chrome version: v71-73)
       curl -SL https://chromedriver.storage.googleapis.com/2.46/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
 
     ],
     linux: [
 
-      # linux64 chromedriver 86.0.4240.22 (supports Google Chrome 86)
+      # linux64 chromedriver 86.0.4240.22 (supports Google Chrome version: 86)
       curl -SL https://chromedriver.storage.googleapis.com/86.0.4240.22/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
 
-      # linux64 chromedriver 85.0.4183.87 (supports Google Chrome 85)
+      # linux64 chromedriver 85.0.4183.87 (supports Google Chrome version: 85)
       curl -SL https://chromedriver.storage.googleapis.com/85.0.4183.87/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
 
-      # linux64 chromedriver 84.0.4147.30 (supports Google Chrome 84)
+      # linux64 chromedriver 84.0.4147.30 (supports Google Chrome version: 84)
       curl -SL https://chromedriver.storage.googleapis.com/84.0.4147.30/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
 
-      # linux64 chromedriver 83.0.4103.39 (supports Google Chrome 83)
+      # linux64 chromedriver 83.0.4103.39 (supports Google Chrome version: 83)
       curl -SL https://chromedriver.storage.googleapis.com/83.0.4103.39/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
 
-      # linux64 chromedriver 81.0.4044.138 (supports Google Chrome 81)
+      # linux64 chromedriver 81.0.4044.138 (supports Google Chrome version: 81)
       curl -SL https://chromedriver.storage.googleapis.com/81.0.4044.138/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
 
-      # linux64 chromedriver 80.0.3987.106 (supports Google Chrome 80)
+      # linux64 chromedriver 80.0.3987.106 (supports Google Chrome version: 80)
       curl -SL https://chromedriver.storage.googleapis.com/80.0.3987.106/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
 
-      # linux64 chromedriver 79.0.3945.36 (supports Google Chrome 79)
+      # linux64 chromedriver 79.0.3945.36 (supports Google Chrome version: 79)
       curl -SL https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
 
-      # linux64 chromedriver 78.0.3904.105 (supports Google Chrome 78)
+      # linux64 chromedriver 78.0.3904.105 (supports Google Chrome version: 78)
       curl -SL https://chromedriver.storage.googleapis.com/78.0.3904.105/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
 
-      # linux64 chromedriver 77.0.3865.40 (supports Google Chrome 77)
+      # linux64 chromedriver 77.0.3865.40 (supports Google Chrome version: 77)
       curl -SL https://chromedriver.storage.googleapis.com/77.0.3865.40/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
 
-      # linux64 chromedriver 76.0.3809.126 (supports Google Chrome 76)
+      # linux64 chromedriver 76.0.3809.126 (supports Google Chrome version: 76)
       curl -SL https://chromedriver.storage.googleapis.com/76.0.3809.126/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
 
-      # linux64 chromedriver 75.0.3770.140 (supports Google Chrome 75)
+      # linux64 chromedriver 75.0.3770.140 (supports Google Chrome version: 75)
       curl -SL https://chromedriver.storage.googleapis.com/75.0.3770.140/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
 
-      # linux64 chromedriver 74.0.3729.6 (supports Google Chrome 74)
+      # linux64 chromedriver 74.0.3729.6 (supports Google Chrome version: 74)
       curl -SL https://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
 
-      # linux64 chromedriver 73.0.3683.68 (supports Google Chrome 73)
+      # linux64 chromedriver 73.0.3683.68 (supports Google Chrome version: 73)
       curl -SL https://chromedriver.storage.googleapis.com/73.0.3683.68/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
 
-      # linux64 chromedriver 2.46 (supports Google Chrome v71-73)
+      # linux64 chromedriver 2.46 (supports Google Chrome version: v71-73)
       curl -SL https://chromedriver.storage.googleapis.com/2.46/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
 
     ],
     windows: [
 
-      # win32 chromedriver 86.0.4240.22 (supports Google Chrome 86)
+      # win32 chromedriver 86.0.4240.22 (supports Google Chrome version: 86)
       curl -SL https://chromedriver.storage.googleapis.com/86.0.4240.22/chromedriver_win32.zip -o C:\Windows\chromedriver && tar -xzvf C:\Windows\chromedriver -C C:\Windows && del C:\Windows\chromedriver
 
-      # win32 chromedriver 85.0.4183.87 (supports Google Chrome 85)
+      # win32 chromedriver 85.0.4183.87 (supports Google Chrome version: 85)
       curl -SL https://chromedriver.storage.googleapis.com/85.0.4183.87/chromedriver_win32.zip -o C:\Windows\chromedriver && tar -xzvf C:\Windows\chromedriver -C C:\Windows && del C:\Windows\chromedriver
 
-      # win32 chromedriver 84.0.4147.30 (supports Google Chrome 84)
+      # win32 chromedriver 84.0.4147.30 (supports Google Chrome version: 84)
       curl -SL https://chromedriver.storage.googleapis.com/84.0.4147.30/chromedriver_win32.zip -o C:\Windows\chromedriver && tar -xzvf C:\Windows\chromedriver -C C:\Windows && del C:\Windows\chromedriver
 
-      # win32 chromedriver 83.0.4103.39 (supports Google Chrome 83)
+      # win32 chromedriver 83.0.4103.39 (supports Google Chrome version: 83)
       curl -SL https://chromedriver.storage.googleapis.com/83.0.4103.39/chromedriver_win32.zip -o C:\Windows\chromedriver && tar -xzvf C:\Windows\chromedriver -C C:\Windows && del C:\Windows\chromedriver
 
-      # win32 chromedriver 81.0.4044.138 (supports Google Chrome 81)
+      # win32 chromedriver 81.0.4044.138 (supports Google Chrome version: 81)
       curl -SL https://chromedriver.storage.googleapis.com/81.0.4044.138/chromedriver_win32.zip -o C:\Windows\chromedriver && tar -xzvf C:\Windows\chromedriver -C C:\Windows && del C:\Windows\chromedriver
 
-      # win32 chromedriver 80.0.3987.106 (supports Google Chrome 80)
+      # win32 chromedriver 80.0.3987.106 (supports Google Chrome version: 80)
       curl -SL https://chromedriver.storage.googleapis.com/80.0.3987.106/chromedriver_win32.zip -o C:\Windows\chromedriver && tar -xzvf C:\Windows\chromedriver -C C:\Windows && del C:\Windows\chromedriver
 
-      # win32 chromedriver 79.0.3945.36 (supports Google Chrome 79)
+      # win32 chromedriver 79.0.3945.36 (supports Google Chrome version: 79)
       curl -SL https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_win32.zip -o C:\Windows\chromedriver && tar -xzvf C:\Windows\chromedriver -C C:\Windows && del C:\Windows\chromedriver
 
-      # win32 chromedriver 78.0.3904.105 (supports Google Chrome 78)
+      # win32 chromedriver 78.0.3904.105 (supports Google Chrome version: 78)
       curl -SL https://chromedriver.storage.googleapis.com/78.0.3904.105/chromedriver_win32.zip -o C:\Windows\chromedriver && tar -xzvf C:\Windows\chromedriver -C C:\Windows && del C:\Windows\chromedriver
 
-      # win32 chromedriver 77.0.3865.40 (supports Google Chrome 77)
+      # win32 chromedriver 77.0.3865.40 (supports Google Chrome version: 77)
       curl -SL https://chromedriver.storage.googleapis.com/77.0.3865.40/chromedriver_win32.zip -o C:\Windows\chromedriver && tar -xzvf C:\Windows\chromedriver -C C:\Windows && del C:\Windows\chromedriver
 
-      # win32 chromedriver 76.0.3809.126 (supports Google Chrome 76)
+      # win32 chromedriver 76.0.3809.126 (supports Google Chrome version: 76)
       curl -SL https://chromedriver.storage.googleapis.com/76.0.3809.126/chromedriver_win32.zip -o C:\Windows\chromedriver && tar -xzvf C:\Windows\chromedriver -C C:\Windows && del C:\Windows\chromedriver
 
-      # win32 chromedriver 75.0.3770.140 (supports Google Chrome 75)
+      # win32 chromedriver 75.0.3770.140 (supports Google Chrome version: 75)
       curl -SL https://chromedriver.storage.googleapis.com/75.0.3770.140/chromedriver_win32.zip -o C:\Windows\chromedriver && tar -xzvf C:\Windows\chromedriver -C C:\Windows && del C:\Windows\chromedriver
 
-      # win32 chromedriver 74.0.3729.6 (supports Google Chrome 74)
+      # win32 chromedriver 74.0.3729.6 (supports Google Chrome version: 74)
       curl -SL https://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_win32.zip -o C:\Windows\chromedriver && tar -xzvf C:\Windows\chromedriver -C C:\Windows && del C:\Windows\chromedriver
 
-      # win32 chromedriver 73.0.3683.68 (supports Google Chrome 73)
+      # win32 chromedriver 73.0.3683.68 (supports Google Chrome version: 73)
       curl -SL https://chromedriver.storage.googleapis.com/73.0.3683.68/chromedriver_win32.zip -o C:\Windows\chromedriver && tar -xzvf C:\Windows\chromedriver -C C:\Windows && del C:\Windows\chromedriver
 
-      # win32 chromedriver 2.46 (supports Google Chrome v71-73)
+      # win32 chromedriver 2.46 (supports Google Chrome version: v71-73)
       curl -SL https://chromedriver.storage.googleapis.com/2.46/chromedriver_win32.zip -o C:\Windows\chromedriver && tar -xzvf C:\Windows\chromedriver -C C:\Windows && del C:\Windows\chromedriver
 
     ]
@@ -399,109 +399,109 @@ After doing that, try rerunning the last command!
   brave: {
     macos: [
 
-      # mac64 bravedriver (operadriver based) v.86.0.4240.80 (supports Brave Browser 86)
+      # mac64 bravedriver (operadriver based) v.86.0.4240.80 (supports Brave Browser version: 86)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.86.0.4240.80/operadriver_mac64.zip | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/bravedriver
 
-      # mac64 bravedriver (operadriver based) v.85.0.4183.102 (supports Brave Browser 85)
+      # mac64 bravedriver (operadriver based) v.85.0.4183.102 (supports Brave Browser version: 85)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.85.0.4183.102/operadriver_mac64.zip | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/bravedriver
 
-      # mac64 bravedriver (operadriver based) v.84.0.4147.89 (supports Brave Browser 84)
+      # mac64 bravedriver (operadriver based) v.84.0.4147.89 (supports Brave Browser version: 84)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.84.0.4147.89/operadriver_mac64.zip | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/bravedriver
 
-      # mac64 bravedriver (operadriver based) v.83.0.4103.97 (supports Brave Browser 83)
+      # mac64 bravedriver (operadriver based) v.83.0.4103.97 (supports Brave Browser version: 83)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.83.0.4103.97/operadriver_mac64.zip | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/bravedriver
 
-      # mac64 bravedriver (operadriver based) v.81.0.4044.113 (supports Brave Browser 81)
+      # mac64 bravedriver (operadriver based) v.81.0.4044.113 (supports Brave Browser version: 81)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.81.0.4044.113/operadriver_mac64.zip | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/bravedriver
 
-      # mac64 bravedriver (operadriver based) v.80.0.3987.100 (supports Brave Browser 80)
+      # mac64 bravedriver (operadriver based) v.80.0.3987.100 (supports Brave Browser version: 80)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.80.0.3987.100/operadriver_mac64.zip | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/bravedriver
 
-      # mac64 bravedriver (operadriver based) v.79.0.3945.79 (supports Brave Browser 79)
+      # mac64 bravedriver (operadriver based) v.79.0.3945.79 (supports Brave Browser version: 79)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.79.0.3945.79/operadriver_mac64.zip | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/bravedriver
 
-      # mac64 bravedriver (operadriver based) v.78.0.3904.87 (supports Brave Browser 78)
+      # mac64 bravedriver (operadriver based) v.78.0.3904.87 (supports Brave Browser version: 78)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.78.0.3904.87/operadriver_mac64.zip | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/bravedriver
 
-      # mac64 bravedriver (operadriver based) v.77.0.3865.120 (supports Brave Browser 77)
+      # mac64 bravedriver (operadriver based) v.77.0.3865.120 (supports Brave Browser version: 77)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.77.0.3865.120/operadriver_mac64.zip | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/bravedriver
 
-      # mac64 bravedriver (operadriver based) v.76.0.3809.132 (supports Brave Browser 76)
+      # mac64 bravedriver (operadriver based) v.76.0.3809.132 (supports Brave Browser version: 76)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.76.0.3809.132/operadriver_mac64.zip | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/bravedriver
 
-      # mac64 bravedriver (operadriver based) v.75.0.3770.100 (supports Brave Browser 75)
+      # mac64 bravedriver (operadriver based) v.75.0.3770.100 (supports Brave Browser version: 75)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.75.0.3770.100/operadriver_mac64.zip | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/bravedriver
 
     ],
     linux: [
 
-      # linux64 bravedriver (operadriver based) v.86.0.4240.80 (supports Brave Browser 86)
+      # linux64 bravedriver (operadriver based) v.86.0.4240.80 (supports Brave Browser version: 86)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.86.0.4240.80/operadriver_linux64.zip | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/bravedriver
 
-      # linux64 bravedriver (operadriver based) v.85.0.4183.102 (supports Brave Browser 85)
+      # linux64 bravedriver (operadriver based) v.85.0.4183.102 (supports Brave Browser version: 85)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.85.0.4183.102/operadriver_linux64.zip | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/bravedriver
 
-      # linux64 bravedriver (operadriver based) v.84.0.4147.89 (supports Brave Browser 84)
+      # linux64 bravedriver (operadriver based) v.84.0.4147.89 (supports Brave Browser version: 84)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.84.0.4147.89/operadriver_linux64.zip | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/bravedriver
 
-      # linux64 bravedriver (operadriver based) v.83.0.4103.97 (supports Brave Browser 83)
+      # linux64 bravedriver (operadriver based) v.83.0.4103.97 (supports Brave Browser version: 83)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.83.0.4103.97/operadriver_linux64.zip | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/bravedriver
 
-      # linux64 bravedriver (operadriver based) v.81.0.4044.113 (supports Brave Browser 81)
+      # linux64 bravedriver (operadriver based) v.81.0.4044.113 (supports Brave Browser version: 81)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.81.0.4044.113/operadriver_linux64.zip | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/bravedriver
 
-      # linux64 bravedriver (operadriver based) v.80.0.3987.100 (supports Brave Browser 80)
+      # linux64 bravedriver (operadriver based) v.80.0.3987.100 (supports Brave Browser version: 80)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.80.0.3987.100/operadriver_linux64.zip | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/bravedriver
 
-      # linux64 bravedriver (operadriver based) v.79.0.3945.79 (supports Brave Browser 79)
+      # linux64 bravedriver (operadriver based) v.79.0.3945.79 (supports Brave Browser version: 79)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.79.0.3945.79/operadriver_linux64.zip | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/bravedriver
 
-      # linux64 bravedriver (operadriver based) v.78.0.3904.87 (supports Brave Browser 78)
+      # linux64 bravedriver (operadriver based) v.78.0.3904.87 (supports Brave Browser version: 78)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.78.0.3904.87/operadriver_linux64.zip | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/bravedriver
 
-      # linux64 bravedriver (operadriver based) v.77.0.3865.120 (supports Brave Browser 77)
+      # linux64 bravedriver (operadriver based) v.77.0.3865.120 (supports Brave Browser version: 77)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.77.0.3865.120/operadriver_linux64.zip | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/bravedriver
 
-      # linux64 bravedriver (operadriver based) v.76.0.3809.132 (supports Brave Browser 76)
+      # linux64 bravedriver (operadriver based) v.76.0.3809.132 (supports Brave Browser version: 76)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.76.0.3809.132/operadriver_linux64.zip | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/bravedriver
 
-      # linux64 bravedriver (operadriver based) v.75.0.3770.100 (supports Brave Browser 75)
+      # linux64 bravedriver (operadriver based) v.75.0.3770.100 (supports Brave Browser version: 75)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.75.0.3770.100/operadriver_linux64.zip | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/bravedriver
 
     ],
     windows: [
 
-      # win64 bravedriver (operadriver based) v.86.0.4240.80 (supports Brave Browser 86)
+      # win64 bravedriver (operadriver based) v.86.0.4240.80 (supports Brave Browser version: 86)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.86.0.4240.80/operadriver_win64.zip -o C:\Windows\bravedriver && tar -xzvf C:\Windows\bravedriver --strip-components=1 -O > C:\Windows\bravedriver.exe && del C:\Windows\bravedriver && del C:\Windows\sha512_sum
 
-      # win64 bravedriver (operadriver based) v.85.0.4183.102 (supports Brave Browser 85)
+      # win64 bravedriver (operadriver based) v.85.0.4183.102 (supports Brave Browser version: 85)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.85.0.4183.102/operadriver_win64.zip -o C:\Windows\bravedriver && tar -xzvf C:\Windows\bravedriver --strip-components=1 -O > C:\Windows\bravedriver.exe && del C:\Windows\bravedriver && del C:\Windows\sha512_sum
 
-      # win64 bravedriver (operadriver based) v.84.0.4147.89 (supports Brave Browser 84)
+      # win64 bravedriver (operadriver based) v.84.0.4147.89 (supports Brave Browser version: 84)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.84.0.4147.89/operadriver_win64.zip -o C:\Windows\bravedriver && tar -xzvf C:\Windows\bravedriver --strip-components=1 -O > C:\Windows\bravedriver.exe && del C:\Windows\bravedriver && del C:\Windows\sha512_sum
 
-      # win64 bravedriver (operadriver based) v.83.0.4103.97 (supports Brave Browser 83)
+      # win64 bravedriver (operadriver based) v.83.0.4103.97 (supports Brave Browser version: 83)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.83.0.4103.97/operadriver_win64.zip -o C:\Windows\bravedriver && tar -xzvf C:\Windows\bravedriver --strip-components=1 -O > C:\Windows\bravedriver.exe && del C:\Windows\bravedriver && del C:\Windows\sha512_sum
 
-      # win64 bravedriver (operadriver based) v.81.0.4044.113 (supports Brave Browser 81)
+      # win64 bravedriver (operadriver based) v.81.0.4044.113 (supports Brave Browser version: 81)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.81.0.4044.113/operadriver_win64.zip -o C:\Windows\bravedriver && tar -xzvf C:\Windows\bravedriver --strip-components=1 -O > C:\Windows\bravedriver.exe && del C:\Windows\bravedriver && del C:\Windows\sha512_sum
 
-      # win64 bravedriver (operadriver based) v.80.0.3987.100 (supports Brave Browser 80)
+      # win64 bravedriver (operadriver based) v.80.0.3987.100 (supports Brave Browser version: 80)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.80.0.3987.100/operadriver_win64.zip -o C:\Windows\bravedriver && tar -xzvf C:\Windows\bravedriver --strip-components=1 -O > C:\Windows\bravedriver.exe && del C:\Windows\bravedriver && del C:\Windows\sha512_sum
 
-      # win64 bravedriver (operadriver based) v.79.0.3945.79 (supports Brave Browser 79)
+      # win64 bravedriver (operadriver based) v.79.0.3945.79 (supports Brave Browser version: 79)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.79.0.3945.79/operadriver_win64.zip -o C:\Windows\bravedriver && tar -xzvf C:\Windows\bravedriver --strip-components=1 -O > C:\Windows\bravedriver.exe && del C:\Windows\bravedriver && del C:\Windows\sha512_sum
 
-      # win64 bravedriver (operadriver based) v.78.0.3904.87 (supports Brave Browser 78)
+      # win64 bravedriver (operadriver based) v.78.0.3904.87 (supports Brave Browser version: 78)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.78.0.3904.87/operadriver_win64.zip -o C:\Windows\bravedriver && tar -xzvf C:\Windows\bravedriver --strip-components=1 -O > C:\Windows\bravedriver.exe && del C:\Windows\bravedriver && del C:\Windows\sha512_sum
 
-      # win64 bravedriver (operadriver based) v.77.0.3865.120 (supports Brave Browser 77)
+      # win64 bravedriver (operadriver based) v.77.0.3865.120 (supports Brave Browser version: 77)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.77.0.3865.120/operadriver_win64.zip -o C:\Windows\bravedriver && tar -xzvf C:\Windows\bravedriver --strip-components=1 -O > C:\Windows\bravedriver.exe && del C:\Windows\bravedriver && del C:\Windows\sha512_sum
 
-      # win64 bravedriver (operadriver based) v.76.0.3809.132 (supports Brave Browser 76)
+      # win64 bravedriver (operadriver based) v.76.0.3809.132 (supports Brave Browser version: 76)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.76.0.3809.132/operadriver_win64.zip -o C:\Windows\bravedriver && tar -xzvf C:\Windows\bravedriver --strip-components=1 -O > C:\Windows\bravedriver.exe && del C:\Windows\bravedriver && del C:\Windows\sha512_sum
 
-      # win64 bravedriver (operadriver based) v.75.0.3770.100 (supports Brave Browser 75)
+      # win64 bravedriver (operadriver based) v.75.0.3770.100 (supports Brave Browser version: 75)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.75.0.3770.100/operadriver_win64.zip -o C:\Windows\bravedriver && tar -xzvf C:\Windows\bravedriver --strip-components=1 -O > C:\Windows\bravedriver.exe && del C:\Windows\bravedriver && del C:\Windows\sha512_sum
 
     ]
@@ -509,34 +509,34 @@ After doing that, try rerunning the last command!
   edge: {
     macos: [
 
-      # mac64 msedgedriver 88.0.685.0 (supports Microsoft Edge 88)
+      # mac64 msedgedriver 88.0.685.0 (supports Microsoft Edge version: 88)
       curl -SL https://msedgedriver.azureedge.net/88.0.685.0/edgedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver
 
-      # mac64 msedgedriver 87.0.669.0 (supports Microsoft Edge 87)
+      # mac64 msedgedriver 87.0.669.0 (supports Microsoft Edge version: 87)
       curl -SL https://msedgedriver.azureedge.net/87.0.669.0/edgedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver
 
-      # mac64 msedgedriver 86.0.622.58 (supports Microsoft Edge 86)
+      # mac64 msedgedriver 86.0.622.58 (supports Microsoft Edge version: 86)
       curl -SL https://msedgedriver.azureedge.net/86.0.622.58/edgedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver
 
-      # mac64 msedgedriver 85.0.564.68 (supports Microsoft Edge 85)
+      # mac64 msedgedriver 85.0.564.68 (supports Microsoft Edge version: 85)
       curl -SL https://msedgedriver.azureedge.net/85.0.564.68/edgedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver
 
-      # mac64 msedgedriver 84.0.524.0 (supports Microsoft Edge 84)
+      # mac64 msedgedriver 84.0.524.0 (supports Microsoft Edge version: 84)
       curl -SL https://msedgedriver.azureedge.net/84.0.524.0/edgedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver
 
-      # mac64 msedgedriver 83.0.478.58 (supports Microsoft Edge 83)
+      # mac64 msedgedriver 83.0.478.58 (supports Microsoft Edge version: 83)
       curl -SL https://msedgedriver.azureedge.net/83.0.478.58/edgedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver
 
-      # mac64 msedgedriver 82.0.459.1 (supports Microsoft Edge 82)
+      # mac64 msedgedriver 82.0.459.1 (supports Microsoft Edge version: 82)
       curl -SL https://msedgedriver.azureedge.net/82.0.459.1/edgedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver
 
-      # mac64 msedgedriver 81.0.409.0 (supports Microsoft Edge 81)
+      # mac64 msedgedriver 81.0.409.0 (supports Microsoft Edge version: 81)
       curl -SL https://msedgedriver.azureedge.net/81.0.409.0/edgedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver
 
-      # mac64 msedgedriver 80.0.361.111 (supports Microsoft Edge 80)
+      # mac64 msedgedriver 80.0.361.111 (supports Microsoft Edge version: 80)
       curl -SL https://msedgedriver.azureedge.net/80.0.361.111/edgedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver
 
-      # mac64 msedgedriver 79.0.313.0 (supports Microsoft Edge 79)
+      # mac64 msedgedriver 79.0.313.0 (supports Microsoft Edge version: 79)
       curl -SL https://msedgedriver.azureedge.net/79.0.313.0/edgedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver
 
     ],
@@ -545,97 +545,97 @@ After doing that, try rerunning the last command!
       There is currently no dedicated msedgedriver for Linux.
 Here are possible commands for an arm64 operating system.
 Please visit https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/ for more information.
-      # arm64 msedgedriver 88.0.685.0 (supports Microsoft Edge 88)
+      # arm64 msedgedriver 88.0.685.0 (supports Microsoft Edge version: 88)
       curl -SL https://msedgedriver.azureedge.net/88.0.685.0/edgedriver_arm64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver
 
-      # arm64 msedgedriver 87.0.669.0 (supports Microsoft Edge 87)
+      # arm64 msedgedriver 87.0.669.0 (supports Microsoft Edge version: 87)
       curl -SL https://msedgedriver.azureedge.net/87.0.669.0/edgedriver_arm64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver
 
-      # arm64 msedgedriver 86.0.622.58 (supports Microsoft Edge 86)
+      # arm64 msedgedriver 86.0.622.58 (supports Microsoft Edge version: 86)
       curl -SL https://msedgedriver.azureedge.net/86.0.622.58/edgedriver_arm64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver
 
-      # arm64 msedgedriver 85.0.564.68 (supports Microsoft Edge 85)
+      # arm64 msedgedriver 85.0.564.68 (supports Microsoft Edge version: 85)
       curl -SL https://msedgedriver.azureedge.net/85.0.564.68/edgedriver_arm64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver
 
-      # arm64 msedgedriver 84.0.524.0 (supports Microsoft Edge 84)
+      # arm64 msedgedriver 84.0.524.0 (supports Microsoft Edge version: 84)
       curl -SL https://msedgedriver.azureedge.net/84.0.524.0/edgedriver_arm64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver
 
-      # arm64 msedgedriver 83.0.478.58 (supports Microsoft Edge 83)
+      # arm64 msedgedriver 83.0.478.58 (supports Microsoft Edge version: 83)
       curl -SL https://msedgedriver.azureedge.net/83.0.478.58/edgedriver_arm64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver
 
-      # arm64 msedgedriver 82.0.459.1 (supports Microsoft Edge 82)
+      # arm64 msedgedriver 82.0.459.1 (supports Microsoft Edge version: 82)
       curl -SL https://msedgedriver.azureedge.net/82.0.459.1/edgedriver_arm64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver
 
-      # arm64 msedgedriver 81.0.409.0 (supports Microsoft Edge 81)
+      # arm64 msedgedriver 81.0.409.0 (supports Microsoft Edge version: 81)
       curl -SL https://msedgedriver.azureedge.net/81.0.409.0/edgedriver_arm64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver
 
-      # arm64 msedgedriver 80.0.361.111 (supports Microsoft Edge 80)
+      # arm64 msedgedriver 80.0.361.111 (supports Microsoft Edge version: 80)
       curl -SL https://msedgedriver.azureedge.net/80.0.361.111/edgedriver_arm64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver
 
-      # arm64 msedgedriver 79.0.313.0 (supports Microsoft Edge 79)
+      # arm64 msedgedriver 79.0.313.0 (supports Microsoft Edge version: 79)
       curl -SL https://msedgedriver.azureedge.net/79.0.313.0/edgedriver_arm64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver
 
     ],
     windows: [
 
-      # win32 msedgedriver 88.0.685.0 (supports Microsoft Edge 88)
+      # win32 msedgedriver 88.0.685.0 (supports Microsoft Edge version: 88)
       curl -SL https://msedgedriver.azureedge.net/88.0.685.0/edgedriver_win32.zip -o C:\Windows\msedgedriver && tar -xzvf C:\Windows\msedgedriver -C C:\Windows && del C:\Windows\msedgedriver
 
-      # win32 msedgedriver 87.0.669.0 (supports Microsoft Edge 87)
+      # win32 msedgedriver 87.0.669.0 (supports Microsoft Edge version: 87)
       curl -SL https://msedgedriver.azureedge.net/87.0.669.0/edgedriver_win32.zip -o C:\Windows\msedgedriver && tar -xzvf C:\Windows\msedgedriver -C C:\Windows && del C:\Windows\msedgedriver
 
-      # win32 msedgedriver 86.0.622.58 (supports Microsoft Edge 86)
+      # win32 msedgedriver 86.0.622.58 (supports Microsoft Edge version: 86)
       curl -SL https://msedgedriver.azureedge.net/86.0.622.58/edgedriver_win32.zip -o C:\Windows\msedgedriver && tar -xzvf C:\Windows\msedgedriver -C C:\Windows && del C:\Windows\msedgedriver
 
-      # win32 msedgedriver 85.0.564.68 (supports Microsoft Edge 85)
+      # win32 msedgedriver 85.0.564.68 (supports Microsoft Edge version: 85)
       curl -SL https://msedgedriver.azureedge.net/85.0.564.68/edgedriver_win32.zip -o C:\Windows\msedgedriver && tar -xzvf C:\Windows\msedgedriver -C C:\Windows && del C:\Windows\msedgedriver
 
-      # win32 msedgedriver 84.0.524.0 (supports Microsoft Edge 84)
+      # win32 msedgedriver 84.0.524.0 (supports Microsoft Edge version: 84)
       curl -SL https://msedgedriver.azureedge.net/84.0.524.0/edgedriver_win32.zip -o C:\Windows\msedgedriver && tar -xzvf C:\Windows\msedgedriver -C C:\Windows && del C:\Windows\msedgedriver
 
-      # win32 msedgedriver 83.0.478.58 (supports Microsoft Edge 83)
+      # win32 msedgedriver 83.0.478.58 (supports Microsoft Edge version: 83)
       curl -SL https://msedgedriver.azureedge.net/83.0.478.58/edgedriver_win32.zip -o C:\Windows\msedgedriver && tar -xzvf C:\Windows\msedgedriver -C C:\Windows && del C:\Windows\msedgedriver
 
-      # win32 msedgedriver 82.0.459.1 (supports Microsoft Edge 82)
+      # win32 msedgedriver 82.0.459.1 (supports Microsoft Edge version: 82)
       curl -SL https://msedgedriver.azureedge.net/82.0.459.1/edgedriver_win32.zip -o C:\Windows\msedgedriver && tar -xzvf C:\Windows\msedgedriver -C C:\Windows && del C:\Windows\msedgedriver
 
-      # win32 msedgedriver 81.0.409.0 (supports Microsoft Edge 81)
+      # win32 msedgedriver 81.0.409.0 (supports Microsoft Edge version: 81)
       curl -SL https://msedgedriver.azureedge.net/81.0.409.0/edgedriver_win32.zip -o C:\Windows\msedgedriver && tar -xzvf C:\Windows\msedgedriver -C C:\Windows && del C:\Windows\msedgedriver
 
-      # win32 msedgedriver 80.0.361.111 (supports Microsoft Edge 80)
+      # win32 msedgedriver 80.0.361.111 (supports Microsoft Edge version: 80)
       curl -SL https://msedgedriver.azureedge.net/80.0.361.111/edgedriver_win32.zip -o C:\Windows\msedgedriver && tar -xzvf C:\Windows\msedgedriver -C C:\Windows && del C:\Windows\msedgedriver
 
-      # win32 msedgedriver 79.0.313.0 (supports Microsoft Edge 79)
+      # win32 msedgedriver 79.0.313.0 (supports Microsoft Edge version: 79)
       curl -SL https://msedgedriver.azureedge.net/79.0.313.0/edgedriver_win32.zip -o C:\Windows\msedgedriver && tar -xzvf C:\Windows\msedgedriver -C C:\Windows && del C:\Windows\msedgedriver
 
-      # win64 msedgedriver 88.0.685.0 (supports Microsoft Edge 88)
+      # win64 msedgedriver 88.0.685.0 (supports Microsoft Edge version: 88)
       curl -SL https://msedgedriver.azureedge.net/88.0.685.0/edgedriver_win64.zip -o C:\Windows\msedgedriver && tar -xzvf C:\Windows\msedgedriver -C C:\Windows && del C:\Windows\msedgedriver
 
-      # win64 msedgedriver 87.0.669.0 (supports Microsoft Edge 87)
+      # win64 msedgedriver 87.0.669.0 (supports Microsoft Edge version: 87)
       curl -SL https://msedgedriver.azureedge.net/87.0.669.0/edgedriver_win64.zip -o C:\Windows\msedgedriver && tar -xzvf C:\Windows\msedgedriver -C C:\Windows && del C:\Windows\msedgedriver
 
-      # win64 msedgedriver 86.0.622.58 (supports Microsoft Edge 86)
+      # win64 msedgedriver 86.0.622.58 (supports Microsoft Edge version: 86)
       curl -SL https://msedgedriver.azureedge.net/86.0.622.58/edgedriver_win64.zip -o C:\Windows\msedgedriver && tar -xzvf C:\Windows\msedgedriver -C C:\Windows && del C:\Windows\msedgedriver
 
-      # win64 msedgedriver 85.0.564.68 (supports Microsoft Edge 85)
+      # win64 msedgedriver 85.0.564.68 (supports Microsoft Edge version: 85)
       curl -SL https://msedgedriver.azureedge.net/85.0.564.68/edgedriver_win64.zip -o C:\Windows\msedgedriver && tar -xzvf C:\Windows\msedgedriver -C C:\Windows && del C:\Windows\msedgedriver
 
-      # win64 msedgedriver 84.0.524.0 (supports Microsoft Edge 84)
+      # win64 msedgedriver 84.0.524.0 (supports Microsoft Edge version: 84)
       curl -SL https://msedgedriver.azureedge.net/84.0.524.0/edgedriver_win64.zip -o C:\Windows\msedgedriver && tar -xzvf C:\Windows\msedgedriver -C C:\Windows && del C:\Windows\msedgedriver
 
-      # win64 msedgedriver 83.0.478.58 (supports Microsoft Edge 83)
+      # win64 msedgedriver 83.0.478.58 (supports Microsoft Edge version: 83)
       curl -SL https://msedgedriver.azureedge.net/83.0.478.58/edgedriver_win64.zip -o C:\Windows\msedgedriver && tar -xzvf C:\Windows\msedgedriver -C C:\Windows && del C:\Windows\msedgedriver
 
-      # win64 msedgedriver 82.0.459.1 (supports Microsoft Edge 82)
+      # win64 msedgedriver 82.0.459.1 (supports Microsoft Edge version: 82)
       curl -SL https://msedgedriver.azureedge.net/82.0.459.1/edgedriver_win64.zip -o C:\Windows\msedgedriver && tar -xzvf C:\Windows\msedgedriver -C C:\Windows && del C:\Windows\msedgedriver
 
-      # win64 msedgedriver 81.0.409.0 (supports Microsoft Edge 81)
+      # win64 msedgedriver 81.0.409.0 (supports Microsoft Edge version: 81)
       curl -SL https://msedgedriver.azureedge.net/81.0.409.0/edgedriver_win64.zip -o C:\Windows\msedgedriver && tar -xzvf C:\Windows\msedgedriver -C C:\Windows && del C:\Windows\msedgedriver
 
-      # win64 msedgedriver 80.0.361.111 (supports Microsoft Edge 80)
+      # win64 msedgedriver 80.0.361.111 (supports Microsoft Edge version: 80)
       curl -SL https://msedgedriver.azureedge.net/80.0.361.111/edgedriver_win64.zip -o C:\Windows\msedgedriver && tar -xzvf C:\Windows\msedgedriver -C C:\Windows && del C:\Windows\msedgedriver
 
-      # win64 msedgedriver 79.0.313.0 (supports Microsoft Edge 79)
+      # win64 msedgedriver 79.0.313.0 (supports Microsoft Edge version: 79)
       curl -SL https://msedgedriver.azureedge.net/79.0.313.0/edgedriver_win64.zip -o C:\Windows\msedgedriver && tar -xzvf C:\Windows\msedgedriver -C C:\Windows && del C:\Windows\msedgedriver
 
     ]
