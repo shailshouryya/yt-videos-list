@@ -7,7 +7,7 @@ from test_shared                  import determine_path_slash
 
 
 def write_json(drivers_dictionary):
-    with open('temp.json', 'w') as file:
+    with open('temp.json', 'w', encoding='utf-8') as file:
         file.write('{\n')
         for driver in drivers_dictionary:
             file.write(f'  {driver}: ' + '{\n')
@@ -21,7 +21,7 @@ def write_json(drivers_dictionary):
 
 def format_json():
     path_slash = determine_path_slash()
-    with open('temp.json', 'r') as ftemp, open(f'..{path_slash}docs{path_slash}dependencies_pseudo_json.txt', 'w') as ffinal:
+    with open('temp.json', 'r', encoding='utf-8') as ftemp, open(f'..{path_slash}docs{path_slash}dependencies_pseudo_json.txt', 'w', encoding='utf-8') as ffinal:
         formatted = re.sub(',\n    ]', '\n    ]', ftemp.read())
         formatted = re.sub('],\n  },', ']\n  },', formatted)
         formatted = re.sub('},\n}',    '}\n}',    formatted)

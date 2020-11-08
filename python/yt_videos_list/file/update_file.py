@@ -6,7 +6,7 @@ import os
 from . import write
 NEWLINE = '\n'
 def store_already_written_videos(file_name, file_type):
- with open(f'{file_name}.{file_type}') as file:
+ with open(f'{file_name}.{file_type}', encoding='utf-8') as file:
   if file_type == 'txt' or file_type == 'md': return set(re.findall(r'(https://www\.youtube\.com/watch\?v=.+?)(?:\s|\n)', file.read()))
   if file_type == 'csv':       return set(re.findall(r'(https://www\.youtube\.com/watch\?v=.+?),', file.read()))
 def scroll_down(driver, scroll_pause_time):
@@ -89,7 +89,7 @@ def write_to_txt(list_of_videos, file_name, reverse_chronological):
  else:          stored_in_txt = STORED_IN_TXT
  markdown_formatting = False
  spacing    = f'{NEWLINE}' + ' '*4
- with open(f'{file_name}.txt', 'r+') as old_file, open('yt_videos_list_temp.txt', 'w+') as txt_file:
+ with open(f'{file_name}.txt', 'r+', encoding='utf-8') as old_file, open('yt_videos_list_temp.txt', 'w+', encoding='utf-8') as txt_file:
   video_number          =  int(max(re.findall(r'^Video Number:\s*(\d+)', old_file.read(), re.M), key = lambda i: int(i)))
   video_number, new_videos, total_writes, incrementer = prepare_output(list_of_videos, stored_in_txt, video_number, reverse_chronological)
   txt_writer(txt_file, old_file, stored_in_txt, markdown_formatting, reverse_chronological, list_of_videos, spacing, video_number, incrementer, total_writes)
@@ -100,7 +100,7 @@ def write_to_md(list_of_videos, file_name, reverse_chronological):
  else:          stored_in_md = STORED_IN_MD
  markdown_formatting = True
  spacing    = f'{NEWLINE}' + '- ' + f'{NEWLINE}'
- with open(f'{file_name}.md', 'r+') as old_file, open('yt_videos_list_temp.md', 'w+') as md_file:
+ with open(f'{file_name}.md', 'r+', encoding='utf-8') as old_file, open('yt_videos_list_temp.md', 'w+', encoding='utf-8') as md_file:
   video_number          =  int(max(re.findall(r'^Video Number:\s*(\d+)', old_file.read(), re.M), key = lambda i: int(i)))
   video_number, new_videos, total_writes, incrementer = prepare_output(list_of_videos, stored_in_md, video_number, reverse_chronological)
   txt_writer(md_file, old_file, stored_in_md, markdown_formatting, reverse_chronological, list_of_videos, spacing, video_number, incrementer, total_writes)
