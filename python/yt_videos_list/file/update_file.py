@@ -43,7 +43,7 @@ def time_writer_function(writer_function):
  def wrapper_timer(*args, **kwargs):
   start_time             = time.perf_counter()
   extension           = writer_function.__name__.split('_')[-1]
-  print(f'Opening a temp file and writing ***NEW*** video information to the file....')
+  print(f'Opening a temp {extension} file and writing ***NEW*** video information to the file....')
   file_name, new_videos_written, reverse_chronological = writer_function(*args, **kwargs)
   end_time            = time.perf_counter()
   total_time             = end_time - start_time
