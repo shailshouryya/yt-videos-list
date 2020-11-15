@@ -41,8 +41,8 @@ def scroll_to_old_videos(url, driver, scroll_pause_time, txt_exists, csv_exists,
 def time_writer_function(writer_function):
  @functools.wraps(writer_function)
  def wrapper_timer(*args, **kwargs):
-  start_time = time.perf_counter()
-  extension  = writer_function.__name__.split('_')[-1]
+  start_time             = time.perf_counter()
+  extension           = writer_function.__name__.split('_')[-1]
   print(f'Opening a temp file and writing NEW video information to the file....')
   file_name, new_videos_written, reverse_chronological = writer_function(*args, **kwargs)
   end_time            = time.perf_counter()
@@ -92,6 +92,7 @@ def write_to_txt(list_of_videos, file_name, reverse_chronological):
  with open(f'{file_name}.txt', 'r+') as old_file, open(f'temp_{file_name}.txt', 'w+') as temp_file:
   video_number          =  int(max(re.findall(r'^Video Number:\s*(\d+)', old_file.read(), re.M), key = lambda i: int(i)))
   video_number, new_videos, total_writes, incrementer = prepare_output(list_of_videos, stored_in_txt, video_number, reverse_chronological)
+  ####### defer to txt_writer() function to find new videos and format updated file #######
   txt_writer(temp_file, old_file, stored_in_txt, markdown_formatting, reverse_chronological, list_of_videos, spacing, video_number, incrementer, total_writes)
  return file_name, new_videos, reverse_chronological
 @time_writer_function
@@ -103,6 +104,7 @@ def write_to_md(list_of_videos, file_name, reverse_chronological):
  with open(f'{file_name}.md', 'r+') as old_file, open(f'temp_{file_name}.md', 'w+') as temp_file:
   video_number          =  int(max(re.findall(r'^Video Number:\s*(\d+)', old_file.read(), re.M), key = lambda i: int(i)))
   video_number, new_videos, total_writes, incrementer = prepare_output(list_of_videos, stored_in_md, video_number, reverse_chronological)
+  ####### defer to txt_writer() function to find new videos and format updated file #######
   txt_writer(temp_file, old_file, stored_in_md, markdown_formatting, reverse_chronological, list_of_videos, spacing, video_number, incrementer, total_writes)
  return file_name, new_videos, reverse_chronological
 @time_writer_function
@@ -110,10 +112,10 @@ def write_to_csv(list_of_videos, file_name, reverse_chronological):
  if 'STORED_IN_CSV' not in locals(): stored_in_csv = store_already_written_videos(file_name, 'csv')
  else:          stored_in_csv = STORED_IN_CSV
  with open(f'{file_name}.csv', 'r+', newline='', encoding='utf-8') as old_file, open(f'temp_{file_name}.csv', 'w+', newline='', encoding='utf-8') as temp_file:
-  video_number =  int(max(re.findall(r'^(\d+)?,', old_file.read(), re.M), key = lambda i: int(i)))
+  video_number          =  int(max(re.findall(r'^(\d+)?,', old_file.read(), re.M), key = lambda i: int(i)))
   video_number, new_videos, total_writes, incrementer = prepare_output(list_of_videos, stored_in_csv, video_number, reverse_chronological)
-  fieldnames = ['Video Number', 'Video Title', 'Video URL', 'Watched?', 'Watch again later?', 'Notes']
-  writer = csv.DictWriter(temp_file, fieldnames=fieldnames)
+  fieldnames            = ['Video Number', 'Video Title', 'Video URL', 'Watched?', 'Watch again later?', 'Notes']
+  writer             = csv.DictWriter(temp_file, fieldnames=fieldnames)
   if reverse_chronological: writer.writeheader()
   for selenium_element in list_of_videos if reverse_chronological else list_of_videos[::-1]:
    if selenium_element.get_attribute("href") in stored_in_csv: continue
