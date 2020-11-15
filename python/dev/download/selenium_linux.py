@@ -6,7 +6,7 @@ def browser_exists(browser):
     sys.exit()
 
 def get_browser_version(browser):
-    # with open (f'/Applications/{browser}.app/Contents/Info.plist') as f:
+    # with open (f'/Applications/{browser}.app/Contents/Info.plist', 'r', encoding='utf-8') as f:
     #     info_plist = f.read()
     # return re.search('<key>CFBundleShortVersionString</key>\s*<string>([0-9\.]+)', info_plist)[1]
     sys.exit()
