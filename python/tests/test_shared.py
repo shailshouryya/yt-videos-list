@@ -76,11 +76,11 @@ def create_partial_file(test_file, extension):
 
 
 def compare_test_files_to_reference_files(full_file):
-    with open('CoreySchafer_videos_list.txt', 'r') as test_txt, open('CoreySchafer_videos_list.csv', 'r') as test_csv, open('CoreySchafer_videos_list.md', 'r') as test_md:
+    with open('CoreySchafer_videos_list.txt', 'r', encoding='utf-8') as test_txt, open('CoreySchafer_videos_list.csv', 'r', encoding='utf-8') as test_csv, open('CoreySchafer_videos_list.md', 'r', encoding='utf-8') as test_md:
         current_txt = hashlib.sha256(test_txt.read().encode('utf-8')).hexdigest()
         current_csv = hashlib.sha256(test_csv.read().encode('utf-8')).hexdigest()
         current_md  = hashlib.sha256(test_md.read().encode ('utf-8')).hexdigest()
-    with open(f'{full_file}.txt', 'r') as full_txt, open(f'{full_file}.csv', 'r') as full_csv, open(f'{full_file}.md', 'r') as full_md:
+    with open(f'{full_file}.txt', 'r', encoding='utf-8') as full_txt, open(f'{full_file}.csv', 'r', encoding='utf-8') as full_csv, open(f'{full_file}.md', 'r', encoding='utf-8') as full_md:
         verified_txt = hashlib.sha256(full_txt.read().encode('utf-8')).hexdigest()
         verified_csv = hashlib.sha256(full_csv.read().encode('utf-8')).hexdigest()
         verified_md  = hashlib.sha256(full_md.read().encode ('utf-8')).hexdigest()

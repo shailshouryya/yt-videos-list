@@ -26,7 +26,7 @@ def get_firefox_version():
  firefox = subprocess.getoutput(rf'more "{DRIVE}:\Program Files\Mozilla Firefox\application.ini"')
  return re.search(r'MinVersion=(\d+\.[\d\.]*)', firefox)[1]
 def get_opera_version():
- with open(rf'{DRIVE}:\Users\{USER}\AppData\Local\Programs\Opera\installation_status.json', 'r') as file:
+ with open(rf'{DRIVE}:\Users\{USER}\AppData\Local\Programs\Opera\installation_status.json', 'r', encoding='utf-8') as file:
   opera = json.load(file)
  return opera['_subfolder']
 def get_chrome_version():
