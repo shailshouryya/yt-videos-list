@@ -54,23 +54,19 @@ def time_writer_function(writer_function):
     def wrapper_timer(*args, **kwargs):
         start_time = time.perf_counter()
         extension  = writer_function.__name__.split('_')[-1]
-        temp_file  = f'yt_videos_list_temp.{extension}'
-        print(f'Opened {temp_file}, writing new video information to file....')
-
-        # check name of file and number of videos written
-        file_name, new_videos_written, reverse_chronological = writer_function(*args, **kwargs)
-        file_name = f'{file_name}.{extension}'
-        if reverse_chronological: os.replace(temp_file, file_name)
-        else:                     os.remove(temp_file)
-
-        end_time = time.perf_counter()
-        total_time = end_time - start_time
-
+        print(f'Opening a temp file and writing NEW video information to the file....')
+        file_name, new_videos_written, reverse_chronological = writer_function(*args, **kwargs)   # writer_function() writes to temp_{file_name}
+        end_time                                             = time.perf_counter()
+        total_time                                           = end_time - start_time
+        temp_file                                            = f'temp_{file_name}.{extension}'    # determine temp_{file_name} for wrapper_timer() scope
+        final_file                                           = f'{file_name}.{extension}'
         print(f'Finished writing to {temp_file}')
         print(f'{new_videos_written} new videos written to {temp_file}')
         print(f'Closing {temp_file}')
-        print(f'Successfully completed write, renamed {temp_file} to {file_name}')
-        print(f'It took {total_time} seconds to write the {new_videos_written} new videos to the pre-existing {file_name} {NEWLINE}')
+        if reverse_chronological: os.replace(temp_file, final_file)                               # rename temp_{file_name} to {file_name}.{extension} since the info from the original file was appended to the end of the temp file
+        else:                     os.remove(temp_file)                                            # remove temp_{file_name} since all new information from the temp file was appended to the end of the original file
+        print(f'Successfully completed write, renamed {temp_file} to {final_file}')
+        print(f'It took {total_time} seconds to write the {new_videos_written} new videos to the pre-existing {final_file} {NEWLINE}')
     return wrapper_timer
 
 
@@ -120,7 +116,7 @@ def write_to_txt(list_of_videos, file_name, reverse_chronological):
     else:                               stored_in_txt = STORED_IN_TXT
     markdown_formatting = False
     spacing             = f'{NEWLINE}' + ' '*4
-    with open(f'{file_name}.txt', 'r+') as old_file, open('yt_videos_list_temp.txt', 'w+') as txt_file:
+    with open(f'{file_name}.txt', 'r+') as old_file, open(f'temp_{file_name}.txt', 'w+') as txt_file:
         video_number                                        =  int(max(re.findall(r'^Video Number:\s*(\d+)', old_file.read(), re.M), key = lambda i: int(i)))
         video_number, new_videos, total_writes, incrementer = prepare_output(list_of_videos, stored_in_txt, video_number, reverse_chronological)
         txt_writer(txt_file, old_file, stored_in_txt, markdown_formatting, reverse_chronological, list_of_videos, spacing, video_number, incrementer, total_writes)
@@ -133,7 +129,7 @@ def write_to_md(list_of_videos, file_name, reverse_chronological):
     else:                               stored_in_md = STORED_IN_MD
     markdown_formatting = True
     spacing             = f'{NEWLINE}' + '- ' + f'{NEWLINE}'
-    with open(f'{file_name}.md', 'r+') as old_file, open('yt_videos_list_temp.md', 'w+') as md_file:
+    with open(f'{file_name}.md', 'r+') as old_file, open(f'temp_{file_name}.md', 'w+') as md_file:
         video_number                                        =  int(max(re.findall(r'^Video Number:\s*(\d+)', old_file.read(), re.M), key = lambda i: int(i)))
         video_number, new_videos, total_writes, incrementer = prepare_output(list_of_videos, stored_in_md, video_number, reverse_chronological)
         txt_writer(md_file, old_file, stored_in_md, markdown_formatting, reverse_chronological, list_of_videos, spacing, video_number, incrementer, total_writes)
@@ -144,7 +140,7 @@ def write_to_md(list_of_videos, file_name, reverse_chronological):
 def write_to_csv(list_of_videos, file_name, reverse_chronological):
     if 'STORED_IN_CSV' not in locals(): stored_in_csv = store_already_written_videos(file_name, 'csv')
     else:                               stored_in_csv = STORED_IN_CSV
-    with open(f'{file_name}.csv', 'r+', newline='', encoding='utf-8') as old_file, open('yt_videos_list_temp.csv', 'w+', newline='', encoding='utf-8') as csv_file:
+    with open(f'{file_name}.csv', 'r+', newline='', encoding='utf-8') as old_file, open(f'temp_{file_name}.csv', 'w+', newline='', encoding='utf-8') as csv_file:
         video_number =  int(max(re.findall(r'^(\d+)?,', old_file.read(), re.M), key = lambda i: int(i)))
         video_number, new_videos, total_writes, incrementer = prepare_output(list_of_videos, stored_in_csv, video_number, reverse_chronological)
         fieldnames = ['Video Number', 'Video Title', 'Video URL', 'Watched?', 'Watch again later?', 'Notes']
