@@ -72,7 +72,7 @@ def write_to_txt(list_of_videos, file_name, reverse_chronological):
  total_videos, total_writes, video_number, incrementer = prepare_output(list_of_videos, reverse_chronological)
  markdown_formatting           = False
  spacing              = f'{NEWLINE}' + ' '*4
- with open(f'temp_{file_name}.txt', 'w') as txt_file:
+ with open(f'temp_{file_name}.txt', 'w', encoding='utf-8') as txt_file:
   txt_writer(txt_file, markdown_formatting, reverse_chronological, list_of_videos, spacing, video_number, incrementer, total_writes)
  return file_name, total_videos
 @time_writer_function
@@ -80,7 +80,7 @@ def write_to_md(list_of_videos, file_name, reverse_chronological):
  total_videos, total_writes, video_number, incrementer = prepare_output(list_of_videos, reverse_chronological)
  markdown_formatting           = True
  spacing              = f'{NEWLINE}' + '- ' + f'{NEWLINE}'
- with open(f'temp_{file_name}.md', 'w') as md_file:
+ with open(f'temp_{file_name}.md', 'w', encoding='utf-8') as md_file:
   txt_writer(md_file, markdown_formatting, reverse_chronological, list_of_videos, spacing, video_number, incrementer, total_writes)
  return file_name, total_videos
 @time_writer_function
