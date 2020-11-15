@@ -43,19 +43,19 @@ def time_writer_function(writer_function):
  def wrapper_timer(*args, **kwargs):
   start_time             = time.perf_counter()
   extension           = writer_function.__name__.split('_')[-1]
-  print(f'Opening a temp file and writing NEW video information to the file....')
+  print(f'Opening a temp file and writing ***NEW*** video information to the file....')
   file_name, new_videos_written, reverse_chronological = writer_function(*args, **kwargs)
   end_time            = time.perf_counter()
   total_time             = end_time - start_time
   temp_file           = f'temp_{file_name}.{extension}'
   final_file             = f'{file_name}.{extension}'
   print(f'Finished writing to {temp_file}')
-  print(f'{new_videos_written} new videos written to {temp_file}')
+  print(f'{new_videos_written} ***NEW*** videos written to {temp_file}')
   print(f'Closing {temp_file}')
   if reverse_chronological: os.replace(temp_file, final_file)
   else:      os.remove(temp_file)
   print(f'Successfully completed write, renamed {temp_file} to {final_file}')
-  print(f'It took {total_time} seconds to write the {new_videos_written} new videos to the pre-existing {final_file} {NEWLINE}')
+  print(f'It took {total_time} seconds to write the {new_videos_written} ***NEW*** videos to the pre-existing {final_file} {NEWLINE}')
  return wrapper_timer
 def find_number_of_new_videos(list_of_videos, videos_set):
  visited_on_page = {selenium_element.get_attribute("href") for selenium_element in list_of_videos}
