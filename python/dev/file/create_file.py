@@ -26,8 +26,8 @@ def scroll_down(current_elements_count, driver, scroll_pause_time):
 
 
 def save_elements_to_list(driver, start_time, scroll_pause_time, url):
-    elements = driver.find_elements_by_xpath('//*[@id="video-title"]')
-    end_time = time.perf_counter()
+    elements   = driver.find_elements_by_xpath('//*[@id="video-title"]')
+    end_time   = time.perf_counter()
     total_time = end_time - start_time - scroll_pause_time # subtract scroll_pause_time to account for the extra waiting time to verify end of page
     print(f'It took {total_time} seconds to find all {len(elements)} videos from {url}{NEWLINE}')
     return elements
@@ -36,7 +36,6 @@ def save_elements_to_list(driver, start_time, scroll_pause_time, url):
 def scroll_to_bottom(url, driver, scroll_pause_time):
     start_time = time.perf_counter() # timer stops in save_elements_to_list() function
     driver.get(url)
-
     current_elements_count = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
     while True:
         new_elements_count = scroll_down(current_elements_count, driver, scroll_pause_time)
@@ -50,24 +49,20 @@ def scroll_to_bottom(url, driver, scroll_pause_time):
 def time_writer_function(writer_function):
     @functools.wraps(writer_function)
     def wrapper_timer(*args, **kwargs):
-        start_time = time.perf_counter()
-        extension  = writer_function.__name__.split('_')[-1]
-        temp_file  = f'yt_videos_list_temp.{extension}'
-        print(f'Opened {temp_file}, writing video information to file....')
-
-        # check name of file and number of videos written
-        file_name, videos_written = writer_function(*args, **kwargs)
-        file_name = f'{file_name}.{extension}'
-        os.replace(temp_file, file_name)
-
-        end_time = time.perf_counter()
-        total_time = end_time - start_time
-
+        start_time                = time.perf_counter()
+        extension                 = writer_function.__name__.split('_')[-1]
+        print(f'Opening a temp {extension} file and writing video information to the file....')
+        file_name, videos_written = writer_function(*args, **kwargs)         # writer_function() writes to temp_{file_name}
+        end_time                  = time.perf_counter()
+        total_time                = end_time - start_time
+        temp_file                 = f'temp_{file_name}.{extension}'          # determine temp_{file_name} for wrapper_timer() scope
+        final_file                = f'{file_name}.{extension}'
         print(f'Finished writing to {temp_file}')
         print(f'{videos_written} videos written to {temp_file}')
         print(f'Closing {temp_file}')
-        print(f'Successfully completed write, renamed {temp_file} to {file_name}')
-        print(f'It took {total_time} seconds to write all {videos_written} videos to {file_name}{NEWLINE}')
+        os.replace(temp_file, final_file)                                    # rename temp_{file_name} to {file_name}.{extension} here AFTER everything else finishes to ensure atomicity
+        print(f'Successfully completed write, renamed {temp_file} to {final_file}')
+        print(f'It took {total_time} seconds to write all {videos_written} videos to {final_file}{NEWLINE}')
     return wrapper_timer
 
 
@@ -92,9 +87,9 @@ def txt_writer(file, markdown_formatting, reverse_chronological, list_of_videos,
 @time_writer_function
 def write_to_txt(list_of_videos, file_name, reverse_chronological):
     total_videos, total_writes, video_number, incrementer = prepare_output(list_of_videos, reverse_chronological)
-    markdown_formatting = False
-    spacing = f'{NEWLINE}' + ' '*4
-    with open('yt_videos_list_temp.txt', 'w', encoding='utf-8') as txt_file:
+    markdown_formatting                                   = False
+    spacing                                               = f'{NEWLINE}' + ' '*4
+    with open(f'temp_{file_name}.txt', 'w', encoding='utf-8') as txt_file:
         txt_writer(txt_file, markdown_formatting, reverse_chronological, list_of_videos, spacing, video_number, incrementer, total_writes)
     return file_name, total_videos
 
@@ -102,9 +97,9 @@ def write_to_txt(list_of_videos, file_name, reverse_chronological):
 @time_writer_function
 def write_to_md(list_of_videos, file_name, reverse_chronological):
     total_videos, total_writes, video_number, incrementer = prepare_output(list_of_videos, reverse_chronological)
-    markdown_formatting = True
-    spacing = f'{NEWLINE}' + '- ' + f'{NEWLINE}'
-    with open('yt_videos_list_temp.md', 'w', encoding='utf-8') as md_file:
+    markdown_formatting                                   = True
+    spacing                                               = f'{NEWLINE}' + '- ' + f'{NEWLINE}'
+    with open(f'temp_{file_name}.md', 'w', encoding='utf-8') as md_file:
         txt_writer(md_file, markdown_formatting, reverse_chronological, list_of_videos, spacing, video_number, incrementer, total_writes)
     return file_name, total_videos
 
@@ -112,11 +107,10 @@ def write_to_md(list_of_videos, file_name, reverse_chronological):
 @time_writer_function
 def write_to_csv(list_of_videos, file_name, reverse_chronological):
     total_videos, total_writes, video_number, incrementer = prepare_output(list_of_videos, reverse_chronological)
-    with open('yt_videos_list_temp.csv', 'w', newline='', encoding='utf-8') as csv_file:
+    with open(f'temp_{file_name}.csv', 'w', newline='', encoding='utf-8') as csv_file:
         fieldnames = ['Video Number', 'Video Title', 'Video URL', 'Watched?', 'Watch again later?', 'Notes']
-        writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+        writer     = csv.DictWriter(csv_file, fieldnames=fieldnames)
         writer.writeheader()
-
         for selenium_element in list_of_videos if reverse_chronological else list_of_videos[::-1]:
             video_number, total_writes = write.csv_entry(writer, selenium_element, video_number, incrementer, total_writes)
             if total_writes % 250 == 0:
