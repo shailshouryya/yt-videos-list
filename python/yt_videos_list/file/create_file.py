@@ -46,9 +46,9 @@ def time_writer_function(writer_function):
   total_time    = end_time - start_time
   temp_file     = f'temp_{file_name}_{timestamp}.{extension}'
   final_file    = f'{file_name}.{extension}'
-  print(f'Finished writing to {temp_file}')
-  print(f'{videos_written} videos written to {temp_file}')
-  print(f'Closing {temp_file}')
+  print(f'Finished writing to'.ljust(38) + f'{temp_file}')
+  print(f'{videos_written} videos written to'.ljust(38) + f'{temp_file}')
+  print(f'Closing'.ljust(38) + f'{temp_file}')
   os.replace(temp_file, final_file)
   print(f'Successfully completed write, renamed {temp_file} to {final_file}')
   print(f'It took {total_time} seconds to write all {videos_written} videos to {final_file}{NEWLINE}')
