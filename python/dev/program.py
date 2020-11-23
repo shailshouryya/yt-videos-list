@@ -19,11 +19,11 @@ def determine_action(url, driver, scroll_pause_time, reverse_chronological, file
         return
 
     if txt:
-        if txt_exists: file.update_file.write_to_txt(videos_list, file_name, reverse_chronological, timestamp=time.time())
-        else:          file.create_file.write_to_txt(videos_list, file_name, reverse_chronological, timestamp=time.time())
+        if txt_exists: file.update_file.write_to_txt(videos_list, file_name, reverse_chronological, timestamp=str(time.time()).replace('.', '-'))
+        else:          file.create_file.write_to_txt(videos_list, file_name, reverse_chronological, timestamp=str(time.time()).replace('.', '-'))
     if csv:
-        if csv_exists: file.update_file.write_to_csv(videos_list, file_name, reverse_chronological, timestamp=time.time())
-        else:          file.create_file.write_to_csv(videos_list, file_name, reverse_chronological, timestamp=time.time())
+        if csv_exists: file.update_file.write_to_csv(videos_list, file_name, reverse_chronological, timestamp=str(time.time()).replace('.', '-'))
+        else:          file.create_file.write_to_csv(videos_list, file_name, reverse_chronological, timestamp=str(time.time()).replace('.', '-'))
     if markdown:
-        if md_exists:  file.update_file.write_to_md (videos_list, file_name, reverse_chronological, timestamp=time.time())
-        else:          file.create_file.write_to_md (videos_list, file_name, reverse_chronological, timestamp=time.time())
+        if md_exists:  file.update_file.write_to_md (videos_list, file_name, reverse_chronological, timestamp=str(time.time()).replace('.', '-'))
+        else:          file.create_file.write_to_md (videos_list, file_name, reverse_chronological, timestamp=str(time.time()).replace('.', '-'))
