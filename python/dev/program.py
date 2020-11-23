@@ -1,4 +1,5 @@
 import os
+import time
 
 from .              import file
 from .notifications import Common
@@ -18,11 +19,11 @@ def determine_action(url, driver, scroll_pause_time, reverse_chronological, file
         return
 
     if txt:
-        if txt_exists: file.update_file.write_to_txt(videos_list, file_name, reverse_chronological)
-        else:          file.create_file.write_to_txt(videos_list, file_name, reverse_chronological)
+        if txt_exists: file.update_file.write_to_txt(videos_list, file_name, reverse_chronological, timestamp=time.time())
+        else:          file.create_file.write_to_txt(videos_list, file_name, reverse_chronological, timestamp=time.time())
     if csv:
-        if csv_exists: file.update_file.write_to_csv(videos_list, file_name, reverse_chronological)
-        else:          file.create_file.write_to_csv(videos_list, file_name, reverse_chronological)
+        if csv_exists: file.update_file.write_to_csv(videos_list, file_name, reverse_chronological, timestamp=time.time())
+        else:          file.create_file.write_to_csv(videos_list, file_name, reverse_chronological, timestamp=time.time())
     if markdown:
-        if md_exists:  file.update_file.write_to_md (videos_list, file_name, reverse_chronological)
-        else:          file.create_file.write_to_md (videos_list, file_name, reverse_chronological)
+        if md_exists:  file.update_file.write_to_md (videos_list, file_name, reverse_chronological, timestamp=time.time())
+        else:          file.create_file.write_to_md (videos_list, file_name, reverse_chronological, timestamp=time.time())

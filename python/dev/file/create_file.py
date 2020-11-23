@@ -51,11 +51,12 @@ def time_writer_function(writer_function):
     def wrapper_timer(*args, **kwargs):
         start_time                = time.perf_counter()
         extension                 = writer_function.__name__.split('_')[-1]
+        timestamp                 = kwargs.get('timestamp', 'undeteremined_start_time')
         print(f'Opening a temp {extension} file and writing video information to the file....')
         file_name, videos_written = writer_function(*args, **kwargs)         # writer_function() writes to temp_{file_name}
         end_time                  = time.perf_counter()
         total_time                = end_time - start_time
-        temp_file                 = f'temp_{file_name}.{extension}'          # determine temp_{file_name} for wrapper_timer() scope
+        temp_file                 = f'temp_{file_name}_{timestamp}.{extension}'    # determine temp_{file_name} for wrapper_timer() scope
         final_file                = f'{file_name}.{extension}'
         print(f'Finished writing to {temp_file}')
         print(f'{videos_written} videos written to {temp_file}')
@@ -85,29 +86,29 @@ def txt_writer(file, markdown_formatting, reverse_chronological, list_of_videos,
             print(f'{total_writes} videos written to {file.name}...')
 
 @time_writer_function
-def write_to_txt(list_of_videos, file_name, reverse_chronological):
+def write_to_txt(list_of_videos, file_name, reverse_chronological, timestamp):
     total_videos, total_writes, video_number, incrementer = prepare_output(list_of_videos, reverse_chronological)
     markdown_formatting                                   = False
     spacing                                               = f'{NEWLINE}' + ' '*4
-    with open(f'temp_{file_name}.txt', 'w', encoding='utf-8') as txt_file:
+    with open(f'temp_{file_name}_{timestamp}.txt', 'w', encoding='utf-8') as txt_file:
         txt_writer(txt_file, markdown_formatting, reverse_chronological, list_of_videos, spacing, video_number, incrementer, total_writes)
     return file_name, total_videos
 
 
 @time_writer_function
-def write_to_md(list_of_videos, file_name, reverse_chronological):
+def write_to_md(list_of_videos, file_name, reverse_chronological, timestamp):
     total_videos, total_writes, video_number, incrementer = prepare_output(list_of_videos, reverse_chronological)
     markdown_formatting                                   = True
     spacing                                               = f'{NEWLINE}' + '- ' + f'{NEWLINE}'
-    with open(f'temp_{file_name}.md', 'w', encoding='utf-8') as md_file:
+    with open(f'temp_{file_name}_{timestamp}.md', 'w', encoding='utf-8') as md_file:
         txt_writer(md_file, markdown_formatting, reverse_chronological, list_of_videos, spacing, video_number, incrementer, total_writes)
     return file_name, total_videos
 
 
 @time_writer_function
-def write_to_csv(list_of_videos, file_name, reverse_chronological):
+def write_to_csv(list_of_videos, file_name, reverse_chronological, timestamp):
     total_videos, total_writes, video_number, incrementer = prepare_output(list_of_videos, reverse_chronological)
-    with open(f'temp_{file_name}.csv', 'w', newline='', encoding='utf-8') as csv_file:
+    with open(f'temp_{file_name}_{timestamp}.csv', 'w', newline='', encoding='utf-8') as csv_file:
         fieldnames = ['Video Number', 'Video Title', 'Video URL', 'Watched?', 'Watch again later?', 'Notes']
         writer     = csv.DictWriter(csv_file, fieldnames=fieldnames)
         writer.writeheader()

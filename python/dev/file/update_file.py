@@ -54,11 +54,12 @@ def time_writer_function(writer_function):
     def wrapper_timer(*args, **kwargs):
         start_time                                           = time.perf_counter()
         extension                                            = writer_function.__name__.split('_')[-1]
+        timestamp                                            = kwargs.get('timestamp', 'undeteremined_start_time')
         print(f'Opening a temp {extension} file and writing ***NEW*** video information to the file....')
         file_name, new_videos_written, reverse_chronological = writer_function(*args, **kwargs)   # writer_function() writes to temp_{file_name}
         end_time                                             = time.perf_counter()
         total_time                                           = end_time - start_time
-        temp_file                                            = f'temp_{file_name}.{extension}'    # determine temp_{file_name} for wrapper_timer() scope
+        temp_file                                            = f'temp_{file_name}_{timestamp}.{extension}'    # determine temp_{file_name} for wrapper_timer() scope
         final_file                                           = f'{file_name}.{extension}'
         print(f'Finished writing to {temp_file}')
         print(f'{new_videos_written} ***NEW*** videos written to {temp_file}')
@@ -111,12 +112,12 @@ def txt_writer(new_file, old_file, visited_videos, markdown_formatting, reverse_
 # then take the contents of the original file and append it to the end of the temp file before renaming temp file to file_name.txt (overwrites original file)
 
 @time_writer_function
-def write_to_txt(list_of_videos, file_name, reverse_chronological):
+def write_to_txt(list_of_videos, file_name, reverse_chronological, timestamp):
     if 'STORED_IN_TXT' not in locals(): stored_in_txt = store_already_written_videos(file_name, 'txt')
     else:                               stored_in_txt = STORED_IN_TXT
     markdown_formatting = False
     spacing             = f'{NEWLINE}' + ' '*4
-    with open(f'{file_name}.txt', 'r+', encoding='utf-8') as old_file, open(f'temp_{file_name}.txt', 'w+', encoding='utf-8') as temp_file:
+    with open(f'{file_name}.txt', 'r+', encoding='utf-8') as old_file, open(f'temp_{file_name}_{timestamp}.txt', 'w+', encoding='utf-8') as temp_file:
         video_number                                        =  int(max(re.findall(r'^Video Number:\s*(\d+)', old_file.read(), re.M), key = lambda i: int(i)))
         video_number, new_videos, total_writes, incrementer = prepare_output(list_of_videos, stored_in_txt, video_number, reverse_chronological)
         ####### defer to txt_writer() function to find new videos and format updated file #######
@@ -125,12 +126,12 @@ def write_to_txt(list_of_videos, file_name, reverse_chronological):
 
 
 @time_writer_function
-def write_to_md(list_of_videos, file_name, reverse_chronological):
+def write_to_md(list_of_videos, file_name, reverse_chronological, timestamp):
     if 'STORED_IN_MD'  not in locals(): stored_in_md = store_already_written_videos(file_name, 'md')
     else:                               stored_in_md = STORED_IN_MD
     markdown_formatting = True
     spacing             = f'{NEWLINE}' + '- ' + f'{NEWLINE}'
-    with open(f'{file_name}.md', 'r+', encoding='utf-8') as old_file, open(f'temp_{file_name}.md', 'w+', encoding='utf-8') as temp_file:
+    with open(f'{file_name}.md', 'r+', encoding='utf-8') as old_file, open(f'temp_{file_name}_{timestamp}.md', 'w+', encoding='utf-8') as temp_file:
         video_number                                        =  int(max(re.findall(r'^Video Number:\s*(\d+)', old_file.read(), re.M), key = lambda i: int(i)))
         video_number, new_videos, total_writes, incrementer = prepare_output(list_of_videos, stored_in_md, video_number, reverse_chronological)
         ####### defer to txt_writer() function to find new videos and format updated file #######
@@ -139,10 +140,10 @@ def write_to_md(list_of_videos, file_name, reverse_chronological):
 
 
 @time_writer_function
-def write_to_csv(list_of_videos, file_name, reverse_chronological):
+def write_to_csv(list_of_videos, file_name, reverse_chronological, timestamp):
     if 'STORED_IN_CSV' not in locals(): stored_in_csv = store_already_written_videos(file_name, 'csv')
     else:                               stored_in_csv = STORED_IN_CSV
-    with open(f'{file_name}.csv', 'r+', newline='', encoding='utf-8') as old_file, open(f'temp_{file_name}.csv', 'w+', newline='', encoding='utf-8') as temp_file:
+    with open(f'{file_name}.csv', 'r+', newline='', encoding='utf-8') as old_file, open(f'temp_{file_name}_{timestamp}.csv', 'w+', newline='', encoding='utf-8') as temp_file:
         video_number                                        =  int(max(re.findall(r'^(\d+)?,', old_file.read(), re.M), key = lambda i: int(i)))
         video_number, new_videos, total_writes, incrementer = prepare_output(list_of_videos, stored_in_csv, video_number, reverse_chronological)
         fieldnames                                          = ['Video Number', 'Video Title', 'Video URL', 'Watched?', 'Watch again later?', 'Notes']
