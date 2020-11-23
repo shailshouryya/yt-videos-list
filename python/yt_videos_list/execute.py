@@ -100,7 +100,8 @@ def logic(channel, channel_type, file_name, txt, csv, markdown, reverse_chronolo
    return file_name.strip('.csv').strip('.txt').strip('.md')
   else:
    channel_name = driver.find_element_by_xpath("//yt-formatted-string[@class='style-scope ytd-channel-name']").text.replace(' ', '')
-   return f'{channel_name}_videos_list'
+   suffix    = 'reverse_chronological' if reverse_chronological else 'chronological'
+   return f'{channel_name}_videos_list_{suffix}'
  def show_user_how_to_set_up_selenium():
   if user_driver != 'safari':
    common_message.tell_user_to_download_driver(user_driver)
