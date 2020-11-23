@@ -43,10 +43,10 @@ def delete_file(filepath, extension):
 
 def verify_update(driver, schafer5_url, test_file, full_file):
     variations = [use_partial_csv_only, use_partial_txt_only, use_partial_md_only, use_partial_csv_txt_and_md]
-    for variation in variations:
+    for create_file in variations:
         print(f'\nTESTING list_creator with list_creator.reverse_chronological set to {vars(driver)["reverse_chronological"]}')
         suffix    = 'reverse_chronological' if vars(driver)["reverse_chronological"] else 'chronological'
-        variation(test_file, suffix)
+        create_file(test_file, suffix) # the file this function creates should be the SAME as the returned string to the file_name variable in the next line
         file_name = driver.create_list_for(schafer5_url)
         # verify calling the create_list_for() method updates the partial file properly
         compare_test_files_to_reference_files(full_file, file_name)
