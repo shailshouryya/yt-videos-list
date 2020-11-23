@@ -30,10 +30,11 @@ def run_test_case(list_creator):
 
 
 def delete_all_schafer5_files():
-    schafer5 = 'CoreySchafer_videos_list'
-    delete_file(schafer5, 'txt')
-    delete_file(schafer5, 'csv')
-    delete_file(schafer5, 'md' )
+    for suffix in ['reverse_chronological', 'chronological']:
+        schafer5 = f'CoreySchafer_videos_list_{suffix}'
+        delete_file(schafer5, 'txt')
+        delete_file(schafer5, 'csv')
+        delete_file(schafer5, 'md' )
 
 
 def delete_file(filepath, extension):
@@ -44,39 +45,40 @@ def verify_update(driver, schafer5_url, test_file, full_file):
     variations = [use_partial_csv_only, use_partial_txt_only, use_partial_md_only, use_partial_csv_txt_and_md]
     for variation in variations:
         print(f'\nTESTING list_creator with list_creator.reverse_chronological set to {vars(driver)["reverse_chronological"]}')
-        variation(test_file)
-        driver.create_list_for(schafer5_url)
+        suffix    = 'reverse_chronological' if vars(driver)["reverse_chronological"] else 'chronological'
+        variation(test_file, suffix)
+        file_name = driver.create_list_for(schafer5_url)
         # verify calling the create_list_for() method updates the partial file properly
-        compare_test_files_to_reference_files(full_file)
+        compare_test_files_to_reference_files(full_file, file_name)
 
 
-def use_partial_txt_only(test_file):
+def use_partial_txt_only(test_file, suffix):
     print('TESTING with a pre-existing txt file only (no pre-existing csv or md file)....')
     delete_all_schafer5_files()
-    create_partial_file(test_file, 'txt')
+    create_partial_file(test_file, suffix, 'txt')
 
-def use_partial_csv_only(test_file):
+def use_partial_csv_only(test_file, suffix):
     print('TESTING with a pre-existing csv file only (no pre-existing txt or md file)....')
     delete_all_schafer5_files()
-    create_partial_file(test_file, 'csv')
+    create_partial_file(test_file, suffix, 'csv')
 
-def use_partial_md_only(test_file):
+def use_partial_md_only(test_file, suffix):
     print('TESTING with a pre-existing md file only (no pre-existing txt or csv file)....')
     delete_all_schafer5_files()
-    create_partial_file(test_file, 'md')
+    create_partial_file(test_file, suffix, 'md')
 
-def use_partial_csv_txt_and_md(test_file):
+def use_partial_csv_txt_and_md(test_file, suffix):
     print('TESTING with pre-existing txt, csv, and md files....')
-    create_partial_file(test_file, 'txt')
-    create_partial_file(test_file, 'csv')
-    create_partial_file(test_file, 'md' )
+    create_partial_file(test_file, suffix, 'txt')
+    create_partial_file(test_file, suffix, 'csv')
+    create_partial_file(test_file, suffix, 'md' )
 
-def create_partial_file(test_file, extension):
-    shutil.copy(f'{test_file}.{extension}', f'CoreySchafer_videos_list.{extension}')
+def create_partial_file(test_file, suffix, extension):
+    shutil.copy(f'{test_file}.{extension}', f'CoreySchafer_videos_list_{suffix}.{extension}')
 
 
-def compare_test_files_to_reference_files(full_file):
-    with open('CoreySchafer_videos_list.txt', 'r', encoding='utf-8') as test_txt, open('CoreySchafer_videos_list.csv', 'r', encoding='utf-8') as test_csv, open('CoreySchafer_videos_list.md', 'r', encoding='utf-8') as test_md:
+def compare_test_files_to_reference_files(full_file, file_name):
+    with open(f'{file_name}.txt', 'r', encoding='utf-8') as test_txt, open(f'{file_name}.csv', 'r', encoding='utf-8') as test_csv, open(f'{file_name}.md', 'r', encoding='utf-8') as test_md:
         current_txt = hashlib.sha256(test_txt.read().encode('utf-8')).hexdigest()
         current_csv = hashlib.sha256(test_csv.read().encode('utf-8')).hexdigest()
         current_md  = hashlib.sha256(test_md.read().encode ('utf-8')).hexdigest()
