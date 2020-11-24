@@ -40,6 +40,8 @@ class Common:
         'edge':    ['msedgedriver', 'https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/', 'https://github.com/MicrosoftDocs/edge-developer/blob/master/microsoft-edge/webdriver-chromium.md', 'Microsoft Edge',  'https://www.microsoft.com/en-us/edge']
     }
 
+    unable_to_update_driver_automatically = '\n*****Looks like the package could not automatically update the dependencies.*****\nPlease follow the directions given above, and if that doesn\'t work, try running the following to update the package (newer package versions will support newer drivers) before retrying:\npip  install -U yt-videos-list #Windows\npip3 install -U yt-videos-list #MacOS/Linux\n\nIf this still doesn\'t fix the problem, please try using a different driver or file an issue at https://github.com/Shail-Shouryya/yt_videos_list/issues'
+
     def __init__(self):
         self.driver_downloads_for_os = {
             'firefox': {
