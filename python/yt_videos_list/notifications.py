@@ -210,34 +210,34 @@ class Common:
         return f'# {operating_system} {driver} {version} (supports {browser} version: {major_version})'
     @classmethod
     def format_geckodriver_download_command(cls, operating_system, version):
-        if operating_system.startswith('win'): return cls.format_windows_download(f'{cls.url_prefix_geckodriver}/{version}/geckodriver-{version}-{operating_system}.zip', 'geckodriver')
-        else:                                  return cls.format_unix_download   (f'{cls.url_prefix_geckodriver}/{version}/geckodriver-{version}-{operating_system}.tar.gz') + '\n'
+        if operating_system.startswith('win'): return cls.format_windows_download(f'{cls.url_prefix_geckodriver}/{version}/geckodriver-{version}-{operating_system}.zip',    'geckodriver')
+        else:                                  return cls.format_unix_download   (f'{cls.url_prefix_geckodriver}/{version}/geckodriver-{version}-{operating_system}.tar.gz', 'geckodriver')
     @classmethod
     def format_operadriver_download_command(cls, operating_system, version):
         if operating_system.startswith('win'): return cls.format_windows_operadriver_download(f'{cls.url_prefix_operadriver}/{version}/operadriver_{operating_system}.zip', 'operadriver')
-        else:                                  return cls.format_unix_operadriver_download   (f'{cls.url_prefix_operadriver}/{version}/operadriver_{operating_system}.zip') + ' && chmod +x /usr/local/bin/operadriver' + '\n'
+        else:                                  return cls.format_unix_operadriver_download   (f'{cls.url_prefix_operadriver}/{version}/operadriver_{operating_system}.zip', 'operadriver')
     @classmethod
     def format_chromedriver_download_command(cls, operating_system, version):
         if operating_system.startswith('win'): return cls.format_windows_download(f'{cls.url_prefix_chromedriver}/{version}/chromedriver_{operating_system}.zip', 'chromedriver')
-        else:                                  return cls.format_unix_download   (f'{cls.url_prefix_chromedriver}/{version}/chromedriver_{operating_system}.zip') + ' && chmod +x /usr/local/bin/chromedriver' + '\n'
+        else:                                  return cls.format_unix_download   (f'{cls.url_prefix_chromedriver}/{version}/chromedriver_{operating_system}.zip', 'chromedriver')
     @classmethod
     def format_bravedriver_download_command(cls, operating_system, version):
         ### Brave Browser doesn't have its own bravedriver, but since it's chromium we can just download the chromedriver and use the corresponding chromedriver for the Brave version (with it renamed to "bravedriver" in order to avoud conflict with different versions of Chrome and Brave installed at the same time) ###
         if operating_system.startswith('win'): return cls.format_windows_bravedriver_download(f'{cls.url_prefix_operadriver}/{version}/operadriver_{operating_system}.zip', 'bravedriver')
-        else:                                  return cls.format_unix_bravedriver_download   (f'{cls.url_prefix_operadriver}/{version}/operadriver_{operating_system}.zip') + ' && chmod +x /usr/local/bin/bravedriver' + '\n'
+        else:                                  return cls.format_unix_bravedriver_download   (f'{cls.url_prefix_operadriver}/{version}/operadriver_{operating_system}.zip', 'bravedriver')
     @classmethod
     def format_msedgedriver_download_command(cls, operating_system, version):
         if operating_system.startswith('win'): return cls.format_windows_download(f'{cls.url_prefix_msedgedriver}/{version}/edgedriver_{operating_system}.zip', 'msedgedriver')
-        else:                                  return cls.format_unix_download   (f'{cls.url_prefix_msedgedriver}/{version}/edgedriver_{operating_system}.zip') + ' && chmod +x /usr/local/bin/msedgedriver' + '\n'
+        else:                                  return cls.format_unix_download   (f'{cls.url_prefix_msedgedriver}/{version}/edgedriver_{operating_system}.zip', 'msedgedriver')
     @staticmethod
-    def format_unix_download(url):
-        return f'curl -SL {url} | tar -xzvf - -C /usr/local/bin/'
+    def format_unix_download(url, driver):
+        return f'curl -SL {url} | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/{driver}' + '\n'
     @staticmethod
-    def format_unix_operadriver_download(url):
-        return f'curl -SL {url} | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum'
+    def format_unix_operadriver_download(url, driver):
+        return f'curl -SL {url} | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/{driver}' + '\n'
     @staticmethod
-    def format_unix_bravedriver_download(url):
-        return f'curl -SL {url} | tar -xzvf - --strip-components=1 -O > /usr/local/bin/bravedriver && chmod +x /usr/local/bin/bravedriver && rm /usr/local/bin/sha512_sum'
+    def format_unix_bravedriver_download(url, driver):
+        return f'curl -SL {url} | tar -xzvf - --strip-components=1 -O > /usr/local/bin/{driver} && chmod +x /usr/local/bin/{driver} && rm /usr/local/bin/sha512_sum'
     @staticmethod
     def format_windows_download(url, driver):
         drive = get_drive_letter()
