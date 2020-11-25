@@ -31,8 +31,11 @@ class ListCreator:
         Example usage:
             lc = ListCreator()
 
-        ###########################################################
-        *****If you already scraped a channel and the channel uploaded a new video, simply rerun this program on that channel and this package updates your files to include the newer video(s)!*****
+        #############################################################################################################
+        If you ALREADY scraped a channel and the channel uploaded a new video, simply rerun this
+        program on that channel and this package updates your files to include the newer video(s)!
+
+
         OPTIONAL: Specify the settings you want to use by substituing the desired values for the default arguments.
         An overview is given directly below this, but for a full working example scroll to the bottom.
 
@@ -68,20 +71,25 @@ class ListCreator:
              -> headless=False (default) OR headless=True
 
         Options for the `scroll_pause_time argument` are any float values greater than 0 (defaults to 0.8)
-          * The value you provide will be how long (in seconds) the program waits before trying to scroll the videos list page down for the channel you want to scrape.
-          * For fast internet connections, you may want to reduce the value, and for slow connections you may want to increase the value.
+          * CAUTION: reducing this value too much will result in the program not capturing all the videos,
+            so be careful! Experiment :)
+          * The value you provide will be how long (in seconds) the program waits before
+            trying to scroll the videos list page down for the channel you want to scrape.
+          * For fast internet connections, you may want to reduce the value,
+            and for slow connections you may want to increase the value.
              -> scroll_pause_time=0.8 (default)
-          * CAUTION: reducing this value too much will result in the program not capturing all the videos, so be careful! Experiment :)
+
 
 
         WORKING EXAMPLES:
-        ###########################################################
-        Minimalist (ListCreator object creates a csv, txt, and md file in reverse chronological order - meaning the most recently uploaded videos are at the top of the file):
+        #####################################################################################################
+        Minimalist (ListCreator object creates a csv, txt, and md file in reverse chronological order -
+        meaning the most recently uploaded videos are at the top of the file):
         lc = ListCreator()
 
 
         Minimalist but with a different driver:
-        lc = ListCreator(driver='firefox') # default
+        lc = ListCreator(driver='firefox') # default, argument not required
         lc = ListCreator(driver='opera')
         lc = ListCreator(driver='safari')
         lc = ListCreator(driver='chrome')
@@ -94,34 +102,41 @@ class ListCreator:
         lc = ListCreator(driver='chrome', headless=True)   # runs chrome  in headless mode
 
 
-        Minimalist with reverse chronological order (ListCreator object creates a csv, txt, and md file with oldest videos at the top of the file instead of the most recently uploaded videos at the top)
+        Minimalist with reverse chronological order (ListCreator object creates a csv, txt, and md file with
+        oldest videos at the top of the file instead of the most recently uploaded videos at the top):
         lc = ListCreator(reverse_chronological=False)
-        ###########################################################
+        #####################################################################################################
 
 
-        ###########################################################
+        #############################################################
         Minimalist with greater pauses (useful for slow internet):
         lc = ListCreator(scroll_pause_time=1.2)
 
         Minimalist with shorter pauses (useful for fast internet):
         lc = ListCreator(scroll_pause_time=0.7)
-        ###########################################################
+        #############################################################
 
 
-        ###########################################################
+        #############################################################
         Only creating a csv file with everything else set to default:
         lc = ListCreator(txt=False, md=False)
-        ###########################################################
+        #############################################################
 
 
-        -----------------------------------------------------------
-        SWE PRO TIP: however you decide to instantiate your object, if you use custom settings, name your ListCreator instance to reflect what you changed.
-        E.g. For the last case, instead of naming your instance "lc", name it "CsvOnlyLc" or "csv_only_lc" - or something along those lines.
-        -----------------------------------------------------------
+        ----------------------------------------------------------------------------------------
+        SWE PRO TIP: However you decide to instantiate your object, if you use custom settings,
+        name your ListCreator instance to reflect what you changed.
+        E.g. For the last case, instead of naming your instance "lc",
+        name it "csv_only_lc" or "CsvOnlyLc" - or something along those lines.
+        ----------------------------------------------------------------------------------------
 
-        ===========================================================
-        If you found this interesting or useful, ** please consider STARRING this repo at https://github.com/Shail-Shouryya/yt_videos_list ** so other people can more easily find and use this. Thank you!!
-        ===========================================================
+        ===================================================
+        If you found this interesting or useful,
+        ** please consider STARRING this repo at **
+        https://github.com/Shail-Shouryya/yt_videos_list
+        so other people can more easily find and use this.
+        Thank you!!
+        ===================================================
         '''
 
 
