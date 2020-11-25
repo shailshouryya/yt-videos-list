@@ -79,6 +79,8 @@ help(lc)
 #### If you already scraped a channel and the channel uploaded a new video, simply rerun this program on that channel and this package updates your files to include the newer video(s)!
 </details>
 
+- **If you already scraped a channel and the channel uploaded a new video, simply rerun this program on that channel and this package updates your files to include the newer video(s)!**
+
 <details>
   <summary><b>Explicitly downloading all Selenium dependencies</b></summary>
 
@@ -125,7 +127,7 @@ There are a number of optional arguments you can specify during the instantiatio
 - `driver` argument:
   - Firefox (default)
   - Opera
-  - Safari
+  - Safari (MacOS only)
   - Chrome
   - Brave
   - Edge (Windows only)

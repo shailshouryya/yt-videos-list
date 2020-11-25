@@ -32,13 +32,14 @@ class ListCreator:
             lc = ListCreator()
 
         ###########################################################
+        *****If you already scraped a channel and the channel uploaded a new video, simply rerun this program on that channel and this package updates your files to include the newer video(s)!*****
         OPTIONAL: Specify the settings you want to use by substituing the desired values for the default arguments.
         An overview is given directly below this, but for a full working example scroll to the bottom.
 
         Options for the `driver` argument are
           * Firefox (default)
           * Opera
-          * Safari
+          * Safari (MacOS only)
           * Chrome
           * Brave
           * Edge (Windows only)
@@ -77,6 +78,20 @@ class ListCreator:
         ###########################################################
         Minimalist (ListCreator object creates a csv, txt, and md file in reverse chronological order - meaning the most recently uploaded videos are at the top of the file):
         lc = ListCreator()
+
+
+        Minimalist but with a different driver:
+        lc = ListCreator(driver='firefox') # default
+        lc = ListCreator(driver='opera')
+        lc = ListCreator(driver='safari')
+        lc = ListCreator(driver='chrome')
+        lc = ListCreator(driver='brave')
+        lc = ListCreator(driver='edge')
+
+
+        Minimalist in headless ("invisible") mode (NOTE: currently only supported by firefox and chrome):
+        lc = ListCreator(headless=True)                    # runs firefox in headless mode
+        lc = ListCreator(driver='chrome', headless=True)   # runs chrome  in headless mode
 
 
         Minimalist with reverse chronological order (ListCreator object creates a csv, txt, and md file with oldest videos at the top of the file instead of the most recently uploaded videos at the top)
