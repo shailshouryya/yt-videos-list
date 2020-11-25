@@ -76,10 +76,9 @@ help(lc)
   - `'brave'`
   - `'edge'` (Windows only!)
 - increase `scroll_pause_time` for laggy internet and decrease `scroll_pause_time` for fast internet
-#### If you already scraped a channel and the channel uploaded a new video, simply rerun this program on that channel and this package updates your files to include the newer video(s)!
 </details>
 
-- **If you already scraped a channel and the channel uploaded a new video, simply rerun this program on that channel and this package updates your files to include the newer video(s)!**
+#### If you already scraped a channel and the channel uploaded a new video, simply rerun this program on that channel and this package updates your files to include the newer video(s)!
 
 <details>
   <summary><b>Explicitly downloading all Selenium dependencies</b></summary>
