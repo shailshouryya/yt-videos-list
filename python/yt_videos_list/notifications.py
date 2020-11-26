@@ -245,11 +245,11 @@ class Common:
     @staticmethod
     def format_windows_operadriver_download(url, driver):
         drive = get_drive_letter()
-        return fr'curl -SL --ssl-no-revoke {url} -o {drive}:\Windows\{driver} && tar -xzvf {drive}:\Windows\{driver} --strip-components=1 -C {drive}:\Windows && del {drive}:\Windows\{driver} && del {drive}:\Windows\sha512_sum' + '\n'
+        return fr'curl -SL --ssl-no-revoke {url} -o {drive}:\Windows\{driver} && tar -xzvf {drive}:\Windows\{driver} --strip-components=1 -C {drive}:\Windows && del {drive}:\Windows\sha512_sum && del {drive}:\Windows\{driver}' + '\n'
     @staticmethod
     def format_windows_bravedriver_download(url, driver):
         drive = get_drive_letter()
-        return fr'curl -SL --ssl-no-revoke {url} -o {drive}:\Windows\{driver} && tar -xzvf {drive}:\Windows\{driver} --strip-components=1 -O > {drive}:\Windows\bravedriver.exe && del {drive}:\Windows\{driver} && del {drive}:\Windows\sha512_sum' + '\n'
+        return fr'curl -SL --ssl-no-revoke {url} -o {drive}:\Windows\{driver} && tar -xzvf {drive}:\Windows\{driver} --strip-components=1 -O > {drive}:\Windows\bravedriver.exe && del {drive}:\Windows\sha512_sum && del {drive}:\Windows\{driver}' + '\n'
     @staticmethod
     def display_browser_found_information(browser, full_version_number):
         print(f'\nFound an installed version of {browser}.\nYou are currently running {browser} version: {full_version_number}')
