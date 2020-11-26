@@ -241,9 +241,8 @@ class Common:
     @staticmethod
     def format_windows_download(url, driver):
         drive = get_drive_letter()
-        remove_sha512                                         = fr'&& del {drive}:\Windows\sha512_sum'
-        if   driver == 'operadriver': driver_specific_command = fr'-C {drive}:\Windows --strip-components=1 {remove_sha512}'
-        elif driver == 'bravedriver': driver_specific_command = fr'-O > {drive}:\Windows\bravedriver.exe --strip-components=1 {remove_sha512}'
+        if   driver == 'operadriver': driver_specific_command = fr'-C {drive}:\Windows --strip-components=1 && del {drive}:\Windows\sha512_sum'
+        elif driver == 'bravedriver': driver_specific_command = fr'-O > {drive}:\Windows\bravedriver.exe --strip-components=1'
         else:                         driver_specific_command = fr'-C {drive}:\Windows'
         return fr'curl -SL --ssl-no-revoke {url} -o {drive}:\Windows\{driver} && tar -xzvf {drive}:\Windows\{driver} {driver_specific_command} && del {drive}:\Windows\{driver}' + '\n'
     @staticmethod
