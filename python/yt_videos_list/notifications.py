@@ -237,7 +237,7 @@ class Common:
         return f'curl -SL {url} | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/{driver}' + '\n'
     @staticmethod
     def format_unix_bravedriver_download(url, driver):
-        return f'curl -SL {url} | tar -xzvf - --strip-components=1 -O > /usr/local/bin/{driver} && chmod +x /usr/local/bin/{driver} && rm /usr/local/bin/sha512_sum'
+        return f'curl -SL {url} | tar -xzvf - --strip-components=1 -O > /usr/local/bin/{driver} && chmod +x /usr/local/bin/{driver} && rm /usr/local/bin/sha512_sum' + '\n'
     @staticmethod
     def format_windows_download(url, driver):
         drive = get_drive_letter()

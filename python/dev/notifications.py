@@ -271,7 +271,7 @@ class Common:
 
     @staticmethod
     def format_unix_bravedriver_download(url, driver):
-        return f'curl -SL {url} | tar -xzvf - --strip-components=1 -O > /usr/local/bin/{driver} && chmod +x /usr/local/bin/{driver} && rm /usr/local/bin/sha512_sum'
+        return f'curl -SL {url} | tar -xzvf - --strip-components=1 -O > /usr/local/bin/{driver} && chmod +x /usr/local/bin/{driver} && rm /usr/local/bin/sha512_sum' + '\n'
 
 
     @staticmethod
