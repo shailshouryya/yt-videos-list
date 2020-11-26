@@ -1,5 +1,6 @@
 import os
 import re
+import json
 os.system('pip install .')
 
 from yt_videos_list.notifications import Common
@@ -32,9 +33,12 @@ def format_json():
 def main():
     common_messages = Common()
     drivers_dictionary = common_messages.driver_downloads_for_os
+    path_slash = determine_path_slash()
 
     write_json(drivers_dictionary)
     format_json()
+    with open(f'..{path_slash}docs{path_slash}dependencies.json', 'w', encoding='utf-8') as ffinal:
+        json.dump(drivers_dictionary, ffinal, indent=4)
 
 
 if __name__ == '__main__':
