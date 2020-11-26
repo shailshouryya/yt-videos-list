@@ -241,7 +241,7 @@ class Common:
 
     @classmethod
     def format_operadriver_download_command(cls, operating_system, version):
-        if operating_system.startswith('win'): return cls.format_windows_operadriver_download(f'{cls.url_prefix_operadriver}/{version}/operadriver_{operating_system}.zip', 'operadriver')
+        if operating_system.startswith('win'): return cls.format_windows_download(f'{cls.url_prefix_operadriver}/{version}/operadriver_{operating_system}.zip', 'operadriver')
         else:                                  return cls.format_unix_operadriver_download   (f'{cls.url_prefix_operadriver}/{version}/operadriver_{operating_system}.zip', 'operadriver')
 
     @classmethod
@@ -252,7 +252,7 @@ class Common:
     @classmethod
     def format_bravedriver_download_command(cls, operating_system, version):
         ### Brave Browser doesn't have its own bravedriver, but since it's chromium we can just download the chromedriver and use the corresponding chromedriver for the Brave version (with it renamed to "bravedriver" in order to avoud conflict with different versions of Chrome and Brave installed at the same time) ###
-        if operating_system.startswith('win'): return cls.format_windows_bravedriver_download(f'{cls.url_prefix_operadriver}/{version}/operadriver_{operating_system}.zip', 'bravedriver')
+        if operating_system.startswith('win'): return cls.format_windows_download(f'{cls.url_prefix_operadriver}/{version}/operadriver_{operating_system}.zip', 'bravedriver')
         else:                                  return cls.format_unix_bravedriver_download   (f'{cls.url_prefix_operadriver}/{version}/operadriver_{operating_system}.zip', 'bravedriver')
 
     @classmethod
@@ -277,17 +277,11 @@ class Common:
     @staticmethod
     def format_windows_download(url, driver):
         drive = get_drive_letter()
-        return fr'curl -SL --ssl-no-revoke {url} -o {drive}:\Windows\{driver} && tar -xzvf {drive}:\Windows\{driver} -C {drive}:\Windows && del {drive}:\Windows\{driver}' + '\n'
-
-    @staticmethod
-    def format_windows_operadriver_download(url, driver):
-        drive = get_drive_letter()
-        return fr'curl -SL --ssl-no-revoke {url} -o {drive}:\Windows\{driver} && tar -xzvf {drive}:\Windows\{driver} --strip-components=1 -C {drive}:\Windows && del {drive}:\Windows\sha512_sum && del {drive}:\Windows\{driver}' + '\n'
-
-    @staticmethod
-    def format_windows_bravedriver_download(url, driver):
-        drive = get_drive_letter()
-        return fr'curl -SL --ssl-no-revoke {url} -o {drive}:\Windows\{driver} && tar -xzvf {drive}:\Windows\{driver} --strip-components=1 -O > {drive}:\Windows\bravedriver.exe && del {drive}:\Windows\sha512_sum && del {drive}:\Windows\{driver}' + '\n'
+        remove_sha512                                         = fr'&& del {drive}:\Windows\sha512_sum'
+        if   driver == 'operadriver': driver_specific_command = fr'--strip-components=1 -C {drive}:\Windows {remove_sha512}'
+        elif driver == 'bravedriver': driver_specific_command = fr'--strip-components=1 -O > {drive}:\Windows\bravedriver.exe {remove_sha512}'
+        else:                         driver_specific_command = fr'-C {drive}:\Windows'
+        return fr'curl -SL --ssl-no-revoke {url} -o {drive}:\Windows\{driver} && tar -xzvf {drive}:\Windows\{driver} {driver_specific_command} && del {drive}:\Windows\{driver}' + '\n'
 
 
     @staticmethod
