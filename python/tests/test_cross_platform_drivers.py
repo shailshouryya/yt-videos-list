@@ -13,15 +13,18 @@ def remove_dependencies():
         operadriver_path  = rf'{drive}:\Windows\operadriver.exe'
         chromedriver_path = rf'{drive}:\Windows\chromedriver.exe'
         bravedriver_path  = rf'{drive}:\Windows\bravedriver.exe'
+        msedgedriver_path = rf'{drive}:\Windows\msedgedriver.exe'
     else:
         geckodriver_path  = r'/usr/local/bin/geckodriver'
         operadriver_path  = r'/usr/local/bin/operadriver'
         chromedriver_path = r'/usr/local/bin/chromedriver'
         bravedriver_path  = r'/usr/local/bin/bravedriver'
+        msedgedriver_path = r'/usr/local/bin/msedgedriver'
     if os.path.exists(geckodriver_path):  os.remove(geckodriver_path)
     if os.path.exists(operadriver_path):  os.remove(operadriver_path)
     if os.path.exists(chromedriver_path): os.remove(chromedriver_path)
     if os.path.exists(bravedriver_path):  os.remove(bravedriver_path)
+    if os.path.exists(msedgedriver_path): os.remove(msedgedriver_path)
 
 
 def main():
