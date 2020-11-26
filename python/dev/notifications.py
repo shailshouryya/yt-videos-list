@@ -271,15 +271,15 @@ class Common:
 
     @staticmethod
     def format_unix_bravedriver_download(url, driver):
-        return f'curl -SL {url} | tar -xzvf - --strip-components=1 -O > /usr/local/bin/{driver} && chmod +x /usr/local/bin/{driver}' + '\n'
+        return f'curl -SL {url} | tar -xzvf - -O > /usr/local/bin/{driver} --strip-components=1 && chmod +x /usr/local/bin/{driver}' + '\n'
 
 
     @staticmethod
     def format_windows_download(url, driver):
         drive = get_drive_letter()
         remove_sha512                                         = fr'&& del {drive}:\Windows\sha512_sum'
-        if   driver == 'operadriver': driver_specific_command = fr'--strip-components=1 -C {drive}:\Windows {remove_sha512}'
-        elif driver == 'bravedriver': driver_specific_command = fr'--strip-components=1 -O > {drive}:\Windows\bravedriver.exe {remove_sha512}'
+        if   driver == 'operadriver': driver_specific_command = fr'-C {drive}:\Windows --strip-components=1 {remove_sha512}'
+        elif driver == 'bravedriver': driver_specific_command = fr'-O > {drive}:\Windows\bravedriver.exe --strip-components=1 {remove_sha512}'
         else:                         driver_specific_command = fr'-C {drive}:\Windows'
         return fr'curl -SL --ssl-no-revoke {url} -o {drive}:\Windows\{driver} && tar -xzvf {drive}:\Windows\{driver} {driver_specific_command} && del {drive}:\Windows\{driver}' + '\n'
 
