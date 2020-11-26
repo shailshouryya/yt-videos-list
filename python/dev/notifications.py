@@ -261,19 +261,19 @@ class Common:
         else:                                  return cls.format_unix_download   (f'{cls.url_prefix_msedgedriver}/{version}/edgedriver_{operating_system}.zip', 'msedgedriver')
 
 
-    @staticmethod
-    def format_unix_download(url, driver):
-        if   driver == 'operadriver': driver_specific_command =  '-C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum'
-        elif driver == 'bravedriver': driver_specific_command = f'-O > /usr/local/bin/{driver} --strip-components=1'
+    strip_component = '--strip-components=1'
+    @classmethod
+    def format_unix_download(cls, url, driver):
+        if   driver == 'operadriver': driver_specific_command = f'-C /usr/local/bin/ {cls.strip_component} && rm /usr/local/bin/sha512_sum'
+        elif driver == 'bravedriver': driver_specific_command = f'-O > /usr/local/bin/{driver} {cls.strip_component}'
         else:                         driver_specific_command =  '-C /usr/local/bin/'
         return f'curl -SL {url} | tar -xzvf - {driver_specific_command} && chmod +x /usr/local/bin/{driver}' + '\n'
 
-
-    @staticmethod
-    def format_windows_download(url, driver):
+    @classmethod
+    def format_windows_download(cls, url, driver):
         drive = get_drive_letter()
-        if   driver == 'operadriver': driver_specific_command = fr'-C {drive}:\Windows --strip-components=1 && del {drive}:\Windows\sha512_sum'
-        elif driver == 'bravedriver': driver_specific_command = fr'-O > {drive}:\Windows\bravedriver.exe --strip-components=1'
+        if   driver == 'operadriver': driver_specific_command = fr'-C {drive}:\Windows {cls.strip_component} && del {drive}:\Windows\sha512_sum'
+        elif driver == 'bravedriver': driver_specific_command = fr'-O > {drive}:\Windows\bravedriver.exe {cls.strip_component}'
         else:                         driver_specific_command = fr'-C {drive}:\Windows'
         return fr'curl -SL --ssl-no-revoke {url} -o {drive}:\Windows\{driver} && tar -xzvf {drive}:\Windows\{driver} {driver_specific_command} && del {drive}:\Windows\{driver}' + '\n'
 
