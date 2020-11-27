@@ -138,8 +138,6 @@ class ListCreator:
         Thank you!!
         ===================================================
         '''
-
-
         self.txt                   = txt
         self.csv                   = csv
         self.markdown              = md
@@ -187,8 +185,6 @@ class ListCreator:
         UNLESS you provide the same **exact** name every time you rerun this.
         NOTE that the "channel" and "channel_type" arguments are now deprecated, and remain for legacy purposes.
         '''
-
-
         if url is not None:
             channel_info = url.split('youtube.com/')[1]
             channel_type = channel_info.split('/')[0]

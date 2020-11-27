@@ -17,7 +17,6 @@ def determine_action(url, driver, scroll_pause_time, reverse_chronological, file
     if len(videos_list) == 0:
         print(COMMON_MESSAGE.no_videos_found)
         return
-
     if txt:
         if txt_exists: file.update_file.write_to_txt(videos_list, file_name, reverse_chronological, timestamp=str(time.time()).replace('.', '-'))
         else:          file.create_file.write_to_txt(videos_list, file_name, reverse_chronological, timestamp=str(time.time()).replace('.', '-'))

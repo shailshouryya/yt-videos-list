@@ -16,19 +16,15 @@ def logic(channel, channel_type, file_name, txt, csv, markdown, reverse_chronolo
     module_message = ModuleMessage()
     script_message = ScriptMessage()
 
-
-
     def check_user_input():
         nonlocal channel, channel_type, user_driver
         base_url     = 'https://www.youtube.com'
         videos       = 'videos'
         url          = f'{base_url}/{channel_type}/{channel}/{videos}'
-
         if txt is False and csv is False:
             print(common_message.not_writing_to_any_files)
             print(module_message.not_writing_to_any_files_hint) if execution_type == 'module' else print(script_message.not_writing_to_any_files_hint)
             sys.exit() # the files already exist and the user doesn't want to overwrite either of them
-
         if user_driver is None:
             print(module_message.running_default_driver) if execution_type == 'module' else print(script_message.running_default_driver)
             print(module_message.show_driver_options)    if execution_type == 'module' else print(script_message.show_driver_options)
