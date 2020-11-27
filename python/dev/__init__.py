@@ -151,14 +151,16 @@ class ListCreator:
 
     def __repr__(self):
         '''
-        Returns an unambiguous representation of the current instace that can be used to recreate the same exact object. This is useful for internal use and making developer debugging easier.
+        Returns an unambiguous representation of the current instace that can be used to recreate the same exact object.
+        This is useful for internal use and making developer debugging easier.
         '''
         return f'{self.__class__.__name__}(txt={self.txt}, csv={self.csv}, md={self.markdown}, reverse_chronological={self.reverse_chronological}, headless={self.headless}, scroll_pause_time={self.scroll_pause_time}, driver={self.driver})'
 
 
     def __str__(self):
         '''
-        Returns an easy to read representation of the current instance. This is useful for typical users to see the attributes of the current instance and is ideal for human consumption.
+        Returns an easy to read representation of the current instance.
+        This is useful for typical users to see the attributes of the current instance and is ideal for human consumption.
         '''
         return f'''{self.__class__.__name__}() object created with attributes
         txt                   = {self.txt}
@@ -179,7 +181,10 @@ class ListCreator:
         The create_list_for() method creates a list using the arguments specified during instantiation of the ListCreator object.
         You need to specify just the url to the channel you want to scrape.
 
-        You can also provide an optional file_name argument, but this is NOT recommended - the program finds the name of the channel automatically and if you rename the file the file won't be automatically updated if the channel uploads a new video and you run this on that channel UNLESS you provide the same **exact** name every time you rerun this.
+        You can also provide an optional file_name argument, but this is NOT recommended -
+        the program finds the name of the channel automatically and if you rename the file,
+        the file won't be automatically updated if the channel uploads a new video and you run this on that channel
+        UNLESS you provide the same **exact** name every time you rerun this.
         NOTE that the "channel" and "channel_type" arguments are now deprecated, and remain for legacy purposes.
         '''
 
