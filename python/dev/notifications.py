@@ -340,13 +340,13 @@ class ModuleMessage(Common):
 
     running_default_driver = '\nNo driver specified during ListCreator instantiation, so running program using the Firefox driver.'
 
-    show_driver_options = 'To use a different driver, specify the driver in the driver argument during the ListCreator instantiation. For example:' + \
-        "\n    lc = ListCreator(driver='firefox')" + \
-        "\n    lc = ListCreator(driver='opera')" + \
-        "\n    lc = ListCreator(driver='safari')" + \
-        "\n    lc = ListCreator(driver='chrome')" + \
-        "\n    lc = ListCreator(driver='brave')" + \
-        "\n    lc = ListCreator(driver='edge')"
+    show_driver_options = '''To use a different driver, specify the driver in the driver argument during the ListCreator instantiation. For example:
+    lc = ListCreator(driver='firefox')
+    lc = ListCreator(driver='opera')
+    lc = ListCreator(driver='safari')
+    lc = ListCreator(driver='chrome')
+    lc = ListCreator(driver='brave')
+    lc = ListCreator(driver='edge')'''
 
 
 
