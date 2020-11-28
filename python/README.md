@@ -164,5 +164,7 @@ There are a number of optional arguments you can specify during the instantiatio
 - [PyPi Stats](https://pypistats.org/packages/yt-videos-list)
 </details>
 
+[![Downloads](https://static.pepy.tech/personalized-badge/yt-videos-list?period=week&units=international_system&left_color=black&right_color=red&left_text=Downloads)](https://pepy.tech/project/yt-videos-list) [![Downloads](https://static.pepy.tech/personalized-badge/yt-videos-list?period=month&units=international_system&left_color=black&right_color=yellow&left_text=Downloads)](https://pepy.tech/project/yt-videos-list) [![Downloads](https://pepy.tech/badge/yt-videos-list)](https://pepy.tech/project/yt-videos-list)
+
 #### [Back to main page](https://github.com/Shail-Shouryya/yt_videos_list/)
 If you found this interesting or useful, **please consider starring this repo** so other people can more easily find and use this. Thanks!
