@@ -304,7 +304,8 @@ class Common:
 
     @staticmethod
     def tell_user_to_download_driver(user_driver):
-        print(f'\nIt looks like you don\'t have the correct Selenium dependency set up to run this program using the remote {user_driver}driver.\nThe version of your {user_driver.title()} browser - usually found by going to {user_driver.title()} -> \"About browser\" in the menu bar within a {user_driver.title()} window - should match the comment for the corresponding command.\nPlease download it using the relevant command from the list of commands below.\n')
+        print('\n' * 25 + '=' * 130)
+        print(f'It looks like you don\'t have the correct Selenium dependency set up to run this program using the remote {user_driver}driver.\nThe version of your {user_driver.title()} browser - usually found by going to {user_driver.title()} -> \"About browser\" in the menu bar within a {user_driver.title()} window - should match the comment for the corresponding command.\nPlease download it using the relevant command from the list of commands below.\n')
 
     @staticmethod
     def display_unable_to_update_driver_automatically(user_driver):
