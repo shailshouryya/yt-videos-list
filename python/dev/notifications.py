@@ -29,7 +29,7 @@ class Common:
         'brave':   ['bravedriver',  'https://github.com/operasoftware/operachromiumdriver',                  'https://github.com/operasoftware/operachromiumdriver/releases',                                    'Brave',           'https://brave.com/'],
         'edge':    ['msedgedriver', 'https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/', 'https://github.com/MicrosoftDocs/edge-developer/blob/master/microsoft-edge/webdriver-chromium.md', 'Microsoft Edge',  'https://www.microsoft.com/en-us/edge']
     }
-    unable_to_update_driver_automatically = '\n' + '*' * 81 + '\n*****Looks like the package could not automatically update the dependencies.*****\nPlease follow the directions given above, and if that doesn\'t work, try running the following to update the package (newer package versions will support newer drivers) before retrying:\npip  install -U yt-videos-list #Windows\npip3 install -U yt-videos-list #MacOS/Linux\n\nIf this still doesn\'t fix the problem, please try using a different driver or file an issue at https://github.com/Shail-Shouryya/yt_videos_list/issues\nTo see all available drivers (and other options), run:\n\nimport yt_videos_list\nhelp(yt_videos_list)\n' + '*' * 81
+
 
     def __init__(self):
         self.driver_downloads_for_os = {
@@ -305,6 +305,10 @@ class Common:
     @staticmethod
     def tell_user_to_download_driver(user_driver):
         print(f'\nIt looks like you don\'t have the correct Selenium dependency set up to run this program using the remote {user_driver}driver.\nThe version of your {user_driver.title()} browser - usually found by going to {user_driver.title()} -> \"About browser\" in the menu bar within a {user_driver.title()} window - should match the comment for the corresponding command.\nPlease download it using the relevant command from the list of commands below.\n')
+
+    @staticmethod
+    def display_unable_to_update_driver_automatically(user_driver):
+        print('\n' + '*' * 81 + f'\n*****Looks like the package could not automatically update the dependencies.*****\nPlease follow the directions given above, and if that doesn\'t work, try running the following to update the package (newer package versions will support newer drivers) before retrying:\npip  install -U yt-videos-list #Windows\npip3 install -U yt-videos-list #MacOS/Linux\n\nIf this still doesn\'t fix the problem, please try using a different driver or file an issue at https://github.com/Shail-Shouryya/yt_videos_list/issues\nThe problem is likely caused by trying to run yt_videos_list with an updated version of the driver you\'re trying to use than what yt_videos_list currently supports (we update the binaries a few weeks after the initial release to allow time for bug fixing). If this is the case, the version of the driver downloaded won\'t match the output of\n"You are currently running {user_driver} version: " above.\n\nTo see other drivers you can use (and other options), run:\n\nimport yt_videos_list\nhelp(yt_videos_list)\n' + '*' * 81)
 
     @staticmethod
     def no_new_videos_found(pause_time):

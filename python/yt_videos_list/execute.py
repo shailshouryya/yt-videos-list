@@ -118,7 +118,7 @@ def logic(channel, channel_type, file_name, txt, csv, markdown, reverse_chronolo
    driver = open_user_driver()
   except:
    show_user_how_to_set_up_selenium()
-   print(common_message.unable_to_update_driver_automatically)
+   common_message.display_unable_to_update_driver_automatically(user_driver)
    return
  with driver:
   print(f'\n\n\nNow scraping {url} using the {user_driver}driver:')
