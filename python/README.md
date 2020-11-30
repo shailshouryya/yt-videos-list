@@ -165,6 +165,12 @@ There are a number of optional arguments you can specify during the instantiatio
 </details>
 
 <details>
+<summary><b>Stargazers Over Time</b></summary>
+
+[![Stargazers over time](https://starchart.cc/Shail-Shouryya/yt_videos_list.svg)](https://starchart.cc/Shail-Shouryya/yt_videos_list)
+</details>
+
+<details>
   <summary><b>Usage Statistics</b></summary>
 
 - [PePy](https://pepy.tech/project/yt-videos-list)
