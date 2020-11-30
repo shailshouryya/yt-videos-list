@@ -1,4 +1,11 @@
 # Python Quick Start
+
+<p align="center">
+  <a href="https://docs.python.org/3/index.html">    <img src="https://img.shields.io/badge/python-3.6%2B-blue"/></a>
+  <a href="https://www.python.org/dev/peps/pep-0008"><img src="https://img.shields.io/badge/code%20style-PEP8-yellow.svg"/></a>
+  <a href="https://codebeat.co/projects/github-com-shail-shouryya-yt_videos_list-master"><img src="https://codebeat.co/badges/46b103ed-da79-4893-96af-ce95c9149532" alt="codebeat badge"/></a>
+</p>
+
 <details>
   <summary><b>Python 3.6+ setup (required if not already installed)</b></summary>
 
