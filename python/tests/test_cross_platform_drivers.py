@@ -1,9 +1,13 @@
 import os
-os.system('pip install .')
+
+from test_shared                          import create_test_cases, run_test_case, determine_path_slash
+formatted_pip = 'pip' if determine_path_slash() == '\\' else 'pip'
+os.system(f'{formatted_pip} install .')
+
 
 from yt_videos_list.download.windows_info import get_drive_letter
 from yt_videos_list.download.user_os_info import determine_user_os
-from test_shared                          import create_test_cases, run_test_case
+
 
 
 def remove_dependencies():

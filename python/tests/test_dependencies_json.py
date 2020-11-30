@@ -1,12 +1,14 @@
 import os
 import re
 import json
-os.system('pip install .')
+
+from test_shared                  import determine_path_slash
+PATH_SLASH    = determine_path_slash()
+formatted_pip = 'pip' if PATH_SLASH == '\\' else 'pip'
+os.system(f'{formatted_pip} install .')
+
 
 from yt_videos_list.notifications import Common
-from test_shared                  import determine_path_slash
-PATH_SLASH = determine_path_slash()
-
 
 def write_pseudo_json(drivers_dictionary):
     with open('temp.json', 'w', encoding='utf-8') as file:
