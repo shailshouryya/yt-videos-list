@@ -41,7 +41,7 @@ def delete_file(filepath, extension):
         os.remove(f'{filepath}.{extension}')
 
 def verify_update(driver, schafer5_url, test_file, full_file):
-    variations = [use_partial_csv_only, use_partial_txt_only, use_partial_md_only, use_partial_csv_txt_and_md]
+    variations = [use_no_partial_files, use_partial_csv_only, use_partial_txt_only, use_partial_md_only, use_partial_csv_txt_and_md]
     for create_file in variations:
         print(f'\nTESTING list_creator with list_creator.reverse_chronological set to {vars(driver)["reverse_chronological"]}')
         suffix    = 'reverse_chronological' if vars(driver)["reverse_chronological"] else 'chronological'
@@ -50,6 +50,9 @@ def verify_update(driver, schafer5_url, test_file, full_file):
         # verify calling the create_list_for() method updates the partial file properly
         compare_test_files_to_reference_files(full_file, file_name)
 
+def use_no_partial_files(test_file, suffix):
+    print('TESTING with NO pre-existing files AT ALL....')
+    delete_all_schafer5_files()
 
 def use_partial_txt_only(test_file, suffix):
     print('TESTING with a pre-existing txt file only (no pre-existing csv or md file)....')
