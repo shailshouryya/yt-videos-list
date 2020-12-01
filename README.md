@@ -1,7 +1,9 @@
 # General Overview
 
 <p align="center">
-  <a href="https://github.com/Shail-Shouryya/yt_videos_list/blob/master/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/Shail-Shouryya/yt_videos_list"></a>
+  <a href="https://github.com/Shail-Shouryya/yt_videos_list/blob/master/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/Shail-Shouryya/yt_videos_list?color=green"></a>
+  <a href="https://github.com/Shail-Shouryya/yt_videos_list/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/Shail-Shouryya/yt_videos_list?color=yellow"></a>
+  <a href="https://github.com/Shail-Shouryya/yt_videos_list/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/Shail-Shouryya/yt_videos_list?color=blue"></a>
 </p>
 
 This package provides a quick, simple way to create a list of all videos posted to any YouTube channel by providing just the URL to that channel's videos. Follow the link to the API in the language you want to work in from the ***API guides*** section below.
