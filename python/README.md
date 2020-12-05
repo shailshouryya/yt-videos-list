@@ -168,6 +168,22 @@ There are a number of optional arguments you can specify during the instantiatio
 </details>
 
 <details>
+<summary><b>Cloning and running locally</b></summary>
+
+To clone the repository and install the most updated version of the package that may not yet be available on the latest release through [PyPI](pypi.org/project/yt-videos-list/), run:
+```
+git clone https://github.com/Shail-Shouryya/yt_videos_list.git
+
+cd yt_videos_list/python # MacOS/Linux
+pip3 install .           # MacOS/Linux
+
+cd yt_videos_list\python # Windows
+pip install .            # Windows
+```
+
+</details>
+
+<details>
 <summary><b>Stargazers Over Time</b></summary>
 
 [![Stargazers over time](https://starchart.cc/Shail-Shouryya/yt_videos_list.svg)](https://starchart.cc/Shail-Shouryya/yt_videos_list)
