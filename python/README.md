@@ -184,6 +184,23 @@ pip install .            # Windows
 </details>
 
 <details>
+<summary><b>Running tests</b></summary>
+
+Make sure you're in the `yt_videos_list/python` directory, then run:
+```
+tests\run_tests.bat     # Windows
+####       Any shell on   MacOS/Linux
+bash tests/run_tests.sh # this works
+zsh  tests/run_tests.sh # this works
+csh  tests/run_tests.sh # this works
+# you can try other shells and
+# they should all work, since
+# there's no special syntax in
+# the run_tests.sh file
+```
+</details>
+
+<details>
 <summary><b>Stargazers Over Time</b></summary>
 
 [![Stargazers over time](https://starchart.cc/Shail-Shouryya/yt_videos_list.svg)](https://starchart.cc/Shail-Shouryya/yt_videos_list)
