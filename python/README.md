@@ -191,10 +191,13 @@ Make sure you're in the `yt_videos_list/python` directory, then run:
 tests\run_tests.bat     # Windows
 ####       Any shell on   MacOS/Linux
 bash tests/run_tests.sh # this works
-zsh  tests/run_tests.sh # this works
 csh  tests/run_tests.sh # this works
+dash tests/run_tests.sh # this works
+ksh  tests/run_tests.sh # this also works
+tcsh tests/run_tests.sh # this works too
+zsh  tests/run_tests.sh # this works as well
 # you can try other shells and
-# they should all work, since
+# they should work too, since
 # there's no special syntax in
 # the run_tests.sh file
 ```
