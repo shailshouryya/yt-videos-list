@@ -14,11 +14,11 @@
 
 This package uses [f-strings](https://cito.github.io/blog/f-strings/) (more [here](https://realpython.com/python-f-strings/)), and so requires Python 3.6+.
 
-If you have an older version of Python, you can download Python 3.8.2 (follow links below) and follow the instructions to set up Python for your machine. If you want to install a different version, visit the [Python Downloads page](https://www.python.org/downloads/) and select the version you want.
-- [macOS 64-bit installer](https://www.python.org/ftp/python/3.8.2/python-3.8.2-macosx10.9.pkg)
-- [Windows x86-64 executable installer](https://www.python.org/ftp/python/3.8.2/python-3.8.2-amd64.exe)
-- [Windows x86 executable installer](https://www.python.org/ftp/python/3.8.2/python-3.8.2.exe)
-- [Gzipped source tarball](https://www.python.org/ftp/python/3.8.2/Python-3.8.2.tgz) (most useful for Linux)
+If you have an older version of Python, you can download Python 3.9.1 (follow links below) and follow the instructions to set up Python for your machine. If you want to install a different version, visit the [Python Downloads page](https://www.python.org/downloads/) and select the version you want.
+- [macOS 64-bit installer](https://www.python.org/ftp/python/3.9.1/python-3.9.1-macosx10.9.pkg)
+- [Windows x86-64 executable installer](https://www.python.org/ftp/python/3.9.1/python-3.9.1-amd64.exe)
+- [Windows x86 executable installer](https://www.python.org/ftp/python/3.9.1/python-3.9.1.exe)
+- [Gzipped source tarball](https://www.python.org/ftp/python/3.9.1/Python-3.9.1.tgz) (most useful for Linux)
 </details>
 
 <details>
