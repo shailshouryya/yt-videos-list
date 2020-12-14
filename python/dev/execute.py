@@ -128,8 +128,7 @@ def logic(channel, channel_type, file_name, txt, csv, markdown, reverse_chronolo
             return file_name.strip('.csv').strip('.txt').strip('.md')
         else:
             channel_name = driver.find_element_by_xpath("//yt-formatted-string[@class='style-scope ytd-channel-name']").text.replace(' ', '')
-            suffix       = 'reverse_chronological' if reverse_chronological else 'chronological'
-            suffix      += '_videos_list'
+            suffix       = 'reverse_chronological_videos_list' if reverse_chronological else 'chronological_videos_list'
             return f'{channel_name}_{suffix}'
 
 

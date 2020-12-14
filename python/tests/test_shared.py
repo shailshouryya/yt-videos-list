@@ -44,8 +44,7 @@ def run_test_case(list_creator):
 
 
 def delete_all_schafer5_files():
-    for suffix in ['reverse_chronological', 'chronological']:
-        suffix  += '_videos_list'
+    for suffix in ['reverse_chronological_videos_list', 'chronological_videos_list']:
         schafer5 = f'CoreySchafer_{suffix}'
         delete_file(schafer5, 'txt')
         delete_file(schafer5, 'csv')
@@ -60,7 +59,7 @@ def verify_update(driver, schafer5_url, test_file, full_file):
     variations = [use_no_partial_files, use_partial_csv_only, use_partial_txt_only, use_partial_md_only, use_partial_csv_txt_and_md]
     for create_file in variations:
         print(f'\nTESTING list_creator with list_creator.reverse_chronological set to {vars(driver)["reverse_chronological"]}')
-        suffix    = 'reverse_chronological' if vars(driver)["reverse_chronological"] else 'chronological'
+        suffix    = 'reverse_chronological_videos_list' if vars(driver)["reverse_chronological"] else 'chronological_videos_list'
         create_file(test_file, suffix) # the file this function creates should be the SAME as the returned string to the file_name variable in the next line
         file_name = driver.create_list_for(schafer5_url)
         # verify calling the create_list_for() method updates the partial file properly
@@ -92,7 +91,6 @@ def use_partial_csv_txt_and_md(test_file, suffix):
     create_partial_file(test_file, suffix, 'md' )
 
 def create_partial_file(test_file, suffix, extension):
-    suffix += '_videos_list'
     shutil.copy(f'{test_file}.{extension}', f'CoreySchafer_{suffix}.{extension}')
 
 
