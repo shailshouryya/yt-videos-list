@@ -12,6 +12,21 @@ def determine_path_slash():
     else:                                return '/'
 
 
+def run_tests_for(browsers_list):
+    browsers   = browsers_list
+    test_cases = create_test_cases(browsers)
+    for test_case in test_cases:
+        # each test_case is a ListCreator instance with
+        # reverse_chronological set to True or False
+        # for EACH driver in the browsers_list,
+        # and within EACH test case,
+        # there are 5 variations to test - see
+        # the list object "variations"
+        # in verify_update() for more details
+        run_test_case(test_case)
+        print('Moving on to the next driver...\n' + '⏬ '*11)
+
+
 def create_test_cases(browsers):
     return [
         ListCreator(driver=browser, reverse_chronological=is_reverse_chronological)

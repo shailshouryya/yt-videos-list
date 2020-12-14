@@ -1,13 +1,9 @@
-from test_shared import create_test_cases, run_test_case
+from test_shared import run_tests_for
 
 
 def main():
     browsers   = ['safari']
-    test_cases = create_test_cases(browsers)
-
-    for test_case in test_cases:
-        run_test_case(test_case)
-        print('Moving on to the next driver...\n' + '⏬ '*11)
+    run_tests_for(browsers)
 
 
 if __name__ == '__main__':

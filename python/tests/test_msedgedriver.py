@@ -1,12 +1,9 @@
-from test_shared import create_test_cases, run_test_case
+from test_shared import run_tests_for
 
 
 def main():
     browsers   = ['edge']
-    test_cases = create_test_cases(browsers)
-
-    for test_case in test_cases:
-        run_test_case(test_case)
+    run_tests_for(browsers)
 
 
 if __name__ == '__main__':

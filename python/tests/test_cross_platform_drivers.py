@@ -1,6 +1,6 @@
 import os
 
-from test_shared                          import create_test_cases, run_test_case, determine_path_slash
+from test_shared                          import run_tests_for, determine_path_slash
 formatted_pip = 'pip' if determine_path_slash() == '\\' else 'pip'
 os.system(f'{formatted_pip} install .')
 
@@ -32,13 +32,9 @@ def remove_dependencies():
 
 
 def main():
-    browsers   = ['firefox', 'opera', 'chrome', 'brave']
-    test_cases = create_test_cases(browsers)
-
     remove_dependencies()
-    for test_case in test_cases:
-        run_test_case(test_case)
-        print('Moving on to the next driver...\n' + '⏬ '*11)
+    browsers   = ['firefox', 'opera', 'chrome', 'brave']
+    run_tests_for(browsers)
 
 
 # add these later
