@@ -112,12 +112,13 @@ def logic(channel, channel_type, file_name, txt, csv, markdown, reverse_chronolo
  program_start    = time.perf_counter()
  try:
   driver = open_user_driver()
- except selenium.common.exceptions.WebDriverException as err:
-  common_message.display_selenium_dependency_error(err)
+ except selenium.common.exceptions.WebDriverException as error_message:
+  common_message.display_selenium_dependency_error(error_message)
   try:
    download_all()
    driver = open_user_driver()
-  except:
+  except selenium.common.exceptions.WebDriverException as error_message:
+   common_message.display_selenium_dependency_update_error(error_message)
    show_user_how_to_set_up_selenium()
    common_message.display_unable_to_update_driver_automatically(user_driver)
    return

@@ -145,14 +145,15 @@ def logic(channel, channel_type, file_name, txt, csv, markdown, reverse_chronolo
     program_start       = time.perf_counter()
     try:
         driver = open_user_driver()
-    except selenium.common.exceptions.WebDriverException as err:
+    except selenium.common.exceptions.WebDriverException as error_message:
         # selenium.common.exceptions.WebDriverException: Message: 'BROWSERdriver' executable needs to be in PATH. Please see https://................
         # for some reason this also catches selenium.common.exceptions.SessionNotCreatedException: Message: session not created: This version of BROWSERDriver only supports BROWSER version ##
-        common_message.display_selenium_dependency_error(err)
+        common_message.display_selenium_dependency_error(error_message)
         try:
             download_all()
             driver = open_user_driver()
-        except: # could not download the correct Selenium driver based on the user's OS and specified driver
+        except selenium.common.exceptions.WebDriverException as error_message: # could not download the correct Selenium driver based on the user's OS and specified driver
+            common_message.display_selenium_dependency_update_error(error_message)
             show_user_how_to_set_up_selenium()
             common_message.display_unable_to_update_driver_automatically(user_driver)
             return

@@ -273,6 +273,9 @@ class Common:
     def display_selenium_dependency_error(error_message):
         print(f'\n\n\n\n\n\n\nThere was an error while trying to open up the remote selenium instance. The exact error was:\n{error_message}\nDon\'t worry though, this is an easy fix!')
     @staticmethod
+    def display_selenium_dependency_update_error(error_message):
+        print(f'Could not automatically update selenium dependencies! For further debugging, this was the exact error message:\n{error_message}')
+    @staticmethod
     def tell_user_to_download_driver(user_driver):
         print('\n' * 25 + '=' * 130)
         print(f'It looks like you don\'t have the correct Selenium dependency set up to run this program using the remote {user_driver}driver.\nThe version of your {user_driver.title()} browser - usually found by going to {user_driver.title()} -> \"About browser\" in the menu bar within a {user_driver.title()} window - should match the comment for the corresponding command.\nPlease download it using the relevant command from the list of commands below.\n')
