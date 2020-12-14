@@ -45,7 +45,8 @@ def run_test_case(list_creator):
 
 def delete_all_schafer5_files():
     for suffix in ['reverse_chronological', 'chronological']:
-        schafer5 = f'CoreySchafer_videos_list_{suffix}'
+        suffix  += '_videos_list'
+        schafer5 = f'CoreySchafer_{suffix}'
         delete_file(schafer5, 'txt')
         delete_file(schafer5, 'csv')
         delete_file(schafer5, 'md' )
@@ -91,7 +92,8 @@ def use_partial_csv_txt_and_md(test_file, suffix):
     create_partial_file(test_file, suffix, 'md' )
 
 def create_partial_file(test_file, suffix, extension):
-    shutil.copy(f'{test_file}.{extension}', f'CoreySchafer_videos_list_{suffix}.{extension}')
+    suffix += '_videos_list'
+    shutil.copy(f'{test_file}.{extension}', f'CoreySchafer_{suffix}.{extension}')
 
 
 def compare_test_files_to_reference_files(full_file, file_name):
