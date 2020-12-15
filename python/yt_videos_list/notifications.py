@@ -238,10 +238,10 @@ class Common:
     @classmethod
     def format_windows_download(cls, url, driver):
         drive = get_drive_letter()
-        if   driver == 'operadriver': driver_specific_command = fr'-C {drive}:\Windows {cls.strip_component} && del {drive}:\Windows\sha512_sum'
-        elif driver == 'bravedriver': driver_specific_command = fr'-O > {drive}:\Windows\bravedriver.exe {cls.strip_component}'
-        else:                         driver_specific_command = fr'-C {drive}:\Windows'
-        return fr'curl -SL --ssl-no-revoke {url} -o {drive}:\Windows\{driver} && tar -xzvf {drive}:\Windows\{driver} {driver_specific_command} && del {drive}:\Windows\{driver}' + '\n'
+        if   driver == 'operadriver': driver_specific_command = rf'-C {drive}:\Windows {cls.strip_component} && del {drive}:\Windows\sha512_sum'
+        elif driver == 'bravedriver': driver_specific_command = rf'-O > {drive}:\Windows\bravedriver.exe {cls.strip_component}'
+        else:                         driver_specific_command = rf'-C {drive}:\Windows'
+        return rf'curl -SL --ssl-no-revoke {url} -o {drive}:\Windows\{driver} && tar -xzvf {drive}:\Windows\{driver} {driver_specific_command} && del {drive}:\Windows\{driver}' + '\n'
     @staticmethod
     def display_browser_found_information(browser, full_version_number):
         print(f'\nFound an installed version of {browser}.\nYou are currently running {browser} version: {full_version_number}')
