@@ -61,11 +61,12 @@ def create_test_cases(browsers):
 
 
 def run_test_case(list_creator):
-    path_slash = determine_path_slash()
-    schafer5_url = 'youtube.com/user/schafer5'
+    path_slash               = determine_path_slash()
+    schafer5_url             = 'youtube.com/user/schafer5'
+    is_reverse_chronological = getattr(list_creator, 'reverse_chronological')
     delete_all_schafer5_files()
-    if getattr(list_creator, 'reverse_chronological'): verify_update(list_creator, schafer5_url, f'tests{path_slash}partial_schafer5_reverse_chronological', f'tests{path_slash}full_schafer5_reverse_chronological')
-    else:                                              verify_update(list_creator, schafer5_url, f'tests{path_slash}partial_schafer5_chronological',         f'tests{path_slash}full_schafer5_chronological')
+    if is_reverse_chronological: verify_update(list_creator, schafer5_url, f'tests{path_slash}partial_schafer5_reverse_chronological', f'tests{path_slash}full_schafer5_reverse_chronological')
+    else:                        verify_update(list_creator, schafer5_url, f'tests{path_slash}partial_schafer5_chronological',         f'tests{path_slash}full_schafer5_chronological')
 
 
 def delete_all_schafer5_files():
@@ -83,8 +84,10 @@ def delete_file(filepath, extension):
 def verify_update(driver, schafer5_url, test_file, full_file):
     variations = [use_no_partial_files, use_partial_csv_only, use_partial_txt_only, use_partial_md_only, use_partial_csv_txt_and_md]
     for create_file in variations:
-        print(f'\nTESTING list_creator with list_creator.reverse_chronological set to {vars(driver)["reverse_chronological"]}')
-        suffix    = 'reverse_chronological_videos_list' if vars(driver)["reverse_chronological"] else 'chronological_videos_list'
+        is_reverse_chronological = vars(driver)["reverse_chronological"]
+        print(f'\nTESTING list_creator with list_creator.reverse_chronological set to {is_reverse_chronological}')
+        if is_reverse_chronological: suffix = 'reverse_chronological_videos_list'
+        else:                        suffix = 'chronological_videos_list'
         create_file(test_file, suffix) # the file this function creates should be the SAME as the returned string to the file_name variable in the next line
         file_name = driver.create_list_for(schafer5_url)
         # verify calling the create_list_for() method updates the partial file properly
