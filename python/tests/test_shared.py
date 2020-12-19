@@ -1,7 +1,9 @@
 import os
 import sys
+import time
 import shutil
 import hashlib
+import threading
 
 from yt_videos_list                       import ListCreator
 from yt_videos_list.download.user_os_info import determine_user_os
@@ -15,7 +17,9 @@ def determine_path_slash():
 def run_tests_for(browsers_list):
     browsers   = browsers_list
     test_cases = create_test_cases(browsers)
-    for test_case in test_cases:
+    total      = len(test_cases)
+    current    = 0
+    while current < total:
         # each test_case is a ListCreator instance with
         # reverse_chronological set to True or False
         # for EACH driver in the browsers_list,
@@ -23,8 +27,29 @@ def run_tests_for(browsers_list):
         # there are 5 variations to test - see
         # the list object "variations"
         # in verify_update() for more details
-        run_test_case(test_case)
-        print('Moving on to the next driver...\n' + '⏬ '*11)
+        if threading.active_count() - 1 == 0:
+            # there are no active test_case threads
+            thread_1_case = test_cases[current]
+            test_case_thread_1 = threading.Thread(target=run_test_case, args=(thread_1_case,))
+            test_case_thread_1.start()
+            current += 1
+        if current == 1:
+            # wait 30 seconds to allow all selenium webdriver dependencies to download
+            time.sleep(30)
+        if threading.active_count() - 1 == 1:
+            # there's only 1 active test case thread
+            thread_2_case = test_cases[current]
+            test_case_thread_2 = threading.Thread(target=run_test_case, args=(thread_2_case,))
+            test_case_thread_2.start()
+            current += 1
+        while threading.active_count() - 1 == 2:
+            # there are 2 active test_case threads
+            time.sleep(3)
+        if threading.active_count() - 1 < 2:
+            if not test_case_thread_1.is_alive(): finished_case = thread_1_case
+            else:                                 finished_case = thread_2_case
+            print(f'Finished testing {finished_case}!')
+            print('Moving on to the next driver...\n' + '⏬ '*11)
 
 
 def create_test_cases(browsers):
