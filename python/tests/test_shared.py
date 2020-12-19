@@ -42,7 +42,7 @@ def run_tests_for(browsers_list):
             test_case_thread_2 = threading.Thread(target=run_test_case, args=(thread_2_case,))
             test_case_thread_2.start()
             current += 1
-        while threading.active_count() - 1 == 2:
+        while threading.active_count() - 1 == 2 and current < total:
             # there are 2 active test_case threads
             time.sleep(3)
         if threading.active_count() - 1 < 2:
