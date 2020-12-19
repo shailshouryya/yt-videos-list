@@ -87,7 +87,7 @@ def verify_update(driver, schafer5_url, test_file, full_file):
         if is_reverse_chronological: suffix = 'reverse_chronological_videos_list'
         else:                        suffix = 'chronological_videos_list'
         create_file(test_file, suffix) # the file this function creates should be the SAME as the returned string to the file_name variable in the next line
-        file_name = driver.create_list_for(schafer5_url)
+        file_name = driver.create_list_for(schafer5_url, log_file=f'{suffix}.log')
         # verify calling the create_list_for() method updates the partial file properly
         compare_test_files_to_reference_files(full_file, file_name)
 
