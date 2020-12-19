@@ -1,4 +1,5 @@
 import functools
+import logging
 import time
 import csv
 import os
@@ -9,19 +10,19 @@ def scroll_down(current_elements_count, driver, scroll_pause_time):
  driver.execute_script('window.scrollBy(0, 50000);')
  time.sleep(scroll_pause_time)
  new_elements_count = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
- print(f'Found {new_elements_count} videos...')
+ logging.info(f'Found {new_elements_count} videos...')
  if new_elements_count == current_elements_count:
-  print(common_message.no_new_videos_found(scroll_pause_time * 2))
+  logging.info(common_message.no_new_videos_found(scroll_pause_time * 2))
   time.sleep(scroll_pause_time * 2)
   new_elements_count = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
   if new_elements_count == current_elements_count:
-   print('Reached end of page!')
+   logging.info('Reached end of page!')
  return new_elements_count
 def save_elements_to_list(driver, start_time, scroll_pause_time, url):
  elements   = driver.find_elements_by_xpath('//*[@id="video-title"]')
  end_time   = time.perf_counter()
  total_time = end_time - start_time - scroll_pause_time
- print(f'It took {total_time} seconds to find all {len(elements)} videos from {url}{NEWLINE}')
+ logging.info(f'It took {total_time} seconds to find all {len(elements)} videos from {url}{NEWLINE}')
  return elements
 def scroll_to_bottom(url, driver, scroll_pause_time):
  start_time = time.perf_counter()
@@ -40,18 +41,18 @@ def time_writer_function(writer_function):
   start_time    = time.perf_counter()
   extension     = writer_function.__name__.split('_')[-1]
   timestamp     = kwargs.get('timestamp', 'undeteremined_start_time')
-  print(f'Opening a temp {extension} file and writing video information to the file....')
+  logging.info(f'Opening a temp {extension} file and writing video information to the file....')
   file_name, videos_written = writer_function(*args, **kwargs)
   end_time      = time.perf_counter()
   total_time    = end_time - start_time
   temp_file     = f'temp_{file_name}_{timestamp}.{extension}'
   final_file    = f'{file_name}.{extension}'
-  print(f'Finished writing to'.ljust(38) + f'{temp_file}')
-  print(f'{videos_written} videos written to'.ljust(38) + f'{temp_file}')
-  print(f'Closing'.ljust(38) + f'{temp_file}')
+  logging.info(f'Finished writing to'.ljust(38) + f'{temp_file}')
+  logging.info(f'{videos_written} videos written to'.ljust(38) + f'{temp_file}')
+  logging.info(f'Closing'.ljust(38) + f'{temp_file}')
   os.replace(temp_file, final_file)
-  print(f'Successfully completed write, renamed {temp_file} to {final_file}')
-  print(f'It took {total_time} seconds to write all {videos_written} videos to {final_file}{NEWLINE}')
+  logging.info(f'Successfully completed write, renamed {temp_file} to {final_file}')
+  logging.info(f'It took {total_time} seconds to write all {videos_written} videos to {final_file}{NEWLINE}')
  return wrapper_timer
 def prepare_output(list_of_videos, reverse_chronological):
  total_videos = len(list_of_videos)
@@ -67,7 +68,7 @@ def txt_writer(file, markdown_formatting, reverse_chronological, list_of_videos,
  for selenium_element in list_of_videos if reverse_chronological else list_of_videos[::-1]:
   video_number, total_writes = write.txt_entry(file, markdown_formatting, selenium_element, NEWLINE, spacing, video_number, incrementer, total_writes)
   if total_writes % 250 == 0:
-   print(f'{total_writes} videos written to {file.name}...')
+   logging.info(f'{total_writes} videos written to {file.name}...')
 @time_writer_function
 def write_to_txt(list_of_videos, file_name, reverse_chronological, timestamp):
  total_videos, total_writes, video_number, incrementer = prepare_output(list_of_videos, reverse_chronological)
@@ -94,5 +95,5 @@ def write_to_csv(list_of_videos, file_name, reverse_chronological, timestamp):
   for selenium_element in list_of_videos if reverse_chronological else list_of_videos[::-1]:
    video_number, total_writes = write.csv_entry(writer, selenium_element, video_number, incrementer, total_writes)
    if total_writes % 250 == 0:
-    print(f'{total_writes} videos written to {csv_file.name}...')
+    logging.info(f'{total_writes} videos written to {csv_file.name}...')
  return file_name, total_videos

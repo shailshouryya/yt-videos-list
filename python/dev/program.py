@@ -1,5 +1,6 @@
 import os
 import time
+import logging
 
 from .              import file
 from .notifications import Common
@@ -15,7 +16,7 @@ def determine_action(url, driver, scroll_pause_time, reverse_chronological, file
     if txt_exists and csv_exists and md_exists: videos_list = file.update_file.scroll_to_old_videos(url, driver, scroll_pause_time, txt_exists, csv_exists, md_exists, file_name)
     else:                                       videos_list = file.create_file.scroll_to_bottom    (url, driver, scroll_pause_time)
     if len(videos_list) == 0:
-        print(COMMON_MESSAGE.no_videos_found)
+        logging.error(COMMON_MESSAGE.no_videos_found)
         return
     if txt:
         if txt_exists: file.update_file.write_to_txt(videos_list, file_name, reverse_chronological, timestamp=str(time.time()).replace('.', '-'))

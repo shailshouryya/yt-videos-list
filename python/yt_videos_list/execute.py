@@ -1,5 +1,6 @@
 import sys
 import time
+import logging
 import selenium
 from selenium import webdriver
 from . import program
@@ -7,7 +8,7 @@ from .download.selenium_webdriver_dependencies import download_all
 from .download.windows_info     import get_drive_letter
 from .download.user_os_info     import determine_user_os
 from .notifications       import Common, ModuleMessage, ScriptMessage
-def logic(channel, channel_type, file_name, txt, csv, markdown, reverse_chronological, headless, scroll_pause_time, user_driver, execution_type):
+def logic(channel, channel_type, file_name, log_file, txt, csv, markdown, reverse_chronological, headless, scroll_pause_time, user_driver, execution_type):
  common_message = Common()
  module_message = ModuleMessage()
  script_message = ScriptMessage()
@@ -127,7 +128,19 @@ def logic(channel, channel_type, file_name, txt, csv, markdown, reverse_chronolo
   driver.set_window_size(780, 800)
   driver.set_window_position(0, 0)
   file_name = determine_file_name()
+  if log_file:
+   log = logging.getLogger()
+   log.setLevel(logging.INFO)
+   handler = logging.FileHandler(log_file)
+   handler.setLevel(logging.DEBUG)
+   formatter = logging.Formatter(fmt='%(asctime)s %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
+   handler.setFormatter(formatter)
+   log.addHandler(handler)
+   logging.info('*' * 100)
+   logging.info(f'Starting new job at {time.asctime()}')
   program.determine_action(url, driver, scroll_pause_time, reverse_chronological, file_name, txt, csv, markdown)
+  if log_file:
+   log.handlers.clear()
  program_end = time.perf_counter()
  total_time  = program_end - program_start
  print(f'This program took {total_time} seconds to complete.\n')

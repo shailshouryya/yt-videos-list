@@ -1,4 +1,5 @@
 import functools
+import logging
 import time
 import csv
 import re
@@ -13,7 +14,7 @@ def scroll_down(driver, scroll_pause_time):
  driver.execute_script('window.scrollBy(0, 50000);')
  time.sleep(scroll_pause_time * 2)
  new_elements_count = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
- print(f'Found {new_elements_count} videos...')
+ logging.info(f'Found {new_elements_count} videos...')
  if driver.find_elements_by_xpath('//*[@id="video-title"]')[-1].get_attribute("href") in VISITED_VIDEOS:
   return True
  return False
@@ -21,7 +22,7 @@ def save_elements_to_list(driver, start_time, scroll_pause_time, url):
  elements = driver.find_elements_by_xpath('//*[@id="video-title"]')
  end_time = time.perf_counter()
  total_time = end_time - start_time - scroll_pause_time
- print(f'It took {total_time} seconds to find {len(elements)} videos from {url}{NEWLINE}')
+ logging.info(f'It took {total_time} seconds to find {len(elements)} videos from {url}{NEWLINE}')
  return elements
 def scroll_to_old_videos(url, driver, scroll_pause_time, txt_exists, csv_exists, md_exists, file_name):
  global VISITED_VIDEOS, STORED_IN_TXT, STORED_IN_CSV, STORED_IN_MD
@@ -32,7 +33,7 @@ def scroll_to_old_videos(url, driver, scroll_pause_time, txt_exists, csv_exists,
  if csv_exists: STORED_IN_CSV = store_already_written_videos(file_name, 'csv')
  if md_exists:  STORED_IN_MD =  store_already_written_videos(file_name, 'md' )
  VISITED_VIDEOS = STORED_IN_TXT.intersection(STORED_IN_CSV).intersection(STORED_IN_MD)
- print(f'Detected an existing file with the name {file_name} in this directory, checking for new videos to update {file_name}....')
+ logging.info(f'Detected an existing file with the name {file_name} in this directory, checking for new videos to update {file_name}....')
  start_time    = time.perf_counter()
  found_old_videos = False
  while found_old_videos is False:
@@ -44,19 +45,19 @@ def time_writer_function(writer_function):
   start_time             = time.perf_counter()
   extension           = writer_function.__name__.split('_')[-1]
   timestamp           = kwargs.get('timestamp', 'undeteremined_start_time')
-  print(f'Opening a temp {extension} file and writing ***NEW*** video information to the file....')
+  logging.info(f'Opening a temp {extension} file and writing ***NEW*** video information to the file....')
   file_name, new_videos_written, reverse_chronological = writer_function(*args, **kwargs)
   end_time            = time.perf_counter()
   total_time             = end_time - start_time
   temp_file           = f'temp_{file_name}_{timestamp}.{extension}'
   final_file             = f'{file_name}.{extension}'
-  print(f'Finished writing to'.ljust(38) + f'{temp_file}')
-  print(f'{new_videos_written} ***NEW*** videos written to'.ljust(38) + f'{temp_file}')
-  print(f'Closing'.ljust(38) + f'{temp_file}')
+  logging.info(f'Finished writing to'.ljust(38) + f'{temp_file}')
+  logging.info(f'{new_videos_written} ***NEW*** videos written to'.ljust(38) + f'{temp_file}')
+  logging.info(f'Closing'.ljust(38) + f'{temp_file}')
   if reverse_chronological: os.replace(temp_file, final_file)
   else:      os.remove(temp_file)
-  print(f'Successfully completed write, renamed {temp_file} to {final_file}')
-  print(f'It took {total_time} seconds to write the {new_videos_written} ***NEW*** videos to the pre-existing {final_file} {NEWLINE}')
+  logging.info(f'Successfully completed write, renamed {temp_file} to {final_file}')
+  logging.info(f'It took {total_time} seconds to write the {new_videos_written} ***NEW*** videos to the pre-existing {final_file} {NEWLINE}')
  return wrapper_timer
 def find_number_of_new_videos(list_of_videos, videos_set):
  visited_on_page = {selenium_element.get_attribute("href") for selenium_element in list_of_videos}
@@ -77,7 +78,7 @@ def txt_writer(new_file, old_file, visited_videos, markdown_formatting, reverse_
   else:
    video_number, total_writes = write.txt_entry(new_file, markdown_formatting, selenium_element, NEWLINE, spacing, video_number, incrementer, total_writes)
    if total_writes % 250 == 0:
-    print(f'{total_writes} new videos written to {new_file.name}...')
+    logging.info(f'{total_writes} new videos written to {new_file.name}...')
  if reverse_chronological:
   old_file.seek(0)
   for line in old_file: new_file.write(line)
@@ -123,7 +124,7 @@ def write_to_csv(list_of_videos, file_name, reverse_chronological, timestamp):
    else:
     video_number, total_writes = write.csv_entry(writer, selenium_element, video_number, incrementer, total_writes)
     if total_writes % 250 == 0:
-     print(f'{total_writes} videos written to {temp_file.name}...')
+     logging.info(f'{total_writes} videos written to {temp_file.name}...')
   if reverse_chronological:
    old_file.seek(0)
    old_file.readline()

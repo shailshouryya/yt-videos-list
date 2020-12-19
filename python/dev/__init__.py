@@ -174,7 +174,7 @@ class ListCreator:
         '''
 
 
-    def create_list_for(self, url=None, file_name=None, channel=None, channel_type=None):
+    def create_list_for(self, url=None, file_name=None, channel=None, channel_type=None, log_file=None):
         '''
         The create_list_for() method creates a list using the arguments specified during instantiation of the ListCreator object.
         You need to specify just the url to the channel you want to scrape.
@@ -193,4 +193,4 @@ class ListCreator:
             raise RuntimeError(Common().missing_url + ModuleMessage().url_argument_usage)
         _execution_type     = 'module'
         instance_attributes = (self.txt, self.csv, self.markdown, self.reverse_chronological, self.headless, self.scroll_pause_time, self.driver)
-        return execute.logic(channel, channel_type, file_name, *instance_attributes, _execution_type)
+        return execute.logic(channel, channel_type, file_name, log_file, *instance_attributes, _execution_type)
