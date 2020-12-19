@@ -64,17 +64,15 @@ def run_test_case(list_creator):
     path_slash               = determine_path_slash()
     schafer5_url             = 'youtube.com/user/schafer5'
     is_reverse_chronological = getattr(list_creator, 'reverse_chronological')
-    delete_all_schafer5_files()
-    if is_reverse_chronological: verify_update(list_creator, schafer5_url, f'tests{path_slash}partial_schafer5_reverse_chronological', f'tests{path_slash}full_schafer5_reverse_chronological')
-    else:                        verify_update(list_creator, schafer5_url, f'tests{path_slash}partial_schafer5_chronological',         f'tests{path_slash}full_schafer5_chronological')
+    if is_reverse_chronological: delete_all_schafer5_files('reverse_chronological_videos_list'); verify_update(list_creator, schafer5_url, f'tests{path_slash}partial_schafer5_reverse_chronological', f'tests{path_slash}full_schafer5_reverse_chronological')
+    else:                        delete_all_schafer5_files('chronological_videos_list');         verify_update(list_creator, schafer5_url, f'tests{path_slash}partial_schafer5_chronological',         f'tests{path_slash}full_schafer5_chronological')
 
 
-def delete_all_schafer5_files():
-    for suffix in ['reverse_chronological_videos_list', 'chronological_videos_list']:
-        schafer5 = f'CoreySchafer_{suffix}'
-        delete_file(schafer5, 'txt')
-        delete_file(schafer5, 'csv')
-        delete_file(schafer5, 'md' )
+def delete_all_schafer5_files(suffix):
+    schafer5 = f'CoreySchafer_{suffix}'
+    delete_file(schafer5, 'txt')
+    delete_file(schafer5, 'csv')
+    delete_file(schafer5, 'md' )
 
 
 def delete_file(filepath, extension):
@@ -95,21 +93,21 @@ def verify_update(driver, schafer5_url, test_file, full_file):
 
 def use_no_partial_files(test_file, suffix):
     print('TESTING with NO pre-existing files AT ALL....')
-    delete_all_schafer5_files()
+    delete_all_schafer5_files(suffix)
 
 def use_partial_txt_only(test_file, suffix):
     print('TESTING with a pre-existing txt file only (no pre-existing csv or md file)....')
-    delete_all_schafer5_files()
+    delete_all_schafer5_files(suffix)
     create_partial_file(test_file, suffix, 'txt')
 
 def use_partial_csv_only(test_file, suffix):
     print('TESTING with a pre-existing csv file only (no pre-existing txt or md file)....')
-    delete_all_schafer5_files()
+    delete_all_schafer5_files(suffix)
     create_partial_file(test_file, suffix, 'csv')
 
 def use_partial_md_only(test_file, suffix):
     print('TESTING with a pre-existing md file only (no pre-existing txt or csv file)....')
-    delete_all_schafer5_files()
+    delete_all_schafer5_files(suffix)
     create_partial_file(test_file, suffix, 'md')
 
 def use_partial_csv_txt_and_md(test_file, suffix):
