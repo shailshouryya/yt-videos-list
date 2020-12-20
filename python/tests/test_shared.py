@@ -5,13 +5,9 @@ import shutil
 import hashlib
 import threading
 
+from determine import determine_path_slash
+
 from yt_videos_list                       import ListCreator
-from yt_videos_list.download.user_os_info import determine_user_os
-
-
-def determine_path_slash():
-    if determine_user_os() == 'windows': return '\\'
-    else:                                return '/'
 
 
 def run_tests_for(browsers_list):

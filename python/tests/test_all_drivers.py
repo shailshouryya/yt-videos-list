@@ -2,7 +2,7 @@ import test_cross_platform_drivers
 import test_safaridriver
 import test_msedgedriver
 
-from yt_videos_list.download.user_os_info import determine_user_os
+from determine import determine_user_os
 
 def main():
     test_cross_platform_drivers.main()

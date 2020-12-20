@@ -2,10 +2,15 @@ import os
 import re
 import json
 
-from test_shared                  import determine_path_slash
-PATH_SLASH    = determine_path_slash()
-formatted_pip = 'pip' if PATH_SLASH == '\\' else 'pip'
-os.system(f'{formatted_pip} install .')
+from determine import determine_user_os
+USER_OS = determine_user_os()
+if USER_OS == 'windows':
+    FORMATTED_PIP = 'pip'
+    PATH_SLASH    = '\\'
+else:
+    FORMATTED_PIP = 'pip3'
+    PATH_SLASH    = '/'
+os.system(f'{FORMATTED_PIP} install .')
 
 
 from yt_videos_list.notifications import Common

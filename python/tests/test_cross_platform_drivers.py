@@ -1,8 +1,11 @@
 import os
 
-from test_shared                          import run_tests_for, determine_path_slash
-formatted_pip = 'pip' if determine_path_slash() == '\\' else 'pip'
-os.system(f'{formatted_pip} install .')
+from determine import determine_user_os
+USER_OS       = determine_user_os()
+FORMATTED_PIP = 'pip' if USER_OS == 'windows' else 'pip3'
+os.system(f'{FORMATTED_PIP} install .')
+
+from test_shared                          import run_tests_for
 
 
 from yt_videos_list.download.windows_info import get_drive_letter

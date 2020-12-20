@@ -2,7 +2,7 @@ import os
 import re
 import shutil
 
-from tests.test_shared import determine_path_slash
+from tests.determine import determine_path_slash
 
 
 def clear_target_directory(target_directory):

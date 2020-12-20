@@ -1,7 +1,8 @@
 import os
 
+from determine      import determine_path_slash
+
 from yt_videos_list import ListCreator
-from test_shared import determine_path_slash
 
 
 def update_schafer5_chronological():
