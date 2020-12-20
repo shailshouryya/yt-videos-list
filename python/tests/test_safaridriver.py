@@ -1,3 +1,17 @@
+'''
+Test module for testing the selenium safaridriver.
+The safaridriver is currently only supported on
+macOS machines, so the `yt_videos_list` program
+should operate as expected on macOS machines,
+but exit with the following message on other
+systems:
+"Safari is probably not supported on {host} operating
+systems. In order for the safaridriver to run on a
+{host} OS, you will likely need to do many manual
+configurations. For this reason, this package does not
+provide built in support for safaridriver on a {host} OS."
+'''
+
 if __name__ == '__main__':
     import os
     from determine import determine_user_os
@@ -15,6 +29,16 @@ from test_shared import run_tests_for
 
 
 def main():
+    '''
+    Tests the selenium safaridriver on the host platform.
+    Program should operate as expected on macOS, but
+    terminate on other systems with the following:
+    "Safari is probably not supported on {host} operating
+    systems. In order for the safaridriver to run on a
+    {host} OS, you will likely need to do many manual
+    configurations. For this reason, this package does not
+    provide built in support for safaridriver on a {host} OS."
+    '''
     browsers   = ['safari']
     run_tests_for(browsers)
 
