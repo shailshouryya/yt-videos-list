@@ -137,7 +137,13 @@ def verify_update(driver, schafer5_url, test_file, full_file):
     to ensure content in the created output files match the
     content in the full reference files.
     '''
-    variations = [use_no_partial_files, use_partial_csv_only, use_partial_txt_only, use_partial_md_only, use_partial_csv_txt_and_md]
+    variations = [
+        use_no_partial_files,
+        use_partial_csv_only,
+        use_partial_txt_only,
+        use_partial_md_only,
+        use_partial_csv_txt_and_md
+        ]
     for create_file in variations:
         is_reverse_chronological = vars(driver)["reverse_chronological"]
         print(f'\nTESTING list_creator with list_creator.reverse_chronological set to {is_reverse_chronological}')
