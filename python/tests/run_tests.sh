@@ -1,4 +1,5 @@
 python3 minifier.py
+pip3 install .
 python3 tests/test_all_drivers.py
 python3 tests/test_dependencies_json.py
 
