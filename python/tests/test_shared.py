@@ -19,7 +19,6 @@ def run_tests_for(browsers_list):
     test_cases = create_test_cases(browsers)
     total      = len(test_cases)
     current    = 0
-    threads    = [False, False]
     while current < total:
         # each test_case is a ListCreator instance with
         # reverse_chronological set to True or False
@@ -28,38 +27,28 @@ def run_tests_for(browsers_list):
         # there are 5 variations to test - see
         # the list object "variations"
         # in verify_update() for more details
-        if threading.active_count() - 1 < 2:
-            # there are less than 2 active threads
-            # on the first pass, threads[0] will be a boolean and not a thread
-            # so check boolean value the first time, but every time after
-            # we should check to see if the thread is alive
-            if not threads[0] or not test_case_thread_1.is_alive():
-                thread_1_case      = test_cases[current]
-                test_case_thread_1 = threading.Thread(target=run_test_case, args=(thread_1_case,))
-                threads[0]         = test_case_thread_1
-                test_case_thread_1.start()
-                current += 1
-            # if thread 1 is still alive, then thread 2 must be inactive
-            # since we only have 2 spawned threads and thread 1 is still
-            # running
-            else:
-                thread_2_case      = test_cases[current]
-                test_case_thread_2 = threading.Thread(target=run_test_case, args=(thread_2_case,))
-                threads[1]         = test_case_thread_2
-                test_case_thread_2.start()
-                current += 1
-        if current == 1:
-            # wait 30 seconds to allow all selenium webdriver dependencies to download
+        if threading.active_count() - 1 == 0:
+            # the main thread counts as a thread, so we
+            # need to subtract 1 to determine the
+            # number of threads we've created
+            # manually
+            thread_1_case      = test_cases[current]
+            test_case_thread_1 = threading.Thread(target=run_test_case, args=(thread_1_case,))
+            test_case_thread_1.start()
+            current += 1
+            if current == 1:
+                # wait 30 seconds to allow all selenium webdriver dependencies to download
+                time.sleep(30)
+            thread_2_case      = test_cases[current]
+            test_case_thread_2 = threading.Thread(target=run_test_case, args=(thread_2_case,))
+            test_case_thread_2.start()
+            current += 1
+        while threading.active_count() - 1 != 0 and current < total:
+            # the threads are still running
             time.sleep(3)
-            continue
-        while threading.active_count() - 1 == 2 and current < total:
-            # there are 2 active test_case threads
-            time.sleep(3)
-        if threading.active_count() - 1 < 2:
-            if not test_case_thread_1.is_alive(): finished_case = thread_1_case
-            else:                                 finished_case = thread_2_case
-            print(f'Finished testing {finished_case}!')
-            print('Moving on to the next driver...\n' + '⏬ '*11)
+        print(f'Finished testing {[thread_1_case]}!')
+        print(f'Finished testing {[thread_2_case]}!')
+        print('Moving on to the next driver...\n' + '⏬ '*11)
 
 
 def create_test_cases(browsers):
