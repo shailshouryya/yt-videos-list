@@ -3,17 +3,20 @@ import re
 import json
 
 from determine import determine_user_os
-USER_OS = determine_user_os()
-if USER_OS == 'windows':
-    FORMATTED_PIP = 'pip'
-    PATH_SLASH    = '\\'
-else:
-    FORMATTED_PIP = 'pip3'
-    PATH_SLASH    = '/'
-os.system(f'{FORMATTED_PIP} install .')
-
+USER_OS    = determine_user_os()
+PATH_SLASH = '\\'if USER_OS == 'windows' else '/'
+if __name__ == '__main__':
+    if USER_OS == 'windows':
+        FORMATTED_PIP    = 'pip'
+        FORMATTED_PYTHON = 'python'
+    else:
+        FORMATTED_PIP    = 'pip3'
+        FORMATTED_PYTHON = 'python3'
+    os.system(f'{FORMATTED_PYTHON} minifier.py')
+    os.system(f'{FORMATTED_PIP}    install .')
 
 from yt_videos_list.notifications import Common
+
 
 def write_pseudo_json(drivers_dictionary):
     with open('temp.json', 'w', encoding='utf-8') as file:
