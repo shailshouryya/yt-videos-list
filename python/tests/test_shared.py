@@ -28,6 +28,7 @@ def run_tests_for(browsers_list):
     total      = len(test_cases)
     current    = 0
     while current < total:
+        print('enter')
         # each test_case is a ListCreator instance with
         # reverse_chronological set to True or False
         # for EACH driver in the browsers_list,
@@ -36,6 +37,7 @@ def run_tests_for(browsers_list):
         # the list object "variations"
         # in verify_update() for more details
         if threading.active_count() - 1 == 0:
+            print('UNO')
             # the main thread counts as a thread, so we
             # need to subtract 1 to determine the
             # number of threads we've created
@@ -44,18 +46,29 @@ def run_tests_for(browsers_list):
             test_case_thread_1 = threading.Thread(target=run_test_case, args=(thread_1_case,))
             test_case_thread_1.start()
             current += 1
-            if current == 1:
-                # wait 30 seconds to allow all selenium webdriver dependencies to download
-                time.sleep(30)
-            thread_2_case      = test_cases[current]
-            test_case_thread_2 = threading.Thread(target=run_test_case, args=(thread_2_case,))
-            test_case_thread_2.start()
-            current += 1
+            # safaridriver does not allow multi-threading;
+            # Could not create a session: The Safari instance is already paired with another WebDriver session.
+            if 'safari' not in browsers_list:
+                print('ONE')
+                if current == 1:
+                    # wait 30 seconds to allow all selenium webdriver dependencies to download
+                    time.sleep(30)
+                thread_2_case      = test_cases[current]
+                test_case_thread_2 = threading.Thread(target=run_test_case, args=(thread_2_case,))
+                test_case_thread_2.start()
+                current += 1
+        print('before')
+        time.sleep(35)
+        print('after')
         while threading.active_count() - 1 != 0 and current < total:
+            print('sleep')
             # the threads are still running
             time.sleep(3)
+        print('DOS')
         print(f'Finished testing {[thread_1_case]}!')
-        print(f'Finished testing {[thread_2_case]}!')
+        if 'safari' not in browsers_list:
+            print('TWO')
+            print(f'Finished testing {[thread_2_case]}!')
         print('Moving on to the next driver...\n' + '⏬ '*11)
 
 
