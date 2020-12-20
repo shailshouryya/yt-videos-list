@@ -77,8 +77,8 @@ def main():
 
     write_pseudo_json(drivers_dictionary)
     format_pseudo_json()
-    with open(f'..{PATH_SLASH}docs{PATH_SLASH}dependencies.json', 'w', encoding='utf-8') as ffinal:
-        json.dump(drivers_dictionary, ffinal, indent=4)
+    with open(f'..{PATH_SLASH}docs{PATH_SLASH}dependencies.json', 'w', encoding='utf-8') as json_file:
+        json.dump(drivers_dictionary, json_file, indent=4)
 
 
 if __name__ == '__main__':

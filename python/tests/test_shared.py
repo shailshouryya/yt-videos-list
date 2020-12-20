@@ -135,9 +135,9 @@ def verify_update(driver, schafer5_url, test_file, full_file):
         if is_reverse_chronological: suffix = 'reverse_chronological_videos_list'
         else:                        suffix = 'chronological_videos_list'
         create_file(test_file, suffix) # the file this function creates should be the SAME as the returned string to the file_name variable in the next line
-        file_name = driver.create_list_for(schafer5_url, log_file=f'{suffix}.log')
+        test_output_file = driver.create_list_for(schafer5_url, log_file=f'{suffix}.log')
         # verify calling the create_list_for() method updates the partial file properly
-        compare_test_files_to_reference_files(full_file, file_name)
+        compare_test_files_to_reference_files(full_file, test_output_file)
 
 def use_no_partial_files(test_file, suffix):
     '''
@@ -216,10 +216,10 @@ def create_partial_file(test_file, suffix, extension):
     shutil.copy(f'{test_file}.{extension}', f'CoreySchafer_{suffix}.{extension}')
 
 
-def compare_test_files_to_reference_files(full_file, file_name):
+def compare_test_files_to_reference_files(full_file, test_output_file):
     '''
-    Ensures the resulting test output file `file_name` contains
-    the exact same content as the reference `full_file` by
+    Ensures the resulting test output file `test_output_file`
+    contains the exact same content as the reference `full_file` by
     comparing the sha256 hash of both files. If the hashes match,
     the tests continue, but if the hashes don't match, the
     program exits by raising the `SystemExit` exception using
@@ -230,7 +230,7 @@ def compare_test_files_to_reference_files(full_file, file_name):
     more work to do. This is a known bug, and will be addressed in
     a future fix.
     '''
-    with open(f'{file_name}.txt', 'r', encoding='utf-8') as test_txt, open(f'{file_name}.csv', 'r', encoding='utf-8') as test_csv, open(f'{file_name}.md', 'r', encoding='utf-8') as test_md:
+    with open(f'{test_output_file}.txt', 'r', encoding='utf-8') as test_txt, open(f'{test_output_file}.csv', 'r', encoding='utf-8') as test_csv, open(f'{test_output_file}.md', 'r', encoding='utf-8') as test_md:
         current_txt = hashlib.sha256(test_txt.read().encode('utf-8')).hexdigest()
         current_csv = hashlib.sha256(test_csv.read().encode('utf-8')).hexdigest()
         current_md  = hashlib.sha256(test_md.read().encode ('utf-8')).hexdigest()
