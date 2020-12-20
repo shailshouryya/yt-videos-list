@@ -25,119 +25,119 @@ __source__               = 'https://github.com/Shail-Shouryya/yt_videos_list/pyt
 
 
 class ListCreator:
+    '''
+      The ListCreator class creates a ListCreator instance with no required arguments.
+      Example usage:
+          lc = ListCreator()
+
+      #############################################################################################################
+      If you ALREADY scraped a channel and the channel uploaded a new video, simply rerun this
+      program on that channel and this package updates your files to include the newer video(s)!
+
+
+      OPTIONAL: Specify the settings you want to use by substituing the desired values for the default arguments.
+      An overview is given directly below this, but for a full working example scroll to the bottom.
+
+      Options for the `driver` argument are
+        * Firefox (default)
+        * Opera
+        * Safari (MacOS only)
+        * Chrome
+        * Brave
+        * Edge (Windows only)
+          -> driver='firefox'
+          -> driver='opera'
+          -> driver='safari'
+          -> driver='chrome'
+          -> driver='brave'
+          -> driver='edge'
+
+      Options for the file type arguments (`csv`, `txt`, `md`) are
+        * True (default) - create a file for the specified type
+        * False - does NOT create a file for the specified type
+            -> txt=True  (default) OR txt=False
+            -> csv=True  (default) OR csv=False
+            ->  md=True  (default) OR  md=False
+
+      Options for the `reverse_chronological` argument are
+        * True (default) - write the files in order from most recent video to the oldest video
+        * False          - write the files in order from oldest video to the most recent video
+            -> reverse_chronological=True (default) OR reverse_chronological=False
+
+      Options for the `headless` argument are
+        * False (default) - run the driver with an open Selenium instance for viewing
+        * True            - run the driver without an open Selenium instance for viewing (runs in "invisible" mode)
+            -> headless=False (default) OR headless=True
+
+      Options for the `scroll_pause_time argument` are any float values greater than 0 (defaults to 0.8)
+        * CAUTION: reducing this value too much will result in the program not capturing all the videos,
+          so be careful! Experiment :)
+        * The value you provide will be how long (in seconds) the program waits before
+          trying to scroll the videos list page down for the channel you want to scrape.
+        * For fast internet connections, you may want to reduce the value,
+          and for slow connections you may want to increase the value.
+            -> scroll_pause_time=0.8 (default)
+
+
+
+      WORKING EXAMPLES:
+      #####################################################################################################
+      Minimalist (ListCreator object creates a csv, txt, and md file in reverse chronological order -
+      meaning the most recently uploaded videos are at the top of the file):
+      lc = ListCreator()
+
+
+      Minimalist but with a different driver:
+      lc = ListCreator(driver='firefox') # default, argument not required
+      lc = ListCreator(driver='opera')
+      lc = ListCreator(driver='safari')
+      lc = ListCreator(driver='chrome')
+      lc = ListCreator(driver='brave')
+      lc = ListCreator(driver='edge')
+
+
+      Minimalist in headless ("invisible") mode (NOTE: currently only supported by firefox and chrome):
+      lc = ListCreator(headless=True)                    # runs firefox in headless mode
+      lc = ListCreator(driver='chrome', headless=True)   # runs chrome  in headless mode
+
+
+      Minimalist with reverse chronological order (ListCreator object creates a csv, txt, and md file with
+      oldest videos at the top of the file instead of the most recently uploaded videos at the top):
+      lc = ListCreator(reverse_chronological=False)
+      #####################################################################################################
+
+
+      #############################################################
+      Minimalist with greater pauses (useful for slow internet):
+      lc = ListCreator(scroll_pause_time=1.2)
+
+      Minimalist with shorter pauses (useful for fast internet):
+      lc = ListCreator(scroll_pause_time=0.7)
+      #############################################################
+
+
+      #############################################################
+      Only creating a csv file with everything else set to default:
+      lc = ListCreator(txt=False, md=False)
+      #############################################################
+
+
+      ----------------------------------------------------------------------------------------
+      SWE PRO TIP: However you decide to instantiate your object, if you use custom settings,
+      name your ListCreator instance to reflect what you changed.
+      E.g. For the last case, instead of naming your instance "lc",
+      name it "csv_only_lc" or "CsvOnlyLc" - or something along those lines.
+      ----------------------------------------------------------------------------------------
+
+      ===================================================
+      If you found this interesting or useful,
+      ** please consider STARRING this repo at **
+      https://github.com/Shail-Shouryya/yt_videos_list
+      so other people can more easily find and use this.
+      Thank you!!
+      ===================================================
+      '''
     def __init__(self, txt=True, csv=True, md=True, reverse_chronological=True, headless=False, scroll_pause_time=0.8, driver=None):
-        '''
-        The ListCreator class creates a ListCreator instance with no required arguments.
-        Example usage:
-            lc = ListCreator()
-
-        #############################################################################################################
-        If you ALREADY scraped a channel and the channel uploaded a new video, simply rerun this
-        program on that channel and this package updates your files to include the newer video(s)!
-
-
-        OPTIONAL: Specify the settings you want to use by substituing the desired values for the default arguments.
-        An overview is given directly below this, but for a full working example scroll to the bottom.
-
-        Options for the `driver` argument are
-          * Firefox (default)
-          * Opera
-          * Safari (MacOS only)
-          * Chrome
-          * Brave
-          * Edge (Windows only)
-            -> driver='firefox'
-            -> driver='opera'
-            -> driver='safari'
-            -> driver='chrome'
-            -> driver='brave'
-            -> driver='edge'
-
-        Options for the file type arguments (`csv`, `txt`, `md`) are
-          * True (default) - create a file for the specified type
-          * False - does NOT create a file for the specified type
-             -> txt=True  (default) OR txt=False
-             -> csv=True  (default) OR csv=False
-             ->  md=True  (default) OR  md=False
-
-        Options for the `reverse_chronological` argument are
-          * True (default) - write the files in order from most recent video to the oldest video
-          * False          - write the files in order from oldest video to the most recent video
-             -> reverse_chronological=True (default) OR reverse_chronological=False
-
-        Options for the `headless` argument are
-          * False (default) - run the driver with an open Selenium instance for viewing
-          * True            - run the driver without an open Selenium instance for viewing (runs in "invisible" mode)
-             -> headless=False (default) OR headless=True
-
-        Options for the `scroll_pause_time argument` are any float values greater than 0 (defaults to 0.8)
-          * CAUTION: reducing this value too much will result in the program not capturing all the videos,
-            so be careful! Experiment :)
-          * The value you provide will be how long (in seconds) the program waits before
-            trying to scroll the videos list page down for the channel you want to scrape.
-          * For fast internet connections, you may want to reduce the value,
-            and for slow connections you may want to increase the value.
-             -> scroll_pause_time=0.8 (default)
-
-
-
-        WORKING EXAMPLES:
-        #####################################################################################################
-        Minimalist (ListCreator object creates a csv, txt, and md file in reverse chronological order -
-        meaning the most recently uploaded videos are at the top of the file):
-        lc = ListCreator()
-
-
-        Minimalist but with a different driver:
-        lc = ListCreator(driver='firefox') # default, argument not required
-        lc = ListCreator(driver='opera')
-        lc = ListCreator(driver='safari')
-        lc = ListCreator(driver='chrome')
-        lc = ListCreator(driver='brave')
-        lc = ListCreator(driver='edge')
-
-
-        Minimalist in headless ("invisible") mode (NOTE: currently only supported by firefox and chrome):
-        lc = ListCreator(headless=True)                    # runs firefox in headless mode
-        lc = ListCreator(driver='chrome', headless=True)   # runs chrome  in headless mode
-
-
-        Minimalist with reverse chronological order (ListCreator object creates a csv, txt, and md file with
-        oldest videos at the top of the file instead of the most recently uploaded videos at the top):
-        lc = ListCreator(reverse_chronological=False)
-        #####################################################################################################
-
-
-        #############################################################
-        Minimalist with greater pauses (useful for slow internet):
-        lc = ListCreator(scroll_pause_time=1.2)
-
-        Minimalist with shorter pauses (useful for fast internet):
-        lc = ListCreator(scroll_pause_time=0.7)
-        #############################################################
-
-
-        #############################################################
-        Only creating a csv file with everything else set to default:
-        lc = ListCreator(txt=False, md=False)
-        #############################################################
-
-
-        ----------------------------------------------------------------------------------------
-        SWE PRO TIP: However you decide to instantiate your object, if you use custom settings,
-        name your ListCreator instance to reflect what you changed.
-        E.g. For the last case, instead of naming your instance "lc",
-        name it "csv_only_lc" or "CsvOnlyLc" - or something along those lines.
-        ----------------------------------------------------------------------------------------
-
-        ===================================================
-        If you found this interesting or useful,
-        ** please consider STARRING this repo at **
-        https://github.com/Shail-Shouryya/yt_videos_list
-        so other people can more easily find and use this.
-        Thank you!!
-        ===================================================
-        '''
         self.txt                   = txt
         self.csv                   = csv
         self.markdown              = md
