@@ -1,3 +1,11 @@
+'''
+Test module for creating json and txt file
+containing the commands for downloading
+required selenium webdriver dependencies
+for supported selenium drivers. The commands
+are generated from the
+`yt_videos_list.notifications` module.
+'''
 import os
 import re
 import json
@@ -19,6 +27,13 @@ from yt_videos_list.notifications import Common
 
 
 def write_pseudo_json(drivers_dictionary):
+    '''
+    Creates a txt file containing all commands
+    for supported selenium drivers. The helper
+    function `format_pseudo_json()`
+    strips formatting characters used to
+    separate commands (commas, newlines).
+    '''
     with open('temp.json', 'w', encoding='utf-8') as file:
         file.write('{\n')
         for driver in drivers_dictionary:
@@ -32,6 +47,13 @@ def write_pseudo_json(drivers_dictionary):
         file.write('}')
 
 def format_pseudo_json():
+    '''
+    Strips formatting characters used
+    to separate commands (commas, newlines) from the
+    txt file. Results in json-like structured file
+    except with an extra newline, instead of double
+    quotation marks and commas, to separate the commands.
+    '''
     with open('temp.json', 'r', encoding='utf-8') as ftemp, open(f'..{PATH_SLASH}docs{PATH_SLASH}dependencies_pseudo_json.txt', 'w', encoding='utf-8') as ffinal:
         formatted = re.sub(',\n    ]', '\n    ]', ftemp.read())
         formatted = re.sub('],\n  },', ']\n  },', formatted)
@@ -41,6 +63,15 @@ def format_pseudo_json():
     os.remove('temp.json')
 
 def main():
+    '''
+    Imports Common class from `yt_videos_list.notifications`
+    to use the commands dictionary (`driver_downloads_for_os`)
+    defined in the `Common().__init__` method to create json
+    and json-like text files. Both files contain all commands
+    for downloading required selenium webdriver dependencies
+    for supported selenium drivers. Output placed
+    in `../docs/` directory.
+    '''
     common_messages = Common()
     drivers_dictionary = common_messages.driver_downloads_for_os
 
