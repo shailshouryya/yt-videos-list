@@ -9,7 +9,6 @@ from test_shared                          import run_tests_for
 
 
 from yt_videos_list.download.windows_info import get_drive_letter
-from yt_videos_list.download.user_os_info import determine_user_os
 
 
 
