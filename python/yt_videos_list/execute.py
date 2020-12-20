@@ -1,6 +1,6 @@
 import sys
 import time
-import logging
+import contextlib
 import selenium
 from selenium import webdriver
 from . import program
@@ -107,6 +107,13 @@ def logic(channel, channel_type, file_name, log_file, txt, csv, markdown, revers
   if user_driver != 'safari':
    common_message.tell_user_to_download_driver(user_driver)
   common_message.display_dependency_setup_instructions(user_driver, user_os)
+ @contextlib.contextmanager
+ def yield_file_writer(log_file):
+  with open (log_file, 'a', encoding='utf-8') as output_location:
+   yield output_location
+ @contextlib.contextmanager
+ def yield_stdout_writer():
+  yield sys.stdout
  user_os    = determine_user_os()
  url, seleniumdriver = check_user_input()
  program_start    = time.perf_counter()
@@ -128,21 +135,8 @@ def logic(channel, channel_type, file_name, log_file, txt, csv, markdown, revers
   driver.set_window_size(780, 800)
   driver.set_window_position(0, 0)
   file_name = determine_file_name()
-  if log_file:
-   log = logging.getLogger()
-   log.setLevel(logging.INFO)
-   handler = logging.FileHandler(log_file)
-   handler.setLevel(logging.DEBUG)
-   formatter = logging.Formatter(fmt='%(asctime)s %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
-   handler.setFormatter(formatter)
-   log.addHandler(handler)
-  else:
-   logging.basicConfig(format='%(asctime)s %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S', level=logging.INFO)
-  logging.info('*' * 100)
-  logging.info(f'Starting new job at {time.asctime()}')
-  program.determine_action(url, driver, scroll_pause_time, reverse_chronological, file_name, txt, csv, markdown)
-  if log_file:
-   log.handlers.clear()
+  with yield_file_writer(log_file) if log_file else yield_stdout_writer() as logging_output_location:
+   program.determine_action(url, driver, scroll_pause_time, reverse_chronological, file_name, txt, csv, markdown, logging_output_location)
  program_end = time.perf_counter()
  total_time  = program_end - program_start
  print(f'This program took {total_time} seconds to complete.\n')

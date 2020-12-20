@@ -1,24 +1,23 @@
 import os
 import time
-import logging
 from .     import file
 from .notifications import Common
 COMMON_MESSAGE = Common()
-def determine_action(url, driver, scroll_pause_time, reverse_chronological, file_name, txt, csv, markdown):
+def determine_action(url, driver, scroll_pause_time, reverse_chronological, file_name, txt, csv, markdown, logging_output_location):
  txt_exists = os.path.isfile(f'{file_name}.txt')
  csv_exists = os.path.isfile(f'{file_name}.csv')
  md_exists  = os.path.isfile(f'{file_name}.md')
- if txt_exists and csv_exists and md_exists: videos_list = file.update_file.scroll_to_old_videos(url, driver, scroll_pause_time, txt_exists, csv_exists, md_exists, file_name)
- else:            videos_list = file.create_file.scroll_to_bottom (url, driver, scroll_pause_time)
+ if txt_exists and csv_exists and md_exists: videos_list = file.update_file.scroll_to_old_videos(url, driver, scroll_pause_time, txt_exists, csv_exists, md_exists, file_name, logging_output_location)
+ else:            videos_list = file.create_file.scroll_to_bottom (url, driver, scroll_pause_time, logging_output_location)
  if len(videos_list) == 0:
-  logging.error(COMMON_MESSAGE.no_videos_found)
+  logging_output_location.writelines(COMMON_MESSAGE.no_videos_found)
   return
  if txt:
-  if txt_exists: file.update_file.write_to_txt(videos_list, file_name, reverse_chronological, timestamp=str(time.time()).replace('.', '-'))
-  else:    file.create_file.write_to_txt(videos_list, file_name, reverse_chronological, timestamp=str(time.time()).replace('.', '-'))
+  if txt_exists: file.update_file.write_to_txt(videos_list, file_name, reverse_chronological, logging_output_location, timestamp=str(time.time()).replace('.', '-'))
+  else:    file.create_file.write_to_txt(videos_list, file_name, reverse_chronological, logging_output_location, timestamp=str(time.time()).replace('.', '-'))
  if csv:
-  if csv_exists: file.update_file.write_to_csv(videos_list, file_name, reverse_chronological, timestamp=str(time.time()).replace('.', '-'))
-  else:    file.create_file.write_to_csv(videos_list, file_name, reverse_chronological, timestamp=str(time.time()).replace('.', '-'))
+  if csv_exists: file.update_file.write_to_csv(videos_list, file_name, reverse_chronological, logging_output_location, timestamp=str(time.time()).replace('.', '-'))
+  else:    file.create_file.write_to_csv(videos_list, file_name, reverse_chronological, logging_output_location, timestamp=str(time.time()).replace('.', '-'))
  if markdown:
-  if md_exists:  file.update_file.write_to_md (videos_list, file_name, reverse_chronological, timestamp=str(time.time()).replace('.', '-'))
-  else:    file.create_file.write_to_md (videos_list, file_name, reverse_chronological, timestamp=str(time.time()).replace('.', '-'))
+  if md_exists:  file.update_file.write_to_md (videos_list, file_name, reverse_chronological, logging_output_location, timestamp=str(time.time()).replace('.', '-'))
+  else:    file.create_file.write_to_md (videos_list, file_name, reverse_chronological, logging_output_location, timestamp=str(time.time()).replace('.', '-'))

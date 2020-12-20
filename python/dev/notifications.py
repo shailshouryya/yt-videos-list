@@ -7,7 +7,7 @@ class Common:
     '''
     missing_url              = 'create_list_for() missing 1 required positional argument: "url"'
     not_writing_to_any_files = '\nBased on your provided settings, yt_videos_list will not be writing to either a csv file or a txt file.'
-    no_videos_found          = 'No videos were found for the channel you provided. Are you sure you entered the url correctly?\n'
+    no_videos_found          = 'No videos were found for the channel you provided. Are you sure you entered the url correctly?\n\n'
     invalid_response         = 'The response you entered was invalid.'
     invalid_driver           = 'The driver you specified is invalid. Please try rerunning the last command after specifying a valid driver. Supported drivers include:\n   Firefox\n   Opera\n   Safari\n   Chrome\n   Brave'
     unsupported_opera_headless  = '\nHeadless mode is unsupported in OperaDriver. We are waiting on the Opera dev team to start offering support for headless mode to allow remote automation without opening a driver. We will update this when support is added...\n:)\n\n\n'
@@ -325,7 +325,7 @@ class Common:
 
     @staticmethod
     def no_new_videos_found(pause_time):
-        return f'No new videos were found since the last scroll. Waiting another {pause_time} seconds to see if more videos can be loaded....'
+        return f'No new videos were found since the last scroll. Waiting another {pause_time} seconds to see if more videos can be loaded....\n'
 
 
 class ModuleMessage(Common):
