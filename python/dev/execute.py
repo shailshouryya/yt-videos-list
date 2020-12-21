@@ -1,5 +1,6 @@
 import sys
 import time
+import datetime
 import contextlib
 
 import selenium
@@ -12,10 +13,11 @@ from .download.user_os_info                    import determine_user_os
 from .notifications                            import Common, ModuleMessage, ScriptMessage
 
 
-def logic(channel, channel_type, file_name, log_file, txt, csv, markdown, reverse_chronological, headless, scroll_pause_time, user_driver, execution_type):
+def logic(channel, channel_type, file_name, log_file_redirect, txt, csv, markdown, reverse_chronological, headless, scroll_pause_time, user_driver, execution_type):
     common_message = Common()
     module_message = ModuleMessage()
     script_message = ScriptMessage()
+    now            = datetime.datetime.now
 
     def check_user_input():
         nonlocal channel, channel_type, user_driver
@@ -140,7 +142,8 @@ def logic(channel, channel_type, file_name, log_file, txt, csv, markdown, revers
 
 
     @contextlib.contextmanager
-    def yield_file_writer(log_file):
+    def yield_file_writer():
+        log_file = now().isoformat().replace(':', '-').replace('.', '_') + '_yt_videos_list.log'
         with open (log_file, 'a', encoding='utf-8') as output_location:
             yield output_location
 
@@ -172,7 +175,7 @@ def logic(channel, channel_type, file_name, log_file, txt, csv, markdown, revers
         driver.set_window_size(780, 800)
         driver.set_window_position(0, 0)
         file_name = determine_file_name()
-        with yield_file_writer(log_file) if log_file else yield_stdout_writer() as logging_output_location:
+        with yield_file_writer() if log_file_redirect is True else yield_stdout_writer() as logging_output_location:
             program.determine_action(url, driver, scroll_pause_time, reverse_chronological, file_name, txt, csv, markdown, logging_output_location)
     program_end = time.perf_counter()
     total_time  = program_end - program_start

@@ -1,5 +1,6 @@
 import sys
 import time
+import datetime
 import contextlib
 import selenium
 from selenium import webdriver
@@ -8,10 +9,11 @@ from .download.selenium_webdriver_dependencies import download_all
 from .download.windows_info     import get_drive_letter
 from .download.user_os_info     import determine_user_os
 from .notifications       import Common, ModuleMessage, ScriptMessage
-def logic(channel, channel_type, file_name, log_file, txt, csv, markdown, reverse_chronological, headless, scroll_pause_time, user_driver, execution_type):
+def logic(channel, channel_type, file_name, log_file_redirect, txt, csv, markdown, reverse_chronological, headless, scroll_pause_time, user_driver, execution_type):
  common_message = Common()
  module_message = ModuleMessage()
  script_message = ScriptMessage()
+ now   = datetime.datetime.now
  def check_user_input():
   nonlocal channel, channel_type, user_driver
   base_url  = 'https://www.youtube.com'
@@ -108,7 +110,8 @@ def logic(channel, channel_type, file_name, log_file, txt, csv, markdown, revers
    common_message.tell_user_to_download_driver(user_driver)
   common_message.display_dependency_setup_instructions(user_driver, user_os)
  @contextlib.contextmanager
- def yield_file_writer(log_file):
+ def yield_file_writer():
+  log_file = now().isoformat().replace(':', '-').replace('.', '_') + '_yt_videos_list.log'
   with open (log_file, 'a', encoding='utf-8') as output_location:
    yield output_location
  @contextlib.contextmanager
@@ -135,7 +138,7 @@ def logic(channel, channel_type, file_name, log_file, txt, csv, markdown, revers
   driver.set_window_size(780, 800)
   driver.set_window_position(0, 0)
   file_name = determine_file_name()
-  with yield_file_writer(log_file) if log_file else yield_stdout_writer() as logging_output_location:
+  with yield_file_writer() if log_file_redirect is True else yield_stdout_writer() as logging_output_location:
    program.determine_action(url, driver, scroll_pause_time, reverse_chronological, file_name, txt, csv, markdown, logging_output_location)
  program_end = time.perf_counter()
  total_time  = program_end - program_start
