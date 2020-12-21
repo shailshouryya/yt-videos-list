@@ -1,11 +1,12 @@
 import os
-import time
+import datetime
 
 from .              import file
 from .notifications import Common
 
 
 COMMON_MESSAGE = Common()
+NOW            = datetime.datetime.now
 
 
 def determine_action(url, driver, scroll_pause_time, reverse_chronological, file_name, txt, csv, markdown, logging_output_location):
@@ -18,11 +19,11 @@ def determine_action(url, driver, scroll_pause_time, reverse_chronological, file
         logging_output_location.writelines(COMMON_MESSAGE.no_videos_found)
         return
     if txt:
-        if txt_exists: file.update_file.write_to_txt(videos_list, file_name, reverse_chronological, logging_output_location, timestamp=str(time.time()).replace('.', '-'))
-        else:          file.create_file.write_to_txt(videos_list, file_name, reverse_chronological, logging_output_location, timestamp=str(time.time()).replace('.', '-'))
+        if txt_exists: file.update_file.write_to_txt(videos_list, file_name, reverse_chronological, logging_output_location, timestamp=NOW().isoformat().replace(':', '-').replace('.', '_'))
+        else:          file.create_file.write_to_txt(videos_list, file_name, reverse_chronological, logging_output_location, timestamp=NOW().isoformat().replace(':', '-').replace('.', '_'))
     if csv:
-        if csv_exists: file.update_file.write_to_csv(videos_list, file_name, reverse_chronological, logging_output_location, timestamp=str(time.time()).replace('.', '-'))
-        else:          file.create_file.write_to_csv(videos_list, file_name, reverse_chronological, logging_output_location, timestamp=str(time.time()).replace('.', '-'))
+        if csv_exists: file.update_file.write_to_csv(videos_list, file_name, reverse_chronological, logging_output_location, timestamp=NOW().isoformat().replace(':', '-').replace('.', '_'))
+        else:          file.create_file.write_to_csv(videos_list, file_name, reverse_chronological, logging_output_location, timestamp=NOW().isoformat().replace(':', '-').replace('.', '_'))
     if markdown:
-        if md_exists:  file.update_file.write_to_md (videos_list, file_name, reverse_chronological, logging_output_location, timestamp=str(time.time()).replace('.', '-'))
-        else:          file.create_file.write_to_md (videos_list, file_name, reverse_chronological, logging_output_location, timestamp=str(time.time()).replace('.', '-'))
+        if md_exists:  file.update_file.write_to_md (videos_list, file_name, reverse_chronological, logging_output_location, timestamp=NOW().isoformat().replace(':', '-').replace('.', '_'))
+        else:          file.create_file.write_to_md (videos_list, file_name, reverse_chronological, logging_output_location, timestamp=NOW().isoformat().replace(':', '-').replace('.', '_'))
