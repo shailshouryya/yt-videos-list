@@ -9,11 +9,15 @@ import sys
 import time
 import shutil
 import hashlib
+import datetime
 import threading
 
 from determine import determine_path_slash
 
 from yt_videos_list                       import ListCreator
+
+
+NOW = datetime.datetime.now
 
 
 def run_tests_for(browsers_list):
@@ -55,17 +59,17 @@ def run_tests_for(browsers_list):
                 test_case_thread_2.start()
                 current += 1
         # wait 70 seconds after starting new threads since there are 5 variations we need to test
-        # for each test case, and each variation takes around 20 seconds - the sleep period just
+        # for each test case, and each variation takes around 30 seconds - the sleep period just
         # holds off on waiting if threads have finished since we know they PROBABLY won't finish
         # in 70 seconds
         time.sleep(70)
         while threading.active_count() - 1 != 0 and current < total:
             # the threads are still running
-            time.sleep(3)
-        print(f'Finished testing {[thread_1_case]}!')
+            time.sleep(7)
+        print(f'{NOW().isoformat()}: Finished testing {[thread_1_case]}!')
         if 'safari' not in browsers_list:
-            print(f'Finished testing {[thread_2_case]}!')
-        print('Moving on to the next driver...\n' + '⏬ '*11)
+            print(f'{NOW().isoformat()}: Finished testing {[thread_2_case]}!')
+        print(f'{NOW().isoformat()}: Moving on to the next driver...\n' + '⏬ '*11)
 
 
 def create_test_cases(browsers):
@@ -146,7 +150,7 @@ def verify_update(driver, schafer5_url, test_file, full_file):
         ]
     for create_file in variations:
         is_reverse_chronological = vars(driver)["reverse_chronological"]
-        print(f'\nTESTING list_creator with list_creator.reverse_chronological set to {is_reverse_chronological}')
+        print(f'\n{NOW().isoformat()}: TESTING list_creator with list_creator.reverse_chronological set to {is_reverse_chronological}')
         if is_reverse_chronological: suffix = 'reverse_chronological_videos_list'
         else:                        suffix = 'chronological_videos_list'
         create_file(test_file, suffix) # the file this function creates should be the SAME as the returned string to the file_name variable in the next line
@@ -162,7 +166,7 @@ def use_no_partial_files(test_file, suffix):
     `chronological_videos_list`;
     the prefix in all cases is `CoreySchafer_`).
     '''
-    print('TESTING with NO pre-existing files AT ALL....')
+    print(f'{NOW().isoformat()}: TESTING with NO pre-existing files AT ALL....')
     delete_all_schafer5_files(suffix)
 
 def use_partial_txt_only(test_file, suffix):
@@ -175,7 +179,7 @@ def use_partial_txt_only(test_file, suffix):
     partial txt file using the `partial_schafer5_{suffix}.txt`
     reference file.
     '''
-    print('TESTING with a pre-existing txt file only (no pre-existing csv or md file)....')
+    print(f'{NOW().isoformat()}: TESTING with a pre-existing txt file only (no pre-existing csv or md file)....')
     delete_all_schafer5_files(suffix)
     create_partial_file(test_file, suffix, 'txt')
 
@@ -189,7 +193,7 @@ def use_partial_csv_only(test_file, suffix):
     partial csv file using the `partial_schafer5_{suffix}.csv`
     reference file.
     '''
-    print('TESTING with a pre-existing csv file only (no pre-existing txt or md file)....')
+    print(f'{NOW().isoformat()}: TESTING with a pre-existing csv file only (no pre-existing txt or md file)....')
     delete_all_schafer5_files(suffix)
     create_partial_file(test_file, suffix, 'csv')
 
@@ -203,7 +207,7 @@ def use_partial_md_only(test_file, suffix):
     partial md file using the `partial_schafer5_{suffix}.md`
     reference file.
     '''
-    print('TESTING with a pre-existing md file only (no pre-existing txt or csv file)....')
+    print(f'{NOW().isoformat()}: TESTING with a pre-existing md file only (no pre-existing txt or csv file)....')
     delete_all_schafer5_files(suffix)
     create_partial_file(test_file, suffix, 'md')
 
@@ -217,7 +221,7 @@ def use_partial_csv_txt_and_md(test_file, suffix):
     partial txt, csv, and md files using the
     `partial_schafer5_{suffix}.{ext}` reference files.
     '''
-    print('TESTING with pre-existing txt, csv, and md files....')
+    print(f'{NOW().isoformat()}: TESTING with pre-existing txt, csv, and md files....')
     create_partial_file(test_file, suffix, 'txt')
     create_partial_file(test_file, suffix, 'csv')
     create_partial_file(test_file, suffix, 'md' )
@@ -254,12 +258,12 @@ def compare_test_files_to_reference_files(full_file, test_output_file):
         verified_csv = hashlib.sha256(full_csv.read().encode('utf-8')).hexdigest()
         verified_md  = hashlib.sha256(full_md.read().encode ('utf-8')).hexdigest()
     failed = False
-    if current_txt != verified_txt: print(f'❌ ERROR! The updated txt file does NOT match the {full_file}.txt file!'); failed = True
-    else:                           print(f'✅ The updated txt file matches the {full_file}.txt file :)')
-    if current_csv != verified_csv: print(f'❌ ERROR! The updated csv file does NOT match the {full_file}.csv file!'); failed = True
-    else:                           print(f'✅ The updated csv file matches the {full_file}.csv file :)')
-    if current_md  != verified_md:  print(f'❌ ERROR! The updated md  file does NOT match the {full_file}.md  file!'); failed = True
-    else:                           print(f'✅ The updated md  file matches the {full_file}.md  file :)')
+    if current_txt != verified_txt: print(f'{NOW().isoformat()}: ❌ ERROR! The updated txt file does NOT match the {full_file}.txt file!'); failed = True
+    else:                           print(f'{NOW().isoformat()}: ✅ The updated txt file matches the {full_file}.txt file :)')
+    if current_csv != verified_csv: print(f'{NOW().isoformat()}: ❌ ERROR! The updated csv file does NOT match the {full_file}.csv file!'); failed = True
+    else:                           print(f'{NOW().isoformat()}: ✅ The updated csv file matches the {full_file}.csv file :)')
+    if current_md  != verified_md:  print(f'{NOW().isoformat()}: ❌ ERROR! The updated md  file does NOT match the {full_file}.md  file!'); failed = True
+    else:                           print(f'{NOW().isoformat()}: ✅ The updated md  file matches the {full_file}.md  file :)')
     if failed:
-        print('\n' * 5)
+        print('\n' * 5 + f'FAILED at {NOW().isoformat()}!')
         sys.exit()
