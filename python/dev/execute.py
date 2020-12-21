@@ -170,14 +170,14 @@ def logic(channel, channel_type, file_name, log_file_redirect, txt, csv, markdow
             common_message.display_unable_to_update_driver_automatically(user_driver)
             return
     with driver:
-        print(f'\n\n\nNow scraping {url} using the {user_driver}driver:')
         driver.get(url)
         driver.set_window_size(780, 800)
         driver.set_window_position(0, 0)
         file_name = determine_file_name()
         with yield_file_writer() if log_file_redirect is True else yield_stdout_writer() as logging_output_location:
+            logging_output_location.writelines(f'\n\n\nNow scraping {url} using the {user_driver}driver:\n')
             program.determine_action(url, driver, scroll_pause_time, reverse_chronological, file_name, txt, csv, markdown, logging_output_location)
-    program_end = time.perf_counter()
-    total_time  = program_end - program_start
-    print(f'This program took {total_time} seconds to complete.\n')
+            program_end = time.perf_counter()
+            total_time  = program_end - program_start
+            logging_output_location.writelines(f'\nThis program took {total_time} seconds to complete.\n')
     return file_name
