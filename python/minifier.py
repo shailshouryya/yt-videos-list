@@ -1,3 +1,9 @@
+'''
+Script to strip all comments and extra whitespace from code
+in `dev/` directory (used during development) before placing
+formatted code in `yt_videos_list` directory (shipped on PyPI).
+'''
+
 import os
 import re
 import shutil
