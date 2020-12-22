@@ -22,7 +22,7 @@ def scroll_down(driver, scroll_pause_time, logging_output_location):
     driver.execute_script('window.scrollBy(0, 50000);')
     time.sleep(scroll_pause_time * 2)
     new_elements_count = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
-    logging_output_location.writelines(f'{ISOFORMAT(NOW())}: Found {new_elements_count} videos...\n')
+    logging_output_location.writelines(f'{ISOFORMAT(NOW())}: Found {new_elements_count} videos...{NEWLINE}')
     if driver.find_elements_by_xpath('//*[@id="video-title"]')[-1].get_attribute("href") in VISITED_VIDEOS:
         return True
     return False
@@ -31,7 +31,7 @@ def save_elements_to_list(driver, start_time, scroll_pause_time, url, logging_ou
     elements = driver.find_elements_by_xpath('//*[@id="video-title"]')
     end_time = time.perf_counter()
     total_time = end_time - start_time - scroll_pause_time # subtract scroll_pause_time to account for the extra waiting time to verify end of page
-    logging_output_location.writelines(f'{ISOFORMAT(NOW())}: It took {total_time} seconds to find {len(elements)} videos from {url}{NEWLINE}\n')
+    logging_output_location.writelines(f'{ISOFORMAT(NOW())}: It took {total_time} seconds to find {len(elements)} videos from {url}{NEWLINE}{NEWLINE}')
     return elements
 
 def scroll_to_old_videos(url, driver, scroll_pause_time, txt_exists, csv_exists, md_exists, file_name, logging_output_location):
@@ -43,7 +43,7 @@ def scroll_to_old_videos(url, driver, scroll_pause_time, txt_exists, csv_exists,
     if csv_exists: STORED_IN_CSV = store_already_written_videos(file_name, 'csv')
     if md_exists:  STORED_IN_MD =  store_already_written_videos(file_name, 'md' )
     VISITED_VIDEOS = STORED_IN_TXT.intersection(STORED_IN_CSV).intersection(STORED_IN_MD) # same as STORED_IN_TXT & STORED_IN_CSV & STORED_IN_MD
-    logging_output_location.writelines(f'{ISOFORMAT(NOW())}: Detected an existing file with the name {file_name} in this directory, checking for new videos to update {file_name}....\n')
+    logging_output_location.writelines(f'{ISOFORMAT(NOW())}: Detected an existing file with the name {file_name} in this directory, checking for new videos to update {file_name}....{NEWLINE}')
     start_time       = time.perf_counter() # timer stops in save_elements_to_list() function
     found_old_videos = False
     while found_old_videos is False:
@@ -58,18 +58,18 @@ def time_writer_function(writer_function):
         extension                                            = writer_function.__name__.split('_')[-1]
         timestamp                                            = kwargs.get('timestamp', 'undeteremined_start_time')
         file_name, new_videos_written, reverse_chronological, logging_output_location = writer_function(*args, **kwargs)   # writer_function() writes to temp_{file_name}
-        logging_output_location.writelines(f'{ISOFORMAT(NOW())}: Opening a temp {extension} file and writing ***NEW*** video information to the file....\n')
+        logging_output_location.writelines(f'{ISOFORMAT(NOW())}: Opening a temp {extension} file and writing ***NEW*** video information to the file....{NEWLINE}')
         end_time                                             = time.perf_counter()
         total_time                                           = end_time - start_time
         temp_file                                            = f'temp_{file_name}_{timestamp}.{extension}'    # determine temp_{file_name} for wrapper_timer() scope
         final_file                                           = f'{file_name}.{extension}'
-        logging_output_location.writelines(f'{ISOFORMAT(NOW())}: Finished writing to'.ljust(66) + f'{temp_file}\n')
-        logging_output_location.writelines(f'{ISOFORMAT(NOW())}: {new_videos_written} ***NEW*** videos written to'.ljust(66) + f'{temp_file}\n')
-        logging_output_location.writelines(f'{ISOFORMAT(NOW())}: Closing'.ljust(66) + f'{temp_file}\n')
+        logging_output_location.writelines(f'{ISOFORMAT(NOW())}: Finished writing to'.ljust(66) + f'{temp_file}{NEWLINE}')
+        logging_output_location.writelines(f'{ISOFORMAT(NOW())}: {new_videos_written} ***NEW*** videos written to'.ljust(66) + f'{temp_file}{NEWLINE}')
+        logging_output_location.writelines(f'{ISOFORMAT(NOW())}: Closing'.ljust(66) + f'{temp_file}{NEWLINE}')
         if reverse_chronological: os.replace(temp_file, final_file)                               # rename temp_{file_name} to {file_name}.{extension} since the info from the original file was appended to the end of the temp file
         else:                     os.remove(temp_file)                                            # remove temp_{file_name} since all new information from the temp file was appended to the end of the original file
-        logging_output_location.writelines(f'{ISOFORMAT(NOW())}: Successfully completed write, renamed {temp_file} to {final_file}\n')
-        logging_output_location.writelines(f'{ISOFORMAT(NOW())}: It took {total_time} seconds to write the {new_videos_written} ***NEW*** videos to the pre-existing {final_file} {NEWLINE}\n')
+        logging_output_location.writelines(f'{ISOFORMAT(NOW())}: Successfully completed write, renamed {temp_file} to {final_file}{NEWLINE}')
+        logging_output_location.writelines(f'{ISOFORMAT(NOW())}: It took {total_time} seconds to write the {new_videos_written} ***NEW*** videos to the pre-existing {final_file} {NEWLINE}{NEWLINE}')
     return wrapper_timer
 
 
@@ -97,7 +97,7 @@ def txt_writer(new_file, old_file, visited_videos, markdown_formatting, reverse_
         else:
             video_number, total_writes = write.txt_entry(new_file, markdown_formatting, selenium_element, NEWLINE, spacing, video_number, incrementer, total_writes)
             if total_writes % 250 == 0:
-                logging_output_location.writelines(f'{ISOFORMAT(NOW())}: {total_writes} new videos written to {new_file.name}...\n')
+                logging_output_location.writelines(f'{ISOFORMAT(NOW())}: {total_writes} new videos written to {new_file.name}...{NEWLINE}')
     if reverse_chronological:
         old_file.seek(0)
         for line in old_file: new_file.write(line)
@@ -156,7 +156,7 @@ def write_to_csv(list_of_videos, file_name, reverse_chronological, logging_outpu
             else:
                 video_number, total_writes = write.csv_entry(writer, selenium_element, video_number, incrementer, total_writes)
                 if total_writes % 250 == 0:
-                    logging_output_location.writelines(f'{ISOFORMAT(NOW())}: {total_writes} videos written to {temp_file.name}...\n')
+                    logging_output_location.writelines(f'{ISOFORMAT(NOW())}: {total_writes} videos written to {temp_file.name}...{NEWLINE}')
         if reverse_chronological:
             old_file.seek(0)
             old_file.readline() # skip the header since that's already written at the top of temp file
