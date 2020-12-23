@@ -66,9 +66,8 @@ def run_tests_for(browsers_list):
         while threading.active_count() - 1 != 0 and current < total:
             # the threads are still running
             time.sleep(7)
-        print(f'{NOW().isoformat()}: Finished testing {[thread_1_case]}!')
-        if 'safari' not in browsers_list:
-            print(f'{NOW().isoformat()}: Finished testing {[thread_2_case]}!')
+        if 'thread_1_case' in locals(): print(f'{NOW().isoformat()}: Finished testing {[thread_1_case]}!')
+        if 'thread_2_case' in locals(): print(f'{NOW().isoformat()}: Finished testing {[thread_2_case]}!')
         print(f'{NOW().isoformat()}: Moving on to the next driver...\n' + '⏬ '*11)
 
 
