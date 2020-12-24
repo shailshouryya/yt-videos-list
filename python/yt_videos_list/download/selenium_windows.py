@@ -24,22 +24,22 @@ def browser_exists(browser):
  elif browser == 'Edge':   return edge_exists(browser)
 def get_firefox_version():
  firefox = subprocess.getoutput(rf'more "{DRIVE}:\Program Files\Mozilla Firefox\application.ini"')
- return re.search(r'MinVersion=(\d+\.[\d\.]*)', firefox)[1]
+ return re.search('MinVersion=(\d+\.[\d\.]*)', firefox)[1]
 def get_opera_version():
  with open(rf'{DRIVE}:\Users\{USER}\AppData\Local\Programs\Opera\installation_status.json', 'r', encoding='utf-8') as file:
   opera = json.load(file)
  return opera['_subfolder']
 def get_chrome_version():
  chrome = subprocess.getoutput(rf'dir "{DRIVE}:\Program Files (x86)\Google\Chrome\Application"')
- return re.search(r'(\d\d\.[\d\.]*)', chrome)[1]
+ return re.search('(\d\d\.[\d\.]*)', chrome)[1]
 def get_brave_version():
  if 'Brave-Browser' in subprocess.getoutput(rf'dir "{DRIVE}:\Program Files (x86)/BraveSoftware"'): program_file_path = 'Program Files (x86)'
  else:                        program_file_path = 'Program Files'
  brave = subprocess.getoutput(rf'dir "{DRIVE}:\{program_file_path}\BraveSoftware\Brave-Browser\Application"')
- return re.search(r'(\d\d\.[\d\.]*)', brave)[1]
+ return re.search('(\d\d\.[\d\.]*)', brave)[1]
 def get_edge_version():
  edge = subprocess.getoutput(rf'dir "{DRIVE}:\Program Files (x86)\Microsoft\Edge\Application"')
- return re.search(r'(\d\d\.[\d\.]*)', edge)[1]
+ return re.search('(\d\d\.[\d\.]*)', edge)[1]
 def get_browser_version(browser):
  if   browser == 'Mozilla Firefox': return get_firefox_version()
  elif browser == 'Opera':     return get_opera_version()

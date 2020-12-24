@@ -15,8 +15,8 @@ NOW       = datetime.datetime.now
 
 def store_already_written_videos(file_name, file_type):
     with open(f'{file_name}.{file_type}', 'r', encoding='utf-8') as file:
-        if file_type == 'txt' or file_type == 'md': return set(re.findall(r'(https://www\.youtube\.com/watch\?v=.+?)(?:\s|\n)', file.read()))
-        if file_type == 'csv':                      return set(re.findall(r'(https://www\.youtube\.com/watch\?v=.+?),', file.read()))
+        if file_type == 'txt' or file_type == 'md': return set(re.findall('(https://www\.youtube\.com/watch\?v=.+?)(?:\s|\n)', file.read()))
+        if file_type == 'csv':                      return set(re.findall('(https://www\.youtube\.com/watch\?v=.+?),', file.read()))
 
 def scroll_down(driver, scroll_pause_time, logging_output_location):
     driver.execute_script('window.scrollBy(0, 50000);')
@@ -120,7 +120,7 @@ def write_to_txt(list_of_videos, file_name, reverse_chronological, logging_outpu
     markdown_formatting = False
     spacing             = f'{NEWLINE}' + ' '*4
     with open(f'{file_name}.txt', 'r+', encoding='utf-8') as old_file, open(f'temp_{file_name}_{timestamp}.txt', 'w+', encoding='utf-8') as temp_file:
-        video_number                                        =  int(max(re.findall(r'^Video Number:\s*(\d+)', old_file.read(), re.M), key = lambda i: int(i)))
+        video_number                                        =  int(max(re.findall('^Video Number:\s*(\d+)', old_file.read(), re.M), key = lambda i: int(i)))
         video_number, new_videos, total_writes, incrementer = prepare_output(list_of_videos, stored_in_txt, video_number, reverse_chronological)
         ####### defer to txt_writer() function to find new videos and format updated file #######
         txt_writer(temp_file, old_file, stored_in_txt, markdown_formatting, reverse_chronological, list_of_videos, spacing, video_number, incrementer, total_writes)
@@ -134,7 +134,7 @@ def write_to_md(list_of_videos, file_name, reverse_chronological, logging_output
     markdown_formatting = True
     spacing             = f'{NEWLINE}' + '- ' + f'{NEWLINE}'
     with open(f'{file_name}.md', 'r+', encoding='utf-8') as old_file, open(f'temp_{file_name}_{timestamp}.md', 'w+', encoding='utf-8') as temp_file:
-        video_number                                        =  int(max(re.findall(r'^Video Number:\s*(\d+)', old_file.read(), re.M), key = lambda i: int(i)))
+        video_number                                        =  int(max(re.findall('^Video Number:\s*(\d+)', old_file.read(), re.M), key = lambda i: int(i)))
         video_number, new_videos, total_writes, incrementer = prepare_output(list_of_videos, stored_in_md, video_number, reverse_chronological)
         ####### defer to txt_writer() function to find new videos and format updated file #######
         txt_writer(temp_file, old_file, stored_in_md, markdown_formatting, reverse_chronological, list_of_videos, spacing, video_number, incrementer, total_writes)
@@ -146,7 +146,7 @@ def write_to_csv(list_of_videos, file_name, reverse_chronological, logging_outpu
     if 'STORED_IN_CSV' not in locals(): stored_in_csv = store_already_written_videos(file_name, 'csv')
     else:                               stored_in_csv = STORED_IN_CSV
     with open(f'{file_name}.csv', 'r+', newline='', encoding='utf-8') as old_file, open(f'temp_{file_name}_{timestamp}.csv', 'w+', newline='', encoding='utf-8') as temp_file:
-        video_number                                        =  int(max(re.findall(r'^(\d+)?,', old_file.read(), re.M), key = lambda i: int(i)))
+        video_number                                        =  int(max(re.findall('^(\d+)?,', old_file.read(), re.M), key = lambda i: int(i)))
         video_number, new_videos, total_writes, incrementer = prepare_output(list_of_videos, stored_in_csv, video_number, reverse_chronological)
         fieldnames                                          = ['Video Number', 'Video Title', 'Video URL', 'Watched?', 'Watch again later?', 'Notes']
         writer                                              = csv.DictWriter(temp_file, fieldnames=fieldnames)

@@ -5,4 +5,4 @@ def browser_exists(browser):
 def get_browser_version(browser):
  with open (f'/Applications/{browser}.app/Contents/Info.plist', 'r', encoding='utf-8') as file:
   info_plist = file.read()
- return re.search(r'<key>CFBundleShortVersionString</key>\s*<string>([0-9\.]+)', info_plist)[1]
+ return re.search('<key>CFBundleShortVersionString</key>\s*<string>([0-9\.]+)', info_plist)[1]
