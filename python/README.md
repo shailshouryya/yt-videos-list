@@ -1,7 +1,7 @@
 # Python Quick Start
 
 <p align="center">
-  <a href="https://github.com/Shail-Shouryya/yt_videos_list/blob/master/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/Shail-Shouryya/yt_videos_list?color=brightgreen"></a>
+  <a href="https://github.com/Shail-Shouryya/yt_videos_list/blob/master/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/Shail-Shouryya/yt_videos_list?color=yellow"></a>
   <a href="https://docs.python.org/3/index.html">    <img src="https://img.shields.io/badge/python-3.6%2B-blue"/></a>
   <a href="https://www.python.org/dev/peps/pep-0008"><img src="https://img.shields.io/badge/code%20style-PEP8-yellow.svg"/></a>
   <a href="https://github.com/Shail-Shouryya/yt_videos_list/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/Shail-Shouryya/yt_videos_list?color=blue"></a>
@@ -216,7 +216,7 @@ zsh  tests/run_tests.sh # this works as well
 - [PyPi Stats](https://pypistats.org/packages/yt-videos-list)
 </details>
 
-[![Downloads](https://static.pepy.tech/personalized-badge/yt-videos-list?period=week&units=international_system&left_color=black&right_color=red&left_text=Downloads)](https://pepy.tech/project/yt-videos-list) [![Downloads](https://static.pepy.tech/personalized-badge/yt-videos-list?period=month&units=international_system&left_color=black&right_color=yellow&left_text=Downloads)](https://pepy.tech/project/yt-videos-list) [![Downloads](https://pepy.tech/badge/yt-videos-list)](https://pepy.tech/project/yt-videos-list)
+[![Downloads](https://static.pepy.tech/personalized-badge/yt-videos-list?period=week&units=international_system&left_color=black&right_color=red&left_text=Weekly%20Downloads)](https://pepy.tech/project/yt-videos-list) [![Downloads](https://static.pepy.tech/personalized-badge/yt-videos-list?period=month&units=international_system&left_color=black&right_color=yellow&left_text=Monthly%20Downloads)](https://pepy.tech/project/yt-videos-list) [![Downloads](https://static.pepy.tech/personalized-badge/yt-videos-list?period=total&units=international_system&left_color=black&right_color=blue&left_text=Total%20Downloads)](https://pepy.tech/project/yt-videos-list)
 
 #### [Back to main page](https://github.com/Shail-Shouryya/yt_videos_list/)
 If you found this interesting or useful, **please consider starring this repo** so other people can more easily find and use this. Thanks!
