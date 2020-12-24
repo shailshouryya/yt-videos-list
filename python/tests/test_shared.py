@@ -11,6 +11,7 @@ import shutil
 import hashlib
 import datetime
 import threading
+import contextlib
 
 from determine import determine_path_slash
 
@@ -18,6 +19,23 @@ from yt_videos_list                       import ListCreator
 
 
 NOW = datetime.datetime.now
+
+
+@contextlib.contextmanager
+def yield_file_writer(log_file):
+    with open (log_file, 'a', encoding='utf-8') as output_location:
+        yield output_location
+
+@contextlib.contextmanager
+def yield_stdout_writer():
+    yield sys.stdout
+
+
+def log_test_info(message, log_file):
+    with yield_stdout_writer() as console, yield_file_writer(log_file) as log_file:
+        console.writelines (message + '\n')
+        log_file.writelines(message + '\n')
+
 
 
 def run_tests_for(browsers_list):
@@ -45,7 +63,9 @@ def run_tests_for(browsers_list):
             # number of threads we've created
             # manually
             thread_1_case      = test_cases[current]
-            test_case_thread_1 = threading.Thread(target=run_test_case, args=(thread_1_case,))
+            if getattr(thread_1_case, 'reverse_chronological') is True: log_1_name = 'CoreySchafer_reverse_chronological_videos_list.log'
+            else:                                                       log_1_name = 'CoreySchafer_chronological_videos_list.log'
+            test_case_thread_1 = threading.Thread(target=run_test_case, args=(thread_1_case, log_1_name))
             test_case_thread_1.start()
             current += 1
             # safaridriver does not allow multi-threading:
@@ -55,7 +75,9 @@ def run_tests_for(browsers_list):
                     # wait 30 seconds to allow all selenium webdriver dependencies to download
                     time.sleep(30)
                 thread_2_case      = test_cases[current]
-                test_case_thread_2 = threading.Thread(target=run_test_case, args=(thread_2_case,))
+                if getattr(thread_2_case, 'reverse_chronological') is True: log_2_name = 'CoreySchafer_reverse_chronological_videos_list.log'
+                else:                                                       log_2_name = 'CoreySchafer_chronological_videos_list.log'
+                test_case_thread_2 = threading.Thread(target=run_test_case, args=(thread_2_case, log_2_name))
                 test_case_thread_2.start()
                 current += 1
         # wait 70 seconds after starting new threads since there are 5 variations we need to test
@@ -66,8 +88,8 @@ def run_tests_for(browsers_list):
         while threading.active_count() - 1 != 0 and current < total:
             # the threads are still running
             time.sleep(7)
-        if 'thread_1_case' in locals(): print(f'{NOW().isoformat()}: Finished testing {[thread_1_case]}!')
-        if 'thread_2_case' in locals(): print(f'{NOW().isoformat()}: Finished testing {[thread_2_case]}!')
+        if 'thread_1_case' in locals(): log_test_info(f'{NOW().isoformat()}: Finished testing {[thread_1_case]}!', log_1_name)
+        if 'thread_2_case' in locals(): log_test_info(f'{NOW().isoformat()}: Finished testing {[thread_2_case]}!', log_2_name)
         print(f'{NOW().isoformat()}: Moving on to the next driver...\n' + '⏬ '*11)
 
 
@@ -84,7 +106,7 @@ def create_test_cases(browsers):
     ]
 
 
-def run_test_case(list_creator):
+def run_test_case(list_creator, log_file):
     '''
     Calls `verify_update()` and `delete_all_schafer5_files()`.
     `verify_update()` runs all variations (no pre-existing files,
@@ -101,8 +123,8 @@ def run_test_case(list_creator):
     path_slash               = determine_path_slash()
     schafer5_url             = 'youtube.com/user/schafer5'
     is_reverse_chronological = getattr(list_creator, 'reverse_chronological')
-    if is_reverse_chronological: delete_all_schafer5_files('reverse_chronological_videos_list'); verify_update(list_creator, schafer5_url, f'tests{path_slash}partial_schafer5_reverse_chronological', f'tests{path_slash}full_schafer5_reverse_chronological')
-    else:                        delete_all_schafer5_files('chronological_videos_list');         verify_update(list_creator, schafer5_url, f'tests{path_slash}partial_schafer5_chronological',         f'tests{path_slash}full_schafer5_chronological')
+    if is_reverse_chronological: delete_all_schafer5_files('reverse_chronological_videos_list'); verify_update(list_creator, schafer5_url, f'tests{path_slash}partial_schafer5_reverse_chronological', f'tests{path_slash}full_schafer5_reverse_chronological', log_file)
+    else:                        delete_all_schafer5_files('chronological_videos_list');         verify_update(list_creator, schafer5_url, f'tests{path_slash}partial_schafer5_chronological',         f'tests{path_slash}full_schafer5_chronological', log_file)
 
 
 def delete_all_schafer5_files(suffix):
@@ -129,7 +151,7 @@ def delete_file(filepath, extension):
     if os.path.exists(f'{filepath}.{extension}'):
         os.remove(f'{filepath}.{extension}')
 
-def verify_update(driver, schafer5_url, test_file, full_file):
+def verify_update(driver, schafer5_url, test_file, full_file, log_file):
     '''
     Uses the `reverse_chronological` attribute of the `driver`
     argument to determine the suffix, then uses the reference
@@ -150,15 +172,15 @@ def verify_update(driver, schafer5_url, test_file, full_file):
     for create_file in variations:
         is_reverse_chronological = vars   (driver)["reverse_chronological"]
         driver_name              = getattr(driver, 'driver')
-        print(f'\n{NOW().isoformat()}: TESTING list_creator with list_creator.reverse_chronological set to {is_reverse_chronological} for {driver_name}driver')
+        log_test_info(f'\n{NOW().isoformat()}: TESTING list_creator with list_creator.reverse_chronological set to {is_reverse_chronological} for {driver_name}driver', log_file)
         if is_reverse_chronological: suffix = 'reverse_chronological_videos_list'
         else:                        suffix = 'chronological_videos_list'
-        create_file(test_file, suffix) # the file this function creates should be the SAME as the returned string to the file_name variable in the next line
+        create_file(test_file, suffix, log_file) # the file this function creates should be the SAME as the returned string to the file_name variable in the next line
         test_output_file = driver.create_list_for(schafer5_url, log_to_file=True)
         # verify calling the create_list_for() method updates the partial file properly
-        compare_test_files_to_reference_files(full_file, test_output_file)
+        compare_test_files_to_reference_files(full_file, test_output_file, log_file)
 
-def use_no_partial_files(test_file, suffix):
+def use_no_partial_files(test_file, suffix, log_file):
     '''
     Removes all pre-existing files with the corresponding `suffix`
     (`reverse_chronological_videos_list`
@@ -166,10 +188,10 @@ def use_no_partial_files(test_file, suffix):
     `chronological_videos_list`;
     the prefix in all cases is `CoreySchafer_`).
     '''
-    print(f'{NOW().isoformat()}: TESTING with NO pre-existing files AT ALL....')
+    log_test_info(f'{NOW().isoformat()}: TESTING with NO pre-existing files AT ALL....', log_file)
     delete_all_schafer5_files(suffix)
 
-def use_partial_txt_only(test_file, suffix):
+def use_partial_txt_only(test_file, suffix, log_file):
     '''
     Removes all pre-existing files with the corresponding `suffix`
     (`reverse_chronological_videos_list`
@@ -179,11 +201,11 @@ def use_partial_txt_only(test_file, suffix):
     partial txt file using the `partial_schafer5_{suffix}.txt`
     reference file.
     '''
-    print(f'{NOW().isoformat()}: TESTING with a pre-existing txt file only (no pre-existing csv or md file)....')
+    log_test_info(f'{NOW().isoformat()}: TESTING with a pre-existing txt file only (no pre-existing csv or md file)....', log_file)
     delete_all_schafer5_files(suffix)
     create_partial_file(test_file, suffix, 'txt')
 
-def use_partial_csv_only(test_file, suffix):
+def use_partial_csv_only(test_file, suffix, log_file):
     '''
     Removes all pre-existing files with the corresponding `suffix`
     (`reverse_chronological_videos_list`
@@ -193,11 +215,11 @@ def use_partial_csv_only(test_file, suffix):
     partial csv file using the `partial_schafer5_{suffix}.csv`
     reference file.
     '''
-    print(f'{NOW().isoformat()}: TESTING with a pre-existing csv file only (no pre-existing txt or md file)....')
+    log_test_info(f'{NOW().isoformat()}: TESTING with a pre-existing csv file only (no pre-existing txt or md file)....', log_file)
     delete_all_schafer5_files(suffix)
     create_partial_file(test_file, suffix, 'csv')
 
-def use_partial_md_only(test_file, suffix):
+def use_partial_md_only(test_file, suffix, log_file):
     '''
     Removes all pre-existing files with the corresponding `suffix`
     (`reverse_chronological_videos_list`
@@ -207,11 +229,11 @@ def use_partial_md_only(test_file, suffix):
     partial md file using the `partial_schafer5_{suffix}.md`
     reference file.
     '''
-    print(f'{NOW().isoformat()}: TESTING with a pre-existing md file only (no pre-existing txt or csv file)....')
+    log_test_info(f'{NOW().isoformat()}: TESTING with a pre-existing md file only (no pre-existing txt or csv file)....', log_file)
     delete_all_schafer5_files(suffix)
     create_partial_file(test_file, suffix, 'md')
 
-def use_partial_csv_txt_and_md(test_file, suffix):
+def use_partial_csv_txt_and_md(test_file, suffix, log_file):
     '''
     Removes all pre-existing files with the corresponding `suffix`
     (`reverse_chronological_videos_list`
@@ -221,7 +243,7 @@ def use_partial_csv_txt_and_md(test_file, suffix):
     partial txt, csv, and md files using the
     `partial_schafer5_{suffix}.{ext}` reference files.
     '''
-    print(f'{NOW().isoformat()}: TESTING with pre-existing txt, csv, and md files....')
+    log_test_info(f'{NOW().isoformat()}: TESTING with pre-existing txt, csv, and md files....', log_file)
     create_partial_file(test_file, suffix, 'txt')
     create_partial_file(test_file, suffix, 'csv')
     create_partial_file(test_file, suffix, 'md' )
@@ -235,7 +257,7 @@ def create_partial_file(test_file, suffix, extension):
     shutil.copy(f'{test_file}.{extension}', f'CoreySchafer_{suffix}.{extension}')
 
 
-def compare_test_files_to_reference_files(full_file, test_output_file):
+def compare_test_files_to_reference_files(full_file, test_output_file, log_file):
     '''
     Ensures the resulting test output file `test_output_file`
     contains the exact same content as the reference `full_file` by
@@ -258,12 +280,12 @@ def compare_test_files_to_reference_files(full_file, test_output_file):
         verified_csv = hashlib.sha256(full_csv.read().encode('utf-8')).hexdigest()
         verified_md  = hashlib.sha256(full_md.read().encode ('utf-8')).hexdigest()
     failed = False
-    if current_txt != verified_txt: print(f'{NOW().isoformat()}: ❌ ERROR! The updated txt file does NOT match the {full_file}.txt file!'); failed = True
-    else:                           print(f'{NOW().isoformat()}: ✅ The updated txt file matches the {full_file}.txt file :)')
-    if current_csv != verified_csv: print(f'{NOW().isoformat()}: ❌ ERROR! The updated csv file does NOT match the {full_file}.csv file!'); failed = True
-    else:                           print(f'{NOW().isoformat()}: ✅ The updated csv file matches the {full_file}.csv file :)')
-    if current_md  != verified_md:  print(f'{NOW().isoformat()}: ❌ ERROR! The updated md  file does NOT match the {full_file}.md  file!'); failed = True
-    else:                           print(f'{NOW().isoformat()}: ✅ The updated md  file matches the {full_file}.md  file :)')
+    if current_txt != verified_txt: log_test_info(f'{NOW().isoformat()}: ❌ ERROR! The updated txt file does NOT match the {full_file}.txt file!', log_file); failed = True
+    else:                           log_test_info(f'{NOW().isoformat()}: ✅ The updated txt file matches the {full_file}.txt file :)', log_file)
+    if current_csv != verified_csv: log_test_info(f'{NOW().isoformat()}: ❌ ERROR! The updated csv file does NOT match the {full_file}.csv file!', log_file); failed = True
+    else:                           log_test_info(f'{NOW().isoformat()}: ✅ The updated csv file matches the {full_file}.csv file :)', log_file)
+    if current_md  != verified_md:  log_test_info(f'{NOW().isoformat()}: ❌ ERROR! The updated md  file does NOT match the {full_file}.md  file!', log_file); failed = True
+    else:                           log_test_info(f'{NOW().isoformat()}: ✅ The updated md  file matches the {full_file}.md  file :)', log_file)
     if failed:
-        print('\n' * 5 + f'FAILED at {NOW().isoformat()}!')
+        log_test_info('\n' * 5 + f'FAILED at {NOW().isoformat()}!')
         sys.exit()
