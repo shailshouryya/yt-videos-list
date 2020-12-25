@@ -11,7 +11,6 @@ import shutil
 import hashlib
 import datetime
 import threading
-import contextlib
 
 from determine import determine_path_slash
 
@@ -21,21 +20,10 @@ from yt_videos_list                       import ListCreator
 NOW = datetime.datetime.now
 
 
-@contextlib.contextmanager
-def yield_file_writer(log_file):
-    with open (log_file, 'a', encoding='utf-8') as output_location:
-        yield output_location
-
-@contextlib.contextmanager
-def yield_stdout_writer():
-    yield sys.stdout
-
-
 def log_test_info(message, log_file):
-    with yield_stdout_writer() as console, yield_file_writer(log_file) as log_file:
-        console.writelines (message + '\n')
-        log_file.writelines(message + '\n')
-
+    sys.stdout.writelines(message + '\n')
+    with open (log_file, 'a', encoding='utf-8') as output_location:
+        output_location.writelines(message + '\n')
 
 
 def run_tests_for(browsers_list):
@@ -287,5 +275,5 @@ def compare_test_files_to_reference_files(full_file, test_output_file, log_file)
     if current_md  != verified_md:  log_test_info(f'{NOW().isoformat()}: ❌ ERROR! The updated md  file does NOT match the {full_file}.md  file!', log_file); failed = True
     else:                           log_test_info(f'{NOW().isoformat()}: ✅ The updated md  file matches the {full_file}.md  file :)', log_file)
     if failed:
-        log_test_info('\n' * 5 + f'FAILED at {NOW().isoformat()}!')
+        log_test_info('\n' * 5 + f'FAILED at {NOW().isoformat()}!', log_file)
         sys.exit()
