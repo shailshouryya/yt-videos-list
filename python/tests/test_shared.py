@@ -30,10 +30,10 @@ def log_test_info(message, *args):
 
 class ThreadWithResult(threading.Thread):
     def __init__(self, target, args):
-        self.target = target
-        self.args = args
+        self.function_to_thread = target
+        self.function_arguments = args
         def function():
-            self.result = self.target(*self.args)
+            self.failed = self.function_to_thread(*self.function_arguments)
         super().__init__(target=function, args=())
 
 
@@ -91,8 +91,8 @@ def run_tests_for(browsers_list):
             time.sleep(7)
         if 'thread_1_case' in locals(): log_test_info(f'{ISOFORMAT(NOW())}: Finished testing {[thread_1_case]}!', log_1_name)
         if 'thread_2_case' in locals(): log_test_info(f'{ISOFORMAT(NOW())}: Finished testing {[thread_2_case]}!', log_2_name)
-        if 'thread_1_case' in locals() and test_case_thread_1.result == 'Failed!': sys.exit()
-        if 'thread_2_case' in locals() and test_case_thread_2.result == 'Failed!': sys.exit()
+        if 'thread_1_case' in locals() and test_case_thread_1.failed == 'Failed!': sys.exit()
+        if 'thread_2_case' in locals() and test_case_thread_2.failed == 'Failed!': sys.exit()
         if   'thread_1_case' in locals() and 'thread_2_case' in locals(): log_test_info(f'{ISOFORMAT(NOW())}: Moving on to the next driver...\n' + '⏬ '*11, log_1_name, log_2_name)
         elif 'thread_1_case' in locals():                                 log_test_info(f'{ISOFORMAT(NOW())}: Moving on to the next driver...\n' + '⏬ '*11, log_1_name)
         elif 'thread_2_case' in locals():                                 log_test_info(f'{ISOFORMAT(NOW())}: Moving on to the next driver...\n' + '⏬ '*11, log_2_name)
