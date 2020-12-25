@@ -28,6 +28,15 @@ def log_test_info(message, *args):
             output_location.writelines(message + '\n')
 
 
+class ThreadWithResult(threading.Thread):
+    def __init__(self, target, args):
+        self.target = target
+        self.args = args
+        def function():
+            self.result = self.target(*self.args)
+        super().__init__(target=function, args=())
+
+
 def run_tests_for(browsers_list):
     '''
     Runs 2 threads simultaneously to test both
@@ -57,7 +66,7 @@ def run_tests_for(browsers_list):
             thread_1_case      = test_cases[current]
             if getattr(thread_1_case, 'reverse_chronological') is True: log_1_name = 'CoreySchafer_reverse_chronological_videos_list.log'
             else:                                                       log_1_name = 'CoreySchafer_chronological_videos_list.log'
-            test_case_thread_1 = threading.Thread(target=run_test_case, args=(thread_1_case, log_1_name))
+            test_case_thread_1 = ThreadWithResult(target=run_test_case, args=(thread_1_case, log_1_name))
             test_case_thread_1.start()
             current += 1
             # safaridriver does not allow multi-threading:
@@ -69,7 +78,7 @@ def run_tests_for(browsers_list):
                 thread_2_case      = test_cases[current]
                 if getattr(thread_2_case, 'reverse_chronological') is True: log_2_name = 'CoreySchafer_reverse_chronological_videos_list.log'
                 else:                                                       log_2_name = 'CoreySchafer_chronological_videos_list.log'
-                test_case_thread_2 = threading.Thread(target=run_test_case, args=(thread_2_case, log_2_name))
+                test_case_thread_2 = ThreadWithResult(target=run_test_case, args=(thread_2_case, log_2_name))
                 test_case_thread_2.start()
                 current += 1
         # wait 70 seconds after starting new threads since there are 5 variations we need to test
@@ -82,6 +91,8 @@ def run_tests_for(browsers_list):
             time.sleep(7)
         if 'thread_1_case' in locals(): log_test_info(f'{ISOFORMAT(NOW())}: Finished testing {[thread_1_case]}!', log_1_name)
         if 'thread_2_case' in locals(): log_test_info(f'{ISOFORMAT(NOW())}: Finished testing {[thread_2_case]}!', log_2_name)
+        if 'thread_1_case' in locals() and test_case_thread_1.result == 'Failed!': sys.exit()
+        if 'thread_2_case' in locals() and test_case_thread_2.result == 'Failed!': sys.exit()
         if   'thread_1_case' in locals() and 'thread_2_case' in locals(): log_test_info(f'{ISOFORMAT(NOW())}: Moving on to the next driver...\n' + '⏬ '*11, log_1_name, log_2_name)
         elif 'thread_1_case' in locals():                                 log_test_info(f'{ISOFORMAT(NOW())}: Moving on to the next driver...\n' + '⏬ '*11, log_1_name)
         elif 'thread_2_case' in locals():                                 log_test_info(f'{ISOFORMAT(NOW())}: Moving on to the next driver...\n' + '⏬ '*11, log_2_name)
@@ -117,8 +128,8 @@ def run_test_case(list_creator, log_file):
     path_slash               = determine_path_slash()
     schafer5_url             = 'youtube.com/user/schafer5'
     is_reverse_chronological = getattr(list_creator, 'reverse_chronological')
-    if is_reverse_chronological: delete_all_schafer5_files('reverse_chronological_videos_list'); verify_update(list_creator, schafer5_url, f'tests{path_slash}partial_schafer5_reverse_chronological', f'tests{path_slash}full_schafer5_reverse_chronological', log_file)
-    else:                        delete_all_schafer5_files('chronological_videos_list');         verify_update(list_creator, schafer5_url, f'tests{path_slash}partial_schafer5_chronological',         f'tests{path_slash}full_schafer5_chronological', log_file)
+    if is_reverse_chronological: delete_all_schafer5_files('reverse_chronological_videos_list'); return verify_update(list_creator, schafer5_url, f'tests{path_slash}partial_schafer5_reverse_chronological', f'tests{path_slash}full_schafer5_reverse_chronological', log_file)
+    else:                        delete_all_schafer5_files('chronological_videos_list');         return verify_update(list_creator, schafer5_url, f'tests{path_slash}partial_schafer5_chronological',         f'tests{path_slash}full_schafer5_chronological', log_file)
 
 
 def delete_all_schafer5_files(suffix):
@@ -172,7 +183,10 @@ def verify_update(driver, schafer5_url, test_file, full_file, log_file):
         create_file(test_file, suffix, log_file) # the file this function creates should be the SAME as the returned string to the file_name variable in the next line
         test_output_file = driver.create_list_for(schafer5_url, log_to_file=True)
         # verify calling the create_list_for() method updates the partial file properly
-        compare_test_files_to_reference_files(full_file, test_output_file, log_file)
+        failed = compare_test_files_to_reference_files(full_file, test_output_file, log_file)
+        if failed == 'Failed!':
+            return 'Failed!'
+    return 'Passed!'
 
 def use_no_partial_files(test_file, suffix, log_file):
     '''
@@ -282,4 +296,5 @@ def compare_test_files_to_reference_files(full_file, test_output_file, log_file)
     else:                           log_test_info(f'{ISOFORMAT(NOW())}: ✅ The updated md  file matches the {full_file}.md  file :)', log_file)
     if failed:
         log_test_info('\n' * 5 + f'FAILED at {ISOFORMAT(NOW())}!', log_file)
-        sys.exit()
+        return 'Failed!'
+    return 'Passed!'
