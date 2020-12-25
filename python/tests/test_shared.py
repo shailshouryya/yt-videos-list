@@ -20,10 +20,11 @@ from yt_videos_list                       import ListCreator
 NOW = datetime.datetime.now
 
 
-def log_test_info(message, log_file):
+def log_test_info(message, *args):
     sys.stdout.writelines(message + '\n')
-    with open (log_file, 'a', encoding='utf-8') as output_location:
-        output_location.writelines(message + '\n')
+    for log_file in args:
+        with open (log_file, 'a', encoding='utf-8') as output_location:
+            output_location.writelines(message + '\n')
 
 
 def run_tests_for(browsers_list):
@@ -78,7 +79,9 @@ def run_tests_for(browsers_list):
             time.sleep(7)
         if 'thread_1_case' in locals(): log_test_info(f'{NOW().isoformat()}: Finished testing {[thread_1_case]}!', log_1_name)
         if 'thread_2_case' in locals(): log_test_info(f'{NOW().isoformat()}: Finished testing {[thread_2_case]}!', log_2_name)
-        print(f'{NOW().isoformat()}: Moving on to the next driver...\n' + '⏬ '*11)
+        if   'thread_1_case' in locals() and 'thread_2_case' in locals(): log_test_info(f'{NOW().isoformat()}: Moving on to the next driver...\n' + '⏬ '*11, log_1_name, log_2_name)
+        elif 'thread_1_case' in locals():                                 log_test_info(f'{NOW().isoformat()}: Moving on to the next driver...\n' + '⏬ '*11, log_1_name)
+        elif 'thread_2_case' in locals():                                 log_test_info(f'{NOW().isoformat()}: Moving on to the next driver...\n' + '⏬ '*11, log_2_name)
 
 
 def create_test_cases(browsers):
