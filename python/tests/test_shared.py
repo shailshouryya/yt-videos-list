@@ -89,6 +89,8 @@ def run_tests_for(browsers_list):
         while threading.active_count() - 1 != 0 and current < total:
             # the threads are still running
             time.sleep(7)
+        if 'thread_1_case' in locals(): test_case_thread_1.join()
+        if 'thread_2_case' in locals(): test_case_thread_2.join()
         if 'thread_1_case' in locals(): log_test_info(f'{ISOFORMAT(NOW())}: Finished testing {[thread_1_case]}!', log_1_name)
         if 'thread_2_case' in locals(): log_test_info(f'{ISOFORMAT(NOW())}: Finished testing {[thread_2_case]}!', log_2_name)
         if 'thread_1_case' in locals() and test_case_thread_1.failed == 'Failed!': sys.exit()
