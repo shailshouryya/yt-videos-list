@@ -170,11 +170,11 @@ def verify_update(driver, schafer5_url, test_file, full_file, log_file):
     content in the full reference files.
     '''
     variations = [
+        use_partial_csv_txt_and_md,
         use_no_partial_files,
         use_partial_csv_only,
         use_partial_txt_only,
-        use_partial_md_only,
-        use_partial_csv_txt_and_md
+        use_partial_md_only
         ]
     for create_file in variations:
         is_reverse_chronological = vars   (driver)["reverse_chronological"]
