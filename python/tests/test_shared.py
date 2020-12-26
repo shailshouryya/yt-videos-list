@@ -89,12 +89,12 @@ def run_tests_for(browsers_list):
         while threading.active_count() - 1 != 0 and current < total:
             # the threads are still running
             time.sleep(7)
-        if 'thread_1_case' in locals(): test_case_thread_1.join()
-        if 'thread_2_case' in locals(): test_case_thread_2.join()
+        if 'test_case_thread_1' in locals(): test_case_thread_1.join()
+        if 'test_case_thread_2' in locals(): test_case_thread_2.join()
         if 'thread_1_case' in locals(): log_test_info(f'{ISOFORMAT(NOW())}: Finished testing {[thread_1_case]}!', log_1_name)
         if 'thread_2_case' in locals(): log_test_info(f'{ISOFORMAT(NOW())}: Finished testing {[thread_2_case]}!', log_2_name)
-        if 'thread_1_case' in locals() and test_case_thread_1.failed == 'Failed!': sys.exit()
-        if 'thread_2_case' in locals() and test_case_thread_2.failed == 'Failed!': sys.exit()
+        if 'test_case_thread_1' in locals() and (getattr(test_case_thread_1, 'failed', None) is None or test_case_thread_1.failed == 'Failed!'): sys.exit()
+        if 'test_case_thread_2' in locals() and (getattr(test_case_thread_2, 'failed', None) is None or test_case_thread_2.failed == 'Failed!'): sys.exit()
         if   'thread_1_case' in locals() and 'thread_2_case' in locals(): log_test_info(f'{ISOFORMAT(NOW())}: Moving on to the next driver...\n' + '⏬ '*11, log_1_name, log_2_name)
         elif 'thread_1_case' in locals():                                 log_test_info(f'{ISOFORMAT(NOW())}: Moving on to the next driver...\n' + '⏬ '*11, log_1_name)
         elif 'thread_2_case' in locals():                                 log_test_info(f'{ISOFORMAT(NOW())}: Moving on to the next driver...\n' + '⏬ '*11, log_2_name)
