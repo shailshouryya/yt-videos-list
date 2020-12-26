@@ -26,14 +26,11 @@ def save_elements_to_list(driver, start_time, scroll_pause_time, url, logging_ou
  total_time = end_time - start_time - scroll_pause_time
  logging_output_location.writelines(f'{ISOFORMAT(NOW())}: It took {total_time} seconds to find {len(elements)} videos from {url}{NEWLINE}{NEWLINE}')
  return elements
-def scroll_to_old_videos(url, driver, scroll_pause_time, txt_exists, csv_exists, md_exists, file_name, logging_output_location):
+def scroll_to_old_videos(url, driver, scroll_pause_time, file_name, logging_output_location):
  global VISITED_VIDEOS, STORED_IN_TXT, STORED_IN_CSV, STORED_IN_MD
- STORED_IN_TXT = set()
- STORED_IN_CSV = set()
- STORED_IN_MD  = set()
- if txt_exists: STORED_IN_TXT = store_already_written_videos(file_name, 'txt')
- if csv_exists: STORED_IN_CSV = store_already_written_videos(file_name, 'csv')
- if md_exists:  STORED_IN_MD =  store_already_written_videos(file_name, 'md' )
+ STORED_IN_TXT = store_already_written_videos(file_name, 'txt')
+ STORED_IN_CSV = store_already_written_videos(file_name, 'csv')
+ STORED_IN_MD =  store_already_written_videos(file_name, 'md' )
  VISITED_VIDEOS = STORED_IN_TXT.intersection(STORED_IN_CSV).intersection(STORED_IN_MD)
  logging_output_location.writelines(f'{ISOFORMAT(NOW())}: Detected an existing file with the name {file_name} in this directory, checking for new videos to update {file_name}....{NEWLINE}')
  start_time    = time.perf_counter()

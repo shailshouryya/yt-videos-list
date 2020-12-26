@@ -13,7 +13,7 @@ def determine_action(url, driver, scroll_pause_time, reverse_chronological, file
     txt_exists = os.path.isfile(f'{file_name}.txt')
     csv_exists = os.path.isfile(f'{file_name}.csv')
     md_exists  = os.path.isfile(f'{file_name}.md')
-    if txt_exists and csv_exists and md_exists: videos_list = file.update_file.scroll_to_old_videos(url, driver, scroll_pause_time, txt_exists, csv_exists, md_exists, file_name, logging_output_location)
+    if txt_exists and csv_exists and md_exists: videos_list = file.update_file.scroll_to_old_videos(url, driver, scroll_pause_time, file_name, logging_output_location)
     else:                                       videos_list = file.create_file.scroll_to_bottom    (url, driver, scroll_pause_time, logging_output_location)
     if len(videos_list) == 0:
         logging_output_location.writelines(COMMON_MESSAGE.no_videos_found)
