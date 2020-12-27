@@ -81,11 +81,6 @@ def run_tests_for(browsers_list):
                 test_case_thread_2 = ThreadWithResult(target=run_test_case, args=(thread_2_case, log_2_name))
                 test_case_thread_2.start()
                 current += 1
-        # wait 70 seconds after starting new threads since there are 5 variations we need to test
-        # for each test case, and each variation takes around 30 seconds - the sleep period just
-        # holds off on waiting if threads have finished since we know they PROBABLY won't finish
-        # in 70 seconds
-        time.sleep(70)
         while threading.active_count() - 1 != 0 and current < total:
             # the threads are still running
             time.sleep(7)
