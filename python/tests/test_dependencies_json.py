@@ -26,6 +26,25 @@ if __name__ == '__main__':
 from yt_videos_list.notifications import Common
 
 
+def main():
+    '''
+    Imports Common class from `yt_videos_list.notifications`
+    to use the commands dictionary (`driver_downloads_for_os`)
+    defined in the `Common().__init__` method to create json
+    and json-like text files. Both files contain all commands
+    for downloading required selenium webdriver dependencies
+    for supported selenium drivers. Output placed
+    in `../docs/` directory.
+    '''
+    common_messages = Common()
+    drivers_dictionary = common_messages.driver_downloads_for_os
+
+    write_pseudo_json(drivers_dictionary)
+    format_pseudo_json()
+    with open(f'..{PATH_SLASH}docs{PATH_SLASH}dependencies.json', 'w', encoding='utf-8') as json_file:
+        json.dump(drivers_dictionary, json_file, indent=4)
+
+
 def write_pseudo_json(drivers_dictionary):
     '''
     Creates a txt file containing all commands
@@ -61,24 +80,6 @@ def format_pseudo_json():
         formatted = re.sub('%CD%',     'C',       formatted)
         ffinal.write(formatted)
     os.remove('temp.json')
-
-def main():
-    '''
-    Imports Common class from `yt_videos_list.notifications`
-    to use the commands dictionary (`driver_downloads_for_os`)
-    defined in the `Common().__init__` method to create json
-    and json-like text files. Both files contain all commands
-    for downloading required selenium webdriver dependencies
-    for supported selenium drivers. Output placed
-    in `../docs/` directory.
-    '''
-    common_messages = Common()
-    drivers_dictionary = common_messages.driver_downloads_for_os
-
-    write_pseudo_json(drivers_dictionary)
-    format_pseudo_json()
-    with open(f'..{PATH_SLASH}docs{PATH_SLASH}dependencies.json', 'w', encoding='utf-8') as json_file:
-        json.dump(drivers_dictionary, json_file, indent=4)
 
 
 if __name__ == '__main__':

@@ -14,6 +14,19 @@ from determine      import determine_path_slash
 from yt_videos_list import ListCreator
 
 
+def main():
+    '''
+    Updates the full, chronological AND reverse chronological
+    txt, csv, md reference files for the
+    youtube.com/user/schafer5 channel (the reference channel
+    for testing) before moving the updated files into the
+    testing directory path (yt_videos_list/python/tests/).
+    '''
+    update_schafer5_chronological()
+    update_schafer5_non_chronological()
+    move_reference_files_to_tests()
+
+
 def update_schafer5_chronological():
     '''
     Updates the full, chronological txt, csv, md
@@ -47,19 +60,6 @@ def move_reference_files_to_tests():
     os.replace('full_schafer5_reverse_chronological.txt', f'tests{path_slash}full_schafer5_reverse_chronological.txt')
     os.replace('full_schafer5_reverse_chronological.csv', f'tests{path_slash}full_schafer5_reverse_chronological.csv')
     os.replace('full_schafer5_reverse_chronological.md',  f'tests{path_slash}full_schafer5_reverse_chronological.md')
-
-
-def main():
-    '''
-    Updates the full, chronological AND reverse chronological
-    txt, csv, md reference files for the
-    youtube.com/user/schafer5 channel (the reference channel
-    for testing) before moving the updated files into the
-    testing directory path (yt_videos_list/python/tests/).
-    '''
-    update_schafer5_chronological()
-    update_schafer5_non_chronological()
-    move_reference_files_to_tests()
 
 
 if __name__ == '__main__':

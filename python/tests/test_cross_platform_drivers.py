@@ -24,6 +24,20 @@ from test_shared                          import run_tests_for
 from yt_videos_list.download.windows_info import get_drive_letter
 
 
+def main():
+    '''
+    Removes all currently installed selenium
+    webdriver binaries, then calls the `run_tests_for()`
+    function from the `tests/test_shared.py` module.
+    The `run_tests_for()` function is the starting point
+    for all logic required to run integration tests for
+    the `yt_videos_list` package, and uses helper
+    funcations to carry out specific tasks.
+    '''
+    remove_dependencies()
+    browsers   = ['firefox', 'opera', 'chrome', 'brave']
+    run_tests_for(browsers)
+
 
 def remove_dependencies():
     '''
@@ -53,21 +67,6 @@ def remove_dependencies():
     if os.path.exists(chromedriver_path): os.remove(chromedriver_path)
     if os.path.exists(bravedriver_path):  os.remove(bravedriver_path)
     if os.path.exists(msedgedriver_path): os.remove(msedgedriver_path)
-
-
-def main():
-    '''
-    Removes all currently installed selenium
-    webdriver binaries, then calls the `run_tests_for()`
-    function from the `tests/test_shared.py` module.
-    The `run_tests_for()` function is the starting point
-    for all logic required to run integration tests for
-    the `yt_videos_list` package, and uses helper
-    funcations to carry out specific tasks.
-    '''
-    remove_dependencies()
-    browsers   = ['firefox', 'opera', 'chrome', 'brave']
-    run_tests_for(browsers)
 
 
 # add these later
