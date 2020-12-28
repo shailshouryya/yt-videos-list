@@ -12,12 +12,12 @@ def store_already_written_videos(file_name, file_type):
  with open(f'{file_name}.{file_type}', 'r', encoding='utf-8') as file:
   if file_type == 'txt' or file_type == 'md': return set(re.findall('(https://www\.youtube\.com/watch\?v=.+?)(?:\s|\n)', file.read()))
   if file_type == 'csv':       return set(re.findall('(https://www\.youtube\.com/watch\?v=.+?),', file.read()))
-def scroll_down(driver, scroll_pause_time, logging_output_location):
+def scroll_down(driver, scroll_pause_time, visited_videos, logging_output_location):
  driver.execute_script('window.scrollBy(0, 50000);')
  time.sleep(scroll_pause_time * 2)
  new_elements_count = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
  logging_output_location.writelines(f'{ISOFORMAT(NOW())}: Found {new_elements_count} videos...{NEWLINE}')
- if driver.find_elements_by_xpath('//*[@id="video-title"]')[-1].get_attribute("href") in VISITED_VIDEOS:
+ if driver.find_elements_by_xpath('//*[@id="video-title"]')[-1].get_attribute("href") in visited_videos:
   return True
  return False
 def save_elements_to_list(driver, start_time, scroll_pause_time, url, logging_output_location):
@@ -27,17 +27,16 @@ def save_elements_to_list(driver, start_time, scroll_pause_time, url, logging_ou
  logging_output_location.writelines(f'{ISOFORMAT(NOW())}: It took {total_time} seconds to find {len(elements)} videos from {url}{NEWLINE}{NEWLINE}')
  return elements
 def scroll_to_old_videos(url, driver, scroll_pause_time, file_name, logging_output_location):
- global VISITED_VIDEOS, STORED_IN_TXT, STORED_IN_CSV, STORED_IN_MD
- STORED_IN_TXT = store_already_written_videos(file_name, 'txt')
- STORED_IN_CSV = store_already_written_videos(file_name, 'csv')
- STORED_IN_MD =  store_already_written_videos(file_name, 'md' )
- VISITED_VIDEOS = STORED_IN_TXT.intersection(STORED_IN_CSV).intersection(STORED_IN_MD)
+ stored_in_txt = store_already_written_videos(file_name, 'txt')
+ stored_in_csv = store_already_written_videos(file_name, 'csv')
+ stored_in_md =  store_already_written_videos(file_name, 'md' )
+ visited_videos = stored_in_txt.intersection(stored_in_csv).intersection(stored_in_md)
  logging_output_location.writelines(f'{ISOFORMAT(NOW())}: Detected an existing file with the name {file_name} in this directory, checking for new videos to update {file_name}....{NEWLINE}')
  start_time    = time.perf_counter()
  found_old_videos = False
  while found_old_videos is False:
-  found_old_videos = scroll_down(driver, scroll_pause_time, logging_output_location)
- return save_elements_to_list(driver, start_time, scroll_pause_time, url, logging_output_location)
+  found_old_videos = scroll_down(driver, scroll_pause_time, visited_videos, logging_output_location)
+ return save_elements_to_list(driver, start_time, scroll_pause_time, url, logging_output_location), stored_in_txt, stored_in_csv, stored_in_md
 def time_writer_function(writer_function):
  @functools.wraps(writer_function)
  def wrapper_timer(*args, **kwargs):
@@ -85,9 +84,8 @@ def txt_writer(new_file, old_file, visited_videos, markdown_formatting, reverse_
   new_file.seek(0)
   for line in new_file: old_file.write(line)
 @time_writer_function
-def write_to_txt(list_of_videos, file_name, reverse_chronological, logging_output_location, timestamp):
- if 'STORED_IN_TXT' not in locals(): stored_in_txt = store_already_written_videos(file_name, 'txt')
- else:          stored_in_txt = STORED_IN_TXT
+def write_to_txt(list_of_videos, file_name, reverse_chronological, logging_output_location, timestamp, stored_in_txt):
+ if stored_in_txt is None: stored_in_txt = store_already_written_videos(file_name, 'txt')
  markdown_formatting = False
  spacing    = f'{NEWLINE}' + ' '*4
  with open(f'{file_name}.txt', 'r+', encoding='utf-8') as old_file, open(f'temp_{file_name}_{timestamp}.txt', 'w+', encoding='utf-8') as temp_file:
@@ -97,9 +95,8 @@ def write_to_txt(list_of_videos, file_name, reverse_chronological, logging_outpu
   txt_writer(temp_file, old_file, stored_in_txt, markdown_formatting, reverse_chronological, list_of_videos, spacing, video_number, incrementer, total_writes)
  return file_name, new_videos, reverse_chronological, logging_output_location
 @time_writer_function
-def write_to_md(list_of_videos, file_name, reverse_chronological, logging_output_location, timestamp):
- if 'STORED_IN_MD'  not in locals(): stored_in_md = store_already_written_videos(file_name, 'md')
- else:          stored_in_md = STORED_IN_MD
+def write_to_md(list_of_videos, file_name, reverse_chronological, logging_output_location, timestamp, stored_in_md):
+ if stored_in_md is None: stored_in_md = store_already_written_videos(file_name, 'md')
  markdown_formatting = True
  spacing    = f'{NEWLINE}' + '- ' + f'{NEWLINE}'
  with open(f'{file_name}.md', 'r+', encoding='utf-8') as old_file, open(f'temp_{file_name}_{timestamp}.md', 'w+', encoding='utf-8') as temp_file:
@@ -109,9 +106,8 @@ def write_to_md(list_of_videos, file_name, reverse_chronological, logging_output
   txt_writer(temp_file, old_file, stored_in_md, markdown_formatting, reverse_chronological, list_of_videos, spacing, video_number, incrementer, total_writes)
  return file_name, new_videos, reverse_chronological, logging_output_location
 @time_writer_function
-def write_to_csv(list_of_videos, file_name, reverse_chronological, logging_output_location, timestamp):
- if 'STORED_IN_CSV' not in locals(): stored_in_csv = store_already_written_videos(file_name, 'csv')
- else:          stored_in_csv = STORED_IN_CSV
+def write_to_csv(list_of_videos, file_name, reverse_chronological, logging_output_location, timestamp, stored_in_csv):
+ if stored_in_csv is None: stored_in_csv = store_already_written_videos(file_name, 'csv')
  with open(f'{file_name}.csv', 'r+', newline='', encoding='utf-8') as old_file, open(f'temp_{file_name}_{timestamp}.csv', 'w+', newline='', encoding='utf-8') as temp_file:
   video_number          =  int(max(re.findall('^(\d+)?,', old_file.read(), re.M), key = lambda i: int(i)))
   video_number, new_videos, total_writes, incrementer = prepare_output(list_of_videos, stored_in_csv, video_number, reverse_chronological)
