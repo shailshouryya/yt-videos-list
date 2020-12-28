@@ -87,7 +87,7 @@ def prepare_output(list_of_videos, videos_set, video_number, reverse_chronologic
 
 
 
-def txt_writer(new_file, old_file, visited_videos, markdown_formatting, reverse_chronological, list_of_videos, spacing, video_number, incrementer, total_writes):
+def txt_writer(new_file, old_file, visited_videos, markdown_formatting, reverse_chronological, list_of_videos, spacing, video_number, incrementer, total_writes, logging_output_location):
     for selenium_element in list_of_videos if reverse_chronological else list_of_videos[::-1]:
         if selenium_element.get_attribute("href") in visited_videos: continue
         else:
@@ -118,7 +118,7 @@ def write_to_txt(list_of_videos, file_name, reverse_chronological, logging_outpu
         video_number                                        =  int(max(re.findall('^Video Number:\s*(\d+)', old_file.read(), re.M), key = lambda i: int(i)))
         video_number, new_videos, total_writes, incrementer = prepare_output(list_of_videos, stored_in_txt, video_number, reverse_chronological)
         ####### defer to txt_writer() function to find new videos and format updated file #######
-        txt_writer(temp_file, old_file, stored_in_txt, markdown_formatting, reverse_chronological, list_of_videos, spacing, video_number, incrementer, total_writes)
+        txt_writer(temp_file, old_file, stored_in_txt, markdown_formatting, reverse_chronological, list_of_videos, spacing, video_number, incrementer, total_writes, logging_output_location)
     return file_name, new_videos, reverse_chronological, logging_output_location
 
 
@@ -131,7 +131,7 @@ def write_to_md(list_of_videos, file_name, reverse_chronological, logging_output
         video_number                                        =  int(max(re.findall('^Video Number:\s*(\d+)', old_file.read(), re.M), key = lambda i: int(i)))
         video_number, new_videos, total_writes, incrementer = prepare_output(list_of_videos, stored_in_md, video_number, reverse_chronological)
         ####### defer to txt_writer() function to find new videos and format updated file #######
-        txt_writer(temp_file, old_file, stored_in_md, markdown_formatting, reverse_chronological, list_of_videos, spacing, video_number, incrementer, total_writes)
+        txt_writer(temp_file, old_file, stored_in_md, markdown_formatting, reverse_chronological, list_of_videos, spacing, video_number, incrementer, total_writes, logging_output_location)
     return file_name, new_videos, reverse_chronological, logging_output_location
 
 
