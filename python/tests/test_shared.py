@@ -73,8 +73,8 @@ def run_tests_for(browsers_list):
             # Could not create a session: The Safari instance is already paired with another WebDriver session.
             if 'safari' not in browsers_list:
                 if current == 1:
-                    # wait 30 seconds to allow all selenium webdriver dependencies to download
-                    time.sleep(30)
+                    # wait 5 seconds to allow all just the firefox selenium webdriver dependency to download (necessary after test_cross_platforms module runs remove_dependencies())
+                    time.sleep(5)
                 thread_2_case      = test_cases[current]
                 if getattr(thread_2_case, 'reverse_chronological') is True: log_2_name = 'CoreySchafer_reverse_chronological_videos_list.log'
                 else:                                                       log_2_name = 'CoreySchafer_chronological_videos_list.log'
