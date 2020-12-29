@@ -96,9 +96,10 @@ def run_tests_for(browsers_list):
         if 'thread_2_case' in locals(): log_test_info(f'{ISOFORMAT(NOW())}: Finished testing {[thread_2_case]}!', log_2_name)
         if 'test_case_thread_1' in locals() and (getattr(test_case_thread_1, 'failed', None) is None or test_case_thread_1.failed == 'Failed!'): sys.exit()
         if 'test_case_thread_2' in locals() and (getattr(test_case_thread_2, 'failed', None) is None or test_case_thread_2.failed == 'Failed!'): sys.exit()
-        if   'thread_1_case' in locals() and 'thread_2_case' in locals(): log_test_info(f'{ISOFORMAT(NOW())}: Moving on to the next driver...\n' + '⏬ '*11 + '\n\n\n', log_1_name, log_2_name)
-        elif 'thread_1_case' in locals():                                 log_test_info(f'{ISOFORMAT(NOW())}: Moving on to the next driver...\n' + '⏬ '*11 + '\n\n\n', log_1_name)
-        elif 'thread_2_case' in locals():                                 log_test_info(f'{ISOFORMAT(NOW())}: Moving on to the next driver...\n' + '⏬ '*11 + '\n\n\n', log_2_name)
+        test_case_complete = f'{ISOFORMAT(NOW())}: Moving on to the next driver...\n' + '⏬ '*11 + '\n\n\n'
+        if   'thread_1_case' in locals() and 'thread_2_case' in locals(): log_test_info(test_case_complete, log_1_name, log_2_name)
+        elif 'thread_1_case' in locals():                                 log_test_info(test_case_complete, log_1_name)
+        elif 'thread_2_case' in locals():                                 log_test_info(test_case_complete, log_2_name)
 
 
 def create_test_cases(browsers):
