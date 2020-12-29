@@ -47,12 +47,12 @@ def time_writer_function(writer_function):
   total_time    = end_time - start_time
   temp_file     = f'temp_{file_name}_{timestamp}.{extension}'
   final_file    = f'{file_name}.{extension}'
-  log(f'Finished writing to'.ljust(39) + f'{temp_file}', logging_output_location)
-  log(f'{videos_written} videos written to'.ljust(39) + f'{temp_file}', logging_output_location)
-  log(f'Closing'.ljust(39) + f'{temp_file}', logging_output_location)
+  log(f'Finished writing to'.ljust(39) + f'{temp_file}',      logging_output_location)
+  log(f'{videos_written} videos written to'.ljust(39) + f'{temp_file}',   logging_output_location)
+  log(f'Closing'.ljust(39) + f'{temp_file}',         logging_output_location)
   log(f'Successfully completed write, renaming {temp_file} to {final_file}', logging_output_location)
   os.replace(temp_file, final_file)
-  log(f'Successfully renamed'.ljust(39) + f'{temp_file} to {final_file}', logging_output_location)
+  log(f'Successfully renamed'.ljust(39) + f'{temp_file} to {final_file}',       logging_output_location)
   log(f'It took {total_time} seconds to write all {videos_written} videos to {final_file}{NEWLINE}', logging_output_location)
  return wrapper_timer
 def prepare_output(list_of_videos, reverse_chronological):
