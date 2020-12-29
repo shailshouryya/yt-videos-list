@@ -58,11 +58,12 @@ def time_writer_function(writer_function):
         total_time                = end_time - start_time
         temp_file                 = f'temp_{file_name}_{timestamp}.{extension}'    # determine temp_{file_name} for wrapper_timer() scope
         final_file                = f'{file_name}.{extension}'
-        log(f'Finished writing to'.ljust(38) + f'{temp_file}', logging_output_location)
-        log(f'{videos_written} videos written to'.ljust(38) + f'{temp_file}', logging_output_location)
-        log(f'Closing'.ljust(38) + f'{temp_file}', logging_output_location)
+        log(f'Finished writing to'.ljust(39) + f'{temp_file}', logging_output_location)
+        log(f'{videos_written} videos written to'.ljust(39) + f'{temp_file}', logging_output_location)
+        log(f'Closing'.ljust(39) + f'{temp_file}', logging_output_location)
+        log(f'Successfully completed write, renaming {temp_file} to {final_file}', logging_output_location)
         os.replace(temp_file, final_file)                                    # rename temp_{file_name} to {file_name}.{extension} here AFTER everything else finishes to ensure atomicity
-        log(f'Successfully completed write, renamed {temp_file} to {final_file}', logging_output_location)
+        log(f'Successfully renamed'.ljust(39) + f'{temp_file} to {final_file}', logging_output_location)
         log(f'It took {total_time} seconds to write all {videos_written} videos to {final_file}{NEWLINE}', logging_output_location)
     return wrapper_timer
 
