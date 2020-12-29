@@ -1,6 +1,5 @@
 import sys
 import time
-import datetime
 import contextlib
 
 import selenium
@@ -11,14 +10,13 @@ from .download.selenium_webdriver_dependencies import download_all
 from .download.windows_info                    import get_drive_letter
 from .download.user_os_info                    import determine_user_os
 from .notifications                            import Common, ModuleMessage, ScriptMessage
+from .custom_logger                            import log
 
 
 def logic(channel, channel_type, file_name, log_to_file, txt, csv, markdown, reverse_chronological, headless, scroll_pause_time, user_driver, execution_type):
     common_message = Common()
     module_message = ModuleMessage()
     script_message = ScriptMessage()
-    isoformat      = datetime.datetime.isoformat
-    now            = datetime.datetime.now
 
     def check_user_input():
         nonlocal channel, channel_type, user_driver
@@ -176,9 +174,9 @@ def logic(channel, channel_type, file_name, log_to_file, txt, csv, markdown, rev
         driver.set_window_position(0, 0)
         file_name = determine_file_name()
         with yield_file_writer(file_name) if log_to_file is True else yield_stdout_writer() as logging_output_location:
-            logging_output_location.writelines(f'\n\n\n{isoformat(now())}: Now scraping {url} using the {user_driver}driver:\n')
+            log(f'Now scraping {url} using the {user_driver}driver:', logging_output_location)
             program.determine_action(url, driver, scroll_pause_time, reverse_chronological, file_name, txt, csv, markdown, logging_output_location)
             program_end = time.perf_counter()
             total_time  = program_end - program_start
-            logging_output_location.writelines(f'\n{isoformat(now())}: This program took {total_time} seconds to complete.\n')
+            log(f'This program took {total_time} seconds to complete.', logging_output_location)
     return file_name

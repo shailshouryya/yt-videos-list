@@ -1,30 +1,28 @@
 import functools
-import datetime
 import time
 import csv
 import os
 from .      import write
 from ..notifications import Common as common_message
+from ..custom_logger import log
 NEWLINE = '\n'
-ISOFORMAT = datetime.datetime.isoformat
-NOW    = datetime.datetime.now
 def scroll_down(current_elements_count, driver, scroll_pause_time, logging_output_location):
  driver.execute_script('window.scrollBy(0, 50000);')
  time.sleep(scroll_pause_time)
  new_elements_count = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
- logging_output_location.writelines(f'{ISOFORMAT(NOW())}: Found {new_elements_count} videos...{NEWLINE}')
+ log(f'Found {new_elements_count} videos...', logging_output_location)
  if new_elements_count == current_elements_count:
-  logging_output_location.writelines(common_message.no_new_videos_found(scroll_pause_time * 2))
+  log(common_message.no_new_videos_found(scroll_pause_time * 2), logging_output_location)
   time.sleep(scroll_pause_time * 2)
   new_elements_count = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
   if new_elements_count == current_elements_count:
-   logging_output_location.writelines(f'{ISOFORMAT(NOW())}: Reached end of page!{NEWLINE}')
+   log(f'Reached end of page!', logging_output_location)
  return new_elements_count
 def save_elements_to_list(driver, start_time, scroll_pause_time, url, logging_output_location):
  elements   = driver.find_elements_by_xpath('//*[@id="video-title"]')
  end_time   = time.perf_counter()
  total_time = end_time - start_time - scroll_pause_time
- logging_output_location.writelines(f'{ISOFORMAT(NOW())}: It took {total_time} seconds to find all {len(elements)} videos from {url}{NEWLINE}{NEWLINE}')
+ log(f'It took {total_time} seconds to find all {len(elements)} videos from {url}{NEWLINE}', logging_output_location)
  return elements
 def scroll_to_bottom(url, driver, scroll_pause_time, logging_output_location):
  start_time = time.perf_counter()
@@ -44,17 +42,17 @@ def time_writer_function(writer_function):
   extension     = writer_function.__name__.split('_')[-1]
   timestamp     = kwargs.get('timestamp', 'undeteremined_start_time')
   file_name, videos_written, logging_output_location = writer_function(*args, **kwargs)
-  logging_output_location.writelines(f'{ISOFORMAT(NOW())}: Opening a temp {extension} file and writing video information to the file....{NEWLINE}')
+  log(f'Opening a temp {extension} file and writing video information to the file....', logging_output_location)
   end_time      = time.perf_counter()
   total_time    = end_time - start_time
   temp_file     = f'temp_{file_name}_{timestamp}.{extension}'
   final_file    = f'{file_name}.{extension}'
-  logging_output_location.writelines(f'{ISOFORMAT(NOW())}: Finished writing to'.ljust(66) + f'{temp_file}{NEWLINE}')
-  logging_output_location.writelines(f'{ISOFORMAT(NOW())}: {videos_written} videos written to'.ljust(66) + f'{temp_file}{NEWLINE}')
-  logging_output_location.writelines(f'{ISOFORMAT(NOW())}: Closing'.ljust(66) + f'{temp_file}{NEWLINE}')
+  log(f'Finished writing to'.ljust(66) + f'{temp_file}', logging_output_location)
+  log(f'{videos_written} videos written to'.ljust(66) + f'{temp_file}', logging_output_location)
+  log(f'Closing'.ljust(66) + f'{temp_file}', logging_output_location)
   os.replace(temp_file, final_file)
-  logging_output_location.writelines(f'{ISOFORMAT(NOW())}: Successfully completed write, renamed {temp_file} to {final_file}{NEWLINE}')
-  logging_output_location.writelines(f'{ISOFORMAT(NOW())}: It took {total_time} seconds to write all {videos_written} videos to {final_file}{NEWLINE}{NEWLINE}')
+  log(f'Successfully completed write, renamed {temp_file} to {final_file}', logging_output_location)
+  log(f'It took {total_time} seconds to write all {videos_written} videos to {final_file}{NEWLINE}', logging_output_location)
  return wrapper_timer
 def prepare_output(list_of_videos, reverse_chronological):
  total_videos = len(list_of_videos)
@@ -70,7 +68,7 @@ def txt_writer(file, markdown_formatting, reverse_chronological, list_of_videos,
  for selenium_element in list_of_videos if reverse_chronological else list_of_videos[::-1]:
   video_number, total_writes = write.txt_entry(file, markdown_formatting, selenium_element, NEWLINE, spacing, video_number, incrementer, total_writes)
   if total_writes % 250 == 0:
-   logging_output_location.writelines(f'{ISOFORMAT(NOW())}: {total_writes} videos written to {file.name}...{NEWLINE}')
+   log(f'{total_writes} videos written to {file.name}...', logging_output_location)
 @time_writer_function
 def write_to_txt(list_of_videos, file_name, reverse_chronological, logging_output_location, timestamp):
  total_videos, total_writes, video_number, incrementer = prepare_output(list_of_videos, reverse_chronological)
@@ -97,5 +95,5 @@ def write_to_csv(list_of_videos, file_name, reverse_chronological, logging_outpu
   for selenium_element in list_of_videos if reverse_chronological else list_of_videos[::-1]:
    video_number, total_writes = write.csv_entry(writer, selenium_element, video_number, incrementer, total_writes)
    if total_writes % 250 == 0:
-    logging_output_location.writelines(f'{ISOFORMAT(NOW())}: {total_writes} videos written to {csv_file.name}...{NEWLINE}')
+    log(f'{total_writes} videos written to {csv_file.name}...', logging_output_location)
  return file_name, total_videos, logging_output_location
