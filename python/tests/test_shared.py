@@ -69,7 +69,7 @@ def run_tests_for(browsers_list):
             if getattr(thread_1_case, 'reverse_chronological') is True: log_1_name = 'CoreySchafer_reverse_chronological_videos_list.log'
             else:                                                       log_1_name = 'CoreySchafer_chronological_videos_list.log'
             test_case_thread_1 = ThreadWithResult(target=run_test_case, args=(thread_1_case, log_1_name))
-            log_test_info(f'\n{ISOFORMAT(NOW())}: Starting...', log_1_name)
+            log_test_info(f'{ISOFORMAT(NOW())}: Starting...', log_1_name)
             test_case_thread_1.start()
             log_test_info(f'{ISOFORMAT(NOW())}: Started!', log_1_name)
             current += 1
@@ -83,7 +83,7 @@ def run_tests_for(browsers_list):
                 if getattr(thread_2_case, 'reverse_chronological') is True: log_2_name = 'CoreySchafer_reverse_chronological_videos_list.log'
                 else:                                                       log_2_name = 'CoreySchafer_chronological_videos_list.log'
                 test_case_thread_2 = ThreadWithResult(target=run_test_case, args=(thread_2_case, log_2_name))
-                log_test_info(f'\n{ISOFORMAT(NOW())}: Starting...', log_2_name)
+                log_test_info(f'{ISOFORMAT(NOW())}: Starting...', log_2_name)
                 test_case_thread_2.start()
                 log_test_info(f'{ISOFORMAT(NOW())}: Started!', log_2_name)
                 current += 1
@@ -298,6 +298,6 @@ def compare_test_files_to_reference_files(full_file, test_output_file, log_file)
     if current_md  != verified_md:  log_test_info(f'{ISOFORMAT(NOW())}: ❌ ERROR! The updated md  file does NOT match the {full_file}.md  file!', log_file); failed = True
     else:                           log_test_info(f'{ISOFORMAT(NOW())}: ✅ The updated md  file matches the {full_file}.md  file :)', log_file)
     if failed:
-        log_test_info('\n' * 5 + f'FAILED at {ISOFORMAT(NOW())}!', log_file)
+        log_test_info(f'❗️❗️ FAILED at {ISOFORMAT(NOW())}! ❗️❗️', log_file)
         return 'Failed!'
     return 'Passed!'
