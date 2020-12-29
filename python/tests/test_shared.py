@@ -67,7 +67,9 @@ def run_tests_for(browsers_list):
             if getattr(thread_1_case, 'reverse_chronological') is True: log_1_name = 'CoreySchafer_reverse_chronological_videos_list.log'
             else:                                                       log_1_name = 'CoreySchafer_chronological_videos_list.log'
             test_case_thread_1 = ThreadWithResult(target=run_test_case, args=(thread_1_case, log_1_name))
+            log_test_info(f'\n{ISOFORMAT(NOW())}: {test_case_thread_1.name} starting...', log_1_name)
             test_case_thread_1.start()
+            log_test_info(f'{ISOFORMAT(NOW())}: {test_case_thread_1.name} started!', log_1_name)
             current += 1
             # safaridriver does not allow multi-threading:
             # Could not create a session: The Safari instance is already paired with another WebDriver session.
@@ -79,7 +81,9 @@ def run_tests_for(browsers_list):
                 if getattr(thread_2_case, 'reverse_chronological') is True: log_2_name = 'CoreySchafer_reverse_chronological_videos_list.log'
                 else:                                                       log_2_name = 'CoreySchafer_chronological_videos_list.log'
                 test_case_thread_2 = ThreadWithResult(target=run_test_case, args=(thread_2_case, log_2_name))
+                log_test_info(f'\n{ISOFORMAT(NOW())}: {test_case_thread_2.name} starting...', log_2_name)
                 test_case_thread_2.start()
+                log_test_info(f'{ISOFORMAT(NOW())}: {test_case_thread_2.name} started!', log_2_name)
                 current += 1
         while threading.active_count() - 1 != 0 and current < total:
             # the threads are still running
@@ -174,7 +178,7 @@ def verify_update(driver, schafer5_url, test_file, full_file, log_file):
     for create_file in variations:
         is_reverse_chronological = vars   (driver)["reverse_chronological"]
         driver_name              = getattr(driver, 'driver')
-        log_test_info(f'\n{ISOFORMAT(NOW())}: TESTING list_creator with list_creator.reverse_chronological set to {is_reverse_chronological} for {driver_name}driver', log_file)
+        log_test_info(f'{ISOFORMAT(NOW())}: TESTING list_creator with list_creator.reverse_chronological set to {is_reverse_chronological} for {driver_name}driver', log_file)
         if is_reverse_chronological: suffix = 'reverse_chronological_videos_list'
         else:                        suffix = 'chronological_videos_list'
         create_file(test_file, suffix, log_file) # the file this function creates should be the SAME as the returned string to the file_name variable in the next line
