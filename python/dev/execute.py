@@ -174,6 +174,7 @@ def logic(channel, channel_type, file_name, log_to_file, txt, csv, markdown, rev
         driver.set_window_position(0, 0)
         file_name = determine_file_name()
         with yield_file_writer(file_name) if log_to_file is True else yield_stdout_writer() as logging_output_location:
+            log( '>' * 50 + 'STARTING PROGRAM' + '<' * 50, logging_output_location)
             log(f'Now scraping {url} using the {user_driver}driver:', logging_output_location)
             program.determine_action(url, driver, scroll_pause_time, reverse_chronological, file_name, txt, csv, markdown, logging_output_location)
             program_end = time.perf_counter()
