@@ -1,11 +1,10 @@
 import functools
 import time
 import csv
-import os
 
 from .               import write
 from ..notifications import Common as common_message
-from ..custom_logger import log
+from ..custom_logger import log, log_extraction_information
 
 NEWLINE = '\n'
 
@@ -49,22 +48,7 @@ def scroll_to_bottom(url, driver, scroll_pause_time, logging_output_location):
 def time_writer_function(writer_function):
     @functools.wraps(writer_function)
     def wrapper_timer(*args, **kwargs):
-        start_time                = time.perf_counter()
-        extension                 = writer_function.__name__.split('_')[-1]
-        timestamp                 = kwargs.get('timestamp', 'undeteremined_start_time')
-        file_name, videos_written, logging_output_location = writer_function(*args, **kwargs)         # writer_function() writes to temp_{file_name}
-        log(f'Opening a temp {extension} file and writing video information to the file....', logging_output_location)
-        end_time                  = time.perf_counter()
-        total_time                = end_time - start_time
-        temp_file                 = f'temp_{file_name}_{timestamp}.{extension}'    # determine temp_{file_name} for wrapper_timer() scope
-        final_file                = f'{file_name}.{extension}'
-        log(f'Finished writing to'.ljust(39) + f'{temp_file}',                     logging_output_location)
-        log(f'{videos_written} videos written to'.ljust(39) + f'{temp_file}',      logging_output_location)
-        log(f'Closing'.ljust(39) + f'{temp_file}',                                 logging_output_location)
-        log(f'Successfully completed write, renaming {temp_file} to {final_file}', logging_output_location)
-        os.replace(temp_file, final_file)                                    # rename temp_{file_name} to {file_name}.{extension} here AFTER everything else finishes to ensure atomicity
-        log(f'Successfully renamed'.ljust(39) + f'{temp_file} to {final_file}',                            logging_output_location)
-        log(f'It took {total_time} seconds to write all {videos_written} videos to {final_file}{NEWLINE}', logging_output_location)
+        log_extraction_information(__name__, writer_function, args, kwargs)
     return wrapper_timer
 
 
@@ -93,7 +77,7 @@ def write_to_txt(list_of_videos, file_name, reverse_chronological, logging_outpu
     spacing                                               = f'{NEWLINE}' + ' '*4
     with open(f'temp_{file_name}_{timestamp}.txt', 'w', encoding='utf-8') as txt_file:
         txt_writer(txt_file, markdown_formatting, reverse_chronological, list_of_videos, spacing, video_number, incrementer, total_writes, logging_output_location)
-    return file_name, total_videos, logging_output_location
+    return file_name, total_videos, reverse_chronological, logging_output_location
 
 
 @time_writer_function
@@ -103,7 +87,7 @@ def write_to_md(list_of_videos, file_name, reverse_chronological, logging_output
     spacing                                               = f'{NEWLINE}' + '- ' + f'{NEWLINE}'
     with open(f'temp_{file_name}_{timestamp}.md', 'w', encoding='utf-8') as md_file:
         txt_writer(md_file, markdown_formatting, reverse_chronological, list_of_videos, spacing, video_number, incrementer, total_writes, logging_output_location)
-    return file_name, total_videos, logging_output_location
+    return file_name, total_videos, reverse_chronological, logging_output_location
 
 
 @time_writer_function
@@ -117,4 +101,4 @@ def write_to_csv(list_of_videos, file_name, reverse_chronological, logging_outpu
             video_number, total_writes = write.csv_entry(writer, selenium_element, video_number, incrementer, total_writes)
             if total_writes % 250 == 0:
                 log(f'{total_writes} videos written to {csv_file.name}...', logging_output_location)
-    return file_name, total_videos, logging_output_location
+    return file_name, total_videos, reverse_chronological, logging_output_location
