@@ -96,9 +96,9 @@ def run_tests_for(browsers_list):
         if 'thread_2_case' in locals(): log_test_info(f'{ISOFORMAT(NOW())}: Finished testing {[thread_2_case]}!', log_2_name)
         if 'test_case_thread_1' in locals() and (getattr(test_case_thread_1, 'failed', None) is None or test_case_thread_1.failed == 'Failed!'): sys.exit()
         if 'test_case_thread_2' in locals() and (getattr(test_case_thread_2, 'failed', None) is None or test_case_thread_2.failed == 'Failed!'): sys.exit()
-        if   'thread_1_case' in locals() and 'thread_2_case' in locals(): log_test_info(f'{ISOFORMAT(NOW())}: Moving on to the next driver...\n' + '⏬ '*11, log_1_name, log_2_name)
-        elif 'thread_1_case' in locals():                                 log_test_info(f'{ISOFORMAT(NOW())}: Moving on to the next driver...\n' + '⏬ '*11, log_1_name)
-        elif 'thread_2_case' in locals():                                 log_test_info(f'{ISOFORMAT(NOW())}: Moving on to the next driver...\n' + '⏬ '*11, log_2_name)
+        if   'thread_1_case' in locals() and 'thread_2_case' in locals(): log_test_info(f'{ISOFORMAT(NOW())}: Moving on to the next driver...\n' + '⏬ '*11 + '\n\n\n', log_1_name, log_2_name)
+        elif 'thread_1_case' in locals():                                 log_test_info(f'{ISOFORMAT(NOW())}: Moving on to the next driver...\n' + '⏬ '*11 + '\n\n\n', log_1_name)
+        elif 'thread_2_case' in locals():                                 log_test_info(f'{ISOFORMAT(NOW())}: Moving on to the next driver...\n' + '⏬ '*11 + '\n\n\n', log_2_name)
 
 
 def create_test_cases(browsers):
@@ -295,8 +295,8 @@ def compare_test_files_to_reference_files(full_file, test_output_file, log_file)
     else:                           log_test_info(f'{ISOFORMAT(NOW())}: ✅ The updated txt file matches the {full_file}.txt file :)', log_file)
     if current_csv != verified_csv: log_test_info(f'{ISOFORMAT(NOW())}: ❌ ERROR! The updated csv file does NOT match the {full_file}.csv file!', log_file); failed = True
     else:                           log_test_info(f'{ISOFORMAT(NOW())}: ✅ The updated csv file matches the {full_file}.csv file :)', log_file)
-    if current_md  != verified_md:  log_test_info(f'{ISOFORMAT(NOW())}: ❌ ERROR! The updated md  file does NOT match the {full_file}.md  file!', log_file); failed = True
-    else:                           log_test_info(f'{ISOFORMAT(NOW())}: ✅ The updated md  file matches the {full_file}.md  file :)', log_file)
+    if current_md  != verified_md:  log_test_info(f'{ISOFORMAT(NOW())}: ❌ ERROR! The updated md  file does NOT match the {full_file}.md  file!\n\n\n', log_file); failed = True
+    else:                           log_test_info(f'{ISOFORMAT(NOW())}: ✅ The updated md  file matches the {full_file}.md  file :)\n\n\n', log_file)
     if failed:
         log_test_info(f'❗️❗️ FAILED at {ISOFORMAT(NOW())}! ❗️❗️', log_file)
         return 'Failed!'
