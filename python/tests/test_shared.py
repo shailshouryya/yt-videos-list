@@ -69,9 +69,9 @@ def run_tests_for(browsers_list):
             if getattr(thread_1_case, 'reverse_chronological') is True: log_1_name = 'CoreySchafer_reverse_chronological_videos_list.log'
             else:                                                       log_1_name = 'CoreySchafer_chronological_videos_list.log'
             test_case_thread_1 = ThreadWithResult(target=run_test_case, args=(thread_1_case, log_1_name))
-            log_test_info(f'{ISOFORMAT(NOW())}: Starting...', log_1_name)
+            log_test_info(f'{ISOFORMAT(NOW())}: Starting thread for test case 1...', log_1_name)
             test_case_thread_1.start()
-            log_test_info(f'{ISOFORMAT(NOW())}: Started!', log_1_name)
+            log_test_info(f'{ISOFORMAT(NOW())}: Started thread for test case 1!', log_1_name)
             current += 1
             # safaridriver does not allow multi-threading:
             # Could not create a session: The Safari instance is already paired with another WebDriver session.
@@ -83,9 +83,9 @@ def run_tests_for(browsers_list):
                 if getattr(thread_2_case, 'reverse_chronological') is True: log_2_name = 'CoreySchafer_reverse_chronological_videos_list.log'
                 else:                                                       log_2_name = 'CoreySchafer_chronological_videos_list.log'
                 test_case_thread_2 = ThreadWithResult(target=run_test_case, args=(thread_2_case, log_2_name))
-                log_test_info(f'{ISOFORMAT(NOW())}: Starting...', log_2_name)
+                log_test_info(f'{ISOFORMAT(NOW())}: Starting thread for test case 2...', log_2_name)
                 test_case_thread_2.start()
-                log_test_info(f'{ISOFORMAT(NOW())}: Started!', log_2_name)
+                log_test_info(f'{ISOFORMAT(NOW())}: Started thread for test case 2!', log_2_name)
                 current += 1
         while threading.active_count() - 1 != 0 and current < total:
             # the threads are still running
