@@ -23,7 +23,7 @@ ISOFORMAT = datetime.datetime.isoformat
 
 def log_test_info(message, *args):
     thread_name = f'[{threading.current_thread().name}]'
-    message     = f'{thread_name:>10} {message}'
+    message     = f'{thread_name:>>14} {message}'
     sys.stdout.writelines(message + '\n')
     for log_file in args:
         with open (log_file, 'a', encoding='utf-8') as output_location:
