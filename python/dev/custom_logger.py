@@ -11,7 +11,8 @@ def log(message, logging_output_location):
     isoformat   = datetime.datetime.isoformat
     now         = datetime.datetime.now
     message     = f'===>{thread_name:>>14} {isoformat(now())}: {message}\n'
-    logging_output_location.writelines(message)
+    for location in logging_output_location:
+        location.writelines(message)
 
 
 def log_extraction_information(module, writer_function, args, kwargs):
