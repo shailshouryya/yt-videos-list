@@ -177,5 +177,5 @@ def logic(channel, channel_type, file_name, log_silently, txt, csv, markdown, re
             program_end = time.perf_counter()
             total_time  = program_end - program_start
             log(f'This program took {total_time} seconds to complete.', logging_locations)
-            log( '>' * 50 + 'PROGRAM COMPLETED' + '<' * 50, logging_locations)
+            log( '>' * 50 + 'PROGRAM COMPLETE' + '<' * 50, logging_locations)
     return file_name
