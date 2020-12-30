@@ -200,7 +200,7 @@ def use_no_partial_files(test_file, suffix, log_file):
     `chronological_videos_list`;
     the prefix in all cases is `CoreySchafer_`).
     '''
-    log_test_info(f'{ISOFORMAT(NOW())}: TESTING with NO pre-existing files AT ALL....', log_file)
+    log_test_info(f'{ISOFORMAT(NOW())}: TESTING with NO pre-existing files AT ALL....\n', log_file)
     delete_all_schafer5_files(suffix)
 
 def use_partial_txt_only(test_file, suffix, log_file):
@@ -213,7 +213,7 @@ def use_partial_txt_only(test_file, suffix, log_file):
     partial txt file using the `partial_schafer5_{suffix}.txt`
     reference file.
     '''
-    log_test_info(f'{ISOFORMAT(NOW())}: TESTING with a pre-existing txt file only (no pre-existing csv or md file)....', log_file)
+    log_test_info(f'{ISOFORMAT(NOW())}: TESTING with a pre-existing txt file only (no pre-existing csv or md file)....\n', log_file)
     delete_all_schafer5_files(suffix)
     create_partial_file(test_file, suffix, 'txt')
 
@@ -227,7 +227,7 @@ def use_partial_csv_only(test_file, suffix, log_file):
     partial csv file using the `partial_schafer5_{suffix}.csv`
     reference file.
     '''
-    log_test_info(f'{ISOFORMAT(NOW())}: TESTING with a pre-existing csv file only (no pre-existing txt or md file)....', log_file)
+    log_test_info(f'{ISOFORMAT(NOW())}: TESTING with a pre-existing csv file only (no pre-existing txt or md file)....\n', log_file)
     delete_all_schafer5_files(suffix)
     create_partial_file(test_file, suffix, 'csv')
 
@@ -241,7 +241,7 @@ def use_partial_md_only(test_file, suffix, log_file):
     partial md file using the `partial_schafer5_{suffix}.md`
     reference file.
     '''
-    log_test_info(f'{ISOFORMAT(NOW())}: TESTING with a pre-existing md file only (no pre-existing txt or csv file)....', log_file)
+    log_test_info(f'{ISOFORMAT(NOW())}: TESTING with a pre-existing md file only (no pre-existing txt or csv file)....\n', log_file)
     delete_all_schafer5_files(suffix)
     create_partial_file(test_file, suffix, 'md')
 
@@ -255,7 +255,7 @@ def use_partial_csv_txt_and_md(test_file, suffix, log_file):
     partial txt, csv, and md files using the
     `partial_schafer5_{suffix}.{ext}` reference files.
     '''
-    log_test_info(f'{ISOFORMAT(NOW())}: TESTING with pre-existing txt, csv, and md files....', log_file)
+    log_test_info(f'{ISOFORMAT(NOW())}: TESTING with pre-existing txt, csv, and md files....\n', log_file)
     create_partial_file(test_file, suffix, 'txt')
     create_partial_file(test_file, suffix, 'csv')
     create_partial_file(test_file, suffix, 'md' )
