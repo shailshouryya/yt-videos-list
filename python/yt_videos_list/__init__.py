@@ -110,25 +110,25 @@ class ListCreator:
     oldest videos at the top of the file instead of the most recently uploaded videos at the top):
     -> lc = ListCreator(reverse_chronological=False)
 
-    #####################################################################################################
+    -----------------------------------------------------------------------------------------------------
 
 
 
 
-    #############################################################
+    -----------------------------------------------------------------------------------------------------
 
     Minimalist with greater pauses (useful for slow internet):
-    -> lc = ListCreator(scroll_pause_time=1.2)
+    -> lc - ListCreator(scroll_pause_time=1.2)
 
     Minimalist with shorter pauses (useful for fast internet):
-    -> lc = ListCreator(scroll_pause_time=0.7)
+    -> lc - ListCreator(scroll_pause_time=0.7)
 
-    #############################################################
-
-
+    -----------------------------------------------------------------------------------------------------
 
 
-    #############################################################
+
+
+    -----------------------------------------------------------------------------------------------------
 
     Only creating a csv file with everything else set to default:
     -> lc = ListCreator(txt=False, md=False)
