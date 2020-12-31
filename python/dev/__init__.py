@@ -30,7 +30,9 @@ class ListCreator:
     Example usage:
         lc = ListCreator()
 
+
     #############################################################################################################
+
     If you ALREADY scraped a channel and the channel uploaded a new video, simply rerun this
     program on that channel and this package updates your files to include the newer video(s)!
 
@@ -80,53 +82,67 @@ class ListCreator:
 
 
 
-    WORKING EXAMPLES:
     #####################################################################################################
+
+    WORKING EXAMPLES:
+
     Minimalist (ListCreator object creates a csv, txt, and md file in reverse chronological order -
     meaning the most recently uploaded videos are at the top of the file):
+
     lc = ListCreator()
 
 
     Minimalist but with a different driver:
-    lc = ListCreator(driver='firefox') # default, argument not required
-    lc = ListCreator(driver='opera')
-    lc = ListCreator(driver='safari')
-    lc = ListCreator(driver='chrome')
-    lc = ListCreator(driver='brave')
-    lc = ListCreator(driver='edge')
+    -> lc = ListCreator(driver='firefox') # default, argument not required
+    -> lc = ListCreator(driver='opera')
+    -> lc = ListCreator(driver='safari')
+    -> lc = ListCreator(driver='chrome')
+    -> lc = ListCreator(driver='brave')
+    -> lc = ListCreator(driver='edge')
 
 
     Minimalist in headless ("invisible") mode (NOTE: currently only supported by firefox and chrome):
-    lc = ListCreator(headless=True)                    # runs firefox in headless mode
-    lc = ListCreator(driver='chrome', headless=True)   # runs chrome  in headless mode
+    -> lc = ListCreator(headless=True)                    # runs firefox in headless mode
+    -> lc = ListCreator(driver='chrome', headless=True)   # runs chrome  in headless mode
 
 
     Minimalist with reverse chronological order (ListCreator object creates a csv, txt, and md file with
     oldest videos at the top of the file instead of the most recently uploaded videos at the top):
-    lc = ListCreator(reverse_chronological=False)
+    -> lc = ListCreator(reverse_chronological=False)
+
     #####################################################################################################
 
 
+
+
     #############################################################
+
     Minimalist with greater pauses (useful for slow internet):
-    lc = ListCreator(scroll_pause_time=1.2)
+    -> lc = ListCreator(scroll_pause_time=1.2)
 
     Minimalist with shorter pauses (useful for fast internet):
-    lc = ListCreator(scroll_pause_time=0.7)
+    -> lc = ListCreator(scroll_pause_time=0.7)
+
     #############################################################
 
 
+
+
     #############################################################
+
     Only creating a csv file with everything else set to default:
-    lc = ListCreator(txt=False, md=False)
+    -> lc = ListCreator(txt=False, md=False)
+
     #############################################################
 
 
     ----------------------------------------------------------------------------------------
+
     SWE PRO TIP: However you decide to instantiate your object, if you use custom settings,
     name your ListCreator instance to reflect what you changed.
     E.g. For the last case, instead of naming your instance "lc",
     name it "csv_only_lc" or "CsvOnlyLc" - or something along those lines.
+
     ----------------------------------------------------------------------------------------
 
     ===================================================
