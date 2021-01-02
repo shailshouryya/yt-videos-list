@@ -150,6 +150,10 @@ with open(path_to_channel_urls_file, 'r', encoding='utf-8') as file:
             time.sleep(5) # wait 5 seconds before checking to see if a previously running thread completed
         thread = threading.Thread(target=lc.create_list_for, args=(url, True))
         thread.start()
+    thread.join() # After we iterate through every line in the file, we call the join() method
+    # on the last thread so python doesn't exit the multi-threaded environment pre-maturely
+    # This is ESSENTIAL, otherwise threading might stop randomly on the last channel in the
+    # channels.txt file before the program finishes writing all the channel information to the files!
 ```
 
 </details>
