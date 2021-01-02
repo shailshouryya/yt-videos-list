@@ -96,6 +96,65 @@ help(lc)
 #### If you already scraped a channel and the channel uploaded a new video, simply rerun this program on that channel and this package updates your files to include the newer video(s)!
 
 <details>
+  <summary><b>Scraping multiple channels from a file simultaneously with multi-threading</b></summary>
+
+Add the url to every channel you want to information from in a `txt` file with every url placed on a new line.
+
+<details>
+  <summary><b>e.g. <code>channels.txt</code></b></summary>
+
+```
+https://www.youtube.com/channel/UCSHZKyawb77ixDdsGog4iWA
+https://www.youtube.com/c/WorldScienceFestival/playlists
+https://www.youtube.com/c/RSAConference/videos
+https://www.youtube.com/channel/UCTpmmkp1E4nmZqWPS-dl5bg
+https://www.youtube.com/channel/UCtC8aQzdEHAmuw8YvtH1CcQ/videos
+https://www.youtube.com/channel/UCQSrdt0-Iu8qVEiJyzhrfdQ/videos
+https://www.youtube.com/user/TEDxTalks/videos
+https://www.youtube.com/user/TEDxYouth
+https://www.youtube.com/user/TEDPrizeChannel/videos
+https://www.youtube.com/user/TEDInstitute/videos
+https://www.youtube.com/user/TEDPartners/channels
+https://www.youtube.com/c/TED/channels
+https://www.youtube.com/c/TEDFellow/videos
+https://www.youtube.com/c/tedededucatortalks/videos
+https://www.youtube.com/c/TEDEdStudentTalks/channels
+https://www.youtube.com/c/TEDTranslators/videos
+https://www.youtube.com/c/TEDEspanol/videos
+https://www.youtube.com/teded/featured
+https://www.youtube.com/c/IBMSecurity/channels
+https://www.youtube.com/c/TheVerge/channels
+https://www.youtube.com/c/mitocw/channels
+https://www.youtube.com/c/stanford/channels
+https://www.youtube.com/c/khanacademy/channels
+https://www.youtube.com/user/symantec/channels
+https://www.youtube.com/c/QuantamagazineOrgNews/videos
+https://www.youtube.com/c/Splunkofficial/channels
+```
+</details>
+
+```python
+import time
+import threading   # python standard library built-in package, no download necessary
+from yt_videos_list import ListCreator
+
+my_driver = 'firefox'
+lc = ListCreator(driver=my_driver, scroll_pause_time=0.8)
+
+number_of_threads         = 4 # CHANGE TO DESIRED NUMBER OF CONCURRENT THREADS
+path_to_channel_urls_file = 'channels.txt'
+
+with open(path_to_channel_urls_file, 'r', encoding='utf-8') as file:
+    for url in file:
+        while threading.active_count() == number_of_threads + 1: # add 1 since main thread counts as a thread
+            time.sleep(5) # wait 5 seconds before checking to see if a previously running thread completed
+        thread = threading.Thread(target=lc.create_list_for, args=(url, None, True))
+        thread.start()
+```
+
+</details>
+
+<details>
   <summary><b>Explicitly downloading all Selenium dependencies</b></summary>
 
 Ideal if you use Selenium for other projects 😎
