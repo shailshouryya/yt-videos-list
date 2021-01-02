@@ -172,7 +172,7 @@ class ListCreator:
         '''
 
 
-    def create_list_for(self, url=None, file_name=None, log_silently=False):
+    def create_list_for(self, url=None, log_silently=False, file_name=None):
         '''
         The create_list_for() method creates a list using the arguments specified during instantiation of the ListCreator object.
         You need to specify just the url to the channel you want to scrape.

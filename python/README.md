@@ -148,7 +148,7 @@ with open(path_to_channel_urls_file, 'r', encoding='utf-8') as file:
     for url in file:
         while threading.active_count() == number_of_threads + 1: # add 1 since main thread counts as a thread
             time.sleep(5) # wait 5 seconds before checking to see if a previously running thread completed
-        thread = threading.Thread(target=lc.create_list_for, args=(url, None, True))
+        thread = threading.Thread(target=lc.create_list_for, args=(url, True))
         thread.start()
 ```
 
