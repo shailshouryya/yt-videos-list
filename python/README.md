@@ -107,7 +107,6 @@ Add the url to every channel you want to information from in a `txt` file with e
 https://www.youtube.com/channel/UCSHZKyawb77ixDdsGog4iWA
 https://www.youtube.com/c/WorldScienceFestival/playlists
 https://www.youtube.com/c/RSAConference/videos
-https://www.youtube.com/channel/UCTpmmkp1E4nmZqWPS-dl5bg
 https://www.youtube.com/channel/UCtC8aQzdEHAmuw8YvtH1CcQ/videos
 https://www.youtube.com/channel/UCQSrdt0-Iu8qVEiJyzhrfdQ/videos
 https://www.youtube.com/user/TEDxTalks/videos
