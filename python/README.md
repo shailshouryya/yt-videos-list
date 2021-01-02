@@ -185,7 +185,24 @@ pip3 install .           # MacOS/Linux
 cd yt_videos_list\python # Windows
 pip install .            # Windows
 ```
+To make your own changes to the `yt_videos_list` python package and run the changes locally:
+```
+# make changes to the codebase in the
+# ===> /dev <=== directory
+python3 minifier.py           # MacOS/Linux
+pip3 install .                # MacOS/Linux
 
+python minifier.py            # Windows
+pip install .                 # Windows
+```
+NOTE that the changes you make to the codebase SHOULD BE MADE in the `yt_videos_list/python/dev` directory!!
+  - the code in the `yt_videos_list/python/yt_videos_list` directory is minified with
+    - leading indents stipped to the minimum (1 space for each nested scope)
+    - whitespace for padding (e.g. extra spaces to align variable assignments) stripped
+    - comments stripped
+  - as a result, the code in the `yt_videos_list/python/yt_videos_list` directory is NOT human readable, and the `yt_videos_list/python/dev` directory should be used for development instead!
+    - the `minifier.py` module performs all the code preprocessing and packages the code into the final version seen in the `yt_videos_list/python/dev` directory
+    - so running `minifier.py` ***before*** installing the local package with `pip install .` (Windows) or `pip3 install .` is essential!
 </details>
 
 <details>
