@@ -302,7 +302,7 @@ zsh  tests/run_tests.sh # this works as well
 - [PyPi Stats](https://pypistats.org/packages/yt-videos-list)
 </details>
 
-[![Downloads](https://static.pepy.tech/personalized-badge/yt-videos-list?period=week&units=international_system&left_color=black&right_color=red&left_text=Weekly%20Downloads)](https://pepy.tech/project/yt-videos-list) [![Downloads](https://static.pepy.tech/personalized-badge/yt-videos-list?period=month&units=international_system&left_color=black&right_color=yellow&left_text=Monthly%20Downloads)](https://pepy.tech/project/yt-videos-list) [![Downloads](https://static.pepy.tech/personalized-badge/yt-videos-list?period=total&units=international_system&left_color=black&right_color=blue&left_text=Total%20Downloads)](https://pepy.tech/project/yt-videos-list)
+[![Downloads](https://static.pepy.tech/personalized-badge/yt-videos-list?period=week&units=international_system&left_color=black&right_color=blue&left_text=Weekly%20Downloads)](https://pepy.tech/project/yt-videos-list) [![Downloads](https://static.pepy.tech/personalized-badge/yt-videos-list?period=month&units=international_system&left_color=black&right_color=yellow&left_text=Monthly%20Downloads)](https://pepy.tech/project/yt-videos-list) [![Downloads](https://static.pepy.tech/personalized-badge/yt-videos-list?period=total&units=international_system&left_color=black&right_color=blue&left_text=Total%20Downloads)](https://pepy.tech/project/yt-videos-list)
 
 #### [Back to main page](https://github.com/Shail-Shouryya/yt_videos_list/)
 If you found this interesting or useful, **please consider starring this repo** so other people can more easily find and use this. Thanks!
