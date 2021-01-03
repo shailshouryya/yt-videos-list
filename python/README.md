@@ -8,9 +8,11 @@
   <a href="https://github.com/Shail-Shouryya/yt_videos_list/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/Shail-Shouryya/yt_videos_list?color=yellow&labelColor=black"></a>
   <br>
   <a href="https://badge.fury.io/py/yt-videos-list"><img src="https://badge.fury.io/py/yt-videos-list.svg" alt="PyPI version" height="20"></a>
+  <br>
   <img alt="PyPI - Wheel" src="https://img.shields.io/pypi/wheel/yt_videos_list?labelColor=black&label=PyPI%20-%20Wheel">
   <img alt="PyPI - Implementation" src="https://img.shields.io/pypi/implementation/yt_videos_list?labelColor=black&label=PyPI%20-%20Implementation">
   <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/yt_videos_list?labelColor=black&label=PyPI%20-%20Python%20Version">
+  <br>
   <a href="https://codebeat.co/projects/github-com-shail-shouryya-yt_videos_list-master"><img src="https://codebeat.co/badges/46b103ed-da79-4893-96af-ce95c9149532" alt="codebeat badge"/></a>
 </p>
 
