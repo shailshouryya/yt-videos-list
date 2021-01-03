@@ -7,7 +7,7 @@
 
 <p align="center">
   <a href="https://github.com/Shail-Shouryya/yt_videos_list/blob/master/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/Shail-Shouryya/yt_videos_list?color=brightgreen&labelColor=black"></a>
-  <a href="https://badge.fury.io/py/yt-videos-list"><img src="https://badge.fury.io/py/yt-videos-list.svg" alt="PyPI version" height="20"></a>
+  <img alt="PyPI" src="https://img.shields.io/pypi/v/yt_videos_list?&labelColor=black&label=PyPI">
   <br>
   <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/Shail-Shouryya/yt_videos_list?color=purple&labelColor=black">
   <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/Shail-Shouryya/yt_videos_list?color=purple&labelColor=black">
