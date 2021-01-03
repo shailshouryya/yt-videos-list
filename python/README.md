@@ -10,7 +10,7 @@
   <a href="https://badge.fury.io/py/yt-videos-list"><img src="https://badge.fury.io/py/yt-videos-list.svg" alt="PyPI version" height="20"></a>
   <br>
   <a href="https://pypi.org/project/yt-videos-list/"><img alt="PyPI - Wheel" src="https://img.shields.io/pypi/wheel/yt_videos_list?labelColor=black&label=PyPI%20-%20Wheel"></a>
-  <a href="https://pypi.org/project/yt-videos-list/"><img alt="PyPI - Format" src="https://img.shields.io/pypi/format/yt_videos_list?labelColor=black&label=PyPI%20-%20Format"></a>
+  <a href="https://pypi.org/project/yt-videos-list/#files/"><img alt="PyPI - Format" src="https://img.shields.io/pypi/format/yt_videos_list?labelColor=black&label=PyPI%20-%20Format"></a>
   <a href="https://pypi.org/project/yt-videos-list/#history/"><img alt="PyPI - Status" src="https://img.shields.io/pypi/status/yt_videos_list?labelColor=black&label=PyPI%20-%20Status"></a>
   <br>
   <a href="https://pypi.org/project/yt-videos-list/"><img alt="PyPI - Implementation" src="https://img.shields.io/pypi/implementation/yt_videos_list?labelColor=black&label=PyPI%20-%20Implementation"></a>
