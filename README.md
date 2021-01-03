@@ -14,7 +14,11 @@
   <img alt="Lines of code" src="https://img.shields.io/tokei/lines/github/shail-shouryya/yt_videos_list?labelColor=black"
 </p>
 
-
+<p align="center">
+  <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/w/Shail-Shouryya/yt_videos_list?color=lightgreen&labelColor=black">
+  <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/Shail-Shouryya/yt_videos_list?color=lightgreen&labelColor=black">
+  <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/Shail-Shouryya/yt_videos_list?color=lightgreen&labelColor=black">
+</p>
 
 This package provides a quick, simple way to create a list of all videos posted to any YouTube channel by providing just the URL to that channel's videos. Follow the link to the API in the language you want to work in from the ***API guides*** section below.
 
