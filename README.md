@@ -12,6 +12,8 @@
   <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/Shail-Shouryya/yt_videos_list?color=purple&labelColor=black">
   <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/Shail-Shouryya/yt_videos_list?color=purple&labelColor=black">
   <img alt="Lines of code" src="https://img.shields.io/tokei/lines/github/shail-shouryya/yt_videos_list?color=purple&labelColor=black">
+  <br>
+  <a href="https://github.com/Shail-Shouryya/yt_videos_list/issues"><img alt="GitHub Open Issues" src="https://img.shields.io/github/issues/Shail-Shouryya/yt_videos_list?color=red&labelColor=black"></a>
 </p>
 
 <p align="center">
