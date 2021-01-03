@@ -8,6 +8,7 @@
   <br>
   <a href="https://badge.fury.io/py/yt-videos-list"><img src="https://badge.fury.io/py/yt-videos-list.svg" alt="PyPI version" height="20"></a>
   <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/Shail-Shouryya/yt_videos_list">
+  <img alt="Lines of code" src="https://img.shields.io/tokei/lines/github/shail-shouryya/yt_videos_list"
 </p>
 
 
