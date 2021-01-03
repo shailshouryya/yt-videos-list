@@ -17,6 +17,7 @@
 <p align="center">
   <img alt="GitHub (Pre-)Release Date" src="https://img.shields.io/github/release-date-pre/Shail-Shouryya/yt_videos_list?color=blueviolet&labelColor=black&label=most%20recent%20release%20date">
   <br>
+  <img alt="GitHub release (latest SemVer including pre-releases)" src="https://img.shields.io/github/v/release/Shail-Shouryya/yt_videos_list?include_prereleases&labelColor=black&label=GitHub%20release%20%28latest%20SemVer%20including%20pre-releases%29&sort=semver">
   <img alt="GitHub release (latest by SemVer including pre-releases)" src="https://img.shields.io/github/downloads-pre/Shail-Shouryya/yt_videos_list/latest/total?labelColor=black&label=GitHub%20release%20%28latest%20by%20SemVer%20including%20pre-releases%29%20downloads%40latest">
   <br>
   <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/w/Shail-Shouryya/yt_videos_list?color=lightgreen&labelColor=black">
