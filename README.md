@@ -15,6 +15,8 @@
 </p>
 
 <p align="center">
+  <img alt="GitHub (Pre-)Release Date" src="https://img.shields.io/github/release-date-pre/Shail-Shouryya/yt_videos_list?color=blueviolet&labelColor=black&label=most%20recent%20release%20date">
+  <br>
   <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/w/Shail-Shouryya/yt_videos_list?color=lightgreen&labelColor=black">
   <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/Shail-Shouryya/yt_videos_list?color=lightgreen&labelColor=black">
   <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/Shail-Shouryya/yt_videos_list?color=lightgreen&labelColor=black">
@@ -22,7 +24,6 @@
   <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Shail-Shouryya/yt_videos_list?color=pink&labelColor=black">
   <img alt="GitHub last commit (branch)" src="https://img.shields.io/github/last-commit/Shail-Shouryya/yt_videos_list/master?color=pink&labelColor=black&label=last%20commit%20to%20master">
   <img alt="GitHub commits since latest release (by SemVer including pre-releases)" src="https://img.shields.io/github/commits-since/Shail-Shouryya/yt_videos_list/latest/master?color=pink&labelColor=black&include_prereleases">
-
 </p>
 
 This package provides a quick, simple way to create a list of all videos posted to any YouTube channel by providing just the URL to that channel's videos. Follow the link to the API in the language you want to work in from the ***API guides*** section below.
