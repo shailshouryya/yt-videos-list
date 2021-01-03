@@ -303,6 +303,11 @@ zsh  tests/run_tests.sh # this works as well
 </details>
 
 [![Downloads](https://static.pepy.tech/personalized-badge/yt-videos-list?period=week&units=international_system&left_color=black&right_color=blue&left_text=Weekly%20Downloads)](https://pepy.tech/project/yt-videos-list) [![Downloads](https://static.pepy.tech/personalized-badge/yt-videos-list?period=month&units=international_system&left_color=black&right_color=yellow&left_text=Monthly%20Downloads)](https://pepy.tech/project/yt-videos-list) [![Downloads](https://static.pepy.tech/personalized-badge/yt-videos-list?period=total&units=international_system&left_color=black&right_color=blue&left_text=Total%20Downloads)](https://pepy.tech/project/yt-videos-list)
+<p>
+  <img alt="PyPI - Downloads" src="https://img.shields.io/pypi/dd/yt_videos_list?color=blue&label=PyPI%20downloads">
+  <img alt="PyPI - Downloads" src="https://img.shields.io/pypi/dw/yt_videos_list?color=yellow&label=PyPI%20downloads">
+  <img alt="PyPI - Downloads" src="https://img.shields.io/pypi/dm/yt_videos_list?color=blue&label=PyPI%20downloads">
+</p>
 
 #### [Back to main page](https://github.com/Shail-Shouryya/yt_videos_list/)
 If you found this interesting or useful, **please consider starring this repo** so other people can more easily find and use this. Thanks!
