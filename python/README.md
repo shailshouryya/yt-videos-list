@@ -301,6 +301,11 @@ zsh  tests/run_tests.sh # this works as well
 - [PePy](https://pepy.tech/project/yt-videos-list)
 - [PyPi Stats](https://pypistats.org/packages/yt-videos-list)
 </details>
+<p>
+  <a href="https://pepy.tech/project/yt-videos-list"><img alt="PePY Weekly Downloads" src="https://static.pepy.tech/personalized-badge/yt-videos-list?period=week&units=international_system&left_color=black&right_color=blue&left_text=PePY%20Downloads/week"></a>
+  <a href="https://pepy.tech/project/yt-videos-list"><img alt="PePY Monthly Downloads" src="https://static.pepy.tech/personalized-badge/yt-videos-list?period=month&units=international_system&left_color=black&right_color=yellow&left_text=PePY%20Downloads/month"></a>
+  <a href="https://pepy.tech/project/yt-videos-list"><img alt="PePY Total Downloads" src="https://static.pepy.tech/personalized-badge/yt-videos-list?period=total&units=international_system&left_color=black&right_color=blue&left_text=PePY%20Downloads%20Total"></a>
+</p>
 
 [![Downloads](https://static.pepy.tech/personalized-badge/yt-videos-list?period=week&units=international_system&left_color=black&right_color=blue&left_text=PePY%20Downloads/week)](https://pepy.tech/project/yt-videos-list) [![Downloads](https://static.pepy.tech/personalized-badge/yt-videos-list?period=month&units=international_system&left_color=black&right_color=yellow&left_text=PePY%20Downloads/month)](https://pepy.tech/project/yt-videos-list) [![Downloads](https://static.pepy.tech/personalized-badge/yt-videos-list?period=total&units=international_system&left_color=black&right_color=blue&left_text=PePY%20Downloads%20Total)](https://pepy.tech/project/yt-videos-list)
 <p>
