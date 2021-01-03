@@ -10,6 +10,7 @@
   <a href="https://badge.fury.io/py/yt-videos-list"><img src="https://badge.fury.io/py/yt-videos-list.svg" alt="PyPI version" height="20"></a>
   <br>
   <img alt="PyPI - Wheel" src="https://img.shields.io/pypi/wheel/yt_videos_list?labelColor=black&label=PyPI%20-%20Wheel">
+  <img alt="PyPI - Format" src="https://img.shields.io/pypi/format/yt_videos_list?labelColor=black&label=PyPI%20-%20Format">
   <img alt="PyPI - Implementation" src="https://img.shields.io/pypi/implementation/yt_videos_list?labelColor=black&label=PyPI%20-%20Implementation">
   <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/yt_videos_list?labelColor=black&label=PyPI%20-%20Python%20Version">
   <br>
