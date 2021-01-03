@@ -11,7 +11,7 @@
   <br>
   <a href="https://pypi.org/project/yt-videos-list/"><img alt="PyPI - Wheel" src="https://img.shields.io/pypi/wheel/yt_videos_list?labelColor=black&label=PyPI%20-%20Wheel"></a>
   <a href="https://pypi.org/project/yt-videos-list/"><img alt="PyPI - Format" src="https://img.shields.io/pypi/format/yt_videos_list?labelColor=black&label=PyPI%20-%20Format"></a>
-  <a href="https://pypi.org/project/yt-videos-list/"><img alt="PyPI - Status" src="https://img.shields.io/pypi/status/yt_videos_list?labelColor=black&label=PyPI%20-%20Status"></a>
+  <a href="https://pypi.org/project/yt-videos-list/#history/"><img alt="PyPI - Status" src="https://img.shields.io/pypi/status/yt_videos_list?labelColor=black&label=PyPI%20-%20Status"></a>
   <br>
   <a href="https://pypi.org/project/yt-videos-list/"><img alt="PyPI - Implementation" src="https://img.shields.io/pypi/implementation/yt_videos_list?labelColor=black&label=PyPI%20-%20Implementation"></a>
   <a href="https://pypi.org/project/yt-videos-list/"><img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/yt_videos_list?labelColor=black&label=PyPI%20-%20Python%20Version"></a>
