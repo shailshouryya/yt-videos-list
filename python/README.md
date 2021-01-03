@@ -1,11 +1,11 @@
 # Python Quick Start
 
 <p align="center">
-  <a href="https://github.com/Shail-Shouryya/yt_videos_list/blob/master/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/Shail-Shouryya/yt_videos_list?color=yellow"></a>
-  <a href="https://docs.python.org/3/index.html">    <img src="https://img.shields.io/badge/python-3.6%2B-blue"/></a>
-  <a href="https://www.python.org/dev/peps/pep-0008"><img src="https://img.shields.io/badge/code%20style-PEP8-yellow.svg"/></a>
-  <a href="https://github.com/Shail-Shouryya/yt_videos_list/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/Shail-Shouryya/yt_videos_list?color=blue"></a>
-  <a href="https://github.com/Shail-Shouryya/yt_videos_list/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/Shail-Shouryya/yt_videos_list?color=yellow"></a>
+  <a href="https://github.com/Shail-Shouryya/yt_videos_list/blob/master/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/Shail-Shouryya/yt_videos_list?color=yellow&labelColor=black"></a>
+  <a href="https://docs.python.org/3/index.html">    <img src="https://img.shields.io/badge/python-3.6%2B-blue?labelColor=black"/></a>
+  <a href="https://www.python.org/dev/peps/pep-0008"><img src="https://img.shields.io/badge/code%20style-PEP8-yellow.svg?labelColor=black"/></a>
+  <a href="https://github.com/Shail-Shouryya/yt_videos_list/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/Shail-Shouryya/yt_videos_list?color=blue&labelColor=black"></a>
+  <a href="https://github.com/Shail-Shouryya/yt_videos_list/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/Shail-Shouryya/yt_videos_list?color=yellow&labelColor=black"></a>
   <br>
   <a href="https://badge.fury.io/py/yt-videos-list"><img src="https://badge.fury.io/py/yt-videos-list.svg" alt="PyPI version" height="20"></a>
   <a href="https://codebeat.co/projects/github-com-shail-shouryya-yt_videos_list-master"><img src="https://codebeat.co/badges/46b103ed-da79-4893-96af-ce95c9149532" alt="codebeat badge"/></a>
@@ -304,9 +304,9 @@ zsh  tests/run_tests.sh # this works as well
 
 [![Downloads](https://static.pepy.tech/personalized-badge/yt-videos-list?period=week&units=international_system&left_color=black&right_color=blue&left_text=Weekly%20Downloads)](https://pepy.tech/project/yt-videos-list) [![Downloads](https://static.pepy.tech/personalized-badge/yt-videos-list?period=month&units=international_system&left_color=black&right_color=yellow&left_text=Monthly%20Downloads)](https://pepy.tech/project/yt-videos-list) [![Downloads](https://static.pepy.tech/personalized-badge/yt-videos-list?period=total&units=international_system&left_color=black&right_color=blue&left_text=Total%20Downloads)](https://pepy.tech/project/yt-videos-list)
 <p>
-  <img alt="PyPI - Downloads" src="https://img.shields.io/pypi/dd/yt_videos_list?color=blue&label=PyPI%20downloads">
-  <img alt="PyPI - Downloads" src="https://img.shields.io/pypi/dw/yt_videos_list?color=yellow&label=PyPI%20downloads">
-  <img alt="PyPI - Downloads" src="https://img.shields.io/pypi/dm/yt_videos_list?color=blue&label=PyPI%20downloads">
+  <img alt="PyPI - Downloads" src="https://img.shields.io/pypi/dd/yt_videos_list?labelColor=black&color=blue&label=PyPI%20downloads">
+  <img alt="PyPI - Downloads" src="https://img.shields.io/pypi/dw/yt_videos_list?labelColor=black&color=yellow&label=PyPI%20downloads">
+  <img alt="PyPI - Downloads" src="https://img.shields.io/pypi/dm/yt_videos_list?labelColor=black&color=blue&label=PyPI%20downloads">
 </p>
 
 #### [Back to main page](https://github.com/Shail-Shouryya/yt_videos_list/)

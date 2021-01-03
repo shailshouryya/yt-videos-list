@@ -1,14 +1,14 @@
 # General Overview
 
 <p align="center">
-  <a href="https://github.com/Shail-Shouryya/yt_videos_list/blob/master/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/Shail-Shouryya/yt_videos_list?color=green"></a>
-  <a href="https://github.com/Shail-Shouryya/yt_videos_list/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/Shail-Shouryya/yt_videos_list?color=yellow"></a>
-  <a href="https://github.com/Shail-Shouryya/yt_videos_list/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/Shail-Shouryya/yt_videos_list?color=blue"></a>
-  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/Shail-Shouryya/yt_videos_list">
+  <a href="https://github.com/Shail-Shouryya/yt_videos_list/blob/master/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/Shail-Shouryya/yt_videos_list?color=green&labelColor=black"></a>
+  <a href="https://github.com/Shail-Shouryya/yt_videos_list/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/Shail-Shouryya/yt_videos_list?color=yellow&labelColor=black"></a>
+  <a href="https://github.com/Shail-Shouryya/yt_videos_list/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/Shail-Shouryya/yt_videos_list?color=blue&labelColor=black"></a>
+  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/Shail-Shouryya/yt_videos_list?labelColor=black">
   <br>
   <a href="https://badge.fury.io/py/yt-videos-list"><img src="https://badge.fury.io/py/yt-videos-list.svg" alt="PyPI version" height="20"></a>
-  <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/Shail-Shouryya/yt_videos_list">
-  <img alt="Lines of code" src="https://img.shields.io/tokei/lines/github/shail-shouryya/yt_videos_list"
+  <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/Shail-Shouryya/yt_videos_list?labelColor=black">
+  <img alt="Lines of code" src="https://img.shields.io/tokei/lines/github/shail-shouryya/yt_videos_list?labelColor=black"
 </p>
 
 
