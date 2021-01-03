@@ -14,6 +14,7 @@
   <img alt="Lines of code" src="https://img.shields.io/tokei/lines/github/shail-shouryya/yt_videos_list?color=purple&labelColor=black">
   <br>
   <a href="https://github.com/Shail-Shouryya/yt_videos_list/issues"><img alt="GitHub Open Issues" src="https://img.shields.io/github/issues/Shail-Shouryya/yt_videos_list?color=red&labelColor=black"></a>
+  <a href="https://github.com/Shail-Shouryya/yt_videos_list/issues?q=is%3Aissue+is%3Aclosed"><img alt="GitHub closed issues" src="https://img.shields.io/github/issues-closed/Shail-Shouryya/yt_videos_list?color=darkgreen&labelColor=black"></a>
 </p>
 
 <p align="center">
