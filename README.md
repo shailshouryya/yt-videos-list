@@ -20,7 +20,7 @@
 </p>
 
 <p align="center">
-  <img alt="GitHub most recent (Pre-)Release Date" src="https://img.shields.io/github/release-date-pre/Shail-Shouryya/yt_videos_list?color=blueviolet&labelColor=black&label=most%20recent%20release%20date">
+  <a href="https://github.com/Shail-Shouryya/yt_videos_list/releases/latest"><img alt="GitHub most recent (Pre-)Release Date" src="https://img.shields.io/github/release-date-pre/Shail-Shouryya/yt_videos_list?color=blueviolet&labelColor=black&label=most%20recent%20release%20date"></a>
   <br>
   <img alt="GitHub release (latest SemVer including pre-releases) version" src="https://img.shields.io/github/v/release/Shail-Shouryya/yt_videos_list?include_prereleases&labelColor=black&label=GitHub%20release%20%28latest%20SemVer%20including%20pre-releases%29&sort=semver">
   <br>
