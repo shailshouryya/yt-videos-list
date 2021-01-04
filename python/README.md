@@ -200,8 +200,8 @@ help(yt_videos_list)
 # default options for the ListCreator object
 
 ListCreator(
-  csv=True,
   txt=True,
+  csv=True,
   md=True,
   reverse_chronological=True,
   headless=False,
@@ -223,7 +223,7 @@ There are a number of optional arguments you can specify during the instantiatio
     - `driver='chrome'`
     - `driver='brave'`
     - `driver='edge'`
-- `csv`, `txt`, `md` file type argument:
+-  `txt`, `csv`, `md` file type argument:
   - `True` (default) - create a file for the specified type
   - `False` - do not create a file for the specified type.
     - `txt=True`  (default) OR `txt=False`
