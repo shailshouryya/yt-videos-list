@@ -24,9 +24,11 @@
   <br>
   <a href="https://github.com/Shail-Shouryya/yt_videos_list/releases"><img alt="GitHub release (latest SemVer including pre-releases) version" src="https://img.shields.io/github/v/release/Shail-Shouryya/yt_videos_list?include_prereleases&labelColor=black&label=GitHub%20release%20%28latest%20SemVer%20including%20pre-releases%29&sort=semver"></a>
   <br>
-  <img alt="GitHub commit activity/week" src="https://img.shields.io/github/commit-activity/w/Shail-Shouryya/yt_videos_list?color=lightgreen&labelColor=black">
-  <img alt="GitHub commit activity/month" src="https://img.shields.io/github/commit-activity/m/Shail-Shouryya/yt_videos_list?color=lightgreen&labelColor=black">
-  <img alt="GitHub commit activity/year" src="https://img.shields.io/github/commit-activity/y/Shail-Shouryya/yt_videos_list?color=lightgreen&labelColor=black">
+  <a href="http://github.com/Shail-Shouryya/yt_videos_list/graphs/commit-activity">
+    <img alt="GitHub commit activity/week" src="https://img.shields.io/github/commit-activity/w/Shail-Shouryya/yt_videos_list?color=lightgreen&labelColor=black">
+    <img alt="GitHub commit activity/month" src="https://img.shields.io/github/commit-activity/m/Shail-Shouryya/yt_videos_list?color=lightgreen&labelColor=black">
+    <img alt="GitHub commit activity/year" src="https://img.shields.io/github/commit-activity/y/Shail-Shouryya/yt_videos_list?color=lightgreen&labelColor=black">
+  </a>
   <br>
   <a href="https://github.com/Shail-Shouryya/yt_videos_list/branches"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Shail-Shouryya/yt_videos_list?color=pink&labelColor=black"></a>
   <a href="https://github.com/Shail-Shouryya/yt_videos_list/commits/master"><img alt="GitHub last commit to master (branch)" src="https://img.shields.io/github/last-commit/Shail-Shouryya/yt_videos_list/master?color=pink&labelColor=black&label=last%20commit%20to%20master"></a>
