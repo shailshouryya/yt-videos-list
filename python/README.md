@@ -108,7 +108,7 @@ help(lc)
 <details>
   <summary><b>Scraping multiple channels from a file simultaneously with multi-threading</b></summary>
 
-Add the url to every channel you want to information from in a `txt` file with every url placed on a new line.
+Add the url to every channel you want to extract information from in a `txt` file with every url placed on a new line.
 
 <details>
   <summary><b>e.g. <code>channels.txt</code></b></summary>
