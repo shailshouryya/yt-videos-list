@@ -7,7 +7,7 @@
 
 <p align="center">
   <a href="https://github.com/Shail-Shouryya/yt_videos_list/blob/master/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/Shail-Shouryya/yt_videos_list?color=brightgreen&labelColor=black"></a>
-  <img alt="PyPI" src="https://img.shields.io/pypi/v/yt_videos_list?&labelColor=black&label=PyPI">
+  <img alt="PyPI version" src="https://img.shields.io/pypi/v/yt_videos_list?&labelColor=black&label=PyPI">
   <br>
   <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/Shail-Shouryya/yt_videos_list?color=purple&labelColor=black">
   <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/Shail-Shouryya/yt_videos_list?color=purple&labelColor=black">
@@ -20,17 +20,17 @@
 </p>
 
 <p align="center">
-  <img alt="GitHub (Pre-)Release Date" src="https://img.shields.io/github/release-date-pre/Shail-Shouryya/yt_videos_list?color=blueviolet&labelColor=black&label=most%20recent%20release%20date">
+  <img alt="GitHub most recent (Pre-)Release Date" src="https://img.shields.io/github/release-date-pre/Shail-Shouryya/yt_videos_list?color=blueviolet&labelColor=black&label=most%20recent%20release%20date">
   <br>
-  <img alt="GitHub release (latest SemVer including pre-releases)" src="https://img.shields.io/github/v/release/Shail-Shouryya/yt_videos_list?include_prereleases&labelColor=black&label=GitHub%20release%20%28latest%20SemVer%20including%20pre-releases%29&sort=semver">
-  <img alt="GitHub release (latest by SemVer including pre-releases)" src="https://img.shields.io/github/downloads-pre/Shail-Shouryya/yt_videos_list/latest/total?labelColor=black&label=GitHub%20release%20%28latest%20by%20SemVer%20including%20pre-releases%29%20downloads%40latest">
+  <img alt="GitHub release (latest SemVer including pre-releases) version" src="https://img.shields.io/github/v/release/Shail-Shouryya/yt_videos_list?include_prereleases&labelColor=black&label=GitHub%20release%20%28latest%20SemVer%20including%20pre-releases%29&sort=semver">
+  <img alt="GitHub release (latest by SemVer including pre-releases) downloads" src="https://img.shields.io/github/downloads-pre/Shail-Shouryya/yt_videos_list/latest/total?labelColor=black&label=GitHub%20release%20%28latest%20by%20SemVer%20including%20pre-releases%29%20downloads%40latest">
   <br>
-  <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/w/Shail-Shouryya/yt_videos_list?color=lightgreen&labelColor=black">
-  <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/Shail-Shouryya/yt_videos_list?color=lightgreen&labelColor=black">
-  <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/Shail-Shouryya/yt_videos_list?color=lightgreen&labelColor=black">
+  <img alt="GitHub commit activity/week" src="https://img.shields.io/github/commit-activity/w/Shail-Shouryya/yt_videos_list?color=lightgreen&labelColor=black">
+  <img alt="GitHub commit activity/month" src="https://img.shields.io/github/commit-activity/m/Shail-Shouryya/yt_videos_list?color=lightgreen&labelColor=black">
+  <img alt="GitHub commit activity/year" src="https://img.shields.io/github/commit-activity/y/Shail-Shouryya/yt_videos_list?color=lightgreen&labelColor=black">
   <br>
   <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Shail-Shouryya/yt_videos_list?color=pink&labelColor=black">
-  <img alt="GitHub last commit (branch)" src="https://img.shields.io/github/last-commit/Shail-Shouryya/yt_videos_list/master?color=pink&labelColor=black&label=last%20commit%20to%20master">
+  <img alt="GitHub last commit to master (branch)" src="https://img.shields.io/github/last-commit/Shail-Shouryya/yt_videos_list/master?color=pink&labelColor=black&label=last%20commit%20to%20master">
   <img alt="GitHub commits since latest release (by SemVer including pre-releases)" src="https://img.shields.io/github/commits-since/Shail-Shouryya/yt_videos_list/latest/master?color=pink&labelColor=black&include_prereleases">
 </p>
 
