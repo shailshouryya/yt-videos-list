@@ -178,8 +178,8 @@ class ListCreator:
         You need to specify just the url to the channel you want to scrape.
 
         Set `log_silently` to `True` to mute program logging to the console. The program will log the prgram status and any
-        program information to only the log file for the channel being scraped (this is useful when scraping multiple
-        with multi-threading). By default, the program logs to both the log file for the channel being scraped AND the console.
+        program information to only the log file for the channel being scraped (this is useful when scraping multiple channels at
+        once with multi-threading). By default, the program logs to both the log file for the channel being scraped AND the console.
 
         You can also provide an optional file_name argument, but this is NOT recommended -
         the program finds the name of the channel automatically and if you rename the file,

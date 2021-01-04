@@ -81,7 +81,7 @@ lc.create_list_for(url='https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ
 # Set `log_silently` to `True` to mute program logging to the console.
 # The program will log the prgram status and any program information
 # to only the log file for the channel being scraped
-# (this is useful when scraping multiple with multi-threading).
+# (this is useful when scraping multiple channels at once with multi-threading).
 # By default, the program logs to both the log file for the channel being scraped AND the console.
 
 
