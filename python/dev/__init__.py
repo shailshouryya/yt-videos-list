@@ -112,7 +112,7 @@ class ListCreator:
 
     -----------------------------------------------------------------------------------------------------
 
-    Minimalist with greater pauses (useful for slow internet):
+    Minimalist with longer pauses (useful for slow internet):
     -> lc - ListCreator(scroll_pause_time=1.2)
 
     Minimalist with shorter pauses (useful for fast internet):
