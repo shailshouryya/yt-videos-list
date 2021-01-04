@@ -273,7 +273,7 @@ NOTE that the changes you make to the codebase SHOULD BE MADE in the `yt_videos_
     - whitespace for padding (e.g. extra spaces to align variable assignments) stripped
     - comments stripped
   - as a result, the code in the `yt_videos_list/python/yt_videos_list` directory is NOT human readable, and the `yt_videos_list/python/dev` directory should be used for development instead!
-    - the `minifier.py` module performs all the code preprocessing and packages the code into the final version seen in the `yt_videos_list/python/dev` directory
+    - the `minifier.py` module performs all the code preprocessing and packages the code from `yt_videos_list/python/dev` into the final version seen in the `yt_videos_list/python/yt_videos_list` directory
     - so running `minifier.py` ***before*** installing the local package with `pip install .` (Windows) or `pip3 install .` is essential!
 </details>
 
