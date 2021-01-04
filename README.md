@@ -29,7 +29,7 @@
   <img alt="GitHub commit activity/year" src="https://img.shields.io/github/commit-activity/y/Shail-Shouryya/yt_videos_list?color=lightgreen&labelColor=black">
   <br>
   <a href="https://github.com/Shail-Shouryya/yt_videos_list/branches"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Shail-Shouryya/yt_videos_list?color=pink&labelColor=black"></a>
-  <img alt="GitHub last commit to master (branch)" src="https://img.shields.io/github/last-commit/Shail-Shouryya/yt_videos_list/master?color=pink&labelColor=black&label=last%20commit%20to%20master">
+  <a href="https://github.com/Shail-Shouryya/yt_videos_list/commits/master"><img alt="GitHub last commit to master (branch)" src="https://img.shields.io/github/last-commit/Shail-Shouryya/yt_videos_list/master?color=pink&labelColor=black&label=last%20commit%20to%20master"></a>
   <img alt="GitHub commits since latest release (by SemVer including pre-releases)" src="https://img.shields.io/github/commits-since/Shail-Shouryya/yt_videos_list/latest/master?color=pink&labelColor=black&include_prereleases">
 </p>
 
