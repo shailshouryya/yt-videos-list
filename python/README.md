@@ -164,6 +164,7 @@ with open(path_to_channel_urls_file, 'r', encoding='utf-8') as file:
     # This is ESSENTIAL, otherwise threading might stop randomly on the last channel in the
     # channels.txt file before the program finishes writing all the channel information to the files!
 ```
+- See [Thread about multi-threading with yt_videos_list](https://github.com/Shail-Shouryya/yt_videos_list/discussions/11) for more information!
 
 </details>
 
