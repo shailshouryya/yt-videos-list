@@ -3,7 +3,7 @@ from .notifications import Common, ModuleMessage
 
 
 '''
-version:              0.5.0
+version:              0.5.1
 author:               Shail-Shouryya
 email:                yt.videos.list@gmail.com
 development_status:   4 - Beta
@@ -14,7 +14,7 @@ source:               https://github.com/Shail-Shouryya/yt_videos_list
 '''
 
 
-__version__              = '0.5.0'
+__version__              = '0.5.1'
 __author__               = 'Shail-Shouryya'
 __email__                = 'yt.videos.list@gmail.com'
 __development_status__   = '4 - Beta'
