@@ -130,7 +130,7 @@ def logic(channel, channel_type, file_name, log_silently, txt, csv, markdown, re
    common_message.display_selenium_dependency_update_error(error_message)
    show_user_how_to_set_up_selenium()
    common_message.display_unable_to_update_driver_automatically(user_driver)
-   return
+   sys.exit()
  with driver:
   driver.get(url)
   driver.set_window_size(780, 800)
