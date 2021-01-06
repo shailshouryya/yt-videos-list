@@ -19,7 +19,7 @@ def scroll_down(driver, scroll_pause_time, visited_videos, logging_locations):
     time.sleep(scroll_pause_time * 2)
     new_elements_count = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
     log(f'Found {new_elements_count} videos...', logging_locations)
-    if driver.find_elements_by_xpath('//*[@id="video-title"]')[-1].get_attribute("href") in visited_videos:
+    if driver.find_elements_by_xpath('//*[@id="video-title"]')[-1].get_attribute('href') in visited_videos:
         return True
     return False
 
@@ -51,7 +51,7 @@ def time_writer_function(writer_function):
 
 
 def find_number_of_new_videos(list_of_videos, videos_set):
-    visited_on_page = {selenium_element.get_attribute("href") for selenium_element in list_of_videos}
+    visited_on_page = {selenium_element.get_attribute('href') for selenium_element in list_of_videos}
     return len(visited_on_page.difference(videos_set))                                            # same as len(visited_on_page - visited_videos)
 
 
@@ -70,7 +70,7 @@ def prepare_output(list_of_videos, videos_set, video_number, reverse_chronologic
 
 def txt_writer(new_file, old_file, visited_videos, markdown_formatting, reverse_chronological, list_of_videos, spacing, video_number, incrementer, total_writes, logging_locations):
     for selenium_element in list_of_videos if reverse_chronological else list_of_videos[::-1]:
-        if selenium_element.get_attribute("href") in visited_videos: continue
+        if selenium_element.get_attribute('href') in visited_videos: continue
         else:
             video_number, total_writes = write.txt_entry(new_file, markdown_formatting, selenium_element, NEWLINE, spacing, video_number, incrementer, total_writes)
             if total_writes % 250 == 0:
@@ -126,7 +126,7 @@ def write_to_csv(list_of_videos, file_name, reverse_chronological, logging_locat
         writer                                              = csv.DictWriter(temp_file, fieldnames=fieldnames)
         if reverse_chronological: writer.writeheader()
         for selenium_element in list_of_videos if reverse_chronological else list_of_videos[::-1]:
-            if selenium_element.get_attribute("href") in stored_in_csv: continue
+            if selenium_element.get_attribute('href') in stored_in_csv: continue
             else:
                 video_number, total_writes = write.csv_entry(writer, selenium_element, video_number, incrementer, total_writes)
                 if total_writes % 250 == 0:

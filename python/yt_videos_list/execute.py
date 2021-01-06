@@ -103,7 +103,7 @@ def logic(channel, channel_type, file_name, log_silently, txt, csv, markdown, re
   if file_name is not None:
    return file_name.strip('.csv').strip('.txt').strip('.md')
   else:
-   channel_name = driver.find_element_by_xpath("//yt-formatted-string[@class='style-scope ytd-channel-name']").text.replace(' ', '')
+   channel_name = driver.find_element_by_xpath('//yt-formatted-string[@class="style-scope ytd-channel-name"]').text.replace(' ', '')
    suffix    = 'reverse_chronological_videos_list' if reverse_chronological else 'chronological_videos_list'
    return f'{channel_name}_{suffix}'
  def show_user_how_to_set_up_selenium():
