@@ -276,6 +276,9 @@ class Common:
     def display_selenium_dependency_update_error(error_message):
         print(f'Could not automatically update selenium dependencies! For further debugging, this was the exact error message:\n{error_message}')
     @staticmethod
+    def display_selenium_unable_to_load_elements_error(error_message):
+        print(f'The page did not load elements! If you\'ve scraped many channels within a short period of time, please try rerunning the program after waiting to make sure YouTube isn\'t throttling your IP address! For further debugging, this was the exact error message (might also be blank):\n{error_message}')
+    @staticmethod
     def tell_user_to_download_driver(user_driver):
         print('\n' * 25 + '=' * 130)
         print(f'It looks like you don\'t have the correct Selenium dependency set up to run this program using the remote {user_driver}driver.\nThe version of your {user_driver.title()} browser - usually found by going to {user_driver.title()} -> \"About browser\" in the menu bar within a {user_driver.title()} window - should match the comment for the corresponding command.\nPlease download it using the relevant command from the list of commands below.\n')

@@ -172,7 +172,11 @@ def logic(channel, channel_type, file_name, log_silently, txt, csv, markdown, re
         driver.set_window_size(780, 800)
         driver.set_window_position(0, 0)
         wait = selenium.webdriver.support.ui.WebDriverWait(driver, 9)
-        wait.until(EC.element_to_be_clickable((By.XPATH, '//yt-formatted-string[@class="style-scope ytd-channel-name"]')))
+        try:
+            wait.until(EC.element_to_be_clickable((By.XPATH, '//yt-formatted-string[@class="style-scope ytd-channel-name"]')))
+        except selenium.common.exceptions.TimeoutException as error_message:
+            common_message.display_selenium_unable_to_load_elements_error(error_message)
+            sys.exit()
         file_name = determine_file_name()
         with yield_logger(file_name) as logging_locations:
             log( '>' * 50 + 'STARTING PROGRAM' + '<' * 50, logging_locations)
