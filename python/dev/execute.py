@@ -4,6 +4,8 @@ import contextlib
 
 import selenium
 from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support   import expected_conditions as EC
 
 from . import program
 from .download.selenium_webdriver_dependencies import download_all
@@ -169,6 +171,8 @@ def logic(channel, channel_type, file_name, log_silently, txt, csv, markdown, re
         driver.get(url)
         driver.set_window_size(780, 800)
         driver.set_window_position(0, 0)
+        wait = selenium.webdriver.support.ui.WebDriverWait(driver, 9)
+        wait.until(EC.element_to_be_clickable((By.XPATH, '//yt-formatted-string[@class="style-scope ytd-channel-name"]')))
         file_name = determine_file_name()
         with yield_logger(file_name) as logging_locations:
             log( '>' * 50 + 'STARTING PROGRAM' + '<' * 50, logging_locations)
