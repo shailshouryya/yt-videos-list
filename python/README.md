@@ -141,7 +141,12 @@ https://www.youtube.com/c/QuantamagazineOrgNews/videos
 https://www.youtube.com/c/Splunkofficial/channels
 ```
 </details>
+Enter the python interpreter:
 
+```
+python3     # MacOS/Linux
+python      # Windows
+```
 ```python
 import time
 import threading   # python standard library built-in package, no download necessary
