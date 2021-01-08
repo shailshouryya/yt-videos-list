@@ -194,8 +194,8 @@
     },
     "chrome": {
         "macos": [
-            "# mac64 chromedriver 87.0.4280.20 (supports Google Chrome version: 87)",
-            "curl -SL https://chromedriver.storage.googleapis.com/87.0.4280.20/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver\n",
+            "# mac64 chromedriver 87.0.4280.88 (supports Google Chrome version: 87)",
+            "curl -SL https://chromedriver.storage.googleapis.com/87.0.4280.88/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver\n",
             "# mac64 chromedriver 86.0.4240.22 (supports Google Chrome version: 86)",
             "curl -SL https://chromedriver.storage.googleapis.com/86.0.4240.22/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver\n",
             "# mac64 chromedriver 85.0.4183.87 (supports Google Chrome version: 85)",
@@ -226,8 +226,8 @@
             "curl -SL https://chromedriver.storage.googleapis.com/2.46/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver\n"
         ],
         "linux": [
-            "# linux64 chromedriver 87.0.4280.20 (supports Google Chrome version: 87)",
-            "curl -SL https://chromedriver.storage.googleapis.com/87.0.4280.20/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver\n",
+            "# linux64 chromedriver 87.0.4280.88 (supports Google Chrome version: 87)",
+            "curl -SL https://chromedriver.storage.googleapis.com/87.0.4280.88/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver\n",
             "# linux64 chromedriver 86.0.4240.22 (supports Google Chrome version: 86)",
             "curl -SL https://chromedriver.storage.googleapis.com/86.0.4240.22/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver\n",
             "# linux64 chromedriver 85.0.4183.87 (supports Google Chrome version: 85)",
@@ -258,8 +258,8 @@
             "curl -SL https://chromedriver.storage.googleapis.com/2.46/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver\n"
         ],
         "windows": [
-            "# win32 chromedriver 87.0.4280.20 (supports Google Chrome version: 87)",
-            "curl -SL --ssl-no-revoke https://chromedriver.storage.googleapis.com/87.0.4280.20/chromedriver_win32.zip -o %CD%:\\Windows\\chromedriver && tar -xzvf %CD%:\\Windows\\chromedriver -C %CD%:\\Windows && del %CD%:\\Windows\\chromedriver\n",
+            "# win32 chromedriver 87.0.4280.88 (supports Google Chrome version: 87)",
+            "curl -SL --ssl-no-revoke https://chromedriver.storage.googleapis.com/87.0.4280.88/chromedriver_win32.zip -o %CD%:\\Windows\\chromedriver && tar -xzvf %CD%:\\Windows\\chromedriver -C %CD%:\\Windows && del %CD%:\\Windows\\chromedriver\n",
             "# win32 chromedriver 86.0.4240.22 (supports Google Chrome version: 86)",
             "curl -SL --ssl-no-revoke https://chromedriver.storage.googleapis.com/86.0.4240.22/chromedriver_win32.zip -o %CD%:\\Windows\\chromedriver && tar -xzvf %CD%:\\Windows\\chromedriver -C %CD%:\\Windows && del %CD%:\\Windows\\chromedriver\n",
             "# win32 chromedriver 85.0.4183.87 (supports Google Chrome version: 85)",
