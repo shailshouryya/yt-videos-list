@@ -16,6 +16,7 @@ from determine import determine_path_slash
 
 from yt_videos_list                       import ListCreator
 
+from save_thread_result import ThreadWithResult
 
 NOW       = datetime.datetime.now
 ISOFORMAT = datetime.datetime.isoformat
@@ -28,42 +29,6 @@ def log_test_info(message, *args):
     for log_file in args:
         with open (log_file, 'a', encoding='utf-8') as output_location:
             output_location.writelines(message + '\n')
-
-
-class ThreadWithResult(threading.Thread):
-    '''
-    Helper class used solely for saving the result of a function called
-    through the threading interface, since `some_thread_object.start()`
-    executes and returns immediately, without waiting for the thread
-    to finish. The name of the function to run on a separate thread
-    should be passed in through the `target` argument, and any
-    arguments for the function should be passed in through the
-    `args` argument.
-
-    EXPLANATION:
-
-    We create a closure function that runs the actual function we want
-    to run on a separate thread and enclose the function passed to
-    `target` inside the closure function, and pass the CLOSURE FUNCTION
-    as the function to the `target` argument for `threading.Thread`.
-
-    Since the function we want to run on a separate thread is no longer
-    the function passed directly to `threading.Thread` (remember
-    we pass the closure function instead!), we save the result of
-    the enclosed function as the `self.failed` attribute for the
-    actual instance of this class.
-
-    We use inheritance to initialize this instance with the
-    closure function as the `target` function and no arguments
-    for `args` since we pass the arguments to our actual function
-    inside the closure function.
-    '''
-    def __init__(self, target, args):
-        self.function_to_thread = target
-        self.function_arguments = args
-        def function():
-            self.failed = self.function_to_thread(*self.function_arguments)
-        super().__init__(target=function, args=())
 
 
 def run_tests_for(browsers_list):
@@ -121,8 +86,8 @@ def run_tests_for(browsers_list):
         if 'test_case_thread_2' in locals(): test_case_thread_2.join()
         if 'thread_1_case' in locals(): log_test_info(f'{ISOFORMAT(NOW())}: Finished testing {[thread_1_case]}!', log_1_name)
         if 'thread_2_case' in locals(): log_test_info(f'{ISOFORMAT(NOW())}: Finished testing {[thread_2_case]}!', log_2_name)
-        if 'test_case_thread_1' in locals() and (getattr(test_case_thread_1, 'failed', None) is None or test_case_thread_1.failed == 'Failed!'): sys.exit()
-        if 'test_case_thread_2' in locals() and (getattr(test_case_thread_2, 'failed', None) is None or test_case_thread_2.failed == 'Failed!'): sys.exit()
+        if 'test_case_thread_1' in locals() and (getattr(test_case_thread_1, 'result', None) is None or test_case_thread_1.result == 'Failed!'): sys.exit()
+        if 'test_case_thread_2' in locals() and (getattr(test_case_thread_2, 'result', None) is None or test_case_thread_2.result == 'Failed!'): sys.exit()
         test_case_complete = f'{ISOFORMAT(NOW())}: Moving on to the next driver...\n' + '⏬ '*11 + '\n\n\n'
         if   'thread_1_case' in locals() and 'thread_2_case' in locals(): log_test_info(test_case_complete, log_1_name, log_2_name)
         elif 'thread_1_case' in locals():                                 log_test_info(test_case_complete, log_1_name)
