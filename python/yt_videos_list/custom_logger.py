@@ -10,7 +10,7 @@ def log(message, logging_locations):
  now   = datetime.datetime.now
  message  = f'===>{thread_name:>>14} {isoformat(now())}: {message}\n'
  for location in logging_locations:
-  location.writelines(message)
+  location.write(message)
 def log_extraction_information(module, writer_function, args, kwargs):
  start_time                = time.perf_counter()
  extension                 = writer_function.__name__.split('_')[-1]
