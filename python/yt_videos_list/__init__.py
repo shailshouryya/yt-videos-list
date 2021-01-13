@@ -2,18 +2,6 @@ from .              import execute
 from .notifications import Common, ModuleMessage
 
 
-'''
-version:              0.5.2
-author:               Shail-Shouryya
-email:                yt.videos.list@gmail.com
-development_status:   4 - Beta
-intended_audience:    Developers, Hobbyists
-license:              OSI Approved :: Apache License 2.0
-ideal_python_version: Python 3.6+
-source:               https://github.com/Shail-Shouryya/yt_videos_list
-'''
-
-
 __version__              = '0.5.2'
 __author__               = 'Shail-Shouryya'
 __email__                = 'yt.videos.list@gmail.com'
