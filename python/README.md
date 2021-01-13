@@ -36,7 +36,7 @@ If you have an older version of Python, you can download Python 3.9.1 (follow li
 
   This is required to make sure you can download and install the required Selenium binary dependencies.
   <details>
-  <summary><b>On Windows: makes sure you open <code>Command Prompt</code> or <code>Powershell</code> (both work) in "Run as Administrator" mode</b></summary>
+  <summary><b>On Windows: make sure you open <code>Command Prompt</code> or <code>Powershell</code> (both work) in "Run as Administrator" mode</b></summary>
 
   - shortcut: <kbd>⊞ Win</kbd> + <kbd>X</kbd> + <kbd>A</kbd>
   </details>
