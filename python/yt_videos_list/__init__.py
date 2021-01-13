@@ -1,3 +1,9 @@
+'''
+Get YouTube videos (all titles and URLs) with end-to-end web scraping API.
+🌟 Star 🌟 this repo on GitHub if you found it useful!
+https://github.com/Shail-Shouryya/yt_videos_list
+'''
+
 from .              import execute
 from .notifications import Common, ModuleMessage
 
