@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/Shail-Shouryya/yt_videos_list/blob/master/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/Shail-Shouryya/yt_videos_list?color=brightgreen&labelColor=black"></a>
+  <a href="https://github.com/Shail-Shouryya/yt_videos_list/blob/main/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/Shail-Shouryya/yt_videos_list?color=brightgreen&labelColor=black"></a>
   <a href="https://pypi.org/project/yt-videos-list/"><img alt="PyPI version" src="https://img.shields.io/pypi/v/yt_videos_list?&labelColor=black&label=PyPI"></a>
   <br>
   <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/Shail-Shouryya/yt_videos_list?color=purple&labelColor=black">
@@ -31,13 +31,13 @@
   </a>
   <br>
   <a href="https://github.com/Shail-Shouryya/yt_videos_list/branches"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Shail-Shouryya/yt_videos_list?color=pink&labelColor=black"></a>
-  <a href="https://github.com/Shail-Shouryya/yt_videos_list/commits/master"><img alt="GitHub last commit to master (branch)" src="https://img.shields.io/github/last-commit/Shail-Shouryya/yt_videos_list/master?color=pink&labelColor=black&label=last%20commit%20to%20master"></a>
-  <img alt="GitHub commits since latest release (by SemVer including pre-releases)" src="https://img.shields.io/github/commits-since/Shail-Shouryya/yt_videos_list/latest/master?color=pink&labelColor=black&include_prereleases">
+  <a href="https://github.com/Shail-Shouryya/yt_videos_list/commits/main"><img alt="GitHub last commit to main (branch)" src="https://img.shields.io/github/last-commit/Shail-Shouryya/yt_videos_list/main?color=pink&labelColor=black&label=last%20commit%20to%20main"></a>
+  <img alt="GitHub commits since latest release (by SemVer including pre-releases)" src="https://img.shields.io/github/commits-since/Shail-Shouryya/yt_videos_list/latest/main?color=pink&labelColor=black&include_prereleases">
 </p>
 
 This package provides a quick, simple way to create a list of all videos posted to any YouTube channel by providing just the URL to that channel's videos. Follow the link to the API in the language you want to work in from the ***API guides*** section below.
 
-This program relies on Selenium so it has built-in dependecy setup for all Selenium webdrivers, but you can also explicitly use submodules of this package to **download Selenium webdriver dependencies for your own projects**. This makes it much easier to work with Selenium even if you update your browser constantly! See the [Explicitly downloading all Selenium dependencies](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/python/README.md#explicitly-downloading-all-selenium-dependencies) for directions.
+This program relies on Selenium so it has built-in dependecy setup for all Selenium webdrivers, but you can also explicitly use submodules of this package to **download Selenium webdriver dependencies for your own projects**. This makes it much easier to work with Selenium even if you update your browser constantly! See the [Explicitly downloading all Selenium dependencies](https://github.com/Shail-Shouryya/yt_videos_list/blob/main/python/README.md#explicitly-downloading-all-selenium-dependencies) for directions.
 
 #### If you already scraped a channel and the channel uploaded a new video, simply rerun this program on that channel and this package updates your files to include the newer video(s)!
 
@@ -49,7 +49,7 @@ This program relies on Selenium so it has built-in dependecy setup for all Selen
   <summary><b>Dependencies</b></summary>
 
 - The first time you run this package the automated downloader should install everything you need, but in case it doesn't, refer to the link below and/or file an [issue here](https://github.com/Shail-Shouryya/yt_videos_list/issues).
-  - Manual Selenium downloads **[here](https://github.com/Shail-Shouryya/yt_videos_list/blob/master/docs/dependencies_pseudo_json.txt)**
+  - Manual Selenium downloads **[here](https://github.com/Shail-Shouryya/yt_videos_list/blob/main/docs/dependencies_pseudo_json.txt)**
 - The Selenium drivers are all pretty similar but differ in subtle ways, so play around with them and see what's different :)
 
 **NOTE** that you also need the corresponding browser installed to properly run the selenium driver.
