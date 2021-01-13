@@ -62,6 +62,14 @@ pip  install -U yt-videos-list     # Windows
 </details>
 
 <details>
+  <summary><b>If you're on Windows: make sure you <i>always</i> open <code>Command Prompt</code> or <code>Powershell</code> (both work) in "Run as Administrator" mode!</b></summary>
+
+  - shortcut: <kbd>⊞ Win</kbd> + <kbd>X</kbd> + <kbd>A</kbd>
+  - this allows `yt_videos_list` to update selenium webdriver binaries to be compatible with newer browser versions as browsers are updated (e.g. your Firefox browser updates from version 77 to version 82)
+    - to see the commands being run, see the `yt_videos_list/docs/dependencies.json` file
+</details>
+
+<details>
   <summary><b>Running the package from the python interpreter</b></summary>
 
 ```shell
