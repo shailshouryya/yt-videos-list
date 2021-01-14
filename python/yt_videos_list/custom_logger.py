@@ -5,7 +5,7 @@ import os
 NEWLINE = '\n'
 def log(message, logging_locations):
  thread_name = threading.current_thread().name
- thread_name = f'[{threading.current_thread().name}]'
+ thread_name = f'[{thread_name}]'
  isoformat   = datetime.datetime.isoformat
  now   = datetime.datetime.now
  message  = f'===>{thread_name:>>14} {isoformat(now())}: {message}\n'
