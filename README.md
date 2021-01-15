@@ -161,15 +161,13 @@ This package provides built-in support for common errors and exceptions, along w
 - [PePy](https://pepy.tech/project/yt-videos-list)
 - [PyPi Stats](https://pypistats.org/packages/yt-videos-list)
 <p>
-  <a href="https://pypistats.org/packages/yt-videos-list"><img alt="PyPI - Daily Downloads" src="https://img.shields.io/pypi/dd/yt_videos_list?labelColor=black&color=blue&label=PyPI%20downloads"></a>
+  <a href="https://pypistats.org/packages/yt-videos-list"><img alt="PyPI - Daily Downloads" src="https://img.shields.io/pypi/dd/yt-videos-list?labelColor=black&color=blue&label=PyPI%20downloads%20%28excludes%20mirrors%29" width="275"></a>
+  <a href="https://pypistats.org/packages/yt-videos-list"><img alt="PyPI - Weekly Downloads" src="https://img.shields.io/pypi/dw/yt-videos-list?labelColor=black&color=yellow&label=PyPI%20downloads%20%28excludes%20mirrors%29"width="275"></a>
+  <a href="https://pypistats.org/packages/yt-videos-list"><img alt="PyPI - Monthly Downloads" src="https://img.shields.io/pypi/dm/yt-videos-list?labelColor=black&color=blue&label=PyPI%20downloads%20%28excludes%20mirrors%29"width="275"></a>
   <br>
-  <a href="https://pypistats.org/packages/yt-videos-list"><img alt="PyPI - Weekly Downloads" src="https://img.shields.io/pypi/dw/yt_videos_list?labelColor=black&color=yellow&label=PyPI%20downloads"></a>
-  <a href="https://pepy.tech/project/yt-videos-list"><img alt="PePY Weekly Downloads" src="https://static.pepy.tech/personalized-badge/yt-videos-list?period=week&units=international_system&left_color=black&right_color=blue&left_text=PePY%20Downloads/week"></a>
-  <br>
-  <a href="https://pypistats.org/packages/yt-videos-list"><img alt="PyPI - Monthly Downloads" src="https://img.shields.io/pypi/dm/yt_videos_list?labelColor=black&color=blue&label=PyPI%20downloads"></a>
-  <a href="https://pepy.tech/project/yt-videos-list"><img alt="PePY Monthly Downloads" src="https://static.pepy.tech/personalized-badge/yt-videos-list?period=month&units=international_system&left_color=black&right_color=yellow&left_text=PePY%20Downloads/month"></a>
-  <br>
-  <a href="https://pepy.tech/project/yt-videos-list"><img alt="PePY Total Downloads" src="https://static.pepy.tech/personalized-badge/yt-videos-list?period=total&units=international_system&left_color=black&right_color=yellow&left_text=PePY%20Downloads%20Total"></a>
+  <a href="https://pepy.tech/project/yt-videos-list"><img alt="PePY Weekly Downloads" src="https://static.pepy.tech/personalized-badge/yt-videos-list?period=week&units=international_system&left_color=black&right_color=yellow&left_text=PePY%20Downloads/week%20%28includes%20mirrors%29" width="275"></a>
+  <a href="https://pepy.tech/project/yt-videos-list"><img alt="PePY Monthly Downloads" src="https://static.pepy.tech/personalized-badge/yt-videos-list?period=month&units=international_system&left_color=black&right_color=blue&left_text=PePY%20Downloads/month%20%28includes%20mirrors%29" width="275"></a>
+  <a href="https://pepy.tech/project/yt-videos-list"><img alt="PePY Total Downloads" src="https://static.pepy.tech/personalized-badge/yt-videos-list?period=total&units=international_system&left_color=black&right_color=yellow&left_text=PePY%20Downloads%20Total%20%28includes%20mirrors%29" width="275"></a>
   <br>
   <img alt="GitHub release (latest by SemVer including pre-releases) downloads" src="https://img.shields.io/github/downloads-pre/Shail-Shouryya/yt_videos_list/latest/total?labelColor=black&label=GitHub%20release%20%28latest%20by%20SemVer%20including%20pre-releases%29%20downloads%40latest">
 </p>
