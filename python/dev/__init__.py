@@ -1,7 +1,7 @@
 '''
 Get YouTube videos (all titles and URLs) with end-to-end web scraping API.
 🌟 Star 🌟 this repo on GitHub if you found it useful!
-https://github.com/Shail-Shouryya/yt_videos_list
+https://github.com/Shail-Shouryya/yt-videos-list
 '''
 
 from .              import execute
@@ -15,7 +15,7 @@ __development_status__   = '4 - Beta'
 __intended_audience__    = 'Developers, Hobbyists'
 __license__              = 'OSI Approved :: Apache License 2.0'
 __ideal_python_version__ = 'Python 3.6+'
-__source__               = 'https://github.com/Shail-Shouryya/yt_videos_list'
+__source__               = 'https://github.com/Shail-Shouryya/yt-videos-list'
 
 
 class ListCreator:
@@ -120,7 +120,7 @@ class ListCreator:
     =====================================================
     | If you found this interesting or useful,          |
     | ** please consider STARRING this repo at **       |
-    | https://github.com/Shail-Shouryya/yt_videos_list  |
+    | https://github.com/Shail-Shouryya/yt-videos-list  |
     | so other people can more easily find and use this.|
     | Thank you!!                                       |
     =====================================================

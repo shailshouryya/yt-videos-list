@@ -1,20 +1,20 @@
 # Python Quick Start
 
 <p align="center">
-  <a href="https://github.com/Shail-Shouryya/yt_videos_list/blob/main/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/Shail-Shouryya/yt_videos_list?color=yellow&labelColor=black"></a>
+  <a href="https://github.com/Shail-Shouryya/yt-videos-list/blob/main/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/Shail-Shouryya/yt-videos-list?color=yellow&labelColor=black"></a>
   <a href="https://docs.python.org/3/index.html">    <img src="https://img.shields.io/badge/python-3.6%2B-blue?labelColor=black"/></a>
   <a href="https://www.python.org/dev/peps/pep-0008"><img src="https://img.shields.io/badge/code%20style-PEP8-yellow.svg?labelColor=black"/></a>
-  <a href="https://github.com/Shail-Shouryya/yt_videos_list/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/Shail-Shouryya/yt_videos_list?color=blue&labelColor=black"></a>
-  <a href="https://github.com/Shail-Shouryya/yt_videos_list/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/Shail-Shouryya/yt_videos_list?color=yellow&labelColor=black"></a>
+  <a href="https://github.com/Shail-Shouryya/yt-videos-list/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/Shail-Shouryya/yt-videos-list?color=blue&labelColor=black"></a>
+  <a href="https://github.com/Shail-Shouryya/yt-videos-list/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/Shail-Shouryya/yt-videos-list?color=yellow&labelColor=black"></a>
   <br>
   <a href="https://badge.fury.io/py/yt-videos-list"><img src="https://badge.fury.io/py/yt-videos-list.svg" alt="PyPI version" height="20"></a>
   <br>
-  <a href="https://pypi.org/project/yt-videos-list/"><img alt="PyPI - Wheel" src="https://img.shields.io/pypi/wheel/yt_videos_list?labelColor=black&label=PyPI%20-%20Wheel"></a>
-  <a href="https://pypi.org/project/yt-videos-list/#files/"><img alt="PyPI - Format" src="https://img.shields.io/pypi/format/yt_videos_list?labelColor=black&label=PyPI%20-%20Format"></a>
-  <a href="https://pypi.org/project/yt-videos-list/#history/"><img alt="PyPI - Status" src="https://img.shields.io/pypi/status/yt_videos_list?labelColor=black&label=PyPI%20-%20Status"></a>
+  <a href="https://pypi.org/project/yt-videos-list/"><img alt="PyPI - Wheel" src="https://img.shields.io/pypi/wheel/yt-videos-list?labelColor=black&label=PyPI%20-%20Wheel"></a>
+  <a href="https://pypi.org/project/yt-videos-list/#files/"><img alt="PyPI - Format" src="https://img.shields.io/pypi/format/yt-videos-list?labelColor=black&label=PyPI%20-%20Format"></a>
+  <a href="https://pypi.org/project/yt-videos-list/#history/"><img alt="PyPI - Status" src="https://img.shields.io/pypi/status/yt-videos-list?labelColor=black&label=PyPI%20-%20Status"></a>
   <br>
-  <a href="https://pypi.org/project/yt-videos-list/"><img alt="PyPI - Implementation" src="https://img.shields.io/pypi/implementation/yt_videos_list?labelColor=black&label=PyPI%20-%20Implementation"></a>
-  <a href="https://pypi.org/project/yt-videos-list/"><img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/yt_videos_list?labelColor=black&label=PyPI%20-%20Python%20Version"></a>
+  <a href="https://pypi.org/project/yt-videos-list/"><img alt="PyPI - Implementation" src="https://img.shields.io/pypi/implementation/yt-videos-list?labelColor=black&label=PyPI%20-%20Implementation"></a>
+  <a href="https://pypi.org/project/yt-videos-list/"><img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/yt-videos-list?labelColor=black&label=PyPI%20-%20Python%20Version"></a>
   <br>
   <a href="https://codebeat.co/projects/github-com-shail-shouryya-yt_videos_list-master"><img src="https://codebeat.co/badges/46b103ed-da79-4893-96af-ce95c9149532" alt="codebeat badge"/></a>
 </p>
@@ -177,7 +177,7 @@ with open(path_to_channel_urls_file, 'r', encoding='utf-8') as file:
     # This is ESSENTIAL, otherwise threading might stop randomly on the last channel in the
     # channels.txt file before the program finishes writing all the channel information to the files!
 ```
-- See [Thread about multi-threading with yt_videos_list](https://github.com/Shail-Shouryya/yt_videos_list/discussions/11) for more information!
+- See [Thread about multi-threading with yt_videos_list](https://github.com/Shail-Shouryya/yt-videos-list/discussions/11) for more information!
 
 </details>
 
@@ -263,7 +263,7 @@ There are a number of optional arguments you can specify during the instantiatio
 
 To clone the repository and install the most updated version of the package that may not yet be available on the latest release through [PyPI](pypi.org/project/yt-videos-list/), run:
 ```
-git clone https://github.com/Shail-Shouryya/yt_videos_list.git
+git clone https://github.com/Shail-Shouryya/yt-videos-list.git
 
 cd yt_videos_list/python # MacOS/Linux
 pip3 install .           # MacOS/Linux
@@ -282,12 +282,12 @@ python minifier.py            # Windows
 pip install .                 # Windows
 ```
 NOTE that the changes you make to the codebase SHOULD BE MADE in the `yt_videos_list/python/dev` directory!!
-  - the code in the `yt_videos_list/python/yt_videos_list` directory is minified with
+  - the code in the `yt_videos_list/python/yt-videos-list` directory is minified with
     - leading indents stipped to the minimum (1 space for each nested scope)
     - whitespace for padding (e.g. extra spaces to align variable assignments) stripped
     - comments stripped
-  - as a result, the code in the `yt_videos_list/python/yt_videos_list` directory is NOT human readable, and the `yt_videos_list/python/dev` directory should be used for development instead!
-    - the `minifier.py` module performs all the code preprocessing and packages the code from `yt_videos_list/python/dev` into the final version seen in the `yt_videos_list/python/yt_videos_list` directory
+  - as a result, the code in the `yt_videos_list/python/yt-videos-list` directory is NOT human readable, and the `yt_videos_list/python/dev` directory should be used for development instead!
+    - the `minifier.py` module performs all the code preprocessing and packages the code from `yt_videos_list/python/dev` into the final version seen in the `yt_videos_list/python/yt-videos-list` directory
     - so running `minifier.py` ***before*** installing the local package with `pip install .` (Windows) or `pip3 install .` is essential!
 </details>
 
@@ -314,7 +314,7 @@ zsh  tests/run_tests.sh # this works as well
 <details>
 <summary><b>Stargazers Over Time</b></summary>
 
-[![Stargazers over time](https://starchart.cc/Shail-Shouryya/yt_videos_list.svg)](https://starchart.cc/Shail-Shouryya/yt_videos_list)
+[![Stargazers over time](https://starchart.cc/Shail-Shouryya/yt-videos-list.svg)](https://starchart.cc/Shail-Shouryya/yt-videos-list)
 </details>
 
 <details>
@@ -334,5 +334,5 @@ zsh  tests/run_tests.sh # this works as well
   <br>
 </p>
 
-#### [Back to main page](https://github.com/Shail-Shouryya/yt_videos_list/)
+#### [Back to main page](https://github.com/Shail-Shouryya/yt-videos-list/)
 If you found this interesting or useful, **please consider starring this repo** so other people can more easily find and use this. Thanks!

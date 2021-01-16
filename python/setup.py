@@ -15,7 +15,7 @@ setup(
     description                   = 'Get YouTube videos (all titles and URLs) with end-to-end web scraping API. 🌟 Star this repo if you found it useful! 🌟',
     long_description              = long_description,
     long_description_content_type = 'text/markdown',
-    url                           = 'https://github.com/Shail-Shouryya/yt_videos_list',
+    url                           = 'https://github.com/Shail-Shouryya/yt-videos-list',
     author                        = 'Shail-Shouryya',
     author_email                  = 'yt.videos.list@gmail.com',
     license                       = 'Apache License 2.0',
@@ -82,8 +82,8 @@ setup(
 
 
     project_urls = {
-        'Bug Reports':  'https://github.com/Shail-Shouryya/yt_videos_list/issues',
+        'Bug Reports':  'https://github.com/Shail-Shouryya/yt-videos-list/issues',
         'PyPi Funding': 'https://donate.pypi.org',
-        'Source':       'https://github.com/Shail-Shouryya/yt_videos_list'
+        'Source':       'https://github.com/Shail-Shouryya/yt-videos-list'
     },
 )
