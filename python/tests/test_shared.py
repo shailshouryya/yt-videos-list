@@ -14,7 +14,7 @@ import threading
 
 from determine import determine_path_slash
 
-from yt_videos_list                       import ListCreator
+from yt_videos_list import ListCreator
 
 from save_thread_result import ThreadWithResult
 
