@@ -10,7 +10,7 @@ def log(message, logging_locations):
     thread_name = f'[{thread_name}]'
     isoformat   = datetime.datetime.isoformat
     now         = datetime.datetime.now
-    message     = f'===>{thread_name:>14} {isoformat(now())}: {message}\n'
+    message     = f'{thread_name:>14} {isoformat(now())}: {message}\n'
     for location in logging_locations:
         location.write(message)
 
