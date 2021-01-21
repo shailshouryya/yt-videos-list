@@ -8,7 +8,7 @@ NEWLINE = '\n'
 def log(message, logging_locations):
     thread_name  = f'[{threading.current_thread().name}]'
     current_time = datetime.datetime.now().isoformat()
-    message      = f'{thread_name:>14} {current_time}: {message}\n'
+    message      = f'{thread_name:>14} {current_time} {message}\n'
     for location in logging_locations:
         location.write(message)
 
