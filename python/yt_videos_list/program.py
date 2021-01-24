@@ -6,9 +6,9 @@ from .custom_logger import log
 def determine_action(url, driver, scroll_pause_time, reverse_chronological, file_name, txt, csv, markdown, logging_locations):
  common_message = Common()
  now   = datetime.datetime.now
- txt_exists = os.path.isfile(f'{file_name}.txt')
- csv_exists = os.path.isfile(f'{file_name}.csv')
- md_exists  = os.path.isfile(f'{file_name}.md')
+ txt_exists = os.path.isfile(f'{file_name}.txt') if txt   else False
+ csv_exists = os.path.isfile(f'{file_name}.csv') if csv   else False
+ md_exists  = os.path.isfile(f'{file_name}.md')  if markdown else False
  txt_videos = None
  csv_videos = None
  md_videos  = None
