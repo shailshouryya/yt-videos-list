@@ -44,7 +44,7 @@ def run_tests_for(browsers_list):
     test_cases = create_test_cases(browsers)
     total      = len(test_cases)
     current    = 0
-    log_test_info('*' * 140,                             'CoreySchafer_reverse_chronological_videos_list.log', 'CoreySchafer_chronological_videos_list.log')
+    log_test_info('*' * 140,         'CoreySchafer_reverse_chronological_videos_list.log', 'CoreySchafer_chronological_videos_list.log')
     log_test_info(f'Running tests!', 'CoreySchafer_reverse_chronological_videos_list.log', 'CoreySchafer_chronological_videos_list.log')
     while current < total:
         # each test_case is a ListCreator instance with
