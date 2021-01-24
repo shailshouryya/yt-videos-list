@@ -20,7 +20,7 @@ def logic(channel, channel_type, file_name, log_silently, txt, csv, markdown, re
   base_url  = 'https://www.youtube.com'
   videos    = 'videos'
   url    = f'{base_url}/{channel_type}/{channel}/{videos}'
-  if txt is False and csv is False:
+  if txt is False and csv is False and markdown is False:
    print(common_message.not_writing_to_any_files)
    print(module_message.not_writing_to_any_files_hint) if execution_type == 'module' else print(script_message.not_writing_to_any_files_hint)
    sys.exit()
