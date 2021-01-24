@@ -30,7 +30,7 @@ def save_elements_to_list(driver, start_time, scroll_pause_time, url, logging_lo
     log(f'It took {total_time} seconds to find {len(elements)} videos from {url}{NEWLINE}', logging_locations)
     return elements
 
-def scroll_to_old_videos(url, driver, scroll_pause_time, file_name, logging_locations):
+def scroll_to_old_videos(url, driver, scroll_pause_time, logging_locations, file_name):
     stored_in_txt = store_already_written_videos(file_name, 'txt')
     stored_in_csv = store_already_written_videos(file_name, 'csv')
     stored_in_md =  store_already_written_videos(file_name, 'md' )
