@@ -58,6 +58,12 @@ After you install Python 3.6+ and ensure you have the required permissions as ne
 
 pip3 install -U yt-videos-list     # MacOS/Linux
 pip  install -U yt-videos-list     # Windows
+
+
+# if that doesn't work:
+
+python3 -m pip install -U yt-videos-list     # MacOS/Linux
+python  -m pip install -U yt-videos-list     # Windows
 ```
 </details>
 
