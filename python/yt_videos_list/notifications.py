@@ -4,7 +4,7 @@ class Common:
     This class contains messages that are common regardless of whether the package is being run as a module using the -m option from the CLI or as a module from within the Python interpreter (or another Python script).
     '''
     missing_url              = 'create_list_for() missing 1 required positional argument: "url"'
-    not_writing_to_any_files = '\nBased on your provided settings, yt_videos_list will not be writing to either a csv file or a txt file.'
+    not_writing_to_any_files = '\nBased on your provided settings, yt_videos_list will not be writing to a csv file, nor a txt file, nor a md file.'
     no_videos_found          = 'No videos were found for the channel you provided. Are you sure you entered the url correctly?\n\n'
     invalid_response         = 'The response you entered was invalid.'
     invalid_driver           = 'The driver you specified is invalid. Please try rerunning the last command after specifying a valid driver. Supported drivers include:\n   Firefox\n   Opera\n   Safari\n   Chrome\n   Brave'
@@ -313,7 +313,7 @@ class ModuleMessage(Common):
     This class contains messages that are relevant for the package when it is being run as a module from within the Python interpreter (or another Python script).
     '''
     url_argument_usage            = '\n\n    Please copy and paste the url to the YouTube channel you want to scrape as the first argument (make sure you put quotes around the url) and rerun this method!\n    EXAMPLES:\n        lc.create_list_for("https://www.youtube.com/user/schafer5")\n        lc.create_list_for(url="https://www.youtube.com/user/schafer5")\n        lc.create_list_for(url="https://www.youtube.com/user/schafer5", file_name="CoreySchafer")\n        lc.create_list_for("https://www.youtube.com/user/schafer5", "CoreySchafer")\n\n'
-    not_writing_to_any_files_hint = 'If you want to run this program, please change the csv OR txt setting to True.\nThis program will now exit...'
+    not_writing_to_any_files_hint = 'If you want to run this program, please change the csv OR txt OR md setting to True.\nThis program will now exit...'
     running_default_driver        = '\nNo driver specified during ListCreator instantiation, so running program using the Firefox driver.'
     show_driver_options           = '''To use a different driver, specify the driver in the driver argument during the ListCreator instantiation. For example:
     lc = ListCreator(driver='firefox')
@@ -326,7 +326,7 @@ class ScriptMessage(Common):
     '''
     This class contains messages that relevant for the package it is being run as a module using the -m option from the CLI.
     '''
-    not_writing_to_any_files_hint = 'If you want to run this program, please change the csv OR txt setting TO FLAG.\nThis program will now exit...'
+    not_writing_to_any_files_hint = 'If you want to run this program, please change the csv OR txt OR md setting TO FLAG.\nThis program will now exit...'
     running_default_driver        = '\nNo driver flag used, so running program using the Firefox driver.'
     input_message                 = "What is the name of the YouTube channel you want to generate the list for?\n\nIf you're unsure, click on the channel and look at the URL.\nIt should be in the format:\nhttps://www.youtube.com/user/YourChannelName\nOR\nhttps://www.youtube.com/channel/YourChannelName\n\nSubstitute what you see for YourChannelName and type it in below:\n"
     show_driver_options           = 'To use a different driver, specify the driver in the driver flag. For example:'
