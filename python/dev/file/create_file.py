@@ -35,13 +35,11 @@ def save_elements_to_list(driver, start_time, scroll_pause_time, url, logging_lo
 def scroll_to_bottom(url, driver, scroll_pause_time, logging_locations):
     start_time = time.perf_counter() # timer stops in save_elements_to_list() function
     driver.get(url)
-    current_elements_count = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
-    while True:
-        new_elements_count = scroll_down(current_elements_count, driver, scroll_pause_time, logging_locations)
-        if new_elements_count == current_elements_count:
-            break
-        else:
-            current_elements_count = new_elements_count
+    current_elements_count = None
+    new_elements_count     = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
+    while new_elements_count != current_elements_count:
+        current_elements_count = new_elements_count
+        new_elements_count     = scroll_down(current_elements_count, driver, scroll_pause_time, logging_locations)
     return save_elements_to_list(driver, start_time, scroll_pause_time, url, logging_locations)
 
 
