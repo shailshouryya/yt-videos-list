@@ -8,7 +8,7 @@ NEWLINE = '\n'
 def store_already_written_videos(file_name, file_type):
  with open(f'{file_name}.{file_type}', 'r', encoding='utf-8') as file:
   if file_type == 'txt' or file_type == 'md': return set(re.findall('(https://www\.youtube\.com/watch\?v=.+?)(?:\s|\n)', file.read()))
-  if file_type == 'csv':       return set(re.findall('(https://www\.youtube\.com/watch\?v=.+?),', file.read()))
+  if file_type == 'csv':       return set(re.findall('(https://www\.youtube\.com/watch\?v=.+?),',   file.read()))
 def scroll_down(driver, scroll_pause_time, visited_videos, logging_locations):
  driver.execute_script('window.scrollBy(0, 50000);')
  time.sleep(scroll_pause_time * 2)
@@ -77,7 +77,7 @@ def write_to_txt(list_of_videos, file_name, reverse_chronological, logging_locat
  markdown_formatting = False
  spacing    = f'{NEWLINE}' + ' '*4
  with open(f'{file_name}.txt', 'r+', encoding='utf-8') as old_file, open(f'temp_{file_name}_{timestamp}.txt', 'w+', encoding='utf-8') as temp_file:
-  video_number          =  int(max(re.findall('^Video Number:\s*(\d+)', old_file.read(), re.M), key = lambda i: int(i)))
+  video_number          = int(max(re.findall('^Video Number:\s*(\d+)', old_file.read(), re.M), key = lambda i: int(i)))
   video_number, new_videos, total_writes, incrementer = prepare_output(list_of_videos, stored_in_txt, video_number, reverse_chronological)
   ####### defer to txt_writer() function to find new videos and format updated file #######
   txt_writer(temp_file, old_file, stored_in_txt, markdown_formatting, reverse_chronological, list_of_videos, spacing, video_number, incrementer, total_writes, logging_locations)
@@ -88,7 +88,7 @@ def write_to_md(list_of_videos, file_name, reverse_chronological, logging_locati
  markdown_formatting = True
  spacing    = f'{NEWLINE}' + '- ' + f'{NEWLINE}'
  with open(f'{file_name}.md', 'r+', encoding='utf-8') as old_file, open(f'temp_{file_name}_{timestamp}.md', 'w+', encoding='utf-8') as temp_file:
-  video_number          =  int(max(re.findall('^Video Number:\s*(\d+)', old_file.read(), re.M), key = lambda i: int(i)))
+  video_number          = int(max(re.findall('^Video Number:\s*(\d+)', old_file.read(), re.M), key = lambda i: int(i)))
   video_number, new_videos, total_writes, incrementer = prepare_output(list_of_videos, stored_in_md, video_number, reverse_chronological)
   ####### defer to txt_writer() function to find new videos and format updated file #######
   txt_writer(temp_file, old_file, stored_in_md, markdown_formatting, reverse_chronological, list_of_videos, spacing, video_number, incrementer, total_writes, logging_locations)
@@ -97,7 +97,7 @@ def write_to_md(list_of_videos, file_name, reverse_chronological, logging_locati
 def write_to_csv(list_of_videos, file_name, reverse_chronological, logging_locations, timestamp, stored_in_csv):
  if stored_in_csv is None: stored_in_csv = store_already_written_videos(file_name, 'csv')
  with open(f'{file_name}.csv', 'r+', newline='', encoding='utf-8') as old_file, open(f'temp_{file_name}_{timestamp}.csv', 'w+', newline='', encoding='utf-8') as temp_file:
-  video_number          =  int(max(re.findall('^(\d+)?,', old_file.read(), re.M), key = lambda i: int(i)))
+  video_number          = int(max(re.findall('^(\d+)?,', old_file.read(), re.M), key = lambda i: int(i)))
   video_number, new_videos, total_writes, incrementer = prepare_output(list_of_videos, stored_in_csv, video_number, reverse_chronological)
   fieldnames            = ['Video Number', 'Video Title', 'Video URL', 'Watched?', 'Watch again later?', 'Notes']
   writer             = csv.DictWriter(temp_file, fieldnames=fieldnames)
