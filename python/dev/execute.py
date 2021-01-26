@@ -1,5 +1,6 @@
 import sys
 import time
+import traceback
 import contextlib
 
 import selenium
@@ -164,6 +165,7 @@ def logic(channel, channel_type, file_name, log_silently, txt, csv, markdown, re
             driver = open_user_driver()
         except selenium.common.exceptions.WebDriverException as error_message: # could not download the correct Selenium driver based on the user's OS and specified driver
             common_message.display_selenium_dependency_update_error(error_message)
+            traceback.print_exc()
             show_user_how_to_set_up_selenium()
             common_message.display_unable_to_update_driver_automatically(user_driver)
             sys.exit()
@@ -176,6 +178,7 @@ def logic(channel, channel_type, file_name, log_silently, txt, csv, markdown, re
             wait.until(EC.element_to_be_clickable((By.XPATH, '//yt-formatted-string[@class="style-scope ytd-channel-name"]')))
         except selenium.common.exceptions.TimeoutException as error_message:
             common_message.display_selenium_unable_to_load_elements_error(error_message)
+            traceback.print_exc()
             sys.exit()
         file_name = determine_file_name()
         with yield_logger(file_name) as logging_locations:
