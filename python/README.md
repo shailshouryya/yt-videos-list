@@ -273,9 +273,13 @@ git clone https://github.com/Shail-Shouryya/yt-videos-list.git
 
 cd yt_videos_list/python # MacOS/Linux
 pip3 install .           # MacOS/Linux
+# if that doesn't work:
+python3 -m pip install . # MacOS/Linux
 
 cd yt_videos_list\python # Windows
 pip install .            # Windows
+# if that doesn't work:
+python -m pip install .  # Windows
 ```
 To make your own changes to the `yt_videos_list` python package and run the changes locally:
 ```
