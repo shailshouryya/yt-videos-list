@@ -2,6 +2,9 @@
   firefox: {
     macos: [
 
+      # macos geckodriver v0.29.0 (supports Mozilla Firefox version: ≥ 84)
+      curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.29.0/geckodriver-v0.29.0-macos.tar.gz | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/geckodriver
+
       # macos geckodriver v0.28.0 (supports Mozilla Firefox version: ≥ 82)
       curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.28.0/geckodriver-v0.28.0-macos.tar.gz | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/geckodriver
 
@@ -14,6 +17,9 @@
     ],
     linux: [
 
+      # linux64 geckodriver v0.29.0 (supports Mozilla Firefox version: ≥ 84)
+      curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.29.0/geckodriver-v0.29.0-linux64.tar.gz | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/geckodriver
+
       # linux64 geckodriver v0.28.0 (supports Mozilla Firefox version: ≥ 82)
       curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.28.0/geckodriver-v0.28.0-linux64.tar.gz | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/geckodriver
 
@@ -22,6 +28,9 @@
 
       # linux64 geckodriver v0.26.0 (supports Mozilla Firefox version: ≥ 60)
       curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux64.tar.gz | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/geckodriver
+
+      # linux32 geckodriver v0.29.0 (supports Mozilla Firefox version: ≥ 84)
+      curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.29.0/geckodriver-v0.29.0-linux32.tar.gz | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/geckodriver
 
       # linux32 geckodriver v0.28.0 (supports Mozilla Firefox version: ≥ 82)
       curl -SL https://github.com/mozilla/geckodriver/releases/download/v0.28.0/geckodriver-v0.28.0-linux32.tar.gz | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/geckodriver
@@ -35,6 +44,9 @@
     ],
     windows: [
 
+      # win32 geckodriver v0.29.0 (supports Mozilla Firefox version: ≥ 84)
+      curl -SL --ssl-no-revoke https://github.com/mozilla/geckodriver/releases/download/v0.29.0/geckodriver-v0.29.0-win32.zip -o C:\Windows\geckodriver && tar -xzvf C:\Windows\geckodriver -C C:\Windows && del C:\Windows\geckodriver
+
       # win32 geckodriver v0.28.0 (supports Mozilla Firefox version: ≥ 82)
       curl -SL --ssl-no-revoke https://github.com/mozilla/geckodriver/releases/download/v0.28.0/geckodriver-v0.28.0-win32.zip -o C:\Windows\geckodriver && tar -xzvf C:\Windows\geckodriver -C C:\Windows && del C:\Windows\geckodriver
 
@@ -43,6 +55,9 @@
 
       # win32 geckodriver v0.26.0 (supports Mozilla Firefox version: ≥ 60)
       curl -SL --ssl-no-revoke https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win32.zip -o C:\Windows\geckodriver && tar -xzvf C:\Windows\geckodriver -C C:\Windows && del C:\Windows\geckodriver
+
+      # win64 geckodriver v0.29.0 (supports Mozilla Firefox version: ≥ 84)
+      curl -SL --ssl-no-revoke https://github.com/mozilla/geckodriver/releases/download/v0.29.0/geckodriver-v0.29.0-win64.zip -o C:\Windows\geckodriver && tar -xzvf C:\Windows\geckodriver -C C:\Windows && del C:\Windows\geckodriver
 
       # win64 geckodriver v0.28.0 (supports Mozilla Firefox version: ≥ 82)
       curl -SL --ssl-no-revoke https://github.com/mozilla/geckodriver/releases/download/v0.28.0/geckodriver-v0.28.0-win64.zip -o C:\Windows\geckodriver && tar -xzvf C:\Windows\geckodriver -C C:\Windows && del C:\Windows\geckodriver
