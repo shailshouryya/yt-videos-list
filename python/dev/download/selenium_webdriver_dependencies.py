@@ -118,7 +118,7 @@ def execute_download_command(driver, user_os, version):
             '76': -37,
             '75': -37,
             '74': -37,
-            '73': -33,
+            '73': -35,
             '72': -33,
             '71': -31,
             '70': -29,
