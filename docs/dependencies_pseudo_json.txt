@@ -486,6 +486,9 @@ After doing that, try rerunning the last command!
   brave: {
     macos: [
 
+      # mac64 bravedriver (operadriver based) v.88.0.4324.104 (supports Brave Browser version: 88)
+      curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.88.0.4324.104/operadriver_mac64.zip | tar -xzvf - -O > /usr/local/bin/bravedriver --strip-components=1 && chmod +x /usr/local/bin/bravedriver
+
       # mac64 bravedriver (operadriver based) v.87.0.4280.67 (supports Brave Browser version: 87)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.87.0.4280.67/operadriver_mac64.zip | tar -xzvf - -O > /usr/local/bin/bravedriver --strip-components=1 && chmod +x /usr/local/bin/bravedriver
 
@@ -525,6 +528,9 @@ After doing that, try rerunning the last command!
     ],
     linux: [
 
+      # linux64 bravedriver (operadriver based) v.88.0.4324.104 (supports Brave Browser version: 88)
+      curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.88.0.4324.104/operadriver_linux64.zip | tar -xzvf - -O > /usr/local/bin/bravedriver --strip-components=1 && chmod +x /usr/local/bin/bravedriver
+
       # linux64 bravedriver (operadriver based) v.87.0.4280.67 (supports Brave Browser version: 87)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.87.0.4280.67/operadriver_linux64.zip | tar -xzvf - -O > /usr/local/bin/bravedriver --strip-components=1 && chmod +x /usr/local/bin/bravedriver
 
@@ -563,6 +569,9 @@ After doing that, try rerunning the last command!
 
     ],
     windows: [
+
+      # win64 bravedriver (operadriver based) v.88.0.4324.104 (supports Brave Browser version: 88)
+      curl -SL --ssl-no-revoke https://github.com/operasoftware/operachromiumdriver/releases/download/v.88.0.4324.104/operadriver_win64.zip -o C:\Windows\bravedriver && tar -xzvf C:\Windows\bravedriver -O > C:\Windows\bravedriver.exe --strip-components=1 && del C:\Windows\bravedriver
 
       # win64 bravedriver (operadriver based) v.87.0.4280.67 (supports Brave Browser version: 87)
       curl -SL --ssl-no-revoke https://github.com/operasoftware/operachromiumdriver/releases/download/v.87.0.4280.67/operadriver_win64.zip -o C:\Windows\bravedriver && tar -xzvf C:\Windows\bravedriver -O > C:\Windows\bravedriver.exe --strip-components=1 && del C:\Windows\bravedriver

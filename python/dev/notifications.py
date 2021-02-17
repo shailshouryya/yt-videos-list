@@ -168,6 +168,8 @@ class Common:
     @classmethod
     def format_bravedriver_list(cls, operating_system):
         return [
+            cls.format_driver_information          (operating_system, 'v.88.0.4324.104', '88', 'bravedriver (operadriver based)', 'Brave Browser'),
+            cls.format_bravedriver_download_command(operating_system, 'v.88.0.4324.104'),
             cls.format_driver_information          (operating_system, 'v.87.0.4280.67',  '87', 'bravedriver (operadriver based)', 'Brave Browser'),
             cls.format_bravedriver_download_command(operating_system, 'v.87.0.4280.67'),
             cls.format_driver_information          (operating_system, 'v.86.0.4240.80',  '86', 'bravedriver (operadriver based)', 'Brave Browser'),
