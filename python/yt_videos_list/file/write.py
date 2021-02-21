@@ -18,12 +18,12 @@ def txt_entry(file, markdown_formatting, selenium_element, newline, spacing, vid
 def csv_entry(writer, selenium_element, video_number, incrementer, total_writes):
     writer.writerow(
         {
-            'Video Number': f'{video_number}',
-            'Video Title': f'{selenium_element.get_attribute("title")}',
-            'Video URL': f'{selenium_element.get_attribute("href")}',
-            'Watched?': '',
+            'Video Number':      f'{video_number}',
+            'Video Title':       f'{selenium_element.get_attribute("title")}',
+            'Video URL':         f'{selenium_element.get_attribute("href")}',
+            'Watched?':           '',
             'Watch again later?': '',
-            'Notes': ''
+            'Notes':              ''
         }
     )
     return update_status(video_number, total_writes, incrementer)
