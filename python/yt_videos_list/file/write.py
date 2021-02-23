@@ -2,11 +2,15 @@ def update_status(video_number, total_writes, incrementer):
     video_number += incrementer
     total_writes += 1
     return video_number, total_writes
-def entry(file_type, file_object, csv_writer, markdown_formatting, selenium_element, newline, spacing, video_number, incrementer, total_writes):
+def entry(file_type, file_object, csv_writer, selenium_element, video_number, incrementer, total_writes):
     if file_type == 'csv': return csv_entry(csv_writer, selenium_element, video_number, incrementer, total_writes)
-    else:                  return txt_entry(file_object, markdown_formatting, selenium_element, newline, spacing, video_number, incrementer, total_writes)
-def txt_entry(file, markdown_formatting, selenium_element, newline, spacing, video_number, incrementer, total_writes):
-    if markdown_formatting:
+    else:                  return txt_entry(file_object, selenium_element, video_number, incrementer, total_writes, file_type)
+def txt_entry(file, selenium_element, video_number, incrementer, total_writes, file_type):
+    newline = '\n'
+    md      = file_type == 'md'
+    if md: spacing = f'{newline}' + '- ' + f'{newline}'
+    else:  spacing = f'{newline}' + ' '*4
+    if md:
         file.write(f'### Video Title:  {selenium_element.get_attribute("title")}{newline}')
         file.write(f'Video Number: {video_number}{newline}')
     else:

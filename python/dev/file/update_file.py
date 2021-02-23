@@ -6,8 +6,6 @@ import re
 from .               import write
 from ..custom_logger import log, log_extraction_information
 
-NEWLINE = '\n'
-
 
 def store_already_written_videos(file_name, file_type):
     with open(f'{file_name}.{file_type}', 'r', encoding='utf-8') as file:
@@ -27,7 +25,7 @@ def save_elements_to_list(driver, start_time, scroll_pause_time, url, logging_lo
     elements = driver.find_elements_by_xpath('//*[@id="video-title"]')
     end_time = time.perf_counter()
     total_time = end_time - start_time - scroll_pause_time # subtract scroll_pause_time to account for the extra waiting time to verify end of page
-    log(f'It took {total_time} seconds to find {len(elements)} videos from {url}{NEWLINE}', logging_locations)
+    log(f'It took {total_time} seconds to find {len(elements)} videos from {url}\n', logging_locations)
     return elements
 
 def scroll_to_old_videos(url, driver, scroll_pause_time, logging_locations, file_name, txt_exists, csv_exists, md_exists):
@@ -75,18 +73,11 @@ def prepare_output(list_of_videos, videos_set, video_number, reverse_chronologic
 
 
 def update_file(file_type, new_file, old_file, csv_writer, visited_videos, reverse_chronological, list_of_videos, video_number, logging_locations):
-    formatting = {
-        # file_type: (markdown_formatting, spacing)
-        'txt': (False, f'{NEWLINE}' + ' '*4),
-        'md' : (True,  f'{NEWLINE}' + '- ' + f'{NEWLINE}'),
-        'csv': (None,  None)
-    }
     video_number, new_videos, total_writes, incrementer = prepare_output(list_of_videos, visited_videos, video_number, reverse_chronological)
-    markdown_formatting, spacing                        = formatting[file_type]
     for selenium_element in list_of_videos if reverse_chronological else list_of_videos[::-1]:
         if selenium_element.get_attribute('href') in visited_videos: continue
         else:
-            video_number, total_writes = write.entry(file_type, new_file, csv_writer, markdown_formatting, selenium_element, NEWLINE, spacing, video_number, incrementer, total_writes)
+            video_number, total_writes = write.entry(file_type, new_file, csv_writer, selenium_element, video_number, incrementer, total_writes)
             if total_writes % 250 == 0:
                 log(f'{total_writes} new videos written to {new_file.name}...', logging_locations)
     if reverse_chronological:
