@@ -12,7 +12,7 @@ def log(message, logging_locations):
   location.write(message)
 def log_extraction_information(module, writer_function, args, kwargs):
  start_time                = time.perf_counter()
- extension                 = writer_function.__name__.split('_')[-1]
+ extension                 = args[0]
  timestamp                 = kwargs.get('timestamp', 'undeteremined_start_time')
  file_name, videos_written, reverse_chronological, logging_locations = writer_function(*args, **kwargs)
  if videos_written == 1: videos = 'video'

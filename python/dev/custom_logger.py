@@ -16,7 +16,7 @@ def log(message, logging_locations):
 
 def log_extraction_information(module, writer_function, args, kwargs):
     start_time                                                                = time.perf_counter()
-    extension                                                                 = writer_function.__name__.split('_')[-1]
+    extension                                                                 = args[0] # file_type
     timestamp                                                                 = kwargs.get('timestamp', 'undeteremined_start_time')
     file_name, videos_written, reverse_chronological, logging_locations = writer_function(*args, **kwargs)   # writer_function() writes to temp_{file_name}
     if videos_written == 1: videos = 'video'
