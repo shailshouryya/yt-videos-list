@@ -35,10 +35,10 @@ def determine_action(url, driver, scroll_pause_time, reverse_chronological, file
         return
     if txt:
         if txt_exists: file.update_file.write_to('txt', videos_list, file_name, reverse_chronological, logging_locations, timestamp=now().isoformat().replace(':', '-').replace('.', '_'), stored_in_file=txt_videos)
-        else:          file.create_file.write_to_txt(videos_list, file_name, reverse_chronological, logging_locations, timestamp=now().isoformat().replace(':', '-').replace('.', '_'))
+        else:          file.create_file.write_to('txt', videos_list, file_name, reverse_chronological, logging_locations, timestamp=now().isoformat().replace(':', '-').replace('.', '_'))
     if csv:
         if csv_exists: file.update_file.write_to('csv', videos_list, file_name, reverse_chronological, logging_locations, timestamp=now().isoformat().replace(':', '-').replace('.', '_'), stored_in_file=csv_videos)
-        else:          file.create_file.write_to_csv(videos_list, file_name, reverse_chronological, logging_locations, timestamp=now().isoformat().replace(':', '-').replace('.', '_'))
+        else:          file.create_file.write_to('csv', videos_list, file_name, reverse_chronological, logging_locations, timestamp=now().isoformat().replace(':', '-').replace('.', '_'))
     if markdown:
         if md_exists:  file.update_file.write_to('md', videos_list, file_name, reverse_chronological, logging_locations, timestamp=now().isoformat().replace(':', '-').replace('.', '_'), stored_in_file=md_videos)
-        else:          file.create_file.write_to_md (videos_list, file_name, reverse_chronological, logging_locations, timestamp=now().isoformat().replace(':', '-').replace('.', '_'))
+        else:          file.create_file.write_to('md', videos_list, file_name, reverse_chronological, logging_locations, timestamp=now().isoformat().replace(':', '-').replace('.', '_'))
