@@ -47,26 +47,6 @@ def logic(channel, channel_type, file_name, log_silently, txt, csv, markdown, re
   else:
    print(common_message.invalid_driver)
    return 'invalid'
- def configure_brave_driver():
-  options = webdriver.ChromeOptions()
-  if user_os == 'windows':
-   drive  = get_drive_letter()
-   options.binary_location = rf'{drive}:\Program Files (x86)\BraveSoftware\Brave-Browser\Application\brave.exe'
-   executable_path   = rf'{drive}:\Windows\bravedriver.exe'
-  else:
-   options.binary_location = '/Applications/Brave Browser.app/Contents/MacOS/Brave Browser'
-   executable_path   = '/usr/local/bin/bravedriver'
-  return webdriver.Chrome(options=options, executable_path=executable_path)
- def configure_edge_driver():
-  if user_os == 'windows':
-   drive  = get_drive_letter()
-   executable_path   = rf'{drive}:\Windows\msedgedriver.exe'
-  else:
-   executable_path   = '/usr/local/bin/msedgedriver'
-   print(common_message.unsupported_edge)
-   print(module_message.show_driver_options)
-   sys.exit()
-  return webdriver.Edge(executable_path=executable_path)
  def open_user_driver():
   if headless is False:
    return seleniumdriver()
@@ -100,6 +80,30 @@ def logic(channel, channel_type, file_name, log_silently, txt, csv, markdown, re
  def set_up_headless_edge_driver():
   print(common_message.unsupported_edge_headless)
   return configure_edge_driver()
+ def configure_brave_driver():
+  options = webdriver.ChromeOptions()
+  if user_os == 'windows':
+   drive  = get_drive_letter()
+   options.binary_location = rf'{drive}:\Program Files (x86)\BraveSoftware\Brave-Browser\Application\brave.exe'
+   executable_path   = rf'{drive}:\Windows\bravedriver.exe'
+  else:
+   options.binary_location = '/Applications/Brave Browser.app/Contents/MacOS/Brave Browser'
+   executable_path   = '/usr/local/bin/bravedriver'
+  return webdriver.Chrome(options=options, executable_path=executable_path)
+ def configure_edge_driver():
+  if user_os == 'windows':
+   drive  = get_drive_letter()
+   executable_path   = rf'{drive}:\Windows\msedgedriver.exe'
+  else:
+   executable_path   = '/usr/local/bin/msedgedriver'
+   print(common_message.unsupported_edge)
+   print(module_message.show_driver_options)
+   sys.exit()
+  return webdriver.Edge(executable_path=executable_path)
+ def show_user_how_to_set_up_selenium():
+  if user_driver != 'safari':
+   common_message.tell_user_to_download_driver(user_driver)
+  common_message.display_dependency_setup_instructions(user_driver, user_os)
  def determine_file_name():
   if file_name is not None:
    return file_name.strip('.csv').strip('.txt').strip('.md')
@@ -107,10 +111,6 @@ def logic(channel, channel_type, file_name, log_silently, txt, csv, markdown, re
    channel_name = driver.find_element_by_xpath('//yt-formatted-string[@class="style-scope ytd-channel-name"]').text.replace(' ', '')
    suffix    = 'reverse_chronological_videos_list' if reverse_chronological else 'chronological_videos_list'
    return f'{channel_name}_{suffix}'
- def show_user_how_to_set_up_selenium():
-  if user_driver != 'safari':
-   common_message.tell_user_to_download_driver(user_driver)
-  common_message.display_dependency_setup_instructions(user_driver, user_os)
  @contextlib.contextmanager
  def yield_logger(file_name):
   log_file = f'{file_name}.log'
