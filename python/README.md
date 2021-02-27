@@ -312,7 +312,18 @@ NOTE that the changes you make to the codebase SHOULD BE MADE in the `yt_videos_
 <details>
 <summary><b>Running tests</b></summary>
 
-Make sure you're in the `yt_videos_list/python` directory, then run:
+The tests use the custom `ThreadWithResult` subclass of `threading.Thread` provided by the `save-thread-result` package, so make sure you install that module using
+```
+pip3 install -U save-thread-result     # MacOS/Linux
+pip  install -U save-thread-result     # Windows
+
+# if that doesn't work:
+
+python3 -m pip install -U save-thread-result     # MacOS/Linux
+python  -m pip install -U save-thread-result     # Windows
+```
+
+Then, make sure you're in the `yt_videos_list/python` directory, then run:
 ```
 tests\run_tests.bat     # Windows
 ####       Any shell on   MacOS/Linux
