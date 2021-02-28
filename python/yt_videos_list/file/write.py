@@ -4,7 +4,7 @@ from ..custom_logger import log, log_extraction_information
 def time_writer_function(writer_function):
     @functools.wraps(writer_function)
     def wrapper_timer(*args, **kwargs):
-        log_extraction_information(__name__, writer_function, args, kwargs)
+        log_extraction_information(writer_function.__name__, writer_function, args, kwargs)
     return wrapper_timer
 @time_writer_function
 def create_file(file_type, list_of_videos, file_name, reverse_chronological, logging_locations, timestamp):
