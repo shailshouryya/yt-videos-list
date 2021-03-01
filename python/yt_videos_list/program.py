@@ -30,11 +30,11 @@ def determine_action(url, driver, scroll_pause_time, reverse_chronological, file
   log(common_message.no_videos_found, logging_locations)
   return
  if txt:
-  if txt_exists: file.update_file.write_to('txt', videos_list, file_name, reverse_chronological, logging_locations, timestamp=now().isoformat().replace(':', '-').replace('.', '_'), stored_in_file=txt_videos)
+  if txt_exists: file.write.update_file('txt', videos_list, file_name, reverse_chronological, logging_locations, timestamp=now().isoformat().replace(':', '-').replace('.', '_'), stored_in_file=txt_videos)
   else:    file.write.create_file('txt', videos_list, file_name, reverse_chronological, logging_locations, timestamp=now().isoformat().replace(':', '-').replace('.', '_'))
  if csv:
-  if csv_exists: file.update_file.write_to('csv', videos_list, file_name, reverse_chronological, logging_locations, timestamp=now().isoformat().replace(':', '-').replace('.', '_'), stored_in_file=csv_videos)
+  if csv_exists: file.write.update_file('csv', videos_list, file_name, reverse_chronological, logging_locations, timestamp=now().isoformat().replace(':', '-').replace('.', '_'), stored_in_file=csv_videos)
   else:    file.write.create_file('csv', videos_list, file_name, reverse_chronological, logging_locations, timestamp=now().isoformat().replace(':', '-').replace('.', '_'))
  if markdown:
-  if md_exists:  file.update_file.write_to('md', videos_list, file_name, reverse_chronological, logging_locations, timestamp=now().isoformat().replace(':', '-').replace('.', '_'), stored_in_file=md_videos)
+  if md_exists:  file.write.update_file('md', videos_list, file_name, reverse_chronological, logging_locations, timestamp=now().isoformat().replace(':', '-').replace('.', '_'), stored_in_file=md_videos)
   else:    file.write.create_file('md', videos_list, file_name, reverse_chronological, logging_locations, timestamp=now().isoformat().replace(':', '-').replace('.', '_'))
