@@ -25,7 +25,7 @@ def scroll_down(current_elements_count, driver, scroll_pause_time, logging_locat
         time.sleep(scroll_pause_time * 2)
         new_elements_count = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
         if new_elements_count == current_elements_count:
-            log(f'Reached end of page!', logging_locations)
+            log('Reached end of page!', logging_locations)
     return new_elements_count
 
 
