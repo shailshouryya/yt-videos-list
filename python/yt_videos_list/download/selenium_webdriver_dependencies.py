@@ -38,7 +38,7 @@ def download_all_dependencies(user_os):
  print(COMMON_MESSAGE.automated_driver_update)
  for driver in APPLICATION_NAME[user_os]:
   download_specific_dependency(driver, user_os)
-def execute_download_command(driver, user_os, version):
+def execute_download_command(driver, user_os, major_version):
  row_in_list = {
   'firefox': {
    '99': -7,
@@ -208,8 +208,8 @@ def execute_download_command(driver, user_os, version):
    '79': -1
   }
  }
- row = row_in_list[driver][version]
- print(f'Now downloading the corresponding selenium driver for {driver} version {version} on {user_os}:')
+ row = row_in_list[driver][major_version]
+ print(f'Now downloading the corresponding selenium driver for {driver} version {major_version} on {user_os}:')
  print(f'{COMMON_MESSAGE.driver_downloads_for_os[driver][user_os][row-1]} #')
  print(f'{COMMON_MESSAGE.driver_downloads_for_os[driver][user_os][row]}')
  os.system(COMMON_MESSAGE.driver_downloads_for_os[driver][user_os][row])
