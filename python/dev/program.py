@@ -28,8 +28,8 @@ def determine_action(url, driver, scroll_pause_time, reverse_chronological, file
 
         )
     )
-    if current_condition in update_conditions: videos_list, txt_videos, csv_videos, md_videos = file.find_new_videos.scroll_to_old_videos(url, driver, scroll_pause_time, logging_locations, file_name, txt_exists, csv_exists, md_exists)
-    else:                                      videos_list                                    = file.find_all_videos.scroll_to_bottom    (url, driver, scroll_pause_time, logging_locations)
+    if current_condition in update_conditions: videos_list, txt_videos, csv_videos, md_videos = file.scroller.scroll_to_old_videos(url, driver, scroll_pause_time, logging_locations, file_name, txt_exists, csv_exists, md_exists)
+    else:                                      videos_list                                    = file.scroller.scroll_to_bottom    (url, driver, scroll_pause_time, logging_locations)
     if len(videos_list) == 0:
         log(common_message.no_videos_found, logging_locations)
         return
