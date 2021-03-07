@@ -3,7 +3,7 @@ import csv
 import re
 
 from ..custom_logger import log, log_extraction_information
-from .update_file    import store_already_written_videos
+from .find_new_videos import store_already_written_videos
 
 
 def time_writer_function(writer_function):
