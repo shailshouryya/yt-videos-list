@@ -56,11 +56,11 @@ def update_file(file_type, list_of_videos, file_name, reverse_chronological, log
 def update_writer(file_type, new_file, old_file, csv_writer, visited_videos, reverse_chronological, list_of_videos, video_number, logging_locations):
     video_number, new_videos, total_writes, incrementer = prepare_updated_output(list_of_videos, visited_videos, video_number, reverse_chronological)
     for selenium_element in list_of_videos if reverse_chronological else list_of_videos[::-1]:
-        if selenium_element.get_attribute('href') in visited_videos: continue
-        else:
-            video_number, total_writes = entry(file_type, new_file, csv_writer, selenium_element, video_number, incrementer, total_writes)
-            if total_writes % 250 == 0:
-                log(f'{total_writes} new videos written to {new_file.name}...', logging_locations)
+        if selenium_element.get_attribute('href') in visited_videos:
+            continue
+        video_number, total_writes = entry(file_type, new_file, csv_writer, selenium_element, video_number, incrementer, total_writes)
+        if total_writes % 250 == 0:
+            log(f'{total_writes} new videos written to {new_file.name}...', logging_locations)
     if reverse_chronological:
         old_file.seek(0)
         if file_type == 'csv': old_file.readline()
