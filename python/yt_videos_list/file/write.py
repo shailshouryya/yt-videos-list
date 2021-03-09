@@ -91,10 +91,10 @@ def entry(file_type, file_object, csv_writer, selenium_element, video_number, in
     else:                  return write_text(file_object, selenium_element, video_number, incrementer, total_writes, file_type)
 def write_text(file, selenium_element, video_number, incrementer, total_writes, file_type):
     newline = '\n'
-    md      = file_type == 'md'
-    if md: spacing = f'{newline}' + '- ' + f'{newline}'
+    markdown = file_type == 'md'
+    if markdown: spacing = f'{newline}' + '- ' + f'{newline}'
     else:  spacing = f'{newline}' + ' '*4
-    if md:
+    if markdown:
         file.write(f'### Video Title:  {selenium_element.get_attribute("title")}{newline}')
         file.write(f'Video Number: {video_number}{newline}')
     else:
