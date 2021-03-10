@@ -3,9 +3,9 @@
 <details>
   <summary><b>See sister <a href="https://github.com/Shail-Shouryya/YouTube-Channels">YouTube-Channels</a> repository for a list of interesting channels!</b></summary></h3>
 
-- The `YouTube-Channels` repository is a separate repository that uses this package to create a list of videos uploaded by every channel supported by the repository.
-- This repository will update the lists of videos once a week.
-- NOTE: In order to minimize the size of this repo, this repo contains the list of videos in ONLY the `csv` format, and not in `txt` or `md` format.
+- The `YouTube-Channels` sister repository is a separate repository that uses this package to create a list of videos uploaded by every channel supported by the repository.
+- The sister repository will update the lists of videos once a week.
+- NOTE: In order to minimize the size of the sister repo, the repo contains the list of videos in ONLY the `csv` format, and not in `txt` or `md` format.
 </details>
 
 <p align="center">
