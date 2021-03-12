@@ -44,20 +44,19 @@ def scroll_to_old_videos(url, driver, scroll_pause_time, logging_locations, file
  start_time    = time.perf_counter()
  found_old_videos = False
  while found_old_videos is False:
-  found_old_videos = scroll_down_to_old_videos(driver, scroll_pause_time, visited_videos, logging_locations)
+  scroll_down_to_old_videos(driver, scroll_pause_time, logging_locations)
+  if driver.find_elements_by_xpath('//*[@id="video-title"]')[-1].get_attribute('href') in visited_videos:
+   found_old_videos = True
  return save_new_elements_to_list(driver, start_time, scroll_pause_time, url, logging_locations), stored_in_txt, stored_in_csv, stored_in_md
 def store_already_written_videos(file_name, file_type):
  with open(f'{file_name}.{file_type}', 'r', encoding='utf-8') as file:
   if file_type == 'txt' or file_type == 'md': return set(re.findall('(https://www\.youtube\.com/watch\?v=.+?)(?:\s|\n)', file.read()))
   if file_type == 'csv':       return set(re.findall('(https://www\.youtube\.com/watch\?v=.+?),',   file.read()))
-def scroll_down_to_old_videos(driver, scroll_pause_time, visited_videos, logging_locations):
+def scroll_down_to_old_videos(driver, scroll_pause_time, logging_locations):
  driver.execute_script('window.scrollBy(0, 50000);')
  time.sleep(scroll_pause_time * 2)
  new_elements_count = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
  log(f'Found {new_elements_count} videos...', logging_locations)
- if driver.find_elements_by_xpath('//*[@id="video-title"]')[-1].get_attribute('href') in visited_videos:
-  return True
- return False
 def save_new_elements_to_list(driver, start_time, scroll_pause_time, url, logging_locations):
  elements = driver.find_elements_by_xpath('//*[@id="video-title"]')
  end_time = time.perf_counter()
