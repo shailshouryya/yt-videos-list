@@ -4,7 +4,6 @@ from ..custom_logger import log
 from ..notifications import Common as common_message
 def scroll_to_bottom(url, driver, scroll_pause_time, logging_locations):
  start_time = time.perf_counter()
- driver.get(url)
  current_elements_count = None
  new_elements_count  = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
  while new_elements_count != current_elements_count:
