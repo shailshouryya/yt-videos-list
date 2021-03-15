@@ -26,7 +26,7 @@ def save_elements_to_list(driver, start_time, scroll_pause_time, url, logging_lo
  elements   = driver.find_elements_by_xpath('//*[@id="video-title"]')
  end_time   = time.perf_counter()
  total_time = end_time - start_time - scroll_pause_time
- log(f'It took {total_time} seconds to find all {len(elements)} videos from {url}\n', logging_locations)
+ log(f'It took {total_time} seconds to find {len(elements)} videos from {url}\n', logging_locations)
  return elements
 def scroll_to_old_videos(url, driver, scroll_pause_time, logging_locations, file_name, txt_exists, csv_exists, md_exists):
  stored_in_txt = store_already_written_videos(file_name, 'txt') if txt_exists else set()
@@ -46,14 +46,8 @@ def scroll_to_old_videos(url, driver, scroll_pause_time, logging_locations, file
   scroll_down(driver, scroll_pause_time, logging_locations)
   if driver.find_elements_by_xpath('//*[@id="video-title"]')[-1].get_attribute('href') in visited_videos:
    found_old_videos = True
- return save_new_elements_to_list(driver, start_time, scroll_pause_time, url, logging_locations), stored_in_txt, stored_in_csv, stored_in_md
+ return save_elements_to_list(driver, start_time, scroll_pause_time, url, logging_locations), stored_in_txt, stored_in_csv, stored_in_md
 def store_already_written_videos(file_name, file_type):
  with open(f'{file_name}.{file_type}', 'r', encoding='utf-8') as file:
   if file_type == 'txt' or file_type == 'md': return set(re.findall('(https://www\.youtube\.com/watch\?v=.+?)(?:\s|\n)', file.read()))
   if file_type == 'csv':       return set(re.findall('(https://www\.youtube\.com/watch\?v=.+?),',   file.read()))
-def save_new_elements_to_list(driver, start_time, scroll_pause_time, url, logging_locations):
- elements = driver.find_elements_by_xpath('//*[@id="video-title"]')
- end_time = time.perf_counter()
- total_time = end_time - start_time - scroll_pause_time
- log(f'It took {total_time} seconds to find {len(elements)} videos from {url}\n', logging_locations)
- return elements
