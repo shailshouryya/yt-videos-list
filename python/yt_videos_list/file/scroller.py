@@ -29,6 +29,16 @@ def save_elements_to_list(driver, start_time, scroll_pause_time, url, logging_lo
  log(f'It took {total_time} seconds to find {len(elements)} videos from {url}\n', logging_locations)
  return elements
 def scroll_to_old_videos(url, driver, scroll_pause_time, logging_locations, file_name, txt_exists, csv_exists, md_exists):
+ log(f'Detected an existing file with the name {file_name} in this directory, checking for new videos to update {file_name}....', logging_locations)
+ visited_videos, stored_in_txt, stored_in_csv, stored_in_md = determine_visited_videos(file_name, txt_exists, csv_exists, md_exists)
+ start_time             = time.perf_counter()
+ found_old_videos             = False
+ while found_old_videos is False:
+  scroll_down(driver, scroll_pause_time, logging_locations)
+  if driver.find_elements_by_xpath('//*[@id="video-title"]')[-1].get_attribute('href') in visited_videos:
+   found_old_videos = True
+ return save_elements_to_list(driver, start_time, scroll_pause_time, url, logging_locations), stored_in_txt, stored_in_csv, stored_in_md
+def determine_visited_videos(file_name, txt_exists, csv_exists, md_exists):
  stored_in_txt = store_already_written_videos(file_name, 'txt') if txt_exists else set()
  stored_in_csv = store_already_written_videos(file_name, 'csv') if csv_exists else set()
  stored_in_md  = store_already_written_videos(file_name, 'md' ) if md_exists  else set()
@@ -39,14 +49,7 @@ def scroll_to_old_videos(url, driver, scroll_pause_time, logging_locations, file
  if   len(existing_videos) == 3: visited_videos = existing_videos[0].intersection(existing_videos[1]).intersection(existing_videos[2])
  elif len(existing_videos) == 2: visited_videos = existing_videos[0].intersection(existing_videos[1])
  else:         visited_videos = existing_videos[0]
- log(f'Detected an existing file with the name {file_name} in this directory, checking for new videos to update {file_name}....', logging_locations)
- start_time    = time.perf_counter()
- found_old_videos = False
- while found_old_videos is False:
-  scroll_down(driver, scroll_pause_time, logging_locations)
-  if driver.find_elements_by_xpath('//*[@id="video-title"]')[-1].get_attribute('href') in visited_videos:
-   found_old_videos = True
- return save_elements_to_list(driver, start_time, scroll_pause_time, url, logging_locations), stored_in_txt, stored_in_csv, stored_in_md
+ return visited_videos, stored_in_txt, stored_in_csv, stored_in_md
 def store_already_written_videos(file_name, file_type):
  with open(f'{file_name}.{file_type}', 'r', encoding='utf-8') as file:
   if file_type == 'txt' or file_type == 'md': return set(re.findall('(https://www\.youtube\.com/watch\?v=.+?)(?:\s|\n)', file.read()))
