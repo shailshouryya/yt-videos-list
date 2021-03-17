@@ -6,16 +6,19 @@ def scroll_to_bottom(url, driver, scroll_pause_time, logging_locations):
  start_time = time.perf_counter()
  current_elements_count = None
  new_elements_count  = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
+ def verify_scrolled_to_page_bottom():
+  log(common_message.no_new_videos_found(scroll_pause_time * 2), logging_locations)
+  time.sleep(scroll_pause_time * 2)
+  new_elements_count = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
+  if new_elements_count == current_elements_count:
+   log('Reached end of page!', logging_locations)
+  return new_elements_count
  while new_elements_count != current_elements_count:
   current_elements_count = new_elements_count
   scroll_down(driver, scroll_pause_time, logging_locations)
   new_elements_count = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
   if new_elements_count == current_elements_count:
-   log(common_message.no_new_videos_found(scroll_pause_time * 2), logging_locations)
-   time.sleep(scroll_pause_time * 2)
-   new_elements_count = driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
-   if new_elements_count == current_elements_count:
-    log('Reached end of page!', logging_locations)
+   new_elements_count = verify_scrolled_to_page_bottom()
  return save_elements_to_list(driver, start_time, scroll_pause_time, url, logging_locations)
 def scroll_down(driver, scroll_pause_time, logging_locations):
  driver.execute_script('window.scrollBy(0, 50000);')
