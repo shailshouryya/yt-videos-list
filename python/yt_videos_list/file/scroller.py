@@ -36,9 +36,10 @@ def scroll_to_old_videos(url, driver, scroll_pause_time, logging_locations, file
  visited_videos, stored_in_txt, stored_in_csv, stored_in_md = determine_visited_videos(file_name, txt_exists, csv_exists, md_exists)
  start_time             = time.perf_counter()
  found_old_videos             = False
+ url_of_last_loaded_video_on_page         = lambda: driver.find_elements_by_xpath('//*[@id="video-title"]')[-1].get_attribute('href')
  while found_old_videos is False:
   scroll_down(driver, scroll_pause_time, logging_locations)
-  if driver.find_elements_by_xpath('//*[@id="video-title"]')[-1].get_attribute('href') in visited_videos:
+  if url_of_last_loaded_video_on_page() in visited_videos:
    found_old_videos = True
  return save_elements_to_list(driver, start_time, scroll_pause_time, url, logging_locations), stored_in_txt, stored_in_csv, stored_in_md
 def determine_visited_videos(file_name, txt_exists, csv_exists, md_exists):
