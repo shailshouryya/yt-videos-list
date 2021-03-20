@@ -28,19 +28,6 @@ def scroll_to_bottom(url, driver, scroll_pause_time, logging_locations):
 def count_videos_on_page(driver):
     return driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
 
-def scroll_down(driver, scroll_pause_time, logging_locations):
-    driver.execute_script('window.scrollBy(0, 50000);')
-    time.sleep(scroll_pause_time)
-    new_elements_count = count_videos_on_page(driver)
-    log(f'Found {new_elements_count} videos...', logging_locations)
-
-def save_elements_to_list(driver, start_time, scroll_pause_time, url, logging_locations):
-    elements   = driver.find_elements_by_xpath('//*[@id="video-title"]')
-    end_time   = time.perf_counter()
-    total_time = end_time - start_time - scroll_pause_time # subtract scroll_pause_time to account for the extra waiting time to verify end of page
-    log(f'It took {total_time} seconds to find {len(elements)} videos from {url}\n', logging_locations)
-    return elements
-
 
 def scroll_to_old_videos(url, driver, scroll_pause_time, logging_locations, file_name, txt_exists, csv_exists, md_exists):
     log(f'Detected an existing file with the name {file_name} in this directory, checking for new videos to update {file_name}....', logging_locations)
@@ -71,3 +58,18 @@ def store_already_written_videos(file_name, file_type):
     with open(f'{file_name}.{file_type}', 'r', encoding='utf-8') as file:
         if file_type == 'txt' or file_type == 'md': return set(re.findall('(https://www\.youtube\.com/watch\?v=.+?)(?:\s|\n)', file.read()))
         if file_type == 'csv':                      return set(re.findall('(https://www\.youtube\.com/watch\?v=.+?),',         file.read()))
+
+
+
+def scroll_down(driver, scroll_pause_time, logging_locations):
+    driver.execute_script('window.scrollBy(0, 50000);')
+    time.sleep(scroll_pause_time)
+    new_elements_count = count_videos_on_page(driver)
+    log(f'Found {new_elements_count} videos...', logging_locations)
+
+def save_elements_to_list(driver, start_time, scroll_pause_time, url, logging_locations):
+    elements   = driver.find_elements_by_xpath('//*[@id="video-title"]')
+    end_time   = time.perf_counter()
+    total_time = end_time - start_time - scroll_pause_time # subtract scroll_pause_time to account for the extra waiting time to verify end of page
+    log(f'It took {total_time} seconds to find {len(elements)} videos from {url}\n', logging_locations)
+    return elements
