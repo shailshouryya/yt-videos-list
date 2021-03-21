@@ -15,7 +15,7 @@ __development_status__   = '4 - Beta'
 __intended_audience__    = 'Developers, Hobbyists'
 __license__              = 'OSI Approved :: Apache License 2.0'
 __ideal_python_version__ = 'Python 3.6+'
-__source__               = 'https://github.com/Shail-Shouryya/yt-videos-list'
+__source__               = 'https://github.com/Shail-Shouryya/yt-videos-list/tree/main/python'
 
 
 class ListCreator:
