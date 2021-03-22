@@ -16,11 +16,12 @@ def logic(channel, channel_type, file_name, log_silently, txt, csv, markdown, re
  common_message = Common()
  module_message = ModuleMessage()
  script_message = ScriptMessage()
- def check_user_input():
-  nonlocal channel, channel_type, user_driver
+ def process_url():
   base_url  = 'https://www.youtube.com'
   videos    = 'videos'
-  url    = f'{base_url}/{channel_type}/{channel}/{videos}'
+  return f'{base_url}/{channel_type}/{channel}/{videos}'
+ def check_user_input():
+  nonlocal user_driver
   if txt is False and csv is False and markdown is False:
    print(common_message.not_writing_to_any_files)
    print(module_message.not_writing_to_any_files_hint) if execution_type == 'module' else print(script_message.not_writing_to_any_files_hint)
@@ -32,7 +33,7 @@ def logic(channel, channel_type, file_name, log_silently, txt, csv, markdown, re
   seleniumdriver = check_driver()
   if seleniumdriver == 'invalid':
    sys.exit()
-  return url, seleniumdriver
+  return seleniumdriver
  def check_driver():
   if   'firefox' in user_driver: return webdriver.Firefox
   elif 'opera'   in user_driver: return webdriver.Opera
@@ -118,7 +119,8 @@ def logic(channel, channel_type, file_name, log_silently, txt, csv, markdown, re
    if log_silently is True: yield (output_location,)
    else:     yield (output_location, sys.stdout)
  user_os    = determine_user_os()
- url, seleniumdriver = check_user_input()
+ url     = process_url()
+ seleniumdriver   = check_user_input()
  program_start    = time.perf_counter()
  try:
   driver = open_user_driver()
