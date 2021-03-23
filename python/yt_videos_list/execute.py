@@ -30,10 +30,6 @@ def logic(channel, channel_type, file_name, log_silently, txt, csv, markdown, re
    print(module_message.running_default_driver) if execution_type == 'module' else print(script_message.running_default_driver)
    print(module_message.show_driver_options) if execution_type == 'module' else print(script_message.show_driver_options)
    user_driver = 'firefox'
-  seleniumdriver = check_driver()
-  if seleniumdriver == 'invalid':
-   sys.exit()
-  return seleniumdriver
  def check_driver():
   if   'firefox' in user_driver: return webdriver.Firefox
   elif 'opera'   in user_driver: return webdriver.Opera
@@ -47,7 +43,7 @@ def logic(channel, channel_type, file_name, log_silently, txt, csv, markdown, re
    return webdriver.Safari
   else:
    print(common_message.invalid_driver)
-   return 'invalid'
+   sys.exit()
  def open_user_driver():
   if headless is False:
    return seleniumdriver()
@@ -120,7 +116,7 @@ def logic(channel, channel_type, file_name, log_silently, txt, csv, markdown, re
    else:     yield (output_location, sys.stdout)
  user_os    = determine_user_os()
  url     = process_url()
- seleniumdriver   = check_user_input()
+ seleniumdriver   = check_driver()
  program_start    = time.perf_counter()
  try:
   driver = open_user_driver()
