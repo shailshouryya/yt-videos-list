@@ -26,7 +26,7 @@ def logic(channel, channel_type, file_name, log_silently, txt, csv, markdown, re
         videos       = 'videos'
         return f'{base_url}/{channel_type}/{channel}/{videos}'
 
-    def check_user_input():
+    def verify_writing_to_at_least_one_file():
         nonlocal user_driver
         if txt is False and csv is False and markdown is False:
             print(common_message.not_writing_to_any_files)
@@ -151,6 +151,7 @@ def logic(channel, channel_type, file_name, log_silently, txt, csv, markdown, re
             else:                    yield (output_location, sys.stdout)
 
 
+    verify_writing_to_at_least_one_file()
     user_os             = determine_user_os()
     url                 = process_url()
     seleniumdriver      = check_driver()
