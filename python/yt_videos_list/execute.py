@@ -16,10 +16,6 @@ def logic(channel, channel_type, file_name, log_silently, txt, csv, markdown, re
  common_message = Common()
  module_message = ModuleMessage()
  script_message = ScriptMessage()
- def process_url():
-  base_url  = 'https://www.youtube.com'
-  videos    = 'videos'
-  return f'{base_url}/{channel_type}/{channel}/{videos}'
  def verify_writing_to_at_least_one_file():
   nonlocal user_driver
   if txt is False and csv is False and markdown is False:
@@ -30,6 +26,10 @@ def logic(channel, channel_type, file_name, log_silently, txt, csv, markdown, re
    print(module_message.running_default_driver) if execution_type == 'module' else print(script_message.running_default_driver)
    print(module_message.show_driver_options) if execution_type == 'module' else print(script_message.show_driver_options)
    user_driver = 'firefox'
+ def process_url():
+  base_url  = 'https://www.youtube.com'
+  videos    = 'videos'
+  return f'{base_url}/{channel_type}/{channel}/{videos}'
  def check_driver():
   if   'firefox' in user_driver: return webdriver.Firefox
   elif 'opera'   in user_driver: return webdriver.Opera
