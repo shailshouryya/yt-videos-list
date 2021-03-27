@@ -180,12 +180,6 @@ class ListCreator:
         the file won't be automatically updated if the channel uploads a new video and you run this on that channel
         UNLESS you provide the same **exact** name every time you rerun this.
         '''
-        if url is not None:
-            channel_info = url.split('youtube.com/')[1]
-            channel_type = channel_info.split('/')[0]
-            channel      = channel_info.split('/')[1]
-        if channel is None or channel_type is None:
-            raise RuntimeError(Common().missing_url + ModuleMessage().url_argument_usage)
         _execution_type     = 'module'
         instance_attributes = (self.txt, self.csv, self.markdown, self.reverse_chronological, self.headless, self.scroll_pause_time, self.driver)
-        return execute.logic(channel, channel_type, file_name, log_silently, *instance_attributes, _execution_type)
+        return execute.logic(url, file_name, log_silently, *instance_attributes, _execution_type)

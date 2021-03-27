@@ -16,7 +16,7 @@ from .notifications                            import Common, ModuleMessage, Scr
 from .custom_logger                            import log
 
 
-def logic(channel, channel_type, file_name, log_silently, txt, csv, markdown, reverse_chronological, headless, scroll_pause_time, user_driver, execution_type):
+def logic(url, file_name, log_silently, txt, csv, markdown, reverse_chronological, headless, scroll_pause_time, user_driver, execution_type):
     common_message = Common()
     module_message = ModuleMessage()
     script_message = ScriptMessage()
@@ -30,6 +30,12 @@ def logic(channel, channel_type, file_name, log_silently, txt, csv, markdown, re
 
 
     def process_url():
+        if url is not None:
+            channel_info = url.split('youtube.com/')[1]
+            channel_type = channel_info.split('/')[0]
+            channel      = channel_info.split('/')[1]
+        if channel is None or channel_type is None:
+            raise RuntimeError(Common().missing_url + ModuleMessage().url_argument_usage)
         base_url     = 'https://www.youtube.com'
         videos       = 'videos'
         return f'{base_url}/{channel_type}/{channel}/{videos}'

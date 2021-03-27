@@ -12,7 +12,7 @@ from .download.windows_info     import get_drive_letter
 from .download.user_os_info     import determine_user_os
 from .notifications       import Common, ModuleMessage, ScriptMessage
 from .custom_logger       import log
-def logic(channel, channel_type, file_name, log_silently, txt, csv, markdown, reverse_chronological, headless, scroll_pause_time, user_driver, execution_type):
+def logic(url, file_name, log_silently, txt, csv, markdown, reverse_chronological, headless, scroll_pause_time, user_driver, execution_type):
  common_message = Common()
  module_message = ModuleMessage()
  script_message = ScriptMessage()
@@ -22,6 +22,12 @@ def logic(channel, channel_type, file_name, log_silently, txt, csv, markdown, re
    print(module_message.not_writing_to_any_files_hint) if execution_type == 'module' else print(script_message.not_writing_to_any_files_hint)
    sys.exit()
  def process_url():
+  if url is not None:
+   channel_info = url.split('youtube.com/')[1]
+   channel_type = channel_info.split('/')[0]
+   channel   = channel_info.split('/')[1]
+  if channel is None or channel_type is None:
+   raise RuntimeError(Common().missing_url + ModuleMessage().url_argument_usage)
   base_url  = 'https://www.youtube.com'
   videos    = 'videos'
   return f'{base_url}/{channel_type}/{channel}/{videos}'
