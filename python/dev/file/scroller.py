@@ -31,7 +31,7 @@ def count_videos_on_page(driver):
 
 def scroll_to_old_videos(url, driver, scroll_pause_time, logging_locations, file_name, txt_exists, csv_exists, md_exists):
     log(f'Detected an existing file with the name {file_name} in this directory, checking for new videos to update {file_name}....', logging_locations)
-    visited_videos, stored_in_txt, stored_in_csv, stored_in_md = determine_visited_videos(file_name, txt_exists, csv_exists, md_exists)
+    visited_videos, stored_in_txt, stored_in_csv, stored_in_md = determine_common_visited_videos(file_name, txt_exists, csv_exists, md_exists)
     start_time                                                 = time.perf_counter() # timer stops in save_elements_to_list() function
     found_old_videos                                           = False
     url_of_last_loaded_video_on_page                           = lambda: driver.find_elements_by_xpath('//*[@id="video-title"]')[-1].get_attribute('href')
@@ -41,7 +41,7 @@ def scroll_to_old_videos(url, driver, scroll_pause_time, logging_locations, file
             found_old_videos = True
     return save_elements_to_list(driver, start_time, scroll_pause_time, url, logging_locations), stored_in_txt, stored_in_csv, stored_in_md
 
-def determine_visited_videos(file_name, txt_exists, csv_exists, md_exists):
+def determine_common_visited_videos(file_name, txt_exists, csv_exists, md_exists):
     stored_in_txt = store_already_written_videos(file_name, 'txt') if txt_exists else set()
     stored_in_csv = store_already_written_videos(file_name, 'csv') if csv_exists else set()
     stored_in_md  = store_already_written_videos(file_name, 'md' ) if md_exists  else set()
