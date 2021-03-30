@@ -56,8 +56,8 @@ def determine_common_visited_videos(file_name, txt_exists, csv_exists, md_exists
 
 def store_already_written_videos(file_name, file_type):
     with open(f'{file_name}.{file_type}', 'r', encoding='utf-8') as file:
-        if file_type == 'txt' or file_type == 'md': return set(re.findall('(https://www\.youtube\.com/watch\?v=.+?)(?:\s|\n)', file.read()))
-        if file_type == 'csv':                      return set(re.findall('(https://www\.youtube\.com/watch\?v=.+?),',         file.read()))
+        if file_type in ('txt', 'md'): return set(re.findall('(https://www\.youtube\.com/watch\?v=.+?)(?:\s|\n)', file.read()))
+        if file_type == 'csv':         return set(re.findall('(https://www\.youtube\.com/watch\?v=.+?),',         file.read()))
 
 
 
