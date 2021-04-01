@@ -23,15 +23,15 @@ def log_extraction_information(function, writer_function, args, kwargs):
  total_time = end_time - start_time
  temp_file  = f'temp_{file_name}_{timestamp}.{extension}'
  final_file = f'{file_name}.{extension}'
- log(f'Finished writing to'.ljust(39) + f'{temp_file}',                  logging_locations)
+ log(f'Finished writing to'.ljust(39) + f'{temp_file}',                logging_locations)
  if function == 'create_file': log(f'{videos_written} {videos} written to'.ljust(39) + f'{temp_file}',     logging_locations)
  if function == 'update_file': log(f'{videos_written} ***NEW*** {videos} written to'.ljust(39) + f'{temp_file}', logging_locations)
- log(f'Closing'.ljust(39) + f'{temp_file}',                     logging_locations)
- log(f'Successfully completed write, renaming {temp_file} to {final_file}',             logging_locations)
+ log(f'Closing'.ljust(39) + f'{temp_file}',                   logging_locations)
+ log(f'Successfully completed write, renaming {temp_file} to {final_file}',           logging_locations)
  if function == 'update_file' and not reverse_chronological:
   os.remove(temp_file)
  else:
   os.replace(temp_file, final_file)
- log(f'Successfully renamed'.ljust(39) + f'{temp_file} to {final_file}',                        logging_locations)
+ log(f'Successfully renamed'.ljust(39) + f'{temp_file} to {final_file}',                      logging_locations)
  if function == 'create_file': log(f'It took {total_time} seconds to write all {videos_written} {videos} to {final_file}{NEWLINE}',        logging_locations)
  if function == 'update_file': log(f'It took {total_time} seconds to write the {videos_written} ***NEW*** {videos} to the pre-existing {final_file} {NEWLINE}', logging_locations)
