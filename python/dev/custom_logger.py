@@ -33,11 +33,11 @@ def log_extraction_information(function, writer_function, args, kwargs):
     log('Closing'.ljust(39) + f'{temp_file}',                                                                       logging_locations)
     log('Successfully completed write, renaming {temp_file} to {final_file}',                                       logging_locations)
     if function == 'update_file' and not reverse_chronological: # ChannelName_chronological.ext files
-        # remove temp_{file_name} since all new information from the temp file was appended to the end of the original file
+        # if the function that ran was update_file with the reverse_chronological flag set to False: remove temp_{file_name} since all new information from the temp file was appended to the end of the original file (new data is at bottom of file)
         os.remove(temp_file)
     else:
-        # for the create_file function, rename temp_{file_name} to {file_name}.{extension} here AFTER everything else finishes to ensure atomicity (since final file could be written to directly, there's no need for a temp file as in update_file.py)
-        # for the update_file function, rename temp_{file_name} to {file_name}.{extension} since the info from the original file was appended to the end of the temp file
+        # if the function that ran was create_file: rename temp_{file_name} to {file_name}.{extension} here AFTER everything else finishes to ensure atomicity
+        # if the function that ran was update_file with the reverse_chronological flag set to True: rename temp_{file_name} to {file_name}.{extension} since program appends old info from the original file to the end of new data in the temp file
         os.replace(temp_file, final_file)
     log('Successfully renamed'.ljust(39) + f'{temp_file} to {final_file}',                                                                                         logging_locations)
     if function == 'create_file': log(f'It took {total_time} seconds to write all {videos_written} {videos} to {final_file}{NEWLINE}',                             logging_locations)
