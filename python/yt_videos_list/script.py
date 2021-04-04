@@ -22,16 +22,16 @@ def cli():
  -p --pause change pause time between scrolls, set to 0.8s by default
  -r --reverse reverse the indexing so oldest video starts at 1 and most recent video has highest index
  '''
- url       = f'youtube.com/user/schafer5'
- file_name    = None
- log_silently    = False
- txt       = True
- csv       = True
- markdown     = False
+ url = f'youtube.com/user/schafer5'
+ file_name = None
+ log_silently = False
+ txt = True
+ csv = True
+ markdown = False
  reverse_chronological = False
- headless     = False
- scroll_pause_time  = 0.8
- driver    = None
+ headless = False
+ scroll_pause_time = 0.8
+ driver = None
  return (url, file_name, log_silently, txt, csv, markdown, reverse_chronological, headless, scroll_pause_time, driver)
 def create_list_for():
  _execution_type = 'script'

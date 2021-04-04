@@ -1,6 +1,6 @@
 import os
 from .      import selenium_linux, selenium_macos, selenium_windows
-from .user_os_info   import determine_user_os
+from .user_os_info import determine_user_os
 from ..notifications import Common
 COMMON_MESSAGE = Common()
 APPLICATION_NAME = {

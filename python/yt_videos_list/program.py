@@ -5,13 +5,13 @@ from .notifications import Common
 from .custom_logger import log
 def determine_action(url, driver, scroll_pause_time, reverse_chronological, file_name, txt, csv, markdown, logging_locations):
  common_message = Common()
- now   = datetime.datetime.now
- txt_exists = os.path.isfile(f'{file_name}.txt') if txt   else False
- csv_exists = os.path.isfile(f'{file_name}.csv') if csv   else False
- md_exists  = os.path.isfile(f'{file_name}.md')  if markdown else False
+ now = datetime.datetime.now
+ txt_exists = os.path.isfile(f'{file_name}.txt') if txt else False
+ csv_exists = os.path.isfile(f'{file_name}.csv') if csv else False
+ md_exists = os.path.isfile(f'{file_name}.md')  if markdown else False
  txt_videos = None
  csv_videos = None
- md_videos  = None
+ md_videos = None
  current_condition = (txt, txt_exists, csv, csv_exists, markdown, md_exists)
  update_conditions = set(
   (
@@ -25,7 +25,7 @@ def determine_action(url, driver, scroll_pause_time, reverse_chronological, file
   )
  )
  if current_condition in update_conditions: videos_list, txt_videos, csv_videos, md_videos = file.scroller.scroll_to_old_videos(url, driver, scroll_pause_time, logging_locations, file_name, txt_exists, csv_exists, md_exists)
- else:           videos_list         = file.scroller.scroll_to_bottom (url, driver, scroll_pause_time, logging_locations)
+ else:           videos_list = file.scroller.scroll_to_bottom (url, driver, scroll_pause_time, logging_locations)
  if len(videos_list) == 0:
   log(common_message.no_videos_found, logging_locations)
   return

@@ -5,13 +5,13 @@ import contextlib
 import selenium
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support   import expected_conditions as EC
+from selenium.webdriver.support import expected_conditions as EC
 from . import program
 from .download.selenium_webdriver_dependencies import download_all
-from .download.windows_info     import get_drive_letter
-from .download.user_os_info     import determine_user_os
-from .notifications       import Common, ModuleMessage, ScriptMessage
-from .custom_logger       import log
+from .download.windows_info import get_drive_letter
+from .download.user_os_info import determine_user_os
+from .notifications import Common, ModuleMessage, ScriptMessage
+from .custom_logger import log
 def logic(url, file_name, log_silently, txt, csv, markdown, reverse_chronological, headless, scroll_pause_time, user_driver, execution_type):
  common_message = Common()
  module_message = ModuleMessage()
@@ -25,11 +25,11 @@ def logic(url, file_name, log_silently, txt, csv, markdown, reverse_chronologica
   if url is not None:
    channel_info = url.split('youtube.com/')[1]
    channel_type = channel_info.split('/')[0]
-   channel   = channel_info.split('/')[1]
+   channel = channel_info.split('/')[1]
   if channel is None or channel_type is None:
    raise RuntimeError(Common().missing_url + ModuleMessage().url_argument_usage)
-  base_url  = 'https://www.youtube.com'
-  videos    = 'videos'
+  base_url = 'https://www.youtube.com'
+  videos = 'videos'
   return f'{base_url}/{channel_type}/{channel}/{videos}'
  def check_driver():
   nonlocal user_driver
@@ -37,7 +37,7 @@ def logic(url, file_name, log_silently, txt, csv, markdown, reverse_chronologica
    print(module_message.running_default_driver) if execution_type == 'module' else print(script_message.running_default_driver)
    print(module_message.show_driver_options) if execution_type == 'module' else print(script_message.show_driver_options)
    user_driver = 'firefox'
-  if   'firefox' in user_driver: return webdriver.Firefox
+  if 'firefox' in user_driver: return webdriver.Firefox
   elif 'opera'   in user_driver: return webdriver.Opera
   elif 'chrome'  in user_driver: return webdriver.Chrome
   elif 'brave'   in user_driver: return configure_brave_driver
@@ -54,7 +54,7 @@ def logic(url, file_name, log_silently, txt, csv, markdown, reverse_chronologica
   if headless is False:
    return seleniumdriver()
   else:
-   if   user_driver == 'firefox': return set_up_headless_firefox_driver()
+   if user_driver == 'firefox': return set_up_headless_firefox_driver()
    elif user_driver == 'opera':   return set_up_headless_opera_driver()
    elif user_driver == 'safari':  return set_up_headless_safari_driver()
    elif user_driver == 'chrome':  return set_up_headless_chrome_driver()
@@ -86,19 +86,19 @@ def logic(url, file_name, log_silently, txt, csv, markdown, reverse_chronologica
  def configure_brave_driver():
   options = webdriver.ChromeOptions()
   if user_os == 'windows':
-   drive  = get_drive_letter()
+   drive = get_drive_letter()
    options.binary_location = rf'{drive}:\Program Files (x86)\BraveSoftware\Brave-Browser\Application\brave.exe'
-   executable_path   = rf'{drive}:\Windows\bravedriver.exe'
+   executable_path = rf'{drive}:\Windows\bravedriver.exe'
   else:
    options.binary_location = '/Applications/Brave Browser.app/Contents/MacOS/Brave Browser'
-   executable_path   = '/usr/local/bin/bravedriver'
+   executable_path = '/usr/local/bin/bravedriver'
   return webdriver.Chrome(options=options, executable_path=executable_path)
  def configure_edge_driver():
   if user_os == 'windows':
-   drive  = get_drive_letter()
-   executable_path   = rf'{drive}:\Windows\msedgedriver.exe'
+   drive = get_drive_letter()
+   executable_path = rf'{drive}:\Windows\msedgedriver.exe'
   else:
-   executable_path   = '/usr/local/bin/msedgedriver'
+   executable_path = '/usr/local/bin/msedgedriver'
    print(common_message.unsupported_edge)
    print(module_message.show_driver_options)
    sys.exit()
@@ -112,7 +112,7 @@ def logic(url, file_name, log_silently, txt, csv, markdown, reverse_chronologica
    return file_name.strip('.csv').strip('.txt').strip('.md')
   else:
    channel_name = driver.find_element_by_xpath('//yt-formatted-string[@class="style-scope ytd-channel-name"]').text.replace(' ', '')
-   suffix    = 'reverse_chronological_videos_list' if reverse_chronological else 'chronological_videos_list'
+   suffix = 'reverse_chronological_videos_list' if reverse_chronological else 'chronological_videos_list'
    return f'{channel_name}_{suffix}'
  @contextlib.contextmanager
  def yield_logger(file_name):
@@ -121,10 +121,10 @@ def logic(url, file_name, log_silently, txt, csv, markdown, reverse_chronologica
    if log_silently is True: yield (output_location,)
    else:     yield (output_location, sys.stdout)
  verify_writing_to_at_least_one_file()
- user_os    = determine_user_os()
- url     = process_url()
- seleniumdriver   = check_driver()
- program_start    = time.perf_counter()
+ user_os = determine_user_os()
+ url = process_url()
+ seleniumdriver = check_driver()
+ program_start = time.perf_counter()
  try:
   driver = open_user_driver()
  except selenium.common.exceptions.WebDriverException as error_message:
@@ -155,7 +155,7 @@ def logic(url, file_name, log_silently, txt, csv, markdown, reverse_chronologica
    log(f'Now scraping {url} using the {user_driver}driver:', logging_locations)
    program.determine_action(url, driver, scroll_pause_time, reverse_chronological, file_name, txt, csv, markdown, logging_locations)
    program_end = time.perf_counter()
-   total_time  = program_end - program_start
+   total_time = program_end - program_start
    log(f'This program took {total_time} seconds to complete.', logging_locations)
    log( '>' * 50 + 'PROGRAM COMPLETE' + '<' * 50, logging_locations)
  return file_name

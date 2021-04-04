@@ -5,7 +5,7 @@ from .windows_info import get_drive_letter, get_user_name
 from .user_os_info import determine_user_os
 if determine_user_os() == 'windows':
  DRIVE = get_drive_letter()
- USER  = get_user_name()
+ USER = get_user_name()
 def firefox_exists(browser):
  return browser in subprocess.getoutput(rf'dir "{DRIVE}:\Program Files"')
 def opera_exists(browser):
@@ -17,7 +17,7 @@ def brave_exists(browser):
 def edge_exists(browser):
  return browser in subprocess.getoutput(rf'dir "{DRIVE}:\Program Files (x86)/Microsoft"')
 def browser_exists(browser):
- if   browser == 'Mozilla Firefox': return firefox_exists(browser)
+ if browser == 'Mozilla Firefox': return firefox_exists(browser)
  elif browser == 'Opera':     return opera_exists(browser)
  elif browser == 'Chrome':    return chrome_exists(browser)
  elif browser == 'Brave-Browser':   return brave_exists(browser)
@@ -41,7 +41,7 @@ def get_edge_version():
  edge = subprocess.getoutput(rf'dir "{DRIVE}:\Program Files (x86)\Microsoft\Edge\Application"')
  return re.search('(\d\d\.[\d\.]*)', edge)[1]
 def get_browser_version(browser):
- if   browser == 'Mozilla Firefox': return get_firefox_version()
+ if browser == 'Mozilla Firefox': return get_firefox_version()
  elif browser == 'Opera':     return get_opera_version()
  elif browser == 'Chrome':    return get_chrome_version()
  elif browser == 'Brave-Browser':   return get_brave_version()
