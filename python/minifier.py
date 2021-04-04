@@ -38,12 +38,12 @@ def minify_source_directory_into_target_directory(slash, source_directory, targe
                 write_file.write(read_file.read())
                 continue
             formatted = read_file.read()
-            formatted = re.sub(' +# .+', '',   formatted)
+            formatted = re.sub(' +# .+',   '', formatted)
             formatted = re.sub('^\s*# .+', '', formatted, flags=re.MULTILINE)
-            formatted = re.sub(' +\n', '',     formatted)
-            formatted = re.sub('^\n', '',      formatted, flags=re.MULTILINE)
+            formatted = re.sub(' +\n',     '', formatted)
+            formatted = re.sub('^\n',      '', formatted, flags=re.MULTILINE)
             if 'notifications.py' not in file and 'write.py' not in file:
-                formatted = re.sub('    ', ' ', formatted)
+                formatted = re.sub('    ',       ' ',       formatted)
                 formatted = re.sub('(\w)  +(.)', '\\1 \\2', formatted)
             write_file.write(formatted)
 
