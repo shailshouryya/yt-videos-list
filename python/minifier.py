@@ -38,13 +38,13 @@ def minify_source_directory_into_target_directory(slash, source_directory, targe
                 write_file.write(read_file.read())
                 continue
             formatted = read_file.read()
-            formatted = re.sub(' +# .+',   '', formatted)
-            formatted = re.sub('^\s*# .+', '', formatted, flags=re.MULTILINE)
-            formatted = re.sub(' +\n',     '', formatted)
-            formatted = re.sub('^\n',      '', formatted, flags=re.MULTILINE)
+            formatted = re.sub(' +# .+',   '', formatted)                     # remove comments from lines that end with comments
+            formatted = re.sub('^\s*# .+', '', formatted, flags=re.MULTILINE) # remove lines that contain only comments and no code
+            formatted = re.sub(' +\n',     '', formatted)                     # remove lines that contain only spaces
+            formatted = re.sub('^\n',      '', formatted, flags=re.MULTILINE) # remove lines that contain only a newline
             if 'notifications.py' not in file and 'write.py' not in file:
-                formatted = re.sub('    ',       ' ',       formatted)
-                formatted = re.sub('(\w)  +(.)', '\\1 \\2', formatted)
+                formatted = re.sub('    ',       ' ',       formatted) # replace 4 spaces with 1 space (reduces spaces taken by indentation)
+                formatted = re.sub('(\w)  +(.)', '\\1 \\2', formatted) # replace extra spacing in variable assignments that make source code in dev/ easier to read, but are irrelevant in yt_videos_list/
             write_file.write(formatted)
 
 
