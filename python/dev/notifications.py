@@ -366,13 +366,13 @@ class ModuleMessage(Common):
     url_argument_usage            = f'\n\n{indent}Please copy and paste the url to the YouTube channel you want to scrape as the first argument (make sure you put quotes around the url) and rerun this method!\n{indent}EXAMPLES:\n{indent}lc.create_list_for("https://www.youtube.com/user/schafer5")\n{indent}{indent}lc.create_list_for(url="https://www.youtube.com/user/schafer5")\n{indent}{indent}lc.create_list_for(url="https://www.youtube.com/user/schafer5", file_name="CoreySchafer")\n{indent}{indent}lc.create_list_for("https://www.youtube.com/user/schafer5", "CoreySchafer")\n\n'
     not_writing_to_any_files_hint = 'If you want to run this program, please change the csv OR txt OR md setting to True.\nThis program will now exit...'
     running_default_driver        = '\nNo driver specified during ListCreator instantiation, so running program using the Firefox driver.'
-    show_driver_options           = '''To use a different driver, specify the driver in the driver argument during the ListCreator instantiation. For example:
-    lc = ListCreator(driver='firefox')
-    lc = ListCreator(driver='opera')
-    lc = ListCreator(driver='safari')
-    lc = ListCreator(driver='chrome')
-    lc = ListCreator(driver='brave')
-    lc = ListCreator(driver='edge')'''
+    show_driver_options           = f'''To use a different driver, specify the driver in the driver argument during the ListCreator instantiation. For example:
+    {indent}lc = ListCreator(driver='firefox')
+    {indent}lc = ListCreator(driver='opera')
+    {indent}lc = ListCreator(driver='safari')
+    {indent}lc = ListCreator(driver='chrome')
+    {indent}lc = ListCreator(driver='brave')
+    {indent}lc = ListCreator(driver='edge')'''
 
 
 
