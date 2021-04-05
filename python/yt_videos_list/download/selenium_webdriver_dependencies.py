@@ -1,27 +1,27 @@
 import os
-from .      import selenium_linux, selenium_macos, selenium_windows
+from . import selenium_linux, selenium_macos, selenium_windows
 from .user_os_info import determine_user_os
 from ..notifications import Common
 COMMON_MESSAGE = Common()
 APPLICATION_NAME = {
  'macos': {
-  'firefox':  'Firefox',
+  'firefox': 'Firefox',
   'opera': 'Opera',
-  'chrome':   'Google Chrome',
+  'chrome': 'Google Chrome',
   'brave': 'Brave Browser',
-  'edge':  'Microsoft Edge'
+  'edge': 'Microsoft Edge'
  },
  'linux': {
-  'firefox':  'Automatic Selenium dependency download for Windows is not yet supported. Please follow the instructions below to set up the correct selenium dependecy for the firefoxdriver.',
+  'firefox': 'Automatic Selenium dependency download for Windows is not yet supported. Please follow the instructions below to set up the correct selenium dependecy for the firefoxdriver.',
   'opera': 'Automatic Selenium dependency download for Windows is not yet supported. Please follow the instructions below to set up the correct selenium dependecy for the operadriver.',
-  'chrome':   'Automatic Selenium dependency download for Windows is not yet supported. Please follow the instructions below to set up the correct selenium dependecy for the chromedriver.'
+  'chrome': 'Automatic Selenium dependency download for Windows is not yet supported. Please follow the instructions below to set up the correct selenium dependecy for the chromedriver.'
  },
  'windows': {
-  'firefox':  'Mozilla Firefox',
+  'firefox': 'Mozilla Firefox',
   'opera': 'Opera',
-  'chrome':   'Chrome',
+  'chrome': 'Chrome',
   'brave': 'Brave-Browser',
-  'edge':  'Edge'
+  'edge': 'Edge'
  }
 }
 def download_specific_dependency(driver, user_os):

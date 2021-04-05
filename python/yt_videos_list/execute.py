@@ -38,11 +38,11 @@ def logic(url, file_name, log_silently, txt, csv, markdown, reverse_chronologica
    print(module_message.show_driver_options) if execution_type == 'module' else print(script_message.show_driver_options)
    user_driver = 'firefox'
   if 'firefox' in user_driver: return webdriver.Firefox
-  elif 'opera'   in user_driver: return webdriver.Opera
-  elif 'chrome'  in user_driver: return webdriver.Chrome
-  elif 'brave'   in user_driver: return configure_brave_driver
+  elif 'opera' in user_driver: return webdriver.Opera
+  elif 'chrome' in user_driver: return webdriver.Chrome
+  elif 'brave' in user_driver: return configure_brave_driver
   elif 'edge' in user_driver: return configure_edge_driver
-  elif 'safari'  in user_driver:
+  elif 'safari' in user_driver:
    if user_os != 'macos':
     common_message.display_dependency_setup_instructions('safari', user_os)
     sys.exit()
@@ -55,10 +55,10 @@ def logic(url, file_name, log_silently, txt, csv, markdown, reverse_chronologica
    return seleniumdriver()
   else:
    if user_driver == 'firefox': return set_up_headless_firefox_driver()
-   elif user_driver == 'opera':   return set_up_headless_opera_driver()
-   elif user_driver == 'safari':  return set_up_headless_safari_driver()
-   elif user_driver == 'chrome':  return set_up_headless_chrome_driver()
-   elif user_driver == 'brave':   return set_up_headless_brave_driver()
+   elif user_driver == 'opera': return set_up_headless_opera_driver()
+   elif user_driver == 'safari': return set_up_headless_safari_driver()
+   elif user_driver == 'chrome': return set_up_headless_chrome_driver()
+   elif user_driver == 'brave': return set_up_headless_brave_driver()
    elif user_driver == 'edge': return set_up_headless_edge_driver()
  def set_up_headless_firefox_driver():
   options = selenium.webdriver.firefox.options.Options()
@@ -119,7 +119,7 @@ def logic(url, file_name, log_silently, txt, csv, markdown, reverse_chronologica
   log_file = f'{file_name}.log'
   with open (log_file, 'a', encoding='utf-8') as output_location:
    if log_silently is True: yield (output_location,)
-   else:     yield (output_location, sys.stdout)
+   else: yield (output_location, sys.stdout)
  verify_writing_to_at_least_one_file()
  user_os = determine_user_os()
  url = process_url()

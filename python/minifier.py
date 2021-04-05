@@ -45,6 +45,7 @@ def minify_source_directory_into_target_directory(slash, source_directory, targe
             if 'notifications.py' not in file and 'write.py' not in file:
                 formatted = re.sub('    ',       ' ',       formatted) # replace 4 spaces with 1 space (reduces spaces taken by indentation)
                 formatted = re.sub('(\w)  +(.)', '\\1 \\2', formatted) # replace extra spacing in variable assignments that make source code in dev/ easier to read, but are irrelevant in yt_videos_list/
+            formatted = re.sub('([\S])  +?(\S)', '\\1 \\2', formatted) # replace extra spacing anywhere in a line given the character before AND after the spaces is a non-space character (the non-space character check avoids replacing spaces necessary for indentation)
             write_file.write(formatted)
 
 
