@@ -4,6 +4,7 @@ class Common:
     This class contains messages that are common regardless of whether the package is being run as a module using the -m option from the CLI or as a module from within the Python interpreter (or another Python script).
     '''
     indent                   = ' ' * 4
+    ds                       = ' ' * 2
     missing_url              = 'create_list_for() missing 1 required positional argument: "url"'
     not_writing_to_any_files = '\nBased on your provided settings, yt_videos_list will not be writing to a csv file, nor a txt file, nor a md file.'
     no_videos_found          = 'No videos were found for the channel you provided. Are you sure you entered the url correctly?\n\n'
@@ -289,7 +290,7 @@ class Common:
         for driver_version_download in self.driver_downloads_for_os[user_driver][user_os]:
             print(driver_version_download)
         def display_more_dependency_information(user_driver):
-            print(f'\n\n# For more information about the {self.more_driver_info[user_driver][0]}, please visit\n{self.more_driver_info[user_driver][1]}\n{self.more_driver_info[user_driver][2]}      (all supported versions)\n\nNOTE! You must also have the {self.more_driver_info[user_driver][3]} browser installed to use this. If you don\'t have it installed, install it from\n{self.more_driver_info[user_driver][4]}')
+            print(f'\n\n# For more information about the {self.more_driver_info[user_driver][0]}, please visit\n{self.more_driver_info[user_driver][1]}\n{self.more_driver_info[user_driver][2]}{self.indent}{self.ds}(all supported versions)\n\nNOTE! You must also have the {self.more_driver_info[user_driver][3]} browser installed to use this. If you don\'t have it installed, install it from\n{self.more_driver_info[user_driver][4]}')
         if user_driver != 'safari':
             display_more_dependency_information(user_driver)
     @staticmethod
@@ -305,14 +306,14 @@ class Common:
     def tell_user_to_download_driver(user_driver):
         print('\n' * 25 + '=' * 130)
         print(f'It looks like you don\'t have the correct Selenium dependency set up to run this program using the remote {user_driver}driver.\nThe version of your {user_driver.title()} browser - usually found by going to {user_driver.title()} -> \"About browser\" in the menu bar within a {user_driver.title()} window - should match the comment for the corresponding command.\nPlease download it using the relevant command from the list of commands below.\n')
-    @staticmethod
-    def display_unable_to_update_driver_automatically(user_driver):
+    @classmethod
+    def display_unable_to_update_driver_automatically(cls, user_driver):
         print('\n' + '*' * 81)
         print('*****Looks like the package could not automatically update the dependencies.*****')
         print('Please try running the following commands to update the package (newer package versions will support newer drivers) before retrying, and if that doesn\'t work, follow the directions given above.')
-        print('pip  install -U yt-videos-list #Windows\npip3 install -U yt-videos-list #MacOS/Linux\n\n')
+        print('pip{cls.ds}install -U yt-videos-list #Windows\npip3 install -U yt-videos-list #MacOS/Linux\n\n')
         print('If that does not work, try:')
-        print('python  -m pip install -U yt-videos-list #Windows\npython3 -m pip install -U yt-videos-list\n')
+        print('python{cls.ds}-m pip install -U yt-videos-list #Windows\npython3 -m pip install -U yt-videos-list\n')
         print('If this still doesn\'t fix the problem, please try using a different driver or file an issue at https://github.com/Shail-Shouryya/yt-videos-list/issues')
         print(f'The problem is likely caused by trying to run yt_videos_list with an updated version of the driver you\'re trying to use than what yt_videos_list currently supports (we update the binaries a few weeks after the initial release to allow time for bug fixing). If this is the case, the version of the driver downloaded won\'t match the output of\n"You are currently running {user_driver} version: " above.\n')
         print('To see other drivers you can use (and other options), run:\n')
