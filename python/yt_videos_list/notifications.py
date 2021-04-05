@@ -272,6 +272,9 @@ class Common:
  @staticmethod
  def display_browser_not_found_information(browser, user_os):
   print(f'\nDid not find an installed version of {browser}.\nIf you DO have {browser} installed but it was not detected, it may be because your {browser} was installed in a non-default location.\nPlease modify the commands under the {browser} you want to use at https://github.com/Shail-Shouryya/yt-videos-list/blob/main/docs/dependencies_pseudo_json.txt for {user_os.title()}"\nIf you are unsure how to do that, please file an issue at https://github.com/Shail-Shouryya/yt-videos-list/issues and we will respond as soon as possible!')
+ @staticmethod
+ def display_url_error(error_message):
+  print(f'\n\n\nThe url you provided could not be parsed properly. Please check the url you provided to make sure there are no typos! For further debugging, this was the exact error message (might also be blank):\n{error_message}\n\n\n')
  def display_dependency_setup_instructions(self, user_driver, user_os):
   terminal_copy_paste_directions = 'Once you determine the right version to download, copy the command, open a new terminal session (usually possible with CMD+N or CMD+T (or CTRL+N or CTRL+D depending on your keyboard/OS) from an active terminal session), and paste the command you just copied. Once you\'ve done that, you should be able to come back to this session and rerun the last command without an error!\n\n'
   if user_os != 'windows' and user_driver != 'safari':
@@ -327,7 +330,6 @@ class ModuleMessage(Common):
  This class contains messages that are relevant for the package when it is being run as a module from within the Python interpreter (or another Python script).
  '''
  indent = ' ' * 4
- url_argument_usage = f'\n\n{indent}Please copy and paste the url to the YouTube channel you want to scrape as the first argument (make sure you put quotes around the url) and rerun this method!\n{indent}EXAMPLES:\n{indent}lc.create_list_for("https://www.youtube.com/user/schafer5")\n{indent}{indent}lc.create_list_for(url="https://www.youtube.com/user/schafer5")\n{indent}{indent}lc.create_list_for(url="https://www.youtube.com/user/schafer5", file_name="CoreySchafer")\n{indent}{indent}lc.create_list_for("https://www.youtube.com/user/schafer5", "CoreySchafer")\n\n'
  not_writing_to_any_files_hint = 'If you want to run this program, please change the csv OR txt OR md setting to True.\nThis program will now exit...'
  running_default_driver = '\nNo driver specified during ListCreator instantiation, so running program using the Firefox driver.'
  show_driver_options = f'''To use a different driver, specify the driver in the driver argument during the ListCreator instantiation. For example:

@@ -22,12 +22,14 @@ def logic(url, file_name, log_silently, txt, csv, markdown, reverse_chronologica
    print(module_message.not_writing_to_any_files_hint) if execution_type == 'module' else print(script_message.not_writing_to_any_files_hint)
    sys.exit()
  def process_url():
-  if url is not None:
+  try:
    channel_info = url.split('youtube.com/')[1]
    channel_type = channel_info.split('/')[0]
    channel = channel_info.split('/')[1]
-  if channel is None or channel_type is None:
-   raise RuntimeError(Common().missing_url + ModuleMessage().url_argument_usage)
+  except IndexError as error_message:
+   common_message.display_url_error(error_message)
+   traceback.print_exc()
+   sys.exit()
   base_url = 'https://www.youtube.com'
   videos = 'videos'
   return f'{base_url}/{channel_type}/{channel}/{videos}'
