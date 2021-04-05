@@ -333,11 +333,11 @@ class Common:
 
     @staticmethod
     def display_selenium_dependency_update_error(error_message):
-        print(f'Could not automatically update selenium dependencies! For further debugging, this was the exact error message:\n{error_message}')
+        print(f'Could not automatically update selenium dependencies! For further debugging, this was the exact error message:\n{error_message}\n\n\n')
 
     @staticmethod
     def display_selenium_unable_to_load_elements_error(error_message):
-        print(f'The page did not load elements! If you\'ve scraped many channels within a short period of time, please try rerunning the program after waiting to make sure YouTube isn\'t throttling your IP address! For further debugging, this was the exact error message (might also be blank):\n{error_message}')
+        print(f'The page did not load elements! If you\'ve scraped many channels within a short period of time, please try rerunning the program after waiting to make sure YouTube isn\'t throttling your IP address! For further debugging, this was the exact error message (might also be blank):\n{error_message}\n\n\n')
 
     @staticmethod
     def tell_user_to_download_driver(user_driver):
