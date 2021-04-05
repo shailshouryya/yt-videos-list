@@ -28,7 +28,7 @@ def log_extraction_information(function, writer_function, args, kwargs):
  if function == 'create_file': log(f'{videos_written} {videos} written to'.ljust(padding) + f'{temp_file}', logging_locations)
  if function == 'update_file': log(f'{videos_written} ***NEW*** {videos} written to'.ljust(padding) + f'{temp_file}', logging_locations)
  log('Closing'.ljust(padding) + f'{temp_file}', logging_locations)
- log('Successfully completed write, renaming {temp_file} to {final_file}', logging_locations)
+ log(f'Successfully completed write, renaming {temp_file} to {final_file}', logging_locations)
  if function == 'update_file' and not reverse_chronological:
   os.remove(temp_file)
  else:

@@ -32,7 +32,7 @@ def log_extraction_information(function, writer_function, args, kwargs):
     if function == 'create_file': log(f'{videos_written} {videos} written to'.ljust(padding) + f'{temp_file}',           logging_locations)
     if function == 'update_file': log(f'{videos_written} ***NEW*** {videos} written to'.ljust(padding) + f'{temp_file}', logging_locations)
     log('Closing'.ljust(padding) + f'{temp_file}',                                                                       logging_locations)
-    log('Successfully completed write, renaming {temp_file} to {final_file}',                                            logging_locations)
+    log(f'Successfully completed write, renaming {temp_file} to {final_file}',                                           logging_locations)
     if function == 'update_file' and not reverse_chronological: # ChannelName_chronological.ext files
         # if the function that ran was update_file with the reverse_chronological flag set to False: remove temp_{file_name} since all new information from the temp file was appended to the end of the original file (new data is at bottom of file)
         os.remove(temp_file)
