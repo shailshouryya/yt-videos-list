@@ -5,6 +5,7 @@ class Common:
  '''
  indent = ' ' * 4
  ds = ' ' * 2
+ offset = '\n\n\n'
  missing_url = 'create_list_for() missing 1 required positional argument: "url"'
  not_writing_to_any_files = '\nBased on your provided settings, yt_videos_list will not be writing to a csv file, nor a txt file, nor a md file.'
  no_videos_found = 'No videos were found for the channel you provided. Are you sure you entered the url correctly?\n\n'
@@ -272,9 +273,9 @@ class Common:
  @staticmethod
  def display_browser_not_found_information(browser, user_os):
   print(f'\nDid not find an installed version of {browser}.\nIf you DO have {browser} installed but it was not detected, it may be because your {browser} was installed in a non-default location.\nPlease modify the commands under the {browser} you want to use at https://github.com/Shail-Shouryya/yt-videos-list/blob/main/docs/dependencies_pseudo_json.txt for {user_os.title()}"\nIf you are unsure how to do that, please file an issue at https://github.com/Shail-Shouryya/yt-videos-list/issues and we will respond as soon as possible!')
- @staticmethod
- def display_url_error(error_message):
-  print(f'\n\n\nThe url you provided could not be parsed properly. Please check the url you provided to make sure there are no typos! For further debugging, this was the exact error message (might also be blank):\n{error_message}\n\n\n')
+ @classmethod
+ def display_url_error(cls, error_message):
+  print(f'{cls.offset}The url you provided could not be parsed properly. Please check the url you provided to make sure there are no typos! For further debugging, this was the exact error message (might also be blank):\n{error_message}{cls.offset}')
  def display_dependency_setup_instructions(self, user_driver, user_os):
   terminal_copy_paste_directions = 'Once you determine the right version to download, copy the command, open a new terminal session (usually possible with CMD+N or CMD+T (or CTRL+N or CTRL+D depending on your keyboard/OS) from an active terminal session), and paste the command you just copied. Once you\'ve done that, you should be able to come back to this session and rerun the last command without an error!\n\n'
   if user_os != 'windows' and user_driver != 'safari':
@@ -296,15 +297,15 @@ class Common:
    print(f'\n\n# For more information about the {self.more_driver_info[user_driver][0]}, please visit\n{self.more_driver_info[user_driver][1]}\n{self.more_driver_info[user_driver][2]}{self.indent}{self.ds}(all supported versions)\n\nNOTE! You must also have the {self.more_driver_info[user_driver][3]} browser installed to use this. If you don\'t have it installed, install it from\n{self.more_driver_info[user_driver][4]}')
   if user_driver != 'safari':
    display_more_dependency_information(user_driver)
- @staticmethod
- def display_selenium_dependency_error(error_message):
-  print(f'\n\n\n\n\n\n\nThere was an error while trying to open up the remote selenium instance. The exact error was:\n{error_message}\nDon\'t worry though, this is an easy fix!')
- @staticmethod
- def display_selenium_dependency_update_error(error_message):
-  print(f'Could not automatically update selenium dependencies! For further debugging, this was the exact error message:\n{error_message}\n\n\n')
- @staticmethod
- def display_selenium_unable_to_load_elements_error(error_message):
-  print(f'The page did not load elements! If you\'ve scraped many channels within a short period of time, please try rerunning the program after waiting to make sure YouTube isn\'t throttling your IP address! For further debugging, this was the exact error message (might also be blank):\n{error_message}\n\n\n')
+ @classmethod
+ def display_selenium_dependency_error(cls, error_message):
+  print(f'{cls.offset}{cls.offset}\nThere was an error while trying to open up the remote selenium instance. The exact error was:\n{error_message}\nDon\'t worry though, this is an easy fix!')
+ @classmethod
+ def display_selenium_dependency_update_error(cls, error_message):
+  print(f'Could not automatically update selenium dependencies! For further debugging, this was the exact error message:\n{error_message}{cls.offset}')
+ @classmethod
+ def display_selenium_unable_to_load_elements_error(cls, error_message):
+  print(f'The page did not load elements! If you\'ve scraped many channels within a short period of time, please try rerunning the program after waiting to make sure YouTube isn\'t throttling your IP address! For further debugging, this was the exact error message (might also be blank):\n{error_message}{cls.offset}')
  @staticmethod
  def tell_user_to_download_driver(user_driver):
   print('\n' * 25 + '=' * 130)
