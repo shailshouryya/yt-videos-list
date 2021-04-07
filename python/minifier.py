@@ -25,10 +25,10 @@ def minify_source_directory_into_target_directory(slash, source_directory, targe
     for root, _, files in os.walk(os.path.abspath(f'./{source_directory}')):
         for file in files:
             filepath = os.path.join(root, file).split(source_directory)[1]
-            local_directory = root.split(source_directory)[1]
-            if local_directory: local_directories.add(local_directory) # tryuthy check skips adding an empty string '' to local_directories for files that are in root of source_directory
             if filepath.endswith('DS_Store'): continue
             if '__pycache__' in filepath:     continue
+            local_directory = root.split(source_directory)[1]
+            if local_directory: local_directories.add(local_directory) # tryuthy check skips adding an empty string '' to local_directories for files that are in root of source_directory
             valid_files.append(filepath)
     for local_directory in local_directories:
         os.makedirs(f'{target_directory}{local_directory}', exist_ok=True) # since sets are unordered, we might create a nested directory before the outer directory, so the exist_ok argument=True avoids this error -> FileExistsError: [Errno 17] File exists: '{local_directory}' (which is an outer directory for a nested directory that we made in the process of making a nested directory)
