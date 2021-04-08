@@ -109,6 +109,18 @@ def logic(url, file_name, log_silently, txt, csv, markdown, reverse_chronologica
   if user_driver != 'safari':
    common_message.tell_user_to_download_driver(user_driver)
   common_message.display_dependency_setup_instructions(user_driver, user_os)
+ def handle_opening_webdriver_exception(error_message):
+  nonlocal driver
+  common_message.display_selenium_dependency_error(error_message)
+  try:
+   download_all()
+   driver = open_user_driver()
+  except selenium.common.exceptions.WebDriverException as error_message:
+   common_message.display_selenium_dependency_update_error(error_message)
+   traceback.print_exc()
+   show_user_how_to_set_up_selenium()
+   common_message.display_unable_to_update_driver_automatically(user_driver)
+   sys.exit()
  def determine_file_name():
   if file_name is not None:
    return file_name.strip('.csv').strip('.txt').strip('.md')
@@ -130,16 +142,7 @@ def logic(url, file_name, log_silently, txt, csv, markdown, reverse_chronologica
  try:
   driver = open_user_driver()
  except selenium.common.exceptions.WebDriverException as error_message:
-  common_message.display_selenium_dependency_error(error_message)
-  try:
-   download_all()
-   driver = open_user_driver()
-  except selenium.common.exceptions.WebDriverException as error_message:
-   common_message.display_selenium_dependency_update_error(error_message)
-   traceback.print_exc()
-   show_user_how_to_set_up_selenium()
-   common_message.display_unable_to_update_driver_automatically(user_driver)
-   sys.exit()
+  handle_opening_webdriver_exception(error_message)
  with driver:
   driver.get(url)
   driver.set_window_size(780, 800)
