@@ -25,7 +25,6 @@ def determine_action(url, driver, scroll_pause_time, reverse_chronological, file
             (True,  True,  False, False, False, False),  # update txt,        txt exists,   do not update csv, csv DNE,    do not update md, md DNE
             (False, False, False, False, True,  True),   # do not update txt, txt DNE,      do not update csv, csv DNE,    update md,        md exists
             (False, False, True,  True,  False, False),  # do not update txt, txt DNE,      update csv,        csv exists, do not update md, md DNE
-
         )
     )
     if current_condition in update_conditions: videos_list, txt_videos, csv_videos, md_videos = file.scroller.scroll_to_old_videos(url, driver, scroll_pause_time, logging_locations, file_name, txt_exists, csv_exists, md_exists)
