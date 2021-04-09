@@ -159,6 +159,31 @@ def logic(url, file_name, log_silently, txt, csv, markdown, reverse_chronologica
             common_message.display_unable_to_update_driver_automatically(user_driver)
             sys.exit()
 
+
+    def run_scraper():
+        with driver:
+            driver.get(url)
+            driver.set_window_size(780, 800)
+            driver.set_window_position(0, 0)
+            wait = selenium.webdriver.support.ui.WebDriverWait(driver, 9)
+            try:
+                wait.until(EC.element_to_be_clickable((By.XPATH, '//yt-formatted-string[@class="style-scope ytd-channel-name"]')))
+            except selenium.common.exceptions.TimeoutException as error_message:
+                common_message.display_selenium_unable_to_load_elements_error(error_message)
+                traceback.print_exc()
+                sys.exit()
+            file_name = determine_file_name()
+            with yield_logger(file_name) as logging_locations:
+                log( '>' * 50 + 'STARTING PROGRAM' + '<' * 50, logging_locations)
+                log(f'Now scraping {url} using the {user_driver}driver:', logging_locations)
+                program.determine_action(url, driver, scroll_pause_time, reverse_chronological, file_name, txt, csv, markdown, logging_locations)
+                program_end = time.perf_counter()
+                total_time  = program_end - program_start
+                log(f'This program took {total_time} seconds to complete.', logging_locations)
+                log( '>' * 50 + 'PROGRAM COMPLETE' + '<' * 50, logging_locations)
+        return file_name
+
+
     def determine_file_name():
         if file_name is not None:
             return file_name.strip('.csv').strip('.txt').strip('.md')
@@ -185,24 +210,4 @@ def logic(url, file_name, log_silently, txt, csv, markdown, reverse_chronologica
         driver = open_user_driver()
     except selenium.common.exceptions.WebDriverException as error_message:
         handle_opening_webdriver_exception(error_message)
-    with driver:
-        driver.get(url)
-        driver.set_window_size(780, 800)
-        driver.set_window_position(0, 0)
-        wait = selenium.webdriver.support.ui.WebDriverWait(driver, 9)
-        try:
-            wait.until(EC.element_to_be_clickable((By.XPATH, '//yt-formatted-string[@class="style-scope ytd-channel-name"]')))
-        except selenium.common.exceptions.TimeoutException as error_message:
-            common_message.display_selenium_unable_to_load_elements_error(error_message)
-            traceback.print_exc()
-            sys.exit()
-        file_name = determine_file_name()
-        with yield_logger(file_name) as logging_locations:
-            log( '>' * 50 + 'STARTING PROGRAM' + '<' * 50, logging_locations)
-            log(f'Now scraping {url} using the {user_driver}driver:', logging_locations)
-            program.determine_action(url, driver, scroll_pause_time, reverse_chronological, file_name, txt, csv, markdown, logging_locations)
-            program_end = time.perf_counter()
-            total_time  = program_end - program_start
-            log(f'This program took {total_time} seconds to complete.', logging_locations)
-            log( '>' * 50 + 'PROGRAM COMPLETE' + '<' * 50, logging_locations)
-    return file_name
+    return run_scraper()
