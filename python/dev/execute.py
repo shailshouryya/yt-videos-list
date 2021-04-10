@@ -152,8 +152,8 @@ def logic(url, file_name, log_silently, txt, csv, markdown, reverse_chronologica
         try:
             download_all()
             driver = open_user_driver()
-        except selenium.common.exceptions.WebDriverException as error_message: # could not download the correct Selenium driver based on the user's OS and specified driver
-            common_message.display_selenium_dependency_update_error(error_message)
+        except selenium.common.exceptions.WebDriverException as same_error_message_again: # could not download the correct Selenium driver based on the user's OS and specified driver
+            common_message.display_selenium_dependency_update_error(same_error_message_again)
             traceback.print_exc()
             show_user_how_to_set_up_selenium()
             common_message.display_unable_to_update_driver_automatically(user_driver)
