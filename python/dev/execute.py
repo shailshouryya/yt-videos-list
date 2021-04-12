@@ -54,11 +54,7 @@ def logic(url, file_name, log_silently, txt, csv, markdown, reverse_chronologica
         elif 'chrome'  in user_driver: return webdriver.Chrome
         elif 'brave'   in user_driver: return configure_brave_driver
         elif 'edge'    in user_driver: return configure_edge_driver
-        elif 'safari'  in user_driver:
-            if user_os != 'macos':
-                common_message.display_dependency_setup_instructions('safari', user_os)
-                sys.exit()
-            return webdriver.Safari
+        elif 'safari'  in user_driver: return configure_safari_driver
         else:
             print(common_message.invalid_driver)
             sys.exit()
@@ -136,6 +132,12 @@ def logic(url, file_name, log_silently, txt, csv, markdown, reverse_chronologica
             sys.exit()
         # options.headless = True
         return webdriver.Edge(executable_path=executable_path)
+
+    def configure_safari_driver():
+        if user_os != 'macos':
+            common_message.display_dependency_setup_instructions('safari', user_os)
+            sys.exit()
+        return webdriver.Safari()
 
 
     def show_user_how_to_set_up_selenium():
