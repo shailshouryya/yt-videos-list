@@ -1,6 +1,7 @@
 '''
-Get YouTube videos (all titles and URLs) with end-to-end web scraping API.
-🌟 Star 🌟 this repo on GitHub if you found it useful!
+YouTube bot to make a YouTube videos list (including all video titles and
+URLs uploaded by a channel) with end-to-end web scraping - no API tokens required.
+🌟 Star this repo if you found it useful! 🌟
 https://github.com/Shail-Shouryya/yt-videos-list
 '''
 

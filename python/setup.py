@@ -12,7 +12,7 @@ with open('README.md', 'r', encoding='utf-8') as f:
 setup(
     name                          = 'yt_videos_list',
     version                       = '0.5.4',
-    description                   = 'Get YouTube videos (all titles and URLs) with end-to-end web scraping API. 🌟 Star this repo if you found it useful! 🌟',
+    description                   = 'YouTube bot to make a YouTube videos list (including all video titles and URLs uploaded by a channel) with end-to-end web scraping - no API tokens required. 🌟 Star this repo if you found it useful! 🌟',
     long_description              = long_description,
     long_description_content_type = 'text/markdown',
     url                           = 'https://github.com/Shail-Shouryya/yt-videos-list/tree/main/python',
