@@ -65,9 +65,8 @@ def logic(url, file_name, log_silently, txt, csv, markdown, reverse_chronologica
  def set_up_headless_operadriver():
   options = webdriver.ChromeOptions()
   options.add_argument('headless')
-  driver = seleniumdriver(options=options)
   print(common_message.unsupported_opera_headless)
-  return driver
+  return seleniumdriver(options=options)
  def set_up_headless_safaridriver():
   print(common_message.unsupported_safari_headless)
   return seleniumdriver()
