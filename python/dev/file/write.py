@@ -99,8 +99,8 @@ def prepare_updated_output(list_of_videos, videos_set, video_number, reverse_chr
     return video_number, new_videos, total_writes, incrementer
 
 def find_number_of_new_videos(list_of_videos, videos_set):
-    visited_on_page = {selenium_element.get_attribute('href') for selenium_element in list_of_videos}
-    return len(visited_on_page.difference(videos_set))                                            # same as len(visited_on_page - visited_videos)
+    visited_on_page = {selenium_element.get_attribute('href') for selenium_element in list_of_videos}  # set comprehension
+    return len(visited_on_page.difference(videos_set))                                                 # same as len(visited_on_page - visited_videos)
 
 
 def update_status(video_number, total_writes, incrementer):
