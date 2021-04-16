@@ -25,7 +25,8 @@ def logic(url, file_name, log_silently, txt, csv, markdown, reverse_chronologica
     def verify_writing_to_at_least_one_file():
         if txt is False and csv is False and markdown is False:
             print(common_message.not_writing_to_any_files)
-            print(module_message.not_writing_to_any_files_hint) if execution_type == 'module' else print(script_message.not_writing_to_any_files_hint)
+            if execution_type == 'module': print(module_message.not_writing_to_any_files_hint)
+            else:                          print(script_message.not_writing_to_any_files_hint)
             sys.exit() # the files already exist and the user doesn't want to overwrite either of them
 
 
@@ -46,8 +47,8 @@ def logic(url, file_name, log_silently, txt, csv, markdown, reverse_chronologica
     def check_driver():
         nonlocal user_driver
         if user_driver is None:
-            print(module_message.running_default_driver) if execution_type == 'module' else print(script_message.running_default_driver)
-            print(module_message.show_driver_options)    if execution_type == 'module' else print(script_message.show_driver_options)
+            if execution_type == 'module': print(module_message.running_default_driver + '\n' + module_message.show_driver_options)
+            else:                          print(script_message.running_default_driver + '\n' + script_message.show_driver_options)
             user_driver = 'firefox'
         if   'firefox' in user_driver: return webdriver.Firefox
         elif 'opera'   in user_driver: return webdriver.Opera
