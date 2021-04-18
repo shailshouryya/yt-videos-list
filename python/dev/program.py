@@ -1,7 +1,7 @@
 import os
 import datetime
 
-from .              import scroller, write
+from .              import scroller, writer
 from .notifications import Common
 from .custom_logger import log
 
@@ -32,14 +32,14 @@ def determine_action(url, driver, scroll_pause_time, reverse_chronological, file
         log(common_message.no_videos_found, logging_locations)
         return
     if txt:
-        if txt_exists: write.update_file('txt', videos_list, file_name, reverse_chronological, logging_locations, timestamp=now(), stored_in_file=txt_videos)
-        else:          write.create_file('txt', videos_list, file_name, reverse_chronological, logging_locations, timestamp=now())
+        if txt_exists: writer.update_file('txt', videos_list, file_name, reverse_chronological, logging_locations, timestamp=now(), stored_in_file=txt_videos)
+        else:          writer.create_file('txt', videos_list, file_name, reverse_chronological, logging_locations, timestamp=now())
     if csv:
-        if csv_exists: write.update_file('csv', videos_list, file_name, reverse_chronological, logging_locations, timestamp=now(), stored_in_file=csv_videos)
-        else:          write.create_file('csv', videos_list, file_name, reverse_chronological, logging_locations, timestamp=now())
+        if csv_exists: writer.update_file('csv', videos_list, file_name, reverse_chronological, logging_locations, timestamp=now(), stored_in_file=csv_videos)
+        else:          writer.create_file('csv', videos_list, file_name, reverse_chronological, logging_locations, timestamp=now())
     if markdown:
-        if md_exists:  write.update_file('md', videos_list, file_name, reverse_chronological, logging_locations, timestamp=now(), stored_in_file=md_videos)
-        else:          write.create_file('md', videos_list, file_name, reverse_chronological, logging_locations, timestamp=now())
+        if md_exists:  writer.update_file('md', videos_list, file_name, reverse_chronological, logging_locations, timestamp=now(), stored_in_file=md_videos)
+        else:          writer.create_file('md', videos_list, file_name, reverse_chronological, logging_locations, timestamp=now())
 
 def now():
     return datetime.datetime.now().isoformat().replace(':', '-').replace('.', '_')
