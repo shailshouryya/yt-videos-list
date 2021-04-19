@@ -44,67 +44,46 @@ def logic(url, file_name, log_silently, txt, csv, markdown, reverse_chronologica
         return f'{base_url}/{channel_type}/{channel}/{videos}'
 
 
-    def check_driver():
+    def open_user_driver():
         nonlocal user_driver
         if user_driver is None:
             if execution_type == 'module': print(module_message.running_default_driver + '\n' + module_message.show_driver_options)
             else:                          print(script_message.running_default_driver + '\n' + script_message.show_driver_options)
             user_driver = 'firefox'
-        if   'firefox' in user_driver: return webdriver.Firefox
-        elif 'opera'   in user_driver: return webdriver.Opera
-        elif 'chrome'  in user_driver: return webdriver.Chrome
-        elif 'brave'   in user_driver: return configure_bravedriver
-        elif 'edge'    in user_driver: return configure_edgedriver
-        elif 'safari'  in user_driver: return configure_safaridriver
+        if   'firefox' in user_driver: return configure_firefoxdriver()
+        elif 'opera'   in user_driver: return configure_operadriver()
+        elif 'chrome'  in user_driver: return configure_chromedriver()
+        elif 'brave'   in user_driver: return configure_bravedriver()
+        elif 'edge'    in user_driver: return configure_edgedriver()
+        elif 'safari'  in user_driver: return configure_safaridriver()
         else:
             print(common_message.invalid_driver)
             sys.exit()
 
 
-    def open_user_driver():
-        if headless is False:
-            return seleniumdriver()
-        else: # headless is True
-            if   user_driver == 'firefox': return set_up_headless_firefoxdriver()
-            elif user_driver == 'opera':   return set_up_headless_operadriver()
-            elif user_driver == 'safari':  return set_up_headless_safaridriver()
-            elif user_driver == 'chrome':  return set_up_headless_chromedriver()
-            elif user_driver == 'brave':   return set_up_headless_bravedriver()
-            elif user_driver == 'edge':    return set_up_headless_edgedriver()
 
-
-    def set_up_headless_firefoxdriver():
+    def configure_firefoxdriver():
         options = selenium.webdriver.firefox.options.Options()
-        options.headless = True
-        return seleniumdriver(options=options)
+        if headless is True:
+            options.headless = True
+        return webdriver.Firefox(options=options)
 
-    def set_up_headless_operadriver():
+    def configure_operadriver():
         # Opera driver MRO: WebDriver -> OperaDriver -> selenium.webdriver.chrome.webdriver.WebDriver -> selenium.webdriver.remote.webdriver.WebDriver -> builtins.object
         # options = selenium.webdriver.chrome.options.Options()
         # options.headless = True
         options = webdriver.ChromeOptions()
-        options.add_argument('headless')
-        print(common_message.unsupported_opera_headless)
-        return seleniumdriver(options=options)
+        if headless is True:
+            options.add_argument('headless')
+            print(common_message.unsupported_opera_headless)
+        return webdriver.Opera(options=options)
 
-    def set_up_headless_safaridriver():
-        print(common_message.unsupported_safari_headless)
-        return seleniumdriver()
-
-    def set_up_headless_chromedriver():
+    def configure_chromedriver():
         # options = selenium.webdriver.chrome.options.Options()
         options = webdriver.ChromeOptions()
-        options.add_argument('headless')
-        return seleniumdriver(chrome_options=options)
-
-    def set_up_headless_bravedriver():
-        print(common_message.unsupported_brave_headless)
-        return configure_bravedriver()
-
-    def set_up_headless_edgedriver():
-        print(common_message.unsupported_edge_headless)
-        return configure_edgedriver()
-
+        if headless is True:
+            options.add_argument('headless')
+        return webdriver.Chrome(chrome_options=options)
 
     def configure_bravedriver():
         options = webdriver.ChromeOptions()
@@ -115,7 +94,9 @@ def logic(url, file_name, log_silently, txt, csv, markdown, reverse_chronologica
         else:
             options.binary_location = '/Applications/Brave Browser.app/Contents/MacOS/Brave Browser'
             executable_path         = '/usr/local/bin/bravedriver'
-        # options.headless = True
+        if headless is True:
+            print(common_message.unsupported_brave_headless)
+            # options.headless = True
         return webdriver.Chrome(options=options, executable_path=executable_path)
 
     def configure_edgedriver():
@@ -130,13 +111,17 @@ def logic(url, file_name, log_silently, txt, csv, markdown, reverse_chronologica
             print(common_message.unsupported_edge)
             print(module_message.show_driver_options)
             sys.exit()
-        # options.headless = True
+        if headless is True:
+            print(common_message.unsupported_edge_headless)
+            # options.headless = True
         return webdriver.Edge(executable_path=executable_path)
 
     def configure_safaridriver():
         if user_os != 'macos':
             common_message.display_dependency_setup_instructions('safari', user_os)
             sys.exit()
+        if headless is True:
+            print(common_message.unsupported_safari_headless)
         return webdriver.Safari()
 
 
@@ -206,7 +191,6 @@ def logic(url, file_name, log_silently, txt, csv, markdown, reverse_chronologica
     verify_writing_to_at_least_one_file()
     user_os             = determine_user_os()
     url                 = process_url()
-    seleniumdriver      = check_driver()
     program_start       = time.perf_counter()
     try:
         driver = open_user_driver()
