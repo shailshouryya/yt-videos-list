@@ -39,8 +39,8 @@ def logic(url, file_name, log_silently, txt, csv, markdown, reverse_chronologica
             common_message.display_url_error(error_message)
             traceback.print_exc()
             sys.exit()
-        base_url     = 'https://www.youtube.com'
-        videos       = 'videos'
+        base_url = 'https://www.youtube.com'
+        videos   = 'videos'
         return f'{base_url}/{channel_type}/{channel}/{videos}'
 
 
@@ -189,9 +189,9 @@ def logic(url, file_name, log_silently, txt, csv, markdown, reverse_chronologica
 
 
     verify_writing_to_at_least_one_file()
-    user_os             = determine_user_os()
-    url                 = process_url()
-    program_start       = time.perf_counter()
+    user_os       = determine_user_os()
+    url           = process_url()
+    program_start = time.perf_counter()
     try:
         driver = open_user_driver()
     except selenium.common.exceptions.WebDriverException as error_message:
