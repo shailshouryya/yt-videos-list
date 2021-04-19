@@ -218,18 +218,17 @@ class Common:
   ]
  @staticmethod
  def format_safaridriver_list(operating_system):
-  if operating_system == 'macos':
-   return [
+  return {
+   'macos': [
     'In order to run safaridriver, you need to enable remote automation. To do so, open up the Safari browser and in the menu bar, go to\n"Safari" -> "Preferences" -> "Advanced" tab -> click "Show develop menu in menu bar"\nOnce you do that, "Develop" should appear in your menu bar. Click on the "Develop" bar, and then enable "Allow Remote Automation" (should be near the bottom of the list).\n\nAfter doing that, try rerunning the last command!\n :)'
-   ]
-  elif operating_system == 'linux':
-   return [
+   ],
+   'linux': [
     'Safari is probably not supported on Linux operating systems. In order for the safaridriver to run on a Linux OS, you will likely need to do many manual configurations. For this reason, this package does not provide built in support for safaridriver on a Linux OS.'
-   ]
-  elif operating_system == 'windows':
-   return [
+   ],
+   'windows': [
     'Safari is probably not supported on Windows operating systems. In order for the safaridriver to run on a Windows OS, you will likely need to do many manual configurations. For this reason, this package does not provide built in support for safaridriver on a Windows OS.'
    ]
+  }.get(operating_system)
  @staticmethod
  def format_driver_information(operating_system, version, major_version, driver, browser):
   return f'# {operating_system} {driver} {version} (supports {browser} version: {major_version})'
