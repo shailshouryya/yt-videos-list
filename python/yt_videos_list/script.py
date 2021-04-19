@@ -1,4 +1,4 @@
-from . import execute
+from . import logic
 def cli():
  '''
  Provides optional arguments for user increased visibility. Note that using some of the arguments may slow down run time and program may take slightly longer to execute.
@@ -36,4 +36,4 @@ def cli():
 def create_list_for():
  _execution_type = 'script'
  cli_settings = cli()
- execute.logic(*cli_settings, _execution_type)
+ logic.execute(*cli_settings, _execution_type)

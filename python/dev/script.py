@@ -1,4 +1,4 @@
-from . import execute
+from . import logic
 # from .notifications import Common, ModuleMessage, ScriptMessage
 
 
@@ -41,4 +41,4 @@ def cli():
 def create_list_for():
     _execution_type = 'script'
     cli_settings = cli()
-    execute.logic(*cli_settings, _execution_type)
+    logic.execute(*cli_settings, _execution_type)

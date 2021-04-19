@@ -5,7 +5,7 @@ URLs uploaded by a channel) with end-to-end web scraping - no API tokens require
 https://github.com/Shail-Shouryya/yt-videos-list
 '''
 
-from .              import execute
+from .              import logic
 from .notifications import Common, ModuleMessage
 
 
@@ -183,4 +183,4 @@ class ListCreator:
         '''
         _execution_type     = 'module'
         instance_attributes = (self.txt, self.csv, self.markdown, self.reverse_chronological, self.headless, self.scroll_pause_time, self.driver)
-        return execute.logic(url, file_name, log_silently, *instance_attributes, _execution_type)
+        return logic.execute(url, file_name, log_silently, *instance_attributes, _execution_type)
