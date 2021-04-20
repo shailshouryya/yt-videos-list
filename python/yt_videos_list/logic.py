@@ -40,15 +40,18 @@ def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronologi
    if execution_type == 'module': print(module_message.running_default_driver + '\n' + module_message.show_driver_options)
    else: print(script_message.running_default_driver + '\n' + script_message.show_driver_options)
    user_driver = 'firefox'
-  if 'firefox' in user_driver: return configure_firefoxdriver()
-  elif 'opera' in user_driver: return configure_operadriver()
-  elif 'chrome' in user_driver: return configure_chromedriver()
-  elif 'brave' in user_driver: return configure_bravedriver()
-  elif 'edge' in user_driver: return configure_edgedriver()
-  elif 'safari' in user_driver: return configure_safaridriver()
-  else:
+  supported_drivers = {
+   'firefox': configure_firefoxdriver,
+   'opera': configure_operadriver,
+   'chrome': configure_chromedriver,
+   'brave': configure_bravedriver,
+   'edge': configure_edgedriver,
+   'safari': configure_safaridriver
+  }
+  if user_driver not in supported_drivers:
    print(common_message.invalid_driver)
    sys.exit()
+  return supported_drivers[user_driver]()
  def configure_firefoxdriver():
   options = selenium.webdriver.firefox.options.Options()
   if headless is True:
