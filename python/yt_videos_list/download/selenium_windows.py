@@ -41,8 +41,10 @@ def get_edge_version():
  edge = subprocess.getoutput(rf'dir "{DRIVE}:\Program Files (x86)\Microsoft\Edge\Application"')
  return re.search('(\d\d\.[\d\.]*)', edge)[1]
 def get_browser_version(browser):
- if browser == 'Mozilla Firefox': return get_firefox_version()
- elif browser == 'Opera': return get_opera_version()
- elif browser == 'Chrome': return get_chrome_version()
- elif browser == 'Brave-Browser': return get_brave_version()
- elif browser == 'Edge': return get_edge_version()
+ return {
+  'Mozilla Firefox': get_firefox_version(),
+  'Opera': get_opera_version(),
+  'Chrome': get_chrome_version(),
+  'Brave-Browser': get_brave_version(),
+  'Edge': get_edge_version()
+ }[browser]
