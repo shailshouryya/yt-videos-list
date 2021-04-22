@@ -28,11 +28,13 @@ def edge_exists(browser):
     return browser in subprocess.getoutput(rf'dir "{DRIVE}:\Program Files (x86)/Microsoft"')
 
 def browser_exists(browser):
-    if   browser == 'Mozilla Firefox': return firefox_exists(browser)
-    elif browser == 'Opera':           return opera_exists(browser)
-    elif browser == 'Chrome':          return chrome_exists(browser)
-    elif browser == 'Brave-Browser':   return brave_exists(browser)
-    elif browser == 'Edge':            return edge_exists(browser)
+    return {
+        'Mozilla Firefox': firefox_exists(browser),
+        'Opera':           opera_exists(browser),
+        'Chrome':          chrome_exists(browser),
+        'Brave-Browser':   brave_exists(browser),
+        'Edge':            edge_exists(browser)
+    }[browser]
 
 
 def get_firefox_version():
