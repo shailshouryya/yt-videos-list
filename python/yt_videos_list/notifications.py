@@ -317,7 +317,7 @@ class Common:
   print('Please try running the following commands to update the package (newer package versions will support newer drivers) before retrying, and if that doesn\'t work, follow the directions given above.')
   print(f'pip{cls.ds}install -U yt-videos-list #Windows\npip3 install -U yt-videos-list #MacOS/Linux\n\n')
   print('If that does not work, try:')
-  print(f'python{cls.ds}-m pip install -U yt-videos-list #Windows\npython3 -m pip install -U yt-videos-list\n')
+  print(f'python{cls.ds}-m pip install -U yt-videos-list #Windows\npython3 -m pip install -U yt-videos-list #MacOS/Linux\n')
   print('If this still doesn\'t fix the problem, please try using a different driver or file an issue at https://github.com/Shail-Shouryya/yt-videos-list/issues')
   print(f'The problem is likely caused by trying to run yt_videos_list with an updated version of the driver you\'re trying to use than what yt_videos_list currently supports (we update the binaries a few weeks after the initial release to allow time for bug fixing). If this is the case, the version of the driver downloaded won\'t match the output of\n"You are currently running {user_driver} version: " above.\n')
   print('To see other drivers you can use (and other options), run:\n')
