@@ -45,7 +45,7 @@ def run_tests_for(browsers_list):
     total      = len(test_cases)
     current    = 0
     log_test_info('*' * 140,         'CoreySchafer_reverse_chronological_videos_list.log', 'CoreySchafer_chronological_videos_list.log')
-    log_test_info(f'Running tests!', 'CoreySchafer_reverse_chronological_videos_list.log', 'CoreySchafer_chronological_videos_list.log')
+    log_test_info('Running tests!', 'CoreySchafer_reverse_chronological_videos_list.log', 'CoreySchafer_chronological_videos_list.log')
     while current < total:
         # each test_case is a ListCreator instance with
         # reverse_chronological set to True or False
@@ -63,9 +63,9 @@ def run_tests_for(browsers_list):
             if getattr(thread_1_case, 'reverse_chronological') is True: log_1_name = 'CoreySchafer_reverse_chronological_videos_list.log'
             else:                                                       log_1_name = 'CoreySchafer_chronological_videos_list.log'
             test_case_thread_1 = ThreadWithResult(target=run_test_case, args=(thread_1_case, log_1_name))
-            log_test_info(f'Starting thread for test case 1...', log_1_name)
+            log_test_info('Starting thread for test case 1...', log_1_name)
             test_case_thread_1.start()
-            log_test_info(f'Started thread for test case 1!', log_1_name)
+            log_test_info('Started thread for test case 1!', log_1_name)
             current += 1
             # safaridriver does not allow multi-threading:
             # Could not create a session: The Safari instance is already paired with another WebDriver session.
@@ -77,9 +77,9 @@ def run_tests_for(browsers_list):
                 if getattr(thread_2_case, 'reverse_chronological') is True: log_2_name = 'CoreySchafer_reverse_chronological_videos_list.log'
                 else:                                                       log_2_name = 'CoreySchafer_chronological_videos_list.log'
                 test_case_thread_2 = ThreadWithResult(target=run_test_case, args=(thread_2_case, log_2_name))
-                log_test_info(f'Starting thread for test case 2...', log_2_name)
+                log_test_info('Starting thread for test case 2...', log_2_name)
                 test_case_thread_2.start()
-                log_test_info(f'Started thread for test case 2!', log_2_name)
+                log_test_info('Started thread for test case 2!', log_2_name)
                 current += 1
         while threading.active_count() - 1 != 0 and current < total:
             # the threads are still running
@@ -90,7 +90,7 @@ def run_tests_for(browsers_list):
         if 'thread_2_case' in locals(): log_test_info(f'Finished testing {[thread_2_case]}!', log_2_name)
         if 'test_case_thread_1' in locals() and (getattr(test_case_thread_1, 'result', None) is None or test_case_thread_1.result == 'Failed!'): sys.exit()
         if 'test_case_thread_2' in locals() and (getattr(test_case_thread_2, 'result', None) is None or test_case_thread_2.result == 'Failed!'): sys.exit()
-        test_case_complete = f'Moving on to the next driver...\n' + '⏬ '*11 + '\n\n\n'
+        test_case_complete = 'Moving on to the next driver...\n' + '⏬ '*11 + '\n\n\n'
         if   'thread_1_case' in locals() and 'thread_2_case' in locals(): log_test_info(test_case_complete, log_1_name, log_2_name)
         elif 'thread_1_case' in locals():                                 log_test_info(test_case_complete, log_1_name)
         elif 'thread_2_case' in locals():                                 log_test_info(test_case_complete, log_2_name)
@@ -194,7 +194,7 @@ def use_no_partial_files(test_file, suffix, log_file):
     `chronological_videos_list`;
     the prefix in all cases is `CoreySchafer_`).
     '''
-    log_test_info(f'TESTING with NO pre-existing files AT ALL....\n', log_file)
+    log_test_info('TESTING with NO pre-existing files AT ALL....\n', log_file)
     delete_all_schafer5_files(suffix)
 
 def use_partial_txt_only(test_file, suffix, log_file):
@@ -207,7 +207,7 @@ def use_partial_txt_only(test_file, suffix, log_file):
     partial txt file using the `partial_schafer5_{suffix}.txt`
     reference file.
     '''
-    log_test_info(f'TESTING with a pre-existing txt file only (no pre-existing csv or md file)....\n', log_file)
+    log_test_info('TESTING with a pre-existing txt file only (no pre-existing csv or md file)....\n', log_file)
     delete_all_schafer5_files(suffix)
     create_partial_file(test_file, suffix, 'txt')
 
@@ -221,7 +221,7 @@ def use_partial_csv_only(test_file, suffix, log_file):
     partial csv file using the `partial_schafer5_{suffix}.csv`
     reference file.
     '''
-    log_test_info(f'TESTING with a pre-existing csv file only (no pre-existing txt or md file)....\n', log_file)
+    log_test_info('TESTING with a pre-existing csv file only (no pre-existing txt or md file)....\n', log_file)
     delete_all_schafer5_files(suffix)
     create_partial_file(test_file, suffix, 'csv')
 
@@ -235,7 +235,7 @@ def use_partial_md_only(test_file, suffix, log_file):
     partial md file using the `partial_schafer5_{suffix}.md`
     reference file.
     '''
-    log_test_info(f'TESTING with a pre-existing md file only (no pre-existing txt or csv file)....\n', log_file)
+    log_test_info('TESTING with a pre-existing md file only (no pre-existing txt or csv file)....\n', log_file)
     delete_all_schafer5_files(suffix)
     create_partial_file(test_file, suffix, 'md')
 
@@ -249,7 +249,7 @@ def use_partial_csv_txt_and_md(test_file, suffix, log_file):
     partial txt, csv, and md files using the
     `partial_schafer5_{suffix}.{ext}` reference files.
     '''
-    log_test_info(f'TESTING with pre-existing txt, csv, and md files....\n', log_file)
+    log_test_info('TESTING with pre-existing txt, csv, and md files....\n', log_file)
     create_partial_file(test_file, suffix, 'txt')
     create_partial_file(test_file, suffix, 'csv')
     create_partial_file(test_file, suffix, 'md' )
