@@ -64,7 +64,6 @@ def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronologi
         return supported_drivers[user_driver]()    # NOTE the need to CALL the function returned by supported_drivers[key] since the dictionary value is a function REFERENCE (the function is not yet invoked)
 
 
-
     def configure_firefoxdriver():
         options = selenium.webdriver.firefox.options.Options()
         if headless is True:
