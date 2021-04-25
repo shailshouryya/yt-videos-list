@@ -40,8 +40,7 @@ def run_tests_for(browsers_list):
     test cases for every driver in the provided
     `browsers_list`.
     '''
-    browsers   = browsers_list
-    test_cases = create_test_cases(browsers)
+    test_cases = create_test_cases(browsers_list)
     total      = len(test_cases)
     current    = 0
     log_test_info('*' * 140,         'CoreySchafer_reverse_chronological_videos_list.log', 'CoreySchafer_chronological_videos_list.log')
