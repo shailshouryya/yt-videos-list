@@ -63,6 +63,13 @@ def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronologi
    options.add_argument('headless')
    print(common_message.unsupported_opera_headless)
   return webdriver.Opera(options=options)
+ def configure_safaridriver():
+  if user_os != 'macos':
+   common_message.display_dependency_setup_instructions('safari', user_os)
+   sys.exit()
+  if headless is True:
+   print(common_message.unsupported_safari_headless)
+  return webdriver.Safari()
  def configure_chromedriver():
   options = webdriver.ChromeOptions()
   if headless is True:
@@ -92,13 +99,6 @@ def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronologi
   if headless is True:
    print(common_message.unsupported_edge_headless)
   return webdriver.Edge(executable_path=executable_path)
- def configure_safaridriver():
-  if user_os != 'macos':
-   common_message.display_dependency_setup_instructions('safari', user_os)
-   sys.exit()
-  if headless is True:
-   print(common_message.unsupported_safari_headless)
-  return webdriver.Safari()
  def show_user_how_to_set_up_selenium():
   if user_driver != 'safari':
    common_message.tell_user_to_download_driver(user_driver)
