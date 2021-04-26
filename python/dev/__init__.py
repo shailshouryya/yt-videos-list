@@ -9,7 +9,7 @@ from .              import logic
 from .notifications import Common, ModuleMessage
 
 
-__version__              = '0.5.4'
+__version__              = '0.5.5'
 __author__               = 'Shail-Shouryya'
 __email__                = 'yt.videos.list@gmail.com'
 __development_status__   = '4 - Beta'
