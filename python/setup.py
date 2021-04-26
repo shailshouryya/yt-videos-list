@@ -84,6 +84,6 @@ setup(
     project_urls = {
         'Bug Reports':  'https://github.com/Shail-Shouryya/yt-videos-list/issues',
         'PyPi Funding': 'https://donate.pypi.org',
-        'Source':       'https://github.com/Shail-Shouryya/yt-videos-list'
+        'Source':       'https://github.com/Shail-Shouryya/yt-videos-list/tree/main/python'
     },
 )
