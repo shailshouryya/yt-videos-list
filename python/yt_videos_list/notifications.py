@@ -172,7 +172,9 @@ class Common:
    cls.format_driver_information (operating_system, '2.45', 'v70-72', 'chromedriver', 'Google Chrome'),
    cls.format_chromedriver_download_command(operating_system, '2.45'),
    cls.format_driver_information (operating_system, '2.44', 'v69-71', 'chromedriver', 'Google Chrome'),
-   cls.format_chromedriver_download_command(operating_system, '2.44')
+   cls.format_chromedriver_download_command(operating_system, '2.44'),
+   cls.format_driver_information (operating_system, '2.43', 'v69-71 (use chromedriver 2.44)', 'chromedriver', 'Google Chrome'),
+   cls.format_chromedriver_download_command(operating_system, '2.43')
   ]
  @classmethod
  def format_bravedriver_list(cls, operating_system):
