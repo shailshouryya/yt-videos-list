@@ -47,10 +47,10 @@ def minify_source_directory_into_target_directory(slash, source_directory, targe
                 write_file.write(read_file.read())
                 continue
             formatted = read_file.read()
-            formatted = re.sub(' +# .+',   '', formatted)                     # remove comments from lines that end with comments
-            formatted = re.sub('^\s*# .+', '', formatted, flags=re.MULTILINE) # remove lines that contain only comments and no code
-            formatted = re.sub(' +\n',     '\n', formatted)                   # remove trailing spaces from lines
-            formatted = re.sub('^\n',      '', formatted, flags=re.MULTILINE) # remove lines that contain only a newline
+            formatted = re.sub(' +# .+',   '',   formatted)                     # remove comments from lines that end with comments
+            formatted = re.sub('^\s*# .+', '',   formatted, flags=re.MULTILINE) # remove lines that contain only comments and no code
+            formatted = re.sub(' +\n',     '\n', formatted)                     # remove trailing spaces from lines
+            formatted = re.sub('^\n',      '',   formatted, flags=re.MULTILINE) # remove lines that contain only a newline
             if 'writer.py' not in file:
                 formatted = re.sub('    ',           ' ',       formatted) # replace 4 spaces with 1 space (reduces spaces taken by indentation)
                 formatted = re.sub('([\S])  +?(\S)', '\\1 \\2', formatted) # replace extra spacing anywhere in a line given the character before AND after the spaces is a non-space character (the non-space character check avoids replacing spaces necessary for indentation)
