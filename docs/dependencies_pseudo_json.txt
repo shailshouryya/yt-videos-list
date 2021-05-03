@@ -436,6 +436,9 @@ After doing that, try rerunning the last command!
       # mac64 chromedriver 2.43 (supports Google Chrome version: v69-71 (use chromedriver 2.44))
       curl -SL https://chromedriver.storage.googleapis.com/2.43/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
 
+      # mac64 chromedriver 2.42 (supports Google Chrome version: v68-70)
+      curl -SL https://chromedriver.storage.googleapis.com/2.42/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
+
     ],
     linux: [
 
@@ -505,6 +508,9 @@ After doing that, try rerunning the last command!
       # linux64 chromedriver 2.43 (supports Google Chrome version: v69-71 (use chromedriver 2.44))
       curl -SL https://chromedriver.storage.googleapis.com/2.43/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
 
+      # linux64 chromedriver 2.42 (supports Google Chrome version: v68-70)
+      curl -SL https://chromedriver.storage.googleapis.com/2.42/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
+
     ],
     windows: [
 
@@ -573,6 +579,9 @@ After doing that, try rerunning the last command!
 
       # win32 chromedriver 2.43 (supports Google Chrome version: v69-71 (use chromedriver 2.44))
       curl -SL --ssl-no-revoke https://chromedriver.storage.googleapis.com/2.43/chromedriver_win32.zip -o C:\Windows\chromedriver && tar -xzvf C:\Windows\chromedriver -C C:\Windows && del C:\Windows\chromedriver
+
+      # win32 chromedriver 2.42 (supports Google Chrome version: v68-70)
+      curl -SL --ssl-no-revoke https://chromedriver.storage.googleapis.com/2.42/chromedriver_win32.zip -o C:\Windows\chromedriver && tar -xzvf C:\Windows\chromedriver -C C:\Windows && del C:\Windows\chromedriver
 
     ]
   },

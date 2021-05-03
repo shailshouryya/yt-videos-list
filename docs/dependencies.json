@@ -289,7 +289,9 @@
             "# mac64 chromedriver 2.44 (supports Google Chrome version: v69-71)",
             "curl -SL https://chromedriver.storage.googleapis.com/2.44/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver\n",
             "# mac64 chromedriver 2.43 (supports Google Chrome version: v69-71 (use chromedriver 2.44))",
-            "curl -SL https://chromedriver.storage.googleapis.com/2.43/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver\n"
+            "curl -SL https://chromedriver.storage.googleapis.com/2.43/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver\n",
+            "# mac64 chromedriver 2.42 (supports Google Chrome version: v68-70)",
+            "curl -SL https://chromedriver.storage.googleapis.com/2.42/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver\n"
         ],
         "linux": [
             "# linux64 chromedriver 91.0.4472.19 (supports Google Chrome version: 91)",
@@ -335,7 +337,9 @@
             "# linux64 chromedriver 2.44 (supports Google Chrome version: v69-71)",
             "curl -SL https://chromedriver.storage.googleapis.com/2.44/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver\n",
             "# linux64 chromedriver 2.43 (supports Google Chrome version: v69-71 (use chromedriver 2.44))",
-            "curl -SL https://chromedriver.storage.googleapis.com/2.43/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver\n"
+            "curl -SL https://chromedriver.storage.googleapis.com/2.43/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver\n",
+            "# linux64 chromedriver 2.42 (supports Google Chrome version: v68-70)",
+            "curl -SL https://chromedriver.storage.googleapis.com/2.42/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver\n"
         ],
         "windows": [
             "# win32 chromedriver 91.0.4472.19 (supports Google Chrome version: 91)",
@@ -381,7 +385,9 @@
             "# win32 chromedriver 2.44 (supports Google Chrome version: v69-71)",
             "curl -SL --ssl-no-revoke https://chromedriver.storage.googleapis.com/2.44/chromedriver_win32.zip -o %CD%:\\Windows\\chromedriver && tar -xzvf %CD%:\\Windows\\chromedriver -C %CD%:\\Windows && del %CD%:\\Windows\\chromedriver\n",
             "# win32 chromedriver 2.43 (supports Google Chrome version: v69-71 (use chromedriver 2.44))",
-            "curl -SL --ssl-no-revoke https://chromedriver.storage.googleapis.com/2.43/chromedriver_win32.zip -o %CD%:\\Windows\\chromedriver && tar -xzvf %CD%:\\Windows\\chromedriver -C %CD%:\\Windows && del %CD%:\\Windows\\chromedriver\n"
+            "curl -SL --ssl-no-revoke https://chromedriver.storage.googleapis.com/2.43/chromedriver_win32.zip -o %CD%:\\Windows\\chromedriver && tar -xzvf %CD%:\\Windows\\chromedriver -C %CD%:\\Windows && del %CD%:\\Windows\\chromedriver\n",
+            "# win32 chromedriver 2.42 (supports Google Chrome version: v68-70)",
+            "curl -SL --ssl-no-revoke https://chromedriver.storage.googleapis.com/2.42/chromedriver_win32.zip -o %CD%:\\Windows\\chromedriver && tar -xzvf %CD%:\\Windows\\chromedriver -C %CD%:\\Windows && del %CD%:\\Windows\\chromedriver\n"
         ]
     },
     "brave": {

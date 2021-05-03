@@ -184,7 +184,9 @@ class Common:
             cls.format_driver_information           (operating_system, '2.44',      'v69-71', 'chromedriver', 'Google Chrome'),
             cls.format_chromedriver_download_command(operating_system, '2.44'),
             cls.format_driver_information           (operating_system, '2.43',      'v69-71 (use chromedriver 2.44)', 'chromedriver', 'Google Chrome'),
-            cls.format_chromedriver_download_command(operating_system, '2.43')
+            cls.format_chromedriver_download_command(operating_system, '2.43'),
+            cls.format_driver_information           (operating_system, '2.42',      'v68-70', 'chromedriver', 'Google Chrome'),
+            cls.format_chromedriver_download_command(operating_system, '2.42'),
         ]
 
     @classmethod
