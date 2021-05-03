@@ -49,7 +49,7 @@ def minify_source_directory_into_target_directory(slash, source_directory, targe
             formatted = read_file.read()
             formatted = re.sub(' +# .+',   '', formatted)                     # remove comments from lines that end with comments
             formatted = re.sub('^\s*# .+', '', formatted, flags=re.MULTILINE) # remove lines that contain only comments and no code
-            formatted = re.sub(' +\n',     '', formatted)                     # remove lines that end with trailing spaces
+            formatted = re.sub(' +\n',     '\n', formatted)                   # remove trailing spaces from lines
             formatted = re.sub('^\n',      '', formatted, flags=re.MULTILINE) # remove lines that contain only a newline
             if 'writer.py' not in file:
                 formatted = re.sub('    ',           ' ',       formatted) # replace 4 spaces with 1 space (reduces spaces taken by indentation)
