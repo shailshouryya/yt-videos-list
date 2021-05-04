@@ -15,7 +15,6 @@ def main():
     slash            = determine_path_slash()
     source_directory = 'dev'
     target_directory = 'yt_videos_list'
-
     clear_target_directory(target_directory)
     minify_source_directory_into_target_directory(slash, source_directory, target_directory)
 
