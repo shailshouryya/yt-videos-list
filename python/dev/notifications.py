@@ -135,7 +135,9 @@ class Common:
             cls.format_driver_information          (operating_system, 'v.2.38',          '55',        'operadriver', 'Opera'),
             cls.format_operadriver_download_command(operating_system, 'v.2.38'),
             cls.format_driver_information          (operating_system, 'v.2.37',          '54',        'operadriver', 'Opera'),
-            cls.format_operadriver_download_command(operating_system, 'v.2.37')
+            cls.format_operadriver_download_command(operating_system, 'v.2.37'),
+            cls.format_driver_information          (operating_system, 'v.2.36',          '53',        'operadriver', 'Opera'),
+            cls.format_operadriver_download_command(operating_system, 'v.2.36'),
         ]
 
     @classmethod
