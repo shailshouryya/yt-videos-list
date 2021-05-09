@@ -140,6 +140,10 @@ class Common:
             cls.format_operadriver_download_command(operating_system, 'v.2.36'),
             cls.format_driver_information          (operating_system, 'v.2.35',          '52',        'operadriver', 'Opera'),
             cls.format_operadriver_download_command(operating_system, 'v.2.35'),
+            # there was no relase for Opera 51
+            # there was no operadriver v.2.34
+            cls.format_driver_information          (operating_system, 'v.2.33',          '50',        'operadriver', 'Opera'),
+            cls.format_operadriver_download_command(operating_system, 'v.2.33'),
         ]
 
     @classmethod
