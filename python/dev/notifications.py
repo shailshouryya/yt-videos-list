@@ -110,6 +110,7 @@ class Common:
             cls.format_operadriver_download_command(operating_system, 'v.84.0.4147.89'),
             cls.format_driver_information          (operating_system, 'v.83.0.4103.97',  'Stable 69', 'operadriver', 'Opera'),
             cls.format_operadriver_download_command(operating_system, 'v.83.0.4103.97'),
+            # there was no operdriver v.82.#.####.##
             cls.format_driver_information          (operating_system, 'v.81.0.4044.113', 'Stable 68', 'operadriver', 'Opera'),
             cls.format_operadriver_download_command(operating_system, 'v.81.0.4044.113'),
             cls.format_driver_information          (operating_system, 'v.80.0.3987.100', 'Stable 67', 'operadriver', 'Opera'),
@@ -140,7 +141,7 @@ class Common:
             cls.format_operadriver_download_command(operating_system, 'v.2.36'),
             cls.format_driver_information          (operating_system, 'v.2.35',          '52',        'operadriver', 'Opera'),
             cls.format_operadriver_download_command(operating_system, 'v.2.35'),
-            # there was no relase for Opera 51
+            # there was no operdriver release specifically for Opera 51
             # there was no operadriver v.2.34
             cls.format_driver_information          (operating_system, 'v.2.33',          '50',        'operadriver', 'Opera'),
             cls.format_operadriver_download_command(operating_system, 'v.2.33'),
@@ -149,7 +150,7 @@ class Common:
             # there was no operadriver v.2.31
             cls.format_driver_information          (operating_system, 'v.2.30',          '48',        'operadriver', 'Opera'),
             cls.format_operadriver_download_command(operating_system, 'v.2.30'),
-            # there was no release for Opera 47
+            # there was no operdriver release specifically for Opera 47
             cls.format_driver_information          (operating_system, 'v.2.29',          '46',        'operadriver', 'Opera'),
             cls.format_operadriver_download_command(operating_system, 'v.2.29'),
         ]
@@ -175,6 +176,8 @@ class Common:
             cls.format_chromedriver_download_command(operating_system, '84.0.4147.30'),
             cls.format_driver_information           (operating_system, '83.0.4103.39',  '83', 'chromedriver', 'Google Chrome'),
             cls.format_chromedriver_download_command(operating_system, '83.0.4103.39'),
+            # there was no Google Chrome release for version 82
+            # there was no chromedriver v.82.#.####.##
             cls.format_driver_information           (operating_system, '81.0.4044.138', '81', 'chromedriver', 'Google Chrome'),
             cls.format_chromedriver_download_command(operating_system, '81.0.4044.138'),
             cls.format_driver_information           (operating_system, '80.0.3987.106', '80', 'chromedriver', 'Google Chrome'),
@@ -226,6 +229,8 @@ class Common:
             cls.format_bravedriver_download_command(operating_system, 'v.84.0.4147.89'),
             cls.format_driver_information          (operating_system, 'v.83.0.4103.97',  '83', 'bravedriver (operadriver based)', 'Brave Browser'),
             cls.format_bravedriver_download_command(operating_system, 'v.83.0.4103.97'),
+            # there was no Brave Browser release for version 82
+            # there was no operdriver v.82.#.####.## - therefore no bravedriver v.82.#.####.## since bravedriver just uses the operadriver binary renamed as ** bravedriver **
             cls.format_driver_information          (operating_system, 'v.81.0.4044.113', '81', 'bravedriver (operadriver based)', 'Brave Browser'),
             cls.format_bravedriver_download_command(operating_system, 'v.81.0.4044.113'),
             cls.format_driver_information          (operating_system, 'v.80.0.3987.100', '80', 'bravedriver (operadriver based)', 'Brave Browser'),

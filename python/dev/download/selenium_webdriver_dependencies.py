@@ -130,9 +130,9 @@ def execute_download_command(driver, user_os, major_version):
             '64': -29,
             '63': -27,
             '62': -25,
-            # there was no version 61
+            '61': -23, # there was no operadriver release specifically for Opera 61
             '60': -23,
-            # there was no version 59
+            '59': -21, # there was no operadriver release specifically for Opera 59
             '58': -21,
             '57': -19,
             '56': -17,
@@ -140,11 +140,11 @@ def execute_download_command(driver, user_os, major_version):
             '54': -13,
             '53': -11,
             '52': -9,
-            # there was no version 51
+            '51': -7, # there was no operadriver release specifically for Opera 51
             '50': -7,
             '49': -5,
             '48': -3,
-            # there was no version 47
+            '47': -1, # there was no operadriver release specifically for Opera 47
             '46': -1
         },
         'chrome': {
@@ -165,7 +165,7 @@ def execute_download_command(driver, user_os, major_version):
             '85': -35,
             '84': -33,
             '83': -31,
-            # there was no 82
+            '82': -23, # there was no Google Chrome release for version 82, but just in case
             '81': -29,
             '80': -27,
             '79': -25,
@@ -201,7 +201,7 @@ def execute_download_command(driver, user_os, major_version):
             '85': -19,
             '84': -17,
             '83': -15,
-            # there was no 82
+            '82': -13, # there was no Brave Browser release for version 82, but just in case
             '81': -13,
             '80': -11,
             '79': -9,
