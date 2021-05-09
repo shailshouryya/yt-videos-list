@@ -179,7 +179,7 @@ def execute_download_command(driver, user_os, major_version):
             '71': -11,
             '70': -9,
             '69': -7,
-            # '69'-1: -5 # covered by release 2.44
+            # '69': -5 # covered by release 2.44
             '68': -3,
             '67': -1
         },
