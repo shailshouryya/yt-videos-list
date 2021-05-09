@@ -163,6 +163,9 @@
       # mac64 operadriver v.2.32 (supports Opera version: 49)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.32/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver
 
+      # mac64 operadriver v.2.30 (supports Opera version: 48)
+      curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.30/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver
+
     ],
     linux: [
 
@@ -240,6 +243,9 @@
 
       # linux64 operadriver v.2.32 (supports Opera version: 49)
       curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.32/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver
+
+      # linux64 operadriver v.2.30 (supports Opera version: 48)
+      curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.30/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver
 
     ],
     windows: [
@@ -319,6 +325,9 @@
       # win32 operadriver v.2.32 (supports Opera version: 49)
       curl -SL --ssl-no-revoke https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.32/operadriver_win32.zip -o C:\Windows\operadriver && tar -xzvf C:\Windows\operadriver -C C:\Windows --strip-components=1 && del C:\Windows\sha512_sum && del C:\Windows\operadriver
 
+      # win32 operadriver v.2.30 (supports Opera version: 48)
+      curl -SL --ssl-no-revoke https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.30/operadriver_win32.zip -o C:\Windows\operadriver && tar -xzvf C:\Windows\operadriver -C C:\Windows --strip-components=1 && del C:\Windows\sha512_sum && del C:\Windows\operadriver
+
       # win64 operadriver v.90.0.4430.85 (supports Opera version: Stable 76)
       curl -SL --ssl-no-revoke https://github.com/operasoftware/operachromiumdriver/releases/download/v.90.0.4430.85/operadriver_win64.zip -o C:\Windows\operadriver && tar -xzvf C:\Windows\operadriver -C C:\Windows --strip-components=1 && del C:\Windows\sha512_sum && del C:\Windows\operadriver
 
@@ -393,6 +402,9 @@
 
       # win64 operadriver v.2.32 (supports Opera version: 49)
       curl -SL --ssl-no-revoke https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.32/operadriver_win64.zip -o C:\Windows\operadriver && tar -xzvf C:\Windows\operadriver -C C:\Windows --strip-components=1 && del C:\Windows\sha512_sum && del C:\Windows\operadriver
+
+      # win64 operadriver v.2.30 (supports Opera version: 48)
+      curl -SL --ssl-no-revoke https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.30/operadriver_win64.zip -o C:\Windows\operadriver && tar -xzvf C:\Windows\operadriver -C C:\Windows --strip-components=1 && del C:\Windows\sha512_sum && del C:\Windows\operadriver
 
     ]
   },

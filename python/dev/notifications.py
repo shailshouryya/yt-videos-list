@@ -146,6 +146,9 @@ class Common:
             cls.format_operadriver_download_command(operating_system, 'v.2.33'),
             cls.format_driver_information          (operating_system, 'v.2.32',          '49',        'operadriver', 'Opera'),
             cls.format_operadriver_download_command(operating_system, 'v.2.32'),
+            # there was no operadriver v.2.31
+            cls.format_driver_information          (operating_system, 'v.2.30',          '48',        'operadriver', 'Opera'),
+            cls.format_operadriver_download_command(operating_system, 'v.2.30'),
         ]
 
     @classmethod
