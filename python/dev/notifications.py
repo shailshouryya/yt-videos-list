@@ -149,6 +149,9 @@ class Common:
             # there was no operadriver v.2.31
             cls.format_driver_information          (operating_system, 'v.2.30',          '48',        'operadriver', 'Opera'),
             cls.format_operadriver_download_command(operating_system, 'v.2.30'),
+            # there was no release for Opera 47
+            cls.format_driver_information          (operating_system, 'v.2.29',          '46',        'operadriver', 'Opera'),
+            cls.format_operadriver_download_command(operating_system, 'v.2.29'),
         ]
 
     @classmethod
