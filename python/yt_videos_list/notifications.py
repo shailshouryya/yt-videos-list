@@ -133,6 +133,8 @@ class Common:
    cls.format_operadriver_download_command(operating_system, 'v.2.35'),
    cls.format_driver_information (operating_system, 'v.2.33', '50', 'operadriver', 'Opera'),
    cls.format_operadriver_download_command(operating_system, 'v.2.33'),
+   cls.format_driver_information (operating_system, 'v.2.32', '49', 'operadriver', 'Opera'),
+   cls.format_operadriver_download_command(operating_system, 'v.2.32'),
   ]
  @classmethod
  def format_chromedriver_list(cls, operating_system):
