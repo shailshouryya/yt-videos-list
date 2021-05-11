@@ -154,6 +154,7 @@ def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronologi
             driver.get(url)
             driver.set_window_size(780, 800)
             driver.set_window_position(0, 0)
+            manage_cookie_consent_form()
             wait = selenium.webdriver.support.ui.WebDriverWait(driver, 9)
             try:
                 wait.until(EC.element_to_be_clickable((By.XPATH, '//yt-formatted-string[@class="style-scope ytd-channel-name"]')))
@@ -171,6 +172,19 @@ def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronologi
                 log(f'This program took {total_time} seconds to complete.', logging_locations)
                 log( '>' * 50 + 'PROGRAM COMPLETE' + '<' * 50, logging_locations)
         return file_name
+
+
+    def manage_cookie_consent_form():
+        if 'consent.youtube.com' in driver.current_url:
+            wait = selenium.webdriver.support.ui.WebDriverWait(driver, 9)
+            wait.until(EC.element_to_be_clickable((By.XPATH, '//a[@aria-label="Customize"]')))
+            driver.find_element_by_xpath('//a[@aria-label="Customize"]').click()
+            wait.until(EC.element_to_be_clickable((By.XPATH, '//button[@aria-label="Turn off Ad personalization"]')))    # last form element on page
+            driver.find_element_by_xpath('//button[@aria-label="Turn off Search customization"]').click()
+            driver.find_element_by_xpath('//button[@aria-label="Turn off YouTube History"]').click()
+            driver.find_element_by_xpath('//button[@aria-label="Turn off Ad personalization"]').click()
+            wait.until(EC.element_to_be_clickable((By.XPATH, '//button[@aria-label="Ad personalization is off"]')))      # wait for last form element on page to update
+            driver.find_element_by_xpath('//form[@method="POST"]').click()
 
 
     def determine_file_name():
