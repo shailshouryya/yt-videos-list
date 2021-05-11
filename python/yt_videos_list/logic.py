@@ -148,6 +148,16 @@ def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronologi
    driver.find_element_by_xpath('//button[@aria-label="Turn off YouTube History"]').click()
    driver.find_element_by_xpath('//button[@aria-label="Turn off Ad personalization"]').click()
    wait.until(EC.element_to_be_clickable((By.XPATH, '//button[@aria-label="Ad personalization is off"]')))
+   try:
+    driver.find_element_by_xpath('//button[@aria-label="More options for ad personalization "]').click()
+   except selenium.common.exceptions.NoSuchElementException:
+    driver.find_element_by_xpath('//button[@aria-label="More options for ad personalization"]').click()
+   finally:
+    wait.until(EC.element_to_be_clickable((By.XPATH, '//button[@aria-label="Turn off Ad personalization on YouTube & across the web"]')))
+    driver.find_element_by_xpath('//button[@aria-label="Turn off Ad personalization on Google Search"]').click()
+    driver.find_element_by_xpath('//button[@aria-label="Turn off Ad personalization on YouTube & across the web"]').click()
+    driver.execute_script()
+    wait.until(EC.element_to_be_clickable((By.XPATH, '//button[@aria-label="Ad personalization on YouTube & across the web is off"]')))
    driver.find_element_by_xpath('//form[@method="POST"]').click()
  def determine_file_name():
   if file_name is not None:
