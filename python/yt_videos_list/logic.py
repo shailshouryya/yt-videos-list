@@ -148,7 +148,7 @@ def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronologi
    driver.find_element_by_xpath('//button[@aria-label="Turn off YouTube History"]').click()
    driver.find_element_by_xpath('//button[@aria-label="Turn off Ad personalization"]').click()
    wait.until(EC.element_to_be_clickable((By.XPATH, '//button[@aria-label="Ad personalization is off"]')))
-   driver.find_element_by_xpath('//form[@method="POST"]').click()
+   driver.find_elements_by_xpath('//button')[-1].click()
  def determine_file_name():
   if file_name is not None:
    return file_name.strip('.csv').strip('.txt').strip('.md')

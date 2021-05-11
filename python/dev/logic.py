@@ -187,7 +187,8 @@ def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronologi
             # driver.find_element_by_xpath('//button[@aria-label="Turn off Ad personalization on Google Search"]').click()
             # driver.find_element_by_xpath('//button[@aria-label="Turn off Ad personalization on YouTube & across the web"]').click()
             wait.until(EC.element_to_be_clickable((By.XPATH, '//button[@aria-label="Ad personalization is off"]')))      # wait for last form element on page to update
-            driver.find_element_by_xpath('//form[@method="POST"]').click()
+            # driver.find_element_by_xpath('//form[@method="POST"]').click() # this doesn't seem to click the button
+            driver.find_elements_by_xpath('//button')[-1].click()            # find the last button on the page (the CONFIRM button) and click it
 
 
     def determine_file_name():
