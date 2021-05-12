@@ -126,7 +126,7 @@ class ListCreator:
     | Thank you!!                                       |
     =====================================================
     '''
-    def __init__(self, txt=True, csv=True, md=True, reverse_chronological=True, headless=False, scroll_pause_time=0.8, driver=None):
+    def __init__(self, txt=True, csv=True, md=True, reverse_chronological=True, headless=False, scroll_pause_time=0.8, driver=None, block_cookie_consent=True):
         '''
         Initializes an instance of ListCreator by setting the attributes of the instance to the provided arguments,
         and setting any attributes not provided as the default parameter value.
@@ -138,6 +138,7 @@ class ListCreator:
         self.headless              = headless
         self.scroll_pause_time     = scroll_pause_time
         self.driver                = None if driver is None else driver.lower()
+        self.block_cookie_consent  = block_cookie_consent
 
 
     def __repr__(self):
@@ -145,7 +146,7 @@ class ListCreator:
         Returns an unambiguous representation of the current instace that can be used to recreate the same exact object.
         This is useful for internal use and making developer debugging easier.
         '''
-        return f'{self.__class__.__name__}(txt={self.txt}, csv={self.csv}, md={self.markdown}, reverse_chronological={self.reverse_chronological}, headless={self.headless}, scroll_pause_time={self.scroll_pause_time}, driver={self.driver})'
+        return f'{self.__class__.__name__}(txt={self.txt}, csv={self.csv}, md={self.markdown}, reverse_chronological={self.reverse_chronological}, headless={self.headless}, scroll_pause_time={self.scroll_pause_time}, driver={self.driver}, self.block_cookie_consent={self.block_cookie_consent})'
 
 
     def __str__(self):
@@ -161,9 +162,10 @@ class ListCreator:
         headless              = {self.headless}
         scroll_pause_time     = {self.scroll_pause_time}
         driver                = {self.driver}
+        self.block_cookie_consent = {self.block_cookie_consent}
 
         To recreate object, use:
-        {self.__class__.__name__}(txt={self.txt}, csv={self.csv}, md={self.markdown}, reverse_chronological={self.reverse_chronological}, headless={self.headless}, scroll_pause_time={self.scroll_pause_time}, driver={self.driver})
+        {self.__class__.__name__}(txt={self.txt}, csv={self.csv}, md={self.markdown}, reverse_chronological={self.reverse_chronological}, headless={self.headless}, scroll_pause_time={self.scroll_pause_time}, driver={self.driver}, block_cookie_consent={self.block_cookie_consent})
         '''
 
 
@@ -182,5 +184,5 @@ class ListCreator:
         UNLESS you provide the same **exact** name every time you rerun this.
         '''
         _execution_type     = 'module'
-        instance_attributes = (self.txt, self.csv, self.markdown, self.reverse_chronological, self.headless, self.scroll_pause_time, self.driver)
+        instance_attributes = (self.txt, self.csv, self.markdown, self.reverse_chronological, self.headless, self.scroll_pause_time, self.driver, self.block_cookie_consent)
         return logic.execute(url, file_name, log_silently, *instance_attributes, _execution_type)

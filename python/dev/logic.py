@@ -16,7 +16,7 @@ from .notifications                            import Common, ModuleMessage, Scr
 from .custom_logger                            import log
 
 
-def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronological, headless, scroll_pause_time, user_driver, execution_type):
+def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronological, headless, scroll_pause_time, user_driver, execution_type, block_cookie_consent):
     common_message = Common()
     module_message = ModuleMessage()
     script_message = ScriptMessage()
@@ -176,19 +176,20 @@ def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronologi
 
     def manage_cookie_consent_form():
         if 'consent.youtube.com' in driver.current_url:
-            wait = selenium.webdriver.support.ui.WebDriverWait(driver, 9)
-            wait.until(EC.element_to_be_clickable((By.XPATH, '//a[@aria-label="Customize"]')))
-            driver.find_element_by_xpath('//a[@aria-label="Customize"]').click()
-            wait.until(EC.element_to_be_clickable((By.XPATH, '//button[@aria-label="Turn off Ad personalization"]')))    # last form element on page
-            driver.find_element_by_xpath('//button[@aria-label="Turn off Search customization"]').click()
-            driver.find_element_by_xpath('//button[@aria-label="Turn off YouTube History"]').click()
-            driver.find_element_by_xpath('//button[@aria-label="Turn off Ad personalization"]').click()
-            # clicking the button above also selects the 2 buttons below
-            # driver.find_element_by_xpath('//button[@aria-label="Turn off Ad personalization on Google Search"]').click()
-            # driver.find_element_by_xpath('//button[@aria-label="Turn off Ad personalization on YouTube & across the web"]').click()
-            wait.until(EC.element_to_be_clickable((By.XPATH, '//button[@aria-label="Ad personalization is off"]')))      # wait for last form element on page to update
-            # driver.find_element_by_xpath('//form[@method="POST"]').click() # this doesn't seem to click the button
-            driver.find_elements_by_xpath('//button')[-1].click()            # find the last button on the page (the CONFIRM button) and click it
+            if block_cookie_consent is True:
+                wait = selenium.webdriver.support.ui.WebDriverWait(driver, 9)
+                wait.until(EC.element_to_be_clickable((By.XPATH, '//a[@aria-label="Customize"]')))
+                driver.find_element_by_xpath('//a[@aria-label="Customize"]').click()
+                wait.until(EC.element_to_be_clickable((By.XPATH, '//button[@aria-label="Turn off Ad personalization"]')))    # last form element on page
+                driver.find_element_by_xpath('//button[@aria-label="Turn off Search customization"]').click()
+                driver.find_element_by_xpath('//button[@aria-label="Turn off YouTube History"]').click()
+                driver.find_element_by_xpath('//button[@aria-label="Turn off Ad personalization"]').click()
+                # clicking the button above also selects the 2 buttons below
+                # driver.find_element_by_xpath('//button[@aria-label="Turn off Ad personalization on Google Search"]').click()
+                # driver.find_element_by_xpath('//button[@aria-label="Turn off Ad personalization on YouTube & across the web"]').click()
+                wait.until(EC.element_to_be_clickable((By.XPATH, '//button[@aria-label="Ad personalization is off"]')))      # wait for last form element on page to update
+                # driver.find_element_by_xpath('//form[@method="POST"]').click() # this doesn't seem to click the button
+                driver.find_elements_by_xpath('//button')[-1].click()            # find the last button on the page (the CONFIRM button) and click it
 
 
     def determine_file_name():
