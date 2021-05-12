@@ -366,8 +366,11 @@ class Common:
   print('import yt_videos_list\nhelp(yt_videos_list)')
   print('*' * 81)
  @staticmethod
+ def display_invalid_cookie_consent_option(block_cookie_consent):
+  return f'YouTube is redircting to youtube.onsent.com, but you entered an invalid argument for the block_cookie_consent instance attrribute!\nPlease use block_cookie_consent=True or block_cookie_consent=False.\nYour current setting is: block_cookie_consen={block_cookie_consent}'
+ @staticmethod
  def no_new_videos_found(pause_time):
-  return f'No new videos were found since the last scroll. Waiting another {pause_time} seconds to see if more videos can be loaded....\n'
+  print(f'No new videos were found since the last scroll. Waiting another {pause_time} seconds to see if more videos can be loaded....\n')
 class ModuleMessage(Common):
  '''
  This class contains messages that are relevant for the package when it is being run as a module from within the Python interpreter (or another Python script).

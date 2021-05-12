@@ -192,6 +192,8 @@ def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronologi
                 driver.find_elements_by_xpath('//button')[-1].click()            # find the last button on the page (the CONFIRM button) and click it
             elif block_cookie_consent is False:
                 driver.find_element_by_xpath('//button[@aria-label="Agree to the use of cookies and other data for the purposes described"]').click()
+            else:
+                common_message.display_invalid_cookie_consent_option(block_cookie_consent)
 
 
     def determine_file_name():
