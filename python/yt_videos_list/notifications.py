@@ -366,8 +366,8 @@ class Common:
   print('import yt_videos_list\nhelp(yt_videos_list)')
   print('*' * 81)
  @staticmethod
- def display_invalid_cookie_consent_option(block_cookie_consent):
-  return f'YouTube is redircting to youtube.onsent.com, but you entered an invalid argument for the block_cookie_consent instance attrribute!\nPlease use block_cookie_consent=True or block_cookie_consent=False.\nYour current setting is: block_cookie_consen={block_cookie_consent}'
+ def display_invalid_cookie_consent_option(cookie_consent):
+  return f'YouTube is redircting to youtube.onsent.com, but you entered an invalid argument for the cookie_consent instance attrribute!\nPlease use cookie_consent=True or cookie_consent=False.\nYour current setting is: cookie_consent={cookie_consent}'
  @staticmethod
  def no_new_videos_found(pause_time):
   print(f'No new videos were found since the last scroll. Waiting another {pause_time} seconds to see if more videos can be loaded....\n')

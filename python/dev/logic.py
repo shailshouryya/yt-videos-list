@@ -16,7 +16,7 @@ from .notifications                            import Common, ModuleMessage, Scr
 from .custom_logger                            import log
 
 
-def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronological, headless, scroll_pause_time, user_driver, execution_type, block_cookie_consent):
+def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronological, headless, scroll_pause_time, user_driver, execution_type, cookie_consent):
     common_message = Common()
     module_message = ModuleMessage()
     script_message = ScriptMessage()
@@ -176,7 +176,7 @@ def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronologi
 
     def manage_cookie_consent_form():
         if 'consent.youtube.com' in driver.current_url:
-            if block_cookie_consent is True:
+            if cookie_consent is False:
                 wait = selenium.webdriver.support.ui.WebDriverWait(driver, 9)
                 wait.until(EC.element_to_be_clickable((By.XPATH, '//a[@aria-label="Customize"]')))
                 driver.find_element_by_xpath('//a[@aria-label="Customize"]').click()
@@ -190,10 +190,10 @@ def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronologi
                 wait.until(EC.element_to_be_clickable((By.XPATH, '//button[@aria-label="Ad personalization is off"]')))      # wait for last form element on page to update
                 # driver.find_element_by_xpath('//form[@method="POST"]').click() # this doesn't seem to click the button
                 driver.find_elements_by_xpath('//button')[-1].click()            # find the last button on the page (the CONFIRM button) and click it
-            elif block_cookie_consent is False:
+            elif cookie_consent is True:
                 driver.find_element_by_xpath('//button[@aria-label="Agree to the use of cookies and other data for the purposes described"]').click()
             else:
-                common_message.display_invalid_cookie_consent_option(block_cookie_consent)
+                common_message.display_invalid_cookie_consent_option(cookie_consent)
 
 
     def determine_file_name():
