@@ -49,6 +49,11 @@ class ListCreator:
         -> driver='brave'
         -> driver='edge'
 
+    Options for the `cookie_consent` argument are
+      * `False` (default) - block all cookie options if prompted by YouTube (at consent.youtube.com)
+      * `True`            - accept all cookie options if prompted by YouTube (also at consent.youtube.com)
+          -> `cookie_consent=False` (default) OR `cookie_consent=True`
+
     Options for the file type arguments (`csv`, `txt`, `md`) are
       * True (default) - create a file for the specified type
       * False - does NOT create a file for the specified type

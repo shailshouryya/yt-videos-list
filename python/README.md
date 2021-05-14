@@ -251,6 +251,10 @@ There are a number of optional arguments you can specify during the instantiatio
     - `driver='chrome'`
     - `driver='brave'`
     - `driver='edge'`
+- `cookie_consent` argument:
+  - `False` (default) - block all cookie options if prompted by YouTube (at consent.youtube.com)
+  - `True` - accept all cookie options if prompted by YouTube (also at consent.youtube.com)
+    - `cookie_consent=False` (default) OR `cookie_consent=True`
 -  `txt`, `csv`, `md` file type argument:
   - `True` (default) - create a file for the specified type
   - `False` - do not create a file for the specified type.
