@@ -367,7 +367,7 @@ class Common:
   print('*' * 81)
  @staticmethod
  def display_invalid_cookie_consent_option(cookie_consent):
-  print(f'YouTube is redircting to youtube.onsent.com, but you entered an invalid argument for the cookie_consent instance attrribute!\nPlease use cookie_consent=True or cookie_consent=False.\nYour current setting is: cookie_consent={cookie_consent}')
+  print(f'YouTube is redircting to youtube.consent.com, but you entered an invalid argument for the cookie_consent instance attrribute!\nPlease use cookie_consent=True or cookie_consent=False.\nYour current setting is: cookie_consent={cookie_consent}')
  @staticmethod
  def no_new_videos_found(pause_time):
   return f'No new videos were found since the last scroll. Waiting another {pause_time} seconds to see if more videos can be loaded....\n'

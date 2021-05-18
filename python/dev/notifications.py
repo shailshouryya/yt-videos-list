@@ -413,7 +413,7 @@ class Common:
 
     @staticmethod
     def display_invalid_cookie_consent_option(cookie_consent):
-        print(f'YouTube is redircting to youtube.onsent.com, but you entered an invalid argument for the cookie_consent instance attrribute!\nPlease use cookie_consent=True or cookie_consent=False.\nYour current setting is: cookie_consent={cookie_consent}')
+        print(f'YouTube is redircting to youtube.consent.com, but you entered an invalid argument for the cookie_consent instance attrribute!\nPlease use cookie_consent=True or cookie_consent=False.\nYour current setting is: cookie_consent={cookie_consent}')
 
 
     @staticmethod
