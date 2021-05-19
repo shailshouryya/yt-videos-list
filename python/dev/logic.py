@@ -16,7 +16,7 @@ from .notifications                            import Common, ModuleMessage, Scr
 from .custom_logger                            import log
 
 
-def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronological, headless, scroll_pause_time, user_driver, execution_type, cookie_consent):
+def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronological, headless, scroll_pause_time, user_driver, cookie_consent, execution_type):
     common_message = Common()
     module_message = ModuleMessage()
     script_message = ScriptMessage()
