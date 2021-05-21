@@ -5,8 +5,7 @@ URLs uploaded by a channel) with end-to-end web scraping - no API tokens require
 https://github.com/Shail-Shouryya/yt-videos-list
 '''
 
-from .              import logic
-from .notifications import Common, ModuleMessage
+from . import logic
 
 
 __version__              = '0.5.7'
