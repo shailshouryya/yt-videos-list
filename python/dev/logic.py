@@ -176,6 +176,7 @@ def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronologi
 
     def manage_cookie_consent_form():
         if 'consent.youtube.com' in driver.current_url:
+            common_message.display_cookie_redirection()
             if cookie_consent is False:
                 wait = selenium.webdriver.support.ui.WebDriverWait(driver, 9)
                 wait.until(EC.element_to_be_clickable((By.XPATH, '//a[@aria-label="Customize"]')))
