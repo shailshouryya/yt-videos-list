@@ -178,6 +178,7 @@ def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronologi
         if 'consent.youtube.com' in driver.current_url:
             common_message.display_cookie_redirection()
             if cookie_consent is False:
+                common_message.display_blocking_cookie_consent()
                 wait = selenium.webdriver.support.ui.WebDriverWait(driver, 9)
                 wait.until(EC.element_to_be_clickable((By.XPATH, '//a[@aria-label="Customize"]')))
                 driver.find_element_by_xpath('//a[@aria-label="Customize"]').click()
@@ -192,6 +193,7 @@ def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronologi
                 # driver.find_element_by_xpath('//form[@method="POST"]').click() # this doesn't seem to click the button
                 driver.find_elements_by_xpath('//button')[-1].click()            # find the last button on the page (the CONFIRM button) and click it
             elif cookie_consent is True:
+                common_message.display_accepting_cookie_consent()
                 driver.find_element_by_xpath('//button[@aria-label="Agree to the use of cookies and other data for the purposes described"]').click()
             else:
                 common_message.display_invalid_cookie_consent_option(cookie_consent)
