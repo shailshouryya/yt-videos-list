@@ -27,7 +27,7 @@ def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronologi
             print(common_message.not_writing_to_any_files)
             if execution_type == 'module': print(module_message.not_writing_to_any_files_hint)
             else:                          print(script_message.not_writing_to_any_files_hint)
-            sys.exit() # the files already exist and the user doesn't want to overwrite either of them
+            sys.exit()
 
 
     def process_url():
