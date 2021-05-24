@@ -8,7 +8,7 @@ https://github.com/Shail-Shouryya/yt-videos-list
 from . import logic
 
 
-__version__              = '0.5.7'
+__version__              = '0.5.8'
 __author__               = 'Shail-Shouryya'
 __email__                = 'yt.videos.list@gmail.com'
 __development_status__   = '4 - Beta'
