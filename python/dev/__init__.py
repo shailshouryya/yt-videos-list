@@ -203,7 +203,7 @@ class ListCreator:
                     time.sleep(5) # wait 5 seconds before checking to see if a previously running thread completed
                 thread = threading.Thread(target=self.create_list_for, args=(url, True))
                 thread.start()
-                print(f'Scraping {url:70} on {thread.name}')
+                print(f'{thread.name:11} - scraping {url}')
             # After we iterate through every line in the file, we need to call the join() method
             # on the last thread so python doesn't exit the multi-threaded environment pre-maturely
             # This is ESSENTIAL, otherwise threading might stop randomly on the last channel in the
