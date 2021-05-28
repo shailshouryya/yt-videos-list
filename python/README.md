@@ -172,26 +172,10 @@ python3     # MacOS/Linux
 python      # Windows
 ```
 ```python
-import time
-import threading   # python standard library built-in package, no download necessary
 from yt_videos_list import ListCreator
 
-my_driver = 'firefox'
-lc = ListCreator(driver=my_driver, scroll_pause_time=0.8)
-
-number_of_threads         = 4 # CHANGE TO DESIRED NUMBER OF CONCURRENT THREADS
-path_to_channel_urls_file = 'channels.txt'
-
-with open(path_to_channel_urls_file, 'r', encoding='utf-8') as file:
-    for url in file:
-        while threading.active_count() == number_of_threads + 1: # add 1 since main thread counts as a thread
-            time.sleep(5) # wait 5 seconds before checking to see if a previously running thread completed
-        thread = threading.Thread(target=lc.create_list_for, args=(url, True))
-        thread.start()
-    thread.join() # After we iterate through every line in the file, we call the join() method
-    # on the last thread so python doesn't exit the multi-threaded environment pre-maturely
-    # This is ESSENTIAL, otherwise threading might stop randomly on the last channel in the
-    # channels.txt file before the program finishes writing all the channel information to the files!
+lc = ListCreator(driver='firefox', scroll_pause_time=1.2)
+create_list_from(path_to_channel_urls_file='channels.txt', number_of_threads=4)
 ```
 - See [Thread about multi-threading with yt_videos_list](https://github.com/Shail-Shouryya/yt-videos-list/discussions/11) for more information!
 

@@ -5,6 +5,9 @@ URLs uploaded by a channel) with end-to-end web scraping - no API tokens require
 https://github.com/Shail-Shouryya/yt-videos-list
 '''
 
+import time
+import threading
+
 from . import logic
 
 
@@ -190,3 +193,20 @@ class ListCreator:
         _execution_type     = 'module'
         instance_attributes = (self.txt, self.csv, self.markdown, self.reverse_chronological, self.headless, self.scroll_pause_time, self.driver, self.cookie_consent)
         return logic.execute(url, file_name, log_silently, *instance_attributes, _execution_type)
+
+
+    def create_list_from(self, path_to_channel_urls_file, number_of_threads=4):
+        with open(path_to_channel_urls_file, 'r', encoding='utf-8') as file:
+            for url in file:
+                url = url.strip()
+                while threading.active_count() == number_of_threads + 1: # add 1 since main thread counts as a thread
+                    time.sleep(5) # wait 5 seconds before checking to see if a previously running thread completed
+                thread = threading.Thread(target=self.create_list_for, args=(url, True))
+                thread.start()
+                print(f'Scraping {url:70} on {thread.name}')
+            # After we iterate through every line in the file, we need to call the join() method
+            # on the last thread so python doesn't exit the multi-threaded environment pre-maturely
+            # This is ESSENTIAL, otherwise threading might stop randomly on the last channel in the
+            # channels.txt file before the program finishes writing all the channel information to the files!
+            print(f'Waiting for {thread.name} to complete')
+            thread.join()
