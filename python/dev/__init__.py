@@ -196,6 +196,39 @@ class ListCreator:
 
 
     def create_list_from(self, path_to_channel_urls_file, number_of_threads=4):
+        '''
+        The create_list_from() method creates a list using the arguments specified during instantiation of the ListCreator object.
+        You need to specify just the path to the text file containing urls of all the channels
+        you want to scrape as the `path_to_channel_urls_file` argument.
+        NOTE that each url **should be placed on a new line!**
+
+        Set `number_of_threads` argument to the maximum number of channels you want the program can scrape simultaneously.
+        '''
+        print(
+          '''
+          NOTE:
+          You should have no problems if you're updating the files for a channel you've already scraped, but you **might**
+          encounter some problems if you're scraping channels for the first time.
+          Specifically:
+            -> If a channel you're scraping has THOUSANDS of videos, the browser needs to load all the HTML elements
+               corresponding to the uploaded videos in memory, so if you have MULTIPLE threads going, your machine might
+               run out of memory!
+            -> If you know a channel you're scraping for the first time has THOUSANDS of uploaded videos, it would
+               be better to first scrape that channel individually using the `create_list_for()` method to create
+               the file for that channel, and then incrementally update that file along with files for other channels
+               using this multi-threaded method!
+              -> ALSO keep in mind that having many applications running while using yt_videos_list might still cause the
+                 program to terminate before reaching the end of the page if your machine's overall memory usage gets too high
+                 (look up page faults and memory swap for more information).
+            -> NOTE that updating files for channels you've already scraped shouldn't have this problem
+               (unless the channel uploaded thousands of videos since the last time you scraped it),
+               so just the threading overhead and memory required to render the HTML elements should be fairly low.
+              -> Also note that the program stops scrolling when creating a new file when new elements can't be loaded in
+                 `scroll_pause_time * 2` seconds since the last page scroll, BUT when updating an existing file, the
+                 program only terminates when it scrolls down to a video that already exists in the file - no matter
+                 how long it takes the program to do so.
+          '''
+        )
         with open(path_to_channel_urls_file, 'r', encoding='utf-8') as file:
             for url in file:
                 url = url.strip()

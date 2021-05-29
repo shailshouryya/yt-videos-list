@@ -176,6 +176,8 @@ from yt_videos_list import ListCreator
 
 lc = ListCreator(driver='firefox', scroll_pause_time=1.2)
 create_list_from(path_to_channel_urls_file='channels.txt', number_of_threads=4)
+
+help(lc.create_list_from) # see API method details
 ```
 - See [Thread about multi-threading with yt_videos_list](https://github.com/Shail-Shouryya/yt-videos-list/discussions/11) for more information!
 
