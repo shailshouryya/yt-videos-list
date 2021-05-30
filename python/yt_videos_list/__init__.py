@@ -237,9 +237,8 @@ class ListCreator:
                 thread = threading.Thread(target=self.create_list_for, args=(url, True))
                 thread.start()
                 print(f'{thread.name:11} - scraping {url}')
-            # After we iterate through every line in the file, we need to call the join() method
-            # on the last thread so python doesn't exit the multi-threaded environment pre-maturely
-            # This is ESSENTIAL, otherwise threading might stop randomly on the last channel in the
-            # channels.txt file before the program finishes writing all the channel information to the files!
-            print(f'Waiting for {thread.name} to complete')
-            thread.join()
+            print(f'Iterated through all urls in {path_to_channel_urls_file}!')
+            while len(threading.enumerate()) > 1:
+                print(f'{time.strftime("%Y-%m-%dT%H:%m:%S%z")} Still running {threading.enumerate()} ...')
+                time.sleep(10)
+            print('Finished executing all threads!')
