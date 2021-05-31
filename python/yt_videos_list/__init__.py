@@ -251,7 +251,7 @@ class ListCreator:
                 thread = threading.Thread(target=self.create_list_for, args=(url, True))
                 thread.start()
                 count += 1
-                print(f'{thread.name:11} - scraping channel {count:3} {url}')
+                print(f'{thread.name:>11} - scraping channel {count:>3}: {url}')
                 running_threads.add(thread)
             print(f'{now()}: Iterated through all urls in {path_to_channel_urls_file}!')
             while len(running_threads) > 0:
