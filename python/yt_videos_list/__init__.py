@@ -232,7 +232,7 @@ class ListCreator:
         with open(path_to_channel_urls_file, 'r', encoding='utf-8') as file:
             start = time.time()
             now   = lambda: time.strftime("%Y-%m-%dT%H:%m:%S%z")
-            print(f'{now()}: Iterating through all urls in {path_to_channel_urls_file}! The program will scrape number_of_threads={number_of_threads} channels concurrently...\n\n')
+            print(f'\n\n{now()}: Iterating through all urls in {path_to_channel_urls_file} and scraping number_of_threads={number_of_threads} channels concurrently...\n\n')
             count            = 0
             running_threads  = set()
             finished_threads = set()
@@ -251,9 +251,9 @@ class ListCreator:
                 thread = threading.Thread(target=self.create_list_for, args=(url, True))
                 thread.start()
                 count += 1
-                print(f'{thread.name:>11} - scraping channel {count:>3}: {url}')
+                print(f'{thread.name:>14} - scraping channel {count:>7}: {url}')
                 running_threads.add(thread)
-            print(f'{now()}: Iterated through all urls in {path_to_channel_urls_file}!')
+            print(f'\n\n{now()}: Iterated through all urls in {path_to_channel_urls_file}!')
             while len(running_threads) > 0:
                 print(f'{now()}: Still running {[thread.name for thread in running_threads]} ...')
                 time.sleep(10)
