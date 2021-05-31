@@ -230,15 +230,29 @@ class ListCreator:
           '''
         )
         with open(path_to_channel_urls_file, 'r', encoding='utf-8') as file:
+            count            = 0
+            running_threads  = set()
+            finished_threads = set()
+            def remove_finished_threads():
+                for thread in running_threads:
+                    if not thread.is_alive():
+                        finished_threads.add(thread)
+                for thread in finished_threads:
+                    running_threads.remove(thread)
+                finished_threads.clear()
             for url in file:
                 url = url.strip()
-                while threading.active_count() == number_of_threads + 1: # add 1 since main thread counts as a thread
+                while len(running_threads) >= number_of_threads and all(thread.is_alive() for thread in running_threads):
                     time.sleep(5) # wait 5 seconds before checking to see if a previously running thread completed
+                    remove_finished_threads()
                 thread = threading.Thread(target=self.create_list_for, args=(url, True))
                 thread.start()
+                count += 1
                 print(f'{thread.name:11} - scraping {url}')
+                running_threads.add(thread)
             print(f'Iterated through all urls in {path_to_channel_urls_file}!')
-            while len(threading.enumerate()) > 1:
-                print(f'{time.strftime("%Y-%m-%dT%H:%m:%S%z")} Still running {threading.enumerate()} ...')
+            while len(running_threads) > 0:
+                print(f'{time.strftime("%Y-%m-%dT%H:%m:%S%z")} Still running {[thread.name for thread in running_threads]} ...')
                 time.sleep(10)
+                remove_finished_threads()
             print('Finished executing all threads!')
