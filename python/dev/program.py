@@ -34,6 +34,7 @@ def determine_action(url, driver, scroll_pause_time, reverse_chronological, file
         return
     use_threads = (int(txt) + int(csv) + int(markdown)) > 1
     if use_threads:
+        # ===> See commit 58c5faba14da25b89e104a50d380489a30d8df71 for more details about using threads for file I/O <===
         # The program needs to write to 2 or more files, so creating a new thread to perform file I/O for each file
         # will speed up the program.
         #
