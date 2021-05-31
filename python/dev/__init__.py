@@ -230,6 +230,8 @@ class ListCreator:
           '''
         )
         with open(path_to_channel_urls_file, 'r', encoding='utf-8') as file:
+            start = time.time()
+            print(f'{time.strftime("%Y-%m-%dT%H:%m:%S%z")}: Now iterating through all urls in {path_to_channel_urls_file}! The program will scrape number_of_threads={number_of_threads} channels concurrently...\n\n')
             count            = 0
             running_threads  = set()
             finished_threads = set()
@@ -248,11 +250,12 @@ class ListCreator:
                 thread = threading.Thread(target=self.create_list_for, args=(url, True))
                 thread.start()
                 count += 1
-                print(f'{thread.name:11} - scraping {url}')
+                print(f'{thread.name:11} - scraping channel {count:3} {url}')
                 running_threads.add(thread)
             print(f'Iterated through all urls in {path_to_channel_urls_file}!')
             while len(running_threads) > 0:
-                print(f'{time.strftime("%Y-%m-%dT%H:%m:%S%z")} Still running {[thread.name for thread in running_threads]} ...')
+                print(f'{time.strftime("%Y-%m-%dT%H:%m:%S%z")}: Still running {[thread.name for thread in running_threads]} ...')
                 time.sleep(10)
                 remove_finished_threads()
-            print('Finished executing all threads!')
+            end = time.time()
+            print(f'{time.strftime("%Y-%m-%dT%H:%m:%S%z")}: Finished executing all threads. It took {end - start} seconds to scrape all urls in {path_to_channel_urls_file}')
