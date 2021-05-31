@@ -21,8 +21,6 @@ def log_extraction_information(function, writer_function, args, kwargs):
     file_name, videos_written, reverse_chronological, logging_locations = writer_function(*args, **kwargs)   # writer_function() writes to temp_{file_name}
     if videos_written == 1: videos = 'video'
     else:                   videos = 'videos'
-    if function == 'create_file': log(f'Opening a temp {extension} file and writing video information to the file....',           logging_locations)
-    if function == 'update_file': log(f'Opening a temp {extension} file and writing ***NEW*** video information to the file....', logging_locations)
     end_time   = time.perf_counter()
     total_time = end_time - start_time
     temp_file  = f'temp_{file_name}_{timestamp}.{extension}'    # determine temp_{file_name} for wrapper_timer() scope (writer_function defines it in its own scope already)
