@@ -244,7 +244,10 @@ class ListCreator:
                     running_threads.remove(thread)
                 finished_threads.clear()
             for url in file:
-                url = url.strip()
+                url = url.split('#')[0].strip()
+                if url == '':
+                    # this line is either empty or entirely a comment
+                    continue
                 while len(running_threads) >= number_of_threads and all(thread.is_alive() for thread in running_threads):
                     time.sleep(5) # wait 5 seconds before checking to see if a previously running thread completed
                     remove_finished_threads()
