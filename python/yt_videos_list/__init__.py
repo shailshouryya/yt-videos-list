@@ -237,6 +237,9 @@ class ListCreator:
             running_threads  = set()
             finished_threads = set()
             def remove_finished_threads():
+                # can't remove dead threads from running_threads set
+                # directly because of the following exception:
+                # RuntimeError: Set changed size during iteration
                 for thread in running_threads:
                     if not thread.is_alive():
                         finished_threads.add(thread)
