@@ -6,10 +6,10 @@ https://github.com/Shail-Shouryya/yt-videos-list
 '''
 
 import time
-import threading
+
+from save_thread_result import ThreadWithResult
 
 from . import logic
-
 
 __version__              = '0.5.8'
 __author__               = 'Shail-Shouryya'
@@ -242,6 +242,7 @@ class ListCreator:
                 # RuntimeError: Set changed size during iteration
                 for thread in running_threads:
                     if not thread.is_alive():
+                        print(f'{thread.name:>14} Finished writing          {thread.result} ')
                         finished_threads.add(thread)
                 for thread in finished_threads:
                     running_threads.remove(thread)
@@ -255,7 +256,7 @@ class ListCreator:
                 while len(running_threads) >= number_of_threads and all(thread.is_alive() for thread in running_threads):
                     time.sleep(5) # wait 5 seconds before checking to see if a previously running thread completed
                     remove_finished_threads()
-                thread = threading.Thread(target=self.create_list_for, args=(formatted_url, True))
+                thread = ThreadWithResult(target=self.create_list_for, args=(formatted_url, True))
                 thread.start()
                 count += 1
                 print(f'{thread.name:>14} - scraping channel {count:>7}: {url}')
