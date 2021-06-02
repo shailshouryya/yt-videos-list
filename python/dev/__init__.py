@@ -242,8 +242,13 @@ class ListCreator:
                 # RuntimeError: Set changed size during iteration
                 for thread in running_threads:
                     if not thread.is_alive():
-                        print(f'{thread.name:>14} Finished writing          {thread.result} ')
-                        finished_threads.add(thread)
+                        try:
+                            print(f'{thread.name:>14} - Finished writing          {thread.result} ')
+                        except AttributeError:
+                            # AttributeError: 'ThreadWithResult' object has no attribute 'result'
+                            print(f'{thread.name:>14} - Did NOT finish scraping. See terminal output above for potential exceptions!')
+                        finally:
+                            finished_threads.add(thread)
                 for thread in finished_threads:
                     running_threads.remove(thread)
                 finished_threads.clear()
