@@ -6,6 +6,8 @@ https://github.com/Shail-Shouryya/yt-videos-list
 '''
 
 import time
+import datetime
+import threading
 
 from save_thread_result import ThreadWithResult
 
@@ -231,8 +233,9 @@ class ListCreator:
         )
         with open(path_to_channel_urls_file, 'r', encoding='utf-8') as file:
             start = time.time()
-            now   = lambda: time.strftime("%Y-%m-%dT%H:%m:%S%z")
-            print(f'\n\n{now()}: Iterating through all urls in {path_to_channel_urls_file} and scraping number_of_threads={number_of_threads} channels concurrently...\n\n')
+            now           = lambda: datetime.datetime.now().isoformat() + time.strftime('%z')
+            prefix_output = lambda thread: f'[{thread.name}]'.rjust(14) + f' {now()}'
+            print(f'\n\n{prefix_output(threading.current_thread())}: Iterating through all urls in {path_to_channel_urls_file} and scraping number_of_threads={number_of_threads} channels concurrently...\n\n')
             count            = 0
             running_threads  = set()
             finished_threads = set()
@@ -243,10 +246,10 @@ class ListCreator:
                 for thread in running_threads:
                     if not thread.is_alive():
                         try:
-                            print(f'{now()}: {thread.name:>14} - Finished writing          {thread.result} ')
+                            print(f'{prefix_output(thread)} - Finished writing          {thread.result} ')
                         except AttributeError:
                             # AttributeError: 'ThreadWithResult' object has no attribute 'result'
-                            print(f'{now()}: {thread.name:>14} - Did NOT finish scraping. See terminal output above for potential exceptions!')
+                            print(f'{prefix_output(thread)} - Did NOT finish scraping. See terminal output above for potential exceptions!')
                         finally:
                             finished_threads.add(thread)
                 for thread in finished_threads:
@@ -264,11 +267,11 @@ class ListCreator:
                 thread = ThreadWithResult(target=self.create_list_for, args=(formatted_url, True))
                 thread.start()
                 count += 1
-                print(f'{now()}: {thread.name:>14} - scraping channel {count:>7}: {url}')
+                print(f'{prefix_output(thread)} - scraping channel {count:>7}: {url}')
                 running_threads.add(thread)
-            print(f'\n\n{now()}: Iterated through all urls in {path_to_channel_urls_file}!')
+            print(f'\n\n{prefix_output(threading.current_thread())} Iterated through all urls in {path_to_channel_urls_file}!')
             while len(running_threads) > 0:
-                print(f'{now()}: Still running {[thread.name for thread in running_threads]} ...')
+                print(f'{prefix_output(threading.current_thread())} Still running {[thread.name for thread in running_threads]} ...')
                 time.sleep(10)
                 remove_finished_threads()
             end = time.time()
