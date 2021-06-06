@@ -245,10 +245,10 @@ class ListCreator:
                 for thread in running_threads:
                     if not thread.is_alive():
                         try:
-                            log(f'Finished writing          {thread.result}', [sys.stdout])
+                            log(f'{thread.name} finished writing          {thread.result}', [sys.stdout])
                         except AttributeError:
                             # AttributeError: 'ThreadWithResult' object has no attribute 'result'
-                            log('Did NOT finish scraping. See terminal output above for potential exceptions!', [sys.stdout])
+                            log(f'{thread.name} did NOT finish scraping. See terminal output above for potential exceptions!', [sys.stdout])
                         finally:
                             finished_threads.add(thread)
                 for thread in finished_threads:
@@ -266,7 +266,7 @@ class ListCreator:
                 thread = ThreadWithResult(target=self.create_list_for, args=(formatted_url, True))
                 thread.start()
                 count += 1
-                log(f'Scraping channel {count:>7}: {url}', [sys.stdout])
+                log(f'{thread.name} scraping channel {count:>7}: {url}', [sys.stdout])
                 running_threads.add(thread)
             log(f'Iterated through all urls in {path_to_channel_urls_file}!', [sys.stdout])
             while len(running_threads) > 0:
