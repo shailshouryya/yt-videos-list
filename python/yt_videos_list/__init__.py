@@ -5,13 +5,14 @@ URLs uploaded by a channel) with end-to-end web scraping - no API tokens require
 https://github.com/Shail-Shouryya/yt-videos-list
 '''
 
+import sys
 import time
-import datetime
-import threading
 
 from save_thread_result import ThreadWithResult
 
 from . import logic
+from .custom_logger import log
+
 
 __version__              = '0.5.8'
 __author__               = 'Shail-Shouryya'
@@ -233,9 +234,7 @@ class ListCreator:
         )
         with open(path_to_channel_urls_file, 'r', encoding='utf-8') as file:
             start = time.time()
-            now           = lambda: datetime.datetime.now().isoformat() + time.strftime('%z')
-            prefix_output = lambda thread: f'[{thread.name}]'.rjust(14) + f' {now()}'
-            print(f'\n\n{prefix_output(threading.current_thread())}: Iterating through all urls in {path_to_channel_urls_file} and scraping number_of_threads={number_of_threads} channels concurrently...\n\n')
+            log(f'Iterating through all urls in {path_to_channel_urls_file} and scraping number_of_threads={number_of_threads} channels concurrently...\n\n', [sys.stdout])
             count            = 0
             running_threads  = set()
             finished_threads = set()
@@ -246,10 +245,10 @@ class ListCreator:
                 for thread in running_threads:
                     if not thread.is_alive():
                         try:
-                            print(f'{prefix_output(thread)} - Finished writing          {thread.result} ')
+                            log(f'Finished writing          {thread.result}', [sys.stdout])
                         except AttributeError:
                             # AttributeError: 'ThreadWithResult' object has no attribute 'result'
-                            print(f'{prefix_output(thread)} - Did NOT finish scraping. See terminal output above for potential exceptions!')
+                            log('Did NOT finish scraping. See terminal output above for potential exceptions!', [sys.stdout])
                         finally:
                             finished_threads.add(thread)
                 for thread in finished_threads:
@@ -267,12 +266,12 @@ class ListCreator:
                 thread = ThreadWithResult(target=self.create_list_for, args=(formatted_url, True))
                 thread.start()
                 count += 1
-                print(f'{prefix_output(thread)} - scraping channel {count:>7}: {url}')
+                log(f'Scraping channel {count:>7}: {url}', [sys.stdout])
                 running_threads.add(thread)
-            print(f'\n\n{prefix_output(threading.current_thread())} Iterated through all urls in {path_to_channel_urls_file}!')
+            log(f'Iterated through all urls in {path_to_channel_urls_file}!', [sys.stdout])
             while len(running_threads) > 0:
-                print(f'{prefix_output(threading.current_thread())} Still running {[thread.name for thread in running_threads]} ...')
+                log(f'Still running {[thread.name for thread in running_threads]} ...', [sys.stdout])
                 time.sleep(10)
                 remove_finished_threads()
             end = time.time()
-            print(f'{now()}: Finished executing all threads. It took {end - start} seconds to scrape all urls in {path_to_channel_urls_file}')
+            log(f'Finished executing all threads. It took {end - start} seconds to scrape all urls in {path_to_channel_urls_file}', [sys.stdout])
