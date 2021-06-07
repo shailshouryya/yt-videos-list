@@ -9,7 +9,7 @@ def log(message, logging_locations):
     thread_name  = f'[{threading.current_thread().name}]'
     current_time = datetime.datetime.now().isoformat()
     offset       = time.strftime('%z')
-    message      = f'{thread_name:>12} {current_time}{offset} {message}\n'
+    message      = f'{current_time}{offset} {thread_name:>12} {message}\n'
     for location in logging_locations:
         location.write(message)
 
