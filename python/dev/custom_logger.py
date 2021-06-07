@@ -38,6 +38,6 @@ def log_extraction_information(function, writer_function, args, kwargs):
         # if the function that ran was create_file: rename temp_{file_name} to {file_name}.{extension} here AFTER everything else finishes to ensure atomicity
         # if the function that ran was update_file with the reverse_chronological flag set to True: rename temp_{file_name} to {file_name}.{extension} since program appends old info from the original file to the end of new data in the temp file
         os.replace(temp_file, final_file)
-    log('Successfully renamed'.ljust(padding) + f'{temp_file} to {final_file}',                                                                                    logging_locations)
-    if function == 'create_file': log(f'It took {total_time} seconds to write all {videos_written} {videos} to {final_file}{NEWLINE}',                             logging_locations)
-    if function == 'update_file': log(f'It took {total_time} seconds to write the {videos_written} ***NEW*** {videos} to the pre-existing {final_file} {NEWLINE}', logging_locations)
+    log('Successfully renamed'.ljust(padding) + f'{temp_file} to {final_file}',                                                                                   logging_locations)
+    if function == 'create_file': log(f'It took {total_time} seconds to write all {videos_written} {videos} to {final_file}{NEWLINE}',                            logging_locations)
+    if function == 'update_file': log(f'It took {total_time} seconds to write the {videos_written} ***NEW*** {videos} to the pre-existing {final_file}{NEWLINE}', logging_locations)

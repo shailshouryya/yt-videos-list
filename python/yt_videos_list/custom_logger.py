@@ -33,4 +33,4 @@ def log_extraction_information(function, writer_function, args, kwargs):
   os.replace(temp_file, final_file)
  log('Successfully renamed'.ljust(padding) + f'{temp_file} to {final_file}', logging_locations)
  if function == 'create_file': log(f'It took {total_time} seconds to write all {videos_written} {videos} to {final_file}{NEWLINE}', logging_locations)
- if function == 'update_file': log(f'It took {total_time} seconds to write the {videos_written} ***NEW*** {videos} to the pre-existing {final_file} {NEWLINE}', logging_locations)
+ if function == 'update_file': log(f'It took {total_time} seconds to write the {videos_written} ***NEW*** {videos} to the pre-existing {final_file}{NEWLINE}', logging_locations)
