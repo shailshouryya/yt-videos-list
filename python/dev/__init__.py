@@ -232,9 +232,10 @@ class ListCreator:
                  how long it takes the program to do so.
           '''
         )
-        with open(path_to_channel_urls_file, 'r', encoding='utf-8') as file:
+        with open(path_to_channel_urls_file, 'r', encoding='utf-8') as txt_file, open(path_to_channel_urls_file.split(".")[0] + '.log', mode='a', encoding='utf-8') as log_file:
             start = time.time()
-            log(f'Iterating through all urls in {path_to_channel_urls_file} and scraping number_of_threads={number_of_threads} channels concurrently...\n\n', [sys.stdout])
+            logging_locations = (log_file, sys.stdout)
+            log(f'Iterating through all urls in {path_to_channel_urls_file} and scraping number_of_threads={number_of_threads} channels concurrently...\n\n', logging_locations)
             count            = 0
             running_threads  = set()
             finished_threads = set()
@@ -244,16 +245,16 @@ class ListCreator:
                 for thread in running_threads:
                     if not thread.is_alive():
                         try:
-                            log(f'{thread.name} finished writing          {thread.result}', [sys.stdout])
+                            log(f'{thread.name} finished writing          {thread.result}', logging_locations)
                         except AttributeError:
                             # AttributeError: 'ThreadWithResult' object has no attribute 'result'
-                            log(f'{thread.name} did NOT finish scraping. See terminal output above for potential exceptions!', [sys.stdout])
+                            log(f'{thread.name} did NOT finish scraping. See terminal output above for potential exceptions!', logging_locations)
                         finally:
                             finished_threads.add(thread)
                 for thread in finished_threads:
                     running_threads.remove(thread)
                 finished_threads.clear()
-            for url in file:
+            for url in txt_file:
                 url           = url.strip()
                 formatted_url = url.split('#')[0].strip()
                 if formatted_url == '':
@@ -265,12 +266,12 @@ class ListCreator:
                 thread = ThreadWithResult(target=self.create_list_for, args=(formatted_url, True))
                 thread.start()
                 count += 1
-                log(f'{thread.name} scraping channel {count:>7}: {url}', [sys.stdout])
+                log(f'{thread.name} scraping channel {count:>7}: {url}', logging_locations)
                 running_threads.add(thread)
-            log(f'Iterated through all urls in {path_to_channel_urls_file}!', [sys.stdout])
+            log(f'Iterated through all urls in {path_to_channel_urls_file}!', logging_locations)
             while len(running_threads) > 0:
-                log(f'Still running {[thread.name for thread in running_threads]} ...', [sys.stdout])
+                log(f'Still running {[thread.name for thread in running_threads]} ...', logging_locations)
                 time.sleep(10)
                 remove_finished_threads()
             end = time.time()
-            log(f'Finished executing all threads. It took {end - start} seconds to scrape all urls in {path_to_channel_urls_file}', [sys.stdout])
+            log(f'Finished executing all threads. It took {end - start} seconds to scrape all urls in {path_to_channel_urls_file}', logging_locations)
