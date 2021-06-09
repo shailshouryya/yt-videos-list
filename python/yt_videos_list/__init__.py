@@ -235,6 +235,7 @@ class ListCreator:
         with open(path_to_channel_urls_file, 'r', encoding='utf-8') as txt_file, open(path_to_channel_urls_file.split(".")[0] + '.log', mode='a', encoding='utf-8') as log_file:
             start = time.time()
             logging_locations = (log_file, sys.stdout)
+            ThreadWithResult.log_files = [log_file]
             log(f'Iterating through all urls in {path_to_channel_urls_file} and scraping number_of_threads={number_of_threads} channels concurrently...\n\n', logging_locations)
             count            = 0
             running_threads  = set()
