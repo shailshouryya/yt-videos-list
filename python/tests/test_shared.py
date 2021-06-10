@@ -25,8 +25,8 @@ ISOFORMAT = datetime.datetime.isoformat
 def log_test_info(message, *args):
     thread_name  = f'[{threading.current_thread().name}]'
     current_time = datetime.datetime.now().isoformat()
-    offset       = time.strftime('%z')
-    message      = f'{thread_name:>12} {current_time}{offset} {message}\n'
+    utc_offset   = time.strftime('%z')
+    message      = f'{thread_name:>12} {current_time}{utc_offset} {message}\n'
     sys.stdout.writelines(message)
     for log_file in args:
         with open (log_file, 'a', encoding='utf-8') as output_location:

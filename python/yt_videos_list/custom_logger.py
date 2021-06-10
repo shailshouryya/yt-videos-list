@@ -6,8 +6,8 @@ NEWLINE = '\n'
 def log(message, logging_locations):
  thread_name = f'[{threading.current_thread().name}]'
  current_time = datetime.datetime.now().isoformat()
- offset = time.strftime('%z')
- message = f'{current_time}{offset} {thread_name:>12} {message}\n'
+ utc_offset = time.strftime('%z')
+ message = f'{current_time}{utc_offset} {thread_name:>12} {message}\n'
  for location in logging_locations:
   location.write(message)
 def log_extraction_information(function, writer_function, args, kwargs):
