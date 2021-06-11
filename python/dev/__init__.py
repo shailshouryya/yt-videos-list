@@ -264,7 +264,7 @@ class ListCreator:
                     continue
                 while len(running_threads) >= number_of_threads and all(thread.is_alive() for thread in running_threads):
                     time.sleep(5) # wait 5 seconds before checking to see if a previously running thread completed
-                    remove_finished_threads()
+                remove_finished_threads()
                 sleep_time = random.random() * max_sleep
                 log(f'Sleeping for {sleep_time} seconds before starting next subthread....', logging_locations)
                 time.sleep(sleep_time)
