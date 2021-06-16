@@ -215,22 +215,24 @@ class ListCreator:
           encounter some problems if you're scraping channels for the first time.
           Specifically:
             -> If a channel you're scraping has THOUSANDS of videos, the browser needs to load all the HTML elements
-               corresponding to the uploaded videos in memory, so if you have MULTIPLE threads going, your machine might
-               run out of memory!
+               corresponding to the uploaded videos in memory, so if you have MULTIPLE threads going and all channels
+               being concurrently scraped have thousands of videos, your machine might run out of memory!
             -> If you know a channel you're scraping for the first time has THOUSANDS of uploaded videos, it would
-               be better to first scrape that channel individually using the `create_list_for()` method to create
-               the file for that channel, and then incrementally update that file along with files for other channels
-               using this multi-threaded method!
+               be better to first scrape that channel individually using the `create_list_for(url)` method to create
+               the file for that channel, and then use this multi-threaded method to update the file for that channel
+               along with files for other channels!
               -> ALSO keep in mind that having many applications running while using yt_videos_list might still cause the
                  program to terminate before reaching the end of the page if your machine's overall memory usage gets too high
                  (look up page faults and memory swap for more information).
             -> NOTE that updating files for channels you've already scraped shouldn't have this problem
                (unless the channel uploaded thousands of videos since the last time you scraped it),
-               so just the threading overhead and memory required to render the HTML elements should be fairly low.
-              -> Also note that the program stops scrolling when creating a new file when new elements can't be loaded in
-                 `scroll_pause_time * 2` seconds since the last page scroll, BUT when updating an existing file, the
-                 program only terminates when it scrolls down to a video that already exists in the file - no matter
-                 how long it takes the program to do so.
+               since the threading overhead and memory required to render a couple hundred HTML video elements
+               will be relatively low.
+              -> Also note the program stops scrolling when **creating** a new file when new elements can't be loaded in
+                 `scroll_pause_time * 2` seconds since the last page scroll, BUT when **updating** an existing file, the
+                 program only stops scrolling when it scrolls down to a video that already exists in the file - no matter
+                 how long it takes the program to do so (so the program is not required to finding new videos in
+                 less than `scroll_pause_time * 2` seconds).
           '''
         )
         multiplier = max_sleep - min_sleep
