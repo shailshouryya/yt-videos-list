@@ -199,7 +199,7 @@ class ListCreator:
         return logic.execute(url, file_name, log_silently, *instance_attributes, _execution_type)
 
 
-    def create_list_from(self, path_to_channel_urls_file, number_of_threads=4, min_sleep=1, max_sleep=5):
+    def create_list_from(self, path_to_channel_urls_file, number_of_threads=4, min_sleep=1, max_sleep=5, after_n_channels_pause_for_s=(20, 10)):
         '''
         The create_list_from() method creates a list using the arguments specified during instantiation of the ListCreator object.
         You need to specify just the path to the text file containing urls of all the channels
@@ -234,6 +234,7 @@ class ListCreator:
           '''
         )
         multiplier = max_sleep - min_sleep
+        modulo, seconds = after_n_channels_pause_for_s
         with open(path_to_channel_urls_file, 'r', encoding='utf-8') as txt_file, open(path_to_channel_urls_file.split(".")[0] + '.log', mode='a', encoding='utf-8') as log_file:
             start = time.time()
             logging_locations = (log_file, sys.stdout)
@@ -266,6 +267,9 @@ class ListCreator:
                 while len(running_threads) >= number_of_threads and all(thread.is_alive() for thread in running_threads):
                     time.sleep(5) # wait 5 seconds before checking to see if a previously running thread completed
                 remove_finished_threads()
+                if count % modulo == 0 and count > 0:
+                    log(f'Scraped {count} channels, so sleeping for {seconds} seconds to seem less bot-like....', logging_locations)
+                    time.sleep(seconds)
                 sleep_time = min_sleep + (random.random() * multiplier)
                 log(f'Sleeping for {sleep_time} seconds before starting next subthread....', logging_locations)
                 time.sleep(sleep_time)
