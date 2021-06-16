@@ -76,4 +76,4 @@ def determine_action(url, driver, scroll_pause_time, reverse_chronological, file
             else:          writer.create_file('md', videos_list, file_name, reverse_chronological, logging_locations, timestamp=now())
 
 def now():
-    return datetime.datetime.now().isoformat().replace(':', '-').replace('.', '_')
+    return datetime.datetime.now().isoformat().replace(':', '_').replace('.', '-')
