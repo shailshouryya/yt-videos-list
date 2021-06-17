@@ -207,6 +207,21 @@ class ListCreator:
         NOTE that each url **should be placed on a new line!**
 
         Set `number_of_threads` argument to the maximum number of channels you want the program can scrape simultaneously.
+
+        Use the following arguments to make the program appear less bot-like
+        (this becomes more important as you try to scrape more and more channels at once):
+            `min_sleep`
+              * minimum amount of time (seconds) to sleep before starting a new subthread to scrape the next channel
+              * accepts an `int` or `float`
+                -> min_sleep=1 (default)
+            `max_sleep`
+              * maximum amount of time (seconds) to sleep before starting a new subthread to scrape the next channel
+              * accepts an `int` or `float`
+                -> max_sleep=5 (default)
+            `after_n_channels_pause_for_s` -
+              * amount of time to sleep after scraping n channels
+              * accepts a tuple of `(int, int)` or a tuple of `(int, float)`
+                -> after_n_channels_pause_for_s=(20, 10)
         '''
         print(
           '''
