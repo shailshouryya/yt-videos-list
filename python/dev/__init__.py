@@ -285,7 +285,7 @@ class ListCreator:
                     # this line is either empty or entirely a comment
                     continue
                 while len(running_threads) >= number_of_threads and all(thread.is_alive() for thread in running_threads):
-                    time.sleep(5) # wait 5 seconds before checking to see if a previously running thread completed
+                    time.sleep(1) # wait 1 second before checking to see if a previously running thread completed
                 remove_finished_threads()
                 if count % modulo == 0 and count > 0:
                     log(f'Scraped {count} channels, so sleeping for {seconds} seconds to seem less bot-like....', logging_locations)
