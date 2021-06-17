@@ -6,6 +6,7 @@ https://github.com/Shail-Shouryya/yt-videos-list
 '''
 
 import sys
+from threading import Thread
 import time
 import random
 
@@ -199,7 +200,7 @@ class ListCreator:
         return logic.execute(url, file_name, log_silently, *instance_attributes, _execution_type)
 
 
-    def create_list_from(self, path_to_channel_urls_file, number_of_threads=4, min_sleep=1, max_sleep=5, after_n_channels_pause_for_s=(20, 10)):
+    def create_list_from(self, path_to_channel_urls_file, number_of_threads=4, min_sleep=1, max_sleep=5, after_n_channels_pause_for_s=(20, 10), log_subthread_status_silently=False):
         '''
         The create_list_from() method creates a list using the arguments specified during instantiation of the ListCreator object.
         You need to specify just the path to the text file containing urls of all the channels
@@ -255,6 +256,7 @@ class ListCreator:
         with open(path_to_channel_urls_file, 'r', encoding='utf-8') as txt_file, open(path_to_channel_urls_file.split(".")[0] + '.log', mode='a', encoding='utf-8') as log_file:
             start = time.time()
             logging_locations = (log_file, sys.stdout)
+            ThreadWithResult.log_thread_status = not log_subthread_status_silently
             ThreadWithResult.log_files = [log_file]
             log(f'Iterating through all urls in {path_to_channel_urls_file} and scraping number_of_threads={number_of_threads} channels concurrently...\n\n', logging_locations)
             count            = 0
