@@ -250,7 +250,7 @@ class ListCreator:
                  less than `scroll_pause_time * 2` seconds).
           '''
         )
-        multiplier = max_sleep - min_sleep
+        multiplier = max(0, max_sleep - min_sleep)
         modulo, seconds = after_n_channels_pause_for_s
         with open(path_to_channel_urls_file, 'r', encoding='utf-8') as txt_file, open(path_to_channel_urls_file.split(".")[0] + '.log', mode='a', encoding='utf-8') as log_file:
             start = time.time()
