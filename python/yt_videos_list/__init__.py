@@ -6,7 +6,6 @@ https://github.com/Shail-Shouryya/yt-videos-list
 '''
 
 import sys
-from threading import Thread
 import time
 import random
 
