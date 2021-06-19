@@ -223,6 +223,17 @@ class ListCreator:
               * amount of time to sleep after scraping n channels
               * accepts a tuple of `(int, int)` or a tuple of `(int, float)`
                 -> after_n_channels_pause_for_s=(20, 10)
+
+        Use the following arguments to mute terminal logging of subthread status:
+            `log_subthread_status_silently`
+              * mutes logging when a subthread starts, ends, and how long the subthread takes to execute
+              * accepts a `boolean`
+                -> log_subthread_status_silently=False (default) OR log_subthread_status_silently=True
+        Use the following arguments to mute terminal logging of subthread information:
+            `log_subthread_status_silently`
+              * mutes logging which channel each subthread is scraping and which output file the subthread writes to
+              * accepts a `boolean`
+                -> log_subthread_info_silently=False (default) OR log_subthread_info_silently=True
         '''
         print(
           '''
