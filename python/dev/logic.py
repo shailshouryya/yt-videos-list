@@ -164,13 +164,13 @@ def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronologi
                 sys.exit()
             file_name = determine_file_name()
             with yield_logger(file_name) as logging_locations:
-                log( '>' * 50 + 'STARTING PROGRAM' + '<' * 50, logging_locations)
+                log( '>' * 50 + 'STARTING  PROGRAM' + '<' * 50, logging_locations)
                 log(f'Now scraping {url} using the {user_driver}driver:', logging_locations)
                 program.determine_action(url, driver, scroll_pause_time, reverse_chronological, file_name, txt, csv, markdown, logging_locations)
                 program_end = time.perf_counter()
                 total_time  = program_end - program_start
                 log(f'This program took {total_time} seconds to complete.', logging_locations)
-                log( '>' * 50 + 'PROGRAM COMPLETE' + '<' * 50, logging_locations)
+                log( '>' * 50 + 'COMPLETED PROGRAM' + '<' * 50, logging_locations)
         return file_name
 
 

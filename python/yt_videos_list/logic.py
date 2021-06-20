@@ -136,7 +136,7 @@ def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronologi
     program_end = time.perf_counter()
     total_time = program_end - program_start
     log(f'This program took {total_time} seconds to complete.', logging_locations)
-    log( '>' * 50 + 'PROGRAM COMPLETE' + '<' * 50, logging_locations)
+    log( '>' * 50 + 'COMPLETED PROGRAM' + '<' * 50, logging_locations)
   return file_name
  def manage_cookie_consent_form():
   if 'consent.youtube.com' in driver.current_url:
