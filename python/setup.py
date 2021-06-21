@@ -58,7 +58,7 @@ setup(
     python_requires  = '>=3.6.*, <4',
     install_requires = [ # Optional
         'selenium>=3.141.0, <4',
-        'save_thread_result'
+        'save_thread_result==0.0.7'
     ],
     # https://packaging.python.org/discussions/install-requires-vs-requirements/
 
