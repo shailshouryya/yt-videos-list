@@ -1,3 +1,7 @@
+# PLACE EVERY URL ON A NEWLINE
+# YOU CAN ADD COMMENTS USING THE octothorpe SYMBOL: #
+# SEE THIS SECTION IN THE README FOR MORE INFORMATION:
+# Scraping multiple channels from a file simultaneously with multi-threading
 https://www.youtube.com/channel/UCSHZKyawb77ixDdsGog4iWA                         # Lex Fridman
 https://www.youtube.com/c/WorldScienceFestival/playlists                         # World Science Festival
 https://www.youtube.com/c/RSAConference/videos                                   # RSA Conference
