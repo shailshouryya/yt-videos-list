@@ -133,38 +133,8 @@ help(lc)
   <summary><b>Scraping multiple channels from a file simultaneously with multi-threading</b></summary>
 
 Add the url to every channel you want to extract information from in a `txt` file with every url placed on a new line.
+- example: [`channels.txt`](./channels.txt)
 
-<details>
-  <summary><b>e.g. <code>channels.txt</code></b></summary>
-
-```
-https://www.youtube.com/channel/UCSHZKyawb77ixDdsGog4iWA
-https://www.youtube.com/c/WorldScienceFestival/playlists
-https://www.youtube.com/c/RSAConference/videos
-https://www.youtube.com/channel/UCtC8aQzdEHAmuw8YvtH1CcQ/videos
-https://www.youtube.com/channel/UCQSrdt0-Iu8qVEiJyzhrfdQ/videos
-https://www.youtube.com/user/TEDxTalks/videos
-https://www.youtube.com/user/TEDxYouth
-https://www.youtube.com/user/TEDPrizeChannel/videos
-https://www.youtube.com/user/TEDInstitute/videos
-https://www.youtube.com/user/TEDPartners/channels
-https://www.youtube.com/c/TheVerge/channels
-https://www.youtube.com/c/mitocw/channels
-https://www.youtube.com/c/stanford/channels
-https://www.youtube.com/c/khanacademy/channels
-https://www.youtube.com/c/TEDEdStudentTalks/channels
-https://www.youtube.com/c/TED/channels
-https://www.youtube.com/c/TEDFellow/videos
-https://www.youtube.com/c/tedededucatortalks/videos
-https://www.youtube.com/c/TEDTranslators/videos
-https://www.youtube.com/c/TEDEspanol/videos
-https://www.youtube.com/teded/featured
-https://www.youtube.com/c/IBMSecurity/channels
-https://www.youtube.com/user/symantec/channels
-https://www.youtube.com/c/QuantamagazineOrgNews/videos
-https://www.youtube.com/c/Splunkofficial/channels
-```
-</details>
 Enter the python interpreter:
 
 ```
