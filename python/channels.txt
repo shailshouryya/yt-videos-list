@@ -22,7 +22,7 @@ https://www.youtube.com/c/TEDFellow/videos                                      
 https://www.youtube.com/c/tedededucatortalks/videos                              # TED-Ed Educator Talks
 https://www.youtube.com/c/TEDTranslators/videos                                  # TED Translators
 https://www.youtube.com/c/TEDEspanol/videos                                      # TED en Español
-https://www.youtube.com/teded/featured                                           # TED-Ed
+https://www.youtube.com/teded/                                                   # TED-Ed
 https://www.youtube.com/c/IBMSecurity/channels                                   # IBM Security
 https://www.youtube.com/user/symantec/channels                                   # Symantec
 https://www.youtube.com/c/QuantamagazineOrgNews/videos                           # Quanta Magazine
