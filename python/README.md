@@ -145,7 +145,7 @@ python      # Windows
 from yt_videos_list import ListCreator
 
 lc = ListCreator(driver='firefox', scroll_pause_time=1.2)
-create_list_from(path_to_channel_urls_file='channels.txt', number_of_threads=4)
+lc.create_list_from(path_to_channel_urls_file='channels.txt', number_of_threads=4)
 
 help(lc.create_list_from) # see API method details
 ```
