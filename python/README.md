@@ -147,6 +147,19 @@ from yt_videos_list import ListCreator
 lc = ListCreator(driver='firefox', scroll_pause_time=1.2)
 lc.create_list_from(path_to_channel_urls_file='channels.txt', number_of_threads=4)
 
+# configuring settings:
+lc.create_list_from(
+  path_to_channel_urls_file='channels.txt',
+  number_of_threads=4,
+  min_sleep=1,
+  max_sleep=5,
+  after_n_channels_pause_for_s=(20, 10),
+  log_subthread_status_silently=False,
+  log_subthread_info_silently=False
+)                                                                     # defaults (keyword argument form)
+lc.create_list_from('channels.txt', 4, 1, 5, (20, 10), False, False)  # defaults (positional argument form)
+lc.create_list_from('channels.txt', min_sleep=3, max_sleep=10)        # modifying only min_sleep and max_sleep
+
 help(lc.create_list_from) # see API method details
 ```
 - See [Thread about multi-threading with yt_videos_list](https://github.com/Shail-Shouryya/yt-videos-list/discussions/11) for more information!
