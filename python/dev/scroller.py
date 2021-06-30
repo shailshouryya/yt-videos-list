@@ -5,24 +5,25 @@ from .custom_logger import log
 from .notifications import Common as common_message
 
 
-def scroll_to_bottom(url, driver, scroll_pause_time, logging_locations):
+def scroll_to_bottom(url, driver, scroll_pause_time, logging_locations, verify_page_bottom_n_times):
     start_time = time.perf_counter() # timer stops in save_elements_to_list() function
     current_elements_count = None
     new_elements_count     = count_videos_on_page(driver)
-    def verify_scrolled_to_page_bottom():
-        # wait scroll_pause_time * 2 seconds and check again to verify you really did reach the end of the page, and there wasn't a buffer loading period
-        log(common_message.no_new_videos_found(scroll_pause_time * 2), logging_locations)
-        time.sleep(scroll_pause_time * 2)
-        new_elements_count = count_videos_on_page(driver)
-        if new_elements_count == current_elements_count:
-            log('Reached end of page!', logging_locations)
-        return new_elements_count
-    while new_elements_count != current_elements_count:
+    num_times_count_same   = -1
+    while True:
         current_elements_count = new_elements_count
         scroll_down(driver, scroll_pause_time, logging_locations)
         new_elements_count = count_videos_on_page(driver)
         if new_elements_count == current_elements_count:
-            new_elements_count = verify_scrolled_to_page_bottom()
+            num_times_count_same += 1
+            times = 'times' if num_times_count_same == 1 else 'times'
+            log(f'Found {new_elements_count} videos. Verified this is the page bottom {num_times_count_same} {times}. Need to verify {verify_page_bottom_n_times} {times} before writing to file...', logging_locations)
+            if num_times_count_same == verify_page_bottom_n_times:
+                # THIS IS THE BREAK CONDITION FOR THE WHILE LOOP!
+                break
+        else:
+            num_times_count_same = -1
+    log('Reached end of page!', logging_locations)
     return save_elements_to_list(driver, start_time, scroll_pause_time, url, logging_locations)
 
 def count_videos_on_page(driver):
