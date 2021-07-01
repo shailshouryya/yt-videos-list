@@ -2,7 +2,6 @@ import re
 import time
 
 from .custom_logger import log
-from .notifications import Common as common_message
 
 
 def scroll_to_bottom(url, driver, scroll_pause_time, logging_locations, verify_page_bottom_n_times):
