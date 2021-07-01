@@ -167,7 +167,7 @@ def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronologi
  @contextlib.contextmanager
  def yield_logger(file_name):
   log_file = f'{file_name}.log'
-  with open (log_file, 'a', encoding='utf-8') as output_location:
+  with open(log_file, mode='a', encoding='utf-8') as output_location:
    if log_silently is True: yield (output_location,)
    else: yield (output_location, sys.stdout)
  verify_writing_to_at_least_one_file()

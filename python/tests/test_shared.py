@@ -29,7 +29,7 @@ def log_test_info(message, *args):
     message      = f'{current_time}{utc_offset} {thread_name:>12} {message}\n'
     sys.stdout.writelines(message)
     for log_file in args:
-        with open (log_file, 'a', encoding='utf-8') as output_location:
+        with open(log_file, mode='a', encoding='utf-8') as output_location:
             output_location.writelines(message)
 
 
@@ -276,11 +276,11 @@ def compare_test_files_to_reference_files(full_file, test_output_file, log_file)
     more work to do. This is a known bug, and will be addressed in
     a future fix.
     '''
-    with open(f'{test_output_file}.txt', 'r', encoding='utf-8') as test_txt, open(f'{test_output_file}.csv', 'r', encoding='utf-8') as test_csv, open(f'{test_output_file}.md', 'r', encoding='utf-8') as test_md:
+    with open(f'{test_output_file}.txt', mode='r', encoding='utf-8') as test_txt, open(f'{test_output_file}.csv', mode='r', encoding='utf-8') as test_csv, open(f'{test_output_file}.md', mode='r', encoding='utf-8') as test_md:
         current_txt = hashlib.sha256(test_txt.read().encode('utf-8')).hexdigest()
         current_csv = hashlib.sha256(test_csv.read().encode('utf-8')).hexdigest()
         current_md  = hashlib.sha256(test_md.read().encode ('utf-8')).hexdigest()
-    with open(f'{full_file}.txt', 'r', encoding='utf-8') as full_txt, open(f'{full_file}.csv', 'r', encoding='utf-8') as full_csv, open(f'{full_file}.md', 'r', encoding='utf-8') as full_md:
+    with open(f'{full_file}.txt', mode='r', encoding='utf-8') as full_txt, open(f'{full_file}.csv', mode='r', encoding='utf-8') as full_csv, open(f'{full_file}.md', mode='r', encoding='utf-8') as full_md:
         verified_txt = hashlib.sha256(full_txt.read().encode('utf-8')).hexdigest()
         verified_csv = hashlib.sha256(full_csv.read().encode('utf-8')).hexdigest()
         verified_md  = hashlib.sha256(full_md.read().encode ('utf-8')).hexdigest()

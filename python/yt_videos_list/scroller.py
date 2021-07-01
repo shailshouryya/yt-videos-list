@@ -46,7 +46,7 @@ def determine_common_visited_videos(file_name, txt_exists, csv_exists, md_exists
  else: visited_videos = existing_videos[0]
  return visited_videos, stored_in_txt, stored_in_csv, stored_in_md
 def store_already_written_videos(file_name, file_type):
- with open(f'{file_name}.{file_type}', 'r', encoding='utf-8') as file:
+ with open(f'{file_name}.{file_type}', mode='r', encoding='utf-8') as file:
   if file_type in ('txt', 'md'): return set(re.findall('(https://www\.youtube\.com/watch\?v=.+?)(?:\s|\n)', file.read()))
   if file_type == 'csv': return set(re.findall('(https://www\.youtube\.com/watch\?v=.+?),', file.read()))
 def scroll_down(driver, scroll_pause_time, logging_locations):

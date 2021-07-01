@@ -41,7 +41,7 @@ def minify_source_directory_into_target_directory(slash, source_directory, targe
     for local_directory in local_directories:
         os.makedirs(f'{target_directory}{local_directory}', exist_ok=True) # since sets are unordered, we might create a nested directory before the outer directory, so the exist_ok argument=True avoids this error -> FileExistsError: [Errno 17] File exists: '{local_directory}' (which is an outer directory for a nested directory that we made in the process of making a nested directory)
     for file in valid_files:
-        with open(f'{source_directory}{slash}{file}', 'r', encoding='utf-8') as read_file, open(f'{target_directory}{slash}{file}', 'w', encoding='utf-8') as write_file:
+        with open(f'{source_directory}{slash}{file}', mode='r', encoding='utf-8') as read_file, open(f'{target_directory}{slash}{file}', mode='w', encoding='utf-8') as write_file:
             if '__init__.py' in file:
                 write_file.write(read_file.read())
                 continue

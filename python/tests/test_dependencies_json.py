@@ -41,7 +41,7 @@ def main():
 
     write_pseudo_json(drivers_dictionary)
     format_pseudo_json()
-    with open(f'..{PATH_SLASH}docs{PATH_SLASH}dependencies.json', 'w', encoding='utf-8') as json_file:
+    with open(f'..{PATH_SLASH}docs{PATH_SLASH}dependencies.json', mode='w', encoding='utf-8') as json_file:
         json.dump(drivers_dictionary, json_file, indent=4)
 
 
@@ -53,7 +53,7 @@ def write_pseudo_json(drivers_dictionary):
     strips formatting characters used to
     separate commands (commas, newlines).
     '''
-    with open('temp.json', 'w', encoding='utf-8') as file:
+    with open('temp.json', mode='w', encoding='utf-8') as file:
         file.write('{\n')
         for driver in drivers_dictionary:
             file.write(f'  {driver}: ' + '{\n')
@@ -73,7 +73,7 @@ def format_pseudo_json():
     except with an extra newline, instead of double
     quotation marks and commas, to separate the commands.
     '''
-    with open('temp.json', 'r', encoding='utf-8') as ftemp, open(f'..{PATH_SLASH}docs{PATH_SLASH}dependencies_pseudo_json.txt', 'w', encoding='utf-8') as ffinal:
+    with open('temp.json', mode='r', encoding='utf-8') as ftemp, open(f'..{PATH_SLASH}docs{PATH_SLASH}dependencies_pseudo_json.txt', mode='w', encoding='utf-8') as ffinal:
         formatted = re.sub(',\n    ]', '\n    ]', ftemp.read())
         formatted = re.sub('],\n  },', ']\n  },', formatted)
         formatted = re.sub('},\n}',    '}\n}',    formatted)
