@@ -20,7 +20,7 @@ def scroll_to_bottom(url, driver, scroll_pause_time, logging_locations, verify_p
   else:
    num_times_count_same = -1
  log('Reached end of page!', logging_locations)
- return save_elements_to_list(driver, start_time, scroll_pause_time, url, logging_locations)
+ return save_elements_to_list(driver, start_time, url, logging_locations)
 def count_videos_on_page(driver):
  return driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
 def scroll_to_old_videos(url, driver, scroll_pause_time, logging_locations, file_name, txt_exists, csv_exists, md_exists):
@@ -33,7 +33,7 @@ def scroll_to_old_videos(url, driver, scroll_pause_time, logging_locations, file
   scroll_down(driver, scroll_pause_time, logging_locations)
   if url_of_last_loaded_video_on_page() in visited_videos:
    found_old_videos = True
- return save_elements_to_list(driver, start_time, scroll_pause_time, url, logging_locations), stored_in_txt, stored_in_csv, stored_in_md
+ return save_elements_to_list(driver, start_time, url, logging_locations), stored_in_txt, stored_in_csv, stored_in_md
 def determine_common_visited_videos(file_name, txt_exists, csv_exists, md_exists):
  stored_in_txt = store_already_written_videos(file_name, 'txt') if txt_exists else set()
  stored_in_csv = store_already_written_videos(file_name, 'csv') if csv_exists else set()
@@ -55,9 +55,9 @@ def scroll_down(driver, scroll_pause_time, logging_locations):
  time.sleep(scroll_pause_time)
  new_elements_count = count_videos_on_page(driver)
  log(f'Found {new_elements_count} videos...', logging_locations)
-def save_elements_to_list(driver, start_time, scroll_pause_time, url, logging_locations):
+def save_elements_to_list(driver, start_time, url, logging_locations):
  elements = driver.find_elements_by_xpath('//*[@id="video-title"]')
  end_time = time.perf_counter()
- total_time = end_time - start_time - scroll_pause_time
+ total_time = end_time - start_time
  log(f'It took {total_time} seconds to find {len(elements)} videos from {url}\n', logging_locations)
  return elements
