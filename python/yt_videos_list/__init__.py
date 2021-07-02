@@ -142,16 +142,16 @@ class ListCreator:
         Initializes an instance of ListCreator by setting the attributes of the instance to the provided arguments,
         and setting any attributes not provided as the default parameter value.
         '''
-        self.txt                   = txt
-        self.csv                   = csv
-        self.markdown              = md
-        self.reverse_chronological = reverse_chronological
-        self.headless              = headless
-        self.scroll_pause_time     = scroll_pause_time
-        self.driver                = None if driver is None else driver.lower()
-        self.cookie_consent        = cookie_consent
-        self.verify_page_bottom_n_times    = max(1, verify_page_bottom_n_times)
-        self.file_buffering                = file_buffering
+        self.txt                        = txt
+        self.csv                        = csv
+        self.markdown                   = md
+        self.reverse_chronological      = reverse_chronological
+        self.headless                   = headless
+        self.scroll_pause_time          = scroll_pause_time
+        self.driver                     = None if driver is None else driver.lower()
+        self.cookie_consent             = cookie_consent
+        self.verify_page_bottom_n_times = max(1, verify_page_bottom_n_times)
+        self.file_buffering             = file_buffering
 
 
     def __repr__(self):
@@ -168,15 +168,15 @@ class ListCreator:
         This is useful for typical users to see the attributes of the current instance and is ideal for human consumption.
         '''
         return f'''{self.__class__.__name__}() object created with attributes
-        txt                   = {self.txt}
-        csv                   = {self.csv}
-        md                    = {self.markdown}
-        reverse_chronological = {self.reverse_chronological}
-        headless              = {self.headless}
-        scroll_pause_time     = {self.scroll_pause_time}
-        driver                = {self.driver}
-        self.cookie_consent   = {self.cookie_consent}
-        verify_page_bottom_n_times    = {self.verify_page_bottom_n_times}
+        txt                        = {self.txt}
+        csv                        = {self.csv}
+        md                         = {self.markdown}
+        reverse_chronological      = {self.reverse_chronological}
+        headless                   = {self.headless}
+        scroll_pause_time          = {self.scroll_pause_time}
+        driver                     = {self.driver}
+        self.cookie_consent        = {self.cookie_consent}
+        verify_page_bottom_n_times = {self.verify_page_bottom_n_times}
         file_buffering                = {self.file_buffering}
 
         To recreate object, use:
