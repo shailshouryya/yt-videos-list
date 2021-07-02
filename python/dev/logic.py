@@ -16,7 +16,7 @@ from .notifications                            import Common, ModuleMessage, Scr
 from .custom_logger                            import log
 
 
-def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronological, headless, scroll_pause_time, user_driver, cookie_consent, verify_page_bottom_n_times, execution_type):
+def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronological, headless, scroll_pause_time, user_driver, cookie_consent, verify_page_bottom_n_times, file_buffering, execution_type):
     common_message = Common()
     module_message = ModuleMessage()
     script_message = ScriptMessage()
@@ -166,7 +166,7 @@ def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronologi
             with yield_logger(file_name) as logging_locations:
                 log( '>' * 50 + 'STARTING  PROGRAM' + '<' * 50, logging_locations)
                 log(f'Now scraping {url} using the {user_driver}driver:', logging_locations)
-                program.determine_action(url, driver, scroll_pause_time, reverse_chronological, file_name, txt, csv, markdown, logging_locations, verify_page_bottom_n_times)
+                program.determine_action(url, driver, scroll_pause_time, reverse_chronological, file_name, file_buffering, txt, csv, markdown, logging_locations, verify_page_bottom_n_times)
                 program_end = time.perf_counter()
                 total_time  = program_end - program_start
                 log(f'This program took {total_time} seconds to complete.', logging_locations)
@@ -211,7 +211,7 @@ def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronologi
     @contextlib.contextmanager
     def yield_logger(file_name):
         log_file = f'{file_name}.log'
-        with open(log_file, mode='a', encoding='utf-8') as output_location:
+        with open(log_file, mode='a', encoding='utf-8',  buffering=file_buffering) as output_location:
             if log_silently is True: yield (output_location,)
             else:                    yield (output_location, sys.stdout)
 

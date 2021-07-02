@@ -137,7 +137,7 @@ class ListCreator:
     | Thank you!!                                       |
     =====================================================
     '''
-    def __init__(self, txt=True, csv=True, md=True, reverse_chronological=True, headless=False, scroll_pause_time=0.8, driver=None, cookie_consent=False, verify_page_bottom_n_times=1):
+    def __init__(self, txt=True, csv=True, md=True, reverse_chronological=True, headless=False, scroll_pause_time=0.8, driver=None, cookie_consent=False, verify_page_bottom_n_times=1, file_buffering=-1):
         '''
         Initializes an instance of ListCreator by setting the attributes of the instance to the provided arguments,
         and setting any attributes not provided as the default parameter value.
@@ -151,6 +151,7 @@ class ListCreator:
         self.driver                = None if driver is None else driver.lower()
         self.cookie_consent        = cookie_consent
         self.verify_page_bottom_n_times    = max(1, verify_page_bottom_n_times)
+        self.file_buffering                = file_buffering
 
 
     def __repr__(self):
@@ -158,7 +159,7 @@ class ListCreator:
         Returns an unambiguous representation of the current instace that can be used to recreate the same exact object.
         This is useful for internal use and making developer debugging easier.
         '''
-        return f'{self.__class__.__name__}(txt={self.txt}, csv={self.csv}, md={self.markdown}, reverse_chronological={self.reverse_chronological}, headless={self.headless}, scroll_pause_time={self.scroll_pause_time}, driver={self.driver}, cookie_consent={self.cookie_consent}, verify_page_bottom_n_times={self.verify_page_bottom_n_times})'
+        return f'{self.__class__.__name__}(txt={self.txt}, csv={self.csv}, md={self.markdown}, reverse_chronological={self.reverse_chronological}, headless={self.headless}, scroll_pause_time={self.scroll_pause_time}, driver={self.driver}, cookie_consent={self.cookie_consent}, verify_page_bottom_n_times={self.verify_page_bottom_n_times}, file_buffering={self.file_buffering})'
 
 
     def __str__(self):
@@ -176,9 +177,10 @@ class ListCreator:
         driver                = {self.driver}
         self.cookie_consent   = {self.cookie_consent}
         verify_page_bottom_n_times    = {self.verify_page_bottom_n_times}
+        file_buffering                = {self.file_buffering}
 
         To recreate object, use:
-        {self.__class__.__name__}(txt={self.txt}, csv={self.csv}, md={self.markdown}, reverse_chronological={self.reverse_chronological}, headless={self.headless}, scroll_pause_time={self.scroll_pause_time}, driver={self.driver}, cookie_consent={self.cookie_consent}, verify_page_bottom_n_times={self.verify_page_bottom_n_times})
+        {self.__class__.__name__}(txt={self.txt}, csv={self.csv}, md={self.markdown}, reverse_chronological={self.reverse_chronological}, headless={self.headless}, scroll_pause_time={self.scroll_pause_time}, driver={self.driver}, cookie_consent={self.cookie_consent}, verify_page_bottom_n_times={self.verify_page_bottom_n_times}, file_buffering={self.file_buffering})
         '''
 
 
@@ -197,7 +199,7 @@ class ListCreator:
         UNLESS you provide the same **exact** name every time you rerun this.
         '''
         _execution_type     = 'module'
-        instance_attributes = (self.txt, self.csv, self.markdown, self.reverse_chronological, self.headless, self.scroll_pause_time, self.driver, self.cookie_consent, self.verify_page_bottom_n_times)
+        instance_attributes = (self.txt, self.csv, self.markdown, self.reverse_chronological, self.headless, self.scroll_pause_time, self.driver, self.cookie_consent, self.verify_page_bottom_n_times, self.file_buffering)
         return logic.execute(url, file_name, log_silently, *instance_attributes, _execution_type)
 
 
@@ -265,7 +267,7 @@ class ListCreator:
         )
         multiplier = max(0, max_sleep - min_sleep)
         modulo, seconds = after_n_channels_pause_for_s
-        with open(path_to_channel_urls_file, mode='r', encoding='utf-8') as txt_file, open(path_to_channel_urls_file.split(".")[0] + '.log', mode='a', encoding='utf-8') as log_file:
+        with open(path_to_channel_urls_file, mode='r', encoding='utf-8',  buffering=self.file_buffering) as txt_file, open(path_to_channel_urls_file.split(".")[0] + '.log', mode='a', encoding='utf-8',  buffering=self.file_buffering) as log_file:
             start = time.time()
             if log_subthread_info_silently: logging_locations = (log_file,)
             else:                           logging_locations = (log_file, sys.stdout)

@@ -7,7 +7,7 @@ from .notifications import Common
 from .custom_logger import log
 
 
-def determine_action(url, driver, scroll_pause_time, reverse_chronological, file_name, txt, csv, markdown, logging_locations, verify_page_bottom_n_times):
+def determine_action(url, driver, scroll_pause_time, reverse_chronological, file_name, file_buffering, txt, csv, markdown, logging_locations, verify_page_bottom_n_times):
     common_message = Common()
     txt_exists = os.path.isfile(f'{file_name}.txt') if txt      else False # only check if file exists if program was specified to extract info into txt file, otherwise set to False regardless of whether a txt file already exists or not
     csv_exists = os.path.isfile(f'{file_name}.csv') if csv      else False # only check if file exists if program was specified to extract info into csv file, otherwise set to False regardless of whether a csv file already exists or not
@@ -44,18 +44,18 @@ def determine_action(url, driver, scroll_pause_time, reverse_chronological, file
         # then RESTARTING at the beginning of the stored memory to save the video information to the next file.
         threads = []
         if txt:
-            if txt_exists: txt_thread = threading.Thread(target=writer.update_file, args=('txt', videos_list, file_name, reverse_chronological, logging_locations), kwargs={'timestamp': now(), 'stored_in_file': txt_videos})
-            else:          txt_thread = threading.Thread(target=writer.create_file, args=('txt', videos_list, file_name, reverse_chronological, logging_locations), kwargs={'timestamp': now()})
+            if txt_exists: txt_thread = threading.Thread(target=writer.update_file, args=('txt', videos_list, file_name, file_buffering, reverse_chronological, logging_locations), kwargs={'timestamp': now(), 'stored_in_file': txt_videos})
+            else:          txt_thread = threading.Thread(target=writer.create_file, args=('txt', videos_list, file_name, file_buffering, reverse_chronological, logging_locations), kwargs={'timestamp': now()})
             txt_thread.start()
             threads.append(txt_thread)
         if csv:
-            if csv_exists: csv_thread = threading.Thread(target=writer.update_file, args=('csv', videos_list, file_name, reverse_chronological, logging_locations), kwargs={'timestamp': now(), 'stored_in_file': csv_videos})
-            else:          csv_thread = threading.Thread(target=writer.create_file, args=('csv', videos_list, file_name, reverse_chronological, logging_locations), kwargs={'timestamp': now()})
+            if csv_exists: csv_thread = threading.Thread(target=writer.update_file, args=('csv', videos_list, file_name, file_buffering, reverse_chronological, logging_locations), kwargs={'timestamp': now(), 'stored_in_file': csv_videos})
+            else:          csv_thread = threading.Thread(target=writer.create_file, args=('csv', videos_list, file_name, file_buffering, reverse_chronological, logging_locations), kwargs={'timestamp': now()})
             csv_thread.start()
             threads.append(csv_thread)
         if markdown:
-            if md_exists:  md_thread = threading.Thread(target=writer.update_file, args=('md', videos_list, file_name, reverse_chronological, logging_locations), kwargs={'timestamp': now(), 'stored_in_file': md_videos})
-            else:          md_thread = threading.Thread(target=writer.create_file, args=('md', videos_list, file_name, reverse_chronological, logging_locations), kwargs={'timestamp': now()})
+            if md_exists:  md_thread = threading.Thread(target=writer.update_file, args=('md', videos_list, file_name, file_buffering, reverse_chronological, logging_locations), kwargs={'timestamp': now(), 'stored_in_file': md_videos})
+            else:          md_thread = threading.Thread(target=writer.create_file, args=('md', videos_list, file_name, file_buffering, reverse_chronological, logging_locations), kwargs={'timestamp': now()})
             md_thread.start()
             threads.append(md_thread)
         for thread in threads:
@@ -66,14 +66,14 @@ def determine_action(url, driver, scroll_pause_time, reverse_chronological, file
         # 1 file I/O operation might slow the program down, since the program needs to manage the work of the subthread that
         # the MainThread could be doing.
         if txt:
-            if txt_exists: writer.update_file('txt', videos_list, file_name, reverse_chronological, logging_locations, timestamp=now(), stored_in_file=txt_videos)
-            else:          writer.create_file('txt', videos_list, file_name, reverse_chronological, logging_locations, timestamp=now())
+            if txt_exists: writer.update_file('txt', videos_list, file_name, file_buffering, reverse_chronological, logging_locations, timestamp=now(), stored_in_file=txt_videos)
+            else:          writer.create_file('txt', videos_list, file_name, file_buffering, reverse_chronological, logging_locations, timestamp=now())
         if csv:
-            if csv_exists: writer.update_file('csv', videos_list, file_name, reverse_chronological, logging_locations, timestamp=now(), stored_in_file=csv_videos)
-            else:          writer.create_file('csv', videos_list, file_name, reverse_chronological, logging_locations, timestamp=now())
+            if csv_exists: writer.update_file('csv', videos_list, file_name, file_buffering, reverse_chronological, logging_locations, timestamp=now(), stored_in_file=csv_videos)
+            else:          writer.create_file('csv', videos_list, file_name, file_buffering, reverse_chronological, logging_locations, timestamp=now())
         if markdown:
-            if md_exists:  writer.update_file('md', videos_list, file_name, reverse_chronological, logging_locations, timestamp=now(), stored_in_file=md_videos)
-            else:          writer.create_file('md', videos_list, file_name, reverse_chronological, logging_locations, timestamp=now())
+            if md_exists:  writer.update_file('md', videos_list, file_name, file_buffering, reverse_chronological, logging_locations, timestamp=now(), stored_in_file=md_videos)
+            else:          writer.create_file('md', videos_list, file_name, file_buffering, reverse_chronological, logging_locations, timestamp=now())
 
 def now():
     return datetime.datetime.now().isoformat().replace(':', '_').replace('.', '-')

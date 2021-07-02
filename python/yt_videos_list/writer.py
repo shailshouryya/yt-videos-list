@@ -9,11 +9,11 @@ def time_writer_function(writer_function):
         log_extraction_information(writer_function.__name__, writer_function, args, kwargs)
     return wrapper_timer
 @time_writer_function
-def create_file(file_type, list_of_videos, file_name, reverse_chronological, logging_locations, timestamp):
+def create_file(file_type, list_of_videos, file_name, file_buffering, reverse_chronological, logging_locations, timestamp):
     if file_type == 'csv': newline = ''
     else:                  newline = None
     csv_writer = None
-    with open(f'temp_{file_name}_{timestamp}.{file_type}', mode='w', newline=newline, encoding='utf-8') as temp_file:
+    with open(f'temp_{file_name}_{timestamp}.{file_type}', mode='w', newline=newline, encoding='utf-8',  buffering=file_buffering) as temp_file:
         if file_type == 'csv':
             fieldnames = ['Video Number', 'Video Title', 'Video URL', 'Watched?', 'Watch again later?', 'Notes']
             csv_writer = csv.DictWriter(temp_file, fieldnames=fieldnames)
@@ -38,11 +38,11 @@ def prepare_output(list_of_videos, reverse_chronological):
         incrementer  = 1
     return total_videos, total_writes, video_number, incrementer
 @time_writer_function
-def update_file(file_type, list_of_videos, file_name, reverse_chronological, logging_locations, timestamp, stored_in_file):
+def update_file(file_type, list_of_videos, file_name, file_buffering, reverse_chronological, logging_locations, timestamp, stored_in_file):
     if stored_in_file is None: stored_in_file = store_already_written_videos(file_name, file_type)
     if file_type == 'csv': newline = ''
     else:                  newline = None
-    with open(f'{file_name}.{file_type}', mode='r+', newline=newline, encoding='utf-8') as old_file, open(f'temp_{file_name}_{timestamp}.{file_type}', mode='w+', newline=newline, encoding='utf-8') as temp_file:
+    with open(f'{file_name}.{file_type}', mode='r+', newline=newline, encoding='utf-8',  buffering=file_buffering) as old_file, open(f'temp_{file_name}_{timestamp}.{file_type}', mode='w+', newline=newline, encoding='utf-8',  buffering=file_buffering) as temp_file:
         if file_type == 'csv':
             video_number = int(max(re.findall('^(\d+)?,', old_file.read(), re.M), key = lambda i: int(i)))
             fieldnames   = ['Video Number', 'Video Title', 'Video URL', 'Watched?', 'Watch again later?', 'Notes']
