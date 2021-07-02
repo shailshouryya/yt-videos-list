@@ -44,12 +44,12 @@ def update_file(file_type, list_of_videos, file_name, file_buffering, reverse_ch
     else:                  newline = None
     with open(f'{file_name}.{file_type}', mode='r+', newline=newline, encoding='utf-8',  buffering=file_buffering) as old_file, open(f'temp_{file_name}_{timestamp}.{file_type}', mode='w+', newline=newline, encoding='utf-8',  buffering=file_buffering) as temp_file:
         if file_type == 'csv':
-            video_number = int(max(re.findall('^(\d+)?,', old_file.read(), re.M), key = lambda i: int(i)))
+            video_number = int(max(re.findall('^(\d+)?,', old_file.read(), re.M), key=lambda i: int(i)))
             fieldnames   = ['Video Number', 'Video Title', 'Video URL', 'Watched?', 'Watch again later?', 'Notes']
             csv_writer       = csv.DictWriter(temp_file, fieldnames=fieldnames)
             if reverse_chronological: csv_writer.writeheader()
         else:
-            video_number = int(max(re.findall('^Video Number:\s*(\d+)', old_file.read(), re.M), key = lambda i: int(i)))
+            video_number = int(max(re.findall('^Video Number:\s*(\d+)', old_file.read(), re.M), key=lambda i: int(i)))
             csv_writer   = None
         new_videos = update_writer(file_type, temp_file, old_file, csv_writer, stored_in_file, reverse_chronological, list_of_videos, video_number, logging_locations)
     return file_name, new_videos, reverse_chronological, logging_locations
