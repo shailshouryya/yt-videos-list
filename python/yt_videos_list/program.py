@@ -33,32 +33,38 @@ def determine_action(url, driver, scroll_pause_time, reverse_chronological, file
  if use_threads:
   #
   threads = []
+  def call(function, file_type, file_videos=None):
+   if function == 'update_file': return threading.Thread(target=writer.update_file, args=(file_type, videos_list, file_name, file_buffering, reverse_chronological, logging_locations), kwargs={'timestamp': now(), 'stored_in_file': file_videos})
+   else: return threading.Thread(target=writer.create_file, args=(file_type, videos_list, file_name, file_buffering, reverse_chronological, logging_locations), kwargs={'timestamp': now()})
   if txt:
-   if txt_exists: txt_thread = threading.Thread(target=writer.update_file, args=('txt', videos_list, file_name, file_buffering, reverse_chronological, logging_locations), kwargs={'timestamp': now(), 'stored_in_file': txt_videos})
-   else: txt_thread = threading.Thread(target=writer.create_file, args=('txt', videos_list, file_name, file_buffering, reverse_chronological, logging_locations), kwargs={'timestamp': now()})
+   if txt_exists: txt_thread = call('update_file', 'txt', txt_videos)
+   else: txt_thread = call('create_file', 'txt')
    txt_thread.start()
    threads.append(txt_thread)
   if csv:
-   if csv_exists: csv_thread = threading.Thread(target=writer.update_file, args=('csv', videos_list, file_name, file_buffering, reverse_chronological, logging_locations), kwargs={'timestamp': now(), 'stored_in_file': csv_videos})
-   else: csv_thread = threading.Thread(target=writer.create_file, args=('csv', videos_list, file_name, file_buffering, reverse_chronological, logging_locations), kwargs={'timestamp': now()})
+   if csv_exists: csv_thread = call('update_file', 'csv', csv_videos)
+   else: csv_thread = call('create_file', 'csv')
    csv_thread.start()
    threads.append(csv_thread)
   if markdown:
-   if md_exists: md_thread = threading.Thread(target=writer.update_file, args=('md', videos_list, file_name, file_buffering, reverse_chronological, logging_locations), kwargs={'timestamp': now(), 'stored_in_file': md_videos})
-   else: md_thread = threading.Thread(target=writer.create_file, args=('md', videos_list, file_name, file_buffering, reverse_chronological, logging_locations), kwargs={'timestamp': now()})
+   if md_exists: md_thread = call('update_file', 'md', md_videos)
+   else: md_thread = call('create_file', 'md')
    md_thread.start()
    threads.append(md_thread)
   for thread in threads:
    thread.join()
  else:
+  def call(function, file_type, file_videos=None):
+   if function == 'update_file': return writer.update_file(file_type, videos_list, file_name, file_buffering, reverse_chronological, logging_locations, timestamp=now(), stored_in_file=file_videos)
+   else: return writer.create_file(file_type, videos_list, file_name, file_buffering, reverse_chronological, logging_locations, timestamp=now())
   if txt:
-   if txt_exists: writer.update_file('txt', videos_list, file_name, file_buffering, reverse_chronological, logging_locations, timestamp=now(), stored_in_file=txt_videos)
-   else: writer.create_file('txt', videos_list, file_name, file_buffering, reverse_chronological, logging_locations, timestamp=now())
+   if txt_exists: call('create_file', 'txt', txt_videos)
+   else: call('create_file', 'txt')
   if csv:
-   if csv_exists: writer.update_file('csv', videos_list, file_name, file_buffering, reverse_chronological, logging_locations, timestamp=now(), stored_in_file=csv_videos)
-   else: writer.create_file('csv', videos_list, file_name, file_buffering, reverse_chronological, logging_locations, timestamp=now())
+   if csv_exists: call('create_file', 'csv', csv_videos)
+   else: call('create_file', 'csv')
   if markdown:
-   if md_exists: writer.update_file('md', videos_list, file_name, file_buffering, reverse_chronological, logging_locations, timestamp=now(), stored_in_file=md_videos)
-   else: writer.create_file('md', videos_list, file_name, file_buffering, reverse_chronological, logging_locations, timestamp=now())
+   if md_exists: call('create_file', 'md', md_videos)
+   else: call('create_file', 'md')
 def now():
  return datetime.datetime.now().isoformat().replace(':', '_').replace('.', '-')
