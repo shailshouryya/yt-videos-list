@@ -139,18 +139,18 @@ class ListCreator:
     -----------------------------------------------------------------------------------------------------
 
     Minimalist with longer pauses (useful for slow internet) for channels with a couple hundred videos:
-    -> lc - ListCreator(scroll_pause_time=1.2)
+    -> lc = ListCreator(scroll_pause_time=1.2)
 
     Minimalist with shorter pauses (useful for fast internet) for channels with a couple hundred videos:
-    -> lc - ListCreator(scroll_pause_time=0.7)
+    -> lc = ListCreator(scroll_pause_time=0.7)
 
     -----------------------------------------------------------------------------------------------------
 
     Minimalist with longer pauses (useful for slow internet) for channels with THOUSANDS of videos:
-    -> lc - ListCreator(scroll_pause_time=1.2, verify_page_bottom_n_times=40)
+    -> lc = ListCreator(scroll_pause_time=1.2, verify_page_bottom_n_times=40)
 
     Minimalist with shorter pauses (useful for fast internet) for channels with THOUSANDS of videos:
-    -> lc - ListCreator(scroll_pause_time=0.7, verify_page_bottom_n_times=40)
+    -> lc = ListCreator(scroll_pause_time=0.7, verify_page_bottom_n_times=40)
 
     -----------------------------------------------------------------------------------------------------
 
