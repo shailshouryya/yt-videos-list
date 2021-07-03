@@ -86,6 +86,26 @@ class ListCreator:
         and for slow connections you may want to increase the value.
           -> scroll_pause_time=0.8 (default)
 
+    Options for the `verify_page_bottom_n_times` argument are any int values greater than 0 (defaults to 3)
+      * NOTE: this argument is only used when CREATING a new file for a
+              new channel, and is unused when UPDATING an existing file for an already scraped channel.
+      * The value you provide will be how many times the program needs to verify it acually reached the
+        bottom of the page before accepting it is the bottom of the page, and starting to write the information
+        to the output file(s).
+      * For channels that have uploaded THOUSANDS of videos, increase this value to
+        a large number that you think should be sufficient to verify the program reached the bottom of the page.
+      * To determine HOW large of a value you should provide, determine the length of time you'd like to wait
+        before being reasonably sure that you reached the bottom of the page and it's not just YouTube's server
+        trying to fetch the response from an old database entry, and divide the time you decided to wait by the
+        scroll_pause_time argument.
+          -> For example, if you want to wait 45 seconds and you set the scrioll_pause_time value to 1.0
+            -> your_time / scroll_pause_time
+            -> 45 / 1.0
+            -> 45
+            -> therefore: verify_page_bottom_n_times=45
+          -> For channels with only a couple hundred videos (or less), the default value of verify_page_bottom_n_times=3
+             **should** be sufficient.
+      * See commit a68f8f62e5c343cbb0641125e271bb96cc4f0750 for more details.
 
 
     #####################################################################################################
@@ -118,11 +138,19 @@ class ListCreator:
 
     -----------------------------------------------------------------------------------------------------
 
-    Minimalist with longer pauses (useful for slow internet):
+    Minimalist with longer pauses (useful for slow internet) for channels with a couple hundred videos:
     -> lc - ListCreator(scroll_pause_time=1.2)
 
-    Minimalist with shorter pauses (useful for fast internet):
+    Minimalist with shorter pauses (useful for fast internet) for channels with a couple hundred videos:
     -> lc - ListCreator(scroll_pause_time=0.7)
+
+    -----------------------------------------------------------------------------------------------------
+
+    Minimalist with longer pauses (useful for slow internet) for channels with THOUSANDS of videos:
+    -> lc - ListCreator(scroll_pause_time=1.2, verify_page_bottom_n_times=40)
+
+    Minimalist with shorter pauses (useful for fast internet) for channels with THOUSANDS of videos:
+    -> lc - ListCreator(scroll_pause_time=0.7, verify_page_bottom_n_times=40)
 
     -----------------------------------------------------------------------------------------------------
 
