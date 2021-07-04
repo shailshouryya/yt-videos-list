@@ -259,6 +259,22 @@ There are a number of optional arguments you can specify during the instantiatio
       -> therefore: `verify_page_bottom_n_times=45`
     - For channels with only a couple hundred videos (or less), the default value of verify_`page_bottom_n_times=3` **should** be sufficient.
   - See commit a68f8f62e5c343cbb0641125e271bb96cc4f0750 for more details.
+- `file_buffering` argument:
+  - any `int` values greater than 0 (default -1, which uses the default OS setting)
+  - LEAVE THIS ALONE IF YOU'RE UNSURE!
+  - Documentation:
+    - https://docs.python.org/3/library/functions.html#open
+  - Deep dive:
+    - https://stackoverflow.com/questions/3167494/how-often-does-python-flush-to-a-file
+    - https://stackoverflow.com/questions/10019456/usage-of-sys-stdout-flush-method
+      - https://stackoverflow.com/questions/230751/how-can-i-flush-the-output-of-the-print-function
+      - https://en.wikipedia.org/wiki/Data_buffer
+      - https://stackoverflow.com/questions/1450551/buffered-vs-unbuffered-io
+    - https://www.quora.com/What-does-flushing-files-or-Stdin-do-in-Python
+    - https://www.quora.com/Whats-the-difference-between-buffered-I-O-and-unbuffered-I-O
+    - https://stackoverflow.com/questions/8409050/unix-buffered-vs-unbuffered-i-o
+    - https://medium.com/@bramblexu/three-ways-to-close-buffer-for-stdout-stdin-stderr-in-python-8be694bd2737
+    - https://www.quora.com/In-C-what-does-buffering-I-O-or-buffered-I-O-mean
 
 </details>
 
