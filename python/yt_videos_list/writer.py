@@ -96,17 +96,19 @@ def write_text(file, video_title, video_url, video_duration, video_number, incre
     newline = '\n'
     markdown = file_type == 'md'
     if markdown: newline *= 2
+    def ljust(text):
+        return f'{text}'.ljust(19)
     if markdown:
-        file.write(f'## Video Title:    {video_title}{newline}')
-        file.write(f'Video Number:      {video_number}{newline}')
+        file.write(f'{ljust("## Video Title:")}{video_title}{newline}')
+        file.write(f'{ljust("Video Number:")}{video_number}{newline}')
     else:
-        file.write(f'Video Number:      {video_number}{newline}')
-        file.write(f'Video Title:       {video_title}{newline}')
-    file.write(f'Video Duration:    {video_duration}{newline}')
-    file.write(f'Video URL:         {video_url}{newline}')
-    file.write(f'Watched?           {newline}')
-    file.write(f'Watch again later? {newline}')
-    file.write(f'Notes:             {newline}')
+        file.write(f'{ljust("Video Number:")}{video_number}{newline}')
+        file.write(f'{ljust("Video Title:")}{video_title}{newline}')
+    file.write(f'{ljust("Video Duration:")}{video_duration}{newline}')
+    file.write(f'{ljust("Video URL:")}{video_url}{newline}')
+    file.write(f'{ljust("Watched:")}{newline}')
+    file.write(f'{ljust("Watch again later:")}{newline}')
+    file.write(f'{ljust("Notes:")}{newline}')
     file.write('*'*75 + newline)
     return update_status(video_number, total_writes, incrementer)
 def write_csv(writer, video_title, video_url, video_duration, video_number, incrementer, total_writes):
