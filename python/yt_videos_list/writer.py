@@ -95,19 +95,18 @@ def entry(file_type, file_object, csv_writer, selenium_element, video_number, in
 def write_text(file, video_title, video_url, video_duration, video_number, incrementer, total_writes, file_type):
     newline = '\n'
     markdown = file_type == 'md'
-    if markdown: spacing = f'{newline}' + '- ' + f'{newline}'
-    else:  spacing = f'{newline}' + ' '*6
+    if markdown: newline *= 2
     if markdown:
-        file.write(f'### Video Title:  {video_title}{newline}')
-        file.write(f'Video Number:   {video_number}{newline}')
+        file.write(f'## Video Title:    {video_title}{newline}')
+        file.write(f'Video Number:      {video_number}{newline}')
     else:
-        file.write(f'Video Number:   {video_number}{newline}')
-        file.write(f'Video Title:    {video_title}{newline}')
-    file.write(f'Video Duration: {video_duration}{newline}')
-    file.write(f'Video URL:      {video_url}{newline}')
-    file.write(f'Watched?{spacing}{newline}')
-    file.write(f'Watch again later?{spacing}{newline}')
-    file.write(f'Notes:{spacing}{newline}')
+        file.write(f'Video Number:      {video_number}{newline}')
+        file.write(f'Video Title:       {video_title}{newline}')
+    file.write(f'Video Duration:    {video_duration}{newline}')
+    file.write(f'Video URL:         {video_url}{newline}')
+    file.write(f'Watched?           {newline}')
+    file.write(f'Watch again later? {newline}')
+    file.write(f'Notes:             {newline}')
     file.write('*'*75 + newline)
     return update_status(video_number, total_writes, incrementer)
 def write_csv(writer, video_title, video_url, video_duration, video_number, incrementer, total_writes):
