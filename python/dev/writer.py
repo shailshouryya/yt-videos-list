@@ -111,37 +111,39 @@ def update_status(video_number, total_writes, incrementer):
 
 
 def entry(file_type, file_object, csv_writer, selenium_element, video_number, incrementer, total_writes):
-    if file_type == 'csv': return write_csv (csv_writer,  selenium_element, video_number, incrementer, total_writes)
-    else:                  return write_text(file_object, selenium_element, video_number, incrementer, total_writes, file_type)
+    video_title    = selenium_element.get_attribute("title")
+    video_url      = selenium_element.get_attribute("href")
+    video_duration = selenium_element.find_element_by_xpath('./../../../../ytd-thumbnail/a[@id="thumbnail"]/div[@id="overlays"]/ytd-thumbnail-overlay-time-status-renderer/span').text
+    if file_type == 'csv': return write_csv (csv_writer,  video_title, video_url, video_duration, video_number, incrementer, total_writes)
+    else:                  return write_text(file_object, video_title, video_url, video_duration, video_number, incrementer, total_writes, file_type)
 
-def write_text(file, selenium_element, video_number, incrementer, total_writes, file_type):
+def write_text(file, video_title, video_url, video_duration, video_number, incrementer, total_writes, file_type):
     newline = '\n'
     markdown = file_type == 'md'
-    video_duration = selenium_element.find_element_by_xpath('./../../../../ytd-thumbnail/a[@id="thumbnail"]/div[@id="overlays"]/ytd-thumbnail-overlay-time-status-renderer/span').text
     if markdown: spacing = f'{newline}' + '- ' + f'{newline}'
     else:  spacing = f'{newline}' + ' '*6
     if markdown:
-        file.write(f'### Video Title:  {selenium_element.get_attribute("title")}{newline}')
+        file.write(f'### Video Title:  {video_title}{newline}')
         file.write(f'Video Number:   {video_number}{newline}')
     else:
         file.write(f'Video Number:   {video_number}{newline}')
-        file.write(f'Video Title:    {selenium_element.get_attribute("title")}{newline}')
+        file.write(f'Video Title:    {video_title}{newline}')
     file.write(f'Video Duration: {video_duration}{newline}')
-    file.write(f'Video URL:      {selenium_element.get_attribute("href")}{newline}')
+    file.write(f'Video URL:      {video_url}{newline}')
     file.write(f'Watched?{spacing}{newline}')
     file.write(f'Watch again later?{spacing}{newline}')
     file.write(f'Notes:{spacing}{newline}')
     file.write('*'*75 + newline)
     return update_status(video_number, total_writes, incrementer)
 
-def write_csv(writer, selenium_element, video_number, incrementer, total_writes):
-    video_duration = selenium_element.find_element_by_xpath('./../../../../ytd-thumbnail/a[@id="thumbnail"]/div[@id="overlays"]/ytd-thumbnail-overlay-time-status-renderer/span').text
+def write_csv(writer, video_title, video_url, video_duration, video_number, incrementer, total_writes):
+
     writer.writerow(
         {
             'Video Number':      f'{video_number}',
-            'Video Title':       f'{selenium_element.get_attribute("title")}',
+            'Video Title':       f'{video_title}',
             'Video Duration':    f'{video_duration}',
-            'Video URL':         f'{selenium_element.get_attribute("href")}',
+            'Video URL':         f'{video_url}',
             'Watched?':           '',
             'Watch again later?': '',
             'Notes':              ''
