@@ -202,7 +202,7 @@ class ListCreator:
         Returns an unambiguous representation of the current instace that can be used to recreate the same exact object.
         This is useful for internal use and making developer debugging easier.
         '''
-        return f'{self.__class__.__name__}(txt={self.txt}, csv={self.csv}, md={self.markdown}, reverse_chronological={self.reverse_chronological}, headless={self.headless}, scroll_pause_time={self.scroll_pause_time}, driver={self.driver}, cookie_consent={self.cookie_consent}, verify_page_bottom_n_times={self.verify_page_bottom_n_times}, file_buffering={self.file_buffering})'
+        return f'''{self.__class__.__name__}(txt={self.txt}, csv={self.csv}, md={self.markdown}, reverse_chronological={self.reverse_chronological}, headless={self.headless}, scroll_pause_time={self.scroll_pause_time}, driver='{self.driver}', cookie_consent={self.cookie_consent}, verify_page_bottom_n_times={self.verify_page_bottom_n_times}, file_buffering={self.file_buffering})'''
 
 
     def __str__(self):
@@ -217,13 +217,13 @@ class ListCreator:
         reverse_chronological      = {self.reverse_chronological}
         headless                   = {self.headless}
         scroll_pause_time          = {self.scroll_pause_time}
-        driver                     = {self.driver}
-        self.cookie_consent        = {self.cookie_consent}
+        driver                     = '{self.driver}'
+        cookie_consent             = {self.cookie_consent}
         verify_page_bottom_n_times = {self.verify_page_bottom_n_times}
-        file_buffering                = {self.file_buffering}
+        file_buffering             = {self.file_buffering}
 
         To recreate object, use:
-        {self.__class__.__name__}(txt={self.txt}, csv={self.csv}, md={self.markdown}, reverse_chronological={self.reverse_chronological}, headless={self.headless}, scroll_pause_time={self.scroll_pause_time}, driver={self.driver}, cookie_consent={self.cookie_consent}, verify_page_bottom_n_times={self.verify_page_bottom_n_times}, file_buffering={self.file_buffering})
+        {self.__class__.__name__}(txt={self.txt}, csv={self.csv}, md={self.markdown}, reverse_chronological={self.reverse_chronological}, headless={self.headless}, scroll_pause_time={self.scroll_pause_time}, driver='{self.driver}', cookie_consent={self.cookie_consent}, verify_page_bottom_n_times={self.verify_page_bottom_n_times}, file_buffering={self.file_buffering})
         '''
 
 
