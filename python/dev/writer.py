@@ -113,7 +113,7 @@ def update_status(video_number, total_writes, incrementer):
 def entry(file_type, file_object, csv_writer, selenium_element, video_number, incrementer, total_writes):
     video_title    = selenium_element.get_attribute("title")
     video_url      = selenium_element.get_attribute("href")
-    video_duration = selenium_element.find_element_by_xpath('./../../../../ytd-thumbnail/a[@id="thumbnail"]/div[@id="overlays"]/ytd-thumbnail-overlay-time-status-renderer/span').text
+    video_duration = selenium_element.find_element_by_xpath('./../../../../ytd-thumbnail/a[@id="thumbnail"]/div[@id="overlays"]/ytd-thumbnail-overlay-time-status-renderer/span').get_attribute('innerHTML').split()[0]
     if file_type == 'csv': return write_csv (csv_writer,  video_title, video_url, video_duration, video_number, incrementer, total_writes)
     else:                  return write_text(file_object, video_title, video_url, video_duration, video_number, incrementer, total_writes, file_type)
 
