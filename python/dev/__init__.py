@@ -56,9 +56,9 @@ class ListCreator:
         -> driver='edge'
 
     Options for the `cookie_consent` argument are
-      * `False` (default) - block all cookie options if prompted by YouTube (at consent.youtube.com)
-      * `True`            - accept all cookie options if prompted by YouTube (also at consent.youtube.com)
-          -> `cookie_consent=False` (default) OR `cookie_consent=True`
+      * False (default) - block all cookie options if prompted by YouTube (at consent.youtube.com)
+      * True            - accept all cookie options if prompted by YouTube (also at consent.youtube.com)
+          -> cookie_consent=False (default) OR cookie_consent=True
 
     Options for the file type arguments (`csv`, `txt`, `md`) are
       * True (default) - create a file for the specified type
@@ -77,7 +77,7 @@ class ListCreator:
       * True            - run the driver without an open Selenium instance for viewing (runs in "invisible" mode)
           -> headless=False (default) OR headless=True
 
-    Options for the `scroll_pause_time argument` are any float values greater than 0 (defaults to 0.8)
+    Options for the `scroll_pause_time` argument` are any float values greater than 0 (defaults to 0.8)
       * CAUTION: reducing this value too much will result in the program not capturing all the videos,
         so be careful! Experiment :)
       * The value you provide will be how long (in seconds) the program waits before

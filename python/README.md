@@ -260,7 +260,7 @@ There are a number of optional arguments you can specify during the instantiatio
     - For channels with only a couple hundred videos (or less), the default value of verify_`page_bottom_n_times=3` **should** be sufficient.
   - See commit a68f8f62e5c343cbb0641125e271bb96cc4f0750 for more details.
 - `file_buffering` argument:
-  - any `int` values greater than 0 (default -1, which uses the default OS setting)
+  - any `int` values greater than `0` (default `-1`, which uses the default OS setting)
   - LEAVE THIS ALONE IF YOU'RE UNSURE!
   - Documentation:
     - https://docs.python.org/3/library/functions.html#open
