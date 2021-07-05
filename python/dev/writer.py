@@ -20,7 +20,7 @@ def create_file(file_type, list_of_videos, file_name, file_buffering, reverse_ch
     csv_writer = None
     with open(f'temp_{file_name}_{timestamp}.{file_type}', mode='w', newline=newline, encoding='utf-8',  buffering=file_buffering) as temp_file:
         if file_type == 'csv':
-            fieldnames   = ['Video Number', 'Video Title', 'Video Duration', 'Video URL', 'Watched?', 'Watch again later?', 'Notes']
+            fieldnames = ['Video Number', 'Video Title', 'Video Duration', 'Video URL', 'Watched?', 'Watch again later?', 'Notes']
             csv_writer = csv.DictWriter(temp_file, fieldnames=fieldnames)
             csv_writer.writeheader()
         total_videos = create_writer(file_type, temp_file, csv_writer, reverse_chronological, list_of_videos, logging_locations)
@@ -62,7 +62,7 @@ def update_file(file_type, list_of_videos, file_name, file_buffering, reverse_ch
         if file_type == 'csv':
             video_number = int(max(re.findall('^(\d+)?,', old_file.read(), re.M), key=lambda i: int(i)))
             fieldnames   = ['Video Number', 'Video Title', 'Video Duration', 'Video URL', 'Watched?', 'Watch again later?', 'Notes']
-            csv_writer       = csv.DictWriter(temp_file, fieldnames=fieldnames)
+            csv_writer   = csv.DictWriter(temp_file, fieldnames=fieldnames)
             if reverse_chronological: csv_writer.writeheader()
         else:
             video_number = int(max(re.findall('^Video Number:\s*(\d+)', old_file.read(), re.M), key=lambda i: int(i)))
@@ -88,7 +88,7 @@ def update_writer(file_type, new_file, old_file, csv_writer, visited_videos, rev
     return new_videos
 
 def prepare_updated_output(list_of_videos, videos_set, video_number, reverse_chronological):
-    new_videos = find_number_of_new_videos(list_of_videos, videos_set)
+    new_videos   = find_number_of_new_videos(list_of_videos, videos_set)
     total_writes = 0
     if reverse_chronological:
         video_number += new_videos
@@ -118,14 +118,14 @@ def entry(file_type, file_object, csv_writer, selenium_element, video_number, in
     else:                  return write_text(file_object, video_title, video_url, video_duration, video_number, incrementer, total_writes, file_type)
 
 def write_text(file, video_title, video_url, video_duration, video_number, incrementer, total_writes, file_type):
-    newline = '\n'
+    newline  = '\n'
     markdown = file_type == 'md'
     if markdown: newline *= 2
     def ljust(text):
         return f'{text}'.ljust(19)
     if markdown:
         file.write(f'{ljust("## Video Title:")}{video_title}{newline}')
-        file.write(f'{ljust("Video Number:")}{video_number}{newline}')
+        file.write(f'{ljust("Video Number:")  }{video_number}{newline}')
     else:
         file.write(f'{ljust("Video Number:")}{video_number}{newline}')
         file.write(f'{ljust("Video Title:")}{video_title}{newline}')
@@ -138,7 +138,6 @@ def write_text(file, video_title, video_url, video_duration, video_number, incre
     return update_status(video_number, total_writes, incrementer)
 
 def write_csv(writer, video_title, video_url, video_duration, video_number, incrementer, total_writes):
-
     writer.writerow(
         {
             'Video Number':      f'{video_number}',
