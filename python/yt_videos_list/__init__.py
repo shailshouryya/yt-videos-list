@@ -223,7 +223,7 @@ class ListCreator:
         file_buffering             = {self.file_buffering}
 
         To recreate object, use:
-        {self.__class__.__name__}(txt={self.txt}, csv={self.csv}, md={self.markdown}, reverse_chronological={self.reverse_chronological}, headless={self.headless}, scroll_pause_time={self.scroll_pause_time}, driver='{self.driver}', cookie_consent={self.cookie_consent}, verify_page_bottom_n_times={self.verify_page_bottom_n_times}, file_buffering={self.file_buffering})
+        {self.__repr__()}
         '''
 
 
