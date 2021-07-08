@@ -72,13 +72,13 @@ def determine_action(url, driver, scroll_pause_time, reverse_chronological, file
             if function == 'update_file': return writer.update_file(file_type, videos_list, file_name, file_buffering, reverse_chronological, logging_locations, timestamp=now(), stored_in_file=file_videos)
             else:                         return writer.create_file(file_type, videos_list, file_name, file_buffering, reverse_chronological, logging_locations, timestamp=now())
         if txt:
-            if txt_exists: call('create_file', 'txt', txt_videos)
+            if txt_exists: call('update_file', 'txt', txt_videos)
             else:          call('create_file', 'txt')
         if csv:
-            if csv_exists: call('create_file', 'csv', csv_videos)
+            if csv_exists: call('update_file', 'csv', csv_videos)
             else:          call('create_file', 'csv')
         if markdown:
-            if md_exists:  call('create_file', 'md', md_videos)
+            if md_exists:  call('update_file', 'md', md_videos)
             else:          call('create_file', 'md')
 
 def now():
