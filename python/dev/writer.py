@@ -20,7 +20,7 @@ def create_file(file_type, list_of_videos, file_name, file_buffering, reverse_ch
     csv_writer = None
     with open(f'temp_{file_name}_{timestamp}.{file_type}', mode='w', newline=newline, encoding='utf-8',  buffering=file_buffering) as temp_file:
         if file_type == 'csv':
-            fieldnames = ['Video Number', 'Video Title', 'Video Duration', 'Video URL', 'Watched?', 'Watch again later?', 'Notes']
+            fieldnames = ['Video Number', 'Video Title', 'Video Duration', 'Video URL', 'Watched', 'Watch again later', 'Notes']
             csv_writer = csv.DictWriter(temp_file, fieldnames=fieldnames)
             csv_writer.writeheader()
         total_videos = create_writer(file_type, temp_file, csv_writer, reverse_chronological, list_of_videos, logging_locations)
@@ -61,7 +61,7 @@ def update_file(file_type, list_of_videos, file_name, file_buffering, reverse_ch
     with open(f'{file_name}.{file_type}', mode='r+', newline=newline, encoding='utf-8',  buffering=file_buffering) as old_file, open(f'temp_{file_name}_{timestamp}.{file_type}', mode='w+', newline=newline, encoding='utf-8',  buffering=file_buffering) as temp_file:
         if file_type == 'csv':
             video_number = int(max(re.findall('^(\d+)?,', old_file.read(), re.M), key=lambda i: int(i)))
-            fieldnames   = ['Video Number', 'Video Title', 'Video Duration', 'Video URL', 'Watched?', 'Watch again later?', 'Notes']
+            fieldnames   = ['Video Number', 'Video Title', 'Video Duration', 'Video URL', 'Watched', 'Watch again later', 'Notes']
             csv_writer   = csv.DictWriter(temp_file, fieldnames=fieldnames)
             if reverse_chronological: csv_writer.writeheader()
         else:
@@ -144,8 +144,8 @@ def write_csv(writer, video_title, video_url, video_duration, video_number, incr
             'Video Title':       f'{video_title}',
             'Video Duration':    f'{video_duration}',
             'Video URL':         f'{video_url}',
-            'Watched?':           '',
-            'Watch again later?': '',
+            'Watched':           '',
+            'Watch again later': '',
             'Notes':              ''
         }
     )
