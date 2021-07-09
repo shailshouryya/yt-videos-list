@@ -95,11 +95,16 @@ def entry(file_type, file_object, csv_writer, selenium_element, video_number, in
 def write_text(file, video_title, video_url, video_duration, video_number, incrementer, total_writes, file_type):
     newline  = '\n'
     markdown = file_type == 'md'
-    if markdown: newline *= 2
     def ljust(text):
-        return f'{text}'.ljust(19)
+        if markdown:
+            prefix  = '### '
+            padding = 24
+        else:
+            prefix  = ''
+            padding = 19
+        return f'{prefix}{text}'.ljust(padding)
     if markdown:
-        file.write(f'{ljust("## Video Title:")}{video_title}{newline}')
+        file.write(f'## {video_title}{newline}')
         file.write(f'{ljust("Video Number:")  }{video_number}{newline}')
     else:
         file.write(f'{ljust("Video Number:")}{video_number}{newline}')
@@ -110,6 +115,7 @@ def write_text(file, video_title, video_url, video_duration, video_number, incre
     file.write(f'{ljust("Watch again later:")}{newline}')
     file.write(f'{ljust("Notes:")}{newline}')
     file.write('*'*75 + newline)
+    if markdown: file.write('\n')
     return update_status(video_number, total_writes, incrementer)
 def write_csv(writer, video_title, video_url, video_duration, video_number, incrementer, total_writes):
     writer.writerow(
