@@ -125,8 +125,8 @@ def run_test_case(list_creator, log_file):
     path_slash               = determine_path_slash()
     schafer5_url             = 'youtube.com/user/schafer5'
     is_reverse_chronological = getattr(list_creator, 'reverse_chronological')
-    if is_reverse_chronological: delete_all_schafer5_files('reverse_chronological_videos_list'); return verify_update(list_creator, schafer5_url, f'tests{path_slash}partial_schafer5_reverse_chronological', f'tests{path_slash}full_schafer5_reverse_chronological', log_file)
-    else:                        delete_all_schafer5_files('chronological_videos_list');         return verify_update(list_creator, schafer5_url, f'tests{path_slash}partial_schafer5_chronological',         f'tests{path_slash}full_schafer5_chronological', log_file)
+    if is_reverse_chronological: delete_all_schafer5_files('reverse_chronological_videos_list'); return verify_update(list_creator, schafer5_url, f'tests{path_slash}reference_files{path_slash}partial_schafer5_reverse_chronological', f'tests{path_slash}reference_files{path_slash}full_schafer5_reverse_chronological', log_file)
+    else:                        delete_all_schafer5_files('chronological_videos_list');         return verify_update(list_creator, schafer5_url, f'tests{path_slash}reference_files{path_slash}partial_schafer5_chronological',         f'tests{path_slash}reference_files{path_slash}full_schafer5_chronological', log_file)
 
 
 def delete_all_schafer5_files(suffix):
