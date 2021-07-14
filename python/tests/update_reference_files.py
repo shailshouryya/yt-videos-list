@@ -34,7 +34,7 @@ def update_schafer5_chronological():
     youtube.com/user/schafer5 channel (the
     reference channel for testing).
     '''
-    ListCreator(reverse_chronological=False).create_list_for('youtube.com/user/schafer5', file_name='full_schafer5_chronological')
+    ListCreator(reverse_chronological=False).create_list_for('youtube.com/user/schafer5', file_name='full_CoreySchafer_chronological')
 
 
 def update_schafer5_non_chronological():
@@ -44,7 +44,7 @@ def update_schafer5_non_chronological():
     youtube.com/user/schafer5 channel (the
     reference channel for testing).
     '''
-    ListCreator(reverse_chronological=True).create_list_for('youtube.com/user/schafer5', file_name='full_schafer5_reverse_chronological') # reverse_chronological is already True by default, just included here to be explicit
+    ListCreator(reverse_chronological=True).create_list_for('youtube.com/user/schafer5', file_name='full_CoreySchafer_reverse_chronological') # reverse_chronological is already True by default, just included here to be explicit
 
 
 def move_reference_files_to_tests():
@@ -54,12 +54,12 @@ def move_reference_files_to_tests():
     (yt_videos_list/python/tests/).
     '''
     path_slash = determine_path_slash()
-    os.replace('full_schafer5_chronological.txt',         f'tests{path_slash}reference_files{path_slash}full_schafer5_chronological.txt')
-    os.replace('full_schafer5_chronological.csv',         f'tests{path_slash}reference_files{path_slash}full_schafer5_chronological.csv')
-    os.replace('full_schafer5_chronological.md',          f'tests{path_slash}reference_files{path_slash}full_schafer5_chronological.md')
-    os.replace('full_schafer5_reverse_chronological.txt', f'tests{path_slash}reference_files{path_slash}full_schafer5_reverse_chronological.txt')
-    os.replace('full_schafer5_reverse_chronological.csv', f'tests{path_slash}reference_files{path_slash}full_schafer5_reverse_chronological.csv')
-    os.replace('full_schafer5_reverse_chronological.md',  f'tests{path_slash}reference_files{path_slash}full_schafer5_reverse_chronological.md')
+    os.replace('full_CoreySchafer_chronological_videos_list.txt',         f'tests{path_slash}reference_files{path_slash}full_CoreySchafer_chronological_videos_list.txt')
+    os.replace('full_CoreySchafer_chronological_videos_list.csv',         f'tests{path_slash}reference_files{path_slash}full_CoreySchafer_chronological_videos_list.csv')
+    os.replace('full_CoreySchafer_chronological_videos_list.md',          f'tests{path_slash}reference_files{path_slash}full_CoreySchafer_chronological_videos_list.md')
+    os.replace('full_CoreySchafer_reverse_chronological_videos_list.txt', f'tests{path_slash}reference_files{path_slash}full_CoreySchafer_reverse_chronological_videos_list.txt')
+    os.replace('full_CoreySchafer_reverse_chronological_videos_list.csv', f'tests{path_slash}reference_files{path_slash}full_CoreySchafer_reverse_chronological_videos_list.csv')
+    os.replace('full_CoreySchafer_reverse_chronological_videos_list.md',  f'tests{path_slash}reference_files{path_slash}full_CoreySchafer_reverse_chronological_videos_list.md')
 
 
 if __name__ == '__main__':

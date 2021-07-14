@@ -125,8 +125,8 @@ def run_test_case(list_creator, log_file):
     path_slash               = determine_path_slash()
     schafer5_url             = 'youtube.com/user/schafer5'
     is_reverse_chronological = getattr(list_creator, 'reverse_chronological')
-    if is_reverse_chronological: delete_all_schafer5_files('reverse_chronological_videos_list'); return verify_update(list_creator, schafer5_url, f'tests{path_slash}reference_files{path_slash}partial_schafer5_reverse_chronological', f'tests{path_slash}reference_files{path_slash}full_schafer5_reverse_chronological', log_file)
-    else:                        delete_all_schafer5_files('chronological_videos_list');         return verify_update(list_creator, schafer5_url, f'tests{path_slash}reference_files{path_slash}partial_schafer5_chronological',         f'tests{path_slash}reference_files{path_slash}full_schafer5_chronological', log_file)
+    if is_reverse_chronological: delete_all_schafer5_files('reverse_chronological_videos_list'); return verify_update(list_creator, schafer5_url, f'tests{path_slash}reference_files{path_slash}partial_CoreySchafer_reverse_chronological_videos_list', f'tests{path_slash}reference_files{path_slash}full_CoreySchafer_reverse_chronological_videos_list', log_file)
+    else:                        delete_all_schafer5_files('chronological_videos_list');         return verify_update(list_creator, schafer5_url, f'tests{path_slash}reference_files{path_slash}partial_CoreySchafer_chronological_videos_list',         f'tests{path_slash}reference_files{path_slash}full_CoreySchafer_chronological_videos_list', log_file)
 
 
 def delete_all_schafer5_files(suffix):
@@ -203,7 +203,7 @@ def use_partial_txt_only(test_file, suffix, log_file):
     or
     `chronological_videos_list`;
     the prefix in all cases is `CoreySchafer_`), then creates a
-    partial txt file using the `partial_schafer5_{suffix}.txt`
+    partial txt file using the `partial_CoreySchafer_{suffix}.txt`
     reference file.
     '''
     log_test_info('TESTING with a pre-existing txt file only (no pre-existing csv or md file)....\n', log_file)
@@ -217,7 +217,7 @@ def use_partial_csv_only(test_file, suffix, log_file):
     or
     `chronological_videos_list`;
     the prefix in all cases is `CoreySchafer_`), then creates a
-    partial csv file using the `partial_schafer5_{suffix}.csv`
+    partial csv file using the `partial_CoreySchafer_{suffix}.csv`
     reference file.
     '''
     log_test_info('TESTING with a pre-existing csv file only (no pre-existing txt or md file)....\n', log_file)
@@ -231,7 +231,7 @@ def use_partial_md_only(test_file, suffix, log_file):
     or
     `chronological_videos_list`;
     the prefix in all cases is `CoreySchafer_`), then creates a
-    partial md file using the `partial_schafer5_{suffix}.md`
+    partial md file using the `partial_CoreySchafer_{suffix}.md`
     reference file.
     '''
     log_test_info('TESTING with a pre-existing md file only (no pre-existing txt or csv file)....\n', log_file)
@@ -246,7 +246,7 @@ def use_partial_csv_txt_and_md(test_file, suffix, log_file):
     `chronological_videos_list`;
     the prefix in all cases is `CoreySchafer_`), then creates
     partial txt, csv, and md files using the
-    `partial_schafer5_{suffix}.{ext}` reference files.
+    `partial_CoreySchafer_{suffix}.{ext}` reference files.
     '''
     log_test_info('TESTING with pre-existing txt, csv, and md files....\n', log_file)
     create_partial_file(test_file, suffix, 'txt')
