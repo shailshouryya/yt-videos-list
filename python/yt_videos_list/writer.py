@@ -49,7 +49,7 @@ def update_file(file_type, list_of_videos, file_name, file_buffering, reverse_ch
             csv_writer   = csv.DictWriter(temp_file, fieldnames=fieldnames)
             if reverse_chronological: csv_writer.writeheader()
         else:
-            video_number = int(max(re.findall('^Video Number:\s*(\d+)', old_file.read(), re.M), key=lambda i: int(i)))
+            video_number = int(max(re.findall('^(?:### )?Video Number:\s*(\d+)', old_file.read(), re.M), key=lambda i: int(i)))
             csv_writer   = None
         new_videos = update_writer(file_type, temp_file, old_file, csv_writer, stored_in_file, reverse_chronological, list_of_videos, video_number, logging_locations)
     return file_name, new_videos, reverse_chronological, logging_locations
