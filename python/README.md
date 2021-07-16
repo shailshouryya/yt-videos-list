@@ -133,7 +133,7 @@ help(lc)
   <summary><b>Scraping multiple channels from a file simultaneously with multi-threading</b></summary>
 
 Add the url to every channel you want to extract information from in a `txt` file with every url placed on a new line.
-- example: [`channels.txt`](https://github.com/Shail-Shouryya/yt-videos-list/tree/main/python/channels.txt)
+- example: [`channels.txt`](./channels.txt) (NOTE this is a relative link, so this ***might*** not link properly on non-GitHub hosted sites!)
 
 Enter the python interpreter:
 
