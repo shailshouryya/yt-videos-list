@@ -45,6 +45,7 @@ This program relies on Selenium so it has built-in dependecy setup for all Selen
 ### [python](./python/README.md)
 
 #### See the [releases](https://github.com/Shail-Shouryya/yt-videos-list/releases) page to see new additions/modifications for each release!
+#### See this [comparison](https://github.com/Shail-Shouryya/yt-videos-list/compare/v0.5.9...main) page to see new additions/modifications that will be available in the NEXT release!
 
 # Other Information
 <details>
