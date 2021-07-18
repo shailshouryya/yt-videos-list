@@ -1,5 +1,8 @@
 # General Overview
 
+#### See the [releases](https://github.com/Shail-Shouryya/yt-videos-list/releases) page to see new additions/modifications for each release!
+#### See this [comparison](https://github.com/Shail-Shouryya/yt-videos-list/compare/v0.5.9...main) page to see new additions/modifications that will be available in the NEXT release!
+
 <p align="center">
   <a href="https://github.com/Shail-Shouryya/yt-videos-list/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/Shail-Shouryya/yt-videos-list?color=yellow&labelColor=black&style=social&logo=github"></a>
   <a href="https://github.com/Shail-Shouryya/yt-videos-list/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/Shail-Shouryya/yt-videos-list?color=blue&labelColor=black&style=social&logo=github"></a>
@@ -43,9 +46,6 @@ This program relies on Selenium so it has built-in dependecy setup for all Selen
 
 # API guides
 ### [python](./python/README.md)
-
-#### See the [releases](https://github.com/Shail-Shouryya/yt-videos-list/releases) page to see new additions/modifications for each release!
-#### See this [comparison](https://github.com/Shail-Shouryya/yt-videos-list/compare/v0.5.9...main) page to see new additions/modifications that will be available in the NEXT release!
 
 # Other Information
 <details>
