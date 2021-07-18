@@ -3,6 +3,14 @@
 #### See the [releases](https://github.com/Shail-Shouryya/yt-videos-list/releases) page to see new additions/modifications for each release!
 #### See this [comparison](https://github.com/Shail-Shouryya/yt-videos-list/compare/v0.5.9...main) page to see new additions/modifications that will be available in the NEXT release!
 
+<details>
+  <summary><b>See sister <a href="https://github.com/Shail-Shouryya/YouTube-Channels">YouTube-Channels</a> repository for a list of interesting channels!</b></summary></h3>
+
+- The `YouTube-Channels` sister repository is a separate repository that uses this package to create a list of videos uploaded by every channel supported by the repository.
+- The sister repository will update the lists of videos once a week.
+- NOTE: In order to minimize the size of the sister repo, the repo contains the list of videos in ONLY the `csv` format, and not in `txt` or `md` format.
+</details>
+
 <p align="center">
   <a href="https://github.com/Shail-Shouryya/yt-videos-list/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/Shail-Shouryya/yt-videos-list?color=yellow&labelColor=black&style=social&logo=github"></a>
   <a href="https://github.com/Shail-Shouryya/yt-videos-list/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/Shail-Shouryya/yt-videos-list?color=blue&labelColor=black&style=social&logo=github"></a>
