@@ -177,11 +177,23 @@ def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronologi
     def manage_cookie_consent_form():
         if 'consent.youtube.com' in driver.current_url:
             common_message.display_cookie_redirection()
+            accept_button_relative_path = '//button[@aria-label="Agree to the use of cookies and other data for the purposes described"]'
+            accept_button               = driver.find_element_by_xpath(accept_button_relative_path)
             if cookie_consent is False:
                 common_message.display_blocking_cookie_consent()
                 wait = selenium.webdriver.support.ui.WebDriverWait(driver, 9)
-                wait.until(EC.element_to_be_clickable((By.XPATH, '//a[@aria-label="Customize"]')))
-                driver.find_element_by_xpath('//a[@aria-label="Customize"]').click()
+                # YouTube changed the HTML formatting to make it significantly more difficult to block cookies programatically
+                # the following no longer works:
+                # wait.until(EC.element_to_be_clickable((By.XPATH, '//a[@aria-label="Customize"]')))
+                # driver.find_element_by_xpath('//a[@aria-label="Customize"]').click()
+                # the new HTML format uses dynamically named attributes, making it nearly impossible to hard code the cooking blocking process
+                # example:
+                # <button class="VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-k8QpJ VfPpkd-LgbsSe-OWXEXe-dgl2Hf nCP5yc AjY5Oe DuMIQc IIdkle" jscontroller="soHxf" jsaction="click:cOuCgd; mousedown:UX7yZ; mouseup:lbsD7e; mouseenter:tfO1Yc; mouseleave:JywGue; touchstart:p6p2H; touchmove:FwuNnf; touchend:yfqBxc; touchcancel:JMtRjd; focus:AHmuwe; blur:O22p3e; contextmenu:mg9Pef;" data-idom-class="nCP5yc AjY5Oe DuMIQc IIdkle" jsname="Q7N4Oc"><div class="VfPpkd-Jh9lGc"></div><div class="VfPpkd-RLmnJb"></div><span jsname="V67aGc" class="VfPpkd-vQzf8d">Customize</span></button></div></div>
+                # notice how "Customize" is now just an innerHTML attribute, and nested as a very deep child node of dynamically named attributes
+                # one workaround is using a relative path from the "I AGREE" button
+                customize_button_relative_path = f'{accept_button_relative_path}/../../../../div/div/button'
+                wait.until(EC.element_to_be_clickable((By.XPATH, customize_button_relative_path)))
+                driver.find_element_by_xpath(customize_button_relative_path).click()
                 wait.until(EC.element_to_be_clickable((By.XPATH, '//button[@aria-label="Turn off Ad personalization"]')))    # last form element on page
                 driver.find_element_by_xpath('//button[@aria-label="Turn off Search customization"]').click()
                 driver.find_element_by_xpath('//button[@aria-label="Turn off YouTube History"]').click()
@@ -194,7 +206,7 @@ def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronologi
                 driver.find_elements_by_xpath('//button')[-1].click()            # find the last button on the page (the CONFIRM button) and click it
             elif cookie_consent is True:
                 common_message.display_accepting_cookie_consent()
-                driver.find_element_by_xpath('//button[@aria-label="Agree to the use of cookies and other data for the purposes described"]').click()
+                accept_button.click()
             else:
                 common_message.display_invalid_cookie_consent_option(cookie_consent)
 

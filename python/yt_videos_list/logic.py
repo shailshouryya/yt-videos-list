@@ -141,11 +141,14 @@ def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronologi
  def manage_cookie_consent_form():
   if 'consent.youtube.com' in driver.current_url:
    common_message.display_cookie_redirection()
+   accept_button_relative_path = '//button[@aria-label="Agree to the use of cookies and other data for the purposes described"]'
+   accept_button = driver.find_element_by_xpath(accept_button_relative_path)
    if cookie_consent is False:
     common_message.display_blocking_cookie_consent()
     wait = selenium.webdriver.support.ui.WebDriverWait(driver, 9)
-    wait.until(EC.element_to_be_clickable((By.XPATH, '//a[@aria-label="Customize"]')))
-    driver.find_element_by_xpath('//a[@aria-label="Customize"]').click()
+    customize_button_relative_path = f'{accept_button_relative_path}/../../../../div/div/button'
+    wait.until(EC.element_to_be_clickable((By.XPATH, customize_button_relative_path)))
+    driver.find_element_by_xpath(customize_button_relative_path).click()
     wait.until(EC.element_to_be_clickable((By.XPATH, '//button[@aria-label="Turn off Ad personalization"]')))
     driver.find_element_by_xpath('//button[@aria-label="Turn off Search customization"]').click()
     driver.find_element_by_xpath('//button[@aria-label="Turn off YouTube History"]').click()
@@ -154,7 +157,7 @@ def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronologi
     driver.find_elements_by_xpath('//button')[-1].click()
    elif cookie_consent is True:
     common_message.display_accepting_cookie_consent()
-    driver.find_element_by_xpath('//button[@aria-label="Agree to the use of cookies and other data for the purposes described"]').click()
+    accept_button.click()
    else:
     common_message.display_invalid_cookie_consent_option(cookie_consent)
  def determine_file_name():
