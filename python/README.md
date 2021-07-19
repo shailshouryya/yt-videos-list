@@ -1,7 +1,7 @@
 # Python Quick Start
 
 #### See the [releases](https://github.com/Shail-Shouryya/yt-videos-list/releases) page to see new additions/modifications for each release!
-#### See this [comparison](https://github.com/Shail-Shouryya/yt-videos-list/compare/v0.5.9...main) page to see new additions/modifications that will be available in the NEXT release!
+#### See this [comparison](https://github.com/Shail-Shouryya/yt-videos-list/compare/v0.6.0...main) page to see new additions/modifications that will be available in the NEXT release!
 
 <details>
   <summary><b>See sister <a href="https://github.com/Shail-Shouryya/YouTube-Channels">YouTube-Channels</a> repository for a list of interesting channels!</b></summary></h3>
