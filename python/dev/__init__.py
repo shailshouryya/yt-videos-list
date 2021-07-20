@@ -246,7 +246,7 @@ class ListCreator:
         UNLESS you provide the same **exact** name every time you rerun this.
         '''
         _execution_type     = 'module'
-        instance_attributes = (self.txt, self.csv, self.markdown, self.reverse_chronological, self.headless, self.scroll_pause_time, self.driver, self.cookie_consent, self.verify_page_bottom_n_times, self.file_buffering)
+        instance_attributes = (self.txt, self.csv, self.markdown, self.reverse_chronological, self.headless, self.scroll_pause_time, self.driver, self.cookie_consent, self.verify_page_bottom_n_times, self.file_buffering, self.__repr__())
         return logic.execute(url, file_name, log_silently, *instance_attributes, _execution_type)
 
 

@@ -16,7 +16,7 @@ from .notifications                            import Common, ModuleMessage, Scr
 from .custom_logger                            import log
 
 
-def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronological, headless, scroll_pause_time, user_driver, cookie_consent, verify_page_bottom_n_times, file_buffering, execution_type):
+def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronological, headless, scroll_pause_time, user_driver, cookie_consent, verify_page_bottom_n_times, file_buffering, list_creator_configuration, execution_type):
     common_message = Common()
     module_message = ModuleMessage()
     script_message = ScriptMessage()
@@ -165,7 +165,8 @@ def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronologi
             file_name = determine_file_name()
             with yield_logger(file_name) as logging_locations:
                 log( '>' * 50 + 'STARTING  PROGRAM' + '<' * 50, logging_locations)
-                log(f'Now scraping {url} using the {user_driver}driver:', logging_locations)
+                log(f'Now scraping {url} using the {user_driver}driver...', logging_locations)
+                log(f'Current configuration: {list_creator_configuration}', logging_locations)
                 program.determine_action(url, driver, scroll_pause_time, reverse_chronological, file_name, file_buffering, txt, csv, markdown, logging_locations, verify_page_bottom_n_times)
                 program_end = time.perf_counter()
                 total_time  = program_end - program_start
