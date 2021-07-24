@@ -83,6 +83,7 @@ def determine_action(url, driver, scroll_pause_time, reverse_chronological, file
         if markdown:
             if md_exists:  call('update_file', 'md', md_videos)
             else:          call('create_file', 'md')
+    return video_data
 
 def now():
     return datetime.datetime.now().isoformat().replace(':', '_').replace('.', '-')

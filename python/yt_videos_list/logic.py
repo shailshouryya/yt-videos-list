@@ -133,12 +133,12 @@ def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronologi
     log( '>' * 50 + 'STARTING PROGRAM' + '<' * 50, logging_locations)
     log(f'Now scraping {url} using the {user_driver}driver...', logging_locations)
     log(f'Current configuration: {list_creator_configuration}', logging_locations)
-    program.determine_action(url, driver, scroll_pause_time, reverse_chronological, file_name, file_buffering, txt, csv, markdown, logging_locations, verify_page_bottom_n_times)
+    video_data = program.determine_action(url, driver, scroll_pause_time, reverse_chronological, file_name, file_buffering, txt, csv, markdown, logging_locations, verify_page_bottom_n_times)
     program_end = time.perf_counter()
     total_time = program_end - program_start
     log(f'This program took {total_time} seconds to complete.', logging_locations)
     log( '>' * 50 + 'COMPLETED PROGRAM' + '<' * 50, logging_locations)
-  return file_name
+  return (video_data, file_name)
  def manage_cookie_consent_form():
   if 'consent.youtube.com' in driver.current_url:
    common_message.display_cookie_redirection()
