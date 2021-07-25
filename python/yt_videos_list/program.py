@@ -30,7 +30,7 @@ def determine_action(url, driver, scroll_pause_time, reverse_chronological, file
  else: videos_list = scroller.scroll_to_bottom (url, driver, scroll_pause_time, logging_locations, verify_page_bottom_n_times)
  if len(videos_list) == 0:
   log(common_message.no_videos_found, logging_locations)
-  return
+  return None
  video_data = load_video_data(videos_list, visited_videos, reverse_chronological, logging_locations)
  use_threads = (int(txt) + int(csv) + int(markdown)) > 1
  if use_threads:
