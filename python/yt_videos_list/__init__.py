@@ -70,6 +70,18 @@ class ListCreator:
           -> csv=True  (default) OR csv=False
           ->  md=True  (default) OR  md=False
 
+    Options for the `all_video_data_in_memory` argument are
+      * False (default) - does not scrape the entire page
+      * True            -          scrape the entire page (must ALSO set the `video_data_returned` attribute to True to return this data!)
+          -> all_video_data_in_memory=False (default) OR all_video_data_in_memory=True
+
+    Options for the `video_data_returned` argument are
+      * False (default) - does not return video data collected from the current scrape job (returns dummy data instead: [[0, '', '', '']])
+      * True            -          return video data collected from the current scrape job
+        -> if `all_video_data_in_memory` attribute is set to False, the returned data MIGHT not be the full data, and video numbering MIGHT be incorrect
+        -> set `all_video_data_in_memory` attribute to True to return ALL video data for channel (video number will then also ALWAYS be correct)
+          -> video_data_returned=False (default) OR video_data_returned=True
+
     Options for the `reverse_chronological` argument are
       * True (default) - write the files in order from most recent video to the oldest video
       * False          - write the files in order from oldest video to the most recent video
@@ -200,6 +212,12 @@ class ListCreator:
         self.cookie_consent             = cookie_consent
         self.verify_page_bottom_n_times = max(1, int(verify_page_bottom_n_times))
         self.file_buffering             = file_buffering
+        all_video_data_in_memory_but_no_video_data_returned  = 'WARNING! You set the all_video_data_in_memory attribute to True but the video_data_returned attribute is False.\nThe program will scrape the ENTIRE channel (even if you have pre-existing files for the channel) BUT will not return the video_data as a return value.\n\nIf you want the video_data returned,                    set the video_data_returned attribute to True.\nIf you do not want to always scrape the entire channel, set the all_video_data_in_memory attribute to False.\n\n\n\n'
+        not_all_video_data_in_memory_but_video_data_returned = 'WARNING! The all_video_data_in_memory attribute is False but you set the video_data_returned attribute to True.\nThe program will NOT scrape the ENTIRE channel if pre-existing files for the channel exist, BUT WILL return the video_data as a return value.\nIf pre-existing files for the channel do NOT exist, then the program WILL return video_data for the ENTIRE channel.\n\nIf you want the video_data for the ENTIRE channel ALWAYS returned, set the all_video_data_in_memory attribute to True.\nIf you do not want any video_data returned,                        set the video_data_returned      attribute to False.\n\n\n\n'
+        video_data_returned_information                      = 'NOTE! The video_data_returned attribute is set to True, so the program will return the video information for all videos that LOAD when the program runs.\n\nIf you set the all_video_data_in_memory attribute to True: the program will ALWAYS return video_data for ALL videos uploaded to the channel.\nIf you set the all_video_data_in_memory attribute to False:\n  - the program will return video_data for the videos that LOAD for the channel IF pre-existing files for the channel DO exist (will not always include ALL videos uploaded to the channel)\n  - the program will return video_data for ALL videos uploaded to the channel IF pre-existing files for the channel DO NOT exist\n\n\n\n'
+        if   self.all_video_data_in_memory is True  and self.video_data_returned is False: print(all_video_data_in_memory_but_no_video_data_returned)
+        elif self.all_video_data_in_memory is False and self.video_data_returned is True:  print(not_all_video_data_in_memory_but_video_data_returned)
+        if   self.video_data_returned is True:                                             print(video_data_returned_information)
 
 
     def __repr__(self):

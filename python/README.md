@@ -234,6 +234,16 @@ There are a number of optional arguments you can specify during the instantiatio
     - `txt=True`  (default) OR `txt=False`
     - `csv=True`  (default) OR `csv=False`
     - ` md=True`  (default) OR ` md=False`
+- `all_video_data_in_memory` argument:
+  - `False` (default) - do not scrape the entire page
+  - `True`            - scrape the entire page (must ALSO set the `video_data_returned` attribute to `True` to return this data!)
+    - `all_video_data_in_memory=False` (default) OR `all_video_data_in_memory=True`
+- `video_data_returned` argument:
+  - `False` (default) - do not return video data collected from the current scrape job (return dummy data instead: `[[0, '', '', '']]`)
+  - `True` - return video data collected from the current scrape job
+    - if `all_video_data_in_memory` attribute set to `False`, the returned data MIGHT not be the full data, and video numbering MIGHT be incorrect
+    - set `all_video_data_in_memory` attribute to `True` to return ALL video data for channel (video number will then also ALWAYS be correct)
+      - `video_data_returned=False` (default) OR `video_data_returned=True`
 - `reverse_chronological` argument:
   - `True` (default) - write the files in order from most recent video to the oldest video
   - `False` - write the files in order from oldest video to the most recent video
