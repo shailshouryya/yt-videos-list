@@ -128,7 +128,7 @@ def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronologi
     common_message.display_selenium_unable_to_load_elements_error(error_message)
     traceback.print_exc()
     sys.exit()
-   file_name = determine_file_name()
+   channel_name, file_name = determine_file_name()
    with yield_logger(file_name) as logging_locations:
     log( '>' * 50 + 'STARTING PROGRAM' + '<' * 50, logging_locations)
     log(f'Now scraping {url} using the {user_driver}driver...', logging_locations)
@@ -138,7 +138,7 @@ def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronologi
     total_time = program_end - program_start
     log(f'This program took {total_time} seconds to complete.', logging_locations)
     log( '>' * 50 + 'COMPLETED PROGRAM' + '<' * 50, logging_locations)
-  return (video_data, file_name)
+  return (video_data, (channel_name, file_name))
  def manage_cookie_consent_form():
   if 'consent.youtube.com' in driver.current_url:
    common_message.display_cookie_redirection()
@@ -162,12 +162,14 @@ def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronologi
    else:
     common_message.display_invalid_cookie_consent_option(cookie_consent)
  def determine_file_name():
+  channel_name = driver.find_element_by_xpath('//yt-formatted-string[@class="style-scope ytd-channel-name"]').text
   if file_name is not None:
-   return file_name.strip('.csv').strip('.txt').strip('.md')
+   formatted_file_name = file_name.strip('.csv').strip('.txt').strip('.md')
   else:
-   channel_name = driver.find_element_by_xpath('//yt-formatted-string[@class="style-scope ytd-channel-name"]').text.replace(' ', '')
+   formatted_channel_name = channel_name.replace(' ', '')
    suffix = 'reverse_chronological_videos_list' if reverse_chronological else 'chronological_videos_list'
-   return f'{channel_name}_{suffix}'
+   formatted_file_name = f'{formatted_channel_name}_{suffix}'
+  return (channel_name, formatted_file_name)
  @contextlib.contextmanager
  def yield_logger(file_name):
   log_file = f'{file_name}.log'
