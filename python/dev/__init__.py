@@ -339,7 +339,7 @@ class ListCreator:
         )
         multiplier = max(0, max_sleep - min_sleep)
         modulo, seconds = after_n_channels_pause_for_s
-        with open(path_to_channel_urls_file, mode='r', encoding='utf-8',  buffering=self.file_buffering) as txt_file, open(path_to_channel_urls_file.split(".")[0] + '.log', mode='a', encoding='utf-8',  buffering=self.file_buffering) as log_file:
+        with open(path_to_channel_urls_file, mode='r', encoding='utf-8',  buffering=self.file_buffering) as txt_file, open(path_to_channel_urls_file.split('.')[0] + '.log', mode='a', encoding='utf-8',  buffering=self.file_buffering) as log_file:
             start = time.time()
             if log_subthread_info_silently: logging_locations = (log_file,)
             else:                           logging_locations = (log_file, sys.stdout)

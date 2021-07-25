@@ -228,9 +228,9 @@ There are a number of optional arguments you can specify during the instantiatio
   - `False` (default) - block all cookie options if prompted by YouTube (at consent.youtube.com)
   - `True` - accept all cookie options if prompted by YouTube (also at consent.youtube.com)
     - `cookie_consent=False` (default) OR `cookie_consent=True`
--  `txt`, `csv`, `md` file type argument:
+- `txt`, `csv`, `md` file type argument:
   - `True` (default) - create a file for the specified type
-  - `False` - do not create a file for the specified type.
+  - `False` - do not create a file for the specified type
     - `txt=True`  (default) OR `txt=False`
     - `csv=True`  (default) OR `csv=False`
     - ` md=True`  (default) OR ` md=False`
@@ -250,10 +250,10 @@ There are a number of optional arguments you can specify during the instantiatio
     - `reverse_chronological=True` (default) OR `reverse_chronological=False`
 - `headless` argument:
   - `False` (default) - run the driver with an open Selenium instance for viewing
-  - `True` - run the driver in "invisible" mode.
+  - `True` - run the driver in "invisible" mode
     - `headless=False` (default) OR `headless=True`
 - `scroll_pause_time` argument:
-  - any float values greater than `0` (default `0.8`).
+  - any float values greater than `0` (default `0.8`)
     - The value you provide will be how long the program waits before trying to scroll the videos list page down for the channel you want to scrape. For fast internet connections, you may want to reduce the value, and for slow connections you may want to increase the value.
   - `scroll_pause_time=0.8` (default)
   - CAUTION: reducing this value too much will result in the program not capturing all the videos, so be careful! Experiment :)

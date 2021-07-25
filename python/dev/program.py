@@ -97,8 +97,8 @@ def load_video_data(videos_list, visited_videos, reverse_chronological, logging_
     videos_to_load = video_number
     videos_loaded  = 0
     for selenium_element in videos_list:
-        video_title    = selenium_element.get_attribute("title")
-        video_url      = selenium_element.get_attribute("href")
+        video_title    = selenium_element.get_attribute('title')
+        video_url      = selenium_element.get_attribute('href')
         video_duration = selenium_element.find_element_by_xpath('./../../../../ytd-thumbnail/a[@id="thumbnail"]/div[@id="overlays"]/ytd-thumbnail-overlay-time-status-renderer/span').get_attribute('innerHTML').split()[0]
         if visited_videos is not None and video_url in visited_videos:
             # file(s) already have the information for this video
