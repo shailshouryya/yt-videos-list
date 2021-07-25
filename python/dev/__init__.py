@@ -183,7 +183,7 @@ class ListCreator:
     | Thank you!!                                       |
     =====================================================
     '''
-    def __init__(self, txt=True, csv=True, md=True, reverse_chronological=True, headless=False, scroll_pause_time=0.8, driver=None, cookie_consent=False, verify_page_bottom_n_times=3, file_buffering=-1):
+    def __init__(self, txt=True, csv=True, md=True, all_video_data_in_memory=False, video_data_returned=False, reverse_chronological=True, headless=False, scroll_pause_time=0.8, driver=None, cookie_consent=False, verify_page_bottom_n_times=3, file_buffering=-1):
         '''
         Initializes an instance of ListCreator by setting the attributes of the instance to the provided arguments,
         and setting any attributes not provided as the default parameter value.
@@ -191,6 +191,8 @@ class ListCreator:
         self.txt                        = txt
         self.csv                        = csv
         self.markdown                   = md
+        self.all_video_data_in_memory   = all_video_data_in_memory
+        self.video_data_returned        = video_data_returned
         self.reverse_chronological      = reverse_chronological
         self.headless                   = headless
         self.scroll_pause_time          = scroll_pause_time
@@ -205,7 +207,7 @@ class ListCreator:
         Returns an unambiguous representation of the current instace that can be used to recreate the same exact object.
         This is useful for internal use and making developer debugging easier.
         '''
-        return f'''{self.__class__.__name__}(txt={self.txt}, csv={self.csv}, md={self.markdown}, reverse_chronological={self.reverse_chronological}, headless={self.headless}, scroll_pause_time={self.scroll_pause_time}, driver='{self.driver}', cookie_consent={self.cookie_consent}, verify_page_bottom_n_times={self.verify_page_bottom_n_times}, file_buffering={self.file_buffering})'''
+        return f'''{self.__class__.__name__}(txt={self.txt}, csv={self.csv}, md={self.markdown}, all_video_data_in_memory={self.all_video_data_in_memory}, video_data_returned={self.video_data_returned}, reverse_chronological={self.reverse_chronological}, headless={self.headless}, scroll_pause_time={self.scroll_pause_time}, driver='{self.driver}', cookie_consent={self.cookie_consent}, verify_page_bottom_n_times={self.verify_page_bottom_n_times}, file_buffering={self.file_buffering})'''
 
 
     def __str__(self):
@@ -218,6 +220,8 @@ class ListCreator:
           txt                        = {self.txt}
           csv                        = {self.csv}
           md                         = {self.markdown}
+          all_video_data_in_memory   = {self.all_video_data_in_memory}
+          video_data_returned        = {self.video_data_returned}
           reverse_chronological      = {self.reverse_chronological}
           headless                   = {self.headless}
           scroll_pause_time          = {self.scroll_pause_time}
@@ -246,8 +250,11 @@ class ListCreator:
         UNLESS you provide the same **exact** name every time you rerun this.
         '''
         _execution_type     = 'module'
-        instance_attributes = (self.txt, self.csv, self.markdown, self.reverse_chronological, self.headless, self.scroll_pause_time, self.driver, self.cookie_consent, self.verify_page_bottom_n_times, self.file_buffering, self.__repr__())
-        return logic.execute(url, file_name, log_silently, *instance_attributes, _execution_type)
+        instance_attributes = (self.txt, self.csv, self.markdown, self.all_video_data_in_memory, self.reverse_chronological, self.headless, self.scroll_pause_time, self.driver, self.cookie_consent, self.verify_page_bottom_n_times, self.file_buffering, self.__repr__())
+        video_data, write_information = logic.execute(url, file_name, log_silently, *instance_attributes, _execution_type)
+        if self.video_data_returned:
+            return (video_data,    write_information)
+        return ([[0, '', '', '']], write_information) # return dummy video_data
 
 
     def create_list_from(self, path_to_channel_urls_file, number_of_threads=4, min_sleep=1, max_sleep=5, after_n_channels_pause_for_s=(20, 10), log_subthread_status_silently=False, log_subthread_info_silently=False):

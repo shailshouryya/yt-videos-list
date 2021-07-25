@@ -5,7 +5,7 @@ import threading
 from . import scroller, writer
 from .notifications import Common
 from .custom_logger import log
-def determine_action(url, driver, scroll_pause_time, reverse_chronological, file_name, file_buffering, txt, csv, markdown, logging_locations, verify_page_bottom_n_times):
+def determine_action(url, driver, scroll_pause_time, reverse_chronological, file_name, file_buffering, txt, csv, markdown, all_video_data_in_memory, logging_locations, verify_page_bottom_n_times):
  common_message = Common()
  txt_exists = os.path.isfile(f'{file_name}.txt') if txt else False
  csv_exists = os.path.isfile(f'{file_name}.csv') if csv else False
@@ -26,7 +26,7 @@ def determine_action(url, driver, scroll_pause_time, reverse_chronological, file
    (False, False, True, True, False, False),
   )
  )
- if current_condition in update_conditions: videos_list, txt_videos, csv_videos, md_videos, visited_videos = scroller.scroll_to_old_videos(url, driver, scroll_pause_time, logging_locations, file_name, txt_exists, csv_exists, md_exists)
+ if not all_video_data_in_memory and current_condition in update_conditions: videos_list, txt_videos, csv_videos, md_videos, visited_videos = scroller.scroll_to_old_videos(url, driver, scroll_pause_time, logging_locations, file_name, txt_exists, csv_exists, md_exists)
  else: videos_list = scroller.scroll_to_bottom (url, driver, scroll_pause_time, logging_locations, verify_page_bottom_n_times)
  if len(videos_list) == 0:
   log(common_message.no_videos_found, logging_locations)

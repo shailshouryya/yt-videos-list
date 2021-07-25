@@ -12,12 +12,12 @@ from .download.windows_info import get_drive_letter
 from .download.user_os_info import determine_user_os
 from .notifications import Common, ModuleMessage, ScriptMessage
 from .custom_logger import log
-def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronological, headless, scroll_pause_time, user_driver, cookie_consent, verify_page_bottom_n_times, file_buffering, list_creator_configuration, execution_type):
+def execute(url, file_name, log_silently, txt, csv, markdown, all_video_data_in_memory, reverse_chronological, headless, scroll_pause_time, user_driver, cookie_consent, verify_page_bottom_n_times, file_buffering, list_creator_configuration, execution_type):
  common_message = Common()
  module_message = ModuleMessage()
  script_message = ScriptMessage()
- def verify_writing_to_at_least_one_file():
-  if txt is False and csv is False and markdown is False:
+ def verify_writing_to_at_least_one_location():
+  if txt is False and csv is False and markdown is False and all_video_data_in_memory is False:
    print(common_message.not_writing_to_any_files)
    if execution_type == 'module': print(module_message.not_writing_to_any_files_hint)
    else: print(script_message.not_writing_to_any_files_hint)
@@ -133,7 +133,7 @@ def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronologi
     log( '>' * 50 + 'STARTING PROGRAM' + '<' * 50, logging_locations)
     log(f'Now scraping {url} using the {user_driver}driver...', logging_locations)
     log(f'Current configuration: {list_creator_configuration}', logging_locations)
-    video_data = program.determine_action(url, driver, scroll_pause_time, reverse_chronological, file_name, file_buffering, txt, csv, markdown, logging_locations, verify_page_bottom_n_times)
+    video_data = program.determine_action(url, driver, scroll_pause_time, reverse_chronological, file_name, file_buffering, txt, csv, markdown, all_video_data_in_memory, logging_locations, verify_page_bottom_n_times)
     program_end = time.perf_counter()
     total_time = program_end - program_start
     log(f'This program took {total_time} seconds to complete.', logging_locations)
@@ -163,7 +163,9 @@ def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronologi
     common_message.display_invalid_cookie_consent_option(cookie_consent)
  def determine_file_name():
   channel_name = driver.find_element_by_xpath('//yt-formatted-string[@class="style-scope ytd-channel-name"]').text
-  if file_name is not None:
+  if txt is False and csv is False and markdown is False:
+   formatted_file_name = ''
+  elif file_name is not None:
    formatted_file_name = file_name.strip('.csv').strip('.txt').strip('.md')
   else:
    formatted_channel_name = channel_name.replace(' ', '')
@@ -176,7 +178,7 @@ def execute(url, file_name, log_silently, txt, csv, markdown, reverse_chronologi
   with open(log_file, mode='a', encoding='utf-8', buffering=file_buffering) as output_location:
    if log_silently is True: yield (output_location,)
    else: yield (output_location, sys.stdout)
- verify_writing_to_at_least_one_file()
+ verify_writing_to_at_least_one_location()
  user_os = determine_user_os()
  url = process_url()
  program_start = time.perf_counter()
