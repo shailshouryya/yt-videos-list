@@ -266,6 +266,15 @@ class ListCreator:
         the program finds the name of the channel automatically and if you rename the file,
         the file won't be automatically updated if the channel uploads a new video and you run this on that channel
         UNLESS you provide the same **exact** name every time you rerun this.
+
+        The suggested arguments for the `file_name` argument are 'auto' or 'id'
+          * 'auto': the program uses the name that shows up under the banner when you navigate to the channel's homepage (with spaces removed)
+          * 'id': the program uses the identifier from the URL
+            -> If the channel is Corey Schafer:
+              -> if you provide https://www.youtube.com/user/schafer5:                    the 'id' will be 'schafer5'
+              -> if you provide https://www.youtube.com/c/Coreyms/:                       the 'id' will be 'Coreyms'
+              -> if you provide https://www.youtube.com/channel/UCCezIgC97PvUuR4_gbFUs5g: the 'id' will be 'UCCezIgC97PvUuR4_gbFUs5g'
+              -> the channel name under the banner is 'Corey Schafer' regardless of which of the 3 url formats you provide, so the 'auto' name will be 'CoreySchafer'
         '''
         _execution_type     = 'module'
         instance_attributes = (self.txt, self.csv, self.markdown, self.all_video_data_in_memory, self.reverse_chronological, self.headless, self.scroll_pause_time, self.driver, self.cookie_consent, self.verify_page_bottom_n_times, self.file_buffering, self.__repr__())

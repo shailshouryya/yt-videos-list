@@ -110,6 +110,15 @@ lc.create_list_for(url='https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ
 # By default, the program logs to both the log file for the channel being scraped AND the console.
 
 
+# to name the file using the channel ID instead of the channel name, set file_name='id'
+# this is useful when scraping multiple channels with the same name:
+lc.create_list_for(url='https://www.youtube.com/channel/UCb2EYjrzI6WpNAmPZeihhag', file_name='id')
+lc.create_list_for(url='https://www.youtube.com/channel/UCDzYhlGOvGqsYw8IaTKDT8g', file_name='id')
+
+# for more details about this method:
+help(lc.create_list_for)
+
+
 # see the new files that were just created:
 import os
 os.system('ls -lt | head')                      # MacOS/Linux
