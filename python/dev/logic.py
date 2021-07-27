@@ -32,16 +32,20 @@ def execute(url, file_name, log_silently, txt, csv, markdown, all_video_data_in_
 
     def process_url():
         try:
-            channel_info = url.split('youtube.com/')[1]
-            channel_type = channel_info.split('/')[0]
-            channel      = channel_info.split('/')[1]
+            _, channel_type, channel_id = parse_url()
         except IndexError as error_message:
             common_message.display_url_error(error_message)
             traceback.print_exc()
             sys.exit()
         base_url = 'https://www.youtube.com'
         videos   = 'videos'
-        return f'{base_url}/{channel_type}/{channel}/{videos}'
+        return f'{base_url}/{channel_type}/{channel_id}/{videos}'
+
+    def parse_url():
+        channel_info = url.split('youtube.com/')[1]
+        channel_type = channel_info.split('/')[0]
+        channel_id   = channel_info.split('/')[1]
+        return channel_info, channel_type, channel_id
 
 
     def open_user_driver():
@@ -222,8 +226,7 @@ def execute(url, file_name, log_silently, txt, csv, markdown, all_video_data_in_
             formatted_channel_name = channel_name.replace(' ', '')
             formatted_file_name    = f'{formatted_channel_name}_{suffix}'
         elif file_name == 'id':
-            channel_info = url.split('youtube.com/')[1]
-            channel_id   = channel_info.split('/')[1]
+            _, _, channel_id    = parse_url()
             formatted_file_name = f'{channel_id}_{suffix}'
         else:
             formatted_file_name = file_name.strip('.csv').strip('.txt').strip('.md')
