@@ -284,12 +284,17 @@ class ListCreator:
         return ([[0, '', '', '']], write_information) # return dummy video_data
 
 
-    def create_list_from(self, path_to_channel_urls_file, number_of_threads=4, min_sleep=1, max_sleep=5, after_n_channels_pause_for_s=(20, 10), log_subthread_status_silently=False, log_subthread_info_silently=False):
+    def create_list_from(self, path_to_channel_urls_file, number_of_threads=4, min_sleep=1, max_sleep=5, after_n_channels_pause_for_s=(20, 10), log_subthread_status_silently=False, log_subthread_info_silently=False, file_name='auto'):
         '''
         The create_list_from() method creates a list using the arguments specified during instantiation of the ListCreator object.
         You need to specify just the path to the text file containing urls of all the channels
         you want to scrape as the `path_to_channel_urls_file` argument.
         NOTE that each url **should be placed on a new line!**
+
+        Use the `file_name` argument to set how the program names the output files:
+          -> file_name='auto' (default) OR file_name='id'
+              >>> help(ListCreator.create_list_for)    # see detailed explanation about differences between 'auto' and 'id'
+
 
         Set `number_of_threads` argument to the maximum number of channels you want the program can scrape simultaneously.
 
@@ -343,9 +348,11 @@ class ListCreator:
                  `scroll_pause_time * 2` seconds since the last page scroll, BUT when **updating** an existing file, the
                  program only stops scrolling when it scrolls down to a video that already exists in the file - no matter
                  how long it takes the program to do so (so the program is not required to finding new videos in
-                 less than `scroll_pause_time * 2` seconds).
+                 less than `scroll_pause_time * 2` seconds).\n\n\n\n
           '''
         )
+        invalid_file_name_exception = f'''The options for the file_name argument are 'auto' or 'id', but you provided: '{file_name}'\nPlease rerun this method using file_name='auto' or file_name='id'\n\nFor more details about the difference between 'auto' and 'id', run:\n    >>> help(ListCreator.create_list_for)\n\n\n\n'''
+        if file_name not in ('auto', 'id'): raise ValueError(invalid_file_name_exception)
         multiplier = max(0, max_sleep - min_sleep)
         modulo, seconds = after_n_channels_pause_for_s
         with open(path_to_channel_urls_file, mode='r', encoding='utf-8',  buffering=self.file_buffering) as txt_file, open(path_to_channel_urls_file.split('.')[0] + '.log', mode='a', encoding='utf-8',  buffering=self.file_buffering) as log_file:
@@ -386,7 +393,7 @@ class ListCreator:
                 sleep_time = min_sleep + (random.random() * multiplier)
                 log(f'Sleeping for {sleep_time} seconds before starting next subthread....', logging_locations)
                 time.sleep(sleep_time)
-                thread = ThreadWithResult(target=self.create_list_for, args=(formatted_url, True))
+                thread = ThreadWithResult(target=self.create_list_for, args=(formatted_url, True, file_name))
                 thread.start()
                 count += 1
                 log(f'{thread.name} scraping channel {count:>7}: {url}', logging_locations)
