@@ -16,7 +16,7 @@ from .notifications                            import Common, ModuleMessage, Scr
 from .custom_logger                            import log
 
 
-def execute(url, file_name, log_silently, txt, csv, markdown, all_video_data_in_memory, reverse_chronological, headless, scroll_pause_time, user_driver, cookie_consent, verify_page_bottom_n_times, file_buffering, list_creator_configuration, execution_type):
+def execute(url, file_name, log_silently, txt, csv, markdown, file_suffix, all_video_data_in_memory, reverse_chronological, headless, scroll_pause_time, user_driver, cookie_consent, verify_page_bottom_n_times, file_buffering, list_creator_configuration, execution_type):
     common_message = Common()
     module_message = ModuleMessage()
     script_message = ScriptMessage()
@@ -218,16 +218,17 @@ def execute(url, file_name, log_silently, txt, csv, markdown, all_video_data_in_
 
     def determine_file_name():
         channel_name = driver.find_element_by_xpath('//yt-formatted-string[@class="style-scope ytd-channel-name"]').text
-        suffix       = 'reverse_chronological_videos_list' if reverse_chronological else 'chronological_videos_list'
+        if file_suffix is True: suffix = '_reverse_chronological_videos_list' if reverse_chronological else '_chronological_videos_list'
+        else:                   suffix = ''
         if txt is False and csv is False and markdown is False:
             # program will not write to any output files
             formatted_file_name = ''
         elif file_name == 'auto':
             formatted_channel_name = channel_name.replace(' ', '')
-            formatted_file_name    = f'{formatted_channel_name}_{suffix}'
+            formatted_file_name    = f'{formatted_channel_name}{suffix}'
         elif file_name == 'id':
             _, _, channel_id    = parse_url()
-            formatted_file_name = f'{channel_id}_{suffix}'
+            formatted_file_name = f'{channel_id}{suffix}'
         else:
             formatted_file_name = file_name.strip('.csv').strip('.txt').strip('.md')
         return (channel_name, formatted_file_name)

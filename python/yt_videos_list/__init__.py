@@ -195,7 +195,7 @@ class ListCreator:
     | Thank you!!                                       |
     =====================================================
     '''
-    def __init__(self, txt=True, csv=True, md=True, all_video_data_in_memory=False, video_data_returned=False, reverse_chronological=True, headless=False, scroll_pause_time=0.8, driver=None, cookie_consent=False, verify_page_bottom_n_times=3, file_buffering=-1):
+    def __init__(self, txt=True, csv=True, md=True, file_suffix=True, all_video_data_in_memory=False, video_data_returned=False, reverse_chronological=True, headless=False, scroll_pause_time=0.8, driver=None, cookie_consent=False, verify_page_bottom_n_times=3, file_buffering=-1):
         '''
         Initializes an instance of ListCreator by setting the attributes of the instance to the provided arguments,
         and setting any attributes not provided as the default parameter value.
@@ -203,6 +203,7 @@ class ListCreator:
         self.txt                        = txt
         self.csv                        = csv
         self.markdown                   = md
+        self.file_suffix                = file_suffix
         self.all_video_data_in_memory   = all_video_data_in_memory
         self.video_data_returned        = video_data_returned
         self.reverse_chronological      = reverse_chronological
@@ -225,7 +226,7 @@ class ListCreator:
         Returns an unambiguous representation of the current instace that can be used to recreate the same exact object.
         This is useful for internal use and making developer debugging easier.
         '''
-        return f'''{self.__class__.__name__}(txt={self.txt}, csv={self.csv}, md={self.markdown}, all_video_data_in_memory={self.all_video_data_in_memory}, video_data_returned={self.video_data_returned}, reverse_chronological={self.reverse_chronological}, headless={self.headless}, scroll_pause_time={self.scroll_pause_time}, driver='{self.driver}', cookie_consent={self.cookie_consent}, verify_page_bottom_n_times={self.verify_page_bottom_n_times}, file_buffering={self.file_buffering})'''
+        return f'''{self.__class__.__name__}(txt={self.txt}, csv={self.csv}, md={self.markdown}, file_suffix={self.file_suffix}, all_video_data_in_memory={self.all_video_data_in_memory}, video_data_returned={self.video_data_returned}, reverse_chronological={self.reverse_chronological}, headless={self.headless}, scroll_pause_time={self.scroll_pause_time}, driver='{self.driver}', cookie_consent={self.cookie_consent}, verify_page_bottom_n_times={self.verify_page_bottom_n_times}, file_buffering={self.file_buffering})'''
 
 
     def __str__(self):
@@ -238,6 +239,7 @@ class ListCreator:
           txt                        = {self.txt}
           csv                        = {self.csv}
           md                         = {self.markdown}
+          file_suffix                = {self.file_suffix}
           all_video_data_in_memory   = {self.all_video_data_in_memory}
           video_data_returned        = {self.video_data_returned}
           reverse_chronological      = {self.reverse_chronological}
@@ -277,7 +279,7 @@ class ListCreator:
               -> the channel name under the banner is 'Corey Schafer' regardless of which of the 3 url formats you provide, so the 'auto' name will be 'CoreySchafer'
         '''
         _execution_type     = 'module'
-        instance_attributes = (self.txt, self.csv, self.markdown, self.all_video_data_in_memory, self.reverse_chronological, self.headless, self.scroll_pause_time, self.driver, self.cookie_consent, self.verify_page_bottom_n_times, self.file_buffering, self.__repr__())
+        instance_attributes = (self.txt, self.csv, self.markdown, self.file_suffix, self.all_video_data_in_memory, self.reverse_chronological, self.headless, self.scroll_pause_time, self.driver, self.cookie_consent, self.verify_page_bottom_n_times, self.file_buffering, self.__repr__())
         video_data, write_information = logic.execute(url, file_name, log_silently, *instance_attributes, _execution_type)
         if self.video_data_returned:
             return (video_data,    write_information)
