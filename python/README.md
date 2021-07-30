@@ -243,6 +243,15 @@ There are a number of optional arguments you can specify during the instantiatio
     - `txt=True`  (default) OR `txt=False`
     - `csv=True`  (default) OR `csv=False`
     - ` md=True`  (default) OR ` md=False`
+- `file_suffix` argument:
+  - `True` (default) - add a file suffix to the output file name
+    - `ChannelName_reverse_chronological_videos_list.csv`
+    - `ChannelName_chronological_videos_list.csv`
+  - `False` - do NOT add a file suffix to the output file name
+    - this means if a reverse chronological file and a chronological file is made for the same channel, they will have the same name!
+    - `ChannelName.csv` (reverse chronological output file)
+    - `ChannelName.csv` (chronological output file)
+      -> `file_suffix=True`  (default) OR `file_suffix=False`
 - `all_video_data_in_memory` argument:
   - `False` (default) - do not scrape the entire page
   - `True`            - scrape the entire page (must ALSO set the `video_data_returned` attribute to `True` to return this data!)

@@ -70,6 +70,17 @@ class ListCreator:
           -> csv=True  (default) OR csv=False
           ->  md=True  (default) OR  md=False
 
+    Options for the `file_suffix` arguments are
+      * True (default) - add a file suffix to the output file name
+        * ChannelName_reverse_chronological_videos_list.csv
+        * ChannelName_chronological_videos_list.csv
+      * False - does NOT add a file suffix to the output file name
+        * this means if a reverse chronological file and a chronological file
+          is made for the same channel, they will have the same name!
+        * ChannelName.csv (reverse chronological output file)
+        * ChannelName.csv (chronological output file)
+          -> file_suffix=True  (default) OR file_suffix=False
+
     Options for the `all_video_data_in_memory` argument are
       * False (default) - does not scrape the entire page
       * True            -          scrape the entire page (must ALSO set the `video_data_returned` attribute to True to return this data!)
@@ -273,10 +284,41 @@ class ListCreator:
           * 'auto': the program uses the name that shows up under the banner when you navigate to the channel's homepage (with spaces removed)
           * 'id': the program uses the identifier from the URL
             -> If the channel is Corey Schafer:
-              -> if you provide https://www.youtube.com/user/schafer5:                    the 'id' will be 'schafer5'
-              -> if you provide https://www.youtube.com/c/Coreyms/:                       the 'id' will be 'Coreyms'
-              -> if you provide https://www.youtube.com/channel/UCCezIgC97PvUuR4_gbFUs5g: the 'id' will be 'UCCezIgC97PvUuR4_gbFUs5g'
-              -> the channel name under the banner is 'Corey Schafer' regardless of which of the 3 url formats you provide, so the 'auto' name will be 'CoreySchafer'
+              * NOTE output file name stays the same regardles of `reverse_chronological` instance attribute value
+                if `file_suffix` instance attribute is `False`
+              * ALSO NOTE the .EXT used below in the example file names substitutes for the extension formats: .[txt|csv|md|log]
+
+              * if you provide https://www.youtube.com/user/schafer5:                           the 'id' will be:  schafer5
+                -> if the `file_suffix` instance attribute is set to `True`
+                    -> and the `reverse_chronological` instance attribute is True,  the output file name will be:  schafer5_reverse_chronological_videos_list.EXT
+                    -> and the `reverse_chronological` instance attribute is False, the output file name will be:  schafer5_chronological_videos_list.EXT
+                -> if the `file_suffix` instance attribute is set to `False`
+                    -> and the `reverse_chronological` instance attribute is True,  the output file name will be:  schafer5.EXT
+                    -> and the `reverse_chronological` instance attribute is False, the output file name will be:  schafer5.EXT
+
+              * if you provide https://www.youtube.com/c/Coreyms/:                              the 'id' will be:  Coreyms
+                -> if the `file_suffix` instance attribute is set to `True`
+                    -> and the `reverse_chronological` instance attribute is True,  the output file name will be:  Coreyms_reverse_chronological_videos_list.EXT
+                    -> and the `reverse_chronological` instance attribute is False, the output file name will be:  Coreyms_chronological_videos_list.EXT
+                -> if the `file_suffix` instance attribute is set to `False`
+                    -> and the `reverse_chronological` instance attribute is True,  the output file name will be:  Coreyms.EXT
+                    -> and the `reverse_chronological` instance attribute is False, the output file name will be:  Coreyms.EXT
+
+              * if you provide https://www.youtube.com/channel/UCCezIgC97PvUuR4_gbFUs5g:        the 'id' will be:  UCCezIgC97PvUuR4_gbFUs5g
+                -> if the `file_suffix` instance attribute is set to `True`
+                    -> and the `reverse_chronological` instance attribute is True,  the output file name will be:  UCCezIgC97PvUuR4_gbFUs5g_reverse_chronological_videos_list.EXT
+                    -> and the `reverse_chronological` instance attribute is False, the output file name will be:  UCCezIgC97PvUuR4_gbFUs5g_chronological_videos_list.EXT
+                -> if the `file_suffix` instance attribute is set to `False`
+                    -> and the `reverse_chronological` instance attribute is True,  the output file name will be:  UCCezIgC97PvUuR4_gbFUs5g.EXT
+                    -> and the `reverse_chronological` instance attribute is False, the output file name will be:  UCCezIgC97PvUuR4_gbFUs5g.EXT
+
+              * the channel name under the banner is 'Corey Schafer'                  so the 'auto' name will be: 'CoreySchafer'     (regardless of which URL format you provide)
+                -> if the `file_suffix` instance attribute is set to `True`
+                    -> and the `reverse_chronological` instance attribute is True,  the output file name will be:  CoreySchafer_reverse_chronological_videos_list.EXT   (default)
+                    -> and the `reverse_chronological` instance attribute is False, the output file name will be:  CoreySchafer_chronological_videos_list.EXT
+                -> if the `file_suffix` instance attribute is set to `False`
+                    -> and the `reverse_chronological` instance attribute is True,  the output file name will be:  CoreySchafer.EXT
+                    -> and the `reverse_chronological` instance attribute is False, the output file name will be:  CoreySchafer.EXT
         '''
         _execution_type     = 'module'
         instance_attributes = (self.txt, self.csv, self.markdown, self.file_suffix, self.all_video_data_in_memory, self.reverse_chronological, self.headless, self.scroll_pause_time, self.driver, self.cookie_consent, self.verify_page_bottom_n_times, self.file_buffering, self.__repr__())
