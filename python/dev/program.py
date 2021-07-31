@@ -8,7 +8,7 @@ from .notifications import Common
 from .custom_logger import log
 
 
-def determine_action(url, driver, scroll_pause_time, reverse_chronological, file_name, file_buffering, txt, csv, markdown, all_video_data_in_memory, logging_locations, verify_page_bottom_n_times):
+def determine_action(url, driver, scroll_pause_time, reverse_chronological, file_name, file_buffering, txt, csv, markdown, all_video_data_in_memory, video_id_only, logging_locations, verify_page_bottom_n_times):
     common_message = Common()
     txt_exists = os.path.isfile(f'{file_name}.txt') if txt      else False # only check if file exists if program was specified to extract info into txt file, otherwise set to False regardless of whether a txt file already exists or not
     csv_exists = os.path.isfile(f'{file_name}.csv') if csv      else False # only check if file exists if program was specified to extract info into csv file, otherwise set to False regardless of whether a csv file already exists or not
@@ -34,7 +34,7 @@ def determine_action(url, driver, scroll_pause_time, reverse_chronological, file
     if len(videos_list) == 0:
         log(common_message.no_videos_found, logging_locations)
         return None
-    video_data = load_video_data(videos_list, visited_videos, reverse_chronological, logging_locations)
+    video_data = load_video_data(videos_list, visited_videos, video_id_only, reverse_chronological, logging_locations)
     use_threads = (int(txt) + int(csv) + int(markdown)) > 1
     if use_threads:
         # ===> See commit 58c5faba14da25b89e104a50d380489a30d8df71 for more details about using threads for file I/O <===
@@ -89,7 +89,7 @@ def now():
     return datetime.datetime.now().isoformat().replace(':', '_').replace('.', '-')
 
 
-def load_video_data(videos_list, visited_videos, reverse_chronological, logging_locations):
+def load_video_data(videos_list, visited_videos, video_id_only, reverse_chronological, logging_locations):
     start_time = time.perf_counter()
     log('Loading video information into memory...', logging_locations)
     video_data     = []
@@ -114,4 +114,11 @@ def load_video_data(videos_list, visited_videos, reverse_chronological, logging_
     end_time = time.perf_counter()
     total_time = end_time - start_time
     log(f'It took {total_time} seconds to load information for {videos_to_load} videos into memory\n', logging_locations)
+    if video_id_only is True:
+        log('Keeping only the video ID from the full video URL...', logging_locations)
+        for video_datum in video_data:
+            full_url = video_datum[3]
+            video_id = full_url.split('watch?v=')[1]
+            video_datum[3] = video_id
+        log('Finished formatting the video IDs...\n', logging_locations)
     return video_data
