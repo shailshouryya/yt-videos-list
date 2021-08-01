@@ -47,8 +47,35 @@ def determine_common_visited_videos(file_name, txt_exists, csv_exists, md_exists
  return visited_videos, stored_in_txt, stored_in_csv, stored_in_md
 def store_already_written_videos(file_name, file_type):
  with open(f'{file_name}.{file_type}', mode='r', encoding='utf-8') as file:
-  if file_type in ('txt', 'md'): return set(re.findall('(https://www\.youtube\.com/watch\?v=.+?)(?:\s|\n)', file.read()))
-  if file_type == 'csv': return set(re.findall('(https://www\.youtube\.com/watch\?v=.+?),', file.read()))
+  file_contents = file.read()
+  if file_type in ('txt', 'md'):
+   seen_videos = set(
+    (
+     re.findall('(https://www\.youtube\.com/watch\?v=.+?)(?:\s|\n)', file_contents) or
+     re.findall('^(?:### )?Video URL:\s*([A-z0-9_-]{11})$', file_contents)
+    )
+   )
+  if file_type == 'csv':
+   seen_videos = set(
+    (
+     re.findall('(https://www\.youtube\.com/watch\?v=.+?),', file_contents) or
+     re.findall(',([A-z0-9_-]{11}),', file_contents)
+    )
+   )
+  if seen_videos:
+   random_video = seen_videos.pop()
+   if 'https://www.youtube.com/watch?v=' not in random_video:
+    formatted_urls = set()
+    random_video = 'https://www.youtube.com/watch?v=' + random_video
+    formatted_urls.add(random_video)
+    while seen_videos:
+     random_video = seen_videos.pop()
+     random_video = 'https://www.youtube.com/watch?v=' + random_video
+     formatted_urls.add(random_video)
+    seen_videos = formatted_urls
+   else:
+    seen_videos.add(random_video)
+  return seen_videos
 def scroll_down(driver, scroll_pause_time, logging_locations):
  driver.execute_script('window.scrollBy(0, 50000);')
  time.sleep(scroll_pause_time)

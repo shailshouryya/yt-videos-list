@@ -56,8 +56,42 @@ def determine_common_visited_videos(file_name, txt_exists, csv_exists, md_exists
 
 def store_already_written_videos(file_name, file_type):
     with open(f'{file_name}.{file_type}', mode='r', encoding='utf-8') as file:
-        if file_type in ('txt', 'md'): return set(re.findall('(https://www\.youtube\.com/watch\?v=.+?)(?:\s|\n)', file.read()))
-        if file_type == 'csv':         return set(re.findall('(https://www\.youtube\.com/watch\?v=.+?),',         file.read()))
+        file_contents = file.read()
+        if file_type in ('txt', 'md'):
+            seen_videos = set(
+                (
+                    re.findall('(https://www\.youtube\.com/watch\?v=.+?)(?:\s|\n)', file_contents) or
+                    re.findall('^(?:### )?Video URL:\s*([A-z0-9_-]{11})$',          file_contents)
+                )
+            )
+        if file_type == 'csv':
+            seen_videos = set(
+                (
+                    re.findall('(https://www\.youtube\.com/watch\?v=.+?),',         file_contents) or
+                    re.findall(',([A-z0-9_-]{11}),',                                file_contents)
+                )
+            )
+        if seen_videos:
+            # the set exists
+            # check to see if the entire video URL was stored or just the video ID
+            random_video = seen_videos.pop()
+            if 'https://www.youtube.com/watch?v=' not in random_video:
+                # this file stored only the video IDs, so add the rest of the URL to
+                # the video ID so url_of_last_loaded_video_on_page() lambda function in
+                # scroll_to_old_videos() can match the 'href' of the videos properly
+                formatted_urls = set()
+                random_video = 'https://www.youtube.com/watch?v=' + random_video
+                formatted_urls.add(random_video)
+                while seen_videos:
+                    random_video = seen_videos.pop()
+                    random_video = 'https://www.youtube.com/watch?v=' + random_video
+                    formatted_urls.add(random_video)
+                seen_videos = formatted_urls
+            else:
+                # this file stored the entire video URL, so no need to modify any of the URLs
+                # just add the popped random_video back into the seen_videos set
+                seen_videos.add(random_video)
+        return seen_videos
 
 
 
