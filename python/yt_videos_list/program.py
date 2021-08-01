@@ -37,8 +37,8 @@ def determine_action(url, driver, scroll_pause_time, reverse_chronological, file
   #
   threads = []
   def call(function, file_type, file_videos=None):
-   if function == 'update_file': return threading.Thread(target=writer.update_file, args=(file_type, video_data, file_name, file_buffering, reverse_chronological, logging_locations), kwargs={'timestamp': now(), 'stored_in_file': file_videos})
-   else: return threading.Thread(target=writer.create_file, args=(file_type, video_data, file_name, file_buffering, reverse_chronological, logging_locations), kwargs={'timestamp': now()})
+   if function == 'update_file': return threading.Thread(target=writer.update_file, args=(file_type, video_data, video_id_only, file_name, file_buffering, reverse_chronological, logging_locations), kwargs={'timestamp': now(), 'stored_in_file': file_videos})
+   else: return threading.Thread(target=writer.create_file, args=(file_type, video_data, video_id_only, file_name, file_buffering, reverse_chronological, logging_locations), kwargs={'timestamp': now()})
   if txt:
    if txt_exists: txt_thread = call('update_file', 'txt', txt_videos)
    else: txt_thread = call('create_file', 'txt')
@@ -58,8 +58,8 @@ def determine_action(url, driver, scroll_pause_time, reverse_chronological, file
    thread.join()
  else:
   def call(function, file_type, file_videos=None):
-   if function == 'update_file': return writer.update_file(file_type, video_data, file_name, file_buffering, reverse_chronological, logging_locations, timestamp=now(), stored_in_file=file_videos)
-   else: return writer.create_file(file_type, video_data, file_name, file_buffering, reverse_chronological, logging_locations, timestamp=now())
+   if function == 'update_file': return writer.update_file(file_type, video_data, video_id_only, file_name, file_buffering, reverse_chronological, logging_locations, timestamp=now(), stored_in_file=file_videos)
+   else: return writer.create_file(file_type, video_data, video_id_only, file_name, file_buffering, reverse_chronological, logging_locations, timestamp=now())
   if txt:
    if txt_exists: call('update_file', 'txt', txt_videos)
    else: call('create_file', 'txt')

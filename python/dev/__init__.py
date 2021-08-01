@@ -72,8 +72,8 @@ class ListCreator:
 
     Options for the `file_suffix` arguments are
       * True (default) - add a file suffix to the output file name
-        * ChannelName_reverse_chronological_videos_list.csv
-        * ChannelName_chronological_videos_list.csv
+        * ChannelName_reverse_chronological_video{is_id}s_list.csv
+        * ChannelName_chronological_video{is_id}s_list.csv
       * False - does NOT add a file suffix to the output file name
         * this means if a reverse chronological file and a chronological file
           is made for the same channel, they will have the same name!
@@ -292,32 +292,32 @@ class ListCreator:
 
               * if you provide https://www.youtube.com/user/schafer5:                           the 'id' will be:  schafer5
                 -> if the `file_suffix` instance attribute is set to `True`
-                    -> and the `reverse_chronological` instance attribute is True,  the output file name will be:  schafer5_reverse_chronological_videos_list.EXT
-                    -> and the `reverse_chronological` instance attribute is False, the output file name will be:  schafer5_chronological_videos_list.EXT
+                    -> and the `reverse_chronological` instance attribute is True,  the output file name will be:  schafer5_reverse_chronological_video{is_id}s_list.EXT
+                    -> and the `reverse_chronological` instance attribute is False, the output file name will be:  schafer5_chronological_video{is_id}s_list.EXT
                 -> if the `file_suffix` instance attribute is set to `False`
                     -> and the `reverse_chronological` instance attribute is True,  the output file name will be:  schafer5.EXT
                     -> and the `reverse_chronological` instance attribute is False, the output file name will be:  schafer5.EXT
 
               * if you provide https://www.youtube.com/c/Coreyms/:                              the 'id' will be:  Coreyms
                 -> if the `file_suffix` instance attribute is set to `True`
-                    -> and the `reverse_chronological` instance attribute is True,  the output file name will be:  Coreyms_reverse_chronological_videos_list.EXT
-                    -> and the `reverse_chronological` instance attribute is False, the output file name will be:  Coreyms_chronological_videos_list.EXT
+                    -> and the `reverse_chronological` instance attribute is True,  the output file name will be:  Coreyms_reverse_chronological_video{is_id}s_list.EXT
+                    -> and the `reverse_chronological` instance attribute is False, the output file name will be:  Coreyms_chronological_video{is_id}s_list.EXT
                 -> if the `file_suffix` instance attribute is set to `False`
                     -> and the `reverse_chronological` instance attribute is True,  the output file name will be:  Coreyms.EXT
                     -> and the `reverse_chronological` instance attribute is False, the output file name will be:  Coreyms.EXT
 
               * if you provide https://www.youtube.com/channel/UCCezIgC97PvUuR4_gbFUs5g:        the 'id' will be:  UCCezIgC97PvUuR4_gbFUs5g
                 -> if the `file_suffix` instance attribute is set to `True`
-                    -> and the `reverse_chronological` instance attribute is True,  the output file name will be:  UCCezIgC97PvUuR4_gbFUs5g_reverse_chronological_videos_list.EXT
-                    -> and the `reverse_chronological` instance attribute is False, the output file name will be:  UCCezIgC97PvUuR4_gbFUs5g_chronological_videos_list.EXT
+                    -> and the `reverse_chronological` instance attribute is True,  the output file name will be:  UCCezIgC97PvUuR4_gbFUs5g_reverse_chronological_video{is_id}s_list.EXT
+                    -> and the `reverse_chronological` instance attribute is False, the output file name will be:  UCCezIgC97PvUuR4_gbFUs5g_chronological_video{is_id}s_list.EXT
                 -> if the `file_suffix` instance attribute is set to `False`
                     -> and the `reverse_chronological` instance attribute is True,  the output file name will be:  UCCezIgC97PvUuR4_gbFUs5g.EXT
                     -> and the `reverse_chronological` instance attribute is False, the output file name will be:  UCCezIgC97PvUuR4_gbFUs5g.EXT
 
               * the channel name under the banner is 'Corey Schafer'                  so the 'auto' name will be: 'CoreySchafer'     (regardless of which URL format you provide)
                 -> if the `file_suffix` instance attribute is set to `True`
-                    -> and the `reverse_chronological` instance attribute is True,  the output file name will be:  CoreySchafer_reverse_chronological_videos_list.EXT   (default)
-                    -> and the `reverse_chronological` instance attribute is False, the output file name will be:  CoreySchafer_chronological_videos_list.EXT
+                    -> and the `reverse_chronological` instance attribute is True,  the output file name will be:  CoreySchafer_reverse_chronological_video{is_id}s_list.EXT   (default)
+                    -> and the `reverse_chronological` instance attribute is False, the output file name will be:  CoreySchafer_chronological_video{is_id}s_list.EXT
                 -> if the `file_suffix` instance attribute is set to `False`
                     -> and the `reverse_chronological` instance attribute is True,  the output file name will be:  CoreySchafer.EXT
                     -> and the `reverse_chronological` instance attribute is False, the output file name will be:  CoreySchafer.EXT

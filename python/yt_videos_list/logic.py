@@ -166,7 +166,8 @@ def execute(url, file_name, log_silently, txt, csv, markdown, file_suffix, all_v
     common_message.display_invalid_cookie_consent_option(cookie_consent)
  def determine_file_name():
   channel_name = driver.find_element_by_xpath('//yt-formatted-string[@class="style-scope ytd-channel-name"]').text
-  if file_suffix is True: suffix = '_reverse_chronological_videos_list' if reverse_chronological else '_chronological_videos_list'
+  is_id = '_id' if video_id_only is True else ''
+  if file_suffix is True: suffix = f'_reverse_chronological_video{is_id}s_list' if reverse_chronological else f'_chronological_video{is_id}s_list'
   else: suffix = ''
   if txt is False and csv is False and markdown is False:
    formatted_file_name = ''

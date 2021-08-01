@@ -14,20 +14,21 @@ def time_writer_function(writer_function):
 
 
 @time_writer_function
-def create_file(file_type, video_data, file_name, file_buffering, reverse_chronological, logging_locations, timestamp):
+def create_file(file_type, video_data, video_id_only, file_name, file_buffering, reverse_chronological, logging_locations, timestamp):
     if file_type == 'csv': newline = ''
     else:                  newline = None
     csv_writer = None
+    identifier = 'Video ID' if video_id_only is True else 'Video URL'
     with open(f'temp_{file_name}_{timestamp}.{file_type}', mode='w', newline=newline, encoding='utf-8',  buffering=file_buffering) as temp_file:
         if file_type == 'csv':
-            fieldnames = ['Video Number', 'Video Title', 'Video Duration', 'Video URL', 'Watched', 'Watch again later', 'Notes']
+            fieldnames = ['Video Number', 'Video Title', 'Video Duration', identifier, 'Watched', 'Watch again later', 'Notes']
             csv_writer = csv.DictWriter(temp_file, fieldnames=fieldnames)
             csv_writer.writeheader()
-        create_writer(file_type, temp_file, csv_writer, video_data, logging_locations)
+        create_writer(file_type, temp_file, csv_writer, video_data, identifier, logging_locations)
         total_videos = len(video_data)
     return file_name, total_videos, reverse_chronological, logging_locations
 
-def create_writer(file_type, file, csv_writer, video_data, logging_locations):
+def create_writer(file_type, file, csv_writer, video_data, identifier, logging_locations):
     total_writes = 0
     for video_datum in video_data:
         # video_datum = [video_number, video_title, video_duration, video_url]
@@ -35,7 +36,7 @@ def create_writer(file_type, file, csv_writer, video_data, logging_locations):
         video_title    = video_datum[1]
         video_duration = video_datum[2]
         video_url      = video_datum[3]
-        entry(file_type, file, csv_writer, video_number, video_title, video_duration, video_url)
+        entry(file_type, file, csv_writer, video_number, video_title, video_duration, video_url, identifier)
         total_writes  += 1
         if total_writes % 250 == 0:
             log(f'{total_writes} videos written to {file.name}...', logging_locations)
@@ -50,23 +51,24 @@ def create_writer(file_type, file, csv_writer, video_data, logging_locations):
 # then take the contents of the original file and append it to the end of the temp file before renaming temp file to file_name.txt (overwrites original file)
 
 @time_writer_function
-def update_file(file_type, video_data, file_name, file_buffering, reverse_chronological, logging_locations, timestamp, stored_in_file):
+def update_file(file_type, video_data, video_id_only, file_name, file_buffering, reverse_chronological, logging_locations, timestamp, stored_in_file):
     if stored_in_file is None: stored_in_file = store_already_written_videos(file_name, file_type)
     if file_type == 'csv': newline = ''
     else:                  newline = None
+    identifier = 'Video ID' if video_id_only is True else 'Video URL'
     with open(f'{file_name}.{file_type}', mode='r+', newline=newline, encoding='utf-8',  buffering=file_buffering) as old_file, open(f'temp_{file_name}_{timestamp}.{file_type}', mode='w+', newline=newline, encoding='utf-8',  buffering=file_buffering) as temp_file:
         if file_type == 'csv':
             existing_videos = int(max(re.findall('^(\d+)?,', old_file.read(), re.M), key=lambda i: int(i)))
-            fieldnames   = ['Video Number', 'Video Title', 'Video Duration', 'Video URL', 'Watched', 'Watch again later', 'Notes']
+            fieldnames   = ['Video Number', 'Video Title', 'Video Duration', identifier, 'Watched', 'Watch again later', 'Notes']
             csv_writer   = csv.DictWriter(temp_file, fieldnames=fieldnames)
             if reverse_chronological: csv_writer.writeheader()
         else:
             existing_videos = int(max(re.findall('^(?:### )?Video Number:\s*(\d+)', old_file.read(), re.M), key=lambda i: int(i)))
             csv_writer   = None
-        new_videos = update_writer(file_type, temp_file, old_file, csv_writer, stored_in_file, reverse_chronological, video_data, existing_videos, logging_locations)
+        new_videos = update_writer(file_type, temp_file, old_file, csv_writer, stored_in_file, reverse_chronological, video_data, identifier, existing_videos, logging_locations)
     return file_name, new_videos, reverse_chronological, logging_locations
 
-def update_writer(file_type, new_file, old_file, csv_writer, visited_videos, reverse_chronological, video_data, existing_videos, logging_locations):
+def update_writer(file_type, new_file, old_file, csv_writer, visited_videos, reverse_chronological, video_data, identifier, existing_videos, logging_locations):
     new_videos   = find_number_of_new_videos(video_data, visited_videos)
     if reverse_chronological is True:
         video_number = existing_videos + new_videos
@@ -84,7 +86,7 @@ def update_writer(file_type, new_file, old_file, csv_writer, visited_videos, rev
         video_url      = video_datum[3]
         if video_url in visited_videos:
             continue
-        entry(file_type, new_file, csv_writer, video_number, video_title, video_duration, video_url)
+        entry(file_type, new_file, csv_writer, video_number, video_title, video_duration, video_url, identifier)
         video_number += incrementer
         total_writes += 1
         if total_writes % 250 == 0:
@@ -102,11 +104,11 @@ def find_number_of_new_videos(video_data, visited_videos):
     visited_on_page = {video[3] for video in video_data}  # set comprehension
     return len(visited_on_page.difference(visited_videos))                # same as len(visited_on_page - visited_videos)
 
-def entry(file_type, file_object, csv_writer, video_number, video_title, video_duration, video_url):
-    if file_type == 'csv': write_csv (csv_writer,  video_number, video_title, video_duration, video_url)
-    else:                  write_text(file_object, video_number, video_title, video_duration, video_url, file_type)
+def entry(file_type, file_object, csv_writer, video_number, video_title, video_duration, video_url, identifier):
+    if file_type == 'csv': write_csv (csv_writer,  video_number, video_title, video_duration, video_url, identifier)
+    else:                  write_text(file_object, video_number, video_title, video_duration, video_url, identifier, file_type)
 
-def write_text(file, video_number, video_title, video_duration, video_url, file_type):
+def write_text(file, video_number, video_title, video_duration, video_url, file_type, identifier):
     newline  = '\n'
     markdown = file_type == 'md'
     def ljust(text):
@@ -124,20 +126,20 @@ def write_text(file, video_number, video_title, video_duration, video_url, file_
         file.write(f'{ljust("Video Number:")}{video_number}{newline}')
         file.write(f'{ljust("Video Title:")}{video_title}{newline}')
     file.write(f'{ljust("Video Duration:")}{video_duration}{newline}')
-    file.write(f'{ljust("Video URL:")}{video_url}{newline}')
+    file.write(f'{ljust(identifier + ":")}{video_url}{newline}')
     file.write(f'{ljust("Watched:")}{newline}')
     file.write(f'{ljust("Watch again later:")}{newline}')
     file.write(f'{ljust("Notes:")}{newline}')
     file.write('*'*75 + newline)
     if markdown: file.write('\n')
 
-def write_csv(writer, video_number, video_title, video_duration, video_url):
+def write_csv(writer, video_number, video_title, video_duration, video_url, identifier):
     writer.writerow(
         {
             'Video Number':      f'{video_number}',
             'Video Title':       f'{video_title}',
             'Video Duration':    f'{video_duration}',
-            'Video URL':         f'{video_url}',
+            identifier:              f'{video_url}',
             'Watched':           '',
             'Watch again later': '',
             'Notes':              ''
