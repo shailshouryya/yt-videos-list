@@ -1098,7 +1098,7 @@
 
 ## How to Install Ubuntu 16.04 LTS on VirtualBox with Guest Additions
 ### Video Number:       88
-### Video Duration:     9:32
+### Video Duration:     9:33
 ### Video URL:          https://www.youtube.com/watch?v=-2x-5DN-caM
 ### Watched:            
 ### Watch again later:  
