@@ -55,6 +55,7 @@ def update_file(file_type, video_data, video_id_only, file_name, file_buffering,
     if stored_in_file is None: stored_in_file = store_already_written_videos(file_name, file_type)
     if file_type == 'csv': newline = ''
     else:                  newline = None
+    csv_writer = None
     identifier = 'Video ID' if video_id_only is True else 'Video URL'
     with open(f'{file_name}.{file_type}', mode='r+', newline=newline, encoding='utf-8',  buffering=file_buffering) as old_file, open(f'temp_{file_name}_{timestamp}.{file_type}', mode='w+', newline=newline, encoding='utf-8',  buffering=file_buffering) as temp_file:
         if file_type == 'csv':
@@ -64,7 +65,6 @@ def update_file(file_type, video_data, video_id_only, file_name, file_buffering,
             if reverse_chronological: csv_writer.writeheader()
         else:
             existing_videos = int(max(re.findall('^(?:### )?Video Number:\s*(\d+)', old_file.read(), re.M), key=lambda i: int(i)))
-            csv_writer   = None
         new_videos = update_writer(file_type, temp_file, old_file, csv_writer, stored_in_file, reverse_chronological, video_data, identifier, existing_videos, logging_locations)
     return file_name, new_videos, reverse_chronological, logging_locations
 
