@@ -14,11 +14,7 @@ def time_writer_function(writer_function):
 
 
 @time_writer_function
-def create_file(file_type, video_data, video_id_only, file_name, file_buffering, reverse_chronological, logging_locations, timestamp):
-    if file_type == 'csv': newline = ''
-    else:                  newline = None
-    csv_writer = None
-    identifier = 'Video ID' if video_id_only is True else 'Video URL'
+def create_file(file_type, csv_writer, video_data, identifier, file_name, file_buffering, newline, reverse_chronological, logging_locations, timestamp):
     with open(f'temp_{file_name}_{timestamp}.{file_type}', mode='w', newline=newline, encoding='utf-8',  buffering=file_buffering) as temp_file:
         if file_type == 'csv':
             fieldnames = ['Video Number', 'Video Title', 'Video Duration', identifier, 'Watched', 'Watch again later', 'Notes']
@@ -51,12 +47,8 @@ def create_writer(file_type, file, csv_writer, video_data, identifier, logging_l
 # then take the contents of the original file and append it to the end of the temp file before renaming temp file to file_name.txt (overwrites original file)
 
 @time_writer_function
-def update_file(file_type, video_data, video_id_only, file_name, file_buffering, reverse_chronological, logging_locations, timestamp, stored_in_file):
+def update_file(file_type, csv_writer, video_data, identifier, file_name, file_buffering, newline, reverse_chronological, logging_locations, timestamp, stored_in_file):
     if stored_in_file is None: stored_in_file = store_already_written_videos(file_name, file_type)
-    if file_type == 'csv': newline = ''
-    else:                  newline = None
-    csv_writer = None
-    identifier = 'Video ID' if video_id_only is True else 'Video URL'
     with open(f'{file_name}.{file_type}', mode='r+', newline=newline, encoding='utf-8',  buffering=file_buffering) as old_file, open(f'temp_{file_name}_{timestamp}.{file_type}', mode='w+', newline=newline, encoding='utf-8',  buffering=file_buffering) as temp_file:
         if file_type == 'csv':
             existing_videos = int(max(re.findall('^(\d+)?,', old_file.read(), re.M), key=lambda i: int(i)))
