@@ -100,7 +100,7 @@ def entry(file_type, file_object, csv_writer, video_number, video_title, video_d
     if file_type == 'csv': write_csv (csv_writer,  video_number, video_title, video_duration, video_url, identifier)
     else:                  write_text(file_object, video_number, video_title, video_duration, video_url, identifier, file_type)
 
-def write_text(file, video_number, video_title, video_duration, video_url, file_type, identifier):
+def write_text(file, video_number, video_title, video_duration, video_url, identifier, file_type):
     newline  = '\n'
     markdown = file_type == 'md'
     def ljust(text):
