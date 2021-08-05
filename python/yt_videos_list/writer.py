@@ -9,7 +9,7 @@ def time_writer_function(writer_function):
         log_extraction_information(writer_function.__name__, writer_function, args, kwargs)
     return wrapper_timer
 @time_writer_function
-def create_file(file_type, csv_writer, video_data, identifier, file_name, file_buffering, newline, reverse_chronological, logging_locations, timestamp):
+def create_file(file_type, file_name, file_buffering, newline, csv_writer, video_data, identifier, reverse_chronological, logging_locations, timestamp):
     with open(f'temp_{file_name}_{timestamp}.{file_type}', mode='w', newline=newline, encoding='utf-8',  buffering=file_buffering) as temp_file:
         if file_type == 'csv':
             fieldnames = ['Video Number', 'Video Title', 'Video Duration', identifier, 'Watched', 'Watch again later', 'Notes']
@@ -30,7 +30,7 @@ def create_writer(file_type, file, csv_writer, video_data, identifier, logging_l
         if total_writes % 250 == 0:
             log(f'{total_writes} videos written to {file.name}...', logging_locations)
 @time_writer_function
-def update_file(file_type, csv_writer, video_data, identifier, file_name, file_buffering, newline, reverse_chronological, logging_locations, timestamp, stored_in_file):
+def update_file(file_type, file_name, file_buffering, newline, csv_writer, video_data, identifier, reverse_chronological, logging_locations, timestamp, stored_in_file):
     if stored_in_file is None: stored_in_file = store_already_written_videos(file_name, file_type)
     with open(f'{file_name}.{file_type}', mode='r+', newline=newline, encoding='utf-8',  buffering=file_buffering) as old_file, open(f'temp_{file_name}_{timestamp}.{file_type}', mode='w+', newline=newline, encoding='utf-8',  buffering=file_buffering) as temp_file:
         if file_type == 'csv':

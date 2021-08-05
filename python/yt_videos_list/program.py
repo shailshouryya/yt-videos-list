@@ -5,7 +5,7 @@ import threading
 from . import scroller, writer
 from .notifications import Common
 from .custom_logger import log
-def determine_action(url, driver, scroll_pause_time, reverse_chronological, file_name, file_buffering, txt, csv, markdown, all_video_data_in_memory, video_id_only, logging_locations, verify_page_bottom_n_times):
+def determine_action(url, driver, video_id_only, scroll_pause_time, verify_page_bottom_n_times, reverse_chronological, file_name, file_buffering, txt, csv, markdown, all_video_data_in_memory, logging_locations):
  common_message = Common()
  txt_exists = os.path.isfile(f'{file_name}.txt') if txt else False
  csv_exists = os.path.isfile(f'{file_name}.csv') if csv else False
@@ -40,8 +40,8 @@ def determine_action(url, driver, scroll_pause_time, reverse_chronological, file
   threads = []
   def call(function, file_type, file_videos=None):
    newline = '' if file_type == 'csv' else None
-   if function == 'update_file': return threading.Thread(target=writer.update_file, args=(file_type, csv_writer, video_data, identifier, file_name, file_buffering, newline, reverse_chronological, logging_locations), kwargs={'timestamp': now(), 'stored_in_file': file_videos})
-   else: return threading.Thread(target=writer.create_file, args=(file_type, csv_writer, video_data, identifier, file_name, file_buffering, newline, reverse_chronological, logging_locations), kwargs={'timestamp': now()})
+   if function == 'update_file': return threading.Thread(target=writer.update_file, args=(file_type, file_name, file_buffering, newline, csv_writer, video_data, identifier, reverse_chronological, logging_locations), kwargs={'timestamp': now(), 'stored_in_file': file_videos})
+   else: return threading.Thread(target=writer.create_file, args=(file_type, file_name, file_buffering, newline, csv_writer, video_data, identifier, reverse_chronological, logging_locations), kwargs={'timestamp': now()})
   if txt:
    if txt_exists: txt_thread = call('update_file', 'txt', txt_videos)
    else: txt_thread = call('create_file', 'txt')
@@ -62,8 +62,8 @@ def determine_action(url, driver, scroll_pause_time, reverse_chronological, file
  else:
   def call(function, file_type, file_videos=None):
    newline = '' if file_type == 'csv' else None
-   if function == 'update_file': return writer.update_file(file_type, csv_writer, video_data, identifier, file_name, file_buffering, newline, reverse_chronological, logging_locations, timestamp=now(), stored_in_file=file_videos)
-   else: return writer.create_file(file_type, csv_writer, video_data, identifier, file_name, file_buffering, newline, reverse_chronological, logging_locations, timestamp=now())
+   if function == 'update_file': return writer.update_file(file_type, file_name, file_buffering, newline, csv_writer, video_data, identifier, reverse_chronological, logging_locations, timestamp=now(), stored_in_file=file_videos)
+   else: return writer.create_file(file_type, file_name, file_buffering, newline, csv_writer, video_data, identifier, reverse_chronological, logging_locations, timestamp=now())
   if txt:
    if txt_exists: call('update_file', 'txt', txt_videos)
    else: call('create_file', 'txt')
