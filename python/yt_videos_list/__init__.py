@@ -93,6 +93,11 @@ class ListCreator:
         -> set `all_video_data_in_memory` attribute to True to return ALL video data for channel (video number will then also ALWAYS be correct)
           -> video_data_returned=False (default) OR video_data_returned=True
 
+    Options for the `video_id_only` argument are
+      * False (default) - include      the full URL             to video: https://www.youtube.com/watch?v=ElevenChars
+      * True            - include only the identifier parameter to video:                                 ElevenChars
+          -> video_id_only=False (default) OR video_id_only=True
+
     Options for the `reverse_chronological` argument are
       * True (default) - write the files in order from most recent video to the oldest video
       * False          - write the files in order from oldest video to the most recent video
