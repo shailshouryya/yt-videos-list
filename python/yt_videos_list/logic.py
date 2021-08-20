@@ -125,8 +125,13 @@ def execute(url, file_name, log_silently, txt, csv, markdown, file_suffix, all_v
    driver.set_window_position(0, 0)
    manage_cookie_consent_form()
    wait = selenium.webdriver.support.ui.WebDriverWait(driver, 9)
+   def load_page():
+    try:
+     wait.until(EC.element_to_be_clickable((By.XPATH, '//yt-formatted-string[@class="style-scope ytd-channel-name"]')))
+    except selenium.common.exceptions.TimeoutException:
+     wait.until(EC.element_to_be_clickable((By.XPATH, '//yt-formatted-string[@class="style-scope ytd-topic-channel-details-renderer"]')))
    try:
-    wait.until(EC.element_to_be_clickable((By.XPATH, '//yt-formatted-string[@class="style-scope ytd-channel-name"]')))
+    load_page()
    except selenium.common.exceptions.TimeoutException as error_message:
     common_message.display_selenium_unable_to_load_elements_error(error_message)
     traceback.print_exc()
@@ -165,7 +170,7 @@ def execute(url, file_name, log_silently, txt, csv, markdown, file_suffix, all_v
    else:
     common_message.display_invalid_cookie_consent_option(cookie_consent)
  def determine_file_name():
-  channel_name = driver.find_element_by_xpath('//yt-formatted-string[@class="style-scope ytd-channel-name"]').text
+  channel_name = driver.find_element_by_xpath('//yt-formatted-string[@class="style-scope ytd-channel-name"]').text or driver.find_element_by_xpath('//yt-formatted-string[@class="style-scope ytd-topic-channel-details-renderer"]').text
   is_id = '_id' if video_id_only is True else ''
   if file_suffix is True: suffix = f'_reverse_chronological_video{is_id}s_list' if reverse_chronological else f'_chronological_video{is_id}s_list'
   else: suffix = ''
