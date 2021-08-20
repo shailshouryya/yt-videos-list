@@ -178,7 +178,9 @@ def execute(url, file_name, log_silently, txt, csv, markdown, file_suffix, all_v
    _, _, channel_id = parse_url()
    formatted_file_name = f'{channel_id}{suffix}'
   else:
-   formatted_file_name = file_name.strip('.csv').strip('.txt').strip('.md')
+   if file_name.endswith('.txt') or file_name.endswith('.csv'): formatted_file_name = file_name[:-4]
+   elif file_name.endswith('.md'): formatted_file_name = file_name[:-3]
+   else: formatted_file_name = file_name
   return (channel_name, formatted_file_name)
  @contextlib.contextmanager
  def yield_logger(file_name):
