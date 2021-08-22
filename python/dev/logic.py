@@ -235,8 +235,26 @@ def execute(url, file_name, log_silently, txt, csv, markdown, file_suffix, all_v
             formatted_channel_name = channel_name.replace(' ', '')
             formatted_file_name    = f'{formatted_channel_name}{suffix}'
         elif file_name == 'id':
-            _, _, channel_id    = parse_url()
-            formatted_file_name = f'{channel_id}{suffix}'
+            _, channel_type, channel_id = parse_url()
+            if channel_id in ('videos', ''):
+                # handles URLs such as
+                # youtube.com/teded/                                   # id will be teded
+                # youtube.com/teded/videos                             # id will be teded
+                # youtube.com/originals/                               # id will be originals
+                # youtube.com/originals/videos                         # id will be originals
+                formatted_file_name = f'{channel_type}{suffix}'
+            else:
+                # handles URLs such as
+                # youtube.com/channel/UC-Some24CharacterString         # id will be UC-Some24CharacterString
+                # youtube.com/channel/UC-Some24CharacterString/        # id will be UC-Some24CharacterString
+                # youtube.com/channel/UC-Some24CharacterString/videos  # id will be UC-Some24CharacterString
+                # youtube.com/user/UserNameForChannel                  # id will be UserNameForChannel
+                # youtube.com/user/UserNameForChannel/                 # id will be UserNameForChannel
+                # youtube.com/user/UserNameForChannel/videos           # id will be UserNameForChannel
+                # youtube.com/c/ChannelName                            # id will be ChannelName
+                # youtube.com/c/ChannelName/                           # id will be ChannelName
+                # youtube.com/c/ChannelName/videos                     # id will be ChannelName
+                formatted_file_name = f'{channel_id}{suffix}'
         else:
             if   file_name.endswith('.txt') or file_name.endswith('.csv'): formatted_file_name = file_name[:-4]
             elif file_name.endswith('.md'):                                formatted_file_name = file_name[:-3]

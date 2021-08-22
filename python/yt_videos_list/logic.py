@@ -182,8 +182,11 @@ def execute(url, file_name, log_silently, txt, csv, markdown, file_suffix, all_v
    formatted_channel_name = channel_name.replace(' ', '')
    formatted_file_name = f'{formatted_channel_name}{suffix}'
   elif file_name == 'id':
-   _, _, channel_id = parse_url()
-   formatted_file_name = f'{channel_id}{suffix}'
+   _, channel_type, channel_id = parse_url()
+   if channel_id in ('videos', ''):
+    formatted_file_name = f'{channel_type}{suffix}'
+   else:
+    formatted_file_name = f'{channel_id}{suffix}'
   else:
    if file_name.endswith('.txt') or file_name.endswith('.csv'): formatted_file_name = file_name[:-4]
    elif file_name.endswith('.md'): formatted_file_name = file_name[:-3]
