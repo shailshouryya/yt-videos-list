@@ -35,7 +35,10 @@ def execute(url, file_name, log_silently, txt, csv, markdown, file_suffix, all_v
  def parse_url():
   channel_info = url.split('youtube.com/')[1]
   channel_type = channel_info.split('/')[0]
-  channel_id = channel_info.split('/')[1]
+  try:
+   channel_id = channel_info.split('/')[1]
+  except IndexError:
+   channel_id = ''
   return channel_info, channel_type, channel_id
  def open_user_driver():
   nonlocal user_driver

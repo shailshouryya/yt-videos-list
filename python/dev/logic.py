@@ -44,7 +44,16 @@ def execute(url, file_name, log_silently, txt, csv, markdown, file_suffix, all_v
     def parse_url():
         channel_info = url.split('youtube.com/')[1]
         channel_type = channel_info.split('/')[0]
-        channel_id   = channel_info.split('/')[1]
+        try:
+            # handles URLs such as
+            # youtube.com/identifier/ID
+            # youtube.com/identifier/ID/
+            # youtube.com/identifier/ID/anythingElse
+            channel_id = channel_info.split('/')[1]
+        except IndexError:
+            # handles URLs such as
+            # youtube.com/teded
+            channel_id = ''
         return channel_info, channel_type, channel_id
 
 
@@ -238,8 +247,10 @@ def execute(url, file_name, log_silently, txt, csv, markdown, file_suffix, all_v
             _, channel_type, channel_id = parse_url()
             if channel_id in ('videos', ''):
                 # handles URLs such as
+                # youtube.com/teded                                    # id will be teded
                 # youtube.com/teded/                                   # id will be teded
                 # youtube.com/teded/videos                             # id will be teded
+                # youtube.com/originals                                # id will be originals
                 # youtube.com/originals/                               # id will be originals
                 # youtube.com/originals/videos                         # id will be originals
                 formatted_file_name = f'{channel_type}{suffix}'
