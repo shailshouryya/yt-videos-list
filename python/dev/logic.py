@@ -45,14 +45,15 @@ def execute(url, file_name, log_silently, txt, csv, markdown, file_suffix, all_v
         channel_info = url.split('youtube.com/')[1]
         channel_type = channel_info.split('/')[0]
         try:
-            # handles URLs such as
+            # handle URLs such as
+            # youtube.com/identifier/
             # youtube.com/identifier/ID
             # youtube.com/identifier/ID/
             # youtube.com/identifier/ID/anythingElse
             channel_id = channel_info.split('/')[1]
         except IndexError:
-            # handles URLs such as
-            # youtube.com/teded
+            # handle URLs such as
+            # youtube.com/identifier
             channel_id = ''
         return channel_info, channel_type, channel_id
 
@@ -223,8 +224,8 @@ def execute(url, file_name, log_silently, txt, csv, markdown, file_suffix, all_v
                 # driver.find_element_by_xpath('//button[@aria-label="Turn off Ad personalization on Google Search"]').click()
                 # driver.find_element_by_xpath('//button[@aria-label="Turn off Ad personalization on YouTube & across the web"]').click()
                 wait.until(EC.element_to_be_clickable((By.XPATH, '//button[@aria-label="Ad personalization is off"]')))      # wait for last form element on page to update
-                # driver.find_element_by_xpath('//form[@method="POST"]').click() # this doesn't seem to click the button
-                driver.find_elements_by_xpath('//button')[-1].click()            # find the last button on the page (the CONFIRM button) and click it
+                # driver.find_element_by_xpath('//form[@method="POST"]').click()                                             # this doesn't seem to click the button
+                driver.find_elements_by_xpath('//button')[-1].click()                                                        # find the last button on the page (the CONFIRM button) and click it
             elif cookie_consent is True:
                 common_message.display_accepting_cookie_consent()
                 accept_button.click()
@@ -246,7 +247,7 @@ def execute(url, file_name, log_silently, txt, csv, markdown, file_suffix, all_v
         elif file_name == 'id':
             _, channel_type, channel_id = parse_url()
             if channel_id in ('videos', ''):
-                # handles URLs such as
+                # handle URLs such as
                 # youtube.com/teded                                    # id will be teded
                 # youtube.com/teded/                                   # id will be teded
                 # youtube.com/teded/videos                             # id will be teded
@@ -255,7 +256,7 @@ def execute(url, file_name, log_silently, txt, csv, markdown, file_suffix, all_v
                 # youtube.com/originals/videos                         # id will be originals
                 formatted_file_name = f'{channel_type}{suffix}'
             else:
-                # handles URLs such as
+                # handle URLs such as
                 # youtube.com/channel/UC-Some24CharacterString         # id will be UC-Some24CharacterString
                 # youtube.com/channel/UC-Some24CharacterString/        # id will be UC-Some24CharacterString
                 # youtube.com/channel/UC-Some24CharacterString/videos  # id will be UC-Some24CharacterString
