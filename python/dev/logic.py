@@ -46,14 +46,14 @@ def execute(url, file_name, log_silently, txt, csv, markdown, file_suffix, all_v
         channel_type = channel_info.split('/')[0]
         try:
             # handle URLs such as
-            # youtube.com/identifier/
+            # youtube.com/identifier/                 # NOTE there is a trailing slash here!
             # youtube.com/identifier/ID
             # youtube.com/identifier/ID/
             # youtube.com/identifier/ID/anythingElse
             channel_id = channel_info.split('/')[1]
         except IndexError:
             # handle URLs such as
-            # youtube.com/identifier
+            # youtube.com/identifier                  # NOTE there is no trailing slash here!
             channel_id = ''
         return channel_info, channel_type, channel_id
 
@@ -85,7 +85,10 @@ def execute(url, file_name, log_silently, txt, csv, markdown, file_suffix, all_v
         return webdriver.Firefox(options=options)
 
     def configure_operadriver():
-        # Opera driver MRO: WebDriver -> OperaDriver -> selenium.webdriver.chrome.webdriver.WebDriver -> selenium.webdriver.remote.webdriver.WebDriver -> builtins.object
+        # webdriver.Opera class MRO (method resolution order): WebDriver -> OperaDriver -> selenium.webdriver.chrome.webdriver.WebDriver -> selenium.webdriver.remote.webdriver.WebDriver -> builtins.object
+        # check with
+        # >>> from selenium import webdriver
+        # >>> help(webdriver.Opera)
         # options = selenium.webdriver.chrome.options.Options()
         # options.headless = True
         options = webdriver.ChromeOptions()
@@ -240,6 +243,8 @@ def execute(url, file_name, log_silently, txt, csv, markdown, file_suffix, all_v
         else:                   suffix = ''
         if txt is False and csv is False and markdown is False:
             # program will not write to any output files
+            # program will store video data in memory and return the list of lists containing the video data
+            # only runs when all_video_data_in_memory=True
             formatted_file_name = ''
         elif file_name == 'auto':
             formatted_channel_name = channel_name.replace(' ', '')
