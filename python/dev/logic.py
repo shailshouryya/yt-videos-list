@@ -180,6 +180,10 @@ def execute(url, file_name, log_silently, txt, csv, markdown, file_suffix, all_v
                     wait.until(EC.element_to_be_clickable((By.XPATH, channel_heading_xpath)))
                 except selenium.common.exceptions.TimeoutException:
                     wait.until(EC.element_to_be_clickable((By.XPATH, topic_channel_heading_xpath)))
+                except selenium.common.exceptions.WebDriverException as error_message:
+                    traceback.print_exc()
+                    common_message.display_possible_topic_channel_in_headless_error(error_message)
+                    sys.exit()
             try:
                 load_page(channel_heading_xpath, topic_channel_heading_xpath)
             except selenium.common.exceptions.TimeoutException as error_message:
