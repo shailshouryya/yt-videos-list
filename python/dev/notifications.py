@@ -9,7 +9,7 @@ class Common:
     ds                       = ' ' * 2     # 2 spaces ("double spaces")
     offset                   = '\n\n\n'
     error                    = '===>ERROR!<===\n'
-    debugging_info           = 'For further debugging, this was the exact error message (might also be blank):\n'
+    debugging_info           = '\n\nFor further debugging, this was the exact error message (might also be blank):\n'
     missing_url              = 'create_list_for() missing 1 required positional argument: "url"'
     not_writing_to_any_files = '\nBased on your provided settings, yt_videos_list will not be writing to a csv file, nor a txt file, nor a md file, nor to memory.'
     no_videos_found          = 'No videos were found for the channel you provided. Are you sure you entered the url correctly?\n\n'
@@ -355,7 +355,7 @@ class Common:
 
     @classmethod
     def display_url_error(cls, error_message):
-        print(f'{cls.offset}{cls.error}The url you provided could not be parsed properly. Please check the url you provided to make sure there are no typos! {cls.debugging_info}{error_message}{cls.offset}')
+        print(f'{cls.offset}{cls.error}The url you provided could not be parsed properly. Please check the url you provided to make sure there are no typos!{cls.debugging_info}{error_message}{cls.offset}')
 
 
     def display_dependency_setup_instructions(self, user_driver, user_os):
@@ -386,15 +386,15 @@ class Common:
 
     @classmethod
     def display_selenium_dependency_update_error(cls, error_message):
-        print(f'{cls.error}Could not automatically update selenium dependencies! {cls.debugging_info}{error_message}{cls.offset}')
+        print(f'{cls.error}Could not automatically update selenium dependencies!{cls.debugging_info}{error_message}{cls.offset}')
 
     @classmethod
     def display_selenium_unable_to_load_elements_error(cls, error_message):
-        print(f'{cls.error}The page did not load elements! If you\'ve scraped many channels within a short period of time, please try rerunning the program after waiting to make sure YouTube isn\'t throttling your IP address! {cls.debugging_info}{error_message}{cls.offset}')
+        print(f'{cls.error}The page did not load elements! If you\'ve scraped many channels within a short period of time, please try rerunning the program after waiting to make sure YouTube isn\'t throttling your IP address!{cls.debugging_info}{error_message}{cls.offset}')
 
     @classmethod
     def display_possible_topic_channel_in_headless_error(cls, error_message):
-        print(f'{cls.error}There was a problem running the selenium webdriver!\n\nTry running the program again with headless=False if you are currently running the program with headless=True.\n{cls.debugging_info}{error_message}{cls.offset}')
+        print(f'{cls.error}There was a problem running the selenium webdriver!\n\nTry running the program again with headless=False if you are currently running the program with headless=True.{cls.debugging_info}{error_message}{cls.offset}')
 
     @staticmethod
     def tell_user_to_download_driver(user_driver):
