@@ -25,7 +25,7 @@ __ideal_python_version__ = 'Python 3.6+'
 __source__               = 'https://github.com/slow-but-steady/yt-videos-list/tree/main/python'
 
 
-print(f'=======> NOTE <=======\n\nYou are using yt_videos_list package version >= 0.6.0 (currently {__version__}).\nThere are some formatting changes to the output files as of release 0.6.0 that may **potentially** interfere with your workflow, so please review https://github.com/slow-but-steady/yt-videos-list/releases/tag/v.0.6.0 to see if you need to do anything.\nThanks!')
+print(f'=======> NOTE <=======\n\nYou are using yt_videos_list package version >= 0.6.0 (currently {__version__}).\nThere are some formatting changes to the output files as of release 0.6.0 that may **potentially** interfere with your workflow, so please review https://github.com/slow-but-steady/yt-videos-list/releases/tag/v0.6.0 to see if you need to do anything.\nThanks!')
 
 
 class ListCreator:
