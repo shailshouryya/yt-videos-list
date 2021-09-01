@@ -312,6 +312,15 @@ There are a number of optional arguments you can specify during the instantiatio
 </details>
 
 <details>
+<summary><b><code>scrapetube</code> integration</b></summary>
+
+[`scrapetube`](https://github.com/dermasmid/scrapetube) is a much more efficient backend developer tool that loads the videos uploaded by a channel. This package ***also*** supports loading information from playlists and searches, which `yt-videos-list` currently does not do. Integration with `scrapetube` will be available in a future `yt-videos-list` release!
+
+To keep things backwards-compatible and maintainable, the `scrapetube` integration will be accessible through an almost identical, **separate** interface as the `ListCreator` interface, and the original `ListCreator` interface will continue to be available and continue to receive updates. 🤓
+
+</details>
+
+<details>
 <summary><b>Cloning and running locally</b></summary>
 
 To clone the repository and install the most updated version of the package that may not yet be available on the latest release through [PyPI](pypi.org/project/yt-videos-list/), run:
