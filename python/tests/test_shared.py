@@ -46,7 +46,8 @@ def run_tests_for(browsers_list):
     log_test_info('*' * 140,        'CoreySchafer_reverse_chronological_videos_list.log', 'CoreySchafer_chronological_videos_list.log', 'CoreySchafer_reverse_chronological_video_ids_list.log', 'CoreySchafer_chronological_video_ids_list.log')
     log_test_info('Running tests!', 'CoreySchafer_reverse_chronological_videos_list.log', 'CoreySchafer_chronological_videos_list.log', 'CoreySchafer_reverse_chronological_video_ids_list.log', 'CoreySchafer_chronological_video_ids_list.log')
     while current < total:
-        # each test_case is a ListCreator instance with
+        # each test_case is a ListCreator instance for
+        # video_id_only set to True or False with
         # reverse_chronological set to True or False
         # for EACH driver in the browsers_list,
         # and within EACH test case,
@@ -100,6 +101,7 @@ def run_tests_for(browsers_list):
 def create_test_cases(browsers):
     '''
     Creates an instance of `ListCreator` for a
+    video_id_only=True and video_id_only=False for a
     reverse chronological AND chronological test case
     for each driver in the provided `browsers` list.
     '''
@@ -117,7 +119,8 @@ def run_test_case(list_creator, log_file):
     `verify_update()` runs all variations (no pre-existing files,
     pre-existing txt, pre-existing csv, pre-existing md, and
     pre-existing txt + csv + md files) of the provided test case
-    (a specific driver with the `reverse_chronological` attribute
+    (a specific driver for the `video_id_only` attribute set to `True` or `False`
+    with the `reverse_chronological` attribute
     set to either `True` or `False`) using the
     `list_creator.create_list_for()` method and verifies resulting
     output files match the content in the corresponding full
@@ -144,7 +147,7 @@ def delete_all_schafer5_files(suffix):
     The `delete_file(filepath, extension)` helper function deletes
     pre-existing files with the specified extension. The `suffix`
     used to create `filepath` includes
-    `reverse_chronological_videos_list` and `chronological_videos_list`
+    `reverse_chronological_video[_id]s_list` and `chronological_video[_id]s_list`
     and the extensions include `txt`, `csv`, and `md`. The prefix in
     all cases is `CoreySchafer_`
     '''
@@ -163,7 +166,7 @@ def delete_file(filepath, extension):
 
 def verify_update(list_creator, schafer5_url, test_file, full_file, log_file):
     '''
-    Uses the `reverse_chronological` attribute of the `list_creator`
+    Uses the `reverse_chronological` and `video_id_only` attributes of the `list_creator`
     argument to determine the suffix, then uses the reference
     `test_file` to create a partial test file. Runs the
     `create_list_for(schafer5_url)` method on the provided
@@ -198,9 +201,9 @@ def verify_update(list_creator, schafer5_url, test_file, full_file, log_file):
 def use_no_partial_files(test_file, suffix, log_file):
     '''
     Removes all pre-existing files with the corresponding `suffix`
-    (`reverse_chronological_videos_list`
+    (`reverse_chronological_video[_id]s_list`
     or
-    `chronological_videos_list`;
+    `chronological_video[_id]s_list`;
     the prefix in all cases is `CoreySchafer_`).
     '''
     log_test_info('TESTING with NO pre-existing files AT ALL....\n', log_file)
@@ -209,9 +212,9 @@ def use_no_partial_files(test_file, suffix, log_file):
 def use_partial_txt_only(test_file, suffix, log_file):
     '''
     Removes all pre-existing files with the corresponding `suffix`
-    (`reverse_chronological_videos_list`
+    (`reverse_chronological_video[_id]s_list`
     or
-    `chronological_videos_list`;
+    `chronological_video[_id]s_list`;
     the prefix in all cases is `CoreySchafer_`), then creates a
     partial txt file using the `partial_CoreySchafer_{suffix}.txt`
     reference file.
@@ -223,9 +226,9 @@ def use_partial_txt_only(test_file, suffix, log_file):
 def use_partial_csv_only(test_file, suffix, log_file):
     '''
     Removes all pre-existing files with the corresponding `suffix`
-    (`reverse_chronological_videos_list`
+    (`reverse_chronological_video[_id]s_list`
     or
-    `chronological_videos_list`;
+    `chronological_video[_id]s_list`;
     the prefix in all cases is `CoreySchafer_`), then creates a
     partial csv file using the `partial_CoreySchafer_{suffix}.csv`
     reference file.
@@ -237,9 +240,9 @@ def use_partial_csv_only(test_file, suffix, log_file):
 def use_partial_md_only(test_file, suffix, log_file):
     '''
     Removes all pre-existing files with the corresponding `suffix`
-    (`reverse_chronological_videos_list`
+    (`reverse_chronological_video[_id]s_list`
     or
-    `chronological_videos_list`;
+    `chronological_video[_id]s_list`;
     the prefix in all cases is `CoreySchafer_`), then creates a
     partial md file using the `partial_CoreySchafer_{suffix}.md`
     reference file.
@@ -251,9 +254,9 @@ def use_partial_md_only(test_file, suffix, log_file):
 def use_partial_csv_txt_and_md(test_file, suffix, log_file):
     '''
     Removes all pre-existing files with the corresponding `suffix`
-    (`reverse_chronological_videos_list`
+    (`reverse_chronological_video[_id]s_list`
     or
-    `chronological_videos_list`;
+    `chronological_video[_id]s_list`;
     the prefix in all cases is `CoreySchafer_`), then creates
     partial txt, csv, and md files using the
     `partial_CoreySchafer_{suffix}.{ext}` reference files.
