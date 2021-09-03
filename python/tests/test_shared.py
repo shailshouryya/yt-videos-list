@@ -176,13 +176,13 @@ def verify_update(list_creator, schafer5_url, test_file, full_file, log_file):
     content in the full reference files.
     '''
     variations = [
-        use_partial_csv_txt_and_md,
-        use_no_partial_files,
-        use_partial_csv_only,
-        use_partial_txt_only,
-        use_partial_md_only
+        ['csv', 'txt', 'md'],
+        [],
+        ['csv'],
+        ['txt'],
+        ['md']
         ]
-    for create_file in variations:
+    for variation in variations:
         is_video_id_only         = vars   (list_creator)["video_id_only"]
         is_reverse_chronological = vars   (list_creator)['reverse_chronological']
         driver_name              = getattr(list_creator, 'driver')
@@ -190,7 +190,7 @@ def verify_update(list_creator, schafer5_url, test_file, full_file, log_file):
         log_test_info(f'Full configuration: {repr(list_creator)}', log_file)
         is_id  = '_id'                                       if is_video_id_only         else  ''
         suffix = f'reverse_chronological_video{is_id}s_list' if is_reverse_chronological else f'chronological_video{is_id}s_list'
-        create_file(test_file, suffix, log_file) # the file this function creates should be the SAME as the returned string to the file_name variable in the next line
+        use_partial_files(variation, test_file, suffix, log_file) # the file this function creates should be the SAME as the returned string to the file_name variable in the next line
         test_output_file = list_creator.create_list_for(schafer5_url, log_silently=True)[1][1]
         # verify calling the create_list_for() method updates the partial file properly
         failed = compare_test_files_to_reference_files(full_file, test_output_file, log_file)
@@ -198,73 +198,23 @@ def verify_update(list_creator, schafer5_url, test_file, full_file, log_file):
             return 'Failed!'
     return 'Passed!'
 
-def use_no_partial_files(test_file, suffix, log_file):
+def use_partial_files(types_of_partial_files, test_file, suffix, log_file):
     '''
     Removes all pre-existing files with the corresponding `suffix`
-    (`reverse_chronological_video[_id]s_list`
-    or
-    `chronological_video[_id]s_list`;
-    the prefix in all cases is `CoreySchafer_`).
-    '''
-    log_test_info('TESTING with NO pre-existing files AT ALL....\n', log_file)
-    delete_all_schafer5_files(suffix)
-
-def use_partial_txt_only(test_file, suffix, log_file):
-    '''
-    Removes all pre-existing files with the corresponding `suffix`
+    for the file extensions in the `types_of_partial_files` tuple
     (`reverse_chronological_video[_id]s_list`
     or
     `chronological_video[_id]s_list`;
     the prefix in all cases is `CoreySchafer_`), then creates a
-    partial txt file using the `partial_CoreySchafer_{suffix}.txt`
-    reference file.
+    partial file for the file extensions in the
+    `types_of_partial_files` tuple
+    using the `partial_CoreySchafer_{suffix}.{extension}`
+    reference file(s).
     '''
-    log_test_info('TESTING with a pre-existing txt file only (no pre-existing csv or md file)....\n', log_file)
+    log_test_info(f'TESTING with pre-existing files containing the following extensions: {types_of_partial_files}....\n', log_file)
     delete_all_schafer5_files(suffix)
-    create_partial_file(test_file, suffix, 'txt')
-
-def use_partial_csv_only(test_file, suffix, log_file):
-    '''
-    Removes all pre-existing files with the corresponding `suffix`
-    (`reverse_chronological_video[_id]s_list`
-    or
-    `chronological_video[_id]s_list`;
-    the prefix in all cases is `CoreySchafer_`), then creates a
-    partial csv file using the `partial_CoreySchafer_{suffix}.csv`
-    reference file.
-    '''
-    log_test_info('TESTING with a pre-existing csv file only (no pre-existing txt or md file)....\n', log_file)
-    delete_all_schafer5_files(suffix)
-    create_partial_file(test_file, suffix, 'csv')
-
-def use_partial_md_only(test_file, suffix, log_file):
-    '''
-    Removes all pre-existing files with the corresponding `suffix`
-    (`reverse_chronological_video[_id]s_list`
-    or
-    `chronological_video[_id]s_list`;
-    the prefix in all cases is `CoreySchafer_`), then creates a
-    partial md file using the `partial_CoreySchafer_{suffix}.md`
-    reference file.
-    '''
-    log_test_info('TESTING with a pre-existing md file only (no pre-existing txt or csv file)....\n', log_file)
-    delete_all_schafer5_files(suffix)
-    create_partial_file(test_file, suffix, 'md')
-
-def use_partial_csv_txt_and_md(test_file, suffix, log_file):
-    '''
-    Removes all pre-existing files with the corresponding `suffix`
-    (`reverse_chronological_video[_id]s_list`
-    or
-    `chronological_video[_id]s_list`;
-    the prefix in all cases is `CoreySchafer_`), then creates
-    partial txt, csv, and md files using the
-    `partial_CoreySchafer_{suffix}.{ext}` reference files.
-    '''
-    log_test_info('TESTING with pre-existing txt, csv, and md files....\n', log_file)
-    create_partial_file(test_file, suffix, 'txt')
-    create_partial_file(test_file, suffix, 'csv')
-    create_partial_file(test_file, suffix, 'md' )
+    for extension in types_of_partial_files:
+        create_partial_file(test_file, suffix, extension)
 
 def create_partial_file(test_file, suffix, extension):
     '''
