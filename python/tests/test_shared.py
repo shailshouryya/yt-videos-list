@@ -115,8 +115,8 @@ def create_test_cases(browsers):
 
 def run_test_case(list_creator, log_file):
     '''
-    Calls `verify_update()` and `delete_all_schafer5_files()`.
-    `verify_update()` runs all variations (no pre-existing files,
+    Calls `verify_update()`, which
+    runs all variations (no pre-existing files,
     pre-existing txt, pre-existing csv, pre-existing md, and
     pre-existing txt + csv + md files) of the provided test case
     (a specific driver for the `video_id_only` attribute set to `True` or `False`
@@ -124,9 +124,7 @@ def run_test_case(list_creator, log_file):
     set to either `True` or `False`) using the
     `list_creator.create_list_for()` method and verifies resulting
     output files match the content in the corresponding full
-    reference files. `delete_all_schafer5_files(suffix)` ensures no
-    pre-existing files with the corresponding suffix interfere with
-    the test and accidentally alter the test results.
+    reference files.
     '''
     path_slash               = determine_path_slash()
     schafer5_url             = 'youtube.com/user/schafer5'
@@ -136,7 +134,6 @@ def run_test_case(list_creator, log_file):
     suffix = f'reverse_chronological_video{is_id}s_list' if is_reverse_chronological else f'chronological_video{is_id}s_list'
     partialfile_path = f'tests{path_slash}reference_files{path_slash}partial_CoreySchafer_{suffix}'
     fullfile_path    = f'tests{path_slash}reference_files{path_slash}full_CoreySchafer_{suffix}'
-    delete_all_schafer5_files(suffix)
     return verify_update(list_creator, schafer5_url, partialfile_path, fullfile_path, log_file)
 
 
