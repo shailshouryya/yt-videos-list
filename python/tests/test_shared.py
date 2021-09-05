@@ -185,11 +185,11 @@ def use_partial_files(types_of_partial_files, test_file, suffix, log_file):
     reference file(s).
     '''
     log_test_info(f'TESTING with pre-existing files containing the following extensions: {types_of_partial_files}....\n', log_file)
-    delete_all_schafer5_files(suffix)
+    delete_all_schafer5_files_with_suffix(suffix)
     for extension in types_of_partial_files:
         create_partial_file(test_file, suffix, extension)
 
-def delete_all_schafer5_files(suffix):
+def delete_all_schafer5_files_with_suffix(suffix):
     '''
     Deletes all files containing the corresponding suffix to ensure
     tests return valid results not skewed by any pre-existing files.
