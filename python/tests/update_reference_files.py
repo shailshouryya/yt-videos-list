@@ -22,12 +22,12 @@ def main():
     for testing) before moving the updated files into the
     testing directory path (yt_videos_list/python/tests/).
     '''
-    update_schafer5_chronological()
-    update_schafer5_non_chronological()
+    update_expected_chronological_test_output()
+    update_expected_reverse_chronological_test_output()
     move_reference_files_to_tests()
 
 
-def update_schafer5_chronological():
+def update_expected_chronological_test_output():
     '''
     Updates the full, chronological txt, csv, md
     reference files for the
@@ -37,7 +37,7 @@ def update_schafer5_chronological():
     ListCreator(reverse_chronological=False).create_list_for('youtube.com/user/schafer5', file_name='full_CoreySchafer_chronological')
 
 
-def update_schafer5_non_chronological():
+def update_expected_reverse_chronological_test_output():
     '''
     Updates the full, reverse chronological
     txt, csv, md reference files for the

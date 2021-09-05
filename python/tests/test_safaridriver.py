@@ -25,7 +25,7 @@ if __name__ == '__main__':
     os.system(f'{FORMATTED_PYTHON} minifier.py')
     os.system(f'{FORMATTED_PIP}    install .')
 
-from test_shared import run_tests_for, delete_all_schafer5_files
+from test_shared import run_tests_for, delete_all_test_output_files
 
 
 def main():
@@ -41,7 +41,7 @@ def main():
     '''
     browsers   = ['safari']
     run_tests_for(browsers)
-    delete_all_schafer5_files()
+    delete_all_test_output_files()
 
 
 if __name__ == '__main__':

@@ -18,7 +18,7 @@ if __name__ == '__main__':
     os.system(f'{FORMATTED_PIP}    install .')
 
 
-from test_shared                          import run_tests_for, delete_all_schafer5_files
+from test_shared                          import run_tests_for, delete_all_test_output_files
 
 
 from yt_videos_list.download.windows_info import get_drive_letter
@@ -37,7 +37,7 @@ def main():
     remove_dependencies()
     browsers   = ['firefox', 'opera', 'chrome', 'brave']
     run_tests_for(browsers)
-    delete_all_schafer5_files()
+    delete_all_test_output_files()
 
 
 def remove_dependencies():

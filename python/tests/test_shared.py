@@ -127,22 +127,22 @@ def run_test_case(list_creator, log_file):
     reference files.
     '''
     path_slash               = determine_path_slash()
-    schafer5_url             = 'youtube.com/user/schafer5'
+    test_url                 = 'youtube.com/user/schafer5'
     is_reverse_chronological = getattr(list_creator, 'reverse_chronological')
     is_video_id_only         = getattr(list_creator, 'video_id_only')
     is_id  = '_id'                                       if is_video_id_only         else  ''
     suffix = f'reverse_chronological_video{is_id}s_list' if is_reverse_chronological else f'chronological_video{is_id}s_list'
     partialfile_path = f'tests{path_slash}reference_files{path_slash}partial_CoreySchafer_{suffix}'
     fullfile_path    = f'tests{path_slash}reference_files{path_slash}full_CoreySchafer_{suffix}'
-    return verify_update(list_creator, schafer5_url, partialfile_path, fullfile_path, log_file)
+    return verify_update(list_creator, test_url, partialfile_path, fullfile_path, log_file)
 
 
-def verify_update(list_creator, schafer5_url, test_file, full_file, log_file):
+def verify_update(list_creator, test_url, test_file, full_file, log_file):
     '''
     Uses the `reverse_chronological` and `video_id_only` attributes of the `list_creator`
     argument to determine the suffix, then uses the reference
     `test_file` to create a partial test file. Runs the
-    `create_list_for(schafer5_url)` method on the provided
+    `create_list_for(test_url)` method on the provided
     `list_creator` instance. Calls
     `compare_test_files_to_reference_files(full_file, file_name)`
     to ensure content in the created output files match the
@@ -164,7 +164,7 @@ def verify_update(list_creator, schafer5_url, test_file, full_file, log_file):
         is_id  = '_id'                                       if is_video_id_only         else  ''
         suffix = f'reverse_chronological_video{is_id}s_list' if is_reverse_chronological else f'chronological_video{is_id}s_list'
         use_partial_files(variation, test_file, suffix, log_file) # the file this function creates should be the SAME as the returned string to the file_name variable in the next line
-        test_output_file = list_creator.create_list_for(schafer5_url, log_silently=True)[1][1]
+        test_output_file = list_creator.create_list_for(test_url, log_silently=True)[1][1]
         # verify calling the create_list_for() method updates the partial file properly
         failed = compare_test_files_to_reference_files(full_file, test_output_file, log_file)
         if failed == 'Failed!':
@@ -185,11 +185,11 @@ def use_partial_files(types_of_partial_files, test_file, suffix, log_file):
     reference file(s).
     '''
     log_test_info(f'TESTING with pre-existing files containing the following extensions: {types_of_partial_files}....\n', log_file)
-    delete_all_schafer5_files_with_suffix(suffix)
+    delete_all_test_output_files_with_suffix(suffix)
     for extension in types_of_partial_files:
         create_partial_file(test_file, suffix, extension)
 
-def delete_all_schafer5_files_with_suffix(suffix):
+def delete_all_test_output_files_with_suffix(suffix):
     '''
     Deletes all files containing the corresponding suffix to ensure
     tests return valid results not skewed by any pre-existing files.
@@ -200,10 +200,10 @@ def delete_all_schafer5_files_with_suffix(suffix):
     and the extensions include `txt`, `csv`, and `md`. The prefix in
     all cases is `CoreySchafer_`
     '''
-    schafer5 = f'CoreySchafer_{suffix}'
-    delete_file(schafer5, 'txt')
-    delete_file(schafer5, 'csv')
-    delete_file(schafer5, 'md' )
+    test_output_file = f'CoreySchafer_{suffix}'
+    delete_file(test_output_file, 'txt')
+    delete_file(test_output_file, 'csv')
+    delete_file(test_output_file, 'md' )
 
 def delete_file(filepath, extension):
     '''
@@ -256,7 +256,7 @@ def compare_test_files_to_reference_files(full_file, test_output_file, log_file)
     return 'Passed!'
 
 
-def delete_all_schafer5_files():
+def delete_all_test_output_files():
     suffixes = [
         'reverse_chronological_videos_list',
         'chronological_videos_list',
@@ -264,4 +264,4 @@ def delete_all_schafer5_files():
         'chronological_video_ids_list',
     ]
     for suffix in suffixes:
-        delete_all_schafer5_files_with_suffix(suffix)
+        delete_all_test_output_files_with_suffix(suffix)
