@@ -254,3 +254,14 @@ def compare_test_files_to_reference_files(full_file, test_output_file, log_file)
         log_test_info(f'❗️❗️ FAILED at {ISOFORMAT(NOW())}! ❗️❗️', log_file)
         return 'Failed!'
     return 'Passed!'
+
+
+def delete_all_schafer5_files():
+    suffixes = [
+        'reverse_chronological_videos_list',
+        'chronological_videos_list',
+        'reverse_chronological_video_ids_list',
+        'chronological_video_ids_list',
+    ]
+    for suffix in suffixes:
+        delete_all_schafer5_files_with_suffix(suffix)
