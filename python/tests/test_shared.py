@@ -22,17 +22,6 @@ NOW       = datetime.datetime.now
 ISOFORMAT = datetime.datetime.isoformat
 
 
-def log_test_info(message, *args):
-    thread_name  = f'[{threading.current_thread().name}]'
-    current_time = datetime.datetime.now().isoformat()
-    utc_offset   = time.strftime('%z')
-    message      = f'{current_time}{utc_offset} {thread_name:>12} {message}\n'
-    sys.stdout.writelines(message)
-    for log_file in args:
-        with open(log_file, mode='a', encoding='utf-8') as output_location:
-            output_location.writelines(message)
-
-
 def run_tests_for(browsers_list):
     '''
     Runs 2 threads simultaneously to test both
@@ -98,6 +87,17 @@ def run_tests_for(browsers_list):
         elif 'thread_2_case' in locals():                                 log_test_info(test_case_complete, log_2_name)
 
 
+def log_test_info(message, *args):
+    thread_name  = f'[{threading.current_thread().name}]'
+    current_time = datetime.datetime.now().isoformat()
+    utc_offset   = time.strftime('%z')
+    message      = f'{current_time}{utc_offset} {thread_name:>12} {message}\n'
+    sys.stdout.writelines(message)
+    for log_file in args:
+        with open(log_file, mode='a', encoding='utf-8') as output_location:
+            output_location.writelines(message)
+
+
 def create_test_cases(browsers):
     '''
     Creates an instance of `ListCreator` for a
@@ -136,30 +136,6 @@ def run_test_case(list_creator, log_file):
     fullfile_path    = f'tests{path_slash}reference_files{path_slash}full_CoreySchafer_{suffix}'
     return verify_update(list_creator, schafer5_url, partialfile_path, fullfile_path, log_file)
 
-
-def delete_all_schafer5_files(suffix):
-    '''
-    Deletes all files containing the corresponding suffix to ensure
-    tests return valid results not skewed by any pre-existing files.
-    The `delete_file(filepath, extension)` helper function deletes
-    pre-existing files with the specified extension. The `suffix`
-    used to create `filepath` includes
-    `reverse_chronological_video[_id]s_list` and `chronological_video[_id]s_list`
-    and the extensions include `txt`, `csv`, and `md`. The prefix in
-    all cases is `CoreySchafer_`
-    '''
-    schafer5 = f'CoreySchafer_{suffix}'
-    delete_file(schafer5, 'txt')
-    delete_file(schafer5, 'csv')
-    delete_file(schafer5, 'md' )
-
-
-def delete_file(filepath, extension):
-    '''
-    Removes the file {filepath}.{extension} if it exists.
-    '''
-    if os.path.exists(f'{filepath}.{extension}'):
-        os.remove(f'{filepath}.{extension}')
 
 def verify_update(list_creator, schafer5_url, test_file, full_file, log_file):
     '''
@@ -212,6 +188,29 @@ def use_partial_files(types_of_partial_files, test_file, suffix, log_file):
     delete_all_schafer5_files(suffix)
     for extension in types_of_partial_files:
         create_partial_file(test_file, suffix, extension)
+
+def delete_all_schafer5_files(suffix):
+    '''
+    Deletes all files containing the corresponding suffix to ensure
+    tests return valid results not skewed by any pre-existing files.
+    The `delete_file(filepath, extension)` helper function deletes
+    pre-existing files with the specified extension. The `suffix`
+    used to create `filepath` includes
+    `reverse_chronological_video[_id]s_list` and `chronological_video[_id]s_list`
+    and the extensions include `txt`, `csv`, and `md`. The prefix in
+    all cases is `CoreySchafer_`
+    '''
+    schafer5 = f'CoreySchafer_{suffix}'
+    delete_file(schafer5, 'txt')
+    delete_file(schafer5, 'csv')
+    delete_file(schafer5, 'md' )
+
+def delete_file(filepath, extension):
+    '''
+    Removes the file {filepath}.{extension} if it exists.
+    '''
+    if os.path.exists(f'{filepath}.{extension}'):
+        os.remove(f'{filepath}.{extension}')
 
 def create_partial_file(test_file, suffix, extension):
     '''
