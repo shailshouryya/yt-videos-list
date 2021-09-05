@@ -34,7 +34,8 @@ def update_expected_chronological_test_output():
     youtube.com/user/schafer5 channel (the
     reference channel for testing).
     '''
-    ListCreator(reverse_chronological=False).create_list_for('youtube.com/user/schafer5', file_name='full_CoreySchafer_chronological')
+    ListCreator(reverse_chronological=False, video_id_only=False).create_list_for('youtube.com/user/schafer5', file_name='full_CoreySchafer_chronological_videos_list')
+    ListCreator(reverse_chronological=False, video_id_only=True ).create_list_for('youtube.com/user/schafer5', file_name='full_CoreySchafer_chronological_video_ids_list')
 
 
 def update_expected_reverse_chronological_test_output():
@@ -44,7 +45,9 @@ def update_expected_reverse_chronological_test_output():
     youtube.com/user/schafer5 channel (the
     reference channel for testing).
     '''
-    ListCreator(reverse_chronological=True).create_list_for('youtube.com/user/schafer5', file_name='full_CoreySchafer_reverse_chronological') # reverse_chronological is already True by default, just included here to be explicit
+    # reverse_chronological is already True by default, just included here to be explicit
+    ListCreator(reverse_chronological=True, video_id_only=False).create_list_for('youtube.com/user/schafer5', file_name='full_CoreySchafer_reverse_chronological_videos_list')
+    ListCreator(reverse_chronological=True, video_id_only=True ).create_list_for('youtube.com/user/schafer5', file_name='full_CoreySchafer_reverse_chronological_video_ids_list')
 
 
 def move_reference_files_to_tests():
@@ -54,12 +57,15 @@ def move_reference_files_to_tests():
     (yt_videos_list/python/tests/).
     '''
     path_slash = determine_path_slash()
-    os.replace('full_CoreySchafer_chronological_videos_list.txt',         f'tests{path_slash}reference_files{path_slash}full_CoreySchafer_chronological_videos_list.txt')
-    os.replace('full_CoreySchafer_chronological_videos_list.csv',         f'tests{path_slash}reference_files{path_slash}full_CoreySchafer_chronological_videos_list.csv')
-    os.replace('full_CoreySchafer_chronological_videos_list.md',          f'tests{path_slash}reference_files{path_slash}full_CoreySchafer_chronological_videos_list.md')
-    os.replace('full_CoreySchafer_reverse_chronological_videos_list.txt', f'tests{path_slash}reference_files{path_slash}full_CoreySchafer_reverse_chronological_videos_list.txt')
-    os.replace('full_CoreySchafer_reverse_chronological_videos_list.csv', f'tests{path_slash}reference_files{path_slash}full_CoreySchafer_reverse_chronological_videos_list.csv')
-    os.replace('full_CoreySchafer_reverse_chronological_videos_list.md',  f'tests{path_slash}reference_files{path_slash}full_CoreySchafer_reverse_chronological_videos_list.md')
+    file_names = [
+        'full_CoreySchafer_chronological_videos_list',
+        'full_CoreySchafer_chronological_video_ids_list',
+        'full_CoreySchafer_reverse_chronological_videos_list',
+        'full_CoreySchafer_reverse_chronological_video_ids_list',
+    ]
+    for file_name in file_names:
+        for extension in ['csv', 'txt', 'md']:
+            os.replace(f'{file_name}.{extension}', f'tests{path_slash}reference_files{path_slash}{file_name}.{extension}')
 
 
 if __name__ == '__main__':
