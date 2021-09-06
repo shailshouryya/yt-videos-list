@@ -258,10 +258,10 @@ def compare_test_files_to_reference_files(full_file, test_output_file, log_file)
 
 def delete_all_test_output_files():
     suffixes = [
-        'reverse_chronological_videos_list',
         'chronological_videos_list',
-        'reverse_chronological_video_ids_list',
         'chronological_video_ids_list',
+        'reverse_chronological_videos_list',
+        'reverse_chronological_video_ids_list',
     ]
     for suffix in suffixes:
         delete_all_test_output_files_with_suffix(suffix)
