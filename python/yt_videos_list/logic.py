@@ -30,8 +30,7 @@ def execute(url, file_name, log_silently, txt, csv, markdown, file_suffix, all_v
    traceback.print_exc()
    sys.exit()
   base_url = 'https://www.youtube.com'
-  videos = 'videos'
-  return f'{base_url}/{channel_type}/{channel_id}/{videos}'
+  return f'{base_url}/{channel_type}/{channel_id}/videos'
  def parse_url():
   channel_info = url.split('youtube.com/')[1]
   channel_type = channel_info.split('/')[0]
