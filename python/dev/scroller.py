@@ -67,7 +67,7 @@ def store_already_written_videos(file_name, file_type):
         if file_type == 'csv':
             seen_videos = set(
                 (
-                    re.findall('(https://www\.youtube\.com/watch\?v=.+?),',         file_contents) or
+                    re.findall(',(https://www\.youtube\.com/watch\?v=.+?),',        file_contents) or
                     re.findall(',([A-z0-9_-]{11}),',                                file_contents)
                 )
             )
