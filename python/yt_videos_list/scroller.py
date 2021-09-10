@@ -51,7 +51,7 @@ def store_already_written_videos(file_name, file_type):
   if file_type in ('txt', 'md'):
    seen_videos = set(
     (
-     re.findall('(https://www\.youtube\.com/watch\?v=.+?)(?:\s|\n)', file_contents) or
+     re.findall('^(?:### )?Video URL:\s*(https://www\.youtube\.com/watch\?v=.+?)(?:\s|\n)', file_contents, flags=re.MULTILINE) or
      re.findall('^(?:### )?Video ID:\s*([A-z0-9_-]{11})$', file_contents, flags=re.MULTILINE)
     )
    )
