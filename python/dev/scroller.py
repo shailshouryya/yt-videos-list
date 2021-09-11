@@ -49,9 +49,9 @@ def determine_common_visited_videos(file_name, txt_exists, csv_exists, md_exists
     if stored_in_txt: existing_videos.append(stored_in_txt)
     if stored_in_csv: existing_videos.append(stored_in_csv)
     if stored_in_md:  existing_videos.append(stored_in_md)
-    if   len(existing_videos) == 3: visited_videos = existing_videos[0].intersection(existing_videos[1]).intersection(existing_videos[2]) # find videos that exist in all 3 files                         # same as stored_in_txt & stored_in_csv & stored_in_md #
-    elif len(existing_videos) == 2: visited_videos = existing_videos[0].intersection(existing_videos[1])                                  # find videos that exist in the 2 files the program is updating # same as stored_in_txt & stored_in_csv #
-    else:                           visited_videos = existing_videos[0]                                                                   # take all videos  from the     1 file  the program is updating # same as stored_in_txt #
+    if   len(existing_videos) == 3: visited_videos = existing_videos[0].intersection(existing_videos[1]).intersection(existing_videos[2]) # find videos that exist in all 3 files                            # same as stored_in_txt & stored_in_csv & stored_in_md #
+    elif len(existing_videos) == 2: visited_videos = existing_videos[0].intersection(existing_videos[1])                                  # find videos that exist in the 2 files the program is updating    # same as stored_in_txt & stored_in_csv #
+    else:                           visited_videos = existing_videos[0]                                                                   # take all videos  from the     1 file  the program is updating    # same as stored_in_txt #
     return visited_videos, stored_in_txt, stored_in_csv, stored_in_md
 
 def store_already_written_videos(file_name, file_type):
@@ -61,7 +61,7 @@ def store_already_written_videos(file_name, file_type):
             seen_videos = set(
                 (
                     re.findall('^(?:### )?Video URL:\s*(https://www\.youtube\.com/watch\?v=.+?)(?:\s|\n)', file_contents, flags=re.MULTILINE) or
-                    re.findall('^(?:### )?Video ID:\s*([A-z0-9_-]{11})$',           file_contents, flags=re.MULTILINE)
+                    re.findall('^(?:### )?Video ID:\s*([A-z0-9_-]{11})$',                                  file_contents, flags=re.MULTILINE)
                 )
             )
         if file_type == 'csv':
