@@ -15,7 +15,7 @@ from . import logic
 from .custom_logger import log
 
 
-__version__              = '0.6.1'
+__version__              = '0.6.2'
 __author__               = 'slow-but-steady'
 __email__                = 'yt.videos.list@gmail.com'
 __development_status__   = '4 - Beta'
