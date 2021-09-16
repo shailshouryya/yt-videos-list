@@ -3,6 +3,8 @@ import time
 import datetime
 import threading
 
+import selenium
+
 from .              import scroller, writer
 from .notifications import Common
 from .custom_logger import log
@@ -103,7 +105,13 @@ def load_video_data(videos_list, visited_videos, video_id_only, reverse_chronolo
     for selenium_element in videos_list:
         video_title    = selenium_element.get_attribute('title')
         video_url      = selenium_element.get_attribute('href').replace('&pp=sAQA', '')
-        video_duration = selenium_element.find_element_by_xpath('./../../../../ytd-thumbnail/a[@id="thumbnail"]/div[@id="overlays"]/ytd-thumbnail-overlay-time-status-renderer/span').get_attribute('innerHTML').split()[0]
+        try:
+            video_duration = selenium_element.find_element_by_xpath('./../../../../ytd-thumbnail/a[@id="thumbnail"]/div[@id="overlays"]/ytd-thumbnail-overlay-time-status-renderer/span').get_attribute('innerHTML').split()[0]
+        except selenium.common.exceptions.NoSuchElementException:
+            # example error message:
+            # Message: Unable to locate element: ./../../../../ytd-thumbnail/a[@id="thumbnail"]/div[@id="overlays"]/ytd-thumbnail-overlay-time-status-renderer/span
+            video_duration = 'N/A'
+            log(f'Video {videos_loaded + 1} did not have a "Video Duration" field, storing as "N/A"...', logging_locations)
         if visited_videos is not None and video_url in visited_videos:
             # file(s) already have the information for this video
             continue
