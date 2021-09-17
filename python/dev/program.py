@@ -101,8 +101,7 @@ def load_video_data(videos_list, visited_videos, video_id_only, reverse_chronolo
     video_data     = []
     video_number   = len(videos_list)
     videos_to_load = video_number
-    videos_loaded  = 0
-    for selenium_element in videos_list:
+    for videos_loaded, selenium_element in enumerate(videos_list, start=1):
         video_title    = selenium_element.get_attribute('title')
         video_url      = selenium_element.get_attribute('href').replace('&pp=sAQA', '')
         try:
@@ -117,7 +116,6 @@ def load_video_data(videos_list, visited_videos, video_id_only, reverse_chronolo
             continue
         video_data.append([video_number, video_title, video_duration, video_url])
         video_number  -= 1
-        videos_loaded += 1
         if videos_loaded % 250 == 0:
             log(f'Loaded {videos_loaded} videos into memory...', logging_locations)
     if reverse_chronological is False:
