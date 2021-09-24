@@ -86,6 +86,8 @@ class Common:
  @classmethod
  def format_operadriver_list(cls, operating_system):
   return [
+   cls.format_driver_information (operating_system, 'v.93.0.4577.63', 'Stable 79', 'operadriver', 'Opera'),
+   cls.format_operadriver_download_command(operating_system, 'v.93.0.4577.63'),
    cls.format_driver_information (operating_system, 'v.92.0.4515.107', 'Stable 78', 'operadriver', 'Opera'),
    cls.format_operadriver_download_command(operating_system, 'v.92.0.4515.107'),
    cls.format_driver_information (operating_system, 'v.91.0.4472.77', 'Stable 77', 'operadriver', 'Opera'),
