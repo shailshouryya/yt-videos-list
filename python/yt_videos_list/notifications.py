@@ -72,6 +72,8 @@ class Common:
  @classmethod
  def format_geckodriver_list(cls, operating_system):
   return [
+   cls.format_driver_information (operating_system, 'v0.30.0', '≥ 92', 'geckodriver', 'Mozilla Firefox'),
+   cls.format_geckodriver_download_command(operating_system, 'v0.30.0'),
    cls.format_driver_information (operating_system, 'v0.29.1', '≥ 87', 'geckodriver', 'Mozilla Firefox'),
    cls.format_geckodriver_download_command(operating_system, 'v0.29.1'),
    cls.format_driver_information (operating_system, 'v0.29.0', '≥ 84', 'geckodriver', 'Mozilla Firefox'),

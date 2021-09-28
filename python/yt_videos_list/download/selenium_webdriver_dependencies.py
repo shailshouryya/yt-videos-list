@@ -41,14 +41,14 @@ def download_all_dependencies(user_os):
 def execute_download_command(driver, user_os, major_version):
  row_in_list = {
   'firefox': {
-   '99': -9,
-   '98': -9,
-   '97': -9,
-   '96': -9,
-   '95': -9,
-   '94': -9,
-   '93': -9,
-   '92': -9,
+   '99': -11,
+   '98': -11,
+   '97': -11,
+   '96': -11,
+   '95': -11,
+   '94': -11,
+   '93': -11,
+   '92': -11,
    '91': -9,
    '90': -9,
    '89': -9,

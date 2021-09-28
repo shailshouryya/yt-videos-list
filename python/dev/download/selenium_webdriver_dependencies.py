@@ -50,14 +50,14 @@ def execute_download_command(driver, user_os, major_version):
     # indexed values in reverse order to avoid having to map every version to a different element every time a new driver/browser version comes out since all the values get shifted down by 2 with new additions to the top of the list
     row_in_list = {
         'firefox': {
-            '99': -9,
-            '98': -9,
-            '97': -9,
-            '96': -9,
-            '95': -9,
-            '94': -9,
-            '93': -9,
-            '92': -9,
+            '99': -11,
+            '98': -11,
+            '97': -11,
+            '96': -11,
+            '95': -11,
+            '94': -11,
+            '93': -11,
+            '92': -11,
             '91': -9,
             '90': -9,
             '89': -9,
