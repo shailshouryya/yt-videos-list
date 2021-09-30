@@ -254,8 +254,8 @@ class Common:
   return [
    cls.format_driver_information (operating_system, '92.0.881.0', '92', 'msedgedriver', 'Microsoft Edge'),
    cls.format_msedgedriver_download_command(operating_system, '92.0.881.0'),
-   cls.format_driver_information (operating_system, '91.0.864.19', '91', 'msedgedriver', 'Microsoft Edge'),
-   cls.format_msedgedriver_download_command(operating_system, '91.0.864.19'),
+   cls.format_driver_information (operating_system, '91.0.864.71', '91', 'msedgedriver', 'Microsoft Edge'),
+   cls.format_msedgedriver_download_command(operating_system, '91.0.864.71'),
    cls.format_driver_information (operating_system, '90.0.818.66', '90', 'msedgedriver', 'Microsoft Edge'),
    cls.format_msedgedriver_download_command(operating_system, '90.0.818.66'),
    cls.format_driver_information (operating_system, '89.0.774.77', '89', 'msedgedriver', 'Microsoft Edge'),
