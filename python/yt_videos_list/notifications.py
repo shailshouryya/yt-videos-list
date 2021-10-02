@@ -363,7 +363,8 @@ class Common:
   for driver_version_download in self.driver_downloads_for_os[user_driver][user_os]:
    print(driver_version_download)
   def display_more_dependency_information(user_driver):
-   print(f'\n\n# For more information about the {self.more_driver_info[user_driver][0]}, please visit\n{self.more_driver_info[user_driver][1]}\n{self.more_driver_info[user_driver][2]}{self.indent}{self.ds}(all supported versions)\n\nNOTE! You must also have the {self.more_driver_info[user_driver][3]} browser installed to use this. If you don\'t have it installed, install it from\n{self.more_driver_info[user_driver][4]}')
+   driver_name, driver_source_code_url, driver_releases_page_url, browser_name, browser_url = self.more_driver_info[user_driver]
+   print(f'\n\n# For more information about the {driver_name}, please visit\n{driver_source_code_url}\n{driver_releases_page_url}{self.indent}{self.ds}(all supported versions)\n\nNOTE! You must also have the {browser_name} browser installed to use this. If you don\'t have it installed, install it from\n{browser_url}')
   if user_driver != 'safari':
    display_more_dependency_information(user_driver)
  @classmethod
