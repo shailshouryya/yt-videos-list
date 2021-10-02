@@ -24,10 +24,11 @@ class Common:
  url_prefix_operadriver = 'https://github.com/operasoftware/operachromiumdriver/releases/download'
  url_prefix_chromedriver = 'https://chromedriver.storage.googleapis.com'
  url_prefix_msedgedriver = 'https://msedgedriver.azureedge.net'
+ chromedriver_source_code_urls = 'https://chromium.googlesource.com/chromium/src/ or\nhttps://source.chromium.org/chromium/chromium/src'
  more_driver_info = {
   'firefox': ['geckodriver', 'https://github.com/mozilla/geckodriver', 'https://github.com/mozilla/geckodriver/releases', 'Mozilla Firefox', 'https://www.mozilla.org/en-US/firefox/new/'],
   'opera': ['operadriver', 'https://github.com/operasoftware/operachromiumdriver', 'https://github.com/operasoftware/operachromiumdriver/releases', 'Opera', 'https://www.opera.com/'],
-  'chrome': ['chromedriver', 'https://sites.google.com/a/chromium.org/chromedriver/home', 'https://sites.google.com/a/chromium.org/chromedriver/downloads', 'Google Chrome', 'https://www.google.com/chrome/'],
+  'chrome': ['chromedriver', chromedriver_source_code_urls, 'https://sites.google.com/a/chromium.org/chromedriver/downloads', 'Google Chrome', 'https://www.google.com/chrome/'],
   'brave': ['bravedriver', 'https://github.com/operasoftware/operachromiumdriver', 'https://github.com/operasoftware/operachromiumdriver/releases', 'Brave', 'https://brave.com/'],
   'edge': ['msedgedriver', 'https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/', 'https://github.com/MicrosoftDocs/edge-developer/blob/master/microsoft-edge/webdriver-chromium.md', 'Microsoft Edge', 'https://www.microsoft.com/en-us/edge']
  }
