@@ -91,7 +91,7 @@ class Common:
  @classmethod
  def format_operadriver_list(cls, operating_system):
   driver_name = 'operadriver'
-  browser_name = 'Opera'
+  browser_name = 'Opera Browser'
   return [
    cls.format_driver_information (operating_system, 'v.93.0.4577.63', 'Stable 79', driver_name, browser_name),
    cls.format_operadriver_download_command(operating_system, 'v.93.0.4577.63'),
