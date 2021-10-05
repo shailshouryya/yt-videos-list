@@ -27,9 +27,9 @@ class Common:
  chromedriver_source_code_urls = 'https://chromium.googlesource.com/chromium/src/ or\nhttps://source.chromium.org/chromium/chromium/src'
  more_driver_info = {
   'firefox': ['geckodriver', 'https://github.com/mozilla/geckodriver', 'https://github.com/mozilla/geckodriver/releases', 'Mozilla Firefox', 'https://www.mozilla.org/en-US/firefox/new/'],
-  'opera': ['operadriver', 'https://github.com/operasoftware/operachromiumdriver', 'https://github.com/operasoftware/operachromiumdriver/releases', 'Opera', 'https://www.opera.com/'],
+  'opera': ['operadriver', 'https://github.com/operasoftware/operachromiumdriver', 'https://github.com/operasoftware/operachromiumdriver/releases', 'Opera Browser', 'https://www.opera.com/'],
   'chrome': ['chromedriver', chromedriver_source_code_urls, 'https://sites.google.com/chromium.org/driver/downloads', 'Google Chrome', 'https://www.google.com/chrome/'],
-  'brave': ['bravedriver', 'https://github.com/operasoftware/operachromiumdriver', 'https://github.com/operasoftware/operachromiumdriver/releases', 'Brave', 'https://brave.com/'],
+  'brave': ['bravedriver', 'https://github.com/operasoftware/operachromiumdriver', 'https://github.com/operasoftware/operachromiumdriver/releases', 'Brave Browser', 'https://brave.com/'],
   'edge': ['msedgedriver', 'https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/', 'https://msedgewebdriverstorage.blob.core.windows.net/edgewebdriver?comp=list&timeout=60000', 'Microsoft Edge', 'https://www.microsoft.com/en-us/edge']
  }
  def __init__(self):
