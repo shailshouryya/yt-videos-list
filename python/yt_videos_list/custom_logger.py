@@ -11,7 +11,7 @@ def log(message, logging_locations):
  formatted_message = f'{current_time}{utc_offset} {thread_name:>12} {message}\n'
  for location in logging_locations:
   location.write(formatted_message)
-def log_extraction_information(writer_function):
+def log_write_information(writer_function):
  @functools.wraps(writer_function)
  def wrap_writer_function(*args, **kwargs):
   function_name = writer_function.__name__

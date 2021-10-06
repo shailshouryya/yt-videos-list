@@ -1,8 +1,8 @@
 import csv
 import re
-from .custom_logger import log, log_extraction_information
+from .custom_logger import log, log_write_information
 from .scroller      import store_already_written_videos
-@log_extraction_information
+@log_write_information
 def create_file(file_type, file_name, file_buffering, newline, csv_writer, timestamp, logging_locations, identifier, reverse_chronological, video_data):
     with open(f'temp_{file_name}_{timestamp}.{file_type}', mode='w', newline=newline, encoding='utf-8',  buffering=file_buffering) as temp_file:
         if file_type == 'csv':
@@ -23,7 +23,7 @@ def create_writer(file_type, file, csv_writer, logging_locations, identifier, vi
         total_writes  += 1
         if total_writes % 250 == 0:
             log(f'{total_writes} videos written to {file.name}...', logging_locations)
-@log_extraction_information
+@log_write_information
 def update_file(file_type, file_name, file_buffering, newline, csv_writer, timestamp, logging_locations, identifier, reverse_chronological, video_data, visited_videos, video_id_only):
     if visited_videos is None: visited_videos = store_already_written_videos(file_name, file_type)
     visited_videos = format_visited_videos_for_id(visited_videos, video_id_only, logging_locations)
