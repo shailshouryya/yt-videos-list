@@ -19,7 +19,7 @@ def create_writer(file_type, file, csv_writer, logging_locations, identifier, vi
         video_title    = video_datum[1]
         video_duration = video_datum[2]
         video_url      = video_datum[3]
-        entry(file_type, file, csv_writer, video_number, video_title, video_duration, video_url, identifier)
+        create_row(file_type, file, csv_writer, video_number, video_title, video_duration, video_url, identifier)
         total_writes  += 1
         if total_writes % 250 == 0:
             log(f'{total_writes} videos written to {file.name}...', logging_locations)
@@ -63,7 +63,7 @@ def update_writer(file_type, new_file, old_file, csv_writer, logging_locations, 
         video_url      = video_datum[3]
         if video_url in visited_videos:
             continue
-        entry(file_type, new_file, csv_writer, video_number, video_title, video_duration, video_url, identifier)
+        create_row(file_type, new_file, csv_writer, video_number, video_title, video_duration, video_url, identifier)
         video_number += incrementer
         total_writes += 1
         if total_writes % 250 == 0:
@@ -79,7 +79,7 @@ def update_writer(file_type, new_file, old_file, csv_writer, logging_locations, 
 def find_number_of_new_videos(video_data, visited_videos):
     visited_on_page = {video[3] for video in video_data}
     return len(visited_on_page.difference(visited_videos))
-def entry(file_type, file_object, csv_writer, video_number, video_title, video_duration, video_url, identifier):
+def create_row(file_type, file_object, csv_writer, video_number, video_title, video_duration, video_url, identifier):
     if file_type == 'csv': write_csv (csv_writer,  video_number, video_title, video_duration, video_url, identifier)
     else:                  write_text(file_object, video_number, video_title, video_duration, video_url, identifier, file_type)
 def write_text(file, video_number, video_title, video_duration, video_url, identifier, file_type):
