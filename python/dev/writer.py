@@ -12,11 +12,11 @@ def create_file(file_type, file_name, file_buffering, newline, csv_writer, times
             fieldnames = ['Video Number', 'Video Title', 'Video Duration', identifier, 'Watched', 'Watch again later', 'Notes']
             csv_writer = csv.DictWriter(temp_file, fieldnames=fieldnames)
             csv_writer.writeheader()
-        create_writer(file_type, temp_file, csv_writer, logging_locations, identifier, video_data)
+        create_entries(file_type, temp_file, csv_writer, logging_locations, identifier, video_data)
         total_videos = len(video_data)
     return file_name, total_videos, reverse_chronological, logging_locations
 
-def create_writer(file_type, file, csv_writer, logging_locations, identifier, video_data):
+def create_entries(file_type, file, csv_writer, logging_locations, identifier, video_data):
     total_writes = 0
     for video_datum in video_data:
         # video_datum = [video_number, video_title, video_duration, video_url]
