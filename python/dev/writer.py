@@ -50,7 +50,7 @@ def update_file(file_type, file_name, file_buffering, newline, csv_writer, times
             if reverse_chronological: csv_writer.writeheader()
         else:
             number_of_existing_videos = int(max(re.findall('^(?:### )?Video Number:\s*(\d+)', old_file.read(), re.M), key=lambda i: int(i)))
-        new_videos = update_writer(file_type, temp_file, old_file, csv_writer, logging_locations, identifier, reverse_chronological, video_data, visited_videos, number_of_existing_videos)
+        new_videos = update_entries(file_type, temp_file, old_file, csv_writer, logging_locations, identifier, reverse_chronological, video_data, visited_videos, number_of_existing_videos)
     return file_name, new_videos, reverse_chronological, logging_locations
 
 def format_visited_videos_for_id(visited_videos, video_id_only, logging_locations):
@@ -65,7 +65,7 @@ def format_visited_videos_for_id(visited_videos, video_id_only, logging_location
         visited_videos = formatted_visited_videos
     return visited_videos
 
-def update_writer(file_type, new_file, old_file, csv_writer, logging_locations, identifier, reverse_chronological, video_data, visited_videos, number_of_existing_videos):
+def update_entries(file_type, new_file, old_file, csv_writer, logging_locations, identifier, reverse_chronological, video_data, visited_videos, number_of_existing_videos):
     new_videos   = find_number_of_new_videos(video_data, visited_videos)
     if reverse_chronological is True:
         video_number = number_of_existing_videos + new_videos
