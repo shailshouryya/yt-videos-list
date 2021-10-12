@@ -10,8 +10,8 @@ def create_file(file_type, file_name, file_buffering, newline, csv_writer, times
             csv_writer = csv.DictWriter(temp_file, fieldnames=fieldnames)
             csv_writer.writeheader()
         create_entries(file_type, temp_file, csv_writer, logging_locations, identifier, video_data)
-        total_videos = len(video_data)
-    return file_name, total_videos, reverse_chronological, logging_locations
+        new_videos_written = total_videos = len(video_data)
+    return file_name, new_videos_written, total_videos, reverse_chronological, logging_locations
 def create_entries(file_type, file, csv_writer, logging_locations, identifier, video_data):
     total_writes = 0
     for video_datum in video_data:
@@ -35,8 +35,8 @@ def update_file(file_type, file_name, file_buffering, newline, csv_writer, times
             if reverse_chronological: csv_writer.writeheader()
         else:
             number_of_existing_videos = int(max(re.findall('^(?:### )?Video Number:\s*(\d+)', old_file.read(), re.M), key=lambda i: int(i)))
-        new_videos = update_entries(file_type, temp_file, old_file, csv_writer, logging_locations, identifier, reverse_chronological, video_data, visited_videos, number_of_existing_videos)
-    return file_name, new_videos, reverse_chronological, logging_locations
+        new_videos_written, total_videos = update_entries(file_type, temp_file, old_file, csv_writer, logging_locations, identifier, reverse_chronological, video_data, visited_videos, number_of_existing_videos)
+    return file_name, new_videos_written, total_videos, reverse_chronological, logging_locations
 def format_visited_videos_for_id(visited_videos, video_id_only, logging_locations):
     if video_id_only is True:
         log('Updating set to keep only the video ID from the full video URL...', logging_locations)
@@ -50,8 +50,9 @@ def format_visited_videos_for_id(visited_videos, video_id_only, logging_location
     return visited_videos
 def update_entries(file_type, new_file, old_file, csv_writer, logging_locations, identifier, reverse_chronological, video_data, visited_videos, number_of_existing_videos):
     new_videos   = find_number_of_new_videos(video_data, visited_videos)
+    total_videos = number_of_existing_videos + new_videos
     if reverse_chronological is True:
-        video_number = number_of_existing_videos + new_videos
+        video_number = total_videos
         incrementer  = -1
     else:
         video_number = number_of_existing_videos + 1
@@ -75,7 +76,7 @@ def update_entries(file_type, new_file, old_file, csv_writer, logging_locations,
     else:
         new_file.seek(0)
         for line in new_file: old_file.write(line)
-    return new_videos
+    return new_videos, total_videos
 def find_number_of_new_videos(video_data, visited_videos):
     visited_on_page = {video[3] for video in video_data}
     return len(visited_on_page.difference(visited_videos))

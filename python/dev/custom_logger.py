@@ -22,8 +22,8 @@ def log_write_information(writer_function):
         start_time                                                          = time.perf_counter()
         extension                                                           = args[0] # file_type
         timestamp                                                           = args[5] # timestamp (determined by the now() function in program.py)
-        file_name, videos_written, reverse_chronological, logging_locations = writer_function(*args, **kwargs)   # writer_function() writes to temp_{file_name}
-        if videos_written == 1: videos = 'video'
+        file_name, new_videos_written, total_videos, reverse_chronological, logging_locations = writer_function(*args, **kwargs)   # writer_function() writes to temp_{file_name}
+        if new_videos_written == 1: videos = 'video'
         else:                   videos = 'videos'
         end_time   = time.perf_counter()
         total_time = end_time - start_time
@@ -31,8 +31,8 @@ def log_write_information(writer_function):
         final_file = f'{file_name}.{extension}'
         padding    = 39
         log('Finished writing to'.ljust(padding) + f'{temp_file}',                                                           logging_locations)
-        if function_name == 'create_file': log(f'{videos_written} {videos} written to'.ljust(padding) + f'{temp_file}',           logging_locations)
-        if function_name == 'update_file': log(f'{videos_written} ***NEW*** {videos} written to'.ljust(padding) + f'{temp_file}', logging_locations)
+        if function_name == 'create_file': log(f'{new_videos_written} {videos} written to'.ljust(padding) + f'{temp_file}',           logging_locations)
+        if function_name == 'update_file': log(f'{new_videos_written} ***NEW*** {videos} written to'.ljust(padding) + f'{temp_file}', logging_locations)
         log('Closing'.ljust(padding) + f'{temp_file}',                                                                       logging_locations)
         log(f'Successfully completed write, renaming {temp_file} to {final_file}',                                           logging_locations)
         if function_name == 'update_file' and not reverse_chronological: # ChannelName_chronological.ext files
@@ -43,6 +43,8 @@ def log_write_information(writer_function):
             # if the function that ran was update_file with the reverse_chronological flag set to True: rename temp_{file_name} to {file_name}.{extension} since program appends old info from the original file to the end of new data in the temp file
             os.replace(temp_file, final_file)
         log('Successfully renamed'.ljust(padding) + f'{temp_file} to {final_file}',                                                                                   logging_locations)
-        if function_name == 'create_file': log(f'It took {total_time} seconds to write all {videos_written} {videos} to {final_file}{NEWLINE}',                            logging_locations)
-        if function_name == 'update_file': log(f'It took {total_time} seconds to write the {videos_written} ***NEW*** {videos} to the pre-existing {final_file}{NEWLINE}', logging_locations)
+        if function_name == 'create_file': log(f'It took {total_time} seconds to write all {new_videos_written} {videos} to {final_file}{NEWLINE}',                            logging_locations)
+        if function_name == 'update_file':
+            log(f'It took {total_time} seconds to write the {new_videos_written} ***NEW*** {videos} to the pre-existing {final_file}{NEWLINE}', logging_locations)
+            log(f'The total number of videos is now: {total_videos}',                                                                           logging_locations)
     return wrap_writer_function
