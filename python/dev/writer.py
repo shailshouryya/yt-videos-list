@@ -102,6 +102,8 @@ def find_number_of_new_videos(video_data, visited_videos):
     visited_on_page = {video[3] for video in video_data}  # set comprehension
     return len(visited_on_page.difference(visited_videos))                # same as len(visited_on_page - visited_videos)
 
+
+
 def create_row(file_type, file_object, csv_writer, video_number, video_title, video_duration, video_url, identifier):
     if file_type == 'csv': write_csv_row (csv_writer,  video_number, video_title, video_duration, video_url, identifier)
     else:                  write_text_row(file_object, video_number, video_title, video_duration, video_url, identifier, file_type)
