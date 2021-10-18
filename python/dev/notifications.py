@@ -339,6 +339,7 @@ class Common:
 
     @classmethod
     def format_download_command(cls, driver, operating_system, version):
+        ### NOTE that Brave Browser doesn't have its own bravedriver, but since it's chromium we can just download operadriver (a chromium based driver) and use the corresponding operadriver for the Brave version (with it renamed to "bravedriver" in order to avoud conflict with different versions of Chrome/Opera and Brave installed at the same time) ###
         if operating_system.startswith('win'):
             if   driver.startswith('geckodriver'):  return cls.format_windows_download(f'{cls.url_prefix_geckodriver}/{version}/geckodriver-{version}-{operating_system}.zip',    'geckodriver')
             elif driver.startswith('bravedriver'):  return cls.format_windows_download(f'{cls.url_prefix_operadriver}/{version}/operadriver_{operating_system}.zip',              'bravedriver')
