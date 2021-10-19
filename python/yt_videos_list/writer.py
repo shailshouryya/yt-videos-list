@@ -9,20 +9,9 @@ def create_file(file_type, file_name, file_buffering, newline, csv_writer, times
             fieldnames = ['Video Number', 'Video Title', 'Video Duration', identifier, 'Watched', 'Watch again later', 'Notes']
             csv_writer = csv.DictWriter(temp_file, fieldnames=fieldnames)
             csv_writer.writeheader()
-        create_entries(file_type, temp_file, csv_writer, logging_locations, identifier, video_data)
         new_videos_written = total_videos = len(video_data)
+        create_entries(file_type, temp_file, csv_writer, logging_locations, identifier, video_data, reverse_chronological, total_videos, number_of_existing_videos=0, visited_videos=set())
     return file_name, new_videos_written, total_videos, reverse_chronological, logging_locations
-def create_entries(file_type, file, csv_writer, logging_locations, identifier, video_data):
-    total_writes = 0
-    for video_datum in video_data:
-        video_number   = video_datum[0]
-        video_title    = video_datum[1]
-        video_duration = video_datum[2]
-        video_url      = video_datum[3]
-        create_row(file_type, file, csv_writer, video_number, video_title, video_duration, video_url, identifier)
-        total_writes  += 1
-        if total_writes % 250 == 0:
-            log(f'{total_writes} videos written to {file.name}...', logging_locations)
 @log_write_information
 def update_file(file_type, file_name, file_buffering, newline, csv_writer, timestamp, logging_locations, identifier, reverse_chronological, video_data, visited_videos, video_id_only):
     if visited_videos is None: visited_videos = store_already_written_videos(file_name, file_type)
@@ -35,7 +24,16 @@ def update_file(file_type, file_name, file_buffering, newline, csv_writer, times
             if reverse_chronological: csv_writer.writeheader()
         else:
             number_of_existing_videos = int(max(re.findall('^(?:### )?Video Number:\s*(\d+)', old_file.read(), re.M), key=lambda i: int(i)))
-        new_videos_written, total_videos = update_entries(file_type, temp_file, old_file, csv_writer, logging_locations, identifier, reverse_chronological, video_data, visited_videos, number_of_existing_videos)
+        new_videos_written   = find_number_of_new_videos(video_data, visited_videos)
+        total_videos = number_of_existing_videos + new_videos_written
+        create_entries(file_type, temp_file, csv_writer, logging_locations, identifier, video_data, reverse_chronological, total_videos, number_of_existing_videos, visited_videos)
+        if reverse_chronological:
+            old_file.seek(0)
+            if file_type == 'csv': old_file.readline()
+            for line in old_file:  temp_file.write(line)
+        else:
+            temp_file.seek(0)
+            for line in temp_file: old_file.write(line)
     return file_name, new_videos_written, total_videos, reverse_chronological, logging_locations
 def format_visited_videos_for_id(visited_videos, video_id_only, logging_locations):
     if video_id_only is True:
@@ -48,9 +46,10 @@ def format_visited_videos_for_id(visited_videos, video_id_only, logging_location
         log('Finished formatting the video IDs in the set...\n', logging_locations)
         visited_videos = formatted_visited_videos
     return visited_videos
-def update_entries(file_type, new_file, old_file, csv_writer, logging_locations, identifier, reverse_chronological, video_data, visited_videos, number_of_existing_videos):
-    new_videos   = find_number_of_new_videos(video_data, visited_videos)
-    total_videos = number_of_existing_videos + new_videos
+def find_number_of_new_videos(video_data, visited_videos):
+    visited_on_page = {video[3] for video in video_data}
+    return len(visited_on_page.difference(visited_videos))
+def create_entries(file_type, new_file, csv_writer, logging_locations, identifier, video_data, reverse_chronological, total_videos, number_of_existing_videos, visited_videos):
     if reverse_chronological is True:
         video_number = total_videos
         incrementer  = -1
@@ -58,6 +57,7 @@ def update_entries(file_type, new_file, old_file, csv_writer, logging_locations,
         video_number = number_of_existing_videos + 1
         incrementer  = 1
     total_writes = 0
+    new          = ' new ' if number_of_existing_videos > 0 else ' '
     for video_datum in video_data:
         video_title    = video_datum[1]
         video_duration = video_datum[2]
@@ -68,18 +68,7 @@ def update_entries(file_type, new_file, old_file, csv_writer, logging_locations,
         video_number += incrementer
         total_writes += 1
         if total_writes % 250 == 0:
-            log(f'{total_writes} new videos written to {new_file.name}...', logging_locations)
-    if reverse_chronological:
-        old_file.seek(0)
-        if file_type == 'csv': old_file.readline()
-        for line in old_file:  new_file.write(line)
-    else:
-        new_file.seek(0)
-        for line in new_file: old_file.write(line)
-    return new_videos, total_videos
-def find_number_of_new_videos(video_data, visited_videos):
-    visited_on_page = {video[3] for video in video_data}
-    return len(visited_on_page.difference(visited_videos))
+            log(f'{total_writes}{new}videos written to {new_file.name}...', logging_locations)
 def create_row(file_type, file_object, csv_writer, video_number, video_title, video_duration, video_url, identifier):
     if file_type == 'csv': write_csv_row (csv_writer,  video_number, video_title, video_duration, video_url, identifier)
     else:                  write_text_row(file_object, video_number, video_title, video_duration, video_url, identifier, file_type)
