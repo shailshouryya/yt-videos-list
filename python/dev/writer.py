@@ -12,9 +12,9 @@ def create_file(file_type, file_name, file_buffering, newline, csv_writer, times
             fieldnames = ['Video Number', 'Video Title', 'Video Duration', identifier, 'Watched', 'Watch again later', 'Notes']
             csv_writer = csv.DictWriter(temp_file, fieldnames=fieldnames)
             csv_writer.writeheader()
-        new_videos_written = total_videos = len(video_data)
+        new_videos = total_videos = len(video_data)
         create_entries(file_type, temp_file, csv_writer, logging_locations, identifier, video_data, reverse_chronological, total_videos, number_of_existing_videos=0, visited_videos=set())
-    return file_name, new_videos_written, total_videos, reverse_chronological, logging_locations
+    return file_name, new_videos, total_videos, reverse_chronological, logging_locations
 
 
 
@@ -37,8 +37,8 @@ def update_file(file_type, file_name, file_buffering, newline, csv_writer, times
             if reverse_chronological: csv_writer.writeheader()
         else:
             number_of_existing_videos = int(max(re.findall('^(?:### )?Video Number:\s*(\d+)', old_file.read(), re.M), key=lambda i: int(i)))
-        new_videos_written   = find_number_of_new_videos(video_data, visited_videos)
-        total_videos = number_of_existing_videos + new_videos_written
+        new_videos   = find_number_of_new_videos(video_data, visited_videos)
+        total_videos = number_of_existing_videos + new_videos
         create_entries(file_type, temp_file, csv_writer, logging_locations, identifier, video_data, reverse_chronological, total_videos, number_of_existing_videos, visited_videos)
         if reverse_chronological:
             old_file.seek(0)
@@ -47,7 +47,7 @@ def update_file(file_type, file_name, file_buffering, newline, csv_writer, times
         else:
             temp_file.seek(0)
             for line in temp_file: old_file.write(line)
-    return file_name, new_videos_written, total_videos, reverse_chronological, logging_locations
+    return file_name, new_videos, total_videos, reverse_chronological, logging_locations
 
 def format_visited_videos_for_id(visited_videos, video_id_only, logging_locations):
     if video_id_only is True:
