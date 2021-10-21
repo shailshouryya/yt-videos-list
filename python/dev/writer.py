@@ -18,12 +18,9 @@ def create_file(file_type, file_name, file_buffering, newline, csv_writer, times
 
 
 
-# if reverse_chronological is True, start at the end of the selenium elements list and ignore all videos that are already in the file
-# add new videos to temp file until first element is reached
-# then append new videos to end of old file - make sure to remove temp file!
-# otherwise start at the beginning of the list and continue adding videos to the temp file until a video that is already in the list is reached
-# ignore all videos that are already in the original file
-# then take the contents of the original file and append it to the end of the temp file before renaming temp file to file_name.txt (overwrites original file)
+# write the information for all new videos to a temp file, then
+#     write the contents from the pre-existing file TO the end of the TEMP file when reverse_chronological=True
+#     write the contents from the temp file TO the end of the PRE-EXISTING file when reverse chronological=False
 
 @log_write_information
 def update_file(file_type, file_name, file_buffering, newline, csv_writer, timestamp, logging_locations, identifier, reverse_chronological, video_data, visited_videos, video_id_only):
@@ -34,7 +31,7 @@ def update_file(file_type, file_name, file_buffering, newline, csv_writer, times
             number_of_existing_videos = int(max(re.findall('^(\d+)?,', old_file.read(), re.M), key=lambda i: int(i)))
             fieldnames                = ['Video Number', 'Video Title', 'Video Duration', identifier, 'Watched', 'Watch again later', 'Notes']
             csv_writer                = csv.DictWriter(temp_file, fieldnames=fieldnames)
-            if reverse_chronological: csv_writer.writeheader()
+            if reverse_chronological: csv_writer.writeheader() # only write header when reverse_chronological=True since the pre-existing csv file will already contain the header when reverse_chronological=False (and the new videos will be added to the bottom of the pre-existing file)
         else:
             number_of_existing_videos = int(max(re.findall('^(?:### )?Video Number:\s*(\d+)', old_file.read(), re.M), key=lambda i: int(i)))
         new_videos   = find_number_of_new_videos(video_data, visited_videos)
@@ -42,10 +39,10 @@ def update_file(file_type, file_name, file_buffering, newline, csv_writer, times
         create_entries(file_type, temp_file, csv_writer, logging_locations, identifier, video_data, reverse_chronological, total_videos, number_of_existing_videos, visited_videos)
         if reverse_chronological:
             old_file.seek(0)
-            if file_type == 'csv': old_file.readline() # skip the header since that's already written at the top of temp file
+            if file_type == 'csv': old_file.readline()         # skip the header since the header is already written at the top of temp file, and the contents of the pre-existing file are added to the END of the temp file
             for line in old_file:  temp_file.write(line)
         else:
-            temp_file.seek(0)
+            temp_file.seek(0)                                  # no need to skip the first line for csv files since csv header only written when reverse_chronological=True
             for line in temp_file: old_file.write(line)
     return file_name, new_videos, total_videos, reverse_chronological, logging_locations
 
