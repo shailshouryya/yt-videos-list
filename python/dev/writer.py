@@ -74,14 +74,11 @@ def create_entries(file_type, new_file, csv_writer, logging_locations, identifie
     total_writes = 0
     new          = ' new ' if number_of_existing_videos > 0 else ' '
     for video_datum in video_data:
-        # video_datum = [video_number, video_title, video_duration, video_url]
         # do NOT use video_number from video_datum since video number is based on number of extracted videos,
         # NOT the offset number based on the number of videos already in the file
         # NOTE that the video_datum[0] element will contain the correct video number for newly created files
         # BUT the incrementer method used below allows this function to work for both new AND pre-existing files
-        video_title    = video_datum[1]
-        video_duration = video_datum[2]
-        video_url      = video_datum[3]
+        _, video_title, video_duration, video_url = video_datum
         if video_url in visited_videos:
             continue
         create_row(file_type, new_file, csv_writer, video_number, video_title, video_duration, video_url, identifier)

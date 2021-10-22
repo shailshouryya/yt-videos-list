@@ -59,9 +59,7 @@ def create_entries(file_type, new_file, csv_writer, logging_locations, identifie
     total_writes = 0
     new          = ' new ' if number_of_existing_videos > 0 else ' '
     for video_datum in video_data:
-        video_title    = video_datum[1]
-        video_duration = video_datum[2]
-        video_url      = video_datum[3]
+        _, video_title, video_duration, video_url = video_datum
         if video_url in visited_videos:
             continue
         create_row(file_type, new_file, csv_writer, video_number, video_title, video_duration, video_url, identifier)
