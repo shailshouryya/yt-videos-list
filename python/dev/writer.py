@@ -13,7 +13,7 @@ def create_file(file_type, file_name, file_buffering, newline, csv_writer, times
             csv_writer = csv.DictWriter(temp_file, fieldnames=fieldnames)
             csv_writer.writeheader()
         new_videos = total_videos = len(video_data)
-        create_entries(file_type, temp_file, csv_writer, logging_locations, identifier, video_data, reverse_chronological, total_videos, number_of_existing_videos=0, visited_videos=set())
+        create_entries(file_type, temp_file, csv_writer, logging_locations, identifier, video_data, reverse_chronological, total_videos, number_of_existing_videos=0, file_visited_videos=set())
     return file_name, new_videos, total_videos, reverse_chronological, logging_locations
 
 
@@ -23,9 +23,9 @@ def create_file(file_type, file_name, file_buffering, newline, csv_writer, times
 #     write the contents from the temp file TO the end of the PRE-EXISTING file when reverse chronological=False
 
 @log_write_information
-def update_file(file_type, file_name, file_buffering, newline, csv_writer, timestamp, logging_locations, identifier, reverse_chronological, video_data, visited_videos, video_id_only):
-    if visited_videos is None: visited_videos = store_already_written_videos(file_name, file_type)
-    visited_videos = format_visited_videos_for_id(visited_videos, video_id_only, logging_locations)
+def update_file(file_type, file_name, file_buffering, newline, csv_writer, timestamp, logging_locations, identifier, reverse_chronological, video_data, file_visited_videos, video_id_only):
+    if file_visited_videos is None: file_visited_videos = store_already_written_videos(file_name, file_type)
+    file_visited_videos = format_visited_videos_for_id(file_visited_videos, video_id_only, logging_locations)
     with open(f'{file_name}.{file_type}', mode='r+', newline=newline, encoding='utf-8',  buffering=file_buffering) as old_file, open(f'temp_{file_name}_{timestamp}.{file_type}', mode='w+', newline=newline, encoding='utf-8',  buffering=file_buffering) as temp_file:
         if file_type == 'csv':
             number_of_existing_videos = int(max(re.findall('^(\d+)?,', old_file.read(), re.M), key=lambda i: int(i)))
@@ -34,9 +34,9 @@ def update_file(file_type, file_name, file_buffering, newline, csv_writer, times
             if reverse_chronological: csv_writer.writeheader() # only write header when reverse_chronological=True since the pre-existing csv file will already contain the header when reverse_chronological=False (and the new videos will be added to the bottom of the pre-existing file)
         else:
             number_of_existing_videos = int(max(re.findall('^(?:### )?Video Number:\s*(\d+)', old_file.read(), re.M), key=lambda i: int(i)))
-        new_videos   = find_number_of_new_videos(video_data, visited_videos)
+        new_videos   = find_number_of_new_videos(video_data, file_visited_videos)
         total_videos = number_of_existing_videos + new_videos
-        create_entries(file_type, temp_file, csv_writer, logging_locations, identifier, video_data, reverse_chronological, total_videos, number_of_existing_videos, visited_videos)
+        create_entries(file_type, temp_file, csv_writer, logging_locations, identifier, video_data, reverse_chronological, total_videos, number_of_existing_videos, file_visited_videos)
         if reverse_chronological:
             old_file.seek(0)
             if file_type == 'csv': old_file.readline()         # skip the header since the header is already written at the top of temp file, and the contents of the pre-existing file are added to the END of the temp file
@@ -46,25 +46,25 @@ def update_file(file_type, file_name, file_buffering, newline, csv_writer, times
             for line in temp_file: old_file.write(line)
     return file_name, new_videos, total_videos, reverse_chronological, logging_locations
 
-def format_visited_videos_for_id(visited_videos, video_id_only, logging_locations):
+def format_visited_videos_for_id(file_visited_videos, video_id_only, logging_locations):
     if video_id_only is True:
         log('Updating set to keep only the video ID from the full video URL...', logging_locations)
         formatted_visited_videos = set()
-        while visited_videos:
-            full_url       = visited_videos.pop()
+        while file_visited_videos:
+            full_url       = file_visited_videos.pop()
             video_id       = full_url.split('watch?v=')[1]
             formatted_visited_videos.add(video_id)
         log('Finished formatting the video IDs in the set...\n', logging_locations)
-        visited_videos = formatted_visited_videos
-    return visited_videos
+        file_visited_videos = formatted_visited_videos
+    return file_visited_videos
 
-def find_number_of_new_videos(video_data, visited_videos):
+def find_number_of_new_videos(video_data, file_visited_videos):
     visited_on_page = {video[3] for video in video_data}  # set comprehension
-    return len(visited_on_page.difference(visited_videos))                # same as len(visited_on_page - visited_videos)
+    return len(visited_on_page.difference(file_visited_videos))                # same as len(visited_on_page - file_visited_videos)
 
 
 
-def create_entries(file_type, new_file, csv_writer, logging_locations, identifier, video_data, reverse_chronological, total_videos, number_of_existing_videos, visited_videos):
+def create_entries(file_type, new_file, csv_writer, logging_locations, identifier, video_data, reverse_chronological, total_videos, number_of_existing_videos, file_visited_videos):
     if reverse_chronological is True:
         video_number = total_videos
         incrementer  = -1
@@ -79,7 +79,7 @@ def create_entries(file_type, new_file, csv_writer, logging_locations, identifie
         # NOTE that the video_datum[0] element will contain the correct video number for newly created files
         # BUT the incrementer method used below allows this function to work for both new AND pre-existing files
         _, video_title, video_duration, video_url = video_datum
-        if video_url in visited_videos:
+        if video_url in file_visited_videos:
             continue
         create_row(file_type, new_file, csv_writer, video_number, video_title, video_duration, video_url, identifier)
         video_number += incrementer
