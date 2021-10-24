@@ -59,7 +59,7 @@ def format_visited_videos_for_id(file_visited_videos, video_id_only, logging_loc
     return file_visited_videos
 
 def find_number_of_new_videos(video_data, file_visited_videos):
-    visited_on_page = {video[3] for video in video_data}  # set comprehension
+    visited_on_page = {video[3] for video in video_data}                       # set comprehension
     return len(visited_on_page.difference(file_visited_videos))                # same as len(visited_on_page - file_visited_videos)
 
 
