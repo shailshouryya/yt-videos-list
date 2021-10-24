@@ -36,7 +36,7 @@ def log_write_information(writer_function):
   else:
    os.replace(temp_file, final_file)
   log('Successfully renamed'.ljust(padding) + f'{temp_file} to {final_file}', logging_locations)
-  if function_name == 'create_file': log(f'It took {total_time} seconds to write all {new_videos_written} {videos} to {final_file}{NEWLINE}', logging_locations)
-  if function_name == 'update_file': log(f'It took {total_time} seconds to write the {new_videos_written} ***NEW*** {videos} to the pre-existing {final_file}{NEWLINE}', logging_locations)
-  log(f'{final_file} now contains information for {total_videos} {videos}', logging_locations)
+  if function_name == 'create_file': log(f'It took {total_time} seconds to write all {new_videos_written} {videos} to {final_file}', logging_locations)
+  if function_name == 'update_file': log(f'It took {total_time} seconds to write the {new_videos_written} ***NEW*** {videos} to the pre-existing {final_file}', logging_locations)
+  log(f'{final_file} now contains information for {total_videos} {videos}{NEWLINE}', logging_locations)
  return wrap_writer_function

@@ -42,8 +42,8 @@ def log_write_information(writer_function):
             # if the function that ran was create_file: rename temp_{file_name} to {file_name}.{extension} here AFTER everything else finishes to ensure atomicity
             # if the function that ran was update_file with the reverse_chronological flag set to True: rename temp_{file_name} to {file_name}.{extension} since program appends old info from the original file to the end of new data in the temp file
             os.replace(temp_file, final_file)
-        log('Successfully renamed'.ljust(padding) + f'{temp_file} to {final_file}',                                                                                            logging_locations)
-        if function_name == 'create_file': log(f'It took {total_time} seconds to write all {new_videos_written} {videos} to {final_file}{NEWLINE}',                            logging_locations)
-        if function_name == 'update_file': log(f'It took {total_time} seconds to write the {new_videos_written} ***NEW*** {videos} to the pre-existing {final_file}{NEWLINE}', logging_locations)
-        log(f'{final_file} now contains information for {total_videos} {videos}',                                                                                              logging_locations)
+        log('Successfully renamed'.ljust(padding) + f'{temp_file} to {final_file}',                                                                                   logging_locations)
+        if function_name == 'create_file': log(f'It took {total_time} seconds to write all {new_videos_written} {videos} to {final_file}',                            logging_locations)
+        if function_name == 'update_file': log(f'It took {total_time} seconds to write the {new_videos_written} ***NEW*** {videos} to the pre-existing {final_file}', logging_locations)
+        log(f'{final_file} now contains information for {total_videos} {videos}{NEWLINE}',                                                                            logging_locations)
     return wrap_writer_function
