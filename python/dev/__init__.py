@@ -431,8 +431,9 @@ class ListCreator:
                 # RuntimeError: Set changed size during iteration
                 for thread in running_threads:
                     if not thread.is_alive():
-                        channel_name, file_name = thread.result[1]
-                        if hasattr(thread, 'result'): log(f'{thread.name} finished writing information for the "{channel_name}" channel to the {file_name} file', logging_locations)
+                        if hasattr(thread, 'result'):
+                            channel_name, file_name = thread.result[1]
+                            log(f'{thread.name} finished writing information for the "{channel_name}" channel to the {file_name} file', logging_locations)
                         else:                         log(f'{thread.name} did NOT finish scraping. See terminal output above for potential exceptions!',          logging_locations) # # AttributeError: 'ThreadWithResult' object has no attribute 'result'
                         finished_threads.add(thread)
                 for thread in finished_threads:
