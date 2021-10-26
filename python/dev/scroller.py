@@ -9,7 +9,7 @@ def scroll_to_bottom(url, driver, scroll_pause_time, logging_locations, verify_p
     current_elements_count = None
     new_elements_count     = count_videos_on_page(driver)
     num_times_count_same   = -1
-    while True:
+    while num_times_count_same < verify_page_bottom_n_times:
         current_elements_count = new_elements_count
         scroll_down(driver, scroll_pause_time, logging_locations)
         new_elements_count = count_videos_on_page(driver)
@@ -17,9 +17,6 @@ def scroll_to_bottom(url, driver, scroll_pause_time, logging_locations, verify_p
             num_times_count_same += 1
             times = 'times' if num_times_count_same == 1 else 'times'
             log(f'Found {new_elements_count} videos. Verified this is the page bottom {num_times_count_same} {times}. Need to verify {verify_page_bottom_n_times} {times} before writing to file...', logging_locations)
-            if num_times_count_same == verify_page_bottom_n_times:
-                # THIS IS THE BREAK CONDITION FOR THE WHILE LOOP!
-                break
         else:
             num_times_count_same = -1
     log('Reached end of page!', logging_locations)
