@@ -21,14 +21,21 @@ def count_videos_on_page(driver):
     return driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
 
 
-def scroll_to_old_videos(url, driver, scroll_pause_time, logging_locations, file_name, txt_exists, csv_exists, md_exists):
+def scroll_to_old_videos(url, driver, scroll_pause_time, logging_locations, verify_page_bottom_n_times, file_name, txt_exists, csv_exists, md_exists):
     log(f'Detected an existing file with the name {file_name} in this directory, checking for new videos to update {file_name}....', logging_locations)
     visited_videos, stored_in_txt, stored_in_csv, stored_in_md = determine_common_visited_videos(file_name, txt_exists, csv_exists, md_exists)
+    verify_page_bottom_n_times                                *= 3                   # it is VERY unlikely that a pre-existing file exists and the program reaches the end of the page before finding ANY pre-existing vides, so increase value for break condition by 3 to make sure this is actually the case and not a false positive
     start_time                                                 = time.perf_counter() # timer stops in save_elements_to_list() function
+    current_elements_count                                     = None
+    new_elements_count                                         = count_videos_on_page(driver)
+    num_times_count_same                                       = -1
     found_old_videos                                           = False
     url_of_last_loaded_video_on_page                           = lambda: driver.find_elements_by_xpath('//*[@id="video-title"]')[-1].get_attribute('href').replace('&pp=sAQA', '')
-    while found_old_videos is False:
+    while found_old_videos is False or num_times_count_same < verify_page_bottom_n_times:
+        current_elements_count = new_elements_count
         scroll_down(driver, scroll_pause_time, logging_locations)
+        new_elements_count   = count_videos_on_page(driver)
+        num_times_count_same = verify_reached_page_bottom(new_elements_count, current_elements_count, num_times_count_same, verify_page_bottom_n_times, logging_locations)
         if url_of_last_loaded_video_on_page() in visited_videos:
             found_old_videos = True
     return save_elements_to_list(driver, start_time, url, logging_locations), stored_in_txt, stored_in_csv, stored_in_md, visited_videos
