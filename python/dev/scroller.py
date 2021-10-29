@@ -30,8 +30,8 @@ def scroll_to_old_videos(url, driver, scroll_pause_time, logging_locations, veri
     new_elements_count                                         = count_videos_on_page(driver)
     num_times_count_same                                       = -1
     found_old_videos                                           = False
-    url_of_last_loaded_video_on_page                           = lambda: driver.find_elements_by_xpath('//*[@id="video-title"]')[-1].get_attribute('href').replace('&pp=sAQA', '')
-    while found_old_videos is False or num_times_count_same < verify_page_bottom_n_times:
+    url_of_last_loaded_video_on_page                           = lambda: driver.find_elements_by_xpath('//*[@id="video-title"]')[-1].get_attribute('href').replace('&pp=sAQA', '').replace('shorts/', 'watch?v=')
+    while found_old_videos is False and num_times_count_same < verify_page_bottom_n_times:
         current_elements_count = new_elements_count
         scroll_down(driver, scroll_pause_time, logging_locations)
         new_elements_count   = count_videos_on_page(driver)
