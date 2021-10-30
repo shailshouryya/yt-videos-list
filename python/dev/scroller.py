@@ -4,27 +4,14 @@ import time
 from .custom_logger import log
 
 
-def scroll_to_bottom(url, driver, scroll_pause_time, logging_locations, verify_page_bottom_n_times):
-    start_time = time.perf_counter() # timer stops in save_elements_to_list() function
-    current_elements_count = None
-    new_elements_count     = count_videos_on_page(driver)
-    num_times_count_same   = -1
-    while num_times_count_same < verify_page_bottom_n_times:
-        current_elements_count = new_elements_count
-        scroll_down(driver, scroll_pause_time, logging_locations)
-        new_elements_count = count_videos_on_page(driver)
-        num_times_count_same = verify_reached_page_bottom(new_elements_count, current_elements_count, num_times_count_same, verify_page_bottom_n_times, logging_locations)
-    log('Reached end of page!', logging_locations)
-    return save_elements_to_list(driver, start_time, url, logging_locations)
-
 def count_videos_on_page(driver):
     return driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
 
 
-def scroll_to_old_videos(url, driver, scroll_pause_time, logging_locations, verify_page_bottom_n_times, file_name, txt_exists, csv_exists, md_exists):
-    log(f'Detected an existing file with the name {file_name} in this directory, checking for new videos to update {file_name}....', logging_locations)
+def scroll_until_break(url, driver, scroll_pause_time, logging_locations, verify_page_bottom_n_times, force_to_page_bottom, file_name, txt_exists, csv_exists, md_exists):
     visited_videos, stored_in_txt, stored_in_csv, stored_in_md = determine_common_visited_videos(file_name, txt_exists, csv_exists, md_exists)
-    verify_page_bottom_n_times                                *= 3                   # it is VERY unlikely that a pre-existing file exists and the program reaches the end of the page before finding ANY pre-existing vides, so increase value for break condition by 3 to make sure this is actually the case and not a false positive
+    if force_to_page_bottom: visited_videos.clear()                                  # clear any pre-existing video information if there are pre-existing files (will already be empty if there are no pre-existing files)
+    else:                    verify_page_bottom_n_times       *= 3                   # it is VERY unlikely that a pre-existing file exists and the program reaches the end of the page before finding ANY pre-existing vides, so increase value for break condition by 3 to make sure this is actually the case and not a false positive
     start_time                                                 = time.perf_counter() # timer stops in save_elements_to_list() function
     current_elements_count                                     = None
     new_elements_count                                         = count_videos_on_page(driver)
@@ -37,6 +24,7 @@ def scroll_to_old_videos(url, driver, scroll_pause_time, logging_locations, veri
         new_elements_count   = count_videos_on_page(driver)
         num_times_count_same = verify_reached_page_bottom(new_elements_count, current_elements_count, num_times_count_same, verify_page_bottom_n_times, logging_locations)
         if url_of_last_loaded_video_on_page() in visited_videos:
+            # if force_to_page_bottom is True, visited_videos will be an empty set and this conditional will never execute
             found_old_videos = True
     return save_elements_to_list(driver, start_time, url, logging_locations), stored_in_txt, stored_in_csv, stored_in_md, visited_videos
 
@@ -50,7 +38,8 @@ def determine_common_visited_videos(file_name, txt_exists, csv_exists, md_exists
     if stored_in_md:  existing_videos.append(stored_in_md)
     if   len(existing_videos) == 3: visited_videos = existing_videos[0].intersection(existing_videos[1]).intersection(existing_videos[2]) # find videos that exist in all 3 files                            # same as stored_in_txt & stored_in_csv & stored_in_md #
     elif len(existing_videos) == 2: visited_videos = existing_videos[0].intersection(existing_videos[1])                                  # find videos that exist in the 2 files the program is updating    # same as stored_in_txt & stored_in_csv #
-    else:                           visited_videos = existing_videos[0]                                                                   # take all videos  from the     1 file  the program is updating    # same as stored_in_txt #
+    elif len(existing_videos) == 1: visited_videos = existing_videos[0]                                                                   # take all videos  from the     1 file  the program is updating    # same as stored_in_txt #
+    else:                           visited_videos = set()                                                                                # there are no pre-existing videos #
     return visited_videos, stored_in_txt, stored_in_csv, stored_in_md
 
 def store_already_written_videos(file_name, file_type):
@@ -77,7 +66,7 @@ def store_already_written_videos(file_name, file_type):
             if 'https://www.youtube.com/watch?v=' not in random_video:
                 # this file stored only the video IDs, so add the rest of the URL to
                 # the video ID so url_of_last_loaded_video_on_page() lambda function in
-                # scroll_to_old_videos() can match the 'href' of the videos properly
+                # scroll_until_break() can match the 'href' of the videos properly
                 formatted_urls = set()
                 random_video = 'https://www.youtube.com/watch?v=' + random_video
                 formatted_urls.add(random_video)
@@ -105,6 +94,8 @@ def verify_reached_page_bottom(new_elements_count, current_elements_count, num_t
         num_times_count_same += 1
         times = 'time' if num_times_count_same == 1 else 'times'
         log(f'Found {new_elements_count} videos. Verified this is the page bottom {num_times_count_same} {times}. Need to verify {verify_page_bottom_n_times} {times} before writing to file...', logging_locations)
+        if num_times_count_same == verify_page_bottom_n_times:
+            log('Reached end of page!', logging_locations)
     else:
         num_times_count_same = -1
     return num_times_count_same
