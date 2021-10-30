@@ -103,7 +103,7 @@ def scroll_down(driver, scroll_pause_time, logging_locations):
 def verify_reached_page_bottom(new_elements_count, current_elements_count, num_times_count_same, verify_page_bottom_n_times, logging_locations):
     if new_elements_count == current_elements_count:
         num_times_count_same += 1
-        times = 'times' if num_times_count_same == 1 else 'times'
+        times = 'time' if num_times_count_same == 1 else 'times'
         log(f'Found {new_elements_count} videos. Verified this is the page bottom {num_times_count_same} {times}. Need to verify {verify_page_bottom_n_times} {times} before writing to file...', logging_locations)
     else:
         num_times_count_same = -1
