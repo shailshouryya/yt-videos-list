@@ -12,10 +12,10 @@ def determine_action(url, driver, video_id_only, scroll_pause_time, verify_page_
  csv_exists = os.path.isfile(f'{file_name}.csv') if csv else False
  md_exists = os.path.isfile(f'{file_name}.md') if markdown else False
  force_to_page_bottom = False
- txt_videos = None
- csv_videos = None
- md_videos = None
- common_visited_videos = None
+ txt_videos = set()
+ csv_videos = set()
+ md_videos = set()
+ common_visited_videos = set()
  current_condition = (txt, txt_exists, csv, csv_exists, markdown, md_exists)
  update_conditions = set(
   (
@@ -41,7 +41,7 @@ def determine_action(url, driver, video_id_only, scroll_pause_time, verify_page_
  if use_threads:
   #
   threads = []
-  def call(function, file_type, file_visited_videos=None):
+  def call(function, file_type, file_visited_videos=set()):
    newline = '' if file_type == 'csv' else None
    if function == 'update_file': return threading.Thread(target=writer.update_file, args=(file_type, file_name, file_buffering, newline, csv_writer, now(), logging_locations, identifier, reverse_chronological, video_data, file_visited_videos, video_id_only))
    else: return threading.Thread(target=writer.create_file, args=(file_type, file_name, file_buffering, newline, csv_writer, now(), logging_locations, identifier, reverse_chronological, video_data))
@@ -63,7 +63,7 @@ def determine_action(url, driver, video_id_only, scroll_pause_time, verify_page_
   for thread in threads:
    thread.join()
  else:
-  def call(function, file_type, file_visited_videos=None):
+  def call(function, file_type, file_visited_videos=set()):
    newline = '' if file_type == 'csv' else None
    if function == 'update_file': return writer.update_file(file_type, file_name, file_buffering, newline, csv_writer, now(), logging_locations, identifier, reverse_chronological, video_data, file_visited_videos, video_id_only)
    else: return writer.create_file(file_type, file_name, file_buffering, newline, csv_writer, now(), logging_locations, identifier, reverse_chronological, video_data)
@@ -93,7 +93,7 @@ def load_video_data(videos_list, common_visited_videos, video_id_only, reverse_c
   except selenium.common.exceptions.NoSuchElementException:
    video_duration = 'N/A'
    log(f'Video {videos_loaded + 1} did not have a "Video Duration" field, storing as "N/A"...', logging_locations)
-  if common_visited_videos is not None and video_url in common_visited_videos:
+  if common_visited_videos and video_url in common_visited_videos:
    continue
   video_data.append([video_number, video_title, video_duration, video_url])
   video_number -= 1
