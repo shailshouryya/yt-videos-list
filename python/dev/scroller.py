@@ -47,17 +47,13 @@ def store_already_written_videos(file_name, file_type):
         file_contents = file.read()
         if file_type in ('txt', 'md'):
             seen_videos = set(
-                (
-                    re.findall('^(?:### )?Video URL:\s*(https://www\.youtube\.com/watch\?v=.+?)(?:\s|\n)', file_contents, flags=re.MULTILINE) or
-                    re.findall('^(?:### )?Video ID:\s*([A-z0-9_-]{11})$',                                  file_contents, flags=re.MULTILINE)
-                )
+                re.findall('^(?:### )?Video URL:\s*(https://www\.youtube\.com/watch\?v=.+?)(?:\s|\n)', file_contents, flags=re.MULTILINE) or
+                re.findall('^(?:### )?Video ID:\s*([A-z0-9_-]{11})$',                                  file_contents, flags=re.MULTILINE)
             )
         if file_type == 'csv':
             seen_videos = set(
-                (
-                    re.findall(',(https://www\.youtube\.com/watch\?v=.+?),',        file_contents) or
-                    re.findall(',([A-z0-9_-]{11}),',                                file_contents)
-                )
+                re.findall(',(https://www\.youtube\.com/watch\?v=.+?),',        file_contents) or
+                re.findall(',([A-z0-9_-]{11}),',                                file_contents)
             )
         if seen_videos:
             # the set exists
