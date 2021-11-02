@@ -15,14 +15,14 @@ def scroll_until_break(url, driver, scroll_pause_time, logging_locations, verify
     start_time                                                 = time.perf_counter() # timer stops in save_elements_to_list() function
     current_elements_count                                     = None
     new_elements_count                                         = count_videos_on_page(driver)
-    num_times_count_same                                       = -1
+    num_times_elements_count_same                              = -1
     found_old_videos                                           = False
     url_of_last_loaded_video_on_page                           = lambda: driver.find_elements_by_xpath('//*[@id="video-title"]')[-1].get_attribute('href').replace('&pp=sAQA', '').replace('shorts/', 'watch?v=')
-    while found_old_videos is False and num_times_count_same < verify_page_bottom_n_times:
+    while found_old_videos is False and num_times_elements_count_same < verify_page_bottom_n_times:
         current_elements_count = new_elements_count
         scroll_down(driver, scroll_pause_time, logging_locations)
         new_elements_count   = count_videos_on_page(driver)
-        num_times_count_same = verify_reached_page_bottom(new_elements_count, current_elements_count, num_times_count_same, verify_page_bottom_n_times, logging_locations)
+        num_times_elements_count_same = verify_reached_page_bottom(new_elements_count, current_elements_count, num_times_elements_count_same, verify_page_bottom_n_times, logging_locations)
         if url_of_last_loaded_video_on_page() in visited_videos:
             # if force_to_page_bottom is True, visited_videos will be an empty set and this conditional will never execute
             found_old_videos = True
@@ -85,16 +85,16 @@ def scroll_down(driver, scroll_pause_time, logging_locations):
     new_elements_count = count_videos_on_page(driver)
     log(f'Found {new_elements_count} videos...', logging_locations)
 
-def verify_reached_page_bottom(new_elements_count, current_elements_count, num_times_count_same, verify_page_bottom_n_times, logging_locations):
+def verify_reached_page_bottom(new_elements_count, current_elements_count, num_times_elements_count_same, verify_page_bottom_n_times, logging_locations):
     if new_elements_count == current_elements_count:
-        num_times_count_same += 1
-        times = 'time' if num_times_count_same == 1 else 'times'
-        log(f'Found {new_elements_count} videos. Verified this is the page bottom {num_times_count_same} {times}. Need to verify {verify_page_bottom_n_times} {times} before writing to file...', logging_locations)
-        if num_times_count_same == verify_page_bottom_n_times:
+        num_times_elements_count_same += 1
+        times = 'time' if num_times_elements_count_same == 1 else 'times'
+        log(f'Found {new_elements_count} videos. Verified this is the page bottom {num_times_elements_count_same} {times}. Need to verify {verify_page_bottom_n_times} {times} before writing to file...', logging_locations)
+        if num_times_elements_count_same == verify_page_bottom_n_times:
             log('Reached end of page!', logging_locations)
     else:
-        num_times_count_same = -1
-    return num_times_count_same
+        num_times_elements_count_same = -1
+    return num_times_elements_count_same
 
 def save_elements_to_list(driver, start_time, url, logging_locations):
     elements   = driver.find_elements_by_xpath('//*[@id="video-title"]')
