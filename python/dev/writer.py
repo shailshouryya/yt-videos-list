@@ -73,6 +73,7 @@ def create_entries(file_type, new_file, csv_writer, logging_locations, identifie
         incrementer  = 1
     total_writes = 0
     new          = ' new ' if number_of_existing_videos > 0 else ' '
+    writer = csv_writer if file_type == 'csv' else new_file
     for video_datum in video_data:
         # do NOT use video_number from video_datum since video number is based on number of extracted videos,
         # NOT the offset number based on the number of videos already in the file
@@ -81,15 +82,15 @@ def create_entries(file_type, new_file, csv_writer, logging_locations, identifie
         _, video_title, video_duration, video_url = video_datum
         if video_url in file_visited_videos:
             continue
-        create_row(file_type, new_file, csv_writer, video_number, video_title, video_duration, video_url, identifier)
+        create_row(file_type, writer, video_number, video_title, video_duration, video_url, identifier)
         video_number += incrementer
         total_writes += 1
         if total_writes % 250 == 0:
             log(f'{total_writes}{new}videos written to {new_file.name}...', logging_locations)
 
-def create_row(file_type, file_object, csv_writer, video_number, video_title, video_duration, video_url, identifier):
-    if file_type == 'csv': write_csv_row (csv_writer,  video_number, video_title, video_duration, video_url, identifier)
-    else:                  write_text_row(file_object, video_number, video_title, video_duration, video_url, identifier, file_type)
+def create_row(file_type, writer, video_number, video_title, video_duration, video_url, identifier):
+    if file_type == 'csv': write_csv_row (writer, video_number, video_title, video_duration, video_url, identifier)
+    else:                  write_text_row(writer, video_number, video_title, video_duration, video_url, identifier, file_type)
 
 def write_text_row(file, video_number, video_title, video_duration, video_url, identifier, file_type):
     newline  = '\n'
