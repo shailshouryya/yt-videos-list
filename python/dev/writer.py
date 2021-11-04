@@ -89,43 +89,40 @@ def create_entries(file_type, new_file, csv_writer, logging_locations, identifie
             log(f'{total_writes}{new}videos written to {new_file.name}...', logging_locations)
 
 def create_row(file_type, writer, video_number, video_title, video_duration, video_url, identifier):
-    if file_type == 'csv': write_csv_row (writer, video_number, video_title, video_duration, video_url, identifier)
-    else:                  write_text_row(writer, video_number, video_title, video_duration, video_url, identifier, file_type)
-
-def write_text_row(file, video_number, video_title, video_duration, video_url, identifier, file_type):
-    newline  = '\n'
-    markdown = file_type == 'md'
-    def ljust(text):
-        if markdown:
-            prefix  = '### '
-            padding = 24
-        else:
-            prefix  = ''
-            padding = 19
-        return f'{prefix}{text}'.ljust(padding)
-    if markdown:
-        file.write(f'## {video_title}{newline}')
-        file.write(f'{ljust("Video Number:")  }{video_number}{newline}')
+    if file_type == 'csv':
+        writer.writerow(
+            {
+                'Video Number':      f'{video_number}',
+                'Video Title':       f'{video_title}',
+                'Video Duration':    f'{video_duration}',
+                identifier:          f'{video_url}',
+                'Watched':           '',
+                'Watch again later': '',
+                'Notes':              ''
+            }
+        )
     else:
-        file.write(f'{ljust("Video Number:")}{video_number}{newline}')
-        file.write(f'{ljust("Video Title:")}{video_title}{newline}')
-    file.write(f'{ljust("Video Duration:")}{video_duration}{newline}')
-    file.write(f'{ljust(identifier + ":")}{video_url}{newline}')
-    file.write(f'{ljust("Watched:")}{newline}')
-    file.write(f'{ljust("Watch again later:")}{newline}')
-    file.write(f'{ljust("Notes:")}{newline}')
-    file.write('*'*75 + newline)
-    if markdown: file.write('\n')
-
-def write_csv_row(writer, video_number, video_title, video_duration, video_url, identifier):
-    writer.writerow(
-        {
-            'Video Number':      f'{video_number}',
-            'Video Title':       f'{video_title}',
-            'Video Duration':    f'{video_duration}',
-            identifier:          f'{video_url}',
-            'Watched':           '',
-            'Watch again later': '',
-            'Notes':              ''
-        }
-    )
+        file     = writer
+        newline  = '\n'
+        markdown = file_type == 'md'
+        def ljust(text):
+            if markdown:
+                prefix  = '### '
+                padding = 24
+            else:
+                prefix  = ''
+                padding = 19
+            return f'{prefix}{text}'.ljust(padding)
+        if markdown:
+            file.write(f'## {video_title}{newline}')
+            file.write(f'{ljust("Video Number:")  }{video_number}{newline}')
+        else:
+            file.write(f'{ljust("Video Number:")}{video_number}{newline}')
+            file.write(f'{ljust("Video Title:")}{video_title}{newline}')
+        file.write(f'{ljust("Video Duration:")}{video_duration}{newline}')
+        file.write(f'{ljust(identifier + ":")}{video_url}{newline}')
+        file.write(f'{ljust("Watched:")}{newline}')
+        file.write(f'{ljust("Watch again later:")}{newline}')
+        file.write(f'{ljust("Notes:")}{newline}')
+        file.write('*'*75 + newline)
+        if markdown: file.write('\n')
