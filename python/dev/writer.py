@@ -102,7 +102,6 @@ def create_row(file_type, writer, video_number, video_title, video_duration, vid
             }
         )
     else:
-        file     = writer
         newline  = '\n'
         markdown = file_type == 'md'
         def ljust(text):
@@ -114,15 +113,15 @@ def create_row(file_type, writer, video_number, video_title, video_duration, vid
                 padding = 19
             return f'{prefix}{text}'.ljust(padding)
         if markdown:
-            file.write(f'## {video_title}{newline}')
-            file.write(f'{ljust("Video Number:")  }{video_number}{newline}')
+            writer.write(f'## {video_title}{newline}')
+            writer.write(f'{ljust("Video Number:")  }{video_number}{newline}')
         else:
-            file.write(f'{ljust("Video Number:")}{video_number}{newline}')
-            file.write(f'{ljust("Video Title:")}{video_title}{newline}')
-        file.write(f'{ljust("Video Duration:")}{video_duration}{newline}')
-        file.write(f'{ljust(identifier + ":")}{video_url}{newline}')
-        file.write(f'{ljust("Watched:")}{newline}')
-        file.write(f'{ljust("Watch again later:")}{newline}')
-        file.write(f'{ljust("Notes:")}{newline}')
-        file.write('*'*75 + newline)
-        if markdown: file.write('\n')
+            writer.write(f'{ljust("Video Number:")}{video_number}{newline}')
+            writer.write(f'{ljust("Video Title:")}{video_title}{newline}')
+        writer.write(f'{ljust("Video Duration:")}{video_duration}{newline}')
+        writer.write(f'{ljust(identifier + ":")}{video_url}{newline}')
+        writer.write(f'{ljust("Watched:")}{newline}')
+        writer.write(f'{ljust("Watch again later:")}{newline}')
+        writer.write(f'{ljust("Notes:")}{newline}')
+        writer.write('*'*75 + newline)
+        if markdown: writer.write('\n')
