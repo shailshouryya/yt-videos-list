@@ -28,6 +28,8 @@ def scroll_until_break(url, driver, scroll_pause_time, logging_locations, verify
             found_old_videos = True
     return save_elements_to_list(driver, start_time, url, logging_locations), stored_in_txt, stored_in_csv, stored_in_md, visited_videos
 
+
+
 def determine_common_visited_videos(file_name, txt_exists, csv_exists, md_exists):
     stored_in_txt = store_already_written_videos(file_name, 'txt') if txt_exists else set()
     stored_in_csv = store_already_written_videos(file_name, 'csv') if csv_exists else set()

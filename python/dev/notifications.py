@@ -157,7 +157,7 @@ class Common:
             cls.format_download_command(driver_name, operating_system, 'v.2.35'),
             # there was no operdriver release specifically for Opera 51
             # there was no operadriver v.2.34
-            cls.format_driver_information          (operating_system, 'v.2.33',          '50',        driver_name, browser_name),
+            cls.format_driver_information           (operating_system, 'v.2.33',          '50',        driver_name, browser_name),
             cls.format_download_command(driver_name, operating_system, 'v.2.33'),
             cls.format_driver_information           (operating_system, 'v.2.32',          '49',        driver_name, browser_name),
             cls.format_download_command(driver_name, operating_system, 'v.2.32'),

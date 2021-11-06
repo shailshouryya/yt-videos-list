@@ -114,7 +114,7 @@ def create_row(file_type, writer, video_number, video_title, video_duration, vid
             return f'{prefix}{text}'.ljust(padding)
         if markdown:
             writer.write(f'## {video_title}{newline}')
-            writer.write(f'{ljust("Video Number:")  }{video_number}{newline}')
+            writer.write(f'{ljust("Video Number:")}{video_number}{newline}')
         else:
             writer.write(f'{ljust("Video Number:")}{video_number}{newline}')
             writer.write(f'{ljust("Video Title:")}{video_title}{newline}')
