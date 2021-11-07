@@ -4,10 +4,6 @@ import time
 from .custom_logger import log
 
 
-def count_videos_on_page(driver):
-    return driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
-
-
 def scroll_until_break(url, driver, scroll_pause_time, logging_locations, verify_page_bottom_n_times, force_to_page_bottom, file_name, txt_exists, csv_exists, md_exists):
     visited_videos, stored_in_txt, stored_in_csv, stored_in_md = determine_common_visited_videos(file_name, txt_exists, csv_exists, md_exists)
     if force_to_page_bottom: visited_videos.clear()                                  # clear any pre-existing video information if there are pre-existing files (will already be empty if there are no pre-existing files)
@@ -80,6 +76,9 @@ def store_already_written_videos(file_name, file_type):
         return seen_videos
 
 
+
+def count_videos_on_page(driver):
+    return driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
 
 def scroll_down(driver, scroll_pause_time, logging_locations):
     driver.execute_script('window.scrollBy(0, 50000);')
