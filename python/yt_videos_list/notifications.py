@@ -93,6 +93,8 @@ class Common:
   driver_name = 'operadriver'
   browser_name = 'Opera Browser'
   return [
+   cls.format_driver_information (operating_system, 'v.94.0.4606.61', 'Stable 80', driver_name, browser_name),
+   cls.format_download_command(driver_name, operating_system, 'v.94.0.4606.61'),
    cls.format_driver_information (operating_system, 'v.93.0.4577.63', 'Stable 79', driver_name, browser_name),
    cls.format_download_command(driver_name, operating_system, 'v.93.0.4577.63'),
    cls.format_driver_information (operating_system, 'v.92.0.4515.107', 'Stable 78', driver_name, browser_name),
