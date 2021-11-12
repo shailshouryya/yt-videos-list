@@ -520,8 +520,8 @@ After doing that, try rerunning the last command!
       # mac64 chromedriver 95.0.4638.10 (supports Google Chrome version: 95)
       curl -SL https://chromedriver.storage.googleapis.com/95.0.4638.10/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
 
-      # mac64 chromedriver 94.0.4606.41 (supports Google Chrome version: 94)
-      curl -SL https://chromedriver.storage.googleapis.com/94.0.4606.41/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
+      # mac64 chromedriver 94.0.4606.113 (supports Google Chrome version: 94)
+      curl -SL https://chromedriver.storage.googleapis.com/94.0.4606.113/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
 
       # mac64 chromedriver 93.0.4577.63 (supports Google Chrome version: 93)
       curl -SL https://chromedriver.storage.googleapis.com/93.0.4577.63/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
@@ -607,8 +607,8 @@ After doing that, try rerunning the last command!
       # linux64 chromedriver 95.0.4638.10 (supports Google Chrome version: 95)
       curl -SL https://chromedriver.storage.googleapis.com/95.0.4638.10/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
 
-      # linux64 chromedriver 94.0.4606.41 (supports Google Chrome version: 94)
-      curl -SL https://chromedriver.storage.googleapis.com/94.0.4606.41/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
+      # linux64 chromedriver 94.0.4606.113 (supports Google Chrome version: 94)
+      curl -SL https://chromedriver.storage.googleapis.com/94.0.4606.113/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
 
       # linux64 chromedriver 93.0.4577.63 (supports Google Chrome version: 93)
       curl -SL https://chromedriver.storage.googleapis.com/93.0.4577.63/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
@@ -694,8 +694,8 @@ After doing that, try rerunning the last command!
       # win32 chromedriver 95.0.4638.10 (supports Google Chrome version: 95)
       curl -SL --ssl-no-revoke https://chromedriver.storage.googleapis.com/95.0.4638.10/chromedriver_win32.zip -o C:\Windows\chromedriver && tar -xzvf C:\Windows\chromedriver -C C:\Windows && del C:\Windows\chromedriver
 
-      # win32 chromedriver 94.0.4606.41 (supports Google Chrome version: 94)
-      curl -SL --ssl-no-revoke https://chromedriver.storage.googleapis.com/94.0.4606.41/chromedriver_win32.zip -o C:\Windows\chromedriver && tar -xzvf C:\Windows\chromedriver -C C:\Windows && del C:\Windows\chromedriver
+      # win32 chromedriver 94.0.4606.113 (supports Google Chrome version: 94)
+      curl -SL --ssl-no-revoke https://chromedriver.storage.googleapis.com/94.0.4606.113/chromedriver_win32.zip -o C:\Windows\chromedriver && tar -xzvf C:\Windows\chromedriver -C C:\Windows && del C:\Windows\chromedriver
 
       # win32 chromedriver 93.0.4577.63 (supports Google Chrome version: 93)
       curl -SL --ssl-no-revoke https://chromedriver.storage.googleapis.com/93.0.4577.63/chromedriver_win32.zip -o C:\Windows\chromedriver && tar -xzvf C:\Windows\chromedriver -C C:\Windows && del C:\Windows\chromedriver
