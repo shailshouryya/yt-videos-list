@@ -416,7 +416,7 @@ class ListCreator:
         multiplier = max(0, max_sleep - min_sleep)
         modulo, seconds = after_n_channels_pause_for_s
         with open(path_to_channel_urls_file, mode='r', encoding='utf-8',  buffering=self.file_buffering) as txt_file, open(path_to_channel_urls_file.split('.')[0] + '.log', mode='a', encoding='utf-8',  buffering=self.file_buffering) as log_file:
-            start = time.time()
+            start = time.perf_counter()
             if log_subthread_info_silently: logging_locations = (log_file,)
             else:                           logging_locations = (log_file, sys.stdout)
             ThreadWithResult.log_thread_status = not log_subthread_status_silently
@@ -464,6 +464,6 @@ class ListCreator:
                 log(f'Still running {[thread.name for thread in running_threads]} ...', logging_locations)
                 time.sleep(10)
                 remove_finished_threads()
-            end = time.time()
+            end = time.perf_counter()
             log(f'Finished executing all threads. It took {end - start} seconds to scrape all urls in {path_to_channel_urls_file}', logging_locations)
             log( '>' * 50 + 'COMPLETED MULTI-THREADED PROGRAM' + '<' * 50, logging_locations)
