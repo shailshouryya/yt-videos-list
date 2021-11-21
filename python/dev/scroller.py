@@ -14,14 +14,16 @@ def scroll_until_break(url, driver, scroll_pause_time, logging_locations, verify
     num_times_elements_count_same                              = -1
     found_old_videos                                           = False
     url_of_last_loaded_video_on_page                           = lambda: driver.find_elements_by_xpath('//*[@id="video-title"]')[-1].get_attribute('href').replace('shorts/', 'watch?v=').split('&pp')[0]
-    while found_old_videos is False and num_times_elements_count_same < verify_page_bottom_n_times:
-        current_elements_count = new_elements_count
-        scroll_down(driver, scroll_pause_time, logging_locations)
-        new_elements_count   = count_videos_on_page(driver)
-        num_times_elements_count_same = verify_reached_page_bottom(new_elements_count, current_elements_count, num_times_elements_count_same, verify_page_bottom_n_times, logging_locations)
-        if url_of_last_loaded_video_on_page() in visited_videos:
-            # if force_to_page_bottom is True, visited_videos will be an empty set and this conditional will never execute
-            found_old_videos = True
+    if new_elements_count != 0:
+        # ensure page has videos, otherwise url_of_last_loaded_video_on_page() breaks because indexing is not possible on an empty array
+        while found_old_videos is False and num_times_elements_count_same < verify_page_bottom_n_times:
+            current_elements_count = new_elements_count
+            scroll_down(driver, scroll_pause_time, logging_locations)
+            new_elements_count   = count_videos_on_page(driver)
+            num_times_elements_count_same = verify_reached_page_bottom(new_elements_count, current_elements_count, num_times_elements_count_same, verify_page_bottom_n_times, logging_locations)
+            if url_of_last_loaded_video_on_page() in visited_videos:
+                # if force_to_page_bottom is True, visited_videos will be an empty set and this conditional will never execute
+                found_old_videos = True
     return save_elements_to_list(driver, start_time, url, logging_locations), stored_in_txt, stored_in_csv, stored_in_md, visited_videos
 
 
