@@ -41,41 +41,41 @@ def determine_action(url, driver, video_id_only, scroll_pause_time, verify_page_
  if use_threads:
   #
   threads = []
-  def call(function, file_type, file_visited_videos=set()):
+  def call(function, file_type, file_visited_videos):
    newline = '' if file_type == 'csv' else None
    if function == 'update_file': return threading.Thread(target=writer.update_file, args=(file_type, file_name, file_buffering, newline, csv_writer, now(), logging_locations, identifier, reverse_chronological, video_data, file_visited_videos, video_id_only))
    else: return threading.Thread(target=writer.create_file, args=(file_type, file_name, file_buffering, newline, csv_writer, now(), logging_locations, identifier, reverse_chronological, video_data))
   if txt:
    if txt_exists: txt_thread = call('update_file', 'txt', txt_videos)
-   else: txt_thread = call('create_file', 'txt')
+   else: txt_thread = call('create_file', 'txt', set())
    txt_thread.start()
    threads.append(txt_thread)
   if csv:
    if csv_exists: csv_thread = call('update_file', 'csv', csv_videos)
-   else: csv_thread = call('create_file', 'csv')
+   else: csv_thread = call('create_file', 'csv', set())
    csv_thread.start()
    threads.append(csv_thread)
   if markdown:
    if md_exists: md_thread = call('update_file', 'md', md_videos)
-   else: md_thread = call('create_file', 'md')
+   else: md_thread = call('create_file', 'md', set())
    md_thread.start()
    threads.append(md_thread)
   for thread in threads:
    thread.join()
  else:
-  def call(function, file_type, file_visited_videos=set()):
+  def call(function, file_type, file_visited_videos):
    newline = '' if file_type == 'csv' else None
    if function == 'update_file': return writer.update_file(file_type, file_name, file_buffering, newline, csv_writer, now(), logging_locations, identifier, reverse_chronological, video_data, file_visited_videos, video_id_only)
    else: return writer.create_file(file_type, file_name, file_buffering, newline, csv_writer, now(), logging_locations, identifier, reverse_chronological, video_data)
   if txt:
    if txt_exists: call('update_file', 'txt', txt_videos)
-   else: call('create_file', 'txt')
+   else: call('create_file', 'txt', set())
   if csv:
    if csv_exists: call('update_file', 'csv', csv_videos)
-   else: call('create_file', 'csv')
+   else: call('create_file', 'csv', set())
   if markdown:
    if md_exists: call('update_file', 'md', md_videos)
-   else: call('create_file', 'md')
+   else: call('create_file', 'md', set())
  return video_data
 def now():
  return datetime.datetime.now().isoformat().replace(':', '_').replace('.', '-')
