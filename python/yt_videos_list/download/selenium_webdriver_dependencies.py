@@ -139,9 +139,9 @@ def execute_download_command(driver, user_os, major_version):
    '46': -1
   },
   'chrome': {
-   '99': -57,
-   '98': -57,
-   '97': -57,
+   '99': -59,
+   '98': -59,
+   '97': -59,
    '96': -57,
    '95': -55,
    '94': -53,
