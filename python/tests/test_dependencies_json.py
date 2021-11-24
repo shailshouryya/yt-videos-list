@@ -21,7 +21,7 @@ if __name__ == '__main__':
         FORMATTED_PIP    = 'pip3'
         FORMATTED_PYTHON = 'python3'
     os.system(f'{FORMATTED_PYTHON} minifier.py')
-    os.system(f'{FORMATTED_PIP}    install .')
+    os.system(f'{FORMATTED_PIP}    install . --use-feature=in-tree-build')
 
 from yt_videos_list.notifications import Common
 

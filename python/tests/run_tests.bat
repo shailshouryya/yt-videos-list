@@ -1,5 +1,5 @@
 python minifier.py
-pip install .
+pip install . --use-feature=in-tree-build
 python tests/test_all_drivers.py
 python tests\test_dependencies_json.py
 
