@@ -275,6 +275,8 @@ class Common:
   driver_name = 'msedgedriver'
   browser_name = 'Microsoft Edge'
   return [
+   cls.format_driver_information (operating_system, '98.0.1086.0', '98', driver_name, browser_name),
+   cls.format_download_command(driver_name, operating_system, '98.0.1086.0'),
    cls.format_driver_information (operating_system, '97.0.1072.8', '97', driver_name, browser_name),
    cls.format_download_command(driver_name, operating_system, '97.0.1072.8'),
    cls.format_driver_information (operating_system, '96.0.1054.26', '96', driver_name, browser_name),

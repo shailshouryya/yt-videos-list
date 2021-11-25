@@ -201,8 +201,8 @@ def execute_download_command(driver, user_os, major_version):
    '75': -1
   },
   'edge': {
-   '99': -37,
-   '98': -37,
+   '99': -39,
+   '98': -39,
    '97': -37,
    '96': -35,
    '95': -33,
