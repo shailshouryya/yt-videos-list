@@ -364,7 +364,7 @@ class Common:
   print(f'\nFound an installed version of {browser}.\nYou are currently running {browser} version: {full_version_number}')
  @staticmethod
  def display_browser_not_found_information(browser, user_os):
-  print(f'\nDid not find an installed version of {browser}.\nIf you DO have {browser} installed but it was not detected, it may be because your {browser} was installed in a non-default location.\nPlease modify the commands under the {browser} you want to use at https://github.com/slow-but-steady/yt-videos-list/blob/dev/docs/dependencies_pseudo_json.txt for {user_os.title()}"\nIf you are unsure how to do that, please file an issue at https://github.com/slow-but-steady/yt-videos-list/issues and we will respond as soon as possible!')
+  print(f'\nDid not find an installed version of {browser}.\nIf you DO have {browser} installed but it was not detected, it may be because your {browser} was installed in a non-default location.\nPlease modify the commands under the {browser} you want to use at https://github.com/slow-but-steady/yt-videos-list/blob/main/docs/dependencies_pseudo_json.txt for {user_os.title()}"\nIf you are unsure how to do that, please file an issue at https://github.com/slow-but-steady/yt-videos-list/issues and we will respond as soon as possible!')
  @classmethod
  def display_url_error(cls, error_message):
   print(f'{cls.offset}{cls.error}The url you provided could not be parsed properly. Please check the url you provided to make sure there are no typos!{cls.debugging_info}{error_message}{cls.offset}')

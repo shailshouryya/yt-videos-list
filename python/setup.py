@@ -15,7 +15,7 @@ setup(
     description                   = 'YouTube bot to make a YouTube videos list (including all video titles and URLs uploaded by a channel) with end-to-end web scraping - no API tokens required. 🌟 Star this repo if you found it useful! 🌟',
     long_description              = long_description,
     long_description_content_type = 'text/markdown',
-    url                           = 'https://github.com/slow-but-steady/yt-videos-list/tree/dev/python',
+    url                           = 'https://github.com/slow-but-steady/yt-videos-list/tree/main/python',
     author                        = 'slow-but-steady',
     author_email                  = 'yt.videos.list@gmail.com',
     license                       = 'Apache License 2.0',
@@ -87,6 +87,6 @@ setup(
     project_urls = {
         'Bug Reports':  'https://github.com/slow-but-steady/yt-videos-list/issues',
         'PyPi Funding': 'https://donate.pypi.org',
-        'Source':       'https://github.com/slow-but-steady/yt-videos-list/tree/dev/python'
+        'Source':       'https://github.com/slow-but-steady/yt-videos-list/tree/main/python'
     },
 )
