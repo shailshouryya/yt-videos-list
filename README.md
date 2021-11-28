@@ -1,7 +1,7 @@
 # General Overview
 
 #### See the [releases](https://github.com/slow-but-steady/yt-videos-list/releases) page to see new additions/modifications for each release!
-#### See this [comparison](https://github.com/slow-but-steady/yt-videos-list/compare/v0.6.2...main) page to see new additions/modifications that will be available in the NEXT release!
+#### See this [comparison](https://github.com/slow-but-steady/yt-videos-list/compare/v0.6.3...main) page to see new additions/modifications that will be available in the NEXT release!
 
 <details>
   <summary><b>See sister <a href="https://github.com/slow-but-steady/YouTube-Channels">YouTube-Channels</a> repository for a list of interesting channels!</b></summary></h3>
