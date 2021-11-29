@@ -336,9 +336,8 @@ class ListCreator:
                     -> and the `reverse_chronological` instance attribute is True,  the output file name will be:  CoreySchafer.EXT
                     -> and the `reverse_chronological` instance attribute is False, the output file name will be:  CoreySchafer.EXT
         '''
-        _execution_type     = 'module'
-        instance_attributes = (self.txt, self.csv, self.markdown, self.file_suffix, self.all_video_data_in_memory, self.video_id_only, self.reverse_chronological, self.headless, self.scroll_pause_time, self.driver, self.cookie_consent, self.verify_page_bottom_n_times, self.file_buffering, self.__repr__())
-        video_data, write_information = logic.execute(url, file_name, log_silently, *instance_attributes, _execution_type)
+        instance_attributes = self.__determine_instance_attributes()
+        video_data, write_information = logic.execute(url, file_name, log_silently, *instance_attributes)
         if self.video_data_returned:
             return (video_data,    write_information)
         return ([[0, '', '', '']], write_information) # return dummy video_data
@@ -467,3 +466,8 @@ class ListCreator:
             end = time.perf_counter()
             log(f'Finished executing all threads. It took {end - start} seconds to scrape all urls in {path_to_channel_urls_file}', logging_locations)
             log( '>' * 50 + 'COMPLETED MULTI-THREADED PROGRAM' + '<' * 50, logging_locations)
+
+
+    def __determine_instance_attributes(self):
+        _execution_type     = 'module'
+        return (self.txt, self.csv, self.markdown, self.file_suffix, self.all_video_data_in_memory, self.video_id_only, self.reverse_chronological, self.headless, self.scroll_pause_time, self.driver, self.cookie_consent, self.verify_page_bottom_n_times, self.file_buffering, self.__repr__(), _execution_type)
