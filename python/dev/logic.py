@@ -1,6 +1,8 @@
 import sys
 import time
+import random
 import traceback
+import threading
 import contextlib
 
 import selenium
@@ -16,7 +18,7 @@ from .notifications                            import Common, ModuleMessage, Scr
 from .custom_logger                            import log
 
 
-def execute(url, file_name, log_silently, txt, csv, markdown, file_suffix, all_video_data_in_memory, video_id_only, reverse_chronological, headless, scroll_pause_time, user_driver, cookie_consent, verify_page_bottom_n_times, file_buffering, list_creator_configuration, execution_type):
+def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_video_data_in_memory, video_id_only, reverse_chronological, headless, scroll_pause_time, user_driver, cookie_consent, verify_page_bottom_n_times, file_buffering, list_creator_configuration, execution_type, counts=None, min_sleep=None, max_sleep=None, after_n_channels_pause_for_s=None, aggregate_logging_locations=None):
     common_message = Common()
     module_message = ModuleMessage()
     script_message = ScriptMessage()
@@ -292,10 +294,28 @@ def execute(url, file_name, log_silently, txt, csv, markdown, file_suffix, all_v
 
     verify_writing_to_at_least_one_location()
     user_os       = determine_user_os()
-    url           = process_url()
-    program_start = time.perf_counter()
+    if aggregate_logging_locations:
+        multiplier = max(0, max_sleep - min_sleep)
+        modulo, seconds = after_n_channels_pause_for_s
     try:
         driver = open_user_driver()
     except selenium.common.exceptions.WebDriverException as error_message:
         handle_opening_webdriver_exception(error_message)
-    return run_scraper()
+    while urls:
+        program_start = time.perf_counter()
+        if aggregate_logging_locations:
+            counts[0] += 1
+            count      = counts[0]
+            if count % modulo == 0 and count > 0:
+                log(f'Scraped {count} channels, so sleeping for {seconds} seconds to seem less bot-like....', aggregate_logging_locations)
+                time.sleep(seconds)
+            sleep_time = min_sleep + (random.random() * multiplier)
+            log(f'Sleeping for {sleep_time} seconds before starting next subthread....', aggregate_logging_locations)
+            time.sleep(sleep_time)
+        url = urls.popleft()
+        if aggregate_logging_locations: log(f'{threading.current_thread().name} scraping channel {count:>7}: {url}', aggregate_logging_locations)
+        url = process_url()
+        video_data, write_information = run_scraper()
+        channel_name, file_name       = write_information
+        if aggregate_logging_locations: log(f'{threading.current_thread().name} finished writing information for the "{channel_name}" channel to the {file_name} file', aggregate_logging_locations)
+    return (video_data, (channel_name, file_name))

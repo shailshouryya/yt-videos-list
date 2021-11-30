@@ -7,7 +7,7 @@ https://github.com/slow-but-steady/yt-videos-list
 
 import sys
 import time
-import random
+from collections import deque
 
 from save_thread_result import ThreadWithResult
 
@@ -337,7 +337,7 @@ class ListCreator:
                     -> and the `reverse_chronological` instance attribute is False, the output file name will be:  CoreySchafer.EXT
         '''
         instance_attributes = self.__determine_instance_attributes()
-        video_data, write_information = logic.execute(url, file_name, log_silently, *instance_attributes)
+        video_data, write_information = logic.execute(deque([url]), file_name, log_silently, *instance_attributes)
         if self.video_data_returned:
             return (video_data,    write_information)
         return ([[0, '', '', '']], write_information) # return dummy video_data
@@ -412,8 +412,6 @@ class ListCreator:
         )
         invalid_file_name_exception = f'''The options for the file_name argument are 'auto' or 'id', but you provided: '{file_name}'\nPlease rerun this method using file_name='auto' or file_name='id'\n\nFor more details about the difference between 'auto' and 'id', run:\n    >>> help(ListCreator.create_list_for)\n\n\n\n'''
         if file_name not in ('auto', 'id'): raise ValueError(invalid_file_name_exception)
-        multiplier = max(0, max_sleep - min_sleep)
-        modulo, seconds = after_n_channels_pause_for_s
         with open(path_to_channel_urls_file, mode='r', encoding='utf-8',  buffering=self.file_buffering) as txt_file, open(path_to_channel_urls_file.split('.')[0] + '.log', mode='a', encoding='utf-8',  buffering=self.file_buffering) as log_file:
             start = time.perf_counter()
             if log_subthread_info_silently: logging_locations = (log_file,)
@@ -422,18 +420,16 @@ class ListCreator:
             ThreadWithResult.log_files = [log_file]
             log( '>' * 50 + 'STARTING  MULTI-THREADED PROGRAM' + '<' * 50, logging_locations)
             log(f'Iterating through all urls in {path_to_channel_urls_file} and scraping number_of_threads={number_of_threads} channels concurrently...\n\n', logging_locations)
-            count            = 0
+            urls             = deque()
+            count            = [0]
             running_threads  = set()
             finished_threads = set()
+            instance_attributes = self.__determine_instance_attributes()
             def remove_finished_threads():
                 # can't remove dead threads from running_threads set directly because of the following exception:
                 # RuntimeError: Set changed size during iteration
                 for thread in running_threads:
                     if not thread.is_alive():
-                        if hasattr(thread, 'result'):
-                            channel_name, file_name = thread.result[1]
-                            log(f'{thread.name} finished writing information for the "{channel_name}" channel to the {file_name} file', logging_locations)
-                        else:                         log(f'{thread.name} did NOT finish scraping. See terminal output above for potential exceptions!',          logging_locations) # # AttributeError: 'ThreadWithResult' object has no attribute 'result'
                         finished_threads.add(thread)
                 for thread in finished_threads:
                     running_threads.remove(thread)
@@ -444,19 +440,13 @@ class ListCreator:
                 if formatted_url == '':
                     # this line is either empty or entirely a comment
                     continue
+                urls.append(formatted_url)
+            while urls:
                 while len(running_threads) >= number_of_threads and all(thread.is_alive() for thread in running_threads):
                     time.sleep(1) # wait 1 second before checking to see if a previously running thread completed
                 remove_finished_threads()
-                if count % modulo == 0 and count > 0:
-                    log(f'Scraped {count} channels, so sleeping for {seconds} seconds to seem less bot-like....', logging_locations)
-                    time.sleep(seconds)
-                sleep_time = min_sleep + (random.random() * multiplier)
-                log(f'Sleeping for {sleep_time} seconds before starting next subthread....', logging_locations)
-                time.sleep(sleep_time)
-                thread = ThreadWithResult(target=self.create_list_for, args=(formatted_url, True, file_name))
+                thread = ThreadWithResult(target=logic.execute, args=(urls, file_name, True, *instance_attributes, count, min_sleep, max_sleep, after_n_channels_pause_for_s, logging_locations))
                 thread.start()
-                count += 1
-                log(f'{thread.name} scraping channel {count:>7}: {url}', logging_locations)
                 running_threads.add(thread)
             log(f'Iterated through all urls in {path_to_channel_urls_file}!', logging_locations)
             while len(running_threads) > 0:
