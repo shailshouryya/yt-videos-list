@@ -168,40 +168,37 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
 
 
     def run_scraper():
-        with driver:
-            driver.get(url)
-            driver.set_window_size(780, 800)
-            driver.set_window_position(0, 0)
-            manage_cookie_consent_form()
-            wait = selenium.webdriver.support.ui.WebDriverWait(driver, 9)
-            channel_heading_xpath       = '//yt-formatted-string[@class="style-scope ytd-channel-name"]'
-            topic_channel_heading_xpath = '//yt-formatted-string[@class="style-scope ytd-topic-channel-details-renderer"]'
-            def load_page(channel_heading_xpath, topic_channel_heading_xpath):
-                try:
-                    wait.until(EC.element_to_be_clickable((By.XPATH, channel_heading_xpath)))
-                except selenium.common.exceptions.TimeoutException:
-                    wait.until(EC.element_to_be_clickable((By.XPATH, topic_channel_heading_xpath)))
-                except selenium.common.exceptions.WebDriverException as error_message:
-                    traceback.print_exc()
-                    common_message.display_possible_topic_channel_in_headless_error(error_message)
-                    sys.exit()
+        driver.get(url)
+        manage_cookie_consent_form()
+        wait = selenium.webdriver.support.ui.WebDriverWait(driver, 9)
+        channel_heading_xpath       = '//yt-formatted-string[@class="style-scope ytd-channel-name"]'
+        topic_channel_heading_xpath = '//yt-formatted-string[@class="style-scope ytd-topic-channel-details-renderer"]'
+        def load_page(channel_heading_xpath, topic_channel_heading_xpath):
             try:
-                load_page(channel_heading_xpath, topic_channel_heading_xpath)
-            except selenium.common.exceptions.TimeoutException as error_message:
-                common_message.display_selenium_unable_to_load_elements_error(error_message)
+                wait.until(EC.element_to_be_clickable((By.XPATH, channel_heading_xpath)))
+            except selenium.common.exceptions.TimeoutException:
+                wait.until(EC.element_to_be_clickable((By.XPATH, topic_channel_heading_xpath)))
+            except selenium.common.exceptions.WebDriverException as error_message:
                 traceback.print_exc()
+                common_message.display_possible_topic_channel_in_headless_error(error_message)
                 sys.exit()
-            channel_name, file_name = determine_file_name(channel_heading_xpath, topic_channel_heading_xpath)
-            with yield_logger(file_name) as logging_locations:
-                log( '>' * 50 + 'STARTING  PROGRAM' + '<' * 50,             logging_locations)
-                log(f'Now scraping {url} using the {user_driver}driver...', logging_locations)
-                log(f'Current configuration: {list_creator_configuration}', logging_locations)
-                video_data = program.determine_action(url, driver, video_id_only, scroll_pause_time, verify_page_bottom_n_times, reverse_chronological, file_name, file_buffering, txt, csv, markdown, all_video_data_in_memory, logging_locations)
-                program_end = time.perf_counter()
-                total_time  = program_end - program_start
-                log(f'This program took {total_time} seconds to complete writing information for the "{channel_name}" channel to the {file_name} file.', logging_locations)
-                log( '>' * 50 + 'COMPLETED PROGRAM' + '<' * 50,                                                                                          logging_locations)
-        return (video_data, (channel_name, file_name))
+        try:
+            load_page(channel_heading_xpath, topic_channel_heading_xpath)
+        except selenium.common.exceptions.TimeoutException as error_message:
+            common_message.display_selenium_unable_to_load_elements_error(error_message)
+            traceback.print_exc()
+            sys.exit()
+        channel_name, file_name = determine_file_name(channel_heading_xpath, topic_channel_heading_xpath)
+        with yield_logger(file_name) as logging_locations:
+            log( '>' * 50 + 'STARTING  PROGRAM' + '<' * 50,             logging_locations)
+            log(f'Now scraping {url} using the {user_driver}driver...', logging_locations)
+            log(f'Current configuration: {list_creator_configuration}', logging_locations)
+            video_data = program.determine_action(url, driver, video_id_only, scroll_pause_time, verify_page_bottom_n_times, reverse_chronological, file_name, file_buffering, txt, csv, markdown, all_video_data_in_memory, logging_locations)
+            program_end = time.perf_counter()
+            total_time  = program_end - program_start
+            log(f'This program took {total_time} seconds to complete writing information for the "{channel_name}" channel to the {file_name} file.', logging_locations)
+            log( '>' * 50 + 'COMPLETED PROGRAM' + '<' * 50,                                                                                          logging_locations)
+        return (video_data, (channel_name, file_name), total_time)
 
 
     def manage_cookie_consent_form():
@@ -301,21 +298,25 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
         driver = open_user_driver()
     except selenium.common.exceptions.WebDriverException as error_message:
         handle_opening_webdriver_exception(error_message)
-    while urls:
-        program_start = time.perf_counter()
-        if aggregate_logging_locations:
-            counts[0] += 1
-            count      = counts[0]
-            if count % modulo == 0 and count > 0:
-                log(f'Scraped {count} channels, so sleeping for {seconds} seconds to seem less bot-like....', aggregate_logging_locations)
-                time.sleep(seconds)
-            sleep_time = min_sleep + (random.random() * multiplier)
-            log(f'Sleeping for {sleep_time} seconds before starting next subthread....', aggregate_logging_locations)
-            time.sleep(sleep_time)
-        url = urls.popleft()
-        if aggregate_logging_locations: log(f'{threading.current_thread().name} scraping channel {count:>7}: {url}', aggregate_logging_locations)
-        url = process_url()
-        video_data, write_information = run_scraper()
-        channel_name, file_name       = write_information
-        if aggregate_logging_locations: log(f'{threading.current_thread().name} finished writing information for the "{channel_name}" channel to the {file_name} file', aggregate_logging_locations)
-    return (video_data, (channel_name, file_name))
+    thread_name = threading.current_thread().name
+    with driver:
+        driver.set_window_size(780, 800)
+        driver.set_window_position(0, 0)
+        while urls:
+            program_start = time.perf_counter()
+            if aggregate_logging_locations:
+                counts[0] += 1
+                count      = counts[0]
+                if count % modulo == 0 and count > 0:
+                    log(f'Scraped {count} channels, so sleeping for {seconds} seconds to seem less bot-like....', aggregate_logging_locations)
+                    time.sleep(seconds)
+                sleep_time = min_sleep + (random.random() * multiplier)
+                log(f'Sleeping for {sleep_time} seconds before starting next subthread....', aggregate_logging_locations)
+                time.sleep(sleep_time)
+            url = urls.popleft()
+            if aggregate_logging_locations: log(f'{thread_name} scraping channel {count:>7}: {url}', aggregate_logging_locations)
+            url = process_url()
+            video_data, write_information, thread_running_time = run_scraper()
+            channel_name, file_name                     = write_information
+            if aggregate_logging_locations: log(f'{thread_name} finished writing information for the "{channel_name}" channel to the {file_name} file in {thread_running_time} seconds', aggregate_logging_locations)
+        return (video_data, (channel_name, file_name))
