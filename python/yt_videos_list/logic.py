@@ -217,7 +217,6 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
   driver.set_window_size(780, 800)
   driver.set_window_position(0, 0)
   while urls:
-   program_start = time.perf_counter()
    if aggregate_logging_locations:
     counts[0] += 1
     count = counts[0]
@@ -227,6 +226,7 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
     sleep_time = min_sleep + (random.random() * multiplier)
     log(f'Sleeping for {sleep_time} seconds before starting next subthread....', aggregate_logging_locations)
     time.sleep(sleep_time)
+   program_start = time.perf_counter()
    url = urls.popleft()
    if aggregate_logging_locations: log(f'{thread_name} scraping channel {count:>7}: {url}', aggregate_logging_locations)
    url = process_url()
