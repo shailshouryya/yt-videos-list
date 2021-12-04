@@ -224,7 +224,7 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
      log(f'Scraped {count} channels, so sleeping for {seconds} seconds to seem less bot-like....', aggregate_logging_locations)
      time.sleep(seconds)
     sleep_time = min_sleep + (random.random() * multiplier)
-    log(f'Sleeping for {sleep_time} seconds before starting next subthread....', aggregate_logging_locations)
+    log(f'Sleeping for {sleep_time} seconds before scraping next URL....', aggregate_logging_locations)
     time.sleep(sleep_time)
    program_start = time.perf_counter()
    url = urls.popleft()
