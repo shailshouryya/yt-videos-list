@@ -227,7 +227,8 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
     log(f'Sleeping for {sleep_time} seconds before scraping next URL....', aggregate_logging_locations)
     time.sleep(sleep_time)
    program_start = time.perf_counter()
-   url = urls.popleft()
+   if urls: url = urls.popleft()
+   else: continue
    if aggregate_logging_locations: log(f'{thread_name} scraping channel {count:>7}: {url}', aggregate_logging_locations)
    url = process_url()
    video_data, write_information, thread_running_time = run_scraper()
