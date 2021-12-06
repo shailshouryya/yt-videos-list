@@ -445,9 +445,12 @@ class ListCreator:
                 while len(running_threads) >= number_of_threads and all(thread.is_alive() for thread in running_threads):
                     time.sleep(1) # wait 1 second before checking to see if a previously running thread completed
                 remove_finished_threads()
-                thread = ThreadWithResult(target=logic.execute, args=(urls, file_name, True, *instance_attributes, count, min_sleep, max_sleep, after_n_channels_pause_for_s, logging_locations))
-                thread.start()
-                running_threads.add(thread)
+                if urls:
+                    # make sure there are still channels left to scrape before making a new thread
+                    # since finished threads may be because the program visited all urls already (instead of some kind of failure)
+                    thread = ThreadWithResult(target=logic.execute, args=(urls, file_name, True, *instance_attributes, count, min_sleep, max_sleep, after_n_channels_pause_for_s, logging_locations))
+                    thread.start()
+                    running_threads.add(thread)
             log(f'Iterated through all urls in {path_to_channel_urls_file}!', logging_locations)
             while len(running_threads) > 0:
                 log(f'Still running {[thread.name for thread in running_threads]} ...', logging_locations)
