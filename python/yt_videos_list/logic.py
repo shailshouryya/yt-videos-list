@@ -233,5 +233,5 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
    url = process_url()
    video_data, write_information, thread_running_time = run_scraper()
    channel_name, output_file_name = write_information
-   if aggregate_logging_locations: log(f'{thread_name} finished writing information for the "{channel_name}" channel to the {output_file_name} file in {thread_running_time} seconds', aggregate_logging_locations)
+   if aggregate_logging_locations: log(f'{thread_name} finished scraping channel {count:>7}: "{channel_name}" and writing information to the {output_file_name} file in {thread_running_time} seconds', aggregate_logging_locations)
   return (video_data, (channel_name, output_file_name))
