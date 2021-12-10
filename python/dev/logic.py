@@ -315,9 +315,9 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
             program_start = time.perf_counter()
             if urls: url = urls.popleft()
             else:    continue
-            if aggregate_logging_locations: log(f'{thread_name} {" "*8} scraping {count:>7}: {url}', aggregate_logging_locations)
+            if aggregate_logging_locations: log(f'{thread_name:<12} {" "*8} scraping {count:>7}: {url}', aggregate_logging_locations)
             url = process_url()
             video_data, write_information, thread_running_time = run_scraper()
             channel_name, output_file_name                     = write_information
-            if aggregate_logging_locations: log(f'{thread_name} finished scraping {count:>7}: "{channel_name}" and wrote to the {output_file_name} file in {thread_running_time} seconds', aggregate_logging_locations)
+            if aggregate_logging_locations: log(f'{thread_name:<12} finished scraping {count:>7}: "{channel_name}" and wrote to the {output_file_name} file in {thread_running_time} seconds', aggregate_logging_locations)
         return (video_data, (channel_name, output_file_name))
