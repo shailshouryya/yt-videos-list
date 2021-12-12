@@ -418,9 +418,9 @@ class ListCreator:
             else:                           logging_locations = (log_file, sys.stdout)
             ThreadWithResult.log_thread_status = not log_subthread_status_silently
             ThreadWithResult.log_files = [log_file]
-            log( '>' * 50 + 'STARTING  MULTI-THREADED PROGRAM' + '<' * 50, logging_locations)
+            log( '>' * 50 + 'STARTING  MULTI-THREADED PROGRAM' + '<' * 50,                                                                                    logging_locations)
             log(f'Iterating through all urls in {path_to_channel_urls_file} and scraping number_of_threads={number_of_threads} channels concurrently...\n\n', logging_locations)
-            log(f'Current configuration: {self.__repr__()}', logging_locations)
+            log(f'Current configuration: {self.__repr__()}',                                                                                                  logging_locations)
             urls             = deque()
             count            = [0]
             running_threads  = set()
