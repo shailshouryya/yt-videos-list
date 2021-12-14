@@ -439,7 +439,7 @@ class ModuleMessage(Common):
  This class contains messages that are relevant for the package when it is being run as a module from within the Python interpreter (or another Python script).
  '''
  indent = ' ' * 4
- not_writing_to_any_files_hint = 'If you want to run this program, please change the csv OR txt OR md or all_video_data_in_memory attribute to True.\nThis program will now exit...'
+ not_writing_to_any_files_hint = 'If you want to run this program, please change the csv OR txt OR md OR all_video_data_in_memory attribute to True.\nThis program will now exit...'
  running_default_driver = '\nNo driver specified during ListCreator instantiation, so running program using the Firefox driver.'
  show_driver_options = f'''To use a different driver, specify the driver in the driver argument during the ListCreator instantiation. For example:
  {indent}lc = ListCreator(driver='firefox')
