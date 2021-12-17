@@ -37,7 +37,8 @@ class Common:
     }
 
 
-    def __init__(self):
+    def __init__(self, list_creator_configuration=None):
+        self.list_creator_configuration = list_creator_configuration
         self.driver_downloads_for_os = {
             'firefox': {
                 'macos':   self.create_list_for('macos',   'geckodriver'),
