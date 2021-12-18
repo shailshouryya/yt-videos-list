@@ -20,8 +20,8 @@ from .custom_logger                            import log
 
 def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_video_data_in_memory, video_id_only, reverse_chronological, headless, scroll_pause_time, user_driver, cookie_consent, verify_page_bottom_n_times, file_buffering, list_creator_configuration, execution_type, counts=None, min_sleep=None, max_sleep=None, after_n_channels_pause_for_s=None, aggregate_logging_locations=None):
     common_message = Common(list_creator_configuration)
-    module_message = ModuleMessage()
-    script_message = ScriptMessage()
+    module_message = ModuleMessage(list_creator_configuration)
+    script_message = ScriptMessage(list_creator_configuration)
 
 
     def verify_writing_to_at_least_one_location():

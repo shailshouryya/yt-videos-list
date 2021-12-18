@@ -501,6 +501,10 @@ class ModuleMessage(Common):
     {indent}lc = ListCreator(driver='edge')'''
 
 
+    def __init__(self, list_creator_configuration=None):
+        self.list_creator_configuration = list_creator_configuration
+
+
 
 class ScriptMessage(Common):
     '''
@@ -510,3 +514,7 @@ class ScriptMessage(Common):
     running_default_driver        = '\nNo driver flag used, so running program using the Firefox driver.'
     input_message                 = "What is the name of the YouTube channel you want to generate the list for?\n\nIf you're unsure, click on the channel and look at the URL.\nIt should be in the format:\nhttps://www.youtube.com/user/YourChannelName\nOR\nhttps://www.youtube.com/channel/YourChannelName\n\nSubstitute what you see for YourChannelName and type it in below:\n"
     show_driver_options           = 'To use a different driver, specify the driver in the driver flag. For example:'
+
+
+    def __init__(self, list_creator_configuration=None):
+        self.list_creator_configuration = list_creator_configuration
