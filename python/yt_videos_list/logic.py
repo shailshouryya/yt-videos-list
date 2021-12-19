@@ -20,8 +20,8 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
  script_message = ScriptMessage(list_creator_configuration)
  def verify_writing_to_at_least_one_location():
   if txt is False and csv is False and markdown is False and all_video_data_in_memory is False:
-   if execution_type == 'module': raise RuntimeError(module_message.not_writing_to_any_files_hint)
-   else: raise RuntimeError(script_message.not_writing_to_any_files_hint)
+   if execution_type == 'module': raise RuntimeError(module_message.not_writing_to_any_files_hint())
+   else: raise RuntimeError(script_message.not_writing_to_any_files_hint())
  def process_url():
   try:
    _, channel_type, channel_id = parse_url()
