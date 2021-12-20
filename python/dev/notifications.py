@@ -505,7 +505,7 @@ class ModuleMessage(Common):
 
 
     def not_writing_to_any_files_hint(self):
-        return f'{self.not_writing_to_any_files}\nIf you want to run this program, please change the csv OR txt OR md OR all_video_data_in_memory attribute to True.'
+        return f'{self.not_writing_to_any_files}\nIf you want to run this program, please change the csv OR txt OR md OR all_video_data_in_memory attribute to True.\nFor reference, here is your current configuration:\n\n{self.list_creator_configuration}'
 
 
 
@@ -523,4 +523,4 @@ class ScriptMessage(Common):
 
 
     def not_writing_to_any_files_hint(self):
-        return f'{self.not_writing_to_any_files}\nIf you want to run this program, please change the csv OR txt OR md OR all_video_data_in_memory attribute to True.'
+        return f'{self.not_writing_to_any_files}\nIf you want to run this program, please change the csv OR txt OR md OR all_video_data_in_memory attribute to True.\nFor reference, here is your current configuration:\n\n{self.list_creator_configuration}'
