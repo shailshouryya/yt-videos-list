@@ -451,7 +451,7 @@ class ModuleMessage(Common):
  def __init__(self, list_creator_configuration=None):
   self.list_creator_configuration = list_creator_configuration
  def not_writing_to_any_files_hint(self):
-  return f'{self.not_writing_to_any_files}\nIf you want to run this program, please change the csv OR txt OR md OR all_video_data_in_memory attribute to True.\nFor reference, here is your current configuration:\n\n{self.list_creator_configuration}'
+  return f'{self.not_writing_to_any_files}\nIf you want to run this program, please change (at least) one of the csv OR txt OR md OR all_video_data_in_memory attributes to True.\nFor reference, here is your current configuration:\n\n{self.list_creator_configuration}'
 class ScriptMessage(Common):
  '''
  This class contains messages that relevant for the package it is being run as a module using the -m option from the CLI.
@@ -462,4 +462,4 @@ class ScriptMessage(Common):
  def __init__(self, list_creator_configuration=None):
   self.list_creator_configuration = list_creator_configuration
  def not_writing_to_any_files_hint(self):
-  return f'{self.not_writing_to_any_files}\nIf you want to run this program, please change the csv OR txt OR md OR all_video_data_in_memory attribute to True.\nFor reference, here is your current configuration:\n\n{self.list_creator_configuration}'
+  return f'{self.not_writing_to_any_files}\nIf you want to run this program, please change (at least) one of the csv OR txt OR md OR all_video_data_in_memory attributes to True.\nFor reference, here is your current configuration:\n\n{self.list_creator_configuration}'
