@@ -7,5 +7,4 @@ def determine_user_os():
  elif user_os.startswith('linux'): return 'linux'
  elif user_os.startswith('windows'): return 'windows'
  else:
-  print(Common().unsupported_os)
-  sys.exit()
+  raise RuntimeError(Common().unsupported_os)
