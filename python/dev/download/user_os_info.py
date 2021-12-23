@@ -1,4 +1,3 @@
-import sys
 import platform
 
 from ..notifications import Common
