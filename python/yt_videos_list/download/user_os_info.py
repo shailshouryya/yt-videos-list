@@ -1,3 +1,4 @@
+import warnings
 import platform
 from ..notifications import Common
 def determine_user_os():
@@ -6,4 +7,4 @@ def determine_user_os():
  elif user_os.startswith('linux'): return 'linux'
  elif user_os.startswith('windows'): return 'windows'
  else:
-  raise RuntimeError(Common().unsupported_os)
+  warnings.warn(Common().unsupported_os, RuntimeWarning)
