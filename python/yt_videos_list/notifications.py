@@ -18,7 +18,6 @@ class Common:
  unsupported_brave_headless = '\nHeadless mode is unsupported in BraveDriver. We are waiting for a Brave release that supports headless before offering support for headless mode to allow remote automation without opening a driver. We will update this when support is added...\n:)\n\n\n'
  unsupported_edge_headless = '\nHeadless mode is unsupported in EdgeDriver. We are waiting for on the Miscrosoft Edge release to start offering support for headless mode to allow remote automation without opening a driver. We will update this when support is added...\n:)\n\n\n'
  unsupported_edge = 'ERROR! Selenium automation with msedgedriver (Microsoft Edge) is not yet supported on your platform. Please use a different browser!'
- unsupported_os = 'The system you are using has not yet been tested and verified for full program support.\nCurrently supported systems include macOS, Windows, and Linux. Using other systems may result in unexpected behavior.\nIf you would like to add and verify support for another system, please create an issue at https://github.com/slow-but-steady/yt-videos-list/issues\nThanks!'
  automated_driver_update = '\n=====> Now updating Selenium driver binaries and fixing any version incompatibility problems. <=====\nThis will update all corresponding Selenium drivers for browsers (which are installed in their default locations and) supported by the yt_videos_list package...'
  url_prefix_geckodriver = 'https://github.com/mozilla/geckodriver/releases/download'
  url_prefix_operadriver = 'https://github.com/operasoftware/operachromiumdriver/releases/download'
@@ -360,6 +359,9 @@ class Common:
   elif driver == 'bravedriver': driver_specific_command = rf'-O > {drive}:\Windows\bravedriver.exe {cls.strip_component}'
   else: driver_specific_command = rf'-C {drive}:\Windows'
   return rf'curl -SL --ssl-no-revoke {url} -o {drive}:\Windows\{driver} && tar -xzvf {drive}:\Windows\{driver} {driver_specific_command} && del {drive}:\Windows\{driver}' + '\n'
+ @staticmethod
+ def display_unsupported_os():
+  return 'The system you are using has not yet been tested and verified for full program support.\nCurrently supported systems include macOS, Windows, and Linux. Using other systems may result in unexpected behavior.\nIf you would like to add and verify support for another system, please create an issue at https://github.com/slow-but-steady/yt-videos-list/issues\nThanks!'
  @staticmethod
  def display_browser_found_information(browser, full_version_number):
   print(f'\nFound an installed version of {browser}.\nYou are currently running {browser} version: {full_version_number}')
