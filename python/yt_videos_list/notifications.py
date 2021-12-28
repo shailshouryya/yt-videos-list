@@ -360,8 +360,8 @@ class Common:
   else: driver_specific_command = rf'-C {drive}:\Windows'
   return rf'curl -SL --ssl-no-revoke {url} -o {drive}:\Windows\{driver} && tar -xzvf {drive}:\Windows\{driver} {driver_specific_command} && del {drive}:\Windows\{driver}' + '\n'
  @staticmethod
- def display_unsupported_os():
-  return 'The system you are using has not yet been tested and verified for full program support.\nCurrently supported systems include macOS, Windows, and Linux. Using other systems may result in unexpected behavior.\nIf you would like to add and verify support for another system, please create an issue at https://github.com/slow-but-steady/yt-videos-list/issues\nThanks!'
+ def display_unsupported_os(user_os):
+  return f'The system you are using has not yet been tested and verified for full program support.\nCurrently supported systems include macOS, Windows, and Linux. Using other systems may result in unexpected behavior.\nYour current system has been detected as {user_os}.\n\nIf you would like to add and verify support for another system, please create an issue at https://github.com/slow-but-steady/yt-videos-list/issues\nThanks!'
  @staticmethod
  def display_browser_found_information(browser, full_version_number):
   print(f'\nFound an installed version of {browser}.\nYou are currently running {browser} version: {full_version_number}')

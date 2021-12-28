@@ -12,4 +12,4 @@ def determine_user_os():
     elif user_os.startswith('linux'):   return 'linux'
     elif user_os.startswith('windows'): return 'windows'
     else:
-        warnings.warn(Common().display_unsupported_os(), RuntimeWarning)
+        warnings.warn(Common().display_unsupported_os(user_os), RuntimeWarning)
