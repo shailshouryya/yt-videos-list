@@ -14,3 +14,4 @@ def determine_user_os():
     else:
         warnings.warn(Common().display_unsupported_os(user_os), RuntimeWarning)
         warnings.resetwarnings()
+        return user_os
