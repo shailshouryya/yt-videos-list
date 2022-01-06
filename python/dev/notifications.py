@@ -403,8 +403,8 @@ class Common:
 
 
     @classmethod
-    def display_url_error(cls, error_message):
-        return f'{cls.offset}{cls.error}The url you provided could not be parsed properly. Please check the url you provided to make sure there are no typos!{cls.debugging_info}{error_message}{cls.offset}'
+    def display_url_error(cls):
+        return f'{cls.offset}The url you provided could not be parsed properly. Please check the url you provided to make sure there are no typos!'
 
 
     def display_dependency_setup_instructions(self, user_driver, user_os):

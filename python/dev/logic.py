@@ -34,7 +34,7 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
         try:
             _, channel_type, channel_id = parse_url()
         except IndexError as error_message:
-            raise ValueError(common_message.display_url_error(error_message)) from error_message
+            raise ValueError(common_message.display_url_error()) from error_message
         base_url = 'https://www.youtube.com'
         return f'{base_url}/{channel_type}/{channel_id}/videos?view=0&sort=dd&flow=grid&shelf_id=0'
 
