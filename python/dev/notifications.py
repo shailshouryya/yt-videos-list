@@ -402,9 +402,9 @@ class Common:
         print(f'\nDid not find an installed version of {browser}.\nIf you DO have {browser} installed but it was not detected, it may be because your {browser} was installed in a non-default location.\nPlease modify the commands under the {browser} you want to use at https://github.com/slow-but-steady/yt-videos-list/blob/main/docs/dependencies_pseudo_json.txt for {user_os.title()}"\nIf you are unsure how to do that, please file an issue at https://github.com/slow-but-steady/yt-videos-list/issues and we will respond as soon as possible!')
 
 
-    @classmethod
-    def display_url_error(cls):
-        return f'{cls.offset}The url you provided could not be parsed properly. Please check the url you provided to make sure there are no typos!'
+    @staticmethod
+    def display_url_error():
+        return 'The url you provided could not be parsed properly. Please check the url you provided to make sure there are no typos!'
 
 
     def display_dependency_setup_instructions(self, user_driver, user_os):
