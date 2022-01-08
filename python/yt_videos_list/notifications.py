@@ -31,6 +31,7 @@ class Common:
   'brave': ['bravedriver', 'https://github.com/operasoftware/operachromiumdriver', 'https://github.com/operasoftware/operachromiumdriver/releases', 'Brave Browser', 'https://brave.com/'],
   'edge': ['msedgedriver', 'https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/', 'https://msedgewebdriverstorage.blob.core.windows.net/edgewebdriver?comp=list&timeout=60000', 'Microsoft Edge', 'https://www.microsoft.com/en-us/edge']
  }
+ url_error = 'The url you provided could not be parsed properly. Please check the url you provided to make sure there are no typos!'
  def __init__(self, list_creator_configuration=None):
   self.list_creator_configuration = list_creator_configuration
   self.driver_downloads_for_os = {
@@ -368,9 +369,6 @@ class Common:
  @staticmethod
  def display_browser_not_found_information(browser, user_os):
   print(f'\nDid not find an installed version of {browser}.\nIf you DO have {browser} installed but it was not detected, it may be because your {browser} was installed in a non-default location.\nPlease modify the commands under the {browser} you want to use at https://github.com/slow-but-steady/yt-videos-list/blob/main/docs/dependencies_pseudo_json.txt for {user_os.title()}"\nIf you are unsure how to do that, please file an issue at https://github.com/slow-but-steady/yt-videos-list/issues and we will respond as soon as possible!')
- @staticmethod
- def display_url_error():
-  return 'The url you provided could not be parsed properly. Please check the url you provided to make sure there are no typos!'
  def display_dependency_setup_instructions(self, user_driver, user_os):
   terminal_copy_paste_directions = 'Once you determine the right version to download, copy the command, open a new terminal session (usually possible with CMD+N or CMD+T (or CTRL+N or CTRL+D depending on your keyboard/OS) from an active terminal session), and paste the command you just copied. Once you\'ve done that, you should be able to come back to this session and rerun the last command without an error!\n\n'
   if user_os != 'windows' and user_driver != 'safari':
