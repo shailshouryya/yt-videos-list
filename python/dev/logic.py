@@ -69,8 +69,7 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
             'safari':  configure_safaridriver
         }
         if user_driver not in supported_drivers:
-            print(common_message.invalid_driver)
-            sys.exit()
+            raise ValueError(common_message.invalid_driver)
         return supported_drivers[user_driver]()    # NOTE the need to CALL the function returned by supported_drivers[key] since the dictionary value is a function REFERENCE (the function is not yet invoked)
 
 
