@@ -14,7 +14,7 @@ class Common:
     not_writing_to_any_files = '\nBased on your provided settings, yt_videos_list will not be writing to a csv file, nor a txt file, nor a md file, nor to memory.'
     no_videos_found          = 'No videos were found for the channel you provided. Are you sure you entered the url correctly?\n\n'
     invalid_response         = 'The response you entered was invalid.'
-    invalid_driver           = f'The driver you specified is invalid. Please try rerunning the last command after specifying a valid driver. Supported drivers include:\n{indent}Firefox\n{indent}Opera\n{indent}Safari\n{indent}Chrome\n{indent}Brave'
+    invalid_driver           = f'The driver you specified is invalid. Please try rerunning the last command after specifying a valid driver. Supported drivers include:\n{indent}Firefox\n{indent}Opera\n{indent}Safari\n{indent}Chrome\n{indent}Brave\n{indent}Edge'
     unsupported_opera_headless  = '\nHeadless mode is unsupported in OperaDriver. We are waiting on the Opera dev team to start offering support for headless mode to allow remote automation without opening a driver. We will update this when support is added...\n:)\n\n\n'
     unsupported_safari_headless = '\nHeadless mode is unsupported in SafariDriver. We are waiting on Apple to start offering support for headless mode to allow remote automation without opening a driver. We will update this when support is added...\n:)\n\n\n'
     unsupported_brave_headless  = '\nHeadless mode is unsupported in BraveDriver. We are waiting for a Brave release that supports headless before offering support for headless mode to allow remote automation without opening a driver. We will update this when support is added...\n:)\n\n\n'
