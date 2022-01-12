@@ -42,6 +42,7 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
    if execution_type == 'module': print(module_message.running_default_driver + '\n' + module_message.show_driver_options)
    else: print(script_message.running_default_driver + '\n' + script_message.show_driver_options)
    user_driver = 'firefox'
+  user_driver = user_driver.lower()
   supported_drivers = {
    'firefox': configure_firefoxdriver,
    'opera': configure_operadriver,

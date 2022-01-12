@@ -226,7 +226,7 @@ class ListCreator:
         self.reverse_chronological      = reverse_chronological
         self.headless                   = headless
         self.scroll_pause_time          = scroll_pause_time
-        self.driver                     = None if driver is None else driver.lower()
+        self.driver                     = driver
         self.cookie_consent             = cookie_consent
         self.verify_page_bottom_n_times = max(1, int(verify_page_bottom_n_times))
         self.file_buffering             = file_buffering
