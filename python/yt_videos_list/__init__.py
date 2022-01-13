@@ -252,6 +252,7 @@ class ListCreator:
         Returns an easy to read representation of the current instance.
         This is useful for typical users to see the attributes of the current instance and is ideal for human consumption.
         '''
+        formatted_driver = f"'{self.driver}'" if self.driver else None
         return f'''
         {self.__class__.__name__}() object created with attributes
           txt                        = {self.txt}
@@ -264,7 +265,7 @@ class ListCreator:
           reverse_chronological      = {self.reverse_chronological}
           headless                   = {self.headless}
           scroll_pause_time          = {self.scroll_pause_time}
-          driver                     = '{self.driver}'
+          driver                     = {formatted_driver}
           cookie_consent             = {self.cookie_consent}
           verify_page_bottom_n_times = {self.verify_page_bottom_n_times}
           file_buffering             = {self.file_buffering}
