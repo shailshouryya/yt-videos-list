@@ -390,6 +390,10 @@ class Common:
         return rf'curl -SL --ssl-no-revoke {url} -o {drive}:\Windows\{driver} && tar -xzvf {drive}:\Windows\{driver} {driver_specific_command} && del {drive}:\Windows\{driver}' + '\n'
 
 
+    def display_current_configuration(self):
+        return f'\nFor reference, here is your current configuration:\n\n{self.list_creator_configuration}'
+
+
     @staticmethod
     def display_unsupported_os(user_os):
         return f'\n\nThe system you are using has not yet been tested and verified for full program support.\nCurrently tested, verified, and supported systems include macOS (Darwin Kernel), Windows, and Linux.\nYou can still use this program on your current system, but be aware that the program may not behave as expected due to potential OS differences.\nYour current system has been detected as:\n{user_os}\n\nIf you would like to add and verify support for this system, please create an issue at https://github.com/slow-but-steady/yt-videos-list/issues\nThanks!'
@@ -499,12 +503,8 @@ class ModuleMessage(Common):
     {indent}lc = ListCreator(driver='edge')'''
 
 
-    def __init__(self, list_creator_configuration=None):
-        self.list_creator_configuration = list_creator_configuration
-
-
     def not_writing_to_any_files_hint(self):
-        return f'{self.not_writing_to_any_files}\nIf you want to run this program, please change (at least) one of the csv OR txt OR md OR all_video_data_in_memory attributes to True.\nFor reference, here is your current configuration:\n\n{self.list_creator_configuration}'
+        return f'{self.not_writing_to_any_files}\nIf you want to run this program, please change (at least) one of the csv OR txt OR md OR all_video_data_in_memory attributes to True.'
 
 
 
@@ -517,9 +517,5 @@ class ScriptMessage(Common):
     show_driver_options           = 'To use a different driver, specify the driver in the driver flag. For example:'
 
 
-    def __init__(self, list_creator_configuration=None):
-        self.list_creator_configuration = list_creator_configuration
-
-
     def not_writing_to_any_files_hint(self):
-        return f'{self.not_writing_to_any_files}\nIf you want to run this program, please change (at least) one of the csv OR txt OR md OR all_video_data_in_memory attributes to True.\nFor reference, here is your current configuration:\n\n{self.list_creator_configuration}'
+        return f'{self.not_writing_to_any_files}\nIf you want to run this program, please change (at least) one of the csv OR txt OR md OR all_video_data_in_memory attributes to True.'
