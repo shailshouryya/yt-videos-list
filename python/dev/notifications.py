@@ -493,6 +493,7 @@ class ModuleMessage(Common):
     This class contains messages that are relevant for the package when it is being run as a module from within the Python interpreter (or another Python script).
     '''
     indent                        = ' ' * 4     # 4 spaces
+    not_writing_to_any_files_hint = f'{Common.not_writing_to_any_files}\nIf you want to run this program, please change (at least) one of the csv OR txt OR md OR all_video_data_in_memory attributes to True.'
     running_default_driver        = '\nNo driver specified during ListCreator instantiation, so running program using the Firefox driver.'
     show_driver_options           = f'''To use a different driver, specify the driver in the driver argument during the ListCreator instantiation. For example:
     {indent}lc = ListCreator(driver='firefox')
@@ -503,19 +504,11 @@ class ModuleMessage(Common):
     {indent}lc = ListCreator(driver='edge')'''
 
 
-    def not_writing_to_any_files_hint(self):
-        return f'{self.not_writing_to_any_files}\nIf you want to run this program, please change (at least) one of the csv OR txt OR md OR all_video_data_in_memory attributes to True.'
-
-
-
 class ScriptMessage(Common):
     '''
     This class contains messages that relevant for the package it is being run as a module using the -m option from the CLI.
     '''
+    not_writing_to_any_files_hint = f'{Common.not_writing_to_any_files}\nIf you want to run this program, please change (at least) one of the csv OR txt OR md OR all_video_data_in_memory attributes to True.'
     running_default_driver        = '\nNo driver flag used, so running program using the Firefox driver.'
     input_message                 = "What is the name of the YouTube channel you want to generate the list for?\n\nIf you're unsure, click on the channel and look at the URL.\nIt should be in the format:\nhttps://www.youtube.com/user/YourChannelName\nOR\nhttps://www.youtube.com/channel/YourChannelName\n\nSubstitute what you see for YourChannelName and type it in below:\n"
     show_driver_options           = 'To use a different driver, specify the driver in the driver flag. For example:'
-
-
-    def not_writing_to_any_files_hint(self):
-        return f'{self.not_writing_to_any_files}\nIf you want to run this program, please change (at least) one of the csv OR txt OR md OR all_video_data_in_memory attributes to True.'
