@@ -52,7 +52,7 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
    'safari': configure_safaridriver
   }
   if user_driver not in supported_drivers:
-   raise ValueError(common_message.invalid_driver)
+   raise ValueError(common_message.invalid_driver + common_message.display_current_configuration())
   return supported_drivers[user_driver]()
  def configure_firefoxdriver():
   options = selenium.webdriver.firefox.options.Options()
