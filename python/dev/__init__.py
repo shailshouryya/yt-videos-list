@@ -275,7 +275,7 @@ class ListCreator:
         '''
 
 
-    def create_list_for(self, url=None, log_silently=False, file_name='auto'):
+    def create_list_for(self, url, log_silently=False, file_name='auto'):
         '''
         Returns a tuple containing 2 values:
           -> Value 1:
