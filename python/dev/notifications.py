@@ -391,7 +391,7 @@ class Common:
 
 
     def display_current_configuration(self):
-        return f'\nFor reference, here is your current configuration:\n\n{self.list_creator_configuration}'
+        return f'\n\nFor reference, here is your current configuration:\n\n{self.list_creator_configuration}\n'
 
 
     @staticmethod
