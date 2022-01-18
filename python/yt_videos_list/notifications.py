@@ -32,6 +32,7 @@ class Common:
   'edge': ['msedgedriver', 'https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/', 'https://msedgewebdriverstorage.blob.core.windows.net/edgewebdriver?comp=list&timeout=60000', 'Microsoft Edge', 'https://www.microsoft.com/en-us/edge']
  }
  url_error = 'The url you provided could not be parsed properly. Please check the url you provided to make sure there are no typos!'
+ selenium_launch_error = 'The program was unable to launch a Selenium driver instance! Please follow the suggestions above the stack trace to fix the issue.'
  def __init__(self, list_creator_configuration=None):
   self.list_creator_configuration = list_creator_configuration
   self.driver_downloads_for_os = {
