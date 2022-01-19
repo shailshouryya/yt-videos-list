@@ -68,7 +68,7 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
  def configure_safaridriver():
   if user_os != 'macos':
    common_message.display_dependency_setup_instructions('safari', user_os)
-   sys.exit()
+   raise RuntimeError(common_message.selenium_launch_error)
   if headless is True:
    print(common_message.unsupported_safari_headless)
   return webdriver.Safari()
