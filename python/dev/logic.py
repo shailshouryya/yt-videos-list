@@ -133,7 +133,7 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
             executable_path         = '/usr/local/bin/msedgedriver'
             print(common_message.unsupported_edge)
             print(module_message.show_driver_options)
-            sys.exit()
+            raise RuntimeError(common_message.selenium_launch_error)
         if headless is True:
             print(common_message.unsupported_edge_headless)
             # options.headless = True
