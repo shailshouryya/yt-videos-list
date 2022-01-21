@@ -159,7 +159,7 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
             traceback.print_exc()
             show_user_how_to_set_up_selenium()
             common_message.display_unable_to_update_driver_automatically(user_driver)
-            sys.exit()
+            raise RuntimeError(common_message.selenium_launch_error)
 
 
     def run_scraper():
