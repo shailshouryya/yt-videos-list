@@ -155,11 +155,9 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
             download_all()
             driver = open_user_driver()
         except selenium.common.exceptions.WebDriverException as same_error_message_again: # could not download the correct Selenium driver based on the user's OS and specified driver
-            common_message.display_selenium_dependency_update_error(same_error_message_again)
-            traceback.print_exc()
             show_user_how_to_set_up_selenium()
             common_message.display_unable_to_update_driver_automatically(user_driver)
-            raise RuntimeError(common_message.selenium_launch_error)
+            raise RuntimeError(common_message.selenium_launch_error) from same_error_message_again
 
 
     def run_scraper():
