@@ -428,6 +428,8 @@ class Common:
         def display_more_dependency_information(user_driver):
             driver_name, driver_source_code_url, driver_releases_page_url, browser_name, browser_url = self.more_driver_info[user_driver]
             print(f'\n\n# For more information about the {driver_name}, please visit\n{driver_source_code_url}\n{driver_releases_page_url}{self.indent}{self.ds}(all supported versions)\n\nNOTE! You must also have the {browser_name} browser installed to use this. If you don\'t have it installed, install it from\n{browser_url}')
+            print('=' * 130)
+            print('\n' * 7)
         if user_driver != 'safari':
             display_more_dependency_information(user_driver)
 
@@ -445,7 +447,7 @@ class Common:
 
     @staticmethod
     def tell_user_to_download_driver(user_driver):
-        print('\n' * 25 + '=' * 130)
+        print('\n' * 3 + '=' * 130)
         print(f'It looks like you don\'t have the correct Selenium dependency set up to run this program using the remote {user_driver}driver.\nThe version of your {user_driver.title()} browser - usually found by going to {user_driver.title()} -> \"About browser\" in the menu bar within a {user_driver.title()} window - should match the comment for the corresponding command.\nPlease download it using the relevant command from the list of commands below.\n')
 
     @classmethod
