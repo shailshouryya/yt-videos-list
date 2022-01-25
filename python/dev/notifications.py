@@ -441,9 +441,9 @@ class Common:
     def display_selenium_unable_to_load_elements_error(cls, error_message):
         print(f'{cls.error}The page did not load elements! If you\'ve scraped many channels within a short period of time, please try rerunning the program after waiting to make sure YouTube isn\'t throttling your IP address!{cls.debugging_info}{error_message}{cls.offset}')
 
-    @classmethod
-    def display_possible_topic_channel_in_headless_error(cls, error_message):
-        print(f'{cls.error}There was a problem running the selenium webdriver!\n\nTry running the program again with headless=False if you are currently running the program with headless=True.{cls.debugging_info}{error_message}{cls.offset}')
+    @staticmethod
+    def display_possible_topic_channel_in_headless_error():
+        print('There was a problem running the selenium webdriver!\n\nTry running the program again with headless=False if you are currently running the program with headless=True.')
 
     @staticmethod
     def tell_user_to_download_driver(user_driver):
