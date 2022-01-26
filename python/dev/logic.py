@@ -173,7 +173,7 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
                 wait.until(EC.element_to_be_clickable((By.XPATH, topic_channel_heading_xpath)))
             except selenium.common.exceptions.WebDriverException as error_message:
                 traceback.print_exc()
-                raise RuntimeError(common_message.display_possible_topic_channel_in_headless_error()) from error_message
+                raise RuntimeError(common_message.possible_topic_channel_in_headless_error) from error_message
         try:
             load_page(channel_heading_xpath, topic_channel_heading_xpath)
         except selenium.common.exceptions.TimeoutException as error_message:
