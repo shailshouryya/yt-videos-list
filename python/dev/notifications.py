@@ -36,7 +36,7 @@ class Common:
     }
     url_error = 'The url you provided could not be parsed properly. Please check the url you provided to make sure there are no typos!'
     selenium_launch_error = 'The program was unable to launch a Selenium driver instance! Please follow the suggestions above the stack trace to fix the issue.'
-    possible_topic_channel_in_headless_error = 'There was a problem running the selenium webdriver!\n\nTry running the program again with headless=False if you are currently running the program with headless=True.'
+    possible_topic_channel_in_headless_error = 'There was a problem running the selenium webdriver!\n\nTo better debug the problem, try running the program again with headless=False if you are currently running the program with headless=True to see what is happening.'
 
 
     def __init__(self, list_creator_configuration=None):
