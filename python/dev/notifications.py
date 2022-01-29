@@ -438,9 +438,9 @@ class Common:
     def display_selenium_dependency_error(cls, error_message):
         print(f'{cls.offset}{cls.offset}\n{cls.error}There was an error while trying to open up the remote selenium instance. The exact error was:\n{error_message}\nDon\'t worry though, this is an easy fix!')
 
-    @classmethod
-    def display_selenium_unable_to_load_elements_error(cls, error_message):
-        print(f'{cls.error}The page did not load elements! If you\'ve scraped many channels within a short period of time, please try rerunning the program after waiting to make sure YouTube isn\'t throttling your IP address!{cls.debugging_info}{error_message}{cls.offset}')
+    @staticmethod
+    def display_selenium_unable_to_load_elements_error():
+        print('The page did not load elements! If you\'ve scraped many channels within a short period of time, please try rerunning the program after waiting to make sure YouTube isn\'t throttling your IP address!')
 
     @staticmethod
     def tell_user_to_download_driver(user_driver):
