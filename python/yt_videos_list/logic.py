@@ -132,7 +132,7 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
   try:
    load_page(channel_heading_xpath, topic_channel_heading_xpath)
   except selenium.common.exceptions.TimeoutException as error_message:
-   raise RuntimeError(common_message.display_selenium_unable_to_load_elements_error()) from error_message
+   raise RuntimeError(common_message.selenium_unable_to_load_elements_error) from error_message
   channel_name, file_name = determine_file_name(channel_heading_xpath, topic_channel_heading_xpath)
   with yield_logger(file_name) as logging_locations:
    log( '>' * 50 + 'STARTING PROGRAM' + '<' * 50, logging_locations)

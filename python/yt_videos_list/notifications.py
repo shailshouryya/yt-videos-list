@@ -34,6 +34,7 @@ class Common:
  url_error = 'The url you provided could not be parsed properly. Please check the url you provided to make sure there are no typos!'
  selenium_launch_error = 'The program was unable to launch a Selenium driver instance! Please follow the suggestions above the stack trace to fix the issue.'
  possible_topic_channel_in_headless_error = 'There was a problem running the selenium webdriver!\n\nTo better debug the problem, try running the program again with headless=False if you are currently running the program with headless=True to see what is happening.'
+ selenium_unable_to_load_elements_error = 'The page did not load elements! If you\'ve scraped many channels within a short period of time, please try rerunning the program after waiting to make sure YouTube isn\'t throttling your IP address!'
  def __init__(self, list_creator_configuration=None):
   self.list_creator_configuration = list_creator_configuration
   self.driver_downloads_for_os = {
@@ -400,9 +401,6 @@ class Common:
  @classmethod
  def display_selenium_dependency_error(cls, error_message):
   print(f'{cls.offset}{cls.offset}\n{cls.error}There was an error while trying to open up the remote selenium instance. The exact error was:\n{error_message}\nDon\'t worry though, this is an easy fix!')
- @staticmethod
- def display_selenium_unable_to_load_elements_error():
-  print('The page did not load elements! If you\'ve scraped many channels within a short period of time, please try rerunning the program after waiting to make sure YouTube isn\'t throttling your IP address!')
  @staticmethod
  def tell_user_to_download_driver(user_driver):
   print('\n' * 3 + '=' * 130)
