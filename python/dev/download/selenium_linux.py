@@ -1,6 +1,6 @@
 def browser_exists(browser):
     # return browser in subprocess.getoutput('ls /Applications')
-    raise RuntimeError('Automatic selenium updates are not yet available for Linux distributions!\nPlease update your selenium driver manually.')
+    raise RuntimeError('Browser detection and automatic selenium updates are not yet available for Linux distributions!\nPlease update your selenium driver manually.')
 
 def get_browser_version(browser):
     # with open(f'/Applications/{browser}.app/Contents/Info.plist', mode='r', encoding='utf-8') as f:
