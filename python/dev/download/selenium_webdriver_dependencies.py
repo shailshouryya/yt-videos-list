@@ -16,9 +16,9 @@ APPLICATION_NAME = {
         'edge':     'Microsoft Edge'
     },
     'linux': {
-        'firefox':  'Automatic Selenium dependency download for Windows is not yet supported. Please follow the instructions below to set up the correct selenium dependecy for the firefoxdriver.',
-        'opera':    'Automatic Selenium dependency download for Windows is not yet supported. Please follow the instructions below to set up the correct selenium dependecy for the operadriver.',
-        'chrome':   'Automatic Selenium dependency download for Windows is not yet supported. Please follow the instructions below to set up the correct selenium dependecy for the chromedriver.'
+        'firefox':  '',
+        'opera':    '',
+        'chrome':   ''
     },
     'windows': {
         'firefox':  'Mozilla Firefox',
