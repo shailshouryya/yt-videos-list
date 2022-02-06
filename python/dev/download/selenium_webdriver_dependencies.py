@@ -33,7 +33,7 @@ APPLICATION_NAME = {
 def download_specific_dependency(driver, user_os):
     selenium_user_os = globals()[f'selenium_{user_os}']
     browser = APPLICATION_NAME[user_os][driver]
-    if selenium_user_os.browser_exists(browser):
+    if selenium_user_os.verify_browser_exists(browser):
         full_version_number = selenium_user_os.get_browser_version(browser)
         COMMON_MESSAGE.display_browser_found_information(browser, full_version_number)
         major_version = full_version_number.split('.')[0]

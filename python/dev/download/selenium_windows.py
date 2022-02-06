@@ -27,7 +27,7 @@ def brave_exists(browser):
 def edge_exists(browser):
     return browser in subprocess.getoutput(rf'dir "{DRIVE}:\Program Files (x86)/Microsoft"')
 
-def browser_exists(browser):
+def verify_browser_exists(browser):
     return {
         'Mozilla Firefox': firefox_exists(browser),
         'Opera':           opera_exists(browser),

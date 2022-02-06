@@ -1,4 +1,4 @@
-def browser_exists(browser):
+def verify_browser_exists(browser):
     # return browser in subprocess.getoutput('ls /Applications')
     raise RuntimeError('Browser detection and automatic selenium updates are not yet available for Linux distributions!\nPlease update your selenium driver manually.')
 

@@ -2,7 +2,7 @@ import re
 import subprocess
 
 
-def browser_exists(browser):
+def verify_browser_exists(browser):
     return browser in subprocess.getoutput('ls /Applications')
 
 def get_browser_version(browser):
