@@ -20,8 +20,7 @@ def determine_user_os():
     elif user_os.startswith('linux'):   return 'linux'
     elif user_os.startswith('windows'): return 'windows'
     else:
-        print('Unsupported operating system, exiting tests...')
-        sys.exit()
+        raise RuntimeError(f'Unsupported operating system! You are on: {user_os}\nPlease add tests to verify the program runs properly on {user_os}.\nNow exiting tests...')
 
 
 def determine_path_slash():
