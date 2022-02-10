@@ -29,6 +29,7 @@ def run_tests_for(browsers_list):
     test cases for every driver in the provided
     `browsers_list`.
     '''
+    file_content_mismatch = 'At least one output file produced by this test does not match the expectation!'
     test_cases = create_test_cases(browsers_list)
     total      = len(test_cases)
     current    = 0
@@ -79,8 +80,8 @@ def run_tests_for(browsers_list):
         if 'test_case_thread_2' in locals(): test_case_thread_2.join()
         if 'thread_1_case' in locals(): log_test_info(f'Finished testing {[thread_1_case]}!', log_1_name)
         if 'thread_2_case' in locals(): log_test_info(f'Finished testing {[thread_2_case]}!', log_2_name)
-        if 'test_case_thread_1' in locals() and (getattr(test_case_thread_1, 'result', None) is None or test_case_thread_1.result == 'Failed!'): sys.exit()
-        if 'test_case_thread_2' in locals() and (getattr(test_case_thread_2, 'result', None) is None or test_case_thread_2.result == 'Failed!'): sys.exit()
+        if 'test_case_thread_1' in locals() and (getattr(test_case_thread_1, 'result', None) is None or test_case_thread_1.result == 'Failed!'): raise RuntimeError(file_content_mismatch)
+        if 'test_case_thread_2' in locals() and (getattr(test_case_thread_2, 'result', None) is None or test_case_thread_2.result == 'Failed!'): raise RuntimeError(file_content_mismatch)
         test_case_complete = 'Moving on to the next driver...\n' + '⏬ '*11 + '\n\n\n'
         if   'thread_1_case' in locals() and 'thread_2_case' in locals(): log_test_info(test_case_complete, log_1_name, log_2_name)
         elif 'thread_1_case' in locals():                                 log_test_info(test_case_complete, log_1_name)
