@@ -36,6 +36,7 @@ def main():
     '''
     remove_dependencies()
     browsers   = ['firefox', 'opera', 'chrome', 'brave']
+    delete_all_test_output_files()
     run_tests_for(browsers)
     delete_all_test_output_files()
 

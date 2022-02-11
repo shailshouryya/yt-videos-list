@@ -36,6 +36,7 @@ def main():
     platform. Please use a different browser!"
     '''
     browsers   = ['edge']
+    delete_all_test_output_files()
     run_tests_for(browsers)
     delete_all_test_output_files()
 

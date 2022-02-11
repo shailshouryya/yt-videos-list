@@ -40,6 +40,7 @@ def main():
     provide built in support for safaridriver on a {host} OS."
     '''
     browsers   = ['safari']
+    delete_all_test_output_files()
     run_tests_for(browsers)
     delete_all_test_output_files()
 
