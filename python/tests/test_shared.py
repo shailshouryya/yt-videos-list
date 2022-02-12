@@ -14,9 +14,10 @@ import threading
 
 from determine import determine_path_slash
 
+from save_thread_result import ThreadWithResult
+
 from yt_videos_list import ListCreator
 
-from save_thread_result import ThreadWithResult
 
 NOW       = datetime.datetime.now
 ISOFORMAT = datetime.datetime.isoformat
