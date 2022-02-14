@@ -5,6 +5,7 @@ compatible across operating systems.
 '''
 import os
 
+from test_shared import run_tests_for, delete_all_test_output_files
 from determine import determine_user_os
 if __name__ == '__main__':
     USER_OS          = determine_user_os()
@@ -16,9 +17,6 @@ if __name__ == '__main__':
         FORMATTED_PYTHON = 'python3'
     os.system(f'{FORMATTED_PYTHON} minifier.py')
     os.system(f'{FORMATTED_PIP}    install .')
-
-
-from test_shared                          import run_tests_for, delete_all_test_output_files
 
 
 from yt_videos_list.download.windows_info import get_drive_letter

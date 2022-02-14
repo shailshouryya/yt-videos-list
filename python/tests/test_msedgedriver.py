@@ -9,6 +9,7 @@ systems:
 (Microsoft Edge) is not yet supported on your
 platform. Please use a different browser!"
 '''
+from test_shared import run_tests_for, delete_all_test_output_files
 
 if __name__ == '__main__':
     import os
@@ -23,7 +24,6 @@ if __name__ == '__main__':
     os.system(f'{FORMATTED_PYTHON} minifier.py')
     os.system(f'{FORMATTED_PIP}    install . --use-feature=in-tree-build')
 
-from test_shared import run_tests_for, delete_all_test_output_files
 
 
 def main():
