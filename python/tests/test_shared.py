@@ -229,9 +229,10 @@ def compare_test_files_to_reference_files(full_file, test_output_file, log_file)
     contains the exact same content as the reference `full_file` by
     comparing the sha256 hash of both files. If the hashes match,
     the tests continue, but if the hashes don't match, the
-    program exits by raising the `SystemExit` exception using
-    `sys.exit()`. NOTE that this is insufficient on a
-    multi-threaded program since a `SystemExit` exception on one
+    program exits by raising the `ValueError` exception in the
+    originating `run_tests_for(browsers_list)` function.
+    NOTE that this is insufficient on a
+    multi-threaded program since a `ValueError` exception on one
     thread only terminates THAT thread, and the main thread will
     continue to execute and spin up new threads if there is still
     more work to do. This is a known bug, and will be addressed in
