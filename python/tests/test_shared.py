@@ -231,12 +231,19 @@ def compare_test_files_to_reference_files(full_file, test_output_file, log_file)
     the tests continue, but if the hashes don't match, the
     program exits by raising the `ValueError` exception in the
     originating `run_tests_for(browsers_list)` function.
-    NOTE that this is insufficient on a
-    multi-threaded program since a `ValueError` exception on one
-    thread only terminates THAT thread, and the main thread will
-    continue to execute and spin up new threads if there is still
-    more work to do. This is a known bug, and will be addressed in
-    a future fix.
+
+    NOTE: on a multi-threaded program, a `ValueError` exception
+    (or any other exception) only terminates the thread on which
+    the exception is raised, but any other threads will
+    continue to execute until they finish. For this reason, the
+    `ValueError` exception is raised in the
+    `run_tests_for(browsers_list)` function instead of in
+    this function, since this function is called from and run from
+    a subthread, whereas `run_tests_for(browsers_list)` function
+    is called from and run on the MainThread.
+    Since the exception is raised in the MainThread, any other
+    concurrently running threads will continue to execute until
+    they finish, but no FURTHER work will be done after that.
     '''
     with open(f'{test_output_file}.txt', mode='r', encoding='utf-8') as test_txt, open(f'{test_output_file}.csv', mode='r', encoding='utf-8') as test_csv, open(f'{test_output_file}.md', mode='r', encoding='utf-8') as test_md:
         current_txt = hashlib.sha256(test_txt.read().encode('utf-8')).hexdigest()
