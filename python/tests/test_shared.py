@@ -250,15 +250,15 @@ def compare_test_files_to_reference_files(full_file, test_output_file, log_file)
         current_csv = hashlib.sha256(test_csv.read().encode('utf-8')).hexdigest()
         current_md  = hashlib.sha256(test_md.read().encode ('utf-8')).hexdigest()
     with open(f'{full_file}.txt', mode='r', encoding='utf-8') as full_txt, open(f'{full_file}.csv', mode='r', encoding='utf-8') as full_csv, open(f'{full_file}.md', mode='r', encoding='utf-8') as full_md:
-        verified_txt = hashlib.sha256(full_txt.read().encode('utf-8')).hexdigest()
-        verified_csv = hashlib.sha256(full_csv.read().encode('utf-8')).hexdigest()
-        verified_md  = hashlib.sha256(full_md.read().encode ('utf-8')).hexdigest()
+        expected_txt = hashlib.sha256(full_txt.read().encode('utf-8')).hexdigest()
+        expected_csv = hashlib.sha256(full_csv.read().encode('utf-8')).hexdigest()
+        expected_md  = hashlib.sha256(full_md.read().encode ('utf-8')).hexdigest()
     failed = False
-    if current_txt != verified_txt: log_test_info(f'❌ ERROR! The updated txt file does NOT match the {full_file}.txt file!',       log_file); failed = True
+    if current_txt != expected_txt: log_test_info(f'❌ ERROR! The updated txt file does NOT match the {full_file}.txt file!',       log_file); failed = True
     else:                           log_test_info(f'✅ The updated txt file matches the {full_file}.txt file :)',                   log_file)
-    if current_csv != verified_csv: log_test_info(f'❌ ERROR! The updated csv file does NOT match the {full_file}.csv file!',       log_file); failed = True
+    if current_csv != expected_csv: log_test_info(f'❌ ERROR! The updated csv file does NOT match the {full_file}.csv file!',       log_file); failed = True
     else:                           log_test_info(f'✅ The updated csv file matches the {full_file}.csv file :)',                   log_file)
-    if current_md  != verified_md:  log_test_info(f'❌ ERROR! The updated md  file does NOT match the {full_file}.md  file!\n\n\n', log_file); failed = True
+    if current_md  != expected_md:  log_test_info(f'❌ ERROR! The updated md  file does NOT match the {full_file}.md  file!\n\n\n', log_file); failed = True
     else:                           log_test_info(f'✅ The updated md  file matches the {full_file}.md  file :)\n\n\n',             log_file)
     if failed:
         log_test_info(f'❗️❗️ FAILED at {ISOFORMAT(NOW())}! ❗️❗️', log_file)
