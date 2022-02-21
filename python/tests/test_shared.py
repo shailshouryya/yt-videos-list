@@ -162,7 +162,7 @@ def verify_update(list_creator, test_url, test_file, full_file, log_file):
         ['csv'],
         ['txt'],
         ['md']
-        ]
+    ]
     for variation in variations:
         is_video_id_only         = vars   (list_creator)["video_id_only"]
         is_reverse_chronological = vars   (list_creator)['reverse_chronological']
