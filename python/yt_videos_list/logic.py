@@ -140,8 +140,9 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
    log(f'Current configuration: {list_creator_configuration}', logging_locations)
    video_data = program.determine_action(url, driver, video_id_only, scroll_pause_time, verify_page_bottom_n_times, reverse_chronological, file_name, file_buffering, txt, csv, markdown, all_video_data_in_memory, logging_locations)
    program_end = time.perf_counter()
+   program_end_real_time = time.time()
    total_time = program_end - program_start
-   log(f'This program took {total_time} seconds to complete writing information for the "{channel_name}" channel to the {file_name} file.', logging_locations)
+   log(f'This program took {total_time} seconds ({program_end_real_time - program_start_real_time} seconds real time) to complete writing information for the "{channel_name}" channel to the {file_name} file.', logging_locations)
    log( '>' * 50 + 'COMPLETED PROGRAM' + '<' * 50, logging_locations)
   return (video_data, (channel_name, file_name), total_time)
  def manage_cookie_consent_form():
@@ -216,6 +217,7 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
     log(f'Sleeping for {sleep_time} seconds before scraping next URL....', aggregate_logging_locations)
     time.sleep(sleep_time)
    program_start = time.perf_counter()
+   program_start_real_time = time.time()
    if urls: url = urls.popleft()
    else: continue
    if aggregate_logging_locations: log(f'{" "*8} Scraping {count:>7}: {url}', aggregate_logging_locations)
