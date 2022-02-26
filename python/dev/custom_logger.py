@@ -20,13 +20,16 @@ def log_write_information(writer_function):
     def wrap_writer_function(*args, **kwargs):
         function_name                                                       = writer_function.__name__
         start_time                                                          = time.perf_counter()
+        start_real_time                                                     = time.time()
         extension                                                           = args[0] # file_type
         timestamp                                                           = args[5] # timestamp (determined by the now() function in program.py)
         file_name, new_videos_written, total_videos, reverse_chronological, logging_locations = writer_function(*args, **kwargs)   # writer_function() writes to temp_{file_name}
         if new_videos_written == 1: videos = 'video'
         else:                   videos = 'videos'
         end_time   = time.perf_counter()
+        end_real_time   = time.time()
         total_time = end_time - start_time
+        total_real_time = end_real_time - start_real_time
         temp_file  = f'temp_{file_name}_{timestamp}.{extension}'    # determine temp_{file_name} for wrap_writer_function() scope (writer_function defines it in its own scope already)
         final_file = f'{file_name}.{extension}'
         padding    = 39
@@ -43,7 +46,7 @@ def log_write_information(writer_function):
             # if the function that ran was update_file with the reverse_chronological flag set to True: rename temp_{file_name} to {file_name}.{extension} since program appends old info from the original file to the end of new data in the temp file
             os.replace(temp_file, final_file)
         log('Successfully renamed'.ljust(padding) + f'{temp_file} to {final_file}',                                                                                   logging_locations)
-        if function_name == 'create_file': log(f'It took {total_time} seconds to write all {new_videos_written} {videos} to {final_file}',                            logging_locations)
-        if function_name == 'update_file': log(f'It took {total_time} seconds to write the {new_videos_written} ***NEW*** {videos} to the pre-existing {final_file}', logging_locations)
+        if function_name == 'create_file': log(f'It took {total_time} seconds ({total_real_time} seconds real time)) to write all {new_videos_written} {videos} to {final_file}',                            logging_locations)
+        if function_name == 'update_file': log(f'It took {total_time} seconds ({total_real_time} seconds real time)) to write the {new_videos_written} ***NEW*** {videos} to the pre-existing {final_file}', logging_locations)
         log(f'{final_file} now contains information for {total_videos} {videos}{NEWLINE}',                                                                            logging_locations)
     return wrap_writer_function

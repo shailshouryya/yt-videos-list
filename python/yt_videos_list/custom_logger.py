@@ -16,13 +16,16 @@ def log_write_information(writer_function):
  def wrap_writer_function(*args, **kwargs):
   function_name = writer_function.__name__
   start_time = time.perf_counter()
+  start_real_time = time.time()
   extension = args[0]
   timestamp = args[5]
   file_name, new_videos_written, total_videos, reverse_chronological, logging_locations = writer_function(*args, **kwargs)
   if new_videos_written == 1: videos = 'video'
   else: videos = 'videos'
   end_time = time.perf_counter()
+  end_real_time = time.time()
   total_time = end_time - start_time
+  total_real_time = end_real_time - start_real_time
   temp_file = f'temp_{file_name}_{timestamp}.{extension}'
   final_file = f'{file_name}.{extension}'
   padding = 39
@@ -36,7 +39,7 @@ def log_write_information(writer_function):
   else:
    os.replace(temp_file, final_file)
   log('Successfully renamed'.ljust(padding) + f'{temp_file} to {final_file}', logging_locations)
-  if function_name == 'create_file': log(f'It took {total_time} seconds to write all {new_videos_written} {videos} to {final_file}', logging_locations)
-  if function_name == 'update_file': log(f'It took {total_time} seconds to write the {new_videos_written} ***NEW*** {videos} to the pre-existing {final_file}', logging_locations)
+  if function_name == 'create_file': log(f'It took {total_time} seconds ({total_real_time} seconds real time)) to write all {new_videos_written} {videos} to {final_file}', logging_locations)
+  if function_name == 'update_file': log(f'It took {total_time} seconds ({total_real_time} seconds real time)) to write the {new_videos_written} ***NEW*** {videos} to the pre-existing {final_file}', logging_locations)
   log(f'{final_file} now contains information for {total_videos} {videos}{NEWLINE}', logging_locations)
  return wrap_writer_function
