@@ -187,7 +187,8 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
             program_end = time.perf_counter()
             program_end_real_time = time.time()
             total_time  = program_end - program_start
-            log(f'This program took {total_time} seconds ({program_end_real_time - program_start_real_time} seconds real time) to complete writing information for the "{channel_name}" channel to the {file_name} file.', logging_locations)
+            total_real_time = program_end_real_time - program_start_real_time
+            log(f'This program took {total_time} seconds ({total_real_time} seconds real time) to complete writing information for the "{channel_name}" channel to the {file_name} file.', logging_locations)
             log( '>' * 50 + 'COMPLETED PROGRAM' + '<' * 50,                                                                                          logging_locations)
         return (video_data, (channel_name, file_name), total_time)
 
