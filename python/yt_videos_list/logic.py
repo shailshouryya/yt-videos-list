@@ -223,7 +223,7 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
    else: continue
    if aggregate_logging_locations: log(f'{" "*8} Scraping {count:>7}: {url}', aggregate_logging_locations)
    url = process_url()
-   video_data, write_information, thread_running_time = run_scraper()
+   video_data, write_information, thread_cpu_time = run_scraper()
    channel_name, output_file_name = write_information
-   if aggregate_logging_locations: log(f'Finished scraping {count:>7}: "{channel_name}" and wrote to the {output_file_name} file in {thread_running_time} seconds', aggregate_logging_locations)
+   if aggregate_logging_locations: log(f'Finished scraping {count:>7}: "{channel_name}" and wrote to the {output_file_name} file in {thread_cpu_time} seconds', aggregate_logging_locations)
   return (video_data, (channel_name, output_file_name))
