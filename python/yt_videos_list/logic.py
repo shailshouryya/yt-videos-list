@@ -145,7 +145,7 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
    total_real_time = program_end_real_time - program_start_real_time
    log(f'This program took {total_cpu_time} seconds ({total_real_time} seconds real time) to complete writing information for the "{channel_name}" channel to the {file_name} file.', logging_locations)
    log( '>' * 50 + 'COMPLETED PROGRAM' + '<' * 50, logging_locations)
-  return (video_data, (channel_name, file_name), total_cpu_time)
+  return (video_data, (channel_name, file_name), total_cpu_time, total_real_time)
  def manage_cookie_consent_form():
   if 'consent.youtube.com' in driver.current_url:
    common_message.display_cookie_redirection()
@@ -223,7 +223,7 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
    else: continue
    if aggregate_logging_locations: log(f'{" "*8} Scraping {count:>7}: {url}', aggregate_logging_locations)
    url = process_url()
-   video_data, write_information, thread_cpu_time = run_scraper()
+   video_data, write_information, thread_cpu_time, thread_real_time = run_scraper()
    channel_name, output_file_name = write_information
-   if aggregate_logging_locations: log(f'Finished scraping {count:>7}: "{channel_name}" and wrote to the {output_file_name} file in {thread_cpu_time} seconds', aggregate_logging_locations)
+   if aggregate_logging_locations: log(f'Finished scraping {count:>7}: "{channel_name}" and wrote to the {output_file_name} file in {thread_cpu_time} seconds ({thread_real_time} seconds real time)', aggregate_logging_locations)
   return (video_data, (channel_name, output_file_name))
