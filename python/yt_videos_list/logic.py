@@ -141,11 +141,11 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
    video_data = program.determine_action(url, driver, video_id_only, scroll_pause_time, verify_page_bottom_n_times, reverse_chronological, file_name, file_buffering, txt, csv, markdown, all_video_data_in_memory, logging_locations)
    program_end = time.perf_counter()
    program_end_real_time = time.time()
-   total_cpu_time = program_end - program_start
+   program_cpu_time = program_end - program_start
    total_real_time = program_end_real_time - program_start_real_time
-   log(f'This program took {total_cpu_time} seconds ({total_real_time} seconds real time) to complete writing information for the "{channel_name}" channel to the {file_name} file.', logging_locations)
+   log(f'This program took {program_cpu_time} seconds ({total_real_time} seconds real time) to complete writing information for the "{channel_name}" channel to the {file_name} file.', logging_locations)
    log( '>' * 50 + 'COMPLETED PROGRAM' + '<' * 50, logging_locations)
-  return (video_data, (channel_name, file_name), total_cpu_time, total_real_time)
+  return (video_data, (channel_name, file_name), program_cpu_time, total_real_time)
  def manage_cookie_consent_form():
   if 'consent.youtube.com' in driver.current_url:
    common_message.display_cookie_redirection()
