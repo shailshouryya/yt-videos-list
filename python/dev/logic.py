@@ -184,9 +184,9 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
             log(f'Now scraping {url} using the {user_driver}driver...', logging_locations)
             log(f'Current configuration: {list_creator_configuration}', logging_locations)
             video_data = program.determine_action(url, driver, video_id_only, scroll_pause_time, verify_page_bottom_n_times, reverse_chronological, file_name, file_buffering, txt, csv, markdown, all_video_data_in_memory, logging_locations)
-            program_end = time.perf_counter()
+            program_cpu_end_time = time.perf_counter()
             program_end_real_time = time.time()
-            program_cpu_time  = program_end - program_cpu_start_time
+            program_cpu_time  = program_cpu_end_time - program_cpu_start_time
             program_real_time = program_end_real_time - program_start_real_time
             log(f'This program took {program_cpu_time} seconds ({program_real_time} seconds real time) to complete writing information for the "{channel_name}" channel to the {file_name} file.', logging_locations)
             log( '>' * 50 + 'COMPLETED PROGRAM' + '<' * 50,                                                                                          logging_locations)
