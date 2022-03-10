@@ -414,7 +414,7 @@ class ListCreator:
         invalid_file_name_exception = f'''The options for the file_name argument are 'auto' or 'id', but you provided: '{file_name}'\nPlease rerun this method using file_name='auto' or file_name='id'\n\nFor more details about the difference between 'auto' and 'id', run:\n    >>> help(ListCreator.create_list_for)\n\n\n\n'''
         if file_name not in ('auto', 'id'): raise ValueError(invalid_file_name_exception)
         with open(path_to_channel_urls_file, mode='r', encoding='utf-8',  buffering=self.file_buffering) as txt_file, open(path_to_channel_urls_file.split('.')[0] + '.log', mode='a', encoding='utf-8',  buffering=self.file_buffering) as log_file:
-            start = time.perf_counter()
+            multithreading_cpu_start_time = time.perf_counter()
             start_real_time = time.time()
             if log_subthread_info_silently: logging_locations = (log_file,)
             else:                           logging_locations = (log_file, sys.stdout)
@@ -461,7 +461,7 @@ class ListCreator:
                 remove_finished_threads()
             end = time.perf_counter()
             end_real_time = time.time()
-            total_cpu_time = end - start
+            total_cpu_time = end - multithreading_cpu_start_time
             total_real_time = end_real_time - start_real_time
             log(f'Finished executing all threads. It took {total_cpu_time} seconds ({total_real_time} seconds real time) to scrape all urls in {path_to_channel_urls_file}', logging_locations)
             log( '>' * 50 + 'COMPLETED MULTI-THREADED PROGRAM' + '<' * 50, logging_locations)
