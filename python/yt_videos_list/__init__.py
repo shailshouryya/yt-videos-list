@@ -415,7 +415,7 @@ class ListCreator:
         if file_name not in ('auto', 'id'): raise ValueError(invalid_file_name_exception)
         with open(path_to_channel_urls_file, mode='r', encoding='utf-8',  buffering=self.file_buffering) as txt_file, open(path_to_channel_urls_file.split('.')[0] + '.log', mode='a', encoding='utf-8',  buffering=self.file_buffering) as log_file:
             multithreading_cpu_start_time = time.perf_counter()
-            start_real_time = time.time()
+            multithreading_real_start_time = time.time()
             if log_subthread_info_silently: logging_locations = (log_file,)
             else:                           logging_locations = (log_file, sys.stdout)
             ThreadWithResult.log_thread_status = not log_subthread_status_silently
@@ -462,7 +462,7 @@ class ListCreator:
             multithreading_cpu_end_time = time.perf_counter()
             end_real_time = time.time()
             multithreading_cpu_time = multithreading_cpu_end_time - multithreading_cpu_start_time
-            total_real_time = end_real_time - start_real_time
+            total_real_time = end_real_time - multithreading_real_start_time
             log(f'Finished executing all threads. It took {multithreading_cpu_time} seconds ({total_real_time} seconds real time) to scrape all urls in {path_to_channel_urls_file}', logging_locations)
             log( '>' * 50 + 'COMPLETED MULTI-THREADED PROGRAM' + '<' * 50, logging_locations)
 
