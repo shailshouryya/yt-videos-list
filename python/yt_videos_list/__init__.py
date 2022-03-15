@@ -462,8 +462,8 @@ class ListCreator:
             multithreading_cpu_end_time = time.perf_counter()
             multithreading_real_end_time = time.time()
             multithreading_cpu_time = multithreading_cpu_end_time - multithreading_cpu_start_time
-            total_real_time = multithreading_real_end_time - multithreading_real_start_time
-            log(f'Finished executing all threads. It took {multithreading_cpu_time} seconds ({total_real_time} seconds real time) to scrape all urls in {path_to_channel_urls_file}', logging_locations)
+            multithreading_real_time = multithreading_real_end_time - multithreading_real_start_time
+            log(f'Finished executing all threads. It took {multithreading_cpu_time} seconds ({multithreading_real_time} seconds real time) to scrape all urls in {path_to_channel_urls_file}', logging_locations)
             log( '>' * 50 + 'COMPLETED MULTI-THREADED PROGRAM' + '<' * 50, logging_locations)
 
 
