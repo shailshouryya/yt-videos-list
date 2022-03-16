@@ -187,7 +187,7 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
             program_cpu_end_time = time.perf_counter()
             program_end_real_time = time.time()
             program_cpu_time  = program_cpu_end_time - program_cpu_start_time
-            program_real_time = program_end_real_time - program_start_real_time
+            program_real_time = program_end_real_time - program_real_start_time
             log(f'This program took {program_cpu_time} seconds ({program_real_time} seconds real time) to complete writing information for the "{channel_name}" channel to the {file_name} file.', logging_locations)
             log( '>' * 50 + 'COMPLETED PROGRAM' + '<' * 50,                                                                                          logging_locations)
         return (video_data, (channel_name, file_name), program_cpu_time, program_real_time)
@@ -304,7 +304,7 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
                 log(f'Sleeping for {sleep_time} seconds before scraping next URL....', aggregate_logging_locations)
                 time.sleep(sleep_time)
             program_cpu_start_time = time.perf_counter()
-            program_start_real_time = time.time()
+            program_real_start_time = time.time()
             if urls: url = urls.popleft()
             else:    continue
             if aggregate_logging_locations: log(f'{" "*8} Scraping {count:>7}: {url}', aggregate_logging_locations)
