@@ -80,7 +80,7 @@ def determine_action(url, driver, video_id_only, scroll_pause_time, verify_page_
 def now():
  return datetime.datetime.now().isoformat().replace(':', '_').replace('.', '-')
 def load_video_data(videos_list, common_visited_videos, video_id_only, reverse_chronological, logging_locations):
- start_time = time.perf_counter()
+ video_loading_cpu_start_time = time.perf_counter()
  start_real_time = time.time()
  log('Loading video information into memory...', logging_locations)
  video_data = []
@@ -104,7 +104,7 @@ def load_video_data(videos_list, common_visited_videos, video_id_only, reverse_c
   video_data.reverse()
  end_time = time.perf_counter()
  end_real_time = time.time()
- total_cpu_time = end_time - start_time
+ total_cpu_time = end_time - video_loading_cpu_start_time
  total_real_time = end_real_time - start_real_time
  log(f'It took {total_cpu_time} seconds ({total_real_time} seconds real time) to load information for {videos_to_load} videos into memory\n', logging_locations)
  if video_id_only is True:
