@@ -124,9 +124,9 @@ def load_video_data(videos_list, common_visited_videos, video_id_only, reverse_c
     if reverse_chronological is False:
         # the video_data list is currently in reverse chronological order, so reverse video_data to place the video data in chronological order
         video_data.reverse()
-    end_time = time.perf_counter()
+    video_loading_cpu_end_time = time.perf_counter()
     end_real_time = time.time()
-    total_cpu_time = end_time - video_loading_cpu_start_time
+    total_cpu_time = video_loading_cpu_end_time - video_loading_cpu_start_time
     total_real_time = end_real_time - start_real_time
     log(f'It took {total_cpu_time} seconds ({total_real_time} seconds real time) to load information for {videos_to_load} videos into memory\n', logging_locations)
     if video_id_only is True:
