@@ -40,8 +40,8 @@ def run_tests_for(browsers_list):
         'CoreySchafer_reverse_chronological_video_ids_list.log',
         'CoreySchafer_chronological_video_ids_list.log'
     ]
-    log_test_info('*' * 140,        log_files)
-    log_test_info('Running tests!', log_files)
+    log_test_info('*' * 140,        *log_files)
+    log_test_info('Running tests!', *log_files)
     while current < total:
         # each test_case is a ListCreator instance for
         # video_id_only set to True or False with
