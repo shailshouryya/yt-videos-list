@@ -105,8 +105,8 @@ def load_video_data(videos_list, common_visited_videos, video_id_only, reverse_c
  video_loading_cpu_end_time = time.perf_counter()
  video_loading_real_end_time = time.time()
  video_loading_cpu_time = video_loading_cpu_end_time - video_loading_cpu_start_time
- total_real_time = video_loading_real_end_time - video_loading_real_start_time
- log(f'It took {video_loading_cpu_time} seconds ({total_real_time} seconds real time) to load information for {videos_to_load} videos into memory\n', logging_locations)
+ video_loading_real_time = video_loading_real_end_time - video_loading_real_start_time
+ log(f'It took {video_loading_cpu_time} seconds ({video_loading_real_time} seconds real time) to load information for {videos_to_load} videos into memory\n', logging_locations)
  if video_id_only is True:
   log('Keeping only the video ID from the full video URL...', logging_locations)
   for video_datum in video_data:
