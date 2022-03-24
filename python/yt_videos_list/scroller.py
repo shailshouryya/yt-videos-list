@@ -80,9 +80,9 @@ def verify_reached_page_bottom(new_elements_count, current_elements_count, num_t
  return num_times_elements_count_same
 def save_elements_to_list(driver, scrolling_cpu_start_time, start_real_time, url, logging_locations):
  elements = driver.find_elements_by_xpath('//*[@id="video-title"]')
- end_time = time.perf_counter()
+ scrolling_cpu_end_time = time.perf_counter()
  end_real_time = time.time()
- total_cpu_time = end_time - scrolling_cpu_start_time
+ total_cpu_time = scrolling_cpu_end_time - scrolling_cpu_start_time
  total_real_time = end_real_time - start_real_time
  log(f'It took {total_cpu_time} seconds ({total_real_time} seconds real time)) to find {len(elements)} videos from {url}\n', logging_locations)
  return elements
