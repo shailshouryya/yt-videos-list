@@ -104,7 +104,7 @@ def save_elements_to_list(driver, scrolling_cpu_start_time, start_real_time, url
     elements   = driver.find_elements_by_xpath('//*[@id="video-title"]')
     scrolling_cpu_end_time   = time.perf_counter()
     end_real_time = time.time()
-    total_cpu_time = scrolling_cpu_end_time - scrolling_cpu_start_time
+    scrolling_cpu_time = scrolling_cpu_end_time - scrolling_cpu_start_time
     total_real_time = end_real_time - start_real_time
-    log(f'It took {total_cpu_time} seconds ({total_real_time} seconds real time)) to find {len(elements)} videos from {url}\n', logging_locations)
+    log(f'It took {scrolling_cpu_time} seconds ({total_real_time} seconds real time)) to find {len(elements)} videos from {url}\n', logging_locations)
     return elements
