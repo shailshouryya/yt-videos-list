@@ -83,6 +83,6 @@ def save_elements_to_list(driver, scrolling_cpu_start_time, scrolling_real_start
  scrolling_cpu_end_time = time.perf_counter()
  scrolling_real_end_time = time.time()
  scrolling_cpu_time = scrolling_cpu_end_time - scrolling_cpu_start_time
- total_real_time = scrolling_real_end_time - scrolling_real_start_time
- log(f'It took {scrolling_cpu_time} seconds ({total_real_time} seconds real time)) to find {len(elements)} videos from {url}\n', logging_locations)
+ scrolling_real_time = scrolling_real_end_time - scrolling_real_start_time
+ log(f'It took {scrolling_cpu_time} seconds ({scrolling_real_time} seconds real time)) to find {len(elements)} videos from {url}\n', logging_locations)
  return elements
