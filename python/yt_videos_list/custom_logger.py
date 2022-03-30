@@ -22,9 +22,9 @@ def log_write_information(writer_function):
   file_name, new_videos_written, total_videos, reverse_chronological, logging_locations = writer_function(*args, **kwargs)
   if new_videos_written == 1: videos = 'video'
   else: videos = 'videos'
-  end_time = time.perf_counter()
+  function_cpu_end_time = time.perf_counter()
   end_real_time = time.time()
-  total_cpu_time = end_time - function_cpu_start_time
+  total_cpu_time = function_cpu_end_time - function_cpu_start_time
   total_real_time = end_real_time - start_real_time
   temp_file = f'temp_{file_name}_{timestamp}.{extension}'
   final_file = f'{file_name}.{extension}'
