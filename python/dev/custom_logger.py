@@ -28,7 +28,7 @@ def log_write_information(writer_function):
         else:                   videos = 'videos'
         function_cpu_end_time   = time.perf_counter()
         end_real_time   = time.time()
-        total_cpu_time = function_cpu_end_time - function_cpu_start_time
+        function_cpu_time = function_cpu_end_time - function_cpu_start_time
         total_real_time = end_real_time - start_real_time
         temp_file  = f'temp_{file_name}_{timestamp}.{extension}'    # determine temp_{file_name} for wrap_writer_function() scope (writer_function defines it in its own scope already)
         final_file = f'{file_name}.{extension}'
@@ -46,7 +46,7 @@ def log_write_information(writer_function):
             # if the function that ran was update_file with the reverse_chronological flag set to True: rename temp_{file_name} to {file_name}.{extension} since program appends old info from the original file to the end of new data in the temp file
             os.replace(temp_file, final_file)
         log('Successfully renamed'.ljust(padding) + f'{temp_file} to {final_file}',                                                                                   logging_locations)
-        if function_name == 'create_file': log(f'It took {total_cpu_time} seconds ({total_real_time} seconds real time)) to write all {new_videos_written} {videos} to {final_file}',                            logging_locations)
-        if function_name == 'update_file': log(f'It took {total_cpu_time} seconds ({total_real_time} seconds real time)) to write the {new_videos_written} ***NEW*** {videos} to the pre-existing {final_file}', logging_locations)
+        if function_name == 'create_file': log(f'It took {function_cpu_time} seconds ({total_real_time} seconds real time)) to write all {new_videos_written} {videos} to {final_file}',                            logging_locations)
+        if function_name == 'update_file': log(f'It took {function_cpu_time} seconds ({total_real_time} seconds real time)) to write the {new_videos_written} ***NEW*** {videos} to the pre-existing {final_file}', logging_locations)
         log(f'{final_file} now contains information for {total_videos} {videos}{NEWLINE}',                                                                            logging_locations)
     return wrap_writer_function
