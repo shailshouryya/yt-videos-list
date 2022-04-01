@@ -20,7 +20,7 @@ def log_write_information(writer_function):
     def wrap_writer_function(*args, **kwargs):
         function_name                                                       = writer_function.__name__
         function_cpu_start_time                                             = time.perf_counter()
-        start_real_time                                                     = time.time()
+        function_real_start_time                                            = time.time()
         extension                                                           = args[0] # file_type
         timestamp                                                           = args[5] # timestamp (determined by the now() function in program.py)
         file_name, new_videos_written, total_videos, reverse_chronological, logging_locations = writer_function(*args, **kwargs)   # writer_function() writes to temp_{file_name}
@@ -29,7 +29,7 @@ def log_write_information(writer_function):
         function_cpu_end_time   = time.perf_counter()
         end_real_time   = time.time()
         function_cpu_time = function_cpu_end_time - function_cpu_start_time
-        total_real_time = end_real_time - start_real_time
+        total_real_time = end_real_time - function_real_start_time
         temp_file  = f'temp_{file_name}_{timestamp}.{extension}'    # determine temp_{file_name} for wrap_writer_function() scope (writer_function defines it in its own scope already)
         final_file = f'{file_name}.{extension}'
         padding    = 39

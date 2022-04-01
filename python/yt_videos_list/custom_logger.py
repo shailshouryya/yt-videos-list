@@ -16,7 +16,7 @@ def log_write_information(writer_function):
  def wrap_writer_function(*args, **kwargs):
   function_name = writer_function.__name__
   function_cpu_start_time = time.perf_counter()
-  start_real_time = time.time()
+  function_real_start_time = time.time()
   extension = args[0]
   timestamp = args[5]
   file_name, new_videos_written, total_videos, reverse_chronological, logging_locations = writer_function(*args, **kwargs)
@@ -25,7 +25,7 @@ def log_write_information(writer_function):
   function_cpu_end_time = time.perf_counter()
   end_real_time = time.time()
   function_cpu_time = function_cpu_end_time - function_cpu_start_time
-  total_real_time = end_real_time - start_real_time
+  total_real_time = end_real_time - function_real_start_time
   temp_file = f'temp_{file_name}_{timestamp}.{extension}'
   final_file = f'{file_name}.{extension}'
   padding = 39
