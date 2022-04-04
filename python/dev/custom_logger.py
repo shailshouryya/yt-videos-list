@@ -34,7 +34,7 @@ def log_write_information(writer_function):
         final_file = f'{file_name}.{extension}'
         padding    = 39
         log('Finished writing to'.ljust(padding) + f'{temp_file}',                                                                    logging_locations)
-        if function_name == 'create_file': log(f'{new_videos_written} {videos} written to'.ljust(padding) + f'{temp_file}',           logging_locations)
+        if function_name == 'create_file': log(f'{new_videos_written} {videos} written to'.ljust(padding)           + f'{temp_file}', logging_locations)
         if function_name == 'update_file': log(f'{new_videos_written} ***NEW*** {videos} written to'.ljust(padding) + f'{temp_file}', logging_locations)
         log('Closing'.ljust(padding) + f'{temp_file}',                                                                                logging_locations)
         log(f'Successfully completed write, renaming {temp_file} to {final_file}',                                                    logging_locations)
