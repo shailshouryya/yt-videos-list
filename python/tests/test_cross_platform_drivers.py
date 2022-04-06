@@ -9,14 +9,8 @@ from test_shared import run_tests_for, delete_all_test_output_files
 from determine import determine_user_os
 if __name__ == '__main__':
     USER_OS          = determine_user_os()
-    if USER_OS == 'windows':
-        FORMATTED_PIP    = 'pip'
-        FORMATTED_PYTHON = 'python'
-    else:
-        FORMATTED_PIP    = 'pip3'
-        FORMATTED_PYTHON = 'python3'
-    os.system(f'{FORMATTED_PYTHON} minifier.py')
-    os.system(f'{FORMATTED_PIP}    install .')
+    if USER_OS == 'windows': os.system(r'.\tests\setup.bat')
+    else:                    os.system( 'sh tests/setup.sh')
 
 
 from yt_videos_list.download.windows_info import get_drive_letter
