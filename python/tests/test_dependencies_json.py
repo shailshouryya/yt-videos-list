@@ -11,13 +11,14 @@ import re
 import json
 
 from determine import determine_user_os
+
+from yt_videos_list.notifications import Common
+
 USER_OS    = determine_user_os()
 PATH_SLASH = '\\'if USER_OS == 'windows' else '/'
 if __name__ == '__main__':
     if USER_OS == 'windows': os.system(r'.\tests\setup.bat')
     else:                    os.system( 'sh tests/setup.sh')
-
-from yt_videos_list.notifications import Common
 
 
 def main():
