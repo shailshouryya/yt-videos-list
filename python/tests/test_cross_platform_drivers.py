@@ -11,9 +11,8 @@ from determine import determine_user_os
 from yt_videos_list.download.windows_info import get_drive_letter
 
 if __name__ == '__main__':
-    USER_OS          = determine_user_os()
-    if USER_OS == 'windows': os.system(r'.\tests\setup.bat')
-    else:                    os.system( 'sh tests/setup.sh')
+    if determine_user_os() == 'windows': os.system(r'.\tests\setup.bat')
+    else:                                os.system( 'sh tests/setup.sh')
 
 
 def main():
