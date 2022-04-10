@@ -11,13 +11,6 @@ platform. Please use a different browser!"
 '''
 from test_shared import run_tests_for, delete_all_test_output_files
 
-if __name__ == '__main__':
-    import os
-    from determine import determine_user_os
-    if determine_user_os() == 'windows': os.system(r'.\tests\setup.bat')
-    else:                                os.system( 'sh tests/setup.sh')
-
-
 
 def main():
     '''
@@ -35,4 +28,8 @@ def main():
 
 
 if __name__ == '__main__':
+    import os
+    from determine import determine_user_os
+    if determine_user_os() == 'windows': os.system(r'.\tests\setup.bat')
+    else:                                os.system( 'sh tests/setup.sh')
     main()
