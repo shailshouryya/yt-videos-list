@@ -15,10 +15,6 @@ from determine import determine_user_os
 from yt_videos_list.notifications import Common
 
 
-USER_OS    = determine_user_os()
-PATH_SLASH = '\\'if USER_OS == 'windows' else '/'
-
-
 def main():
     '''
     Imports Common class from `yt_videos_list.notifications`
@@ -76,6 +72,6 @@ def format_pseudo_json():
 
 
 if __name__ == '__main__':
-    if USER_OS == 'windows': os.system(r'.\tests\setup.bat')
-    else:                    os.system( 'sh tests/setup.sh')
+    if determine_user_os() == 'windows': os.system(r'.\tests\setup.bat'); PATH_SLASH = '\\'
+    else:                                os.system( 'sh tests/setup.sh'); PATH_SLASH = '/'
     main()
