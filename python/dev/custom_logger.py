@@ -18,18 +18,18 @@ def log(message, logging_locations):
 def log_write_information(writer_function):
     @functools.wraps(writer_function)
     def wrap_writer_function(*args, **kwargs):
-        function_name                                                       = writer_function.__name__
-        function_cpu_start_time                                             = time.perf_counter()
-        function_real_start_time                                            = time.time()
-        extension                                                           = args[0] # file_type
-        timestamp                                                           = args[5] # timestamp (determined by the now() function in program.py)
+        function_name                                                                         = writer_function.__name__
+        function_cpu_start_time                                                               = time.perf_counter()
+        function_real_start_time                                                              = time.time()
+        extension                                                                             = args[0] # file_type
+        timestamp                                                                             = args[5] # timestamp (determined by the now() function in program.py)
         file_name, new_videos_written, total_videos, reverse_chronological, logging_locations = writer_function(*args, **kwargs)   # writer_function() writes to temp_{file_name}
         if new_videos_written == 1: videos = 'video'
-        else:                   videos = 'videos'
-        function_cpu_end_time   = time.perf_counter()
+        else:                       videos = 'videos'
+        function_cpu_end_time    = time.perf_counter()
         function_real_end_time   = time.time()
-        function_cpu_time = function_cpu_end_time - function_cpu_start_time
-        function_real_time = function_real_end_time - function_real_start_time
+        function_cpu_time        = function_cpu_end_time - function_cpu_start_time
+        function_real_time       = function_real_end_time - function_real_start_time
         temp_file  = f'temp_{file_name}_{timestamp}.{extension}'    # determine temp_{file_name} for wrap_writer_function() scope (writer_function defines it in its own scope already)
         final_file = f'{file_name}.{extension}'
         padding    = 39

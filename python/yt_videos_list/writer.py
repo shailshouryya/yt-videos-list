@@ -15,7 +15,7 @@ def create_file(file_type, file_name, file_buffering, newline, csv_writer, times
 @log_write_information
 def update_file(file_type, file_name, file_buffering, newline, csv_writer, timestamp, logging_locations, identifier, reverse_chronological, video_data, file_visited_videos, video_id_only):
     if not file_visited_videos: file_visited_videos = store_already_written_videos(file_name, file_type)
-    file_visited_videos = format_visited_videos_for_id(file_visited_videos, video_id_only, logging_locations)
+    file_visited_videos                             = format_visited_videos_for_id(file_visited_videos, video_id_only, logging_locations)
     with open(f'{file_name}.{file_type}', mode='r+', newline=newline, encoding='utf-8',  buffering=file_buffering) as old_file, open(f'temp_{file_name}_{timestamp}.{file_type}', mode='w+', newline=newline, encoding='utf-8',  buffering=file_buffering) as temp_file:
         if file_type == 'csv':
             number_of_existing_videos = int(max(re.findall('^(\d+)?,', old_file.read(), re.M), key=lambda i: int(i)))

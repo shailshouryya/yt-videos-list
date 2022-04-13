@@ -337,7 +337,7 @@ class ListCreator:
                     -> and the `reverse_chronological` instance attribute is True,  the output file name will be:  CoreySchafer.EXT
                     -> and the `reverse_chronological` instance attribute is False, the output file name will be:  CoreySchafer.EXT
         '''
-        instance_attributes = self.__determine_instance_attributes()
+        instance_attributes           = self.__determine_instance_attributes()
         video_data, write_information = logic.execute(deque([url]), file_name, log_silently, *instance_attributes)
         if self.video_data_returned:
             return (video_data,    write_information)
@@ -414,12 +414,12 @@ class ListCreator:
         invalid_file_name_exception = f'''The options for the file_name argument are 'auto' or 'id', but you provided: '{file_name}'\nPlease rerun this method using file_name='auto' or file_name='id'\n\nFor more details about the difference between 'auto' and 'id', run:\n    >>> help(ListCreator.create_list_for)\n\n\n\n'''
         if file_name not in ('auto', 'id'): raise ValueError(invalid_file_name_exception)
         with open(path_to_channel_urls_file, mode='r', encoding='utf-8',  buffering=self.file_buffering) as txt_file, open(path_to_channel_urls_file.split('.')[0] + '.log', mode='a', encoding='utf-8',  buffering=self.file_buffering) as log_file:
-            multithreading_cpu_start_time = time.perf_counter()
+            multithreading_cpu_start_time  = time.perf_counter()
             multithreading_real_start_time = time.time()
             if log_subthread_info_silently: logging_locations = (log_file,)
             else:                           logging_locations = (log_file, sys.stdout)
             ThreadWithResult.log_thread_status = not log_subthread_status_silently
-            ThreadWithResult.log_files = [log_file]
+            ThreadWithResult.log_files         = [log_file]
             log( '>' * 50 + 'STARTING  MULTI-THREADED PROGRAM' + '<' * 50,                                                                                    logging_locations)
             log(f'Iterating through all urls in {path_to_channel_urls_file} and scraping number_of_threads={number_of_threads} channels concurrently...\n\n', logging_locations)
             log(f'Current configuration: {self.__repr__()}',                                                                                                  logging_locations)
@@ -459,10 +459,10 @@ class ListCreator:
                 log(f'Still running {[thread.name for thread in running_threads]} ...', logging_locations)
                 time.sleep(10)
                 remove_finished_threads()
-            multithreading_cpu_end_time = time.perf_counter()
+            multithreading_cpu_end_time  = time.perf_counter()
             multithreading_real_end_time = time.time()
-            multithreading_cpu_time = multithreading_cpu_end_time - multithreading_cpu_start_time
-            multithreading_real_time = multithreading_real_end_time - multithreading_real_start_time
+            multithreading_cpu_time      = multithreading_cpu_end_time - multithreading_cpu_start_time
+            multithreading_real_time     = multithreading_real_end_time - multithreading_real_start_time
             log(f'Finished executing all threads. It took {multithreading_cpu_time} seconds ({multithreading_real_time} seconds real time) to scrape all urls in {path_to_channel_urls_file}', logging_locations)
             log( '>' * 50 + 'COMPLETED MULTI-THREADED PROGRAM' + '<' * 50, logging_locations)
 

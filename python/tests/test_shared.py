@@ -56,8 +56,8 @@ def run_tests_for(browsers_list):
             # need to subtract 1 to determine the
             # number of threads we've created
             # manually
-            thread_1_case      = test_cases[current]
-            is_id = '_id' if getattr(thread_1_case, 'video_id_only') is True else ''
+            thread_1_case = test_cases[current]
+            is_id         = '_id' if getattr(thread_1_case, 'video_id_only') is True else ''
             if getattr(thread_1_case, 'reverse_chronological') is True: log_1_name = f'CoreySchafer_reverse_chronological_video{is_id}s_list.log'
             else:                                                       log_1_name = f'CoreySchafer_chronological_video{is_id}s_list.log'
             test_case_thread_1 = ThreadWithResult(target=run_test_case, args=(thread_1_case, log_1_name))
@@ -71,8 +71,8 @@ def run_tests_for(browsers_list):
                 if current == 1:
                     # wait 5 seconds to allow all just the firefox selenium webdriver dependency to download (necessary after test_cross_platforms module runs remove_dependencies())
                     time.sleep(5)
-                thread_2_case      = test_cases[current]
-                is_id = '_id' if getattr(thread_2_case, 'video_id_only') is True else ''
+                thread_2_case = test_cases[current]
+                is_id         = '_id' if getattr(thread_2_case, 'video_id_only') is True else ''
                 if getattr(thread_2_case, 'reverse_chronological') is True: log_2_name = f'CoreySchafer_reverse_chronological_video{is_id}s_list.log'
                 else:                                                       log_2_name = f'CoreySchafer_chronological_video{is_id}s_list.log'
                 test_case_thread_2 = ThreadWithResult(target=run_test_case, args=(thread_2_case, log_2_name))
@@ -138,10 +138,10 @@ def run_test_case(list_creator, log_file):
     test_url                 = 'youtube.com/user/schafer5'
     is_reverse_chronological = getattr(list_creator, 'reverse_chronological')
     is_video_id_only         = getattr(list_creator, 'video_id_only')
-    is_id  = '_id'                                       if is_video_id_only         else  ''
-    suffix = f'reverse_chronological_video{is_id}s_list' if is_reverse_chronological else f'chronological_video{is_id}s_list'
-    partialfile_path = f'tests{path_slash}reference_files{path_slash}partial_CoreySchafer_{suffix}'
-    fullfile_path    = f'tests{path_slash}reference_files{path_slash}full_CoreySchafer_{suffix}'
+    is_id                    = '_id'                                       if is_video_id_only         else  ''
+    suffix                   = f'reverse_chronological_video{is_id}s_list' if is_reverse_chronological else f'chronological_video{is_id}s_list'
+    partialfile_path         = f'tests{path_slash}reference_files{path_slash}partial_CoreySchafer_{suffix}'
+    fullfile_path            = f'tests{path_slash}reference_files{path_slash}full_CoreySchafer_{suffix}'
     return verify_update(list_creator, test_url, partialfile_path, fullfile_path, log_file)
 
 

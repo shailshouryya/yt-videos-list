@@ -60,7 +60,7 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
             if execution_type == 'module': print(module_message.running_default_driver + '\n' + module_message.show_driver_options)
             else:                          print(script_message.running_default_driver + '\n' + script_message.show_driver_options)
             user_driver = 'firefox'
-        user_driver = user_driver.lower()
+        user_driver       = user_driver.lower()
         supported_drivers = {
             'firefox': configure_firefoxdriver,
             'opera':   configure_operadriver,
@@ -163,7 +163,7 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
     def run_scraper():
         driver.get(url)
         manage_cookie_consent_form()
-        wait = selenium.webdriver.support.ui.WebDriverWait(driver, 9)
+        wait                        = selenium.webdriver.support.ui.WebDriverWait(driver, 9)
         channel_heading_xpath       = '//yt-formatted-string[@class="style-scope ytd-channel-name"]'
         topic_channel_heading_xpath = '//yt-formatted-string[@class="style-scope ytd-topic-channel-details-renderer"]'
         def load_page(channel_heading_xpath, topic_channel_heading_xpath):
@@ -183,11 +183,11 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
             log( '>' * 50 + 'STARTING  PROGRAM' + '<' * 50,             logging_locations)
             log(f'Now scraping {url} using the {user_driver}driver...', logging_locations)
             log(f'Current configuration: {list_creator_configuration}', logging_locations)
-            video_data = program.determine_action(url, driver, video_id_only, scroll_pause_time, verify_page_bottom_n_times, reverse_chronological, file_name, file_buffering, txt, csv, markdown, all_video_data_in_memory, logging_locations)
-            program_cpu_end_time = time.perf_counter()
+            video_data            = program.determine_action(url, driver, video_id_only, scroll_pause_time, verify_page_bottom_n_times, reverse_chronological, file_name, file_buffering, txt, csv, markdown, all_video_data_in_memory, logging_locations)
+            program_cpu_end_time  = time.perf_counter()
             program_end_real_time = time.time()
-            program_cpu_time  = program_cpu_end_time - program_cpu_start_time
-            program_real_time = program_end_real_time - program_real_start_time
+            program_cpu_time      = program_cpu_end_time - program_cpu_start_time
+            program_real_time     = program_end_real_time - program_real_start_time
             log(f'This program took {program_cpu_time} seconds ({program_real_time} seconds real time) to complete writing information for the "{channel_name}" channel to the {file_name} file.', logging_locations)
             log( '>' * 50 + 'COMPLETED PROGRAM' + '<' * 50,                                                                                          logging_locations)
         return (video_data, (channel_name, file_name), program_cpu_time, program_real_time)
@@ -284,7 +284,7 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
     verify_writing_to_at_least_one_location()
     user_os       = determine_user_os()
     if aggregate_logging_locations:
-        multiplier = max(0, max_sleep - min_sleep)
+        multiplier      = max(0, max_sleep - min_sleep)
         modulo, seconds = after_n_channels_pause_for_s
     try:
         driver = open_user_driver()
@@ -303,13 +303,13 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
                 sleep_time = min_sleep + (random.random() * multiplier)
                 log(f'Sleeping for {sleep_time} seconds before scraping next URL....', aggregate_logging_locations)
                 time.sleep(sleep_time)
-            program_cpu_start_time = time.perf_counter()
+            program_cpu_start_time  = time.perf_counter()
             program_real_start_time = time.time()
             if urls: url = urls.popleft()
             else:    continue
             if aggregate_logging_locations: log(f'{" "*8} Scraping {count:>7}: {url}', aggregate_logging_locations)
-            url = process_url()
+            url                                                                = process_url()
             video_data, write_information, program_cpu_time, program_real_time = run_scraper()
-            channel_name, output_file_name                     = write_information
+            channel_name, output_file_name                                     = write_information
             if aggregate_logging_locations: log(f'Finished scraping {count:>7}: "{channel_name}" and wrote to the {output_file_name} file in {program_cpu_time} seconds ({program_real_time} seconds real time)', aggregate_logging_locations)
         return (video_data, (channel_name, output_file_name))

@@ -20,7 +20,7 @@ def scroll_until_break(url, driver, scroll_pause_time, logging_locations, verify
         while found_old_videos is False and num_times_elements_count_same < verify_page_bottom_n_times:
             current_elements_count = new_elements_count
             scroll_down(driver, scroll_pause_time, logging_locations)
-            new_elements_count   = count_videos_on_page(driver)
+            new_elements_count            = count_videos_on_page(driver)
             num_times_elements_count_same = verify_reached_page_bottom(new_elements_count, current_elements_count, num_times_elements_count_same, verify_page_bottom_n_times, logging_locations)
             if url_of_last_loaded_video_on_page() in visited_videos:
                 # if force_to_page_bottom is True, visited_videos will be an empty set and this conditional will never execute
@@ -65,7 +65,7 @@ def store_already_written_videos(file_name, file_type):
                 # the video ID so url_of_last_loaded_video_on_page() lambda function in
                 # scroll_until_break() can match the 'href' of the videos properly
                 formatted_urls = set()
-                random_video = 'https://www.youtube.com/watch?v=' + random_video
+                random_video   = 'https://www.youtube.com/watch?v=' + random_video
                 formatted_urls.add(random_video)
                 while seen_videos:
                     random_video = seen_videos.pop()
@@ -102,9 +102,9 @@ def verify_reached_page_bottom(new_elements_count, current_elements_count, num_t
 
 def save_elements_to_list(driver, scrolling_cpu_start_time, scrolling_real_start_time, url, logging_locations):
     elements   = driver.find_elements_by_xpath('//*[@id="video-title"]')
-    scrolling_cpu_end_time   = time.perf_counter()
+    scrolling_cpu_end_time  = time.perf_counter()
     scrolling_real_end_time = time.time()
-    scrolling_cpu_time = scrolling_cpu_end_time - scrolling_cpu_start_time
-    scrolling_real_time = scrolling_real_end_time - scrolling_real_start_time
+    scrolling_cpu_time      = scrolling_cpu_end_time - scrolling_cpu_start_time
+    scrolling_real_time     = scrolling_real_end_time - scrolling_real_start_time
     log(f'It took {scrolling_cpu_time} seconds ({scrolling_real_time} seconds real time)) to find {len(elements)} videos from {url}\n', logging_locations)
     return elements

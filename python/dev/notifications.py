@@ -34,10 +34,10 @@ class Common:
         'brave':   ['bravedriver',  'https://github.com/operasoftware/operachromiumdriver',                  'https://github.com/operasoftware/operachromiumdriver/releases',                              'Brave Browser',   'https://brave.com/'],
         'edge':    ['msedgedriver', 'https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/', 'https://msedgewebdriverstorage.blob.core.windows.net/edgewebdriver?comp=list&timeout=60000', 'Microsoft Edge',  'https://www.microsoft.com/en-us/edge']
     }
-    url_error = 'The url you provided could not be parsed properly. Please check the url you provided to make sure there are no typos!'
-    selenium_launch_error = 'The program was unable to launch a Selenium driver instance! Please follow the suggestions above the stack trace to fix the issue.'
+    url_error                                = 'The url you provided could not be parsed properly. Please check the url you provided to make sure there are no typos!'
+    selenium_launch_error                    = 'The program was unable to launch a Selenium driver instance! Please follow the suggestions above the stack trace to fix the issue.'
     possible_topic_channel_in_headless_error = 'There was a problem running the selenium webdriver!\n\nTo better debug the problem, try running the program again with headless=False if you are currently running the program with headless=True to see what is happening.'
-    selenium_unable_to_load_elements_error =  'The page did not load elements! If you\'ve scraped many channels within a short period of time, please try rerunning the program after waiting to make sure YouTube isn\'t throttling your IP address!'
+    selenium_unable_to_load_elements_error   = 'The page did not load elements! If you\'ve scraped many channels within a short period of time, please try rerunning the program after waiting to make sure YouTube isn\'t throttling your IP address!'
 
 
     def __init__(self, list_creator_configuration=None):
