@@ -238,7 +238,7 @@ class ListCreator:
     def __repr__(self):
         '''
         Returns an unambiguous representation of the current instance that can be used to recreate the same exact object.
-        This is useful for internal use and making developer debugging easier.
+        This is useful for internal use and developer debugging.
         '''
         formatted_driver = f"'{self.driver}'" if self.driver else None
         return f'''{self.__class__.__name__}(txt={self.txt}, csv={self.csv}, md={self.markdown}, file_suffix={self.file_suffix}, all_video_data_in_memory={self.all_video_data_in_memory}, video_data_returned={self.video_data_returned}, video_id_only={self.video_id_only}, reverse_chronological={self.reverse_chronological}, headless={self.headless}, scroll_pause_time={self.scroll_pause_time}, driver={formatted_driver}, cookie_consent={self.cookie_consent}, verify_page_bottom_n_times={self.verify_page_bottom_n_times}, file_buffering={self.file_buffering})'''
