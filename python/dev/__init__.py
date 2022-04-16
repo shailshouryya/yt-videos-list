@@ -247,7 +247,7 @@ class ListCreator:
     def __str__(self):
         '''
         Returns an easy to read representation of the current instance.
-        This is useful for typical users to see the attributes of the current instance and is ideal for human consumption.
+        This is useful to see the attributes of the current instance in an easily readable format.
         '''
         formatted_driver = f"'{self.driver}'" if self.driver else None
         return f'''
