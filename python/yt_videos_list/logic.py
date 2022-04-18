@@ -1,7 +1,6 @@
 import sys
 import time
 import random
-import traceback
 import contextlib
 import selenium
 from selenium import webdriver
