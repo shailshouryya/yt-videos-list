@@ -12,8 +12,6 @@ import json
 
 from determine import determine_user_os
 
-from yt_videos_list.notifications import Common
-
 
 def main():
     '''
@@ -74,4 +72,5 @@ def format_pseudo_json():
 if __name__ == '__main__':
     if determine_user_os() == 'windows': os.system(r'.\tests\setup.bat'); PATH_SLASH = '\\'
     else:                                os.system( 'sh tests/setup.sh'); PATH_SLASH = '/'
+    from yt_videos_list.notifications import Common
     main()
