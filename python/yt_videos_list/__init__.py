@@ -249,6 +249,7 @@ class ListCreator:
         '''
         Returns an easy to read representation of the current instance.
         This is useful to see the attributes of the current instance in an easily readable format.
+        For more information, see: https://docs.python.org/3/reference/datamodel.html#object.__str__
         '''
         formatted_driver = f"'{self.driver}'" if self.driver else None
         return f'''
