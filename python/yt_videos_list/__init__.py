@@ -300,8 +300,7 @@ class ListCreator:
           * 'auto': the program uses the name that shows up under the banner when you navigate to the channel's homepage (with spaces removed)
           * 'id': the program uses the identifier from the URL
             -> If the channel is Corey Schafer:
-              * NOTE output file name stays the same regardles of `reverse_chronological` instance attribute value
-                if `file_suffix` instance attribute is `False`
+              * NOTE output file name stays the same regardles of `reverse_chronological` instance attribute value if `file_suffix` instance attribute is `False`
               * ALSO NOTE the .EXT used below in the example file names substitutes for the extension formats: .[txt|csv|md|log]
 
               * if you provide https://www.youtube.com/user/schafer5:                           the 'id' will be:  schafer5
