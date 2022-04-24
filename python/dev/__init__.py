@@ -345,8 +345,7 @@ class ListCreator:
     def create_list_from(self, path_to_channel_urls_file, number_of_threads=4, min_sleep=1, max_sleep=5, after_n_channels_pause_for_s=(20, 10), log_subthread_status_silently=False, log_subthread_info_silently=False, file_name='auto'):
         '''
         The create_list_from() method creates a list using the arguments specified during instantiation of the ListCreator object.
-        You need to specify just the path to the text file containing urls of all the channels
-        you want to scrape as the `path_to_channel_urls_file` argument.
+        You need to specify just the path to the text file containing urls of all the channels you want to scrape as the `path_to_channel_urls_file` argument.
         NOTE that each url **should be placed on a new line!**
 
         Use the `file_name` argument to set how the program names the output files:
