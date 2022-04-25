@@ -15,6 +15,14 @@ def log(message, logging_locations):
         location.write(formatted_message)
 
 
+def log_time_taken(cpu_start_time, real_start_time, first_part_of_message, last_part_of_message, logging_locations):
+    cpu_end_time  = time.perf_counter()
+    real_end_time = time.time()
+    cpu_time      = cpu_end_time - cpu_start_time
+    real_time     = real_end_time - real_start_time
+    log(f'{first_part_of_message.strip()}{cpu_time} seconds ({real_time} seconds real time){last_part_of_message.strip()}', logging_locations)
+
+
 def log_write_information(writer_function):
     @functools.wraps(writer_function)
     def wrap_writer_function(*args, **kwargs):
