@@ -12,7 +12,7 @@ from collections import deque
 from save_thread_result import ThreadWithResult
 
 from . import logic
-from .custom_logger import log
+from .custom_logger import log, log_time_taken
 
 
 __version__              = '0.6.3'
@@ -456,11 +456,7 @@ class ListCreator:
                 log(f'Still running {[thread.name for thread in running_threads]} ...', logging_locations)
                 time.sleep(10)
                 remove_finished_threads()
-            multithreading_cpu_end_time  = time.perf_counter()
-            multithreading_real_end_time = time.time()
-            multithreading_cpu_time      = multithreading_cpu_end_time - multithreading_cpu_start_time
-            multithreading_real_time     = multithreading_real_end_time - multithreading_real_start_time
-            log(f'Finished executing all threads. It took {multithreading_cpu_time} seconds ({multithreading_real_time} seconds real time) to scrape all urls in {path_to_channel_urls_file}', logging_locations)
+            log_time_taken(multithreading_cpu_start_time, multithreading_real_start_time, 'Finished executing all threads. It took', f'to scrape all urls in {path_to_channel_urls_file}', logging_locations)
             log( '>' * 50 + 'COMPLETED MULTI-THREADED PROGRAM' + '<' * 50, logging_locations)
 
 
