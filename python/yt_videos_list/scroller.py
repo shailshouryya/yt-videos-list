@@ -1,6 +1,6 @@
 import re
 import time
-from .custom_logger import log
+from .custom_logger import log, log_time_taken
 def scroll_until_break(url, driver, scroll_pause_time, logging_locations, verify_page_bottom_n_times, force_to_page_bottom, file_name, txt_exists, csv_exists, md_exists):
  visited_videos, stored_in_txt, stored_in_csv, stored_in_md = determine_common_visited_videos(file_name, txt_exists, csv_exists, md_exists)
  if force_to_page_bottom: visited_videos.clear()
@@ -80,9 +80,5 @@ def verify_reached_page_bottom(new_elements_count, current_elements_count, num_t
  return num_times_elements_count_same
 def save_elements_to_list(driver, scrolling_cpu_start_time, scrolling_real_start_time, url, logging_locations):
  elements = driver.find_elements_by_xpath('//*[@id="video-title"]')
- scrolling_cpu_end_time = time.perf_counter()
- scrolling_real_end_time = time.time()
- scrolling_cpu_time = scrolling_cpu_end_time - scrolling_cpu_start_time
- scrolling_real_time = scrolling_real_end_time - scrolling_real_start_time
- log(f'It took {scrolling_cpu_time} seconds ({scrolling_real_time} seconds real time)) to find {len(elements)} videos from {url}\n', logging_locations)
+ log_time_taken(scrolling_cpu_start_time, scrolling_real_start_time, 'It took', f'to find {len(elements)} videos from {url}\n', logging_locations)
  return elements
