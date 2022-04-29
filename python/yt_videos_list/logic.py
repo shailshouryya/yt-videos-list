@@ -11,7 +11,7 @@ from .download.selenium_webdriver_dependencies import download_all
 from .download.windows_info import get_drive_letter
 from .download.user_os_info import determine_user_os
 from .notifications import Common, ModuleMessage, ScriptMessage
-from .custom_logger import log
+from .custom_logger import log, log_time_taken
 def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_video_data_in_memory, video_id_only, reverse_chronological, headless, scroll_pause_time, user_driver, cookie_consent, verify_page_bottom_n_times, file_buffering, list_creator_configuration, execution_type, counts=None, min_sleep=None, max_sleep=None, after_n_channels_pause_for_s=None, aggregate_logging_locations=None):
  common_message = Common(list_creator_configuration)
  module_message = ModuleMessage(list_creator_configuration)
@@ -137,13 +137,9 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
    log(f'Now scraping {url} using the {user_driver}driver...', logging_locations)
    log(f'Current configuration: {list_creator_configuration}', logging_locations)
    video_data = program.determine_action(url, driver, video_id_only, scroll_pause_time, verify_page_bottom_n_times, reverse_chronological, file_name, file_buffering, txt, csv, markdown, all_video_data_in_memory, logging_locations)
-   program_cpu_end_time = time.perf_counter()
-   program_end_real_time = time.time()
-   program_cpu_time = program_cpu_end_time - program_cpu_start_time
-   program_real_time = program_end_real_time - program_real_start_time
-   log(f'This program took {program_cpu_time} seconds ({program_real_time} seconds real time) to complete writing information for the "{channel_name}" channel to the {file_name} file.', logging_locations)
+   log_time_taken(program_cpu_start_time, program_real_start_time, 'This program took', f'to complete writing information for the "{channel_name}" channel to the {file_name} file', logging_locations)
    log( '>' * 50 + 'COMPLETED PROGRAM' + '<' * 50, logging_locations)
-  return (video_data, (channel_name, file_name), program_cpu_time, program_real_time)
+  return (video_data, (channel_name, file_name))
  def manage_cookie_consent_form():
   if 'consent.youtube.com' in driver.current_url:
    common_message.display_cookie_redirection()
@@ -221,7 +217,7 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
    else: continue
    if aggregate_logging_locations: log(f'{" "*8} Scraping {count:>7}: {url}', aggregate_logging_locations)
    url = process_url()
-   video_data, write_information, program_cpu_time, program_real_time = run_scraper()
+   video_data, write_information = run_scraper()
    channel_name, output_file_name = write_information
-   if aggregate_logging_locations: log(f'Finished scraping {count:>7}: "{channel_name}" and wrote to the {output_file_name} file in {program_cpu_time} seconds ({program_real_time} seconds real time)', aggregate_logging_locations)
+   if aggregate_logging_locations: log_time_taken(program_cpu_start_time, program_real_start_time, f'Finished scraping {count:>7}: "{channel_name}" and wrote to the {output_file_name} file in', '', aggregate_logging_locations)
   return (video_data, (channel_name, output_file_name))
