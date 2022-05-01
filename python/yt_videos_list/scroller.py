@@ -20,7 +20,8 @@ def scroll_until_break(url, driver, scroll_pause_time, logging_locations, verify
    num_times_elements_count_same = verify_reached_page_bottom(new_elements_count, current_elements_count, num_times_elements_count_same, verify_page_bottom_n_times, logging_locations)
    if url_of_last_loaded_video_on_page() in visited_videos:
     found_old_videos = True
- return save_elements_to_list(driver, scrolling_cpu_start_time, scrolling_real_start_time, url, logging_locations), stored_in_txt, stored_in_csv, stored_in_md, visited_videos
+ found_elements = save_elements_to_list(driver, scrolling_cpu_start_time, scrolling_real_start_time, url, logging_locations)
+ return found_elements, stored_in_txt, stored_in_csv, stored_in_md, visited_videos
 def determine_common_visited_videos(file_name, txt_exists, csv_exists, md_exists):
  stored_in_txt = store_already_written_videos(file_name, 'txt') if txt_exists else set()
  stored_in_csv = store_already_written_videos(file_name, 'csv') if csv_exists else set()

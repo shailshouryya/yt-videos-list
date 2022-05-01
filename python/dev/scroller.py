@@ -25,7 +25,8 @@ def scroll_until_break(url, driver, scroll_pause_time, logging_locations, verify
             if url_of_last_loaded_video_on_page() in visited_videos:
                 # if force_to_page_bottom is True, visited_videos will be an empty set and this conditional will never execute
                 found_old_videos = True
-    return save_elements_to_list(driver, scrolling_cpu_start_time, scrolling_real_start_time, url, logging_locations), stored_in_txt, stored_in_csv, stored_in_md, visited_videos
+    found_elements = save_elements_to_list(driver, scrolling_cpu_start_time, scrolling_real_start_time, url, logging_locations)
+    return found_elements, stored_in_txt, stored_in_csv, stored_in_md, visited_videos
 
 
 
