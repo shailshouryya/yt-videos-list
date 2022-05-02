@@ -20,7 +20,7 @@ def log_time_taken(cpu_start_time, real_start_time, first_part_of_message, last_
     real_end_time = time.time()
     cpu_time      = cpu_end_time - cpu_start_time
     real_time     = real_end_time - real_start_time
-    log(f'{first_part_of_message.strip()}{cpu_time} seconds ({real_time} seconds real time){last_part_of_message.strip()}', logging_locations)
+    log(f'{first_part_of_message}{cpu_time} seconds ({real_time} seconds real time){last_part_of_message}', logging_locations)
 
 
 def log_write_information(writer_function):
