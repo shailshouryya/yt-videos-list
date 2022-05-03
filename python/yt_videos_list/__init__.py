@@ -456,7 +456,7 @@ class ListCreator:
                 log(f'Still running {[thread.name for thread in running_threads]} ...', logging_locations)
                 time.sleep(10)
                 remove_finished_threads()
-            log_time_taken(multithreading_cpu_start_time, multithreading_real_start_time, 'Finished executing all threads. It took', f'to scrape all urls in {path_to_channel_urls_file}', logging_locations)
+            log_time_taken(multithreading_cpu_start_time, multithreading_real_start_time, 'Finished executing all threads. It took ', f' to scrape all urls in {path_to_channel_urls_file}', logging_locations)
             log( '>' * 50 + 'COMPLETED MULTI-THREADED PROGRAM' + '<' * 50, logging_locations)
 
 
