@@ -7,7 +7,6 @@ class Common:
  ds = ' ' * 2
  offset = '\n\n\n'
  error = '===>ERROR!<===\n'
- missing_url = 'create_list_for() missing 1 required positional argument: "url"'
  not_writing_to_any_files = '\nBased on your provided settings, yt_videos_list will not be writing to a csv file, nor a txt file, nor a md file, nor to memory.'
  no_videos_found = 'No videos were found for the channel you provided. Are you sure you entered the url correctly?\n\n'
  invalid_response = 'The response you entered was invalid.'
