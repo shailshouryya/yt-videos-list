@@ -2007,7 +2007,7 @@
 
 ## Using Font Awesome in Desktop Applications (OS X)
 ### Video Number:       7
-### Video Duration:     2:57
+### Video Duration:     2:56
 ### Video ID:           OlpVKUpraao
 ### Watched:            
 ### Watch again later:  
