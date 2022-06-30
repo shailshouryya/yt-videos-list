@@ -12,7 +12,7 @@ from .download.windows_info import get_drive_letter
 from .download.user_os_info import determine_user_os
 from .notifications import Common, ModuleMessage, ScriptMessage
 from .custom_logger import log, log_time_taken
-def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_video_data_in_memory, video_id_only, reverse_chronological, headless, scroll_pause_time, user_driver, cookie_consent, verify_page_bottom_n_times, file_buffering, list_creator_configuration, execution_type, counts=None, min_sleep=None, max_sleep=None, after_n_channels_pause_for_s=None, lock=None, aggregate_logging_locations=None):
+def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_video_data_in_memory, video_id_only, reverse_chronological, headless, scroll_pause_time, user_driver, cookie_consent, verify_page_bottom_n_times, file_buffering, list_creator_configuration, execution_type, lock, counts=None, min_sleep=None, max_sleep=None, after_n_channels_pause_for_s=None, aggregate_logging_locations=None):
  common_message = Common(list_creator_configuration)
  module_message = ModuleMessage(list_creator_configuration)
  script_message = ScriptMessage(list_creator_configuration)
@@ -214,7 +214,9 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
     time.sleep(sleep_time)
    program_cpu_start_time = time.perf_counter()
    program_real_start_time = time.time()
-   if urls: url = urls.popleft()
+   if urls:
+    with lock:
+     url = urls.popleft()
    else: continue
    if aggregate_logging_locations: log(f'{" "*8} Scraping {count:>7}: {url}', aggregate_logging_locations)
    url = process_url()

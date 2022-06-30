@@ -337,7 +337,7 @@ class ListCreator:
                     -> and the `reverse_chronological` instance attribute is False, the output file name will be:  CoreySchafer.EXT
         '''
         instance_attributes           = self.__determine_instance_attributes()
-        video_data, write_information = logic.execute(deque([url]), file_name, log_silently, *instance_attributes)
+        video_data, write_information = logic.execute(deque([url]), file_name, log_silently, *instance_attributes, _DummyLock())
         if self.video_data_returned:
             return (video_data,    write_information)
         return ([[0, '', '', '']], write_information) # return dummy video_data
@@ -450,7 +450,7 @@ class ListCreator:
                 if urls:
                     # make sure there are still channels left to scrape before making a new thread
                     # since finished threads may be because the program visited all urls already (instead of some kind of failure)
-                    thread = ThreadWithResult(target=logic.execute, args=(urls, file_name, True, *instance_attributes, count, min_sleep, max_sleep, after_n_channels_pause_for_s, lock, logging_locations))
+                    thread = ThreadWithResult(target=logic.execute, args=(urls, file_name, True, *instance_attributes, lock, count, min_sleep, max_sleep, after_n_channels_pause_for_s, logging_locations))
                     thread.start()
                     running_threads.add(thread)
             log(f'Iterated through all urls in {path_to_channel_urls_file}!', logging_locations)
@@ -465,3 +465,32 @@ class ListCreator:
     def __determine_instance_attributes(self):
         _execution_type     = 'module'
         return (self.txt, self.csv, self.markdown, self.file_suffix, self.all_video_data_in_memory, self.video_id_only, self.reverse_chronological, self.headless, self.scroll_pause_time, self.driver, self.cookie_consent, self.verify_page_bottom_n_times, self.file_buffering, self.__repr__(), _execution_type)
+
+
+
+class _DummyLock:
+    '''
+    Read through this walkthrough: https://realpython.com/python-with-statement/#coding-class-based-context-managers
+    Skim through this for a quick overview: https://realpython.com/python-with-statement/#coding-class-based-context-managers
+    Read through the documentation for the keyword "with": https://docs.python.org/3/reference/compound_stmts.html#with
+       make sure to read 1. through 7.
+       and pay attention to the the example code
+    '''
+    def __enter__(self):
+        '''
+        This dummy lock does not do anything, so explicitly return None since there is no useful object to return from this .__enter__ method.
+        '''
+        return None
+
+    def __exit__(self, exc_type, exc_value, exc_tb):
+        '''
+        This dummy lock is not (or at least, SHOULD not be) doing an operation that should fail between the __enter__ and __exit__ calls, but in case something does fail, the explicit None return (which evaluates to the False boolean) will NOT ignore the failure.
+
+        From the https://realpython.com/python-with-statement/#coding-class-based-context-managers link again:
+            If the .__exit__() method returns True, then any exception that occurs in the with block is swallowed and the execution continues at the next statement after with.
+            If .__exit__() returns False, then exceptions are propagated out of the context.
+
+        Read the example code from this link again and pay attention to the example code: https://docs.python.org/3/reference/compound_stmts.html#with
+        Read through the formal documentation for more information: https://docs.python.org/3/library/stdtypes.html#contextmanager.__exit__
+        '''
+        return None
