@@ -7,6 +7,7 @@ https://github.com/slow-but-steady/yt-videos-list
 
 import sys
 import time
+from threading import Lock
 from collections import deque
 
 from save_thread_result import ThreadWithResult
@@ -410,6 +411,7 @@ class ListCreator:
         )
         invalid_file_name_exception = f'''The options for the file_name argument are 'auto' or 'id', but you provided: '{file_name}'\nPlease rerun this method using file_name='auto' or file_name='id'\n\nFor more details about the difference between 'auto' and 'id', run:\n    >>> help(ListCreator.create_list_for)\n\n\n\n'''
         if file_name not in ('auto', 'id'): raise ValueError(invalid_file_name_exception)
+        lock = Lock()
         with open(path_to_channel_urls_file, mode='r', encoding='utf-8',  buffering=self.file_buffering) as txt_file, open(path_to_channel_urls_file.split('.')[0] + '.log', mode='a', encoding='utf-8',  buffering=self.file_buffering) as log_file:
             multithreading_cpu_start_time  = time.perf_counter()
             multithreading_real_start_time = time.time()
@@ -448,7 +450,7 @@ class ListCreator:
                 if urls:
                     # make sure there are still channels left to scrape before making a new thread
                     # since finished threads may be because the program visited all urls already (instead of some kind of failure)
-                    thread = ThreadWithResult(target=logic.execute, args=(urls, file_name, True, *instance_attributes, count, min_sleep, max_sleep, after_n_channels_pause_for_s, logging_locations))
+                    thread = ThreadWithResult(target=logic.execute, args=(urls, file_name, True, *instance_attributes, count, min_sleep, max_sleep, after_n_channels_pause_for_s, lock, logging_locations))
                     thread.start()
                     running_threads.add(thread)
             log(f'Iterated through all urls in {path_to_channel_urls_file}!', logging_locations)

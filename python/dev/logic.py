@@ -16,7 +16,7 @@ from .notifications                            import Common, ModuleMessage, Scr
 from .custom_logger                            import log, log_time_taken
 
 
-def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_video_data_in_memory, video_id_only, reverse_chronological, headless, scroll_pause_time, user_driver, cookie_consent, verify_page_bottom_n_times, file_buffering, list_creator_configuration, execution_type, counts=None, min_sleep=None, max_sleep=None, after_n_channels_pause_for_s=None, aggregate_logging_locations=None):
+def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_video_data_in_memory, video_id_only, reverse_chronological, headless, scroll_pause_time, user_driver, cookie_consent, verify_page_bottom_n_times, file_buffering, list_creator_configuration, execution_type, counts=None, min_sleep=None, max_sleep=None, after_n_channels_pause_for_s=None, lock=None, aggregate_logging_locations=None):
     common_message = Common(list_creator_configuration)
     module_message = ModuleMessage(list_creator_configuration)
     script_message = ScriptMessage(list_creator_configuration)
@@ -289,8 +289,9 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
         driver.set_window_position(0, 0)
         while urls:
             if aggregate_logging_locations:
-                counts[0] += 1
-                count      = counts[0]
+                with lock:
+                    counts[0] += 1
+                    count      = counts[0]
                 if count % modulo == 0 and count > 0:
                     log(f'Scraped {count} channels, so sleeping for {seconds} seconds to seem less bot-like....', aggregate_logging_locations)
                     time.sleep(seconds)
