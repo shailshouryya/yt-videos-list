@@ -7,7 +7,6 @@ https://github.com/slow-but-steady/yt-videos-list
 
 import sys
 import time
-from threading import Lock
 from collections import deque
 
 from save_thread_result import ThreadWithResult
@@ -411,6 +410,7 @@ class ListCreator:
         )
         invalid_file_name_exception = f'''The options for the file_name argument are 'auto' or 'id', but you provided: '{file_name}'\nPlease rerun this method using file_name='auto' or file_name='id'\n\nFor more details about the difference between 'auto' and 'id', run:\n    >>> help(ListCreator.create_list_for)\n\n\n\n'''
         if file_name not in ('auto', 'id'): raise ValueError(invalid_file_name_exception)
+        from threading import Lock
         lock = Lock()
         with open(path_to_channel_urls_file, mode='r', encoding='utf-8',  buffering=self.file_buffering) as txt_file, open(path_to_channel_urls_file.split('.')[0] + '.log', mode='a', encoding='utf-8',  buffering=self.file_buffering) as log_file:
             multithreading_cpu_start_time  = time.perf_counter()
