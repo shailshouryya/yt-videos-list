@@ -13,11 +13,11 @@ class Common:
     no_videos_found          = 'No videos were found for the channel you provided. Are you sure you entered the url correctly?\n\n'
     invalid_response         = 'The response you entered was invalid.'
     invalid_driver           = f'The driver you specified is invalid. Please try rerunning the last command after specifying a valid driver. Supported drivers include:\n{indent}Firefox\n{indent}Opera\n{indent}Safari\n{indent}Chrome\n{indent}Brave\n{indent}Edge'
-    unsupported_opera_headless  = '\nHeadless mode is unsupported in OperaDriver. We are waiting on the Opera dev team to start offering support for headless mode to allow remote automation without opening a driver. We will update this when support is added...\n:)\n\n\n'
-    unsupported_safari_headless = '\nHeadless mode is unsupported in SafariDriver. We are waiting on Apple to start offering support for headless mode to allow remote automation without opening a driver. We will update this when support is added...\n:)\n\n\n'
-    unsupported_brave_headless  = '\nHeadless mode is unsupported in BraveDriver. We are waiting for a Brave release that supports headless before offering support for headless mode to allow remote automation without opening a driver. We will update this when support is added...\n:)\n\n\n'
-    unsupported_edge_headless   = '\nHeadless mode is unsupported in EdgeDriver. We are waiting for on the Miscrosoft Edge release to start offering support for headless mode to allow remote automation without opening a driver. We will update this when support is added...\n:)\n\n\n'
-    unsupported_edge            = 'ERROR! Selenium automation with msedgedriver (Microsoft Edge) is not yet supported on your platform. Please use a different browser!'
+    unsupported_opera_headless  = '\nHeadless mode is unsupported in OperaDriver. This will be updated when support is added...\n:)\n\n\n'
+    unsupported_safari_headless = '\nHeadless mode is unsupported in SafariDriver. This will be updated when support is added...\n:)\n\n\n'
+    unsupported_brave_headless  = '\nHeadless mode is unsupported in BraveDriver. This will be updated when support is added...\n:)\n\n\n'
+    unsupported_edge_headless   = '\nHeadless mode is unsupported in EdgeDriver. This will be updated when support is added...\n:)\n\n\n'
+    unsupported_edge            = 'ERROR! Selenium automation with msedgedriver (Microsoft Edge) is unsupported on your platform. Please use a different browser!'
     automated_driver_update = '\n=====> Now updating Selenium driver binaries and fixing any version incompatibility problems. <=====\nThis will update all corresponding Selenium drivers for browsers (which are installed in their default locations and) supported by the yt_videos_list package...'
     url_prefix_geckodriver  = 'https://github.com/mozilla/geckodriver/releases/download'
     url_prefix_operadriver  = 'https://github.com/operasoftware/operachromiumdriver/releases/download'
@@ -397,7 +397,7 @@ class Common:
 
     @staticmethod
     def display_unsupported_os(user_os):
-        return f'\n\nThe system you are using has not yet been tested and verified for full program support.\nCurrently tested, verified, and supported systems include macOS (Darwin Kernel), Windows, and Linux.\nYou can still use this program on your current system, but be aware that the program may not behave as expected due to potential OS differences.\nYour current system has been detected as:\n{user_os}\n\nIf you would like to add and verify support for this system, please create an issue at https://github.com/slow-but-steady/yt-videos-list/issues\nThanks!'
+        return f'\n\nThe system you are using has not yet been tested and verified for full program support.\nCurrently tested, verified, and supported systems include macOS (Darwin Kernel), Windows, and Linux.\nYou can still use this program on your current system, but be aware the program may not behave as expected due to potential OS differences.\nYour current system has been detected as:\n{user_os}\n\n'
 
     @staticmethod
     def display_browser_found_information(browser, full_version_number):
@@ -405,7 +405,7 @@ class Common:
 
     @staticmethod
     def display_browser_not_found_information(browser, user_os):
-        print(f'\nDid not find an installed version of {browser}.\nIf you DO have {browser} installed but it was not detected, it may be because your {browser} was installed in a non-default location.\nPlease modify the commands under the {browser} you want to use at https://github.com/slow-but-steady/yt-videos-list/blob/main/docs/dependencies_pseudo_json.txt for {user_os.title()}"\nIf you are unsure how to do that, please file an issue at https://github.com/slow-but-steady/yt-videos-list/issues and we will respond as soon as possible!')
+        print(f'\nDid not find an installed version of {browser}.\nIf you DO have {browser} installed but it was not detected, it may be because your {browser} was installed in a non-default location.\n')
 
 
     def display_dependency_setup_instructions(self, user_driver, user_os):
@@ -445,13 +445,13 @@ class Common:
     @classmethod
     def display_unable_to_update_driver_automatically(cls, user_driver):
         print('\n' + '*' * 81)
-        print('*****Looks like the package could not automatically update the dependencies.*****')
+        print('*****The package could not automatically update the dependencies.*****')
         print('Please try running the following commands to update the package (newer package versions will support newer drivers) before retrying, and if that doesn\'t work, follow the directions given above.')
         print(f'pip{cls.ds}install -U yt-videos-list #Windows\npip3 install -U yt-videos-list #MacOS/Linux\n\n')
-        print('If that does not work, try:')
+        print('If that doesn\'t work, try:')
         print(f'python{cls.ds}-m pip install -U yt-videos-list #Windows\npython3 -m pip install -U yt-videos-list #MacOS/Linux\n')
-        print('If this still doesn\'t fix the problem, please try using a different driver or file an issue at https://github.com/slow-but-steady/yt-videos-list/issues')
-        print(f'The problem is likely caused by trying to run yt_videos_list with an updated version of the driver you\'re trying to use than what yt_videos_list currently supports (we update the binaries a few weeks after the initial release to allow time for bug fixing). If this is the case, the version of the driver downloaded won\'t match the output of\n"You are currently running {user_driver} version: " above.\n')
+        print('If this still doesn\'t fix the problem, try using a different driver or file an issue!')
+        print(f'The problem is likely caused by trying to run yt_videos_list with a more updated version of the driver than what yt_videos_list currently supports (we update the binaries a few weeks after the initial release to allow time for bug fixing). If this is the case, the version of the driver downloaded won\'t match the output of\n"You are currently running {user_driver} version: " above.\n')
         print('To see other drivers you can use (and other options), run:\n')
         print('import yt_videos_list\nhelp(yt_videos_list)')
         print('*' * 81)
@@ -471,12 +471,12 @@ class Common:
 
     @staticmethod
     def display_invalid_cookie_consent_option(cookie_consent):
-        print(f'YouTube is redircting to youtube.consent.com, but you entered an invalid argument for the cookie_consent instance attrribute!\nPlease use cookie_consent=True or cookie_consent=False.\nYour current setting is: cookie_consent={cookie_consent}')
+        print(f'YouTube redircted to youtube.consent.com, but you entered an invalid argument for the cookie_consent instance attrribute!\nPlease use cookie_consent=True or cookie_consent=False.\nYour current setting is: cookie_consent={cookie_consent}')
 
 
     @staticmethod
     def no_new_videos_found(pause_time):
-        return f'No new videos were found since the last scroll. Waiting another {pause_time} seconds to see if more videos can be loaded....\n'
+        return f'No new videos found since the last scroll. Waiting another {pause_time} seconds to see if more videos can be loaded....\n'
 
 
 class ModuleMessage(Common):

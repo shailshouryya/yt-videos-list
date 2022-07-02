@@ -1,35 +1,5 @@
 # Python Quick Start
 
-#### See the [releases](https://github.com/slow-but-steady/yt-videos-list/releases) page to see new additions/modifications for each release!
-#### See this [comparison](https://github.com/slow-but-steady/yt-videos-list/compare/v0.6.3...main) page to see new additions/modifications that will be available in the NEXT release!
-
-<details>
-  <summary><b>See sister <a href="https://github.com/slow-but-steady/YouTube-Channels">YouTube-Channels</a> repository for a list of interesting channels!</b></summary></h3>
-
-- The `YouTube-Channels` sister repository is a separate repository that uses this package to create a list of videos uploaded by every channel supported by the repository.
-- The sister repository will update the lists of videos once a week.
-- NOTE: In order to minimize the size of the sister repo, the repo contains the list of videos in ONLY the `csv` format, and not in `txt` or `md` format.
-</details>
-
-<p align="center">
-  <a href="https://github.com/slow-but-steady/yt-videos-list/blob/main/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/slow-but-steady/yt-videos-list?color=yellow&labelColor=black"></a>
-  <a href="https://docs.python.org/3/index.html">    <img src="https://img.shields.io/badge/python-3.6%2B-blue?labelColor=black"/></a>
-  <a href="https://www.python.org/dev/peps/pep-0008"><img src="https://img.shields.io/badge/code%20style-PEP8-yellow.svg?labelColor=black"/></a>
-  <a href="https://github.com/slow-but-steady/yt-videos-list/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/slow-but-steady/yt-videos-list?color=blue&labelColor=black"></a>
-  <a href="https://github.com/slow-but-steady/yt-videos-list/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/slow-but-steady/yt-videos-list?color=yellow&labelColor=black"></a>
-  <br>
-  <a href="https://badge.fury.io/py/yt-videos-list"><img src="https://badge.fury.io/py/yt-videos-list.svg" alt="PyPI version" height="20"></a>
-  <br>
-  <a href="https://pypi.org/project/yt-videos-list/"><img alt="PyPI - Wheel" src="https://img.shields.io/pypi/wheel/yt-videos-list?labelColor=black&label=PyPI%20-%20Wheel"></a>
-  <a href="https://pypi.org/project/yt-videos-list/#files/"><img alt="PyPI - Format" src="https://img.shields.io/pypi/format/yt-videos-list?labelColor=black&label=PyPI%20-%20Format"></a>
-  <a href="https://pypi.org/project/yt-videos-list/#history/"><img alt="PyPI - Status" src="https://img.shields.io/pypi/status/yt-videos-list?labelColor=black&label=PyPI%20-%20Status"></a>
-  <br>
-  <a href="https://pypi.org/project/yt-videos-list/"><img alt="PyPI - Implementation" src="https://img.shields.io/pypi/implementation/yt-videos-list?labelColor=black&label=PyPI%20-%20Implementation"></a>
-  <a href="https://pypi.org/project/yt-videos-list/"><img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/yt-videos-list?labelColor=black&label=PyPI%20-%20Python%20Version"></a>
-  <br>
-  <a href="https://codebeat.co/projects/github-com-slow-but-steady-yt_videos_list-master"><img src="https://codebeat.co/badges/46b103ed-da79-4893-96af-ce95c9149532" alt="codebeat badge"/></a>
-</p>
-
 <details>
   <summary><b>Python 3.6+ setup (required if not already installed)</b></summary>
 
@@ -172,7 +142,6 @@ lc.create_list_from('channels.txt', min_sleep=3, max_sleep=10)        # modifyin
 
 help(lc.create_list_from) # see API method details
 ```
-- See [Thread about multi-threading with yt_videos_list](https://github.com/slow-but-steady/yt-videos-list/discussions/11) for more information!
 
 </details>
 
@@ -323,18 +292,12 @@ To keep things backwards-compatible and maintainable, the `scrapetube` integrati
 <details>
 <summary><b>Cloning and running locally</b></summary>
 
-To clone the repository and install the most updated version of the package that may not yet be available on the latest release through [PyPI](pypi.org/project/yt-videos-list/), run:
+To clone the repository and install the most updated version of the package that may not yet be available on the latest release through [PyPI](pypi.org/project/yt-videos-list/), clone this repository and run:
 ```
-git clone https://github.com/slow-but-steady/yt-videos-list.git
-
 cd yt_videos_list/python # MacOS/Linux
-pip3 install .           # MacOS/Linux
-# if that doesn't work:
 python3 -m pip install . # MacOS/Linux
 
 cd yt_videos_list\python # Windows
-pip install .            # Windows
-# if that doesn't work:
 python -m pip install .  # Windows
 ```
 To make your own changes to the `yt_videos_list` python package and run the changes locally:
@@ -347,7 +310,7 @@ pip3 install .                # MacOS/Linux
 python minifier.py            # Windows
 pip install .                 # Windows
 ```
-NOTE that the changes you make to the codebase SHOULD BE MADE in the `yt_videos_list/python/dev` directory!!
+NOTE: make the changes to the codebase in the `yt_videos_list/python/dev` directory!!
   - the code in the `yt_videos_list/python/yt-videos-list` directory is minified with
     - leading indents stipped to the minimum (1 space for each nested scope)
     - whitespace for padding (e.g. extra spaces to align variable assignments) stripped
@@ -387,29 +350,3 @@ zsh  tests/run_tests.sh # this works as well
 # the run_tests.sh file
 ```
 </details>
-
-<details>
-<summary><b>Stargazers Over Time</b></summary>
-
-[![Stargazers over time](https://starchart.cc/slow-but-steady/yt-videos-list.svg)](https://starchart.cc/slow-but-steady/yt-videos-list)
-</details>
-
-<details>
-  <summary><b>Usage Statistics</b></summary>
-
-- [PePy](https://pepy.tech/project/yt-videos-list)
-- [PyPi Stats](https://pypistats.org/packages/yt-videos-list)
-</details>
-<p>
-  <a href="https://pypistats.org/packages/yt-videos-list"><img alt="PyPI - Daily Downloads" src="https://img.shields.io/pypi/dd/yt-videos-list?labelColor=black&color=blue&label=PyPI%20downloads%20%28excludes%20mirrors%29" width="275"></a>
-  <a href="https://pypistats.org/packages/yt-videos-list"><img alt="PyPI - Weekly Downloads" src="https://img.shields.io/pypi/dw/yt-videos-list?labelColor=black&color=yellow&label=PyPI%20downloads%20%28excludes%20mirrors%29"width="275"></a>
-  <a href="https://pypistats.org/packages/yt-videos-list"><img alt="PyPI - Monthly Downloads" src="https://img.shields.io/pypi/dm/yt-videos-list?labelColor=black&color=blue&label=PyPI%20downloads%20%28excludes%20mirrors%29"width="275"></a>
-  <br>
-  <a href="https://pepy.tech/project/yt-videos-list"><img alt="PePY Weekly Downloads" src="https://static.pepy.tech/personalized-badge/yt-videos-list?period=week&units=international_system&left_color=black&right_color=yellow&left_text=PePY%20Downloads/week%20%28includes%20mirrors%29" width="275"></a>
-  <a href="https://pepy.tech/project/yt-videos-list"><img alt="PePY Monthly Downloads" src="https://static.pepy.tech/personalized-badge/yt-videos-list?period=month&units=international_system&left_color=black&right_color=blue&left_text=PePY%20Downloads/month%20%28includes%20mirrors%29" width="275"></a>
-  <a href="https://pepy.tech/project/yt-videos-list"><img alt="PePY Total Downloads" src="https://static.pepy.tech/personalized-badge/yt-videos-list?period=total&units=international_system&left_color=black&right_color=yellow&left_text=PePY%20Downloads%20Total%20%28includes%20mirrors%29" width="275"></a>
-  <br>
-</p>
-
-#### [Back to main page](https://github.com/slow-but-steady/yt-videos-list/)
-If you found this interesting or useful, **please consider starring this repo** so other people can more easily find and use this. Thanks!

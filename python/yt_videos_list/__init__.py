@@ -1,8 +1,6 @@
 '''
 YouTube bot to make a YouTube videos list (including all video titles and
 URLs uploaded by a channel) with end-to-end web scraping - no API tokens required.
-🌟 Star this repo if you found it useful! 🌟
-https://github.com/slow-but-steady/yt-videos-list
 '''
 
 import sys
@@ -16,13 +14,7 @@ from .custom_logger import log, log_time_taken
 
 
 __version__              = '0.6.3'
-__author__               = 'slow-but-steady'
 __email__                = 'yt.videos.list@gmail.com'
-__development_status__   = '4 - Beta'
-__intended_audience__    = 'Developers, Hobbyists'
-__license__              = 'OSI Approved :: Apache License 2.0'
-__ideal_python_version__ = 'Python 3.6+'
-__source__               = 'https://github.com/slow-but-steady/yt-videos-list/tree/main/python'
 
 
 class ListCreator:
@@ -199,14 +191,6 @@ class ListCreator:
 
     Only creating a csv file with everything else set to default:
     -> lc = ListCreator(txt=False, md=False)
-
-    =====================================================
-    | If you found this interesting or useful,          |
-    | ** please consider STARRING this repo at **       |
-    | https://github.com/slow-but-steady/yt-videos-list  |
-    | so other people can more easily find and use this.|
-    | Thank you!!                                       |
-    =====================================================
     '''
     def __init__(self, txt=True, csv=True, md=True, file_suffix=True, all_video_data_in_memory=False, video_data_returned=False, video_id_only=False, reverse_chronological=True, headless=False, scroll_pause_time=0.8, driver=None, cookie_consent=False, verify_page_bottom_n_times=3, file_buffering=-1):
         '''
