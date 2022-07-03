@@ -186,6 +186,7 @@ ListCreator(
   scroll_pause_time=0.8,
   driver='firefox',
   cookie_consent=False,
+  verify_page_bottom_n_times=3,
   )
 ```
 There are a number of optional arguments you can specify during the instantiation of the ListCreator instance. The preceding arguments are run by default, but in case you want more flexibility, you can specify the:
