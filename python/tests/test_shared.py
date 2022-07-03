@@ -49,7 +49,7 @@ def run_tests_for(browsers_list):
         # for EACH driver in the browsers_list,
         # and within EACH test case,
         # there are 5 variations to test - see
-        # the list object "variations"
+        # the `variations` `list`
         # in verify_update() for more details
         if threading.active_count() - 1 == 0:
             # the main thread counts as a thread, so we
