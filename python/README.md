@@ -181,6 +181,7 @@ ListCreator(
   txt=True,
   csv=True,
   md=True,
+  file_suffix=True,
   all_video_data_in_memory=False,
   video_data_returned=False,
   reverse_chronological=True,
