@@ -175,7 +175,7 @@ help(yt_videos_list)
 
 ---
 ```python
-# default options for the ListCreator object
+# default options for the ListCreator instance
 
 ListCreator(
   txt=True,
@@ -188,7 +188,7 @@ ListCreator(
   cookie_consent=False
   )
 ```
-There are a number of optional arguments you can specify during the instantiation of the ListCreator object. The preceding arguments are run by default, but in case you want more flexibility, you can specify the:
+There are a number of optional arguments you can specify during the instantiation of the ListCreator instance. The preceding arguments are run by default, but in case you want more flexibility, you can specify the:
 - `driver` argument:
   - Firefox (default)
   - Opera

@@ -147,7 +147,7 @@ class ListCreator:
 
     WORKING EXAMPLES:
 
-    Minimalist (ListCreator object creates a csv, txt, and md file in reverse chronological order -
+    Minimalist (ListCreator instance creates a csv, txt, and md file in reverse chronological order -
     meaning the most recently uploaded videos are at the top of the file):
 
     lc = ListCreator()
@@ -167,7 +167,7 @@ class ListCreator:
     -> lc = ListCreator(driver='chrome', headless=True)   # runs chrome  in headless mode
 
 
-    Minimalist with reverse chronological order (ListCreator object creates a csv, txt, and md file with
+    Minimalist with reverse chronological order (ListCreator instance creates a csv, txt, and md file with
     oldest videos at the top of the file instead of the most recently uploaded videos at the top):
     -> lc = ListCreator(reverse_chronological=False)
 
@@ -221,7 +221,7 @@ class ListCreator:
 
     def __repr__(self):
         '''
-        Returns an unambiguous representation of the current instance that can be used to recreate the same exact object.
+        Returns an unambiguous representation of the current instance that can be used to recreate the same exact instance.
         This is useful for internal use and developer debugging.
         For more information, see: https://docs.python.org/3/reference/datamodel.html#object.__repr__
         '''
@@ -237,7 +237,7 @@ class ListCreator:
         '''
         formatted_driver = f"'{self.driver}'" if self.driver else None
         return f'''
-        {self.__class__.__name__}() object created with attributes
+        {self.__class__.__name__}() instance created with attributes
           txt                        = {self.txt}
           csv                        = {self.csv}
           md                         = {self.markdown}
@@ -253,7 +253,7 @@ class ListCreator:
           verify_page_bottom_n_times = {self.verify_page_bottom_n_times}
           file_buffering             = {self.file_buffering}
 
-        To recreate object, use:
+        To recreate instance, use:
         >>> {self.__repr__()}
         '''
 
@@ -268,7 +268,7 @@ class ListCreator:
           -> Value 2:
             -> a tuple containing the channel name and the name of the output file(s) without the file extension(s)
 
-        The create_list_for() method creates a list using the arguments specified during instantiation of the ListCreator object.
+        The create_list_for() method creates a list using the arguments specified during instantiation of the ListCreator instance.
         You need to specify just the url to the channel you want to scrape.
 
         Set `log_silently` to `True` to mute program logging to the console. The program will log the prgram status and any
@@ -328,7 +328,7 @@ class ListCreator:
 
     def create_list_from(self, path_to_channel_urls_file, number_of_threads=4, min_sleep=1, max_sleep=5, after_n_channels_pause_for_s=(20, 10), log_subthread_status_silently=False, log_subthread_info_silently=False, file_name='auto'):
         '''
-        The create_list_from() method creates a list using the arguments specified during instantiation of the ListCreator object.
+        The create_list_from() method creates a list using the arguments specified during instantiation of the ListCreator instance.
         You need to specify just the path to the text file containing urls of all the channels you want to scrape as the `path_to_channel_urls_file` argument.
         NOTE that each url **should be placed on a new line!**
 
@@ -462,7 +462,7 @@ class _DummyLock:
     '''
     def __enter__(self):
         '''
-        This dummy lock does not do anything, so explicitly return None since there is no useful object to return from this .__enter__ method.
+        This dummy lock does not do anything, so explicitly return None since there is no useful instance to return from this .__enter__ method.
         '''
         return None
 
