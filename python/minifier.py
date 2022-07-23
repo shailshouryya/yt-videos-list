@@ -32,10 +32,10 @@ def minify_source_directory_into_target_directory(slash, source_directory, targe
     local_directories = set()
     for root, _, files in os.walk(os.path.abspath(f'./{source_directory}')):
         for file in files:
-            filepath = os.path.join(root, file).split(source_directory)[1]
+            filepath = os.path.join(root, file).split(f'python{slash}{source_directory}')[1]
             if filepath.endswith('DS_Store'): continue
             if '__pycache__' in filepath:     continue
-            local_directory = root.split(source_directory)[1]
+            local_directory = root.split(f'python{slash}{source_directory}')[1]
             if local_directory: local_directories.add(local_directory) # truthy check skips adding an empty string '' to local_directories for files that are in root of source_directory
             valid_files.append(filepath)
     for local_directory in local_directories:
