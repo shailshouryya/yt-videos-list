@@ -11,7 +11,7 @@ with open('README.md', mode='r', encoding='utf-8') as f:
 
 setup(
     name                          = 'yt_videos_list',
-    version                       = '0.6.3',
+    version                       = '0.6.4',
     description                   = 'YouTube bot to make a YouTube videos list (including all video titles and URLs uploaded by a channel) with end-to-end web scraping - no API tokens required. 🌟 Star this repo if you found it useful! 🌟',
     long_description              = long_description,
     long_description_content_type = 'text/markdown',

@@ -13,7 +13,7 @@ from . import logic
 from .custom_logger import log, log_time_taken
 
 
-__version__              = '0.6.3'
+__version__              = '0.6.4'
 __email__                = 'yt.videos.list@gmail.com'
 
 
