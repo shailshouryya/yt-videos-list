@@ -25,5 +25,5 @@ https://www.youtube.com/c/TEDEspanol/videos                                     
 https://www.youtube.com/teded/                                                   # TED-Ed
 https://www.youtube.com/c/IBMSecurity/channels                                   # IBM Security
 https://www.youtube.com/user/symantec/channels                                   # Symantec
-https://www.youtube.com/c/QuantamagazineOrgNews/videos                           # Quanta Magazine
+https://www.youtube.com/c/QuantaScienceChannel/videos                            # Quanta Magazine
 https://www.youtube.com/c/Splunkofficial/channels                                # Splunk
