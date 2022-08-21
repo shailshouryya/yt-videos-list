@@ -540,6 +540,8 @@
     },
     "brave": {
         "macos": [
+            "# mac64 bravedriver (operadriver based) v.96.0.4664.45 (supports Brave Browser version: 96)",
+            "curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.96.0.4664.45/operadriver_mac64.zip | tar -xzvf - -O > /usr/local/bin/bravedriver --strip-components=1 && chmod +x /usr/local/bin/bravedriver\n",
             "# mac64 bravedriver (operadriver based) v.95.0.4638.54 (supports Brave Browser version: 95)",
             "curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.95.0.4638.54/operadriver_mac64.zip | tar -xzvf - -O > /usr/local/bin/bravedriver --strip-components=1 && chmod +x /usr/local/bin/bravedriver\n",
             "# mac64 bravedriver (operadriver based) v.94.0.4606.61 (supports Brave Browser version: 94)",
@@ -582,6 +584,8 @@
             "curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.75.0.3770.100/operadriver_mac64.zip | tar -xzvf - -O > /usr/local/bin/bravedriver --strip-components=1 && chmod +x /usr/local/bin/bravedriver\n"
         ],
         "linux": [
+            "# linux64 bravedriver (operadriver based) v.96.0.4664.45 (supports Brave Browser version: 96)",
+            "curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.96.0.4664.45/operadriver_linux64.zip | tar -xzvf - -O > /usr/local/bin/bravedriver --strip-components=1 && chmod +x /usr/local/bin/bravedriver\n",
             "# linux64 bravedriver (operadriver based) v.95.0.4638.54 (supports Brave Browser version: 95)",
             "curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.95.0.4638.54/operadriver_linux64.zip | tar -xzvf - -O > /usr/local/bin/bravedriver --strip-components=1 && chmod +x /usr/local/bin/bravedriver\n",
             "# linux64 bravedriver (operadriver based) v.94.0.4606.61 (supports Brave Browser version: 94)",
@@ -624,6 +628,8 @@
             "curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.75.0.3770.100/operadriver_linux64.zip | tar -xzvf - -O > /usr/local/bin/bravedriver --strip-components=1 && chmod +x /usr/local/bin/bravedriver\n"
         ],
         "windows": [
+            "# win64 bravedriver (operadriver based) v.96.0.4664.45 (supports Brave Browser version: 96)",
+            "curl -SL --ssl-no-revoke https://github.com/operasoftware/operachromiumdriver/releases/download/v.96.0.4664.45/operadriver_win64.zip -o %CD%:\\Windows\\bravedriver && tar -xzvf %CD%:\\Windows\\bravedriver -O > %CD%:\\Windows\\bravedriver.exe --strip-components=1 && del %CD%:\\Windows\\bravedriver\n",
             "# win64 bravedriver (operadriver based) v.95.0.4638.54 (supports Brave Browser version: 95)",
             "curl -SL --ssl-no-revoke https://github.com/operasoftware/operachromiumdriver/releases/download/v.95.0.4638.54/operadriver_win64.zip -o %CD%:\\Windows\\bravedriver && tar -xzvf %CD%:\\Windows\\bravedriver -O > %CD%:\\Windows\\bravedriver.exe --strip-components=1 && del %CD%:\\Windows\\bravedriver\n",
             "# win64 bravedriver (operadriver based) v.94.0.4606.61 (supports Brave Browser version: 94)",
