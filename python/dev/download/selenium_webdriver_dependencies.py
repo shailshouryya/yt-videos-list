@@ -128,8 +128,8 @@ def execute_download_command(driver, user_os, major_version):
             '90': -71,
             '89': -71,
             '88': -71,
-            '87': -71,
-            '86': -71,
+            '87': -71, # there was no operadriver release specifically for Opera Stable 85 (chromium version 101)
+            '86': -71, # there was no operadriver release specifically for Opera Stable 85 (chromium version 100)
             '85': -71,
             '84': -69,
             '83': -67,
@@ -230,8 +230,8 @@ def execute_download_command(driver, user_os, major_version):
             '104':-47,
             '103':-47,
             '102':-47,
-            '101':-47,
-            '100':-47,
+            '101':-47, # there was no operadriver release specifically for Opera Stable 85 (chromium version 101) - therefore no bravedriver v.101.#.####.## since bravedriver just uses the operadriver binary renamed as ** bravedriver **
+            '100':-47, # there was no operadriver release specifically for Opera Stable 85 (chromium version 100) - therefore no bravedriver v.100.#.####.## since bravedriver just uses the operadriver binary renamed as ** bravedriver **
             '99': -47,
             '98': -45,
             '97': -43,
