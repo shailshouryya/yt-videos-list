@@ -263,6 +263,8 @@ class Common:
         driver_name  = 'bravedriver (operadriver based)'
         browser_name = 'Brave Browser'
         return [
+            cls.format_driver_information           (operating_system, 'v.103.0.5060.66',  '103', driver_name, browser_name),
+            cls.format_download_command(driver_name, operating_system, 'v.103.0.5060.66'),
             cls.format_driver_information           (operating_system, 'v.102.0.5005.61',  '102', driver_name, browser_name),
             cls.format_download_command(driver_name, operating_system, 'v.102.0.5005.61'),
             # there was no operdriver v.101.#.####.## - therefore no bravedriver v.101.#.####.## since bravedriver just uses the operadriver binary renamed as ** bravedriver **
