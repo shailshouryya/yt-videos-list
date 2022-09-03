@@ -177,6 +177,8 @@ class Common:
   driver_name = 'chromedriver'
   browser_name = 'Google Chrome'
   return [
+   cls.format_driver_information (operating_system, '98.0.4758.102', '98', driver_name, browser_name),
+   cls.format_download_command(driver_name, operating_system, '98.0.4758.102'),
    cls.format_driver_information (operating_system, '97.0.4692.71', '97', driver_name, browser_name),
    cls.format_download_command(driver_name, operating_system, '97.0.4692.71'),
    cls.format_driver_information (operating_system, '96.0.4664.45', '96', driver_name, browser_name),
