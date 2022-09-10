@@ -392,6 +392,8 @@
     },
     "chrome": {
         "macos": [
+            "# mac64 chromedriver 105.0.5195.52 (supports Google Chrome version: 105)",
+            "curl -SL https://chromedriver.storage.googleapis.com/105.0.5195.52/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver\n",
             "# mac64 chromedriver 104.0.5112.79 (supports Google Chrome version: 104)",
             "curl -SL https://chromedriver.storage.googleapis.com/104.0.5112.79/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver\n",
             "# mac64 chromedriver 103.0.5060.134 (supports Google Chrome version: 103)",
@@ -468,6 +470,8 @@
             "curl -SL https://chromedriver.storage.googleapis.com/2.41/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver\n"
         ],
         "linux": [
+            "# linux64 chromedriver 105.0.5195.52 (supports Google Chrome version: 105)",
+            "curl -SL https://chromedriver.storage.googleapis.com/105.0.5195.52/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver\n",
             "# linux64 chromedriver 104.0.5112.79 (supports Google Chrome version: 104)",
             "curl -SL https://chromedriver.storage.googleapis.com/104.0.5112.79/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver\n",
             "# linux64 chromedriver 103.0.5060.134 (supports Google Chrome version: 103)",
@@ -544,6 +548,8 @@
             "curl -SL https://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver\n"
         ],
         "windows": [
+            "# win32 chromedriver 105.0.5195.52 (supports Google Chrome version: 105)",
+            "curl -SL --ssl-no-revoke https://chromedriver.storage.googleapis.com/105.0.5195.52/chromedriver_win32.zip -o %CD%:\\Windows\\chromedriver && tar -xzvf %CD%:\\Windows\\chromedriver -C %CD%:\\Windows && del %CD%:\\Windows\\chromedriver\n",
             "# win32 chromedriver 104.0.5112.79 (supports Google Chrome version: 104)",
             "curl -SL --ssl-no-revoke https://chromedriver.storage.googleapis.com/104.0.5112.79/chromedriver_win32.zip -o %CD%:\\Windows\\chromedriver && tar -xzvf %CD%:\\Windows\\chromedriver -C %CD%:\\Windows && del %CD%:\\Windows\\chromedriver\n",
             "# win32 chromedriver 103.0.5060.134 (supports Google Chrome version: 103)",
