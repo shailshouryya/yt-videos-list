@@ -720,7 +720,7 @@
 
 ## Linux/Mac Terminal Tutorial: How To Use The rsync Command - Sync Files Locally and Remotely
 ### Video Number:       130
-### Video Duration:     18:06
+### Video Duration:     17:55
 ### Video URL:          https://www.youtube.com/watch?v=qE77MbDnljA
 ### Watched:            
 ### Watch again later:  
