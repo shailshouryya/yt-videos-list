@@ -24,7 +24,7 @@ def verify_browser_exists(browser):
   'Brave-Browser': verify_brave_exists(browser),
   'Edge': verify_edge_exists(browser)
  }[browser]
-BROWSER_VERSION_REGEX = '\d+\.[\d\.]*'
+BROWSER_VERSION_REGEX = '[\d\.]+'
 def get_firefox_version():
  firefox = subprocess.getoutput(rf'more "{DRIVE}:\Program Files\Mozilla Firefox\application.ini"')
  return re.search(f'MinVersion=({BROWSER_VERSION_REGEX})', firefox)[1]
