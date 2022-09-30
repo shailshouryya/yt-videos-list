@@ -1244,8 +1244,8 @@ After doing that, try rerunning the last command!
       # mac64 msedgedriver 97.0.1072.8 (supports Microsoft Edge version: 97)
       curl -SL https://msedgedriver.azureedge.net/97.0.1072.8/edgedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver
 
-      # mac64 msedgedriver 96.0.1054.26 (supports Microsoft Edge version: 96)
-      curl -SL https://msedgedriver.azureedge.net/96.0.1054.26/edgedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver
+      # mac64 msedgedriver 96.0.1054.75 (supports Microsoft Edge version: 96)
+      curl -SL https://msedgedriver.azureedge.net/96.0.1054.75/edgedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver
 
       # mac64 msedgedriver 95.0.1020.53 (supports Microsoft Edge version: 95)
       curl -SL https://msedgedriver.azureedge.net/95.0.1020.53/edgedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver
@@ -1310,8 +1310,8 @@ Please visit https://developer.microsoft.com/en-us/microsoft-edge/tools/webdrive
       # arm64 msedgedriver 97.0.1072.8 (supports Microsoft Edge version: 97)
       curl -SL https://msedgedriver.azureedge.net/97.0.1072.8/edgedriver_arm64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver
 
-      # arm64 msedgedriver 96.0.1054.26 (supports Microsoft Edge version: 96)
-      curl -SL https://msedgedriver.azureedge.net/96.0.1054.26/edgedriver_arm64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver
+      # arm64 msedgedriver 96.0.1054.75 (supports Microsoft Edge version: 96)
+      curl -SL https://msedgedriver.azureedge.net/96.0.1054.75/edgedriver_arm64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver
 
       # arm64 msedgedriver 95.0.1020.53 (supports Microsoft Edge version: 95)
       curl -SL https://msedgedriver.azureedge.net/95.0.1020.53/edgedriver_arm64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver
@@ -1373,8 +1373,8 @@ Please visit https://developer.microsoft.com/en-us/microsoft-edge/tools/webdrive
       # win32 msedgedriver 97.0.1072.8 (supports Microsoft Edge version: 97)
       curl -SL --ssl-no-revoke https://msedgedriver.azureedge.net/97.0.1072.8/edgedriver_win32.zip -o C:\Windows\msedgedriver && tar -xzvf C:\Windows\msedgedriver -C C:\Windows && del C:\Windows\msedgedriver
 
-      # win32 msedgedriver 96.0.1054.26 (supports Microsoft Edge version: 96)
-      curl -SL --ssl-no-revoke https://msedgedriver.azureedge.net/96.0.1054.26/edgedriver_win32.zip -o C:\Windows\msedgedriver && tar -xzvf C:\Windows\msedgedriver -C C:\Windows && del C:\Windows\msedgedriver
+      # win32 msedgedriver 96.0.1054.75 (supports Microsoft Edge version: 96)
+      curl -SL --ssl-no-revoke https://msedgedriver.azureedge.net/96.0.1054.75/edgedriver_win32.zip -o C:\Windows\msedgedriver && tar -xzvf C:\Windows\msedgedriver -C C:\Windows && del C:\Windows\msedgedriver
 
       # win32 msedgedriver 95.0.1020.53 (supports Microsoft Edge version: 95)
       curl -SL --ssl-no-revoke https://msedgedriver.azureedge.net/95.0.1020.53/edgedriver_win32.zip -o C:\Windows\msedgedriver && tar -xzvf C:\Windows\msedgedriver -C C:\Windows && del C:\Windows\msedgedriver
@@ -1433,8 +1433,8 @@ Please visit https://developer.microsoft.com/en-us/microsoft-edge/tools/webdrive
       # win64 msedgedriver 97.0.1072.8 (supports Microsoft Edge version: 97)
       curl -SL --ssl-no-revoke https://msedgedriver.azureedge.net/97.0.1072.8/edgedriver_win64.zip -o C:\Windows\msedgedriver && tar -xzvf C:\Windows\msedgedriver -C C:\Windows && del C:\Windows\msedgedriver
 
-      # win64 msedgedriver 96.0.1054.26 (supports Microsoft Edge version: 96)
-      curl -SL --ssl-no-revoke https://msedgedriver.azureedge.net/96.0.1054.26/edgedriver_win64.zip -o C:\Windows\msedgedriver && tar -xzvf C:\Windows\msedgedriver -C C:\Windows && del C:\Windows\msedgedriver
+      # win64 msedgedriver 96.0.1054.75 (supports Microsoft Edge version: 96)
+      curl -SL --ssl-no-revoke https://msedgedriver.azureedge.net/96.0.1054.75/edgedriver_win64.zip -o C:\Windows\msedgedriver && tar -xzvf C:\Windows\msedgedriver -C C:\Windows && del C:\Windows\msedgedriver
 
       # win64 msedgedriver 95.0.1020.53 (supports Microsoft Edge version: 95)
       curl -SL --ssl-no-revoke https://msedgedriver.azureedge.net/95.0.1020.53/edgedriver_win64.zip -o C:\Windows\msedgedriver && tar -xzvf C:\Windows\msedgedriver -C C:\Windows && del C:\Windows\msedgedriver
