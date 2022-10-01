@@ -329,8 +329,8 @@ class Common:
   return [
    cls.format_driver_information (operating_system, '98.0.1086.0', '98', driver_name, browser_name),
    cls.format_download_command(driver_name, operating_system, '98.0.1086.0'),
-   cls.format_driver_information (operating_system, '97.0.1072.8', '97', driver_name, browser_name),
-   cls.format_download_command(driver_name, operating_system, '97.0.1072.8'),
+   cls.format_driver_information (operating_system, '97.0.1072.76', '97', driver_name, browser_name),
+   cls.format_download_command(driver_name, operating_system, '97.0.1072.76'),
    cls.format_driver_information (operating_system, '96.0.1054.75', '96', driver_name, browser_name),
    cls.format_download_command(driver_name, operating_system, '96.0.1054.75'),
    cls.format_driver_information (operating_system, '95.0.1020.53', '95', driver_name, browser_name),
