@@ -271,7 +271,7 @@ def execute_download_command(driver, user_os, major_version):
             '102':-39,
             '101':-39,
             '100':-39,
-            '99': -39,
+            '99': -39, # there was no msedgedriver release specifically for Opera 61
             '98': -39,
             '97': -37,
             '96': -35,
