@@ -85,6 +85,8 @@ class Common:
         driver_name  = 'geckodriver'
         browser_name = 'Mozilla Firefox'
         return [
+            cls.format_driver_information           (operating_system, 'v0.32.0', '≥ 104', driver_name, browser_name),
+            cls.format_download_command(driver_name, operating_system, 'v0.32.0'),
             cls.format_driver_information           (operating_system, 'v0.31.0', '≥ 99', driver_name, browser_name),
             cls.format_download_command(driver_name, operating_system, 'v0.31.0'),
             cls.format_driver_information           (operating_system, 'v0.30.0', '≥ 92', driver_name, browser_name),
