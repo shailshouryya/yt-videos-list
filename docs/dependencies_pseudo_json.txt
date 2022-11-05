@@ -655,6 +655,9 @@ After doing that, try rerunning the last command!
   chrome: {
     macos: [
 
+      # mac64 chromedriver 108.0.5359.22 (supports Google Chrome version: 108)
+      curl -SL https://chromedriver.storage.googleapis.com/108.0.5359.22/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
+
       # mac64 chromedriver 107.0.5304.62 (supports Google Chrome version: 107)
       curl -SL https://chromedriver.storage.googleapis.com/107.0.5304.62/chromedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
 
@@ -778,6 +781,9 @@ After doing that, try rerunning the last command!
     ],
     linux: [
 
+      # linux64 chromedriver 108.0.5359.22 (supports Google Chrome version: 108)
+      curl -SL https://chromedriver.storage.googleapis.com/108.0.5359.22/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
+
       # linux64 chromedriver 107.0.5304.62 (supports Google Chrome version: 107)
       curl -SL https://chromedriver.storage.googleapis.com/107.0.5304.62/chromedriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/chromedriver
 
@@ -900,6 +906,9 @@ After doing that, try rerunning the last command!
 
     ],
     windows: [
+
+      # win32 chromedriver 108.0.5359.22 (supports Google Chrome version: 108)
+      curl -SL --ssl-no-revoke https://chromedriver.storage.googleapis.com/108.0.5359.22/chromedriver_win32.zip -o C:\Windows\chromedriver && tar -xzvf C:\Windows\chromedriver -C C:\Windows && del C:\Windows\chromedriver
 
       # win32 chromedriver 107.0.5304.62 (supports Google Chrome version: 107)
       curl -SL --ssl-no-revoke https://chromedriver.storage.googleapis.com/107.0.5304.62/chromedriver_win32.zip -o C:\Windows\chromedriver && tar -xzvf C:\Windows\chromedriver -C C:\Windows && del C:\Windows\chromedriver
