@@ -872,6 +872,8 @@
     },
     "edge": {
         "macos": [
+            "# mac64 msedgedriver 107.0.1418.42 (supports Microsoft Edge version: 107)",
+            "curl -SL https://msedgedriver.azureedge.net/107.0.1418.42/edgedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver\n",
             "# mac64 msedgedriver 106.0.1370.52 (supports Microsoft Edge version: 106)",
             "curl -SL https://msedgedriver.azureedge.net/106.0.1370.52/edgedriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver\n",
             "# mac64 msedgedriver 105.0.1343.53 (supports Microsoft Edge version: 105)",
@@ -929,6 +931,8 @@
         ],
         "linux": [
             "There is currently no dedicated msedgedriver for Linux.\nHere are possible commands for an arm64 operating system.\nPlease visit https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/ for more information.",
+            "# arm64 msedgedriver 107.0.1418.42 (supports Microsoft Edge version: 107)",
+            "curl -SL https://msedgedriver.azureedge.net/107.0.1418.42/edgedriver_arm64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver\n",
             "# arm64 msedgedriver 106.0.1370.52 (supports Microsoft Edge version: 106)",
             "curl -SL https://msedgedriver.azureedge.net/106.0.1370.52/edgedriver_arm64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver\n",
             "# arm64 msedgedriver 105.0.1343.53 (supports Microsoft Edge version: 105)",
@@ -985,6 +989,8 @@
             "curl -SL https://msedgedriver.azureedge.net/79.0.313.0/edgedriver_arm64.zip | tar -xzvf - -C /usr/local/bin/ && chmod +x /usr/local/bin/msedgedriver\n"
         ],
         "windows": [
+            "# win32 msedgedriver 107.0.1418.42 (supports Microsoft Edge version: 107)",
+            "curl -SL --ssl-no-revoke https://msedgedriver.azureedge.net/107.0.1418.42/edgedriver_win32.zip -o %CD%:\\Windows\\msedgedriver && tar -xzvf %CD%:\\Windows\\msedgedriver -C %CD%:\\Windows && del %CD%:\\Windows\\msedgedriver\n",
             "# win32 msedgedriver 106.0.1370.52 (supports Microsoft Edge version: 106)",
             "curl -SL --ssl-no-revoke https://msedgedriver.azureedge.net/106.0.1370.52/edgedriver_win32.zip -o %CD%:\\Windows\\msedgedriver && tar -xzvf %CD%:\\Windows\\msedgedriver -C %CD%:\\Windows && del %CD%:\\Windows\\msedgedriver\n",
             "# win32 msedgedriver 105.0.1343.53 (supports Microsoft Edge version: 105)",
@@ -1039,6 +1045,8 @@
             "curl -SL --ssl-no-revoke https://msedgedriver.azureedge.net/80.0.361.111/edgedriver_win32.zip -o %CD%:\\Windows\\msedgedriver && tar -xzvf %CD%:\\Windows\\msedgedriver -C %CD%:\\Windows && del %CD%:\\Windows\\msedgedriver\n",
             "# win32 msedgedriver 79.0.313.0 (supports Microsoft Edge version: 79)",
             "curl -SL --ssl-no-revoke https://msedgedriver.azureedge.net/79.0.313.0/edgedriver_win32.zip -o %CD%:\\Windows\\msedgedriver && tar -xzvf %CD%:\\Windows\\msedgedriver -C %CD%:\\Windows && del %CD%:\\Windows\\msedgedriver\n",
+            "# win64 msedgedriver 107.0.1418.42 (supports Microsoft Edge version: 107)",
+            "curl -SL --ssl-no-revoke https://msedgedriver.azureedge.net/107.0.1418.42/edgedriver_win64.zip -o %CD%:\\Windows\\msedgedriver && tar -xzvf %CD%:\\Windows\\msedgedriver -C %CD%:\\Windows && del %CD%:\\Windows\\msedgedriver\n",
             "# win64 msedgedriver 106.0.1370.52 (supports Microsoft Edge version: 106)",
             "curl -SL --ssl-no-revoke https://msedgedriver.azureedge.net/106.0.1370.52/edgedriver_win64.zip -o %CD%:\\Windows\\msedgedriver && tar -xzvf %CD%:\\Windows\\msedgedriver -C %CD%:\\Windows && del %CD%:\\Windows\\msedgedriver\n",
             "# win64 msedgedriver 105.0.1343.53 (supports Microsoft Edge version: 105)",
