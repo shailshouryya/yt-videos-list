@@ -37,7 +37,7 @@ def verify_browser_exists(browser):
     }[browser]
 
 
-BROWSER_VERSION_REGEX = '\d[\d\.]*'
+BROWSER_VERSION_REGEX = '\d+\.[\d\.]*'
 
 def get_firefox_version():
     firefox = subprocess.getoutput(rf'more "{DRIVE}:\Program Files\Mozilla Firefox\application.ini"')
