@@ -89,6 +89,8 @@
     },
     "opera": {
         "macos": [
+            "# mac64 operadriver v.107.0.5304.88 (supports Opera Browser version: Stable 93)",
+            "curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.107.0.5304.88/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver\n",
             "# mac64 operadriver v.106.0.5249.119 (supports Opera Browser version: Stable 92)",
             "curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.106.0.5249.119/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver\n",
             "# mac64 operadriver v.105.0.5195.102 (supports Opera Browser version: Stable 91)",
@@ -173,6 +175,8 @@
             "curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.29/operadriver_mac64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver\n"
         ],
         "linux": [
+            "# linux64 operadriver v.107.0.5304.88 (supports Opera Browser version: Stable 93)",
+            "curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.107.0.5304.88/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver\n",
             "# linux64 operadriver v.106.0.5249.119 (supports Opera Browser version: Stable 92)",
             "curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.106.0.5249.119/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver\n",
             "# linux64 operadriver v.105.0.5195.102 (supports Opera Browser version: Stable 91)",
@@ -257,6 +261,8 @@
             "curl -SL https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.29/operadriver_linux64.zip | tar -xzvf - -C /usr/local/bin/ --strip-components=1 && rm /usr/local/bin/sha512_sum && chmod +x /usr/local/bin/operadriver\n"
         ],
         "windows": [
+            "# win32 operadriver v.107.0.5304.88 (supports Opera Browser version: Stable 93)",
+            "curl -SL --ssl-no-revoke https://github.com/operasoftware/operachromiumdriver/releases/download/v.107.0.5304.88/operadriver_win32.zip -o %CD%:\\Windows\\operadriver && tar -xzvf %CD%:\\Windows\\operadriver -C %CD%:\\Windows --strip-components=1 && del %CD%:\\Windows\\sha512_sum && del %CD%:\\Windows\\operadriver\n",
             "# win32 operadriver v.106.0.5249.119 (supports Opera Browser version: Stable 92)",
             "curl -SL --ssl-no-revoke https://github.com/operasoftware/operachromiumdriver/releases/download/v.106.0.5249.119/operadriver_win32.zip -o %CD%:\\Windows\\operadriver && tar -xzvf %CD%:\\Windows\\operadriver -C %CD%:\\Windows --strip-components=1 && del %CD%:\\Windows\\sha512_sum && del %CD%:\\Windows\\operadriver\n",
             "# win32 operadriver v.105.0.5195.102 (supports Opera Browser version: Stable 91)",
@@ -339,6 +345,8 @@
             "curl -SL --ssl-no-revoke https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.30/operadriver_win32.zip -o %CD%:\\Windows\\operadriver && tar -xzvf %CD%:\\Windows\\operadriver -C %CD%:\\Windows --strip-components=1 && del %CD%:\\Windows\\sha512_sum && del %CD%:\\Windows\\operadriver\n",
             "# win32 operadriver v.2.29 (supports Opera Browser version: 46)",
             "curl -SL --ssl-no-revoke https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.29/operadriver_win32.zip -o %CD%:\\Windows\\operadriver && tar -xzvf %CD%:\\Windows\\operadriver -C %CD%:\\Windows --strip-components=1 && del %CD%:\\Windows\\sha512_sum && del %CD%:\\Windows\\operadriver\n",
+            "# win64 operadriver v.107.0.5304.88 (supports Opera Browser version: Stable 93)",
+            "curl -SL --ssl-no-revoke https://github.com/operasoftware/operachromiumdriver/releases/download/v.107.0.5304.88/operadriver_win64.zip -o %CD%:\\Windows\\operadriver && tar -xzvf %CD%:\\Windows\\operadriver -C %CD%:\\Windows --strip-components=1 && del %CD%:\\Windows\\sha512_sum && del %CD%:\\Windows\\operadriver\n",
             "# win64 operadriver v.106.0.5249.119 (supports Opera Browser version: Stable 92)",
             "curl -SL --ssl-no-revoke https://github.com/operasoftware/operachromiumdriver/releases/download/v.106.0.5249.119/operadriver_win64.zip -o %CD%:\\Windows\\operadriver && tar -xzvf %CD%:\\Windows\\operadriver -C %CD%:\\Windows --strip-components=1 && del %CD%:\\Windows\\sha512_sum && del %CD%:\\Windows\\operadriver\n",
             "# win64 operadriver v.105.0.5195.102 (supports Opera Browser version: Stable 91)",
