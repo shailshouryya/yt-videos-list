@@ -87,6 +87,10 @@ def load_video_data(videos_list, common_visited_videos, video_id_only, reverse_c
  video_number = len(videos_list)
  videos_to_load = video_number
  for videos_loaded, selenium_element in enumerate(videos_list, start=1):
+  element_class = selenium_element.get_attribute('class')
+  if element_class == 'yt-simple-endpoint focus-on-expand style-scope ytd-video-preview':
+   #
+   continue
   video_title = selenium_element.get_attribute('title')
   video_url = selenium_element.get_attribute('href').replace('shorts/', 'watch?v=').split('&pp')[0]
   try:
