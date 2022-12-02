@@ -82,7 +82,7 @@ def store_already_written_videos(file_name, file_type):
 
 
 def count_videos_on_page(driver):
-    return driver.execute_script('return document.querySelectorAll("ytd-grid-video-renderer").length')
+    return driver.execute_script('return document.querySelectorAll("ytd-rich-grid-media").length')
 
 def scroll_down(driver, scroll_pause_time, logging_locations):
     driver.execute_script('window.scrollBy(0, 50000);')
