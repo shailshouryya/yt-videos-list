@@ -105,19 +105,6 @@ def load_video_data(videos_list, common_visited_videos, video_id_only, reverse_c
     video_number   = len(videos_list)
     videos_to_load = video_number
     for videos_loaded, selenium_element in enumerate(videos_list, start=1):
-        element_class = selenium_element.get_attribute('class')
-        if element_class == 'yt-simple-endpoint focus-on-expand style-scope ytd-video-preview':
-            # elements with the 'yt-simple-endpoint focus-on-expand style-scope ytd-rich-grid-media' class have acual video information
-            # elements with the 'yt-simple-endpoint focus-on-expand style-scope ytd-video-preview'   class do NOT have any video information (probably just a "dummy" element to make the page symmetrical)
-            # examples:
-            # {'aria-label': 'Python YouTube API Tutorial: Using OAuth to Access User Accounts by Corey Schafer 2 years ago 43 minutes 114,873 views', 'class': 'yt-simple-endpoint focus-on-expand style-scope ytd-rich-grid-media', 'href': '/watch?v=vQQEaSnQ_bs', 'id': 'video-title-link', 'title': 'Python YouTube API Tutorial: Using OAuth to Access User Accounts'}
-            # {'class': 'yt-simple-endpoint focus-on-expand style-scope ytd-video-preview', 'id': 'video-title-link'}
-            #
-            # NOT skipping these elements results in
-            # AttributeError: 'NoneType' object has no attribute 'replace'
-            # for
-            # video_url      = selenium_element.get_attribute('href').replace('shorts/', 'watch?v=').split('&pp')[0]
-            continue
         video_title    = selenium_element.get_attribute('title')
         video_url      = selenium_element.get_attribute('href').replace('shorts/', 'watch?v=').split('&pp')[0]
         try:

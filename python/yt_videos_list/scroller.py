@@ -11,7 +11,7 @@ def scroll_until_break(url, driver, scroll_pause_time, logging_locations, verify
  new_elements_count = count_videos_on_page(driver)
  num_times_elements_count_same = -1
  found_old_videos = False
- url_of_last_loaded_video_on_page = lambda: driver.find_elements_by_xpath('//*[@id="video-title-link"]')[-1].get_attribute('href').replace('shorts/', 'watch?v=').split('&pp')[0]
+ url_of_last_loaded_video_on_page = lambda: driver.find_elements_by_xpath('//*[@class="style-scope ytd-rich-grid-media"]/a[@id="video-title-link"]')[-1].get_attribute('href').replace('shorts/', 'watch?v=').split('&pp')[0]
  if new_elements_count != 0:
   while found_old_videos is False and num_times_elements_count_same < verify_page_bottom_n_times:
    current_elements_count = new_elements_count
@@ -80,6 +80,6 @@ def verify_reached_page_bottom(new_elements_count, current_elements_count, num_t
   num_times_elements_count_same = -1
  return num_times_elements_count_same
 def save_elements_to_list(driver, scrolling_cpu_start_time, scrolling_real_start_time, url, logging_locations):
- elements = driver.find_elements_by_xpath('//*[@id="video-title-link"]')
+ elements = driver.find_elements_by_xpath('//*[@class="style-scope ytd-rich-grid-media"]/a[@id="video-title-link"]')
  log_time_taken(scrolling_cpu_start_time, scrolling_real_start_time, 'It took ', f' to find {len(elements)} videos from {url}\n', logging_locations)
  return elements
