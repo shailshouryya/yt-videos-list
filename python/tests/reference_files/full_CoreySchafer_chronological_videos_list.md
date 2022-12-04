@@ -1753,19 +1753,19 @@
 ### Notes:              
 ***************************************************************************
 
-## Visual Studio Code (Windows) - Setting up a Python Development Environment and Complete Overview
+## Visual Studio Code (Mac) - Setting up a Python Development Environment and Complete Overview
 ### Video Number:       196
-### Video Duration:     1:15:17
-### Video URL:          https://www.youtube.com/watch?v=-nh9rCzPJ20
+### Video Duration:     1:15:44
+### Video URL:          https://www.youtube.com/watch?v=06I63_p-2A4
 ### Watched:            
 ### Watch again later:  
 ### Notes:              
 ***************************************************************************
 
-## Visual Studio Code (Mac) - Setting up a Python Development Environment and Complete Overview
+## Visual Studio Code (Windows) - Setting up a Python Development Environment and Complete Overview
 ### Video Number:       197
-### Video Duration:     1:15:44
-### Video URL:          https://www.youtube.com/watch?v=06I63_p-2A4
+### Video Duration:     1:15:17
+### Video URL:          https://www.youtube.com/watch?v=-nh9rCzPJ20
 ### Watched:            
 ### Watch again later:  
 ### Notes:              
@@ -2005,17 +2005,8 @@
 ### Notes:              
 ***************************************************************************
 
-## Live Stream - Chat, Q&A, Brews, and Coding
-### Video Number:       224
-### Video Duration:     1:01:21
-### Video URL:          https://www.youtube.com/watch?v=0Q_8taHAuQQ
-### Watched:            
-### Watch again later:  
-### Notes:              
-***************************************************************************
-
 ## Python Pandas Tutorial (Part 11): Reading/Writing Data to Different Sources - Excel, JSON, SQL, Etc
-### Video Number:       225
+### Video Number:       224
 ### Video Duration:     32:45
 ### Video URL:          https://www.youtube.com/watch?v=N6hyN6BW6ao
 ### Watched:            
@@ -2024,7 +2015,7 @@
 ***************************************************************************
 
 ## Python Tutorial: Real World Example - Using Patreon API and Pillow to Automate Image Creation
-### Video Number:       226
+### Video Number:       225
 ### Video Duration:     52:33
 ### Video URL:          https://www.youtube.com/watch?v=RO6JxDOVwLQ
 ### Watched:            
@@ -2033,7 +2024,7 @@
 ***************************************************************************
 
 ## Python YouTube API Tutorial: Getting Started - Creating an API Key and Querying the API
-### Video Number:       227
+### Video Number:       226
 ### Video Duration:     20:49
 ### Video URL:          https://www.youtube.com/watch?v=th5_9woFJmk
 ### Watched:            
@@ -2042,7 +2033,7 @@
 ***************************************************************************
 
 ## Python YouTube API Tutorial: Calculating the Duration of a Playlist
-### Video Number:       228
+### Video Number:       227
 ### Video Duration:     37:38
 ### Video URL:          https://www.youtube.com/watch?v=coZbOM6E47I
 ### Watched:            
@@ -2051,7 +2042,7 @@
 ***************************************************************************
 
 ## Python YouTube API Tutorial: Sort a Playlist by Most Popular Videos
-### Video Number:       229
+### Video Number:       228
 ### Video Duration:     22:08
 ### Video URL:          https://www.youtube.com/watch?v=1KO_HZtHOWI
 ### Watched:            
@@ -2060,7 +2051,7 @@
 ***************************************************************************
 
 ## Python YouTube API Tutorial: Using OAuth to Access User Accounts
-### Video Number:       230
+### Video Number:       229
 ### Video Duration:     43:21
 ### Video URL:          https://www.youtube.com/watch?v=vQQEaSnQ_bs
 ### Watched:            
