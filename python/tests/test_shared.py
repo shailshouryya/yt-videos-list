@@ -177,6 +177,15 @@ def verify_update(list_creator, test_url, test_file, full_file, log_file):
         failed = compare_test_files_to_reference_files(full_file, test_output_file, log_file)
         if failed == 'Failed!':
             return 'Failed!'
+    log_test_info(f'TESTING list_creator.video_id_only={is_video_id_only}, list_creator.reverse_chronological={is_reverse_chronological} for {driver_name}driver', log_file)
+    log_test_info(f'Full configuration: {repr(list_creator)}', log_file)
+    log_test_info(f'Testing files with all videos already in the file...', log_file)
+    use_partial_files(['csv', 'txt', 'md'], full_file, suffix, log_file)
+    test_output_file = list_creator.create_list_for(test_url, log_silently=True)[1][1]
+    # verify calling the create_list_for() method updates the full file properly
+    failed = compare_test_files_to_reference_files(full_file, test_output_file, log_file)
+    if failed == 'Failed!':
+        return 'Failed!'
     return 'Passed!'
 
 def use_partial_files(types_of_partial_files, test_file, suffix, log_file):

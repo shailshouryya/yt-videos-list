@@ -40,7 +40,7 @@ def log_write_information(writer_function):
   if function_name == 'update_file': log(f'{new_videos_written} ***NEW*** {videos} written to'.ljust(padding) + f'{temp_file}', logging_locations)
   log('Closing'.ljust(padding) + f'{temp_file}', logging_locations)
   log(f'Successfully completed write, renaming {temp_file} to {final_file}', logging_locations)
-  if function_name == 'update_file' and not reverse_chronological:
+  if (function_name == 'update_file' and not reverse_chronological) or (function_name == 'update_file' and reverse_chronological and new_videos_written == 0):
    os.remove(temp_file)
   else:
    os.replace(temp_file, final_file)

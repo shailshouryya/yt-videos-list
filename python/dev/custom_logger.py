@@ -46,7 +46,12 @@ def log_write_information(writer_function):
         if function_name == 'update_file': log(f'{new_videos_written} ***NEW*** {videos} written to'.ljust(padding) + f'{temp_file}', logging_locations)
         log('Closing'.ljust(padding) + f'{temp_file}',                                                                                logging_locations)
         log(f'Successfully completed write, renaming {temp_file} to {final_file}',                                                    logging_locations)
-        if function_name == 'update_file' and not reverse_chronological: # ChannelName_chronological.ext files
+        if (function_name == 'update_file' and not reverse_chronological) or (function_name == 'update_file' and reverse_chronological and new_videos_written == 0):
+            # if the function that ran was update_file with the reverse_chronological flag set to True BUT no new videos were found: remove temp_{file_name} since
+            #   the original ChannelName_reverse_chronological.ext file stayed the same ahd no new information was written to the temp file
+            #     this is an **important detail** since when the reverse_chronological flag is set to True, the program writes the new information to the temp file and then
+            #     appends the original file contents to the end of the temp file, so removing the temp file would normally lose the new information since the new video data
+            #     only gets written to the temp file - when there is no new video data, though, this is fine since there is no new data
             # if the function that ran was update_file with the reverse_chronological flag set to False: remove temp_{file_name} since
             #   if new data was found:    all new information from the temp file was appended to the end of the original ChannelName_chronological.ext file (new data is at bottom of file)
             #   if no new data was found: the original file stayed the same

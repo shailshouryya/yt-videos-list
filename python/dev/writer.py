@@ -36,6 +36,9 @@ def update_file(file_type, file_name, file_buffering, newline, csv_writer, times
             number_of_existing_videos = int(max(re.findall('^(?:### )?Video Number:\s*(\d+)', old_file.read(), re.M), key=lambda i: int(i)))
         new_videos   = find_number_of_new_videos(video_data, file_visited_videos)
         total_videos = number_of_existing_videos + new_videos
+        if new_videos == 0:
+            # no need to write anything to either the temp file or the original file since the file will stay the same
+            return file_name, 0, total_videos, reverse_chronological, logging_locations
         create_entries(file_type, temp_file, csv_writer, logging_locations, identifier, video_data, reverse_chronological, total_videos, number_of_existing_videos, file_visited_videos)
         if reverse_chronological:
             old_file.seek(0)
