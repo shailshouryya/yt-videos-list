@@ -47,7 +47,9 @@ def log_write_information(writer_function):
         log('Closing'.ljust(padding) + f'{temp_file}',                                                                                logging_locations)
         log(f'Successfully completed write, renaming {temp_file} to {final_file}',                                                    logging_locations)
         if function_name == 'update_file' and not reverse_chronological: # ChannelName_chronological.ext files
-            # if the function that ran was update_file with the reverse_chronological flag set to False: remove temp_{file_name} since all new information from the temp file was appended to the end of the original file (new data is at bottom of file)
+            # if the function that ran was update_file with the reverse_chronological flag set to False: remove temp_{file_name} since
+            #   if new data was found:    all new information from the temp file was appended to the end of the original ChannelName_chronological.ext file (new data is at bottom of file)
+            #   if no new data was found: the original file stayed the same
             os.remove(temp_file)
         else:
             # if the function that ran was create_file: rename temp_{file_name} to {file_name}.{extension} here AFTER everything else finishes to ensure atomicity
