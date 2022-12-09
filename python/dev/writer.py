@@ -1,5 +1,6 @@
 import csv
 import re
+import os
 
 from .custom_logger import log, log_write_information
 from .scroller      import store_already_written_videos
@@ -15,6 +16,9 @@ def create_file(file_type, file_name, file_buffering, newline, csv_writer, times
             csv_writer.writeheader()
         new_videos = total_videos = len(video_data)
         create_entries(file_type, temp_file, csv_writer, logging_locations, identifier, video_data, reverse_chronological, total_videos, number_of_existing_videos=0, file_visited_videos=set())
+    # rename temp_{file_name} to {file_name}.{extension} here AFTER everything else finishes to ensure atomicity
+    final_file_name = f'{file_name}.{file_type}'
+    os.replace(temp_file_name, final_file_name)
     return file_name, new_videos, total_videos, reverse_chronological, logging_locations
 
 
@@ -47,6 +51,20 @@ def update_file(file_type, file_name, file_buffering, newline, csv_writer, times
             else:
                 temp_file.seek(0)                                  # no need to skip the first line for csv files since csv header only written when reverse_chronological=True
                 for line in temp_file: old_file.write(line)
+    if not reverse_chronological or (reverse_chronological and new_videos == 0):
+        # if the reverse_chronological flag was set to True BUT no new videos were found: remove temp_{file_name} since
+        #   the original ChannelName_reverse_chronological.ext file stayed the same ahd no new information was written to the temp file
+        #     this is an **important detail** since when the reverse_chronological flag is set to True, the program writes the new information to the temp file and then
+        #     appends the original file contents to the end of the temp file, so removing the temp file would normally lose the new information since the new video data
+        #     only gets written to the temp file - when there is no new video data, though, this is fine since there is no new data
+        # if the reverse_chronological flag was set to False: remove temp_{file_name} since
+        #   if new data was found:    all new information from the temp file was appended to the end of the original ChannelName_chronological.ext file (new data is at bottom of file)
+        #   if no new data was found: the original file stayed the same
+        os.remove(temp_file_name)
+    else:
+        # if the reverse_chronological flag was set to True: rename temp_{file_name} to {file_name}.{extension} since program appends old info from the original file to the end of new data in the temp file
+        final_file_name = f'{file_name}.{file_type}'
+        os.replace(temp_file_name, final_file_name)
     return file_name, new_videos, total_videos, reverse_chronological, logging_locations
 
 def format_visited_videos_for_id(file_visited_videos, video_id_only, logging_locations):

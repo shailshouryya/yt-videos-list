@@ -1,5 +1,6 @@
 import csv
 import re
+import os
 from .custom_logger import log, log_write_information
 from .scroller      import store_already_written_videos
 @log_write_information
@@ -12,6 +13,8 @@ def create_file(file_type, file_name, file_buffering, newline, csv_writer, times
             csv_writer.writeheader()
         new_videos = total_videos = len(video_data)
         create_entries(file_type, temp_file, csv_writer, logging_locations, identifier, video_data, reverse_chronological, total_videos, number_of_existing_videos=0, file_visited_videos=set())
+    final_file_name = f'{file_name}.{file_type}'
+    os.replace(temp_file_name, final_file_name)
     return file_name, new_videos, total_videos, reverse_chronological, logging_locations
 @log_write_information
 def update_file(file_type, file_name, file_buffering, newline, csv_writer, timestamp, logging_locations, identifier, reverse_chronological, video_data, file_visited_videos, video_id_only):
@@ -37,6 +40,11 @@ def update_file(file_type, file_name, file_buffering, newline, csv_writer, times
             else:
                 temp_file.seek(0)
                 for line in temp_file: old_file.write(line)
+    if not reverse_chronological or (reverse_chronological and new_videos == 0):
+        os.remove(temp_file_name)
+    else:
+        final_file_name = f'{file_name}.{file_type}'
+        os.replace(temp_file_name, final_file_name)
     return file_name, new_videos, total_videos, reverse_chronological, logging_locations
 def format_visited_videos_for_id(file_visited_videos, video_id_only, logging_locations):
     if video_id_only is True:
