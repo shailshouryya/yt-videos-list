@@ -145,11 +145,11 @@ def run_test_case(list_creator, log_file):
     return verify_update(list_creator, test_url, partialfile_path, fullfile_path, log_file)
 
 
-def verify_update(list_creator, test_url, partialfile_path, full_file, log_file):
+def verify_update(list_creator, test_url, partialfile_path, fullfile_path, log_file):
     '''
     Uses the `reverse_chronological` and `video_id_only` attributes of the `list_creator`
     argument to determine the suffix. Uses the result from
-    `run_test_for(variation, test_url, partialfile_path, full_file, suffix, log_file, list_creator)`
+    `run_test_for(variation, test_url, partialfile_path, fullfile_path, suffix, log_file, list_creator)`
     to determine if the program correctly creates/updates the test files.
     '''
     variations = [
@@ -167,27 +167,27 @@ def verify_update(list_creator, test_url, partialfile_path, full_file, log_file)
         log_test_info(f'Full configuration: {repr(list_creator)}', log_file)
         is_id  = '_id'                                       if is_video_id_only         else  ''
         suffix = f'reverse_chronological_video{is_id}s_list' if is_reverse_chronological else f'chronological_video{is_id}s_list'
-        if 'Failed!' == run_test_for(variation, test_url, partialfile_path, full_file, suffix, log_file, list_creator):
+        if 'Failed!' == run_test_for(variation, test_url, partialfile_path, fullfile_path, suffix, log_file, list_creator):
             return 'Failed!'
     # now verify files with all video information already present are updated correctly
     log_test_info(f'TESTING list_creator.video_id_only={is_video_id_only}, list_creator.reverse_chronological={is_reverse_chronological} for {driver_name}driver', log_file)
     log_test_info(f'Full configuration: {repr(list_creator)}', log_file)
     log_test_info(f'Testing files with all videos already in the file...', log_file)
-    return run_test_for(['csv', 'txt', 'md'], test_url, full_file, full_file, suffix, log_file, list_creator)
+    return run_test_for(['csv', 'txt', 'md'], test_url, fullfile_path, fullfile_path, suffix, log_file, list_creator)
 
-def run_test_for(variation, test_url, partialfile_path, full_file, suffix, log_file, list_creator):
+def run_test_for(variation, test_url, partialfile_path, fullfile_path, suffix, log_file, list_creator):
     '''
     Uses the reference `partialfile_path` to create a partial test file, then
     runs the `create_list_for(test_url)` method on the provided
     `list_creator` instance. Calls
-    `compare_test_files_to_reference_files(full_file, file_name)`
+    `compare_test_files_to_reference_files(fullfile_path, file_name)`
     to ensure content in the created output files match the
     content in the full reference files.
     '''
     use_partial_files(variation, partialfile_path, suffix, log_file) # the file this function creates should be the SAME as the returned string to the file_name variable in the next line
     test_output_file = list_creator.create_list_for(test_url, log_silently=True)[1][1]
     # verify calling the create_list_for() method updates the test file properly
-    return compare_test_files_to_reference_files(full_file, test_output_file, log_file)
+    return compare_test_files_to_reference_files(fullfile_path, test_output_file, log_file)
 
 def use_partial_files(types_of_partial_files, partialfile_path, suffix, log_file):
     '''
