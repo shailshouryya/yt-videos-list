@@ -184,10 +184,10 @@ def run_test_for(variation, test_url, partialfile_path, fullfile_path, suffix, l
     to ensure content in the created output files match the
     content in the full reference files.
     '''
-    use_partial_files(variation, partialfile_path, suffix, log_file) # the file this function creates should be the SAME as the returned string to the file_name variable in the next line
-    test_output_file = list_creator.create_list_for(test_url, log_silently=True)[1][1]
+    use_partial_files(variation, partialfile_path, suffix, log_file) # the name of the file this function creates should be the SAME as the returned string to the updated_partialfile_path variable in the next line
+    updated_partialfile_path = list_creator.create_list_for(test_url, log_silently=True)[1][1]
     # verify calling the create_list_for() method updates the test file properly
-    return compare_test_files_to_reference_files(fullfile_path, test_output_file, log_file)
+    return compare_test_files_to_reference_files(fullfile_path, updated_partialfile_path, log_file)
 
 def use_partial_files(types_of_partial_files, partialfile_path, suffix, log_file):
     '''
