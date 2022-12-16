@@ -180,14 +180,14 @@ def run_test_for(variation, test_url, partialfile_path, fullfile_path, suffix, l
     Uses the reference `partialfile_path` to create a partial test file, then
     runs the `create_list_for(test_url)` method on the provided
     `list_creator` instance. Calls
-    `verify_updated_files_match_expected_output_files(fullfile_path, file_name)`
+    `verify_updated_files_match_expected_output_files(updated_partialfile_path, fullfile_path, log_file)`
     to ensure content in the created output files match the
     content in the full reference files.
     '''
     use_partial_files(variation, partialfile_path, suffix, log_file) # the name of the file this function creates should be the SAME as the returned string to the updated_partialfile_path variable in the next line
     updated_partialfile_path = list_creator.create_list_for(test_url, log_silently=True)[1][1]
     # verify calling the create_list_for() method updates the test file properly
-    return verify_updated_files_match_expected_output_files(fullfile_path, updated_partialfile_path, log_file)
+    return verify_updated_files_match_expected_output_files(updated_partialfile_path, fullfile_path, log_file)
 
 def use_partial_files(types_of_partial_files, partialfile_path, suffix, log_file):
     '''
@@ -239,7 +239,7 @@ def create_partial_file(test_file, suffix, extension):
     shutil.copy(f'{test_file}.{extension}', f'CoreySchafer_{suffix}.{extension}')
 
 
-def verify_updated_files_match_expected_output_files(full_file, test_output_file, log_file):
+def verify_updated_files_match_expected_output_files(test_output_file, full_file, log_file):
     '''
     Ensures the resulting test output file `test_output_file`
     contains the exact same content as the reference `full_file` by
