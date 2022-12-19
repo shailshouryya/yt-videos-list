@@ -1,3 +1,4 @@
+import re
 import os
 import time
 import datetime
@@ -106,6 +107,8 @@ def load_video_data(videos_list, common_visited_videos, video_id_only, reverse_c
     videos_to_load = video_number
     for videos_loaded, selenium_element in enumerate(videos_list, start=1):
         video_title    = selenium_element.get_attribute('title')
+        video_title    = re.sub('\n+',    ' ', video_title)
+        video_title    = re.sub('\s{2,}', ' ', video_title).strip()
         video_url      = selenium_element.get_attribute('href').replace('shorts/', 'watch?v=').split('&pp')[0]
         try:
             video_duration = selenium_element.find_element_by_xpath('./../../../../ytd-thumbnail/a[@id="thumbnail"]/div[@id="overlays"]/ytd-thumbnail-overlay-time-status-renderer/span').get_attribute('innerHTML').split()[0]
