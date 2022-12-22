@@ -29,7 +29,7 @@ def test_normalize_whitespace():
     The expected normalized_text is: {normalized_text}
     The actual normalized_text output is: {actual_output_text}
     '''.format(index, raw_text, normalized_text, actual_output_text)
-    for index, raw_text, normalized_text in enumerate(test_cases):
+    for index, (raw_text, normalized_text) in enumerate(test_cases):
         actual_output_text = normalize_whitespace(raw_text)
         if actual_output_text != normalized_text:
             raise ValueError(error_message)
