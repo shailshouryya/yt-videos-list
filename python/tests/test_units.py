@@ -23,16 +23,16 @@ def test_normalize_whitespace():
         ('This is a title with multiple newlines \r\n and multiple carriage returns \r\n', 'This is a title with multiple newlines and multiple carriage returns'),
         ('This is a title with multiple newlines \n\r and multiple carriage returns \r\n', 'This is a title with multiple newlines and multiple carriage returns'),
     )
-    error_message = f'''
+    error_message = '''
     Test case {index} is not properly formatted!
     The raw_text provided was: {raw_text}
     The expected normalized_text is: {normalized_text}
     The actual normalized_text output is: {actual_output_text}
-    '''.format(index, raw_text, normalized_text, actual_output_text)
+    '''
     for index, (raw_text, normalized_text) in enumerate(test_cases):
         actual_output_text = normalize_whitespace(raw_text)
         if actual_output_text != normalized_text:
-            raise ValueError(error_message)
+            raise ValueError(error_message.format(index=index, raw_text=raw_text, normalized_text=normalized_text, actual_output_text=actual_output_text))
 
 
 if __name__ == '__main__':
