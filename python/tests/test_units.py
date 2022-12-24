@@ -25,10 +25,10 @@ def test_normalize_whitespace():
         ('This is a title with one newline \n but a sneaky carriage\rreturn', 'This is a title with one newline but a sneaky carriage return'),
     )
     error_message = '''
-    Test case {index} is not properly formatted!
-    The raw_text provided was: {raw_text}
-    The expected normalized_text is: {normalized_text}
-    The actual normalized_text output is: {actual_output_text}
+    ❌ Test case {index} is not properly formatted! ❌
+    The raw_text provided was:\n{raw_text}
+    The expected normalized_text is:\n{normalized_text}
+    The actual normalized_text output is: \n{actual_output_text}
     '''
     for index, (raw_text, normalized_text) in enumerate(test_cases):
         actual_output_text = normalize_whitespace(raw_text)
@@ -38,3 +38,4 @@ def test_normalize_whitespace():
 
 if __name__ == '__main__':
     main()
+    print('✅ All unit tests passed! ✅',)
