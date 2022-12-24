@@ -22,6 +22,7 @@ def test_normalize_whitespace():
         ('This is a title with multiple newlines \r \n and multiple carriage returns \r\n', 'This is a title with multiple newlines and multiple carriage returns'),
         ('This is a title with multiple newlines \r\n and multiple carriage returns \r\n', 'This is a title with multiple newlines and multiple carriage returns'),
         ('This is a title with multiple newlines \n\r and multiple carriage returns \r\n', 'This is a title with multiple newlines and multiple carriage returns'),
+        ('This is a title with one newline \n but a sneaky carriage\rreturn', 'This is a title with one newline but a sneaky carriage return'),
     )
     error_message = '''
     Test case {index} is not properly formatted!
