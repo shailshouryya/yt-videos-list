@@ -239,9 +239,9 @@ def create_partial_file(test_file, suffix, extension):
     shutil.copy(f'{test_file}.{extension}', f'CoreySchafer_{suffix}.{extension}')
 
 
-def verify_updated_files_match_expected_output_files(test_output_file, full_file, log_file):
+def verify_updated_files_match_expected_output_files(updated_test_output_file_path, full_file, log_file):
     '''
-    Ensures the resulting test output file `test_output_file`
+    Ensures the resulting test output file `updated_test_output_file_path`
     contains the exact same content as the reference `full_file` by
     comparing the sha256 hash of both files. If the hashes match,
     the tests continue, but if the hashes don't match, the
@@ -261,7 +261,7 @@ def verify_updated_files_match_expected_output_files(test_output_file, full_file
     concurrently running threads will continue to execute until
     they finish, but no FURTHER work will be done after that.
     '''
-    with open(f'{test_output_file}.txt', mode='r', encoding='utf-8') as test_txt, open(f'{test_output_file}.csv', mode='r', encoding='utf-8') as test_csv, open(f'{test_output_file}.md', mode='r', encoding='utf-8') as test_md:
+    with open(f'{updated_test_output_file_path}.txt', mode='r', encoding='utf-8') as test_txt, open(f'{updated_test_output_file_path}.csv', mode='r', encoding='utf-8') as test_csv, open(f'{updated_test_output_file_path}.md', mode='r', encoding='utf-8') as test_md:
         current_txt = hashlib.sha256(test_txt.read().encode('utf-8')).hexdigest()
         current_csv = hashlib.sha256(test_csv.read().encode('utf-8')).hexdigest()
         current_md  = hashlib.sha256(test_md.read().encode ('utf-8')).hexdigest()
