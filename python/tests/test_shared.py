@@ -239,10 +239,10 @@ def create_partial_file(test_file, suffix, extension):
     shutil.copy(f'{test_file}.{extension}', f'CoreySchafer_{suffix}.{extension}')
 
 
-def verify_updated_files_match_expected_output_files(updated_test_output_file_path, full_file, log_file):
+def verify_updated_files_match_expected_output_files(updated_test_output_file_path, expected_output_file_path, log_file):
     '''
     Ensures the resulting test output file `updated_test_output_file_path`
-    contains the exact same content as the reference `full_file` by
+    contains the exact same content as the reference `expected_output_file_path` by
     comparing the sha256 hash of both files. If the hashes match,
     the tests continue, but if the hashes don't match, the
     program exits by raising the `ValueError` exception in the
@@ -265,17 +265,17 @@ def verify_updated_files_match_expected_output_files(updated_test_output_file_pa
         current_txt = hashlib.sha256(test_txt.read().encode('utf-8')).hexdigest()
         current_csv = hashlib.sha256(test_csv.read().encode('utf-8')).hexdigest()
         current_md  = hashlib.sha256(test_md.read().encode ('utf-8')).hexdigest()
-    with open(f'{full_file}.txt', mode='r', encoding='utf-8') as full_txt, open(f'{full_file}.csv', mode='r', encoding='utf-8') as full_csv, open(f'{full_file}.md', mode='r', encoding='utf-8') as full_md:
+    with open(f'{expected_output_file_path}.txt', mode='r', encoding='utf-8') as full_txt, open(f'{expected_output_file_path}.csv', mode='r', encoding='utf-8') as full_csv, open(f'{expected_output_file_path}.md', mode='r', encoding='utf-8') as full_md:
         expected_txt = hashlib.sha256(full_txt.read().encode('utf-8')).hexdigest()
         expected_csv = hashlib.sha256(full_csv.read().encode('utf-8')).hexdigest()
         expected_md  = hashlib.sha256(full_md.read().encode ('utf-8')).hexdigest()
     failed = False
-    if current_txt != expected_txt: log_test_info(f'❌ ERROR! The updated txt file does NOT match the {full_file}.txt file!',       log_file); failed = True
-    else:                           log_test_info(f'✅ The updated txt file matches the {full_file}.txt file :)',                   log_file)
-    if current_csv != expected_csv: log_test_info(f'❌ ERROR! The updated csv file does NOT match the {full_file}.csv file!',       log_file); failed = True
-    else:                           log_test_info(f'✅ The updated csv file matches the {full_file}.csv file :)',                   log_file)
-    if current_md  != expected_md:  log_test_info(f'❌ ERROR! The updated md  file does NOT match the {full_file}.md  file!\n\n\n', log_file); failed = True
-    else:                           log_test_info(f'✅ The updated md  file matches the {full_file}.md  file :)\n\n\n',             log_file)
+    if current_txt != expected_txt: log_test_info(f'❌ ERROR! The updated txt file does NOT match the {expected_output_file_path}.txt file!',       log_file); failed = True
+    else:                           log_test_info(f'✅ The updated txt file matches the {expected_output_file_path}.txt file :)',                   log_file)
+    if current_csv != expected_csv: log_test_info(f'❌ ERROR! The updated csv file does NOT match the {expected_output_file_path}.csv file!',       log_file); failed = True
+    else:                           log_test_info(f'✅ The updated csv file matches the {expected_output_file_path}.csv file :)',                   log_file)
+    if current_md  != expected_md:  log_test_info(f'❌ ERROR! The updated md  file does NOT match the {expected_output_file_path}.md  file!\n\n\n', log_file); failed = True
+    else:                           log_test_info(f'✅ The updated md  file matches the {expected_output_file_path}.md  file :)\n\n\n',             log_file)
     if failed:
         log_test_info(f'❗️❗️ FAILED at {ISOFORMAT(NOW())}! ❗️❗️', log_file)
         return 'Failed!'
