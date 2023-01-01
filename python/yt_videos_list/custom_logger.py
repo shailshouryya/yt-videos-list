@@ -15,7 +15,7 @@ def log_time_taken(cpu_start_time, real_start_time, first_part_of_message, last_
  real_end_time = time.time()
  cpu_time = cpu_end_time - cpu_start_time
  real_time = real_end_time - real_start_time
- log(f'{first_part_of_message}{cpu_time} seconds ({real_time} seconds real time){last_part_of_message}', logging_locations)
+ log(f'{first_part_of_message}{real_time} time.time() seconds ({cpu_time} time.perf_counter() seconds){last_part_of_message}', logging_locations)
 def log_write_information(writer_function):
  @functools.wraps(writer_function)
  def wrap_writer_function(*args, **kwargs):
@@ -40,7 +40,7 @@ def log_write_information(writer_function):
   log('Closing'.ljust(padding) + f'{temp_file}', logging_locations)
   log(f'Successfully completed write, renaming {temp_file} to {final_file}', logging_locations)
   log('Successfully renamed'.ljust(padding) + f'{temp_file} to {final_file}', logging_locations)
-  if function_name == 'create_file': log(f'It took {function_cpu_time} seconds ({function_real_time} seconds real time)) to write all {new_videos_written} {videos} to {final_file}', logging_locations)
-  if function_name == 'update_file': log(f'It took {function_cpu_time} seconds ({function_real_time} seconds real time)) to write the {new_videos_written} ***NEW*** {videos} to the pre-existing {final_file}', logging_locations)
+  if function_name == 'create_file': log(f'It took {function_real_time} time.time() seconds ({function_cpu_time} time.perf_counter() seconds) to write all {new_videos_written} {videos} to {final_file}', logging_locations)
+  if function_name == 'update_file': log(f'It took {function_real_time} time.time() seconds ({function_cpu_time} time.perf_counter() seconds) to write the {new_videos_written} ***NEW*** {videos} to the pre-existing {final_file}', logging_locations)
   log(f'{final_file} now contains information for {total_videos} {videos}{NEWLINE}', logging_locations)
  return wrap_writer_function
