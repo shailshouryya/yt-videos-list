@@ -92,7 +92,7 @@ def load_video_data(videos_list, common_visited_videos, video_id_only, reverse_c
   video_title = normalize_whitespace(video_title)
   video_url = selenium_element.get_attribute('href').replace('shorts/', 'watch?v=').split('&pp')[0]
   try:
-   video_duration = selenium_element.find_element_by_xpath('./../../../../div[@id="thumbnail"]/ytd-thumbnail/a[@id="thumbnail"]/div[@id="overlays"]/ytd-thumbnail-overlay-time-status-renderer/div/span').get_attribute('innerHTML').split()[0]
+   video_duration = selenium_element.find_element_by_xpath('./../../../../div[@id="thumbnail"]/ytd-thumbnail/a[@id="thumbnail"]/div[@id="overlays"]/ytd-thumbnail-overlay-time-status-renderer/div/span[@class="style-scope ytd-thumbnail-overlay-time-status-renderer"]').get_attribute('innerHTML').split()[0]
   except selenium.common.exceptions.NoSuchElementException:
    video_duration = 'N/A'
    log(f'Video {videos_loaded + 1} did not have a "Video Duration" field, storing as "N/A"...', logging_locations)
