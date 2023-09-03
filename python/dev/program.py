@@ -110,10 +110,10 @@ def load_video_data(videos_list, common_visited_videos, video_id_only, reverse_c
         video_title    = normalize_whitespace(video_title)
         video_url      = selenium_element.get_attribute('href').replace('shorts/', 'watch?v=').split('&pp')[0]
         try:
-            video_duration = selenium_element.find_element_by_xpath('./../../../../ytd-thumbnail/a[@id="thumbnail"]/div[@id="overlays"]/ytd-thumbnail-overlay-time-status-renderer/span').get_attribute('innerHTML').split()[0]
+            video_duration = selenium_element.find_element_by_xpath('./../../../../div[@id="thumbnail"]/ytd-thumbnail/a[@id="thumbnail"]/div[@id="overlays"]/ytd-thumbnail-overlay-time-status-renderer/div/span').get_attribute('innerHTML').split()[0]
         except selenium.common.exceptions.NoSuchElementException:
             # example error message:
-            # Message: Unable to locate element: ./../../../../ytd-thumbnail/a[@id="thumbnail"]/div[@id="overlays"]/ytd-thumbnail-overlay-time-status-renderer/span
+            # Message: Unable to locate element: ./../../../../div[@id="thumbnail"]/ytd-thumbnail/a[@id="thumbnail"]/div[@id="overlays"]/ytd-thumbnail-overlay-time-status-renderer/div/span
             video_duration = 'N/A'
             log(f'Video {videos_loaded + 1} did not have a "Video Duration" field, storing as "N/A"...', logging_locations)
         if common_visited_videos and video_url in common_visited_videos:
