@@ -304,19 +304,19 @@
 ### Notes:              
 ***************************************************************************
 
-## Visual Studio Code (Windows) - Setting up a Python Development Environment and Complete Overview
+## Visual Studio Code (Mac) - Setting up a Python Development Environment and Complete Overview
 ### Video Number:       197
-### Video Duration:     1:15:17
-### Video URL:          https://www.youtube.com/watch?v=-nh9rCzPJ20
+### Video Duration:     1:15:44
+### Video URL:          https://www.youtube.com/watch?v=06I63_p-2A4
 ### Watched:            
 ### Watch again later:  
 ### Notes:              
 ***************************************************************************
 
-## Visual Studio Code (Mac) - Setting up a Python Development Environment and Complete Overview
+## Visual Studio Code (Windows) - Setting up a Python Development Environment and Complete Overview
 ### Video Number:       196
-### Video Duration:     1:15:44
-### Video URL:          https://www.youtube.com/watch?v=06I63_p-2A4
+### Video Duration:     1:15:17
+### Video URL:          https://www.youtube.com/watch?v=-nh9rCzPJ20
 ### Watched:            
 ### Watch again later:  
 ### Notes:              
