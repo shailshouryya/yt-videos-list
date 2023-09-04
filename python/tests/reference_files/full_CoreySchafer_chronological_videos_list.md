@@ -2059,3 +2059,12 @@
 ### Notes:              
 ***************************************************************************
 
+## Python Tutorial: Simulate the Powerball Lottery Using Python
+### Video Number:       230
+### Video Duration:     38:56
+### Video URL:          https://www.youtube.com/watch?v=HZ8uXq5VG2w
+### Watched:            
+### Watch again later:  
+### Notes:              
+***************************************************************************
+

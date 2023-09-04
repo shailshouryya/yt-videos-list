@@ -1,3 +1,12 @@
+## Python Tutorial: Simulate the Powerball Lottery Using Python
+### Video Number:       230
+### Video Duration:     38:56
+### Video ID:           HZ8uXq5VG2w
+### Watched:            
+### Watch again later:  
+### Notes:              
+***************************************************************************
+
 ## Python YouTube API Tutorial: Using OAuth to Access User Accounts
 ### Video Number:       229
 ### Video Duration:     43:21
