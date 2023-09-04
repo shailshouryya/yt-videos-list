@@ -1,3 +1,12 @@
+## How to Use ChatGPT as a Powerful Tool for Programming
+### Video Number:       231
+### Video Duration:     31:08
+### Video ID:           jRAAaDll34Q
+### Watched:            
+### Watch again later:  
+### Notes:              
+***************************************************************************
+
 ## Python Tutorial: Simulate the Powerball Lottery Using Python
 ### Video Number:       230
 ### Video Duration:     38:56

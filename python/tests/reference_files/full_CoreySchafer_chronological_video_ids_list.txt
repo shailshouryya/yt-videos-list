@@ -1838,3 +1838,11 @@ Watched:
 Watch again later: 
 Notes:             
 ***************************************************************************
+Video Number:      231
+Video Title:       How to Use ChatGPT as a Powerful Tool for Programming
+Video Duration:    31:08
+Video ID:          jRAAaDll34Q
+Watched:           
+Watch again later: 
+Notes:             
+***************************************************************************
