@@ -475,19 +475,19 @@
 ### Notes:              
 ***************************************************************************
 
-## Python Tutorial: How to Set the Path and Switch Between Different Versions/Executables (Windows)
+## Python Tutorial: How to Set the Path and Switch Between Different Versions/Executables (Mac & Linux)
 ### Video Number:       157
-### Video Duration:     24:17
-### Video ID:           OdIHeg4jj2c
+### Video Duration:     30:44
+### Video ID:           PUIE7CPANfo
 ### Watched:            
 ### Watch again later:  
 ### Notes:              
 ***************************************************************************
 
-## Python Tutorial: How to Set the Path and Switch Between Different Versions/Executables (Mac & Linux)
+## Python Tutorial: How to Set the Path and Switch Between Different Versions/Executables (Windows)
 ### Video Number:       156
-### Video Duration:     30:44
-### Video ID:           PUIE7CPANfo
+### Video Duration:     24:17
+### Video ID:           OdIHeg4jj2c
 ### Watched:            
 ### Watch again later:  
 ### Notes:              
