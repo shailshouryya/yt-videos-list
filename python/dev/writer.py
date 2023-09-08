@@ -32,7 +32,8 @@ def update_file(file_type, file_name, file_buffering, newline, csv_writer, times
     if not file_visited_videos: file_visited_videos = store_already_written_videos(file_name, file_type)
     file_visited_videos                             = format_visited_videos_for_id(file_visited_videos, video_id_only, logging_locations)
     temp_file_name = f'temp_{file_name}_{timestamp}.{file_type}'
-    with open(f'{file_name}.{file_type}', mode='r+', newline=newline, encoding='utf-8',  buffering=file_buffering) as old_file, open(temp_file_name, mode='w+', newline=newline, encoding='utf-8',  buffering=file_buffering) as temp_file:
+    original_file_name = f'{file_name}.{file_type}'
+    with open(original_file_name, mode='r+', newline=newline, encoding='utf-8',  buffering=file_buffering) as old_file, open(temp_file_name, mode='w+', newline=newline, encoding='utf-8',  buffering=file_buffering) as temp_file:
         if file_type == 'csv':
             number_of_existing_videos = int(max(re.findall('^(\d+)?,', old_file.read(), re.M), key=lambda i: int(i)))
             fieldnames                = ['Video Number', 'Video Title', 'Video Duration', identifier, 'Watched', 'Watch again later', 'Notes']
