@@ -19,7 +19,7 @@ def create_file(file_type, file_name, file_buffering, newline, csv_writer, times
             csv_writer.writeheader()
         new_videos = total_videos = len(video_data)
         create_entries(file_type, temp_file, csv_writer, logging_locations, identifier, video_data, reverse_chronological, total_videos, number_of_existing_videos=0, file_visited_videos=set())
-    log('Closing'.ljust(padding) + f'{temp_file_name}', logging_locations)
+    log('Closed'.ljust(padding) + f'{temp_file_name}', logging_locations)
     videos = format_video_plurality(new_videos)
     log('Finished writing to'.ljust(padding)               + f'{temp_file_name}', logging_locations)
     log(f'{new_videos} {videos} written to'.ljust(padding) + f'{temp_file_name}', logging_locations)
@@ -60,11 +60,15 @@ def update_file(file_type, file_name, file_buffering, newline, csv_writer, times
             if reverse_chronological:
                 old_file.seek(0)
                 if file_type == 'csv': old_file.readline()         # skip the header since the header is already written at the top of temp file, and the contents of the pre-existing file are added to the END of the temp file
+                log('Appending contents of original file to'.ljust(padding) + f'{temp_file_name}',     logging_locations)
                 for line in old_file:  temp_file.write(line)
+                log('Appended  contents of original file to'.ljust(padding) + f'{temp_file_name}',     logging_locations)
             else:
                 temp_file.seek(0)                                  # no need to skip the first line for csv files since csv header only written when reverse_chronological=True
+                log('Appending contents of temporary file to'.ljust(padding) + f'{original_file_name}', logging_locations)
                 for line in temp_file: old_file.write(line)
-    log('Closing'.ljust(padding) + f'{temp_file_name}', logging_locations)
+                log('Appended contents of temporary file to'.ljust(padding) + f'{original_file_name}', logging_locations)
+    log('Closed'.ljust(padding) + f'{temp_file_name} and {original_file_name}', logging_locations)
     if not reverse_chronological or (reverse_chronological and new_videos == 0):
         # if the reverse_chronological flag was set to True BUT no new videos were found: remove temp_{file_name} since
         #   the original ChannelName_reverse_chronological.ext file stayed the same ahd no new information was written to the temp file
@@ -74,10 +78,12 @@ def update_file(file_type, file_name, file_buffering, newline, csv_writer, times
         # if the reverse_chronological flag was set to False: remove temp_{file_name} since
         #   if new data was found:    all new information from the temp file was appended to the end of the original ChannelName_chronological.ext file (new data is at bottom of file)
         #   if no new data was found: the original file stayed the same
+        log(f'Successfully completed write, removing {temp_file_name} since {original_file_name} now has all contents', logging_locations)
         os.remove(temp_file_name)
+        log('Successfully removed'.ljust(padding) + f'{temp_file_name}', logging_locations)
     else:
         # if the reverse_chronological flag was set to True: rename temp_{file_name} to {file_name}.{extension} since program appends old info from the original file to the end of new data in the temp file
-        log(f'Successfully completed write, renaming {temp_file_name} to {original_file_name}', logging_locations)
+        log(f'Successfully completed write, renaming {temp_file_name} to {original_file_name} since {temp_file_name} now has all contents', logging_locations)
         os.replace(temp_file_name, original_file_name)
         log('Successfully renamed'.ljust(padding) + f'{temp_file_name} to {original_file_name}', logging_locations)
     return file_name, new_videos, total_videos, reverse_chronological, logging_locations
