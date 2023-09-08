@@ -3,6 +3,7 @@ import re
 import os
 from .custom_logger import log, log_write_information
 from .scroller      import store_already_written_videos
+padding = 39
 @log_write_information
 def create_file(file_type, file_name, file_buffering, newline, csv_writer, timestamp, logging_locations, identifier, reverse_chronological, video_data):
     temp_file_name = f'temp_{file_name}_{timestamp}.{file_type}'
@@ -13,8 +14,14 @@ def create_file(file_type, file_name, file_buffering, newline, csv_writer, times
             csv_writer.writeheader()
         new_videos = total_videos = len(video_data)
         create_entries(file_type, temp_file, csv_writer, logging_locations, identifier, video_data, reverse_chronological, total_videos, number_of_existing_videos=0, file_visited_videos=set())
+    log('Closing'.ljust(padding) + f'{temp_file_name}', logging_locations)
+    videos = format_video_plurality(new_videos)
+    log('Finished writing to'.ljust(padding)               + f'{temp_file_name}', logging_locations)
+    log(f'{new_videos} {videos} written to'.ljust(padding) + f'{temp_file_name}', logging_locations)
     final_file_name = f'{file_name}.{file_type}'
+    log(f'Successfully completed write, renaming {temp_file_name} to {final_file_name}', logging_locations)
     os.replace(temp_file_name, final_file_name)
+    log('Successfully renamed'.ljust(padding) + f'{temp_file_name} to {final_file_name}', logging_locations)
     return file_name, new_videos, total_videos, reverse_chronological, logging_locations
 @log_write_information
 def update_file(file_type, file_name, file_buffering, newline, csv_writer, timestamp, logging_locations, identifier, reverse_chronological, video_data, file_visited_videos, video_id_only):
@@ -32,8 +39,11 @@ def update_file(file_type, file_name, file_buffering, newline, csv_writer, times
             number_of_existing_videos = int(max(re.findall('^(?:### )?Video Number:\s*(\d+)', old_file.read(), re.M), key=lambda i: int(i)))
         new_videos   = find_number_of_new_videos(video_data, file_visited_videos)
         total_videos = number_of_existing_videos + new_videos
+        videos       = format_video_plurality(new_videos)
         if new_videos != 0:
             create_entries(file_type, temp_file, csv_writer, logging_locations, identifier, video_data, reverse_chronological, total_videos, number_of_existing_videos, file_visited_videos)
+            log('Finished writing to'.ljust(padding)                         + f'{temp_file_name}', logging_locations)
+            log(f'{new_videos} ***NEW*** {videos} written to'.ljust(padding) + f'{temp_file_name}', logging_locations)
             if reverse_chronological:
                 old_file.seek(0)
                 if file_type == 'csv': old_file.readline()
@@ -41,11 +51,13 @@ def update_file(file_type, file_name, file_buffering, newline, csv_writer, times
             else:
                 temp_file.seek(0)
                 for line in temp_file: old_file.write(line)
+    log('Closing'.ljust(padding) + f'{temp_file_name}', logging_locations)
     if not reverse_chronological or (reverse_chronological and new_videos == 0):
         os.remove(temp_file_name)
     else:
-        final_file_name = f'{file_name}.{file_type}'
-        os.replace(temp_file_name, final_file_name)
+        log(f'Successfully completed write, renaming {temp_file_name} to {original_file_name}', logging_locations)
+        os.replace(temp_file_name, original_file_name)
+        log('Successfully renamed'.ljust(padding) + f'{temp_file_name} to {original_file_name}', logging_locations)
     return file_name, new_videos, total_videos, reverse_chronological, logging_locations
 def format_visited_videos_for_id(file_visited_videos, video_id_only, logging_locations):
     if video_id_only is True:
@@ -117,3 +129,6 @@ def create_row(file_type, writer, video_number, video_title, video_duration, vid
         writer.write(f'{ljust("Notes:")}{newline}')
         writer.write('*'*75 + newline)
         if markdown: writer.write('\n')
+def format_video_plurality(new_videos_written):
+    if new_videos_written == 1: return 'video'
+    else:                       return 'videos'

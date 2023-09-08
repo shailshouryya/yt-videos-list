@@ -39,13 +39,6 @@ def log_write_information(writer_function):
         function_real_time       = function_real_end_time - function_real_start_time
         temp_file  = f'temp_{file_name}_{timestamp}.{extension}'    # determine temp_{file_name} for wrap_writer_function() scope (writer_function defines it in its own scope already)
         final_file = f'{file_name}.{extension}'
-        padding    = 39
-        log('Finished writing to'.ljust(padding) + f'{temp_file}',                                                                    logging_locations)
-        if function_name == 'create_file': log(f'{new_videos_written} {videos} written to'.ljust(padding)           + f'{temp_file}', logging_locations)
-        if function_name == 'update_file': log(f'{new_videos_written} ***NEW*** {videos} written to'.ljust(padding) + f'{temp_file}', logging_locations)
-        log('Closing'.ljust(padding) + f'{temp_file}',                                                                                logging_locations)
-        log(f'Successfully completed write, renaming {temp_file} to {final_file}',                                                    logging_locations)
-        log('Successfully renamed'.ljust(padding) + f'{temp_file} to {final_file}',                                                                                   logging_locations)
         if function_name == 'create_file': log(f'It took {function_real_time} time.time() seconds ({function_cpu_time} time.perf_counter() seconds) to write all {new_videos_written} {videos} to {final_file}',                            logging_locations)
         if function_name == 'update_file': log(f'It took {function_real_time} time.time() seconds ({function_cpu_time} time.perf_counter() seconds) to write the {new_videos_written} ***NEW*** {videos} to the pre-existing {final_file}', logging_locations)
         log(f'{final_file} now contains information for {total_videos} {videos}{NEWLINE}',                                                                            logging_locations)
