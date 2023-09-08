@@ -47,21 +47,21 @@ def update_file(file_type, file_name, file_buffering, newline, csv_writer, times
             if reverse_chronological:
                 old_file.seek(0)
                 if file_type == 'csv': old_file.readline()
-                log('Appending contents of original file to'.ljust(padding) + f'{temp_file_name}',     logging_locations)
+                log('Appending content of original file to'.ljust(padding) + f'{temp_file_name}',     logging_locations)
                 for line in old_file:  temp_file.write(line)
-                log('Appended  contents of original file to'.ljust(padding) + f'{temp_file_name}',     logging_locations)
+                log('Appended  content of original file to'.ljust(padding) + f'{temp_file_name}',     logging_locations)
             else:
                 temp_file.seek(0)
-                log('Appending contents of temporary file to'.ljust(padding) + f'{original_file_name}', logging_locations)
+                log('Appending content of temporary file to'.ljust(padding) + f'{original_file_name}', logging_locations)
                 for line in temp_file: old_file.write(line)
-                log('Appended contents of temporary file to'.ljust(padding) + f'{original_file_name}', logging_locations)
+                log('Appended content of temporary file to'.ljust(padding) + f'{original_file_name}', logging_locations)
     log('Closed'.ljust(padding) + f'{temp_file_name} and {original_file_name}', logging_locations)
     if not reverse_chronological or (reverse_chronological and new_videos == 0):
-        log(f'Successfully completed write, removing {temp_file_name} since {original_file_name} now has all contents', logging_locations)
+        log(f'Successfully completed write, removing {temp_file_name} since {original_file_name} now has all content', logging_locations)
         os.remove(temp_file_name)
         log('Successfully removed'.ljust(padding) + f'{temp_file_name}', logging_locations)
     else:
-        log(f'Successfully completed write, renaming {temp_file_name} to {original_file_name} since {temp_file_name} now has all contents', logging_locations)
+        log(f'Successfully completed write, renaming {temp_file_name} to {original_file_name} since {temp_file_name} now has all content', logging_locations)
         os.replace(temp_file_name, original_file_name)
         log('Successfully renamed'.ljust(padding) + f'{temp_file_name} to {original_file_name}', logging_locations)
     return file_name, new_videos, total_videos, reverse_chronological, logging_locations
