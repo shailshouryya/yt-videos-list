@@ -3,7 +3,7 @@ import re
 import os
 from .custom_logger import log, log_write_information
 from .scroller      import store_already_written_videos
-padding = 39
+PADDING = 39
 @log_write_information
 def create_file(file_type, file_name, file_buffering, newline, csv_writer, timestamp, logging_locations, identifier, reverse_chronological, video_data):
     temp_file_name = f'temp_{file_name}_{timestamp}.{file_type}'
@@ -14,14 +14,14 @@ def create_file(file_type, file_name, file_buffering, newline, csv_writer, times
             csv_writer.writeheader()
         new_videos = total_videos = len(video_data)
         create_entries(file_type, temp_file, csv_writer, logging_locations, identifier, video_data, reverse_chronological, total_videos, number_of_existing_videos=0, file_visited_videos=set())
-    log('Closed'.ljust(padding) + f'{temp_file_name}', logging_locations)
+    log('Closed'.ljust(PADDING) + f'{temp_file_name}', logging_locations)
     videos = format_video_plurality(new_videos)
-    log('Finished writing to'.ljust(padding)               + f'{temp_file_name}', logging_locations)
-    log(f'{new_videos} {videos} written to'.ljust(padding) + f'{temp_file_name}', logging_locations)
+    log('Finished writing to'.ljust(PADDING)               + f'{temp_file_name}', logging_locations)
+    log(f'{new_videos} {videos} written to'.ljust(PADDING) + f'{temp_file_name}', logging_locations)
     final_file_name = f'{file_name}.{file_type}'
     log(f'Successfully completed write, renaming {temp_file_name} to {final_file_name}', logging_locations)
     os.replace(temp_file_name, final_file_name)
-    log('Successfully renamed'.ljust(padding) + f'{temp_file_name} to {final_file_name}', logging_locations)
+    log('Successfully renamed'.ljust(PADDING) + f'{temp_file_name} to {final_file_name}', logging_locations)
     return file_name, new_videos, total_videos, reverse_chronological, logging_locations
 @log_write_information
 def update_file(file_type, file_name, file_buffering, newline, csv_writer, timestamp, logging_locations, identifier, reverse_chronological, video_data, file_visited_videos, video_id_only):
@@ -42,28 +42,28 @@ def update_file(file_type, file_name, file_buffering, newline, csv_writer, times
         videos       = format_video_plurality(new_videos)
         if new_videos != 0:
             create_entries(file_type, temp_file, csv_writer, logging_locations, identifier, video_data, reverse_chronological, total_videos, number_of_existing_videos, file_visited_videos)
-            log('Finished writing to'.ljust(padding)                         + f'{temp_file_name}', logging_locations)
-            log(f'{new_videos} ***NEW*** {videos} written to'.ljust(padding) + f'{temp_file_name}', logging_locations)
+            log('Finished writing to'.ljust(PADDING)                         + f'{temp_file_name}', logging_locations)
+            log(f'{new_videos} ***NEW*** {videos} written to'.ljust(PADDING) + f'{temp_file_name}', logging_locations)
             if reverse_chronological:
                 old_file.seek(0)
                 if file_type == 'csv': old_file.readline()
-                log('Appending content of original file to'.ljust(padding) + f'{temp_file_name}',     logging_locations)
+                log('Appending content of original file to'.ljust(PADDING) + f'{temp_file_name}',     logging_locations)
                 for line in old_file:  temp_file.write(line)
-                log('Appended  content of original file to'.ljust(padding) + f'{temp_file_name}',     logging_locations)
+                log('Appended  content of original file to'.ljust(PADDING) + f'{temp_file_name}',     logging_locations)
             else:
                 temp_file.seek(0)
-                log('Appending content of temporary file to'.ljust(padding) + f'{original_file_name}', logging_locations)
+                log('Appending content of temporary file to'.ljust(PADDING) + f'{original_file_name}', logging_locations)
                 for line in temp_file: old_file.write(line)
-                log('Appended content of temporary file to'.ljust(padding) + f'{original_file_name}', logging_locations)
-    log('Closed'.ljust(padding) + f'{temp_file_name} and {original_file_name}', logging_locations)
+                log('Appended content of temporary file to'.ljust(PADDING) + f'{original_file_name}', logging_locations)
+    log('Closed'.ljust(PADDING) + f'{temp_file_name} and {original_file_name}', logging_locations)
     if not reverse_chronological or (reverse_chronological and new_videos == 0):
         log(f'Successfully completed write, removing {temp_file_name} since {original_file_name} now has all content', logging_locations)
         os.remove(temp_file_name)
-        log('Successfully removed'.ljust(padding) + f'{temp_file_name}', logging_locations)
+        log('Successfully removed'.ljust(PADDING) + f'{temp_file_name}', logging_locations)
     else:
         log(f'Successfully completed write, renaming {temp_file_name} to {original_file_name} since {temp_file_name} now has all content', logging_locations)
         os.replace(temp_file_name, original_file_name)
-        log('Successfully renamed'.ljust(padding) + f'{temp_file_name} to {original_file_name}', logging_locations)
+        log('Successfully renamed'.ljust(PADDING) + f'{temp_file_name} to {original_file_name}', logging_locations)
     return file_name, new_videos, total_videos, reverse_chronological, logging_locations
 def format_visited_videos_for_id(file_visited_videos, video_id_only, logging_locations):
     if video_id_only is True:
