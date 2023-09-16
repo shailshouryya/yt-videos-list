@@ -23,8 +23,8 @@ def create_file(file_type, file_name, file_buffering, newline, csv_writer, times
     videos = format_video_plurality(new_videos)
     log('Finished writing to'.ljust(PADDING)               + f'{temp_file_name}', logging_locations)
     log(f'{new_videos} {videos} written to'.ljust(PADDING) + f'{temp_file_name}', logging_locations)
-    # rename temp_{file_name} to {file_name}.{extension} here AFTER everything else finishes to ensure atomicity
     final_file_name = f'{file_name}.{file_type}'
+    # rename temp_{file_name}_{timestamp}.{extension} to {file_name}.{extension} here AFTER everything else finishes to ensure atomicity
     log(f'Successfully completed write, renaming {temp_file_name} to {final_file_name}', logging_locations)
     os.replace(temp_file_name, final_file_name)
     log('Successfully renamed'.ljust(PADDING) + f'{temp_file_name} to {final_file_name}', logging_locations)
