@@ -55,7 +55,7 @@ setup(
     # package_dir={'':'src'},
 
 
-    python_requires  = '>=3.6.*, <4',
+    python_requires  = '>=3.6, <4',
     install_requires = [ # Optional
         'selenium>=3.141.0, <4',
         'save_thread_result==0.1.0'
