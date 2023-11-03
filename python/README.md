@@ -30,9 +30,75 @@ If you have an older version of Python, you can download Python 3.9.1 (follow li
 </details>
 
 <details>
+  <summary><b>Using <code>venv</code> (optional)</b></summary>
+
+  While creating a virtual environment **is not required** to use this package, creating a virtual environment is useful for avoiding dependency conflicts with other projects. If **you are sure you do not need to worry about dependency conflicts with other projects**, skip this step.
+
+  Python has ***many*** ways to set up and use a virtual environment. The following instructions use the `venv` provided with the python standard library for simplicity. You do not need to use this particular implementation of a virtual environment, but virtual environments are outside of the scope of this project, so **you will need to figure out how to set up and use a different implementation of python virtual environments on your own if you choose a different implementation of a virtual environment, since there are too many different variations to cover here**.
+
+<pre>
+### CREATING the virtual environment on MacOS/Linux ###
+
+python3 -m venv ytvl-venv
+source ytvl-venv/bin/activate
+# python3 # enter the python shell inside this virtual environment
+deactivate # exit this virtual environment
+
+### USING the virtual environment on MacOS/Linux ###
+
+# if ytvl-venv is in the directory you are currently in:
+source ytvl-venv/bin/activate
+
+# if ytvl-venv is NOT in the directory you are currently in:
+source /absolute/path/to/ytvl-venv/bin/activate
+
+deactivate # exit this virtual environment
+</pre>
+
+<pre>
+### CREATING the virtual environment on Windows (NOT FOR git BASH) ###
+
+python -m venv ytvl-venv
+ytvl-venv\Scripts\activate
+# python # enter the python shell inside this virtual environment
+deactivate # exit this virtual environment
+
+### USING the virtual environment on Windows (NOT FOR git BASH) ###
+
+# if ytvl-venv is in the directory you are currently in:
+ytvl-venv\Scripts\activate
+
+# if ytvl-venv is NOT in the directory you are currently in:
+\absolute\path\to\ytvl-venv\Scripts\activate
+
+deactivate # exit this virtual environment
+</pre>
+
+<pre>
+### CREATING the virtual environment on Windows (FOR git BASH) ###
+
+python -m venv ytvl-venv
+source ytvl-venv/Scripts/activate
+# python # enter the python shell inside this virtual environment
+deactivate # exit this virtual environment
+
+### USING the virtual environment on Windows (FOR git BASH) ###
+
+# if ytvl-venv is in the directory you are currently in:
+source ytvl-venv/Scripts/activate
+
+# if ytvl-venv is NOT in the directory you are currently in:
+source /absolute/path/to/ytvl-venv/Scripts/activate
+
+deactivate # exit this virtual environment
+</pre>
+
+</details>
+
+<details>
   <summary><b>Installing the package</b></summary>
 
-After you install Python 3.6+ and ensure you have the required permissions as needed, enter the following in your command line:
+After you install Python 3.6+ and ensure you have the required permissions as needed and have activated your virtual environment as required (if you decide to use a virtual environment - you do not **need** to use a virtual environment), enter the following in your command line:
 ```shell
 # if something isn't working properly, try rerunning this
 # the problem may have been fixed with a newer version
