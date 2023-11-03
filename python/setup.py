@@ -57,6 +57,7 @@ setup(
 
     python_requires  = '>=3.6, <4',
     install_requires = [ # Optional
+        'urllib3>=1.26.0, <=1.26.18',
         'selenium>=3.141.0, <4',
         'save_thread_result==0.1.1'
     ],
