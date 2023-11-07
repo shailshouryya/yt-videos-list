@@ -69,6 +69,9 @@ deactivate # exit this virtual environment
 ytvl-venv\Scripts\activate
 
 # if ytvl-venv is NOT in the directory you are currently in:
+## you may need to
+##    include the .ps1 extenstion (activate.ps1) in Powershell
+## or include the .bat extension (activate.bat) in Command Prompt
 \absolute\path\to\ytvl-venv\Scripts\activate
 
 deactivate # exit this virtual environment
@@ -98,7 +101,7 @@ deactivate # exit this virtual environment
 <details>
   <summary><b>Installing the package</b></summary>
 
-After you install Python 3.6+ and ensure you have the required permissions as needed and have activated your virtual environment as required (if you decide to use a virtual environment - you do not **need** to use a virtual environment), enter the following in your command line:
+After you install Python 3.6+ and ensure you have the required permissions as needed and have activated your virtual environment as required (if you decide to use a virtual environment - you do not **need** to use a virtual environment, but if you choose to use `venv`, follow the instructions above), enter the following in your command line:
 ```shell
 # if something isn't working properly, try rerunning this
 # the problem may have been fixed with a newer version
