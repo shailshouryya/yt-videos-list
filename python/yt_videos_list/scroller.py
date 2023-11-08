@@ -39,16 +39,16 @@ def determine_common_visited_videos(file_name, txt_exists, csv_exists, md_exists
 def store_already_written_videos(file_name, file_type):
  with open(f'{file_name}.{file_type}', mode='r', encoding='utf-8') as file:
   if file_type in ('txt', 'md'):
-   file_contents = file.read()
+   file_content = file.read()
    seen_videos = set(
-    re.findall('^(?:### )?Video URL:\s*(https://www\.youtube\.com/watch\?v=.+?)(?:\s|\n)', file_contents, flags=re.MULTILINE) or
-    re.findall('^(?:### )?Video ID:\s*([A-z0-9_-]{11})$', file_contents, flags=re.MULTILINE)
+    re.findall('^(?:### )?Video URL:\s*(https://www\.youtube\.com/watch\?v=.+?)(?:\s|\n)', file_content, flags=re.MULTILINE) or
+    re.findall('^(?:### )?Video ID:\s*([A-z0-9_-]{11})$', file_content, flags=re.MULTILINE)
    )
   if file_type == 'csv':
-   file_contents = csv.reader(file)
+   file_content = csv.reader(file)
    seen_videos = set(
     row[3]
-    for row in file_contents
+    for row in file_content
    )
   if seen_videos:
    random_video = seen_videos.pop()
