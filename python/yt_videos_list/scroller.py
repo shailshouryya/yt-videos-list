@@ -1,3 +1,4 @@
+import csv
 import re
 import time
 from .custom_logger import log, log_time_taken
@@ -37,16 +38,17 @@ def determine_common_visited_videos(file_name, txt_exists, csv_exists, md_exists
  return visited_videos, stored_in_txt, stored_in_csv, stored_in_md
 def store_already_written_videos(file_name, file_type):
  with open(f'{file_name}.{file_type}', mode='r', encoding='utf-8') as file:
-  file_contents = file.read()
   if file_type in ('txt', 'md'):
+   file_contents = file.read()
    seen_videos = set(
     re.findall('^(?:### )?Video URL:\s*(https://www\.youtube\.com/watch\?v=.+?)(?:\s|\n)', file_contents, flags=re.MULTILINE) or
     re.findall('^(?:### )?Video ID:\s*([A-z0-9_-]{11})$', file_contents, flags=re.MULTILINE)
    )
   if file_type == 'csv':
+   file_contents = csv.reader(file)
    seen_videos = set(
-    re.findall(',(https://www\.youtube\.com/watch\?v=.+?),', file_contents) or
-    re.findall(',([A-z0-9_-]{11}),', file_contents)
+    row[3]
+    for row in file_contents
    )
   if seen_videos:
    random_video = seen_videos.pop()
