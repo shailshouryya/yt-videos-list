@@ -177,6 +177,11 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
         except selenium.common.exceptions.TimeoutException as error_message:
             raise RuntimeError(common_message.selenium_unable_to_load_elements_error) from error_message
         channel_name, file_name = determine_file_name(channel_heading_xpath, topic_channel_heading_xpath)
+        # the program actually "starts" right after `urls.popleft()`
+        # but `yield_logger` cannot be called earlier and must be
+        # called here inside `run_scraper` since `file_name`
+        # is potentially dependent on the channel name, which is not loaded until
+        # the `load_page` call in the try/except block above
         with yield_logger(file_name) as logging_locations:
             log( '>' * 50 + 'STARTING  PROGRAM' + '<' * 50,             logging_locations)
             log(f'Now scraping {url} using the {user_driver}driver...', logging_locations)
