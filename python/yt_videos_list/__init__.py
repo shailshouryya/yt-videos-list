@@ -6,6 +6,12 @@ URLs uploaded by a channel) with end-to-end web scraping - no API tokens require
 import sys
 import time
 from collections import deque
+from typing import (
+    Any,
+    List,
+    Optional,
+    Tuple,
+)
 
 from save_thread_result import ThreadWithResult
 
@@ -192,7 +198,23 @@ class ListCreator:
     Only creating a csv file with everything else set to default:
     -> lc = ListCreator(txt=False, md=False)
     '''
-    def __init__(self, txt=True, csv=True, md=True, file_suffix=True, all_video_data_in_memory=False, video_data_returned=False, video_id_only=False, reverse_chronological=True, headless=False, scroll_pause_time=0.8, driver=None, cookie_consent=False, verify_page_bottom_n_times=3, file_buffering=-1):
+    def __init__(
+        self,
+        txt:                             bool            = True,
+        csv:                             bool            = True,
+        md:                              bool            = True,
+        file_suffix:                     bool            = True,
+        all_video_data_in_memory:        bool            = False,
+        video_data_returned:             bool            = False,
+        video_id_only:                   bool            = False,
+        reverse_chronological:           bool            = True,
+        headless:                        bool            = False,
+        scroll_pause_time:               float           = 0.8,
+        driver:                          Optional[str]   = None,
+        cookie_consent:                  bool            = False,
+        verify_page_bottom_n_times:      int             = 3,
+        file_buffering:                  int             = -1,
+    ) -> None:
         '''
         Initializes an instance of ListCreator by setting the attributes of the instance to the provided arguments,
         and setting any attributes not provided as the default parameter value.
@@ -219,7 +241,9 @@ class ListCreator:
         if   self.video_data_returned is True:                                             print(video_data_returned_information)
 
 
-    def __repr__(self):
+    def __repr__(
+        self
+    ) -> str:
         '''
         Returns an unambiguous representation of the current instance that can be used to recreate the same exact instance.
         This is useful for internal use and developer debugging.
@@ -229,7 +253,9 @@ class ListCreator:
         return f'''{self.__class__.__name__}(txt={self.txt}, csv={self.csv}, md={self.markdown}, file_suffix={self.file_suffix}, all_video_data_in_memory={self.all_video_data_in_memory}, video_data_returned={self.video_data_returned}, video_id_only={self.video_id_only}, reverse_chronological={self.reverse_chronological}, headless={self.headless}, scroll_pause_time={self.scroll_pause_time}, driver={formatted_driver}, cookie_consent={self.cookie_consent}, verify_page_bottom_n_times={self.verify_page_bottom_n_times}, file_buffering={self.file_buffering})'''
 
 
-    def __str__(self):
+    def __str__(
+        self
+    ) -> str:
         '''
         Returns an easy to read representation of the current instance.
         This is useful to see the attributes of the current instance in an easily readable format.
@@ -258,7 +284,20 @@ class ListCreator:
         '''
 
 
-    def create_list_for(self, url, log_silently=False, file_name='auto'):
+    def create_list_for(
+        self,
+        url: str,
+        log_silently: bool = False,
+        file_name: str = 'auto',
+    ) -> Tuple[
+        List[
+            List[int|str] # [int, str, str, str]
+        ],
+        Tuple[
+            str,
+            str,
+        ]
+    ]:
         '''
         Returns a tuple containing 2 values:
           -> Value 1:
@@ -326,7 +365,17 @@ class ListCreator:
         return ([[0, '', '', '']], write_information) # return dummy video_data
 
 
-    def create_list_from(self, path_to_channel_urls_file, number_of_threads=4, min_sleep=1, max_sleep=5, after_n_channels_pause_for_s=(20, 10), log_subthread_status_silently=False, log_subthread_info_silently=False, file_name='auto'):
+    def create_list_from(
+        self,
+        path_to_channel_urls_file:         str,
+        number_of_threads:                 int                = 4,
+        min_sleep:                         int                = 1,
+        max_sleep:                         int                = 5,
+        after_n_channels_pause_for_s:      Tuple[int, int]    = (20, 10),
+        log_subthread_status_silently:     bool               = False,
+        log_subthread_info_silently:       bool               = False,
+        file_name:                         str                = 'auto',
+    ) -> None:
         '''
         The create_list_from() method creates a list using the arguments specified during instantiation of the ListCreator instance.
         You need to specify just the path to the text file containing urls of all the channels you want to scrape as the `path_to_channel_urls_file` argument.
@@ -406,12 +455,13 @@ class ListCreator:
             log( '>' * 50 + 'STARTING  MULTI-THREADED PROGRAM' + '<' * 50,                                                                                    logging_locations)
             log(f'Iterating through all urls in {path_to_channel_urls_file} and scraping number_of_threads={number_of_threads} channels concurrently...\n\n', logging_locations)
             log(f'Current configuration: {self.__repr__()}',                                                                                                  logging_locations)
-            urls             = deque()
-            count            = [0]
-            running_threads  = set()
+            urls: deque[str]                       = deque()
+            count: List[int]                       = [0]
+            running_threads: set[ThreadWithResult] = set()
             finished_threads = set()
             instance_attributes = self.__determine_instance_attributes()
-            def remove_finished_threads():
+            def remove_finished_threads(
+            ) -> None:
                 # can't remove dead threads from running_threads set directly because of the following exception:
                 # RuntimeError: Set changed size during iteration
                 for thread in running_threads:
@@ -446,7 +496,9 @@ class ListCreator:
             log( '>' * 50 + 'COMPLETED MULTI-THREADED PROGRAM' + '<' * 50, logging_locations)
 
 
-    def __determine_instance_attributes(self):
+    def __determine_instance_attributes(
+        self,
+    ) -> Tuple[bool, bool, bool, bool, bool, bool, bool, bool, float, str | None, bool, int, int, str, str]:
         _execution_type     = 'module'
         return (self.txt, self.csv, self.markdown, self.file_suffix, self.all_video_data_in_memory, self.video_id_only, self.reverse_chronological, self.headless, self.scroll_pause_time, self.driver, self.cookie_consent, self.verify_page_bottom_n_times, self.file_buffering, self.__repr__(), _execution_type)
 
@@ -460,13 +512,20 @@ class _DummyLock:
        make sure to read 1. through 7.
        and pay attention to the the example code
     '''
-    def __enter__(self):
+    def __enter__(
+        self
+    ) -> None:
         '''
         This dummy lock does not do anything, so explicitly return None since there is no useful instance to return from this .__enter__ method.
         '''
         return None
 
-    def __exit__(self, exc_type, exc_value, exc_tb):
+    def __exit__(
+        self,
+        exc_type: Any,
+        exc_value: Any,
+        exc_tb: Any,
+    ) -> None:
         '''
         This dummy lock is not (or at least, SHOULD not be) doing an operation that should fail between the __enter__ and __exit__ calls, but in case something does fail, the explicit None return (which evaluates to the False boolean) will NOT ignore the failure.
 
