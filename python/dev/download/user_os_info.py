@@ -4,7 +4,8 @@ import platform
 from ..notifications import Common
 
 
-def determine_user_os():
+def determine_user_os(
+) -> str:
     # make sure to update the determine_user_os() function
     # in tests/deermine.py if anything is modified here!
     user_os = platform.system().lower()

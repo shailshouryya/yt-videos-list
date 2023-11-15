@@ -4,23 +4,51 @@ import time
 import datetime
 import threading
 
+from io import (
+    TextIOWrapper,
+)
+from typing import (
+    List,
+    Optional,
+    Set,
+    TextIO,
+    Tuple,
+)
+
 import selenium
+
+from selenium.webdriver.remote.webdriver import WebDriver
+from selenium.webdriver.remote.webelement import WebElement
 
 from .              import scroller, writer
 from .notifications import Common
 from .custom_logger import log, log_time_taken
 
 
-def determine_action(url, driver, video_id_only, scroll_pause_time, verify_page_bottom_n_times, reverse_chronological, file_name, file_buffering, txt, csv, markdown, all_video_data_in_memory, logging_locations):
+def determine_action(
+    url: str,
+    driver: WebDriver,
+    video_id_only: bool,
+    scroll_pause_time: float,
+    verify_page_bottom_n_times: int,
+    reverse_chronological: bool,
+    file_name: str,
+    file_buffering: int,
+    txt: bool,
+    csv: bool,
+    markdown: bool,
+    all_video_data_in_memory: bool,
+    logging_locations: Tuple[TextIOWrapper] | Tuple[TextIOWrapper, TextIO],
+) -> Optional[List[list[int | str]]]: # [int, str, str | Literal['N/A'], str]:
     common_message = Common()
     txt_exists = os.path.isfile(f'{file_name}.txt') if txt      else False # only check if file exists if program was specified to extract info into txt file, otherwise set to False regardless of whether a txt file already exists or not
     csv_exists = os.path.isfile(f'{file_name}.csv') if csv      else False # only check if file exists if program was specified to extract info into csv file, otherwise set to False regardless of whether a csv file already exists or not
     md_exists  = os.path.isfile(f'{file_name}.md')  if markdown else False # only check if file exists if program was specified to extract info into md  file, otherwise set to False regardless of whether a md  file already exists or not
     force_to_page_bottom = False
-    txt_videos = set()
-    csv_videos = set()
-    md_videos  = set()
-    common_visited_videos = set()
+    txt_videos:            Set[str] = set()
+    csv_videos:            Set[str] = set()
+    md_videos:             Set[str] = set()
+    common_visited_videos: Set[str] = set()
     current_condition = (txt, txt_exists, csv, csv_exists, markdown, md_exists)
     update_conditions = set(
         (
@@ -53,7 +81,11 @@ def determine_action(url, driver, video_id_only, scroll_pause_time, verify_page_
         # as opposed to the MainThread writing to 1 file and going through all the memory locations for the video information for that file,
         # then RESTARTING at the beginning of the stored memory to save the video information to the next file.
         threads = []
-        def call(function, file_type, file_visited_videos):
+        def call(
+            function: str,
+            file_type: str,
+            file_visited_videos: Set[str],
+        ) -> threading.Thread:
             newline = '' if file_type == 'csv' else None
             if function == 'update_file': return threading.Thread(target=writer.update_file, args=(file_type, file_name, file_buffering, newline, csv_writer, now(), logging_locations, identifier, reverse_chronological, video_data, file_visited_videos, video_id_only))
             else:                         return threading.Thread(target=writer.create_file, args=(file_type, file_name, file_buffering, newline, csv_writer, now(), logging_locations, identifier, reverse_chronological, video_data))
@@ -79,7 +111,11 @@ def determine_action(url, driver, video_id_only, scroll_pause_time, verify_page_
         # since there will be nothing else to run concurrently with this new subthread. If anything, creating a new thread for only
         # 1 file I/O operation might slow the program down, since the program needs to manage the work of the subthread that
         # the MainThread could be doing.
-        def call(function, file_type, file_visited_videos):
+        def call(
+            function: str,
+            file_type: str,
+            file_visited_videos: Set[str],
+        ) -> None:
             newline = '' if file_type == 'csv' else None
             if function == 'update_file': return writer.update_file(file_type, file_name, file_buffering, newline, csv_writer, now(), logging_locations, identifier, reverse_chronological, video_data, file_visited_videos, video_id_only)
             else:                         return writer.create_file(file_type, file_name, file_buffering, newline, csv_writer, now(), logging_locations, identifier, reverse_chronological, video_data)
@@ -94,15 +130,22 @@ def determine_action(url, driver, video_id_only, scroll_pause_time, verify_page_
             else:          call('create_file', 'md', set())
     return video_data
 
-def now():
+def now(
+) -> str:
     return datetime.datetime.now().isoformat().replace(':', '_').replace('.', '-')
 
 
-def load_video_data(videos_list, common_visited_videos, video_id_only, reverse_chronological, logging_locations):
+def load_video_data(
+    videos_list: List[WebElement],
+    common_visited_videos: Set[str],
+    video_id_only: bool,
+    reverse_chronological: bool,
+    logging_locations: Tuple[TextIOWrapper] | Tuple[TextIOWrapper, TextIO],
+) -> List[list[int | str]]: # [int, str, str | Literal['N/A'], str]:
     video_loading_cpu_start_time  = time.perf_counter()
     video_loading_real_start_time = time.time()
     log('Loading video information into memory...', logging_locations)
-    video_data     = []
+    video_data: List[List[int | str]] = []
     video_number   = len(videos_list)
     videos_to_load = video_number
     for videos_loaded, selenium_element in enumerate(videos_list, start=1):
@@ -137,7 +180,9 @@ def load_video_data(videos_list, common_visited_videos, video_id_only, reverse_c
     return video_data
 
 
-def normalize_whitespace(raw_text):
+def normalize_whitespace(
+    raw_text: str
+) -> str:
     text_with_newline_and_cr_removed = re.sub('[\n\r]+', ' ', raw_text)
     normalized_text                  = re.sub('\s{2,}', ' ', text_with_newline_and_cr_removed).strip()
     return normalized_text

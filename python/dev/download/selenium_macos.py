@@ -2,10 +2,14 @@ import re
 import subprocess
 
 
-def verify_browser_exists(browser):
+def verify_browser_exists(
+    browser: str,
+) -> bool:
     return browser in subprocess.getoutput('ls /Applications')
 
-def get_browser_version(browser):
+def get_browser_version(
+    browser: str,
+) -> str:
     with open(f'/Applications/{browser}.app/Contents/Info.plist', mode='r', encoding='utf-8') as file:
         info_plist = file.read()
     return re.search('<key>CFBundleShortVersionString</key>\s*<string>([0-9][0-9\.]+)', info_plist)[1]

@@ -1,33 +1,83 @@
 import sys
 import time
+import threading
 import random
 import contextlib
+from collections import (
+ deque,
+)
+from io import (
+ TextIOWrapper,
+)
+from typing import (
+ Any,
+ Generator,
+ List,
+ Optional,
+ TextIO,
+ Tuple,
+ Union,
+)
 import selenium
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.remote.webdriver import WebDriver
 from . import program
 from .download.selenium_webdriver_dependencies import download_all
 from .download.windows_info import get_drive_letter
 from .download.user_os_info import determine_user_os
 from .notifications import Common, ModuleMessage, ScriptMessage
 from .custom_logger import log, log_time_taken
-def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_video_data_in_memory, video_id_only, reverse_chronological, headless, scroll_pause_time, user_driver, cookie_consent, verify_page_bottom_n_times, file_buffering, list_creator_configuration, execution_type, lock, counts=None, min_sleep=None, max_sleep=None, after_n_channels_pause_for_s=None, aggregate_logging_locations=None):
+def execute(
+ urls: deque[str],
+ file_name: str,
+ log_silently: bool,
+ txt: bool,
+ csv: bool,
+ markdown: bool,
+ file_suffix: bool,
+ all_video_data_in_memory: bool,
+ video_id_only: bool,
+ reverse_chronological: bool,
+ headless: bool,
+ scroll_pause_time: float,
+ user_driver: Optional[str],
+ cookie_consent: bool,
+ verify_page_bottom_n_times: int,
+ file_buffering: int,
+ list_creator_configuration: Tuple[bool, bool, bool, bool, bool, bool, bool, bool, float, str | None, bool, int, int, str],
+ execution_type: str,
+ lock: threading.Lock,
+ counts: Optional[List[int]] = None,
+ min_sleep: Optional[float] = None,
+ max_sleep: Optional[float] = None,
+ after_n_channels_pause_for_s: Optional[Tuple[int, int]] = None,
+ aggregate_logging_locations: Optional[Tuple[TextIOWrapper] | Tuple[TextIOWrapper, TextIO]] = None
+) -> Tuple[
+ List[List[int | str]] | None,
+ Tuple[
+  str,
+  str,
+ ]
+]:# Optional[List[List[int | str]]],
  common_message = Common(list_creator_configuration)
  module_message = ModuleMessage(list_creator_configuration)
  script_message = ScriptMessage(list_creator_configuration)
- def verify_writing_to_at_least_one_location():
+ def verify_writing_to_at_least_one_location() -> None:
   if txt is False and csv is False and markdown is False and all_video_data_in_memory is False:
    if execution_type == 'module': raise RuntimeError(module_message.not_writing_to_any_files_hint + module_message.display_current_configuration())
    else: raise RuntimeError(script_message.not_writing_to_any_files_hint + script_message.display_current_configuration())
- def process_url():
+ def process_url(
+ ) -> str:
   try:
    _, channel_type, channel_id = parse_url()
   except IndexError as error_message:
    raise ValueError(common_message.url_error) from error_message
   base_url = 'https://www.youtube.com'
   return f'{base_url}/{channel_type}/{channel_id}/videos?view=0&sort=dd&flow=grid&shelf_id=0'
- def parse_url():
+ def parse_url(
+ ) -> Tuple[str, str, str]:
   channel_info = url.split('youtube.com/')[1]
   channel_type = channel_info.split('/')[0]
   try:
@@ -35,7 +85,8 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
   except IndexError:
    channel_id = ''
   return channel_info, channel_type, channel_id
- def open_user_driver():
+ def open_user_driver(
+ ) -> WebDriver:
   nonlocal user_driver
   if user_driver is None:
    if execution_type == 'module': print(module_message.running_default_driver + '\n' + module_message.show_driver_options)
@@ -53,30 +104,35 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
   if user_driver not in supported_drivers:
    raise ValueError(common_message.invalid_driver + common_message.display_current_configuration())
   return supported_drivers[user_driver]()
- def configure_firefoxdriver():
+ def configure_firefoxdriver(
+ ) -> webdriver.Firefox:
   options = selenium.webdriver.firefox.options.Options()
   if headless is True:
    options.headless = True
   return webdriver.Firefox(options=options)
- def configure_operadriver():
+ def configure_operadriver(
+ ) -> webdriver.Opera:
   options = webdriver.ChromeOptions()
   if headless is True:
    options.add_argument('headless')
    print(common_message.unsupported_opera_headless)
   return webdriver.Opera(options=options)
- def configure_safaridriver():
+ def configure_safaridriver(
+ ) -> webdriver.Safari:
   if user_os != 'macos':
    common_message.display_dependency_setup_instructions('safari', user_os)
    raise RuntimeError(common_message.selenium_launch_error)
   if headless is True:
    print(common_message.unsupported_safari_headless)
   return webdriver.Safari()
- def configure_chromedriver():
+ def configure_chromedriver(
+ ) -> webdriver.Chrome:
   options = webdriver.ChromeOptions()
   if headless is True:
    options.add_argument('headless')
   return webdriver.Chrome(chrome_options=options)
- def configure_bravedriver():
+ def configure_bravedriver(
+ ) -> webdriver.Chrome:
   options = webdriver.ChromeOptions()
   if user_os == 'windows':
    drive = get_drive_letter()
@@ -88,7 +144,8 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
   if headless is True:
    print(common_message.unsupported_brave_headless)
   return webdriver.Chrome(options=options, executable_path=executable_path)
- def configure_edgedriver():
+ def configure_edgedriver(
+ ) -> webdriver.Edge:
   if user_os == 'windows':
    drive = get_drive_letter()
    executable_path = rf'{drive}:\Windows\msedgedriver.exe'
@@ -100,11 +157,14 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
   if headless is True:
    print(common_message.unsupported_edge_headless)
   return webdriver.Edge(executable_path=executable_path)
- def show_user_how_to_set_up_selenium():
+ def show_user_how_to_set_up_selenium(
+ ) -> None:
   if user_driver != 'safari':
    common_message.tell_user_to_download_driver(user_driver)
   common_message.display_dependency_setup_instructions(user_driver, user_os)
- def handle_opening_webdriver_exception(error_message):
+ def handle_opening_webdriver_exception(
+  error_message: str,
+ ) -> None:
   nonlocal driver
   common_message.display_selenium_dependency_error(error_message)
   try:
@@ -114,13 +174,21 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
    show_user_how_to_set_up_selenium()
    common_message.display_unable_to_update_driver_automatically(user_driver)
    raise RuntimeError(common_message.selenium_launch_error) from same_error_message_again
- def run_scraper():
+ def run_scraper(
+ ) -> Tuple[
+  Optional[List[List[int | str]]],
+  str,
+  str,
+ ]:
   driver.get(url)
   manage_cookie_consent_form()
   wait = selenium.webdriver.support.ui.WebDriverWait(driver, 9)
   channel_heading_xpath = '//yt-formatted-string[@class="style-scope ytd-channel-name"]'
   topic_channel_heading_xpath = '//yt-formatted-string[@class="style-scope ytd-topic-channel-details-renderer"]'
-  def load_page(channel_heading_xpath, topic_channel_heading_xpath):
+  def load_page(
+   channel_heading_xpath: str,
+   topic_channel_heading_xpath: str,
+  ) -> None:
    try:
     wait.until(EC.element_to_be_clickable((By.XPATH, channel_heading_xpath)))
    except selenium.common.exceptions.TimeoutException:
@@ -140,7 +208,8 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
    log_time_taken(program_cpu_start_time, program_real_start_time, 'This program took ', f' to complete writing information for the "{channel_name}" channel to the {file_name} file', logging_locations)
    log( '>' * 50 + 'COMPLETED PROGRAM' + '<' * 50, logging_locations)
   return (video_data, channel_name, file_name)
- def manage_cookie_consent_form():
+ def manage_cookie_consent_form(
+ ) -> None:
   if 'consent.youtube.com' in driver.current_url:
    common_message.display_cookie_redirection()
    accept_button_relative_path = '//button[@aria-label="Agree to the use of cookies and other data for the purposes described"]'
@@ -162,7 +231,10 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
     accept_button.click()
    else:
     common_message.display_invalid_cookie_consent_option(cookie_consent)
- def determine_file_name(channel_heading_xpath, topic_channel_heading_xpath):
+ def determine_file_name(
+  channel_heading_xpath: str,
+  topic_channel_heading_xpath: str,
+ ) -> Tuple[str, str]:
   channel_name = driver.find_element_by_xpath(channel_heading_xpath).text or driver.find_element_by_xpath(topic_channel_heading_xpath).text
   is_id = '_id' if video_id_only is True else ''
   if file_suffix is True: suffix = f'_reverse_chronological_video{is_id}s_list' if reverse_chronological else f'_chronological_video{is_id}s_list'
@@ -184,7 +256,13 @@ def execute(urls, file_name, log_silently, txt, csv, markdown, file_suffix, all_
    else: formatted_file_name = file_name
   return (channel_name, formatted_file_name)
  @contextlib.contextmanager
- def yield_logger(file_name):
+ def yield_logger(
+  file_name: str
+ ) -> Generator[
+  Tuple[TextIOWrapper] | Tuple[TextIOWrapper, TextIO],
+  Any,
+  None
+ ]:
   log_file = f'{file_name}.log'
   with open(log_file, mode='a', encoding='utf-8', buffering=file_buffering) as output_location:
    if log_silently is True: yield (output_location,)

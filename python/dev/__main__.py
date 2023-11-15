@@ -1,7 +1,8 @@
 from . import script
 
 
-def main():
+def main(
+) -> None:
     script.create_list_for()
 
 

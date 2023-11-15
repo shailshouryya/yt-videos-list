@@ -2,23 +2,53 @@ import functools
 import threading
 import datetime
 import time
+from io import (
+ TextIOWrapper,
+)
+from typing import (
+ Any,
+ Callable,
+ Dict,
+ List,
+ Set,
+ TextIO,
+ Tuple,
+)
 NEWLINE = '\n'
-def log(message, logging_locations):
+def log(
+ message: str,
+ logging_locations: Tuple[TextIOWrapper] | Tuple[TextIOWrapper, TextIO],
+) -> None:
  thread_name = f'[{threading.current_thread().name}]'
  current_time = datetime.datetime.now().isoformat()
  utc_offset = time.strftime('%z')
  formatted_message = f'{current_time}{utc_offset} {thread_name:>12} {message}\n'
  for location in logging_locations:
   location.write(formatted_message)
-def log_time_taken(cpu_start_time, real_start_time, first_part_of_message, last_part_of_message, logging_locations):
+def log_time_taken(
+ cpu_start_time: float,
+ real_start_time: float,
+ first_part_of_message: str,
+ last_part_of_message: str,
+ logging_locations: Tuple[TextIOWrapper] | Tuple[TextIOWrapper, TextIO]
+) -> None:
  cpu_end_time = time.perf_counter()
  real_end_time = time.time()
  cpu_time = cpu_end_time - cpu_start_time
  real_time = real_end_time - real_start_time
  log(f'{first_part_of_message}{real_time} time.time() seconds ({cpu_time} time.perf_counter() seconds){last_part_of_message}', logging_locations)
-def log_write_information(writer_function):
+def log_write_information(
+ writer_function: Callable[[Any], Any]
+) -> Callable[
+ [
+  Any,
+ ], Any
+]:
  @functools.wraps(writer_function)
- def wrap_writer_function(*args, **kwargs):
+ def wrap_writer_function(
+  *args: Tuple[str | None | Tuple[TextIOWrapper] | Tuple[TextIOWrapper, TextIO] | bool | List[int | str] | Set[str]],
+  **kwargs: Dict[str, Any],
+ ) -> None:
   function_name = writer_function.__name__
   function_cpu_start_time = time.perf_counter()
   function_real_start_time = time.time()

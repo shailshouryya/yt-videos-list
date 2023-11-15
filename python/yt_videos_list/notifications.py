@@ -1,3 +1,9 @@
+from typing import (
+ Callable,
+ List,
+ Optional,
+ Tuple,
+)
 from .download.windows_info import get_drive_letter
 class Common:
  '''
@@ -33,7 +39,10 @@ class Common:
  selenium_launch_error = 'The program was unable to launch a Selenium driver instance! Please follow the suggestions above the stack trace to fix the issue.'
  possible_topic_channel_in_headless_error = 'There was a problem running the selenium webdriver!\n\nTo better debug the problem, try running the program again with headless=False if you are currently running the program with headless=True to see what is happening.'
  selenium_unable_to_load_elements_error = 'The page did not load elements! If you\'ve scraped many channels within a short period of time, please try rerunning the program after waiting to make sure YouTube isn\'t throttling your IP address!'
- def __init__(self, list_creator_configuration=None):
+ def __init__(
+  self,
+  list_creator_configuration: Optional[Tuple[bool, bool, bool, bool, bool, bool, bool, bool, float, Optional[str], bool, int, int, str]] = None,
+ ) -> None:
   self.list_creator_configuration = list_creator_configuration
   self.driver_downloads_for_os = {
    'firefox': {
@@ -69,11 +78,18 @@ class Common:
    }
   }
  @classmethod
- def create_list_for(cls, operating_system, driver):
-  formatter_function = getattr(cls, f'format_{driver}_list')
+ def create_list_for(
+  cls,
+  operating_system: str,
+  driver: str,
+ ) -> List[str]:
+  formatter_function: Callable[[str], List[str]] = getattr(cls, f'format_{driver}_list')
   return formatter_function(operating_system)
  @classmethod
- def format_geckodriver_list(cls, operating_system):
+ def format_geckodriver_list(
+ cls,
+ operating_system: str,
+) -> List[str]:
   driver_name = 'geckodriver'
   browser_name = 'Mozilla Firefox'
   return [
@@ -95,7 +111,10 @@ class Common:
    cls.format_download_command(driver_name, operating_system, 'v0.26.0')
   ]
  @classmethod
- def format_operadriver_list(cls, operating_system):
+ def format_operadriver_list(
+ cls,
+ operating_system: str,
+) -> List[str]:
   driver_name = 'operadriver'
   browser_name = 'Opera Browser'
   return [
@@ -185,7 +204,10 @@ class Common:
    cls.format_download_command(driver_name, operating_system, 'v.2.29'),
   ]
  @classmethod
- def format_chromedriver_list(cls, operating_system):
+ def format_chromedriver_list(
+ cls,
+ operating_system: str,
+) -> List[str]:
   driver_name = 'chromedriver'
   browser_name = 'Google Chrome'
   return [
@@ -273,7 +295,10 @@ class Common:
    cls.format_download_command(driver_name, operating_system, '2.41'),
   ]
  @classmethod
- def format_bravedriver_list(cls, operating_system):
+ def format_bravedriver_list(
+ cls,
+ operating_system: str,
+) -> List[str]:
   driver_name = 'bravedriver (operadriver based)'
   browser_name = 'Brave Browser'
   return [
@@ -339,7 +364,10 @@ class Common:
    cls.format_download_command(driver_name, operating_system, 'v.75.0.3770.100')
   ]
  @classmethod
- def format_msedgedriver_list(cls, operating_system):
+ def format_msedgedriver_list(
+ cls,
+ operating_system: str,
+) -> List[str]:
   driver_name = 'msedgedriver'
   browser_name = 'Microsoft Edge'
   return [
@@ -405,7 +433,9 @@ class Common:
    cls.format_download_command(driver_name, operating_system, '79.0.313.0')
   ]
  @staticmethod
- def format_safaridriver_list(operating_system):
+ def format_safaridriver_list(
+  operating_system: str,
+ ) -> List[str] | None:
   return {
    'macos': [
     'In order to run safaridriver, you need to enable remote automation. To do so, open up the Safari browser and in the menu bar, go to\n"Safari" -> "Preferences" -> "Advanced" tab -> click "Show develop menu in menu bar"\nOnce you do that, "Develop" should appear in your menu bar. Click on the "Develop" bar, and then enable "Allow Remote Automation" (should be near the bottom of the list).\n\nAfter doing that, try rerunning the last command!\n :)'
@@ -418,10 +448,21 @@ class Common:
    ]
   }.get(operating_system)
  @staticmethod
- def format_driver_information(operating_system, version, major_version, driver, browser):
+ def format_driver_information(
+  operating_system: str,
+  version: str,
+  major_version: str,
+  driver: str,
+  browser: str,
+ ) -> str:
   return f'# {operating_system} {driver} {version} (supports {browser} version: {major_version})'
  @classmethod
- def format_download_command(cls, driver, operating_system, version):
+ def format_download_command(
+  cls,
+  driver: str,
+  operating_system: str,
+  version: str,
+ ) -> str:
   ### NOTE that Brave Browser doesn't have its own bravedriver, but since it's chromium we can just download operadriver (a chromium based driver) and use the corresponding operadriver for the Brave version (with it renamed to "bravedriver" in order to avoud conflict with different versions of Chrome/Opera and Brave installed at the same time) ###
   if operating_system.startswith('win'):
    if driver.startswith('geckodriver'): return cls.format_windows_download(f'{cls.url_prefix_geckodriver}/{version}/geckodriver-{version}-{operating_system}.zip', 'geckodriver')
@@ -435,30 +476,51 @@ class Common:
    else: return cls.format_unix_download (f'''{getattr(cls, 'url_prefix_' + driver)}/{version}/{driver}_{operating_system}.zip''', driver)
  strip_component = '--strip-components=1'
  @classmethod
- def format_unix_download(cls, url, driver):
+ def format_unix_download(
+  cls,
+  url: str,
+  driver: str,
+ ) -> str:
   if driver == 'operadriver': driver_specific_command = f'-C /usr/local/bin/ {cls.strip_component} && rm /usr/local/bin/sha512_sum'
   elif driver == 'bravedriver': driver_specific_command = f'-O > /usr/local/bin/{driver} {cls.strip_component}'
   else: driver_specific_command = '-C /usr/local/bin/'
   return f'curl -SL {url} | tar -xzvf - {driver_specific_command} && chmod +x /usr/local/bin/{driver}' + '\n'
  @classmethod
- def format_windows_download(cls, url, driver):
+ def format_windows_download(
+  cls,
+  url: str,
+  driver: str,
+ ) -> str:
   drive = get_drive_letter()
   if driver == 'operadriver': driver_specific_command = rf'-C {drive}:\Windows {cls.strip_component} && del {drive}:\Windows\sha512_sum'
   elif driver == 'bravedriver': driver_specific_command = rf'-O > {drive}:\Windows\bravedriver.exe {cls.strip_component}'
   else: driver_specific_command = rf'-C {drive}:\Windows'
   return rf'curl -SL --ssl-no-revoke {url} -o {drive}:\Windows\{driver} && tar -xzvf {drive}:\Windows\{driver} {driver_specific_command} && del {drive}:\Windows\{driver}' + '\n'
- def display_current_configuration(self):
+ def display_current_configuration(self
+ ) -> str:
   return f'\n\nFor reference, here is your current configuration:\n\n{self.list_creator_configuration}\n'
  @staticmethod
- def display_unsupported_os(user_os):
+ def display_unsupported_os(
+  user_os: str,
+ ) -> str:
   return f'\n\nThe system you are using has not yet been tested and verified for full program support.\nCurrently tested, verified, and supported systems include macOS (Darwin Kernel), Windows, and Linux.\nYou can still use this program on your current system, but be aware the program may not behave as expected due to potential OS differences.\nYour current system has been detected as:\n{user_os}\n\n'
  @staticmethod
- def display_browser_found_information(browser, full_version_number):
+ def display_browser_found_information(
+  browser: str,
+  full_version_number: str,
+ ) -> None:
   print(f'\nFound an installed version of {browser}.\nYou are currently running {browser} version: {full_version_number}')
  @staticmethod
- def display_browser_not_found_information(browser, user_os):
+ def display_browser_not_found_information(
+  browser: str,
+  user_os: str,
+ ) -> None:
   print(f'\nDid not find an installed version of {browser}.\nIf you DO have {browser} installed but it was not detected, it may be because your {browser} was installed in a non-default location.\n')
- def display_dependency_setup_instructions(self, user_driver, user_os):
+ def display_dependency_setup_instructions(
+  self,
+  user_driver: str,
+  user_os: str,
+ ) -> None:
   terminal_copy_paste_directions = 'Once you determine the right version to download, copy the command, open a new terminal session (usually possible with CMD+N or CMD+T (or CTRL+N or CTRL+D depending on your keyboard/OS) from an active terminal session), and paste the command you just copied. Once you\'ve done that, you should be able to come back to this session and rerun the last command without an error!\n\n'
   if user_os != 'windows' and user_driver != 'safari':
    print(terminal_copy_paste_directions)
@@ -475,7 +537,7 @@ class Common:
   elif user_driver == 'edge': print(edgedriver_download_instructions)
   for driver_version_download in self.driver_downloads_for_os[user_driver][user_os]:
    print(driver_version_download)
-  def display_more_dependency_information(user_driver):
+  def display_more_dependency_information(user_driver: str) -> None:
    driver_name, driver_source_code_url, driver_releases_page_url, browser_name, browser_url = self.more_driver_info[user_driver]
    print(f'\n\n# For more information about the {driver_name}, please visit\n{driver_source_code_url}\n{driver_releases_page_url}{self.indent}{self.ds}(all supported versions)\n\nNOTE! You must also have the {browser_name} browser installed to use this. If you don\'t have it installed, install it from\n{browser_url}')
    print('=' * 130)
@@ -483,14 +545,21 @@ class Common:
   if user_driver != 'safari':
    display_more_dependency_information(user_driver)
  @classmethod
- def display_selenium_dependency_error(cls, error_message):
+ def display_selenium_dependency_error(
+  cls,
+  error_message: str,
+ ) -> None:
   print(f'{cls.offset}{cls.offset}\n{cls.error}There was an error while trying to open up the remote selenium instance. The exact error was:\n{error_message}\nDon\'t worry though, this is an easy fix!')
  @staticmethod
- def tell_user_to_download_driver(user_driver):
+ def tell_user_to_download_driver(
+  user_driver: str,
+ ) -> None:
   print('\n' * 3 + '=' * 130)
   print(f'It looks like you don\'t have the correct Selenium dependency set up to run this program using the remote {user_driver}driver.\nThe version of your {user_driver.title()} browser - usually found by going to {user_driver.title()} -> \"About browser\" in the menu bar within a {user_driver.title()} window - should match the comment for the corresponding command.\nPlease download it using the relevant command from the list of commands below.\n')
  @classmethod
- def display_unable_to_update_driver_automatically(cls, user_driver):
+ def display_unable_to_update_driver_automatically(cls,
+  user_driver: str,
+ ) -> None:
   print('\n' + '*' * 81)
   print('*****The package could not automatically update the dependencies.*****')
   print('Please try running the following commands to update the package (newer package versions will support newer drivers) before retrying, and if that doesn\'t work, follow the directions given above.')
@@ -503,19 +572,29 @@ class Common:
   print('import yt_videos_list\nhelp(yt_videos_list)')
   print('*' * 81)
  @classmethod
- def display_cookie_redirection(cls):
+ def display_cookie_redirection(
+  cls,
+ ) -> None:
   print(f'{cls.offset}Redirected to consent.youtube.com!')
  @classmethod
- def display_blocking_cookie_consent(cls):
+ def display_blocking_cookie_consent(
+  cls,
+ ) -> None:
   print(f'Blocking consent for all cookies since program running with cookie_consent=False ...{cls.offset}')
  @classmethod
- def display_accepting_cookie_consent(cls):
+ def display_accepting_cookie_consent(
+  cls,
+ ) -> None:
   print(f'Accepting consent for all cookies since program running with cookie_consent=True ...{cls.offset}')
  @staticmethod
- def display_invalid_cookie_consent_option(cookie_consent):
+ def display_invalid_cookie_consent_option(
+  cookie_consent: bool,
+ ) -> None:
   print(f'YouTube redircted to youtube.consent.com, but you entered an invalid argument for the cookie_consent instance attrribute!\nPlease use cookie_consent=True or cookie_consent=False.\nYour current setting is: cookie_consent={cookie_consent}')
  @staticmethod
- def no_new_videos_found(pause_time):
+ def no_new_videos_found(
+  pause_time: float,
+ ) -> str:
   return f'No new videos found since the last scroll. Waiting another {pause_time} seconds to see if more videos can be loaded....\n'
 class ModuleMessage(Common):
  '''

@@ -24,7 +24,10 @@ APPLICATION_NAME = {
   'edge': 'Edge'
  }
 }
-def download_specific_dependency(driver, user_os):
+def download_specific_dependency(
+ driver: str,
+ user_os: str,
+) -> None:
  selenium_user_os = globals()[f'selenium_{user_os}']
  browser = APPLICATION_NAME[user_os][driver]
  if selenium_user_os.verify_browser_exists(browser):
@@ -34,11 +37,17 @@ def download_specific_dependency(driver, user_os):
   execute_download_command(driver, user_os, major_version)
  else:
   COMMON_MESSAGE.display_browser_not_found_information(browser, user_os)
-def download_all_dependencies(user_os):
+def download_all_dependencies(
+ user_os: str,
+) -> None:
  print(COMMON_MESSAGE.automated_driver_update)
  for driver in APPLICATION_NAME[user_os]:
   download_specific_dependency(driver, user_os)
-def execute_download_command(driver, user_os, major_version):
+def execute_download_command(
+ driver: str,
+ user_os: str,
+ major_version: str,
+) -> None:
  row_in_list = {
   'firefox': {
    '120':-15,
@@ -334,6 +343,7 @@ def execute_download_command(driver, user_os, major_version):
  print(f'{COMMON_MESSAGE.driver_downloads_for_os[driver][user_os][row-1]} #')
  print(f'{COMMON_MESSAGE.driver_downloads_for_os[driver][user_os][row]}')
  os.system(COMMON_MESSAGE.driver_downloads_for_os[driver][user_os][row])
-def download_all():
+def download_all(
+) -> None:
  user_os = determine_user_os()
  download_all_dependencies(user_os)

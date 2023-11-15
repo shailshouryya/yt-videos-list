@@ -290,8 +290,10 @@ class ListCreator:
         log_silently: bool = False,
         file_name: str = 'auto',
     ) -> Tuple[
-        List[
-            List[int|str] # [int, str, str, str]
+        Optional[
+            List[
+                List[int|str] # [int, str, str, str]
+            ]
         ],
         Tuple[
             str,

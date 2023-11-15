@@ -38,7 +38,7 @@ def cli():
     return (url, file_name, log_silently, txt, csv, markdown, reverse_chronological, headless, scroll_pause_time, driver)
 
 
-def create_list_for():
+def create_list_for() -> None:
     _execution_type = 'script'
     cli_settings = cli()
     logic.execute(*cli_settings, _execution_type)

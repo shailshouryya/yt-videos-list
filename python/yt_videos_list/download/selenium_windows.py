@@ -6,17 +6,29 @@ from .user_os_info import determine_user_os
 if determine_user_os() == 'windows':
  DRIVE = get_drive_letter()
  USER = get_user_name()
-def verify_firefox_exists(browser):
+def verify_firefox_exists(
+ browser: str,
+) -> bool:
  return browser in subprocess.getoutput(rf'dir "{DRIVE}:\Program Files"')
-def verify_opera_exists(browser):
+def verify_opera_exists(
+ browser: str,
+) -> bool:
  return browser in subprocess.getoutput(rf'dir {DRIVE}:\Users\{USER}\AppData\Local\Programs')
-def verify_chrome_exists(browser):
+def verify_chrome_exists(
+ browser: str,
+) -> bool:
  return browser in subprocess.getoutput(rf'dir "{DRIVE}:\Program Files (x86)\Google"')
-def verify_brave_exists(browser):
+def verify_brave_exists(
+ browser: str,
+) -> bool:
  return browser in subprocess.getoutput(rf'dir "{DRIVE}:\Program Files (x86)/BraveSoftware"') or browser in subprocess.getoutput(rf'dir "{DRIVE}:\Program Files/BraveSoftware"')
-def verify_edge_exists(browser):
+def verify_edge_exists(
+ browser: str,
+) -> bool:
  return browser in subprocess.getoutput(rf'dir "{DRIVE}:\Program Files (x86)/Microsoft"')
-def verify_browser_exists(browser):
+def verify_browser_exists(
+ browser: str,
+) -> bool:
  return {
   'Mozilla Firefox': verify_firefox_exists(browser),
   'Opera': verify_opera_exists(browser),
@@ -25,25 +37,32 @@ def verify_browser_exists(browser):
   'Edge': verify_edge_exists(browser)
  }[browser]
 BROWSER_VERSION_REGEX = '\d+\.[\d\.]*'
-def get_firefox_version():
+def get_firefox_version(
+) -> str:
  firefox = subprocess.getoutput(rf'more "{DRIVE}:\Program Files\Mozilla Firefox\application.ini"')
  return re.search(f'MinVersion=({BROWSER_VERSION_REGEX})', firefox)[1]
-def get_opera_version():
+def get_opera_version(
+) -> str:
  with open(rf'{DRIVE}:\Users\{USER}\AppData\Local\Programs\Opera\installation_status.json', mode='r', encoding='utf-8') as file:
   opera = json.load(file)
  return opera['_subfolder']
-def get_chrome_version():
+def get_chrome_version(
+) -> str:
  chrome = subprocess.getoutput(rf'dir "{DRIVE}:\Program Files (x86)\Google\Chrome\Application"')
  return re.search(f'({BROWSER_VERSION_REGEX})', chrome)[1]
-def get_brave_version():
+def get_brave_version(
+) -> str:
  if 'Brave-Browser' in subprocess.getoutput(rf'dir "{DRIVE}:\Program Files (x86)/BraveSoftware"'): program_file_path = 'Program Files (x86)'
  else: program_file_path = 'Program Files'
  brave = subprocess.getoutput(rf'dir "{DRIVE}:\{program_file_path}\BraveSoftware\Brave-Browser\Application"')
  return re.search(f'({BROWSER_VERSION_REGEX})', brave)[1]
-def get_edge_version():
+def get_edge_version(
+) -> str:
  edge = subprocess.getoutput(rf'dir "{DRIVE}:\Program Files (x86)\Microsoft\Edge\Application"')
  return re.search(f'({BROWSER_VERSION_REGEX})', edge)[1]
-def get_browser_version(browser):
+def get_browser_version(
+ browser: str,
+) -> str:
  return {
   'Mozilla Firefox': get_firefox_version(),
   'Opera': get_opera_version(),

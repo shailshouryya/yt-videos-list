@@ -2,6 +2,17 @@ import csv
 import re
 import os
 
+from io import (
+    TextIOWrapper,
+)
+from typing import (
+    List,
+    Optional,
+    Set,
+    TextIO,
+    Tuple,
+)
+
 from .custom_logger import log, log_write_information
 from .scroller      import store_already_written_videos
 
@@ -10,7 +21,18 @@ PADDING = 39
 
 
 @log_write_information
-def create_file(file_type, file_name, file_buffering, newline, csv_writer, timestamp, logging_locations, identifier, reverse_chronological, video_data):
+def create_file(
+    file_type: str,
+    file_name: str,
+    file_buffering: int,
+    newline: Optional[str],
+    csv_writer: None,
+    timestamp: str,
+    logging_locations: Tuple[TextIOWrapper] | Tuple[TextIOWrapper, TextIO],
+    identifier: str,
+    reverse_chronological: bool,
+    video_data: List[List[int | str]],
+) -> Tuple[str, int, int, bool, Tuple[TextIOWrapper] | Tuple[TextIOWrapper, TextIO]]:
     temp_file_name = f'temp_{file_name}_{timestamp}.{file_type}'
     with open(temp_file_name, mode='w', newline=newline, encoding='utf-8',  buffering=file_buffering) as temp_file:
         if file_type == 'csv':
@@ -37,7 +59,20 @@ def create_file(file_type, file_name, file_buffering, newline, csv_writer, times
 #     write the content from the temp file TO the end of the PRE-EXISTING file when reverse chronological=False
 
 @log_write_information
-def update_file(file_type, file_name, file_buffering, newline, csv_writer, timestamp, logging_locations, identifier, reverse_chronological, video_data, file_visited_videos, video_id_only):
+def update_file(
+    file_type: str,
+    file_name: str,
+    file_buffering: int,
+    newline: Optional[str],
+    csv_writer: None,
+    timestamp: str,
+    logging_locations: Tuple[TextIOWrapper] | Tuple[TextIOWrapper, TextIO],
+    identifier: str,
+    reverse_chronological: bool,
+    video_data: List[List[int | str]],
+    file_visited_videos: Set[str],
+    video_id_only: bool,
+    ) -> Tuple[str, int, int, bool, Tuple[TextIOWrapper] | Tuple[TextIOWrapper, TextIO]]:
     if not file_visited_videos: file_visited_videos = store_already_written_videos(file_name, file_type)
     file_visited_videos                             = format_visited_videos_for_id(file_visited_videos, video_id_only, logging_locations)
     temp_file_name = f'temp_{file_name}_{timestamp}.{file_type}'
@@ -88,7 +123,11 @@ def update_file(file_type, file_name, file_buffering, newline, csv_writer, times
         log('Successfully renamed'.ljust(PADDING) + f'{temp_file_name} to {original_file_name}', logging_locations)
     return file_name, new_videos, total_videos, reverse_chronological, logging_locations
 
-def format_visited_videos_for_id(file_visited_videos, video_id_only, logging_locations):
+def format_visited_videos_for_id(
+    file_visited_videos: Set[str],
+    video_id_only: bool,
+    logging_locations: Tuple[TextIOWrapper] | Tuple[TextIOWrapper, TextIO],
+) -> Set[str]:
     if video_id_only is True:
         log('Updating set to keep only the video ID from the full video URL...', logging_locations)
         formatted_visited_videos = set()
@@ -100,13 +139,27 @@ def format_visited_videos_for_id(file_visited_videos, video_id_only, logging_loc
         file_visited_videos = formatted_visited_videos
     return file_visited_videos
 
-def find_number_of_new_videos(video_data, file_visited_videos):
+def find_number_of_new_videos(
+    video_data: List[List[int | str]],
+    file_visited_videos: Set[str]
+) -> int:
     visited_on_page = {video[3] for video in video_data}                       # set comprehension
     return len(visited_on_page.difference(file_visited_videos))                # same as len(visited_on_page - file_visited_videos)
 
 
 
-def create_entries(file_type, new_file, csv_writer, logging_locations, identifier, video_data, reverse_chronological, total_videos, number_of_existing_videos, file_visited_videos):
+def create_entries(
+    file_type: str,
+    new_file: TextIOWrapper,
+    csv_writer: csv.DictWriter,
+    logging_locations: Tuple[TextIOWrapper] | Tuple[TextIOWrapper, TextIO],
+    identifier: str,
+    video_data: List[List[int | str]],
+    reverse_chronological: bool,
+    total_videos: int,
+    number_of_existing_videos: int,
+    file_visited_videos: Set[str],
+) -> None:
     if reverse_chronological is True:
         video_number = total_videos
         incrementer  = -1
@@ -130,7 +183,15 @@ def create_entries(file_type, new_file, csv_writer, logging_locations, identifie
         if total_writes % 250 == 0:
             log(f'{total_writes}{new}videos written to {new_file.name}...', logging_locations)
 
-def create_row(file_type, writer, video_number, video_title, video_duration, video_url, identifier):
+def create_row(
+    file_type: str,
+    writer: TextIOWrapper | csv.DictWriter,
+    video_number: int,
+    video_title: str,
+    video_duration: str,
+    video_url: str,
+    identifier: str,
+) -> None:
     if file_type == 'csv':
         writer.writerow(
             {
@@ -146,7 +207,9 @@ def create_row(file_type, writer, video_number, video_title, video_duration, vid
     else:
         newline  = '\n'
         markdown = file_type == 'md'
-        def ljust(text):
+        def ljust(
+            text: str,
+        ) -> str:
             if markdown:
                 prefix  = '### '
                 padding = 24
@@ -169,6 +232,8 @@ def create_row(file_type, writer, video_number, video_title, video_duration, vid
         if markdown: writer.write('\n')
 
 
-def format_video_plurality(new_videos_written):
+def format_video_plurality(
+    new_videos_written: int,
+) -> str:
     if new_videos_written == 1: return 'video'
     else:                       return 'videos'

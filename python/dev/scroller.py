@@ -1,11 +1,36 @@
+from io import (
+    TextIOWrapper,
+)
+from typing import (
+    Callable,
+    List,
+    Set,
+    TextIO,
+    Tuple,
+)
+
 import csv
 import re
 import time
 
+from selenium.webdriver.remote.webdriver import WebDriver
+from selenium.webdriver.remote.webelement import WebElement
+
 from .custom_logger import log, log_time_taken
 
 
-def scroll_until_break(url, driver, scroll_pause_time, logging_locations, verify_page_bottom_n_times, force_to_page_bottom, file_name, txt_exists, csv_exists, md_exists):
+def scroll_until_break(
+    url: str,
+    driver: WebDriver,
+    scroll_pause_time: float,
+    logging_locations: Tuple[TextIOWrapper] | Tuple[TextIOWrapper, TextIO],
+    verify_page_bottom_n_times: int,
+    force_to_page_bottom: bool,
+    file_name: str,
+    txt_exists: bool,
+    csv_exists: bool,
+    md_exists: bool,
+) -> Tuple[List[WebElement], Set[str], Set[str], Set[str], Set[str]]:
     visited_videos, stored_in_txt, stored_in_csv, stored_in_md = determine_common_visited_videos(file_name, txt_exists, csv_exists, md_exists)
     if force_to_page_bottom: visited_videos.clear()                                  # clear any pre-existing video information if there are pre-existing files (will already be empty if there are no pre-existing files)
     else:                    verify_page_bottom_n_times       *= 3                   # it is VERY unlikely that a pre-existing file exists and the program reaches the end of the page before finding ANY pre-existing vides, so increase value for break condition by 3 to make sure this is actually the case and not a false positive
@@ -15,7 +40,7 @@ def scroll_until_break(url, driver, scroll_pause_time, logging_locations, verify
     new_elements_count                                         = count_videos_on_page(driver)
     num_times_elements_count_same                              = -1
     found_old_videos                                           = False
-    url_of_last_loaded_video_on_page                           = lambda: driver.find_elements_by_xpath('//*[@class="style-scope ytd-rich-grid-media"]/a[@id="video-title-link"]')[-1].get_attribute('href').replace('shorts/', 'watch?v=').split('&pp')[0]
+    url_of_last_loaded_video_on_page: Callable[[], str]                      = lambda: driver.find_elements_by_xpath('//*[@class="style-scope ytd-rich-grid-media"]/a[@id="video-title-link"]')[-1].get_attribute('href').replace('shorts/', 'watch?v=').split('&pp')[0]
     if new_elements_count != 0:
         # ensure page has videos, otherwise url_of_last_loaded_video_on_page() breaks because indexing is not possible on an empty array
         while found_old_videos is False and num_times_elements_count_same < verify_page_bottom_n_times:
@@ -31,11 +56,16 @@ def scroll_until_break(url, driver, scroll_pause_time, logging_locations, verify
 
 
 
-def determine_common_visited_videos(file_name, txt_exists, csv_exists, md_exists):
+def determine_common_visited_videos(
+    file_name: str,
+    txt_exists: bool,
+    csv_exists: bool,
+    md_exists: bool,
+) -> Tuple[Set[str], Set[str], Set[str], Set[str]]:
     stored_in_txt = store_already_written_videos(file_name, 'txt') if txt_exists else set()
     stored_in_csv = store_already_written_videos(file_name, 'csv') if csv_exists else set()
     stored_in_md  = store_already_written_videos(file_name, 'md' ) if md_exists  else set()
-    existing_videos = []
+    existing_videos: List[Set[str]] = []
     if stored_in_txt: existing_videos.append(stored_in_txt)
     if stored_in_csv: existing_videos.append(stored_in_csv)
     if stored_in_md:  existing_videos.append(stored_in_md)
@@ -45,7 +75,10 @@ def determine_common_visited_videos(file_name, txt_exists, csv_exists, md_exists
     else:                           visited_videos = set()                                                                                # there are no pre-existing videos #
     return visited_videos, stored_in_txt, stored_in_csv, stored_in_md
 
-def store_already_written_videos(file_name, file_type):
+def store_already_written_videos(
+    file_name: str,
+    file_type: str,
+) -> Set[str]:
     with open(f'{file_name}.{file_type}', mode='r', encoding='utf-8') as file:
         if file_type in ('txt', 'md'):
             file_content = file.read()
@@ -83,16 +116,28 @@ def store_already_written_videos(file_name, file_type):
 
 
 
-def count_videos_on_page(driver):
+def count_videos_on_page(
+    driver: WebDriver,
+) -> int:
     return driver.execute_script('return document.querySelectorAll("ytd-rich-grid-media").length')
 
-def scroll_down(driver, scroll_pause_time, logging_locations):
+def scroll_down(
+    driver: WebDriver,
+    scroll_pause_time: float,
+    logging_locations: Tuple[TextIOWrapper] | Tuple[TextIOWrapper, TextIO],
+) -> None:
     driver.execute_script('window.scrollBy(0, 50000);')
     time.sleep(scroll_pause_time)
     new_elements_count = count_videos_on_page(driver)
     log(f'Found {new_elements_count} videos...', logging_locations)
 
-def verify_reached_page_bottom(new_elements_count, current_elements_count, num_times_elements_count_same, verify_page_bottom_n_times, logging_locations):
+def verify_reached_page_bottom(
+    new_elements_count: int,
+    current_elements_count: int,
+    num_times_elements_count_same: int,
+    verify_page_bottom_n_times: int,
+    logging_locations: Tuple[TextIOWrapper] | Tuple[TextIOWrapper, TextIO]
+) -> int:
     if new_elements_count == current_elements_count:
         num_times_elements_count_same += 1
         times = 'time' if num_times_elements_count_same == 1 else 'times'
@@ -103,7 +148,13 @@ def verify_reached_page_bottom(new_elements_count, current_elements_count, num_t
         num_times_elements_count_same = -1
     return num_times_elements_count_same
 
-def save_elements_to_list(driver, scrolling_cpu_start_time, scrolling_real_start_time, url, logging_locations):
+def save_elements_to_list(
+    driver: WebDriver,
+    scrolling_cpu_start_time: float,
+    scrolling_real_start_time: float,
+    url: str,
+    logging_locations: Tuple[TextIOWrapper] | Tuple[TextIOWrapper, TextIO],
+) -> List[WebElement]:
     elements   = driver.find_elements_by_xpath('//*[@class="style-scope ytd-rich-grid-media"]/a[@id="video-title-link"]')
     log_time_taken(scrolling_cpu_start_time, scrolling_real_start_time, 'It took ', f' to find {len(elements)} videos from {url}\n', logging_locations)
     return elements
