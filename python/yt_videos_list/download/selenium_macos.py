@@ -9,4 +9,6 @@ def get_browser_version(
 ) -> str:
  with open(f'/Applications/{browser}.app/Contents/Info.plist', mode='r', encoding='utf-8') as file:
   info_plist = file.read()
- return re.search('<key>CFBundleShortVersionString</key>\s*<string>([0-9][0-9\.]+)', info_plist)[1]
+ match = re.search('<key>CFBundleShortVersionString</key>\s*<string>([0-9][0-9\.]+)', info_plist)
+ assert match is not None
+ return match[1]
