@@ -63,6 +63,7 @@ def determine_action(
   return None
  video_data = load_video_data(videos_list, common_visited_videos, video_id_only, reverse_chronological, logging_locations)
  use_threads = (int(txt) + int(csv) + int(markdown)) > 1
+ csv_writer = None
  identifier = 'Video ID' if video_id_only is True else 'Video URL'
  if use_threads:
   #
@@ -73,8 +74,8 @@ def determine_action(
    file_visited_videos: Set[str],
   ) -> threading.Thread:
    newline = '' if file_type == 'csv' else None
-   if function == 'update_file': return threading.Thread(target=writer.update_file, args=(file_type, file_name, file_buffering, newline, now(), logging_locations, identifier, reverse_chronological, video_data, file_visited_videos, video_id_only))
-   else: return threading.Thread(target=writer.create_file, args=(file_type, file_name, file_buffering, newline, now(), logging_locations, identifier, reverse_chronological, video_data))
+   if function == 'update_file': return threading.Thread(target=writer.update_file, args=(file_type, file_name, file_buffering, newline, csv_writer, now(), logging_locations, identifier, reverse_chronological, video_data, file_visited_videos, video_id_only))
+   else: return threading.Thread(target=writer.create_file, args=(file_type, file_name, file_buffering, newline, csv_writer, now(), logging_locations, identifier, reverse_chronological, video_data))
   if txt:
    if txt_exists: txt_thread = call('update_file', 'txt', txt_videos)
    else: txt_thread = call('create_file', 'txt', set())
@@ -99,8 +100,8 @@ def determine_action(
    file_visited_videos: Set[str],
   ) -> None:
    newline = '' if file_type == 'csv' else None
-   if function == 'update_file': return writer.update_file(file_type, file_name, file_buffering, newline, now(), logging_locations, identifier, reverse_chronological, video_data, file_visited_videos, video_id_only)
-   else: return writer.create_file(file_type, file_name, file_buffering, newline, now(), logging_locations, identifier, reverse_chronological, video_data)
+   if function == 'update_file': return writer.update_file(file_type, file_name, file_buffering, newline, csv_writer, now(), logging_locations, identifier, reverse_chronological, video_data, file_visited_videos, video_id_only)
+   else: return writer.create_file(file_type, file_name, file_buffering, newline, csv_writer, now(), logging_locations, identifier, reverse_chronological, video_data)
   if txt:
    if txt_exists: call('update_file', 'txt', txt_videos)
    else: call('create_file', 'txt', set())
