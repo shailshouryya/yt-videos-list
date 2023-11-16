@@ -3,6 +3,7 @@ import json
 import subprocess
 
 from typing import (
+    Dict,
     Match,
     Optional,
 )
@@ -71,7 +72,7 @@ def get_firefox_version(
 def get_opera_version(
 ) -> str:
     with open(rf'{DRIVE}:\Users\{USER}\AppData\Local\Programs\Opera\installation_status.json', mode='r', encoding='utf-8') as file:
-        opera = json.load(file)
+        opera: Dict[str, str] = json.load(file)
     return opera['_subfolder']
 
 def get_chrome_version(
